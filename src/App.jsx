@@ -1377,7 +1377,8 @@ export default function App() {
     const nq = q.length > 0 ? q : shuffle(PLAYERS);
     setPlayer(nq[0]); setQueue(nq.slice(1));
     setAnswer(""); setAttempts(0); setShake(false); setPhase("playing");
-    setTimeout(() => inputRef.current?.focus(), 80);
+    // Keep input focused without remounting - keyboard stays up on mobile
+    inputRef.current?.focus();
   }
 
   function handleSubmit(e) {
@@ -1398,7 +1399,7 @@ export default function App() {
         setAttempts(na); setPhase("reveal");
         setTimeout(() => nextPlayer(queue), 3000);
       } else {
-        setAttempts(na); setAnswer(""); setTimeout(() => inputRef.current?.focus(), 50);
+        setAttempts(na); setAnswer(""); inputRef.current?.focus();
       }
     }
   }
@@ -1521,9 +1522,8 @@ export default function App() {
                 <div style={{fontSize:9,color:"#161632",marginTop:5,letterSpacing:2,textTransform:"uppercase"}}>Next player incoming</div>
               </div>
             )}
-            {phase==="playing" && (
-              <div style={{display:"flex",gap:8,animation:shake?"shake .5s ease":"none"}}>
-                <input ref={inputRef} key={player?.name} autoFocus value={answer} onChange={e=>setAnswer(e.target.value)}
+            <div style={{display:phase==="playing"?"flex":"none",gap:8,animation:shake?"shake .5s ease":"none"}}>
+                <input ref={inputRef} value={answer} onChange={e=>setAnswer(e.target.value)}
                   onKeyDown={e=>{ if(e.key==="Enter") handleSubmit(e); }}
                   placeholder="Type the college..."
                   style={{
@@ -1542,7 +1542,6 @@ export default function App() {
                   cursor:"pointer",boxShadow:`0 4px 14px ${posColor}55`,
                 }}>{"→"}</button>
               </div>
-            )}
             {phase==="playing" && (
               <button onClick={()=>setShowGiveUp(true)} style={{
                 marginTop:10,width:"100%",background:"transparent",
