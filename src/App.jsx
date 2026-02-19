@@ -1377,7 +1377,6 @@ export default function App() {
     const nq = q.length > 0 ? q : shuffle(PLAYERS);
     setPlayer(nq[0]); setQueue(nq.slice(1));
     setAnswer(""); setAttempts(0); setShake(false); setPhase("playing");
-    // Keep input focused without remounting - keyboard stays up on mobile
     inputRef.current?.focus();
   }
 
@@ -1542,6 +1541,7 @@ export default function App() {
                   cursor:"pointer",boxShadow:`0 4px 14px ${posColor}55`,
                 }}>{"→"}</button>
               </div>
+
             {phase==="playing" && (
               <button onClick={()=>setShowGiveUp(true)} style={{
                 marginTop:10,width:"100%",background:"transparent",
