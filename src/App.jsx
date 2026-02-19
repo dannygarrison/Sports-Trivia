@@ -248,6 +248,12 @@ const JERSEY_NUMBERS = {
   "Gary Zimmerman": "65",
   "Geno Smith": "7",
   "George Karlaftis": "56",
+  "Jadeveon Clowney": "90",
+  "Chandler Jones": "55",
+  "Robert Quinn": "94",
+  "Danielle Hunter": "99",
+  "Trey Hendrickson": "91",
+  "Justin Houston": "50",
   "George Kittle": "85",
   "George Pickens": "14",
   "Gerald Everett": "80",
@@ -1153,6 +1159,12 @@ const PLAYERS = [
   { name: "Montez Sweat", colleges: ["Mississippi State"], position: "DE", teams: ["Washington Commanders", "Chicago Bears"] },
   { name: "Travon Walker", colleges: ["Georgia"], position: "DE", teams: ["Jacksonville Jaguars"] },
   { name: "Kayvon Thibodeaux", colleges: ["Oregon"], position: "LB", teams: ["New York Giants"] },
+  { name: "Jadeveon Clowney", colleges: ["South Carolina"], position: "DE", teams: ["Houston Texans", "Seattle Seahawks", "Tennessee Titans", "Cleveland Browns", "Baltimore Ravens", "Carolina Panthers", "Dallas Cowboys"] },
+  { name: "Chandler Jones", colleges: ["Syracuse"], position: "DE", teams: ["New England Patriots", "Arizona Cardinals", "Las Vegas Raiders"] },
+  { name: "Robert Quinn", colleges: ["North Carolina"], position: "DE", teams: ["St. Louis Rams", "Los Angeles Rams", "Miami Dolphins", "Dallas Cowboys", "Chicago Bears", "Philadelphia Eagles"] },
+  { name: "Danielle Hunter", colleges: ["LSU"], position: "DE", teams: ["Minnesota Vikings", "Houston Texans"] },
+  { name: "Trey Hendrickson", colleges: ["Florida Atlantic"], position: "DE", teams: ["New Orleans Saints", "Cincinnati Bengals"] },
+  { name: "Justin Houston", colleges: ["Georgia"], position: "LB", teams: ["Kansas City Chiefs", "Indianapolis Colts", "Baltimore Ravens"] },
   { name: "George Karlaftis", colleges: ["Purdue"], position: "DE", teams: ["Kansas City Chiefs"] },
   { name: "Malcolm Butler", colleges: ["West Alabama"], position: "CB", teams: ["New England Patriots", "Tennessee Titans"] },
   { name: "Chris Harris Jr.", colleges: ["Kansas"], position: "CB", teams: ["Denver Broncos", "Los Angeles Chargers"] },
@@ -1367,6 +1379,18 @@ export default function App() {
   const [queue, setQueue] = useState([]);
   const [shake, setShake] = useState(false);
   const [showGiveUp, setShowGiveUp] = useState(false);
+  const [milestone, setMilestone] = useState(null);
+
+  const MILESTONES = {
+    5:  { emoji: "📈", msg: "Good Start" },
+    10: { emoji: "🧠", msg: "Looks like we've got a ball knower on our hands." },
+    15: { emoji: "🧃", msg: "Someone has juice." },
+    20: { emoji: "🧐", msg: "You better not be looking these up." },
+    25: { emoji: "🧱", msg: "Alright you're built different." },
+    30: { emoji: "😱", msg: "Mel Kiper Jr. is that you?" },
+    40: { emoji: "🤜", msg: "Everything else can wait. Keep going." },
+    50: { emoji: "🐐", msg: "Ok goat." },
+  };
   const inputRef = useRef(null);
 
   useEffect(() => { setQueue(shuffle(PLAYERS)); }, []);
@@ -1389,6 +1413,10 @@ export default function App() {
       if (ns > bestStreak) setBestStreak(ns);
       setHistory(h => [...h, { name: player.name, colleges: player.colleges, correct: true }]);
       setPhase("correct");
+      if (MILESTONES[ns]) {
+        setMilestone(MILESTONES[ns]);
+        setTimeout(() => setMilestone(null), 3000);
+      }
       setTimeout(() => nextPlayer(queue), 2000);
     } else {
       const na = attempts + 1; setShake(true); setTimeout(() => setShake(false), 500);
@@ -1418,6 +1446,7 @@ export default function App() {
         @keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}
         @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
         @keyframes pulse{0%,100%{opacity:1}50%{opacity:.7}}
+        @keyframes milestoneIn{from{opacity:0;transform:scale(.7)}to{opacity:1;transform:scale(1)}}
         .fadein{animation:fadeUp .35s cubic-bezier(.22,1,.36,1) both}
       `}</style>
 
@@ -1559,6 +1588,33 @@ export default function App() {
           </div>
         )}
       </div>
+
+      {milestone && (
+        <div style={{
+          position:"fixed",inset:0,display:"flex",alignItems:"center",
+          justifyContent:"center",zIndex:999,pointerEvents:"none",
+        }}>
+          <div style={{
+            background:"linear-gradient(135deg,#1a1a3e,#0f0f2a)",
+            border:"2px solid #c8a05055",
+            borderRadius:20,padding:"32px 40px",textAlign:"center",
+            boxShadow:"0 0 60px #c8a05033,0 20px 60px #00000088",
+            animation:"milestoneIn .35s cubic-bezier(.34,1.56,.64,1)",
+            maxWidth:320,
+          }}>
+            <div style={{fontSize:52,lineHeight:1,marginBottom:12}}>{milestone.emoji}</div>
+            <div style={{
+              fontSize:13,fontWeight:900,color:"#c8a050",letterSpacing:3,
+              textTransform:"uppercase",marginBottom:8,
+            }}>
+              {Object.keys(MILESTONES).find(k => MILESTONES[k] === milestone)} streak
+            </div>
+            <div style={{fontSize:17,color:"#e8e8f0",fontFamily:"Georgia,serif",lineHeight:1.5}}>
+              {milestone.msg}
+            </div>
+          </div>
+        </div>
+      )}
 
       {showGiveUp && (
         <div style={{
