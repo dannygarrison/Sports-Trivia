@@ -1523,7 +1523,7 @@ export default function App() {
             )}
             {phase==="playing" && (
               <div style={{display:"flex",gap:8,animation:shake?"shake .5s ease":"none"}}>
-                <input ref={inputRef} value={answer} onChange={e=>setAnswer(e.target.value)}
+                <input ref={inputRef} key={player?.name} autoFocus value={answer} onChange={e=>setAnswer(e.target.value)}
                   onKeyDown={e=>{ if(e.key==="Enter") handleSubmit(e); }}
                   placeholder="Type the college..."
                   style={{
