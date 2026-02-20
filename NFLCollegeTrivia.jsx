@@ -716,13 +716,13 @@ export default function NFLCollegeTrivia() {
       `}</style>
 
       <div style={{textAlign:"center",marginBottom:24}}>
-        <div style={{fontSize:9,letterSpacing:7,color:"#1c1c38",textTransform:"uppercase",marginBottom:8}}>NFL Alma Maters</div>
+        <div style={{fontSize:9,letterSpacing:7,color:"#ffffff22",textTransform:"uppercase",marginBottom:8}}>NFL Alma Maters</div>
         <h1 style={{
           fontSize:"clamp(28px,6vw,50px)",fontWeight:900,margin:0,lineHeight:1,
           background:"linear-gradient(135deg,#8a6020,#e8c85a,#c8971e,#e8c85a,#8a6020)",
           WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent",letterSpacing:-1,
         }}>{"Where'd He Play?"}</h1>
-        <p style={{color:"#222240",fontSize:10,margin:"8px 0 0",letterSpacing:3,textTransform:"uppercase"}}>
+        <p style={{color:"#ffffff33",fontSize:10,margin:"8px 0 0",letterSpacing:3,textTransform:"uppercase"}}>
           Name the college &middot; 3 tries &middot; keep your streak
         </p>
       </div>
@@ -734,11 +734,11 @@ export default function NFLCollegeTrivia() {
         <>
           <div style={{padding:"13px 36px",textAlign:"center",borderRight:"1px solid #161632"}}>
             <div style={{fontSize:26,fontWeight:900,color:streak>=5?"#e74c3c":"#c8a050",lineHeight:1}}>{streak}</div>
-            <div style={{fontSize:8,color:"#222240",letterSpacing:4,textTransform:"uppercase",marginTop:3}}>Streak{streak>=1?" 🔥":""}</div>
+            <div style={{fontSize:8,color:"#ffffff33",letterSpacing:4,textTransform:"uppercase",marginTop:3}}>Streak{streak>=1?" 🔥":""}</div>
           </div>
           <div style={{padding:"13px 36px",textAlign:"center"}}>
             <div style={{fontSize:26,fontWeight:900,color:"#c8a050",lineHeight:1}}>{bestStreak}</div>
-            <div style={{fontSize:8,color:"#222240",letterSpacing:4,textTransform:"uppercase",marginTop:3}}>Best</div>
+            <div style={{fontSize:8,color:"#ffffff33",letterSpacing:4,textTransform:"uppercase",marginTop:3}}>Best</div>
           </div>
         </>
       </div>
@@ -756,7 +756,7 @@ export default function NFLCollegeTrivia() {
         {phase==="idle" && (
           <div style={{textAlign:"center",padding:"8px 0"}}>
             <div style={{fontSize:52,marginBottom:16}}>{"🏈"}</div>
-            <p style={{color:"#2a2a50",fontSize:13,lineHeight:1.9,marginBottom:24,maxWidth:280}}>
+            <p style={{color:"#a0a0c0",fontSize:13,lineHeight:1.9,marginBottom:24,maxWidth:280}}>
               A player appears. Guess what college they attended. 3 tries per player.
             </p>
             <button onClick={()=>nextPlayer(queue)} style={{
@@ -784,7 +784,7 @@ export default function NFLCollegeTrivia() {
               <span style={{color:posColor,fontSize:10,fontWeight:800,letterSpacing:1}}>{player.position}</span>
             </div>
 
-            <div style={{fontSize:10,color:"#222244",margin:"4px 0 16px",lineHeight:1.9}}>
+            <div style={{fontSize:10,color:"#c8a050",margin:"4px 0 16px",lineHeight:1.9}}>
               {player.teams.join(" \u00B7 ")}
             </div>
 
@@ -806,13 +806,13 @@ export default function NFLCollegeTrivia() {
                 background:"#080818",borderRadius:10,
                 border:`1px solid ${phase==="correct"?"#2ecc7130":"#e74c3c30"}`,
               }}>
-                <div style={{fontSize:10,color:"#252548",marginBottom:3,letterSpacing:1.5,textTransform:"uppercase"}}>
+                <div style={{fontSize:10,color:"#ffffff44",marginBottom:3,letterSpacing:1.5,textTransform:"uppercase"}}>
                   {phase==="correct"?"Correct!":"Answer"}
                 </div>
                 <div style={{fontSize:20,fontWeight:900,color:phase==="correct"?"#2ecc71":"#e74c3c"}}>
                   {player.colleges.join(" / ")}
                 </div>
-                <div style={{fontSize:9,color:"#161632",marginTop:5,letterSpacing:2,textTransform:"uppercase"}}>Next player incoming</div>
+                <div style={{fontSize:9,color:"#ffffff33",marginTop:5,letterSpacing:2,textTransform:"uppercase"}}>Next player incoming</div>
               </div>
             )}
             {phase==="playing" && (
@@ -841,12 +841,12 @@ export default function NFLCollegeTrivia() {
             {phase==="playing" && (
               <button onClick={()=>setShowGiveUp(true)} style={{
                 marginTop:10,width:"100%",background:"transparent",
-                color:"#2a2a48",border:"1px solid #1a1a34",borderRadius:10,
+                color:"#ffffff55",border:"1px solid #ffffff22",borderRadius:10,
                 padding:"8px 0",fontSize:11,fontWeight:700,cursor:"pointer",
                 letterSpacing:1.5,textTransform:"uppercase",transition:"color .2s, border-color .2s",
               }}
                 onMouseEnter={e=>{e.target.style.color="#e74c3c";e.target.style.borderColor="#e74c3c44";}}
-                onMouseLeave={e=>{e.target.style.color="#2a2a48";e.target.style.borderColor="#1a1a34";}}
+                onMouseLeave={e=>{e.target.style.color="#ffffff55";e.target.style.borderColor="#ffffff22";}}
               >No Idea</button>
             )}
 
@@ -892,12 +892,12 @@ export default function NFLCollegeTrivia() {
             boxShadow:"0 24px 80px #000000cc",
           }}>
             <h3 style={{margin:"0 0 10px",fontSize:18,fontWeight:900,color:"#eeeeee"}}>Give up?</h3>
-            <p style={{margin:"0 0 24px",fontSize:13,color:"#444466",lineHeight:1.7}}>
+            <p style={{margin:"0 0 24px",fontSize:13,color:"#a0a0c0",lineHeight:1.7}}>
               Your current streak of <span style={{color:"#e74c3c",fontWeight:900}}>{streak}</span> will end.
             </p>
             <div style={{display:"flex",gap:10}}>
               <button onClick={()=>setShowGiveUp(false)} style={{
-                flex:1,background:"#141432",color:"#aaaacc",border:"1px solid #252548",
+                flex:1,background:"#141432",color:"#c8a050",border:"1px solid #c8a05044",
                 borderRadius:10,padding:"11px 0",fontSize:13,fontWeight:700,cursor:"pointer",
               }}>Cancel</button>
               <button onClick={()=>{
@@ -918,7 +918,7 @@ export default function NFLCollegeTrivia() {
       )}
       {history.length>0&&(
         <div style={{width:"100%",maxWidth:420,marginTop:20}}>
-          <div style={{fontSize:8,letterSpacing:6,color:"#121228",textTransform:"uppercase",marginBottom:8}}>Recent</div>
+          <div style={{fontSize:8,letterSpacing:6,color:"#ffffff22",textTransform:"uppercase",marginBottom:8}}>Recent</div>
           {[...history].reverse().slice(0,8).map((h,i)=>(
             <div key={i} style={{
               display:"flex",justifyContent:"space-between",alignItems:"center",
@@ -926,8 +926,8 @@ export default function NFLCollegeTrivia() {
               border:`1px solid ${h.correct?"#2ecc7115":"#e74c3c15"}`,
               borderRadius:9,fontSize:12,
             }}>
-              <span style={{color:"#666688",fontWeight:700}}>{h.name}</span>
-              <span style={{color:"#202040",fontSize:10}}>{h.colleges.join(" / ")}</span>
+              <span style={{color:"#c8a050",fontWeight:700}}>{h.name}</span>
+              <span style={{color:"#ffffff44",fontSize:10}}>{h.colleges.join(" / ")}</span>
               <span style={{color:h.correct?"#2ecc71":"#e74c3c",fontSize:16}}>{h.correct?"✓":"✗"}</span>
             </div>
           ))}
