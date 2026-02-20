@@ -3,6 +3,7 @@ import Nav from './Nav.jsx'
 import Home from './Home.jsx'
 import NFLCollegeTrivia from './NFLCollegeTrivia.jsx'
 import SoccerLeaguesTrivia from './SoccerLeaguesTrivia.jsx'
+import NBAScorersGrid from './NBAScorersGrid.jsx'
 
 export default function App() {
   return (
@@ -12,6 +13,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/games/nfl-college-trivia" element={<NFLCollegeTrivia />} />
         <Route path="/games/soccer-leagues-trivia" element={<SoccerLeaguesTrivia />} />
+        <Route path="/games/nba-scorers-grid" element={<NBAScorersGrid />} />
       </Routes>
     </div>
   )
