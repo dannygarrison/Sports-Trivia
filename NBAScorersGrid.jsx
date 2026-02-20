@@ -487,28 +487,36 @@ function TeamCard({ team, solved, onSolve, gaveUp }) {
         {team.players.map((player, i) => {
           const isSolved = teamSolved.has(player.name);
           const isFlashing = flash === player.name;
-          const reveal = gaveUp && !isSolved;
+          const isRevealed = gaveUp && !isSolved;
+          const shown = isSolved || isRevealed;
           return (
             <div key={player.name} style={{
               display: "flex", justifyContent: "space-between", alignItems: "center",
               padding: "4px 6px", marginBottom: 2, borderRadius: 5,
-              background: isFlashing ? team.color + "22" : isSolved ? "#ffffff06" : reveal ? "#1a0a0a" : "transparent",
-              borderLeft: `2px solid ${isSolved ? team.color : reveal ? "#e74c3c33" : "transparent"}`,
+              background: isFlashing ? team.color + "22" : isRevealed ? "#e74c3c08" : isSolved ? "#ffffff06" : "transparent",
               transition: "all 0.25s",
             }}>
-              <div style={{
-                fontSize: 12, fontWeight: isSolved ? 700 : 400,
-                color: isSolved ? "#ffffff" : reveal ? "#e74c3c55" : "#ffffff18",
-                fontFamily: "'Oswald', sans-serif", letterSpacing: 0.3,
-              }}>
-                {isSolved || reveal ? player.name : `— — —`}
+              <div style={{ display: "flex", alignItems: "center", gap: 7 }}>
+                <div style={{
+                  width: 6, height: 6, borderRadius: "50%", flexShrink: 0,
+                  background: isRevealed ? "#e74c3c" : isSolved ? team.color : "#ffffff15",
+                  boxShadow: isRevealed ? "0 0 5px #e74c3c88" : isSolved ? `0 0 5px ${team.color}88` : "none",
+                  transition: "background 0.25s",
+                }} />
+                <div style={{
+                  fontSize: 12, fontWeight: shown ? 700 : 400,
+                  color: isRevealed ? "#e8806070" : isSolved ? "#ffffff" : "#ffffff18",
+                  fontFamily: "'Oswald', sans-serif", letterSpacing: 0.3,
+                }}>
+                  {shown ? player.name : `— — —`}
+                </div>
               </div>
               <div style={{
                 fontSize: 10, fontWeight: 700,
-                color: isSolved ? team.color : reveal ? "#e74c3c33" : "#ffffff0a",
+                color: isRevealed ? "#e74c3c55" : isSolved ? team.color : "#ffffff0a",
                 fontFamily: "'Oswald', sans-serif", letterSpacing: 0.5,
               }}>
-                {(isSolved || reveal) && player.pts}
+                {shown && player.pts}
               </div>
             </div>
           );
@@ -656,7 +664,7 @@ export default function NBAScorersGrid() {
             {gaveUp ? `Answers Revealed — ${totalSolved} of ${totalPossible} found` : `All ${totalPossible} Players Found!`}
           </div>
           <div style={{ fontSize: 13, color: "#c8a050", marginTop: 4, fontFamily: "Georgia, serif" }}>
-            {gaveUp ? "The unfound players are shown in red below." : `Completed ${teamsCompleted}/30 teams in ${formatTime(elapsed)}.`}
+            {!gaveUp && `Completed ${teamsCompleted}/30 teams in ${formatTime(elapsed)}.`}
           </div>
         </div>
       )}
