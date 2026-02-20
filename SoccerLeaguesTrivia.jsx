@@ -202,7 +202,7 @@ function LeagueColumn({ league, solvedSet, onSolve, activeLeagueId, setActiveLea
         <div style={{
           fontSize: 10,
           fontWeight: 800,
-          fontFamily: "'Barlow Condensed', sans-serif",
+          fontFamily: "'Oswald', sans-serif",
           letterSpacing: 3,
           textTransform: "uppercase",
           color: league.textAccent,
@@ -211,7 +211,7 @@ function LeagueColumn({ league, solvedSet, onSolve, activeLeagueId, setActiveLea
         <div style={{
           fontSize: 17,
           fontWeight: 900,
-          fontFamily: "'Barlow Condensed', sans-serif",
+          fontFamily: "'Oswald', sans-serif",
           letterSpacing: 1,
           textTransform: "uppercase",
           color: "#ffffff",
@@ -220,7 +220,7 @@ function LeagueColumn({ league, solvedSet, onSolve, activeLeagueId, setActiveLea
         <div style={{
           marginTop: 8,
           fontSize: 11,
-          fontFamily: "'Barlow Condensed', sans-serif",
+          fontFamily: "'Oswald', sans-serif",
           color: allDone ? league.textAccent : "#ffffff44",
           fontWeight: 700,
           letterSpacing: 1,
@@ -256,7 +256,7 @@ function LeagueColumn({ league, solvedSet, onSolve, activeLeagueId, setActiveLea
               padding: "8px 10px",
               color: "#ffffff",
               fontSize: 13,
-              fontFamily: "'Barlow Condensed', sans-serif",
+              fontFamily: "'Oswald', sans-serif",
               fontWeight: 600,
               letterSpacing: 0.5,
               outline: "none",
@@ -278,7 +278,7 @@ function LeagueColumn({ league, solvedSet, onSolve, activeLeagueId, setActiveLea
               marginBottom: 3,
               borderRadius: 6,
               fontSize: 12,
-              fontFamily: "'Barlow Condensed', sans-serif",
+              fontFamily: "'Oswald', sans-serif",
               fontWeight: isSolved ? 700 : 400,
               letterSpacing: 0.5,
               color: isSolved ? "#ffffff" : "#ffffff18",
@@ -356,10 +356,10 @@ export default function SoccerLeaguesTrivia() {
       background: "#07070f",
       backgroundImage: "radial-gradient(ellipse at 50% 0%, #0d0d22 0%, #07070f 60%)",
       color: "#f0f0f0",
-      fontFamily: "'Barlow Condensed', sans-serif",
+      fontFamily: "'Oswald', sans-serif",
       padding: "84px 16px 56px",
     }}>
-      <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet" />
       <style>{`
         @keyframes fadeUp { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:translateY(0); } }
         @keyframes confetti { 0% { transform: scale(0.8); opacity: 0; } 50% { transform: scale(1.05); } 100% { transform: scale(1); opacity: 1; } }
@@ -378,7 +378,7 @@ export default function SoccerLeaguesTrivia() {
             <h1 style={{ fontSize: "clamp(28px, 5vw, 46px)", fontWeight: 900, letterSpacing: 0, textTransform: "uppercase", lineHeight: 1, margin: 0, color: "#ffffff" }}>
               Top 5 Leagues
             </h1>
-            <p style={{ fontSize: 13, color: "#ffffff33", margin: "8px 0 0", fontFamily: "Georgia, serif" }}>
+            <p style={{ fontSize: 13, color: "#c8a050", margin: "8px 0 0", fontFamily: "Georgia, serif" }}>
               Name all {totalTeams} teams across the 5 biggest leagues in world football.
             </p>
           </div>
@@ -395,7 +395,7 @@ export default function SoccerLeaguesTrivia() {
             <div style={{ textAlign: "center" }}>
               <div style={{ fontSize: 10, letterSpacing: 3, textTransform: "uppercase", color: "#ffffff33", marginBottom: 2 }}>Found</div>
               <div style={{ fontSize: 28, fontWeight: 900, color: "#ffffff", fontVariantNumeric: "tabular-nums" }}>
-                {totalSolved}<span style={{ fontSize: 16, color: "#ffffff33" }}>/{totalTeams}</span>
+                {totalSolved}<span style={{ fontSize: 16, color: "#c8a05099" }}>/{totalTeams}</span>
               </div>
             </div>
             {/* Give Up */}
@@ -404,7 +404,7 @@ export default function SoccerLeaguesTrivia() {
                 fontSize: 11, fontWeight: 800, letterSpacing: 2.5, textTransform: "uppercase",
                 padding: "9px 18px", borderRadius: 8, cursor: "pointer",
                 border: "1px solid #e74c3c33", background: "transparent", color: "#e74c3c88",
-                fontFamily: "'Barlow Condensed', sans-serif", transition: "all 0.18s",
+                fontFamily: "'Oswald', sans-serif", transition: "all 0.18s",
               }}
                 onMouseEnter={e => { e.currentTarget.style.color = "#e74c3c"; e.currentTarget.style.borderColor = "#e74c3c66"; e.currentTarget.style.background = "#e74c3c11"; }}
                 onMouseLeave={e => { e.currentTarget.style.color = "#e74c3c88"; e.currentTarget.style.borderColor = "#e74c3c33"; e.currentTarget.style.background = "transparent"; }}
@@ -443,7 +443,7 @@ export default function SoccerLeaguesTrivia() {
           <div style={{ fontSize: 22, fontWeight: 900, color: gaveUp ? "#e74c3c" : "#22c55e", letterSpacing: 1, textTransform: "uppercase" }}>
             {gaveUp ? "Answers Revealed" : `All ${totalTeams} Teams Found!`}
           </div>
-          <div style={{ fontSize: 14, color: "#ffffff66", marginTop: 4, fontFamily: "Georgia, serif" }}>
+          <div style={{ fontSize: 14, color: "#c8a050", marginTop: 4, fontFamily: "Georgia, serif" }}>
             {gaveUp
               ? `You found ${totalSolved} out of ${totalTeams} teams before giving up. Better luck next time.`
               : `Completed in ${formatTime(finishTime)} — proper ball knowledge.`
@@ -494,10 +494,10 @@ export default function SoccerLeaguesTrivia() {
             animation: "confetti 0.25s ease both",
           }} onClick={e => e.stopPropagation()}>
             <div style={{ fontSize: 36, marginBottom: 12 }}>🏳️</div>
-            <h3 style={{ margin: "0 0 10px", fontSize: 20, fontWeight: 900, color: "#eeeeee", fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: 1, textTransform: "uppercase" }}>
+            <h3 style={{ margin: "0 0 10px", fontSize: 20, fontWeight: 900, color: "#eeeeee", fontFamily: "'Oswald', sans-serif", letterSpacing: 1, textTransform: "uppercase" }}>
               Give Up?
             </h3>
-            <p style={{ margin: "0 0 24px", fontSize: 13, color: "#ffffff44", lineHeight: 1.7, fontFamily: "Georgia, serif" }}>
+            <p style={{ margin: "0 0 24px", fontSize: 13, color: "#c8a050", lineHeight: 1.7, fontFamily: "Georgia, serif" }}>
               All {totalTeams} teams will be revealed. You found <span style={{ color: "#e74c3c", fontWeight: 900 }}>{totalSolved}</span> out of {totalTeams}.
             </p>
             <div style={{ display: "flex", gap: 10 }}>
@@ -505,13 +505,13 @@ export default function SoccerLeaguesTrivia() {
                 flex: 1, background: "#141432", color: "#aaaacc",
                 border: "1px solid #252548", borderRadius: 10,
                 padding: "11px 0", fontSize: 13, fontWeight: 700,
-                cursor: "pointer", fontFamily: "'Barlow Condensed', sans-serif",
+                cursor: "pointer", fontFamily: "'Oswald', sans-serif",
                 letterSpacing: 1.5, textTransform: "uppercase",
               }}>Cancel</button>
               <button onClick={handleGiveUp} style={{
                 flex: 1, background: "#e74c3c", color: "#fff", border: "none",
                 borderRadius: 10, padding: "11px 0", fontSize: 13, fontWeight: 900,
-                cursor: "pointer", fontFamily: "'Barlow Condensed', sans-serif",
+                cursor: "pointer", fontFamily: "'Oswald', sans-serif",
                 letterSpacing: 1.5, textTransform: "uppercase",
                 boxShadow: "0 4px 14px #e74c3c44",
               }}>Reveal All</button>
