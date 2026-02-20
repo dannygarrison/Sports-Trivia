@@ -64,6 +64,15 @@ const GAMES = [
     tag: 'FILL IN THE BLANK',
     available: true,
   },
+  {
+    id: 'mls-teams',
+    path: '/games/mls-teams',
+    title: 'MLS Teams',
+    sport: 'SOCCER',
+    description: 'Name all 30 Major League Soccer clubs across the Eastern and Western Conferences.',
+    tag: 'FILL IN THE BLANK',
+    available: true,
+  },
 ]
 
 function GameCard({ game, index }) {
