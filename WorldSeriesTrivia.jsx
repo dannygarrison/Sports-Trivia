@@ -341,7 +341,8 @@ function WorldSeriesRow({ ws, rowSolved, onSolve, gaveUp, index }) {
             padding: "8px 10px",
             borderRight: field !== "mvp" ? "1px solid #ffffff07" : "none",
             display: "flex", flexDirection: "column", justifyContent: "center",
-            background: isFlashing ? "#4db87a15" : reveal ? "#1a06061a" : "transparent",
+            background: isFlashing ? "#4db87a15" : reveal ? "#e74c3c08" : "transparent",
+            borderBottom: isSolved ? "1px solid #22c55e33" : reveal ? "1px solid #e74c3c33" : "1px solid transparent",
             transition: "background 0.2s",
           }}>
             {noMvpData ? (
@@ -354,13 +355,13 @@ function WorldSeriesRow({ ws, rowSolved, onSolve, gaveUp, index }) {
               <div>
                 <div style={{
                   fontSize: 12, fontWeight: 700,
-                  color: isSolved ? "#ffffff" : "#e74c3c55",
+                  color: isSolved ? "#ffffff" : "#e8806070",
                   fontFamily: "'Oswald', sans-serif", letterSpacing: 0.3,
                   lineHeight: 1.2,
                 }}>{value}</div>
                 {isMvpField && ws.mvpPos && (
                   <div style={{
-                    fontSize: 9, color: isSolved ? "#4db87a88" : "#e74c3c33",
+                    fontSize: 9, color: isSolved ? "#4db87a88" : "#e74c3c44",
                     fontFamily: "'Oswald', sans-serif",
                     letterSpacing: 1, marginTop: 2,
                   }}>{ws.mvpPos}</div>
@@ -533,7 +534,7 @@ export default function WorldSeriesTrivia() {
             {gaveUp ? `Answers Revealed — ${totalSolved} of ${totalFields} found` : `All ${totalFields} answers correct!`}
           </div>
           <div style={{ fontSize: 13, color: "#c8a050", marginTop: 4, fontFamily: "Georgia, serif" }}>
-            {gaveUp ? "Unfound answers shown in red below." : `${rowsCompleted} World Series completed in ${formatTime(elapsed)}.`}
+            {!gaveUp && `${rowsCompleted} World Series completed in ${formatTime(elapsed)}.`}
           </div>
         </div>
       )}
