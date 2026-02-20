@@ -27197,10 +27197,10 @@ export default function NFLNameDump() {
       background: "#07070f",
       backgroundImage: "radial-gradient(ellipse at 50% 0%, #07070f 0%, #07070f 100%)",
       color: "#f0f0f0",
-      fontFamily: "'Barlow Condensed', sans-serif",
+      fontFamily: "'Oswald', sans-serif",
       padding: "84px 16px 60px",
     }}>
-      <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet" />
       <style>{`
         @keyframes fadeUp { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
         @keyframes popIn { 0% { transform:scale(0.9); opacity:0; } 60% { transform:scale(1.04); } 100% { transform:scale(1); opacity:1; } }
@@ -27223,7 +27223,7 @@ export default function NFLNameDump() {
           }}>
             Just name as many NFL players as you can.
           </h1>
-          <p style={{ fontSize: 14, color: "#ffffff35", fontFamily: "Georgia, serif", margin: 0 }}>
+          <p style={{ fontSize: 14, color: "#c8a050", fontFamily: "Georgia, serif", margin: 0 }}>
             Type a first and last name, hit Enter. See how many you can name.
           </p>
         </div>
@@ -27237,7 +27237,7 @@ export default function NFLNameDump() {
             </div>
           </div>
           <div style={{ color: "#ffffff10", fontSize: 28, fontWeight: 100 }}>|</div>
-          <div style={{ fontSize: 13, color: "#ffffff30", fontFamily: "Georgia, serif", maxWidth: 340, lineHeight: 1.6 }}>
+          <div style={{ fontSize: 13, color: "#c8a050", fontFamily: "Georgia, serif", maxWidth: 340, lineHeight: 1.6 }}>
             Database covers ~27,000 players.<br />First + last name required.
           </div>
         </div>
@@ -27259,7 +27259,7 @@ export default function NFLNameDump() {
             style={{
               background: "transparent", border: "none",
               color: "#ffffff", fontSize: 22,
-              fontFamily: "'Barlow Condensed', sans-serif",
+              fontFamily: "'Oswald', sans-serif",
               fontWeight: 700, letterSpacing: 0.5,
               width: "100%",
             }}
@@ -27281,7 +27281,7 @@ export default function NFLNameDump() {
                     color: "#c8a050", borderRadius: 6, padding: "4px 14px",
                     fontSize: 11, fontWeight: 700, letterSpacing: 1,
                     textTransform: "uppercase", cursor: "pointer",
-                    fontFamily: "'Barlow Condensed', sans-serif",
+                    fontFamily: "'Oswald', sans-serif",
                   }}>
                   Yes — Enter
                 </button>
@@ -27292,7 +27292,7 @@ export default function NFLNameDump() {
                     color: "#ffffff30", borderRadius: 6, padding: "4px 14px",
                     fontSize: 11, fontWeight: 700, letterSpacing: 1,
                     textTransform: "uppercase", cursor: "pointer",
-                    fontFamily: "'Barlow Condensed', sans-serif",
+                    fontFamily: "'Oswald', sans-serif",
                   }}>
                   No — Esc
                 </button>
@@ -27342,14 +27342,14 @@ export default function NFLNameDump() {
                   <span style={{
                     fontSize: 10, fontWeight: 800, color: "#ffffff18",
                     fontVariantNumeric: "tabular-nums", minWidth: 28,
-                    textAlign: "right", fontFamily: "'Barlow Condensed', sans-serif",
+                    textAlign: "right", fontFamily: "'Oswald', sans-serif",
                   }}>
                     {total - i}
                   </span>
                   <span style={{
                     fontSize: 15, fontWeight: 700,
                     color: i === 0 ? "#ffffff" : "#ffffffcc",
-                    fontFamily: "'Barlow Condensed', sans-serif",
+                    fontFamily: "'Oswald', sans-serif",
                     letterSpacing: 0.3,
                   }}>
                     {entry.name}
@@ -27365,7 +27365,7 @@ export default function NFLNameDump() {
             border: "1px dashed #ffffff08", borderRadius: 12,
             padding: "48px 24px", textAlign: "center",
           }}>
-            <div style={{ fontSize: 11, color: "#ffffff15", letterSpacing: 2, textTransform: "uppercase", fontFamily: "'Barlow Condensed', sans-serif" }}>
+            <div style={{ fontSize: 11, color: "#ffffff15", letterSpacing: 2, textTransform: "uppercase", fontFamily: "'Oswald', sans-serif" }}>
               Your list will appear here
             </div>
           </div>
