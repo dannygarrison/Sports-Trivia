@@ -18,3 +18,7 @@ export default function App() {
     </div>
   )
 }
+import SuperBowlTrivia from "./SuperBowlTrivia";
+
+// Inside your <Routes>:
+<Route path="/games/super-bowl-history" element={<SuperBowlTrivia />} />
