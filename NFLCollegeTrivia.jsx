@@ -715,7 +715,7 @@ export default function NFLCollegeTrivia() {
       `}</style>
 
       <div style={{textAlign:"center",marginBottom:24}}>
-        <div style={{fontSize:9,letterSpacing:7,color:"#1c1c38",textTransform:"uppercase",marginBottom:8}}>NFL College Trivia</div>
+        <div style={{fontSize:9,letterSpacing:7,color:"#1c1c38",textTransform:"uppercase",marginBottom:8}}>NFL Alma Maters</div>
         <h1 style={{
           fontSize:"clamp(28px,6vw,50px)",fontWeight:900,margin:0,lineHeight:1,
           background:"linear-gradient(135deg,#8a6020,#e8c85a,#c8971e,#e8c85a,#8a6020)",
