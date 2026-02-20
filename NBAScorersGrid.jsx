@@ -376,7 +376,7 @@ function matchesPlayer(input, playerName) {
   if (normName === normInput) return true;
   // Last name match (only if > 4 chars to avoid false positives)
   const lastName = normName.split(" ").pop();
-  if (lastName.length > 4 && lastName === normInput) return true;
+  if (lastName.length > 3 && lastName === normInput) return true;
   // Check aliases
   const key = normName.replace(/'/g, "").replace(/'/g,"");
   for (const [aliasKey, aliasList] of Object.entries(ALIASES)) {
