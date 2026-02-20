@@ -39,12 +39,12 @@ const GAMES = [
   },
   {
     id: 'soccer-trivia',
-    path: '/games/soccer-trivia',
-    title: 'Soccer Trivia',
+    path: '/games/soccer-leagues-trivia',
+    title: 'Top 5 Leagues',
     sport: 'SOCCER',
-    description: 'Coming soon.',
-    tag: 'COMING SOON',
-    available: false,
+    description: 'Name all 96 teams across the EPL, La Liga, Bundesliga, Serie A, and Ligue 1.',
+    tag: 'FILL IN THE BLANK',
+    available: true,
   },
 ]
 
