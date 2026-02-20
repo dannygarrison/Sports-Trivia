@@ -6,6 +6,7 @@ import SoccerLeaguesTrivia from './SoccerLeaguesTrivia.jsx'
 import NBAScorersGrid from './NBAScorersGrid.jsx'
 import SuperBowlTrivia from './SuperBowlTrivia.jsx'
 import WorldSeriesTrivia from './WorldSeriesTrivia.jsx'
+import NFLNameDump from './NFLNameDump.jsx'
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
         <Route path="/games/nba-scorers-grid" element={<NBAScorersGrid />} />
         <Route path="/games/super-bowl-history" element={<SuperBowlTrivia />} />
         <Route path="/games/world-series-history" element={<WorldSeriesTrivia />} />
+        <Route path="/games/nfl-name-dump" element={<NFLNameDump />} />
       </Routes>
     </div>
   )
