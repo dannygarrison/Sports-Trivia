@@ -702,10 +702,11 @@ export default function NFLCollegeTrivia() {
     <div style={{
       minHeight:"100vh", background:"#07070f",
       backgroundImage:"radial-gradient(ellipse at 50% 0%,#10102a 0%,#07070f 60%)",
-      color:"#f0f0f0", fontFamily:"Georgia,serif",
+      color:"#f0f0f0", fontFamily:"'Oswald',sans-serif",
       display:"flex", flexDirection:"column", alignItems:"center",
       padding:"84px 16px 56px",
     }}>
+      <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet" />
       <style>{`
         @keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}
         @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
@@ -822,7 +823,7 @@ export default function NFLCollegeTrivia() {
                   style={{
                     flex:1,background:"#07071a",border:"2px solid #141432",
                     borderRadius:10,padding:"12px 14px",fontSize:16,
-                    color:"#f0f0f0",outline:"none",fontFamily:"Georgia,serif",
+                    color:"#f0f0f0",outline:"none",fontFamily:"'Oswald',sans-serif",
                     transition:"border-color .2s",
                   }}
                   onFocus={e=>e.target.style.borderColor=posColor}
@@ -873,7 +874,7 @@ export default function NFLCollegeTrivia() {
             }}>
               {Object.keys(MILESTONES).find(k => MILESTONES[k] === milestone)} streak
             </div>
-            <div style={{fontSize:17,color:"#e8e8f0",fontFamily:"Georgia,serif",lineHeight:1.5}}>
+            <div style={{fontSize:17,color:"#e8e8f0",fontFamily:"'Oswald',sans-serif",lineHeight:1.5}}>
               {milestone.msg}
             </div>
           </div>
