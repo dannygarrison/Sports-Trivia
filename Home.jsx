@@ -169,13 +169,11 @@ export default function Home() {
             Ball Knowledge Games
           </div>
           <h1 style={{ fontSize: 'clamp(48px, 9vw, 82px)', fontWeight: 900, letterSpacing: -1, textTransform: 'uppercase', lineHeight: 0.92, margin: '0 0 22px', color: '#ffffff' }}>
-            Prove Your{' '}
+            Test Your{' '}
             <span style={{ color: 'transparent', WebkitTextStroke: '1px #c8a050' }}>Ball</span>
             {' '}Knowledge
           </h1>
-          <p style={{ fontSize: 15, color: '#ffffff40', lineHeight: 1.7, fontFamily: 'Georgia, serif', maxWidth: 400, margin: '0 auto' }}>
-            Sports trivia games that separate the true fans from the casuals.
-          </p>
+
         </div>
       </div>
 
