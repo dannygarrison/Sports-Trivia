@@ -774,7 +774,7 @@ const PLAYERS = [
   { name: "Eric Dickerson", colleges: ["SMU"], position: "RB", teams: ["Los Angeles Rams", "Indianapolis Colts", "Los Angeles Raiders"] },
   { name: "Marcus Allen", colleges: ["USC"], position: "RB", teams: ["Los Angeles Raiders", "Kansas City Chiefs"] },
   { name: "Todd Gurley", colleges: ["Georgia"], position: "RB", teams: ["Los Angeles Rams", "Atlanta Falcons"] },
-  { name: "Melvin Gordon", colleges: ["Wisconsin"], position: "RB", teams: ["Los Angeles Chargers", "Denver Broncos", "Green Bay Packers"] },
+  { name: "Melvin Gordon", colleges: ["Wisconsin"], position: "RB", teams: ["Los Angeles Chargers", "Denver Broncos"] },
   { name: "Le'Veon Bell", colleges: ["Michigan State"], position: "RB", teams: ["Pittsburgh Steelers", "New York Jets", "Kansas City Chiefs", "Baltimore Ravens"] },
   { name: "Joe Mixon", colleges: ["Oklahoma"], position: "RB", teams: ["Cincinnati Bengals", "Houston Texans"] },
   { name: "Jonathan Taylor", colleges: ["Wisconsin"], position: "RB", teams: ["Indianapolis Colts"] },
