@@ -13,9 +13,9 @@ const GAMES = [
   {
     id: 'nfl-college-trivia',
     path: '/games/nfl-college-trivia',
-    title: 'NFL College Trivia',
+    title: 'NFL Alma Maters',
     sport: 'NFL',
-    description: 'Name the college for 576 NFL players. How long can you streak?',
+    description: 'Name the college for each NFL player. How long can you streak?',
     tag: 'STREAKS',
     available: true,
   },
