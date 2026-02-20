@@ -304,6 +304,8 @@ export default function SoccerLeaguesTrivia() {
   const [elapsed, setElapsed] = useState(0);
   const [finished, setFinished] = useState(false);
   const [finishTime, setFinishTime] = useState(null);
+  const [gaveUp, setGaveUp] = useState(false);
+  const [showGiveUpConfirm, setShowGiveUpConfirm] = useState(false);
 
   const totalTeams = LEAGUES.reduce((sum, l) => sum + l.teams.length, 0);
   const totalSolved = LEAGUES.reduce((sum, l) => sum + solved[l.id].size, 0);
@@ -335,10 +337,17 @@ export default function SoccerLeaguesTrivia() {
     });
   };
 
-  const handleReset = () => {
-    setSolved({ epl: new Set(), laliga: new Set(), bundesliga: new Set(), seriea: new Set(), ligue1: new Set() });
-    setFinished(false);
-    setFinishTime(null);
+  const handleGiveUp = () => {
+    // Reveal all teams
+    const allSolved = {};
+    LEAGUES.forEach(l => {
+      allSolved[l.id] = new Set(l.teams.map(t => t.name));
+    });
+    setSolved(allSolved);
+    setGaveUp(true);
+    setFinished(true);
+    setFinishTime(elapsed);
+    setShowGiveUpConfirm(false);
   };
 
   return (
@@ -389,18 +398,20 @@ export default function SoccerLeaguesTrivia() {
                 {totalSolved}<span style={{ fontSize: 16, color: "#ffffff33" }}>/{totalTeams}</span>
               </div>
             </div>
-            {/* Reset */}
-            <button onClick={handleReset} style={{
-              fontSize: 11, fontWeight: 800, letterSpacing: 2.5, textTransform: "uppercase",
-              padding: "9px 18px", borderRadius: 8, cursor: "pointer",
-              border: "1px solid #ffffff15", background: "transparent", color: "#ffffff33",
-              fontFamily: "'Barlow Condensed', sans-serif", transition: "all 0.18s",
-            }}
-              onMouseEnter={e => { e.target.style.color = "#ffffff88"; e.target.style.borderColor = "#ffffff33"; }}
-              onMouseLeave={e => { e.target.style.color = "#ffffff33"; e.target.style.borderColor = "#ffffff15"; }}
-            >
-              Reset
-            </button>
+            {/* Give Up */}
+            {!finished && (
+              <button onClick={() => setShowGiveUpConfirm(true)} style={{
+                fontSize: 11, fontWeight: 800, letterSpacing: 2.5, textTransform: "uppercase",
+                padding: "9px 18px", borderRadius: 8, cursor: "pointer",
+                border: "1px solid #e74c3c33", background: "transparent", color: "#e74c3c88",
+                fontFamily: "'Barlow Condensed', sans-serif", transition: "all 0.18s",
+              }}
+                onMouseEnter={e => { e.currentTarget.style.color = "#e74c3c"; e.currentTarget.style.borderColor = "#e74c3c66"; e.currentTarget.style.background = "#e74c3c11"; }}
+                onMouseLeave={e => { e.currentTarget.style.color = "#e74c3c88"; e.currentTarget.style.borderColor = "#e74c3c33"; e.currentTarget.style.background = "transparent"; }}
+              >
+                Give Up
+              </button>
+            )}
           </div>
         </div>
 
@@ -416,24 +427,27 @@ export default function SoccerLeaguesTrivia() {
         </div>
       </div>
 
-      {/* Finished banner */}
+      {/* Finished / gave up banner */}
       {finished && (
         <div style={{
           maxWidth: 1200, margin: "0 auto 24px",
-          background: "linear-gradient(135deg, #0a1a0a, #0f2a0f)",
-          border: "1px solid #22c55e44",
+          background: gaveUp ? "linear-gradient(135deg, #1a0a0a, #2a0f0f)" : "linear-gradient(135deg, #0a1a0a, #0f2a0f)",
+          border: `1px solid ${gaveUp ? "#e74c3c44" : "#22c55e44"}`,
           borderRadius: 14,
           padding: "20px 24px",
           textAlign: "center",
           animation: "confetti 0.5s ease both",
-          boxShadow: "0 0 40px #22c55e15",
+          boxShadow: `0 0 40px ${gaveUp ? "#e74c3c15" : "#22c55e15"}`,
         }}>
-          <div style={{ fontSize: 32, marginBottom: 6 }}>🏆</div>
-          <div style={{ fontSize: 22, fontWeight: 900, color: "#22c55e", letterSpacing: 1, textTransform: "uppercase" }}>
-            All {totalTeams} Teams Found!
+          <div style={{ fontSize: 32, marginBottom: 6 }}>{gaveUp ? "😔" : "🏆"}</div>
+          <div style={{ fontSize: 22, fontWeight: 900, color: gaveUp ? "#e74c3c" : "#22c55e", letterSpacing: 1, textTransform: "uppercase" }}>
+            {gaveUp ? "Answers Revealed" : `All ${totalTeams} Teams Found!`}
           </div>
           <div style={{ fontSize: 14, color: "#ffffff66", marginTop: 4, fontFamily: "Georgia, serif" }}>
-            Completed in {formatTime(finishTime)} — proper ball knowledge.
+            {gaveUp
+              ? `You found ${totalSolved} out of ${totalTeams} teams before giving up. Better luck next time.`
+              : `Completed in ${formatTime(finishTime)} — proper ball knowledge.`
+            }
           </div>
         </div>
       )}
@@ -466,6 +480,45 @@ export default function SoccerLeaguesTrivia() {
           2025–26 Season · Abbreviated names accepted
         </div>
       </div>
+
+      {/* Give Up Confirmation Modal */}
+      {showGiveUpConfirm && (
+        <div style={{
+          position: "fixed", inset: 0, background: "#000000bb",
+          display: "flex", alignItems: "center", justifyContent: "center", zIndex: 1000,
+        }} onClick={() => setShowGiveUpConfirm(false)}>
+          <div style={{
+            background: "#0e0e22", border: "2px solid #e74c3c55",
+            borderRadius: 18, padding: "32px 28px", maxWidth: 320, width: "90%",
+            textAlign: "center", boxShadow: "0 24px 80px #000000cc",
+            animation: "confetti 0.25s ease both",
+          }} onClick={e => e.stopPropagation()}>
+            <div style={{ fontSize: 36, marginBottom: 12 }}>🏳️</div>
+            <h3 style={{ margin: "0 0 10px", fontSize: 20, fontWeight: 900, color: "#eeeeee", fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: 1, textTransform: "uppercase" }}>
+              Give Up?
+            </h3>
+            <p style={{ margin: "0 0 24px", fontSize: 13, color: "#ffffff44", lineHeight: 1.7, fontFamily: "Georgia, serif" }}>
+              All {totalTeams} teams will be revealed. You found <span style={{ color: "#e74c3c", fontWeight: 900 }}>{totalSolved}</span> out of {totalTeams}.
+            </p>
+            <div style={{ display: "flex", gap: 10 }}>
+              <button onClick={() => setShowGiveUpConfirm(false)} style={{
+                flex: 1, background: "#141432", color: "#aaaacc",
+                border: "1px solid #252548", borderRadius: 10,
+                padding: "11px 0", fontSize: 13, fontWeight: 700,
+                cursor: "pointer", fontFamily: "'Barlow Condensed', sans-serif",
+                letterSpacing: 1.5, textTransform: "uppercase",
+              }}>Cancel</button>
+              <button onClick={handleGiveUp} style={{
+                flex: 1, background: "#e74c3c", color: "#fff", border: "none",
+                borderRadius: 10, padding: "11px 0", fontSize: 13, fontWeight: 900,
+                cursor: "pointer", fontFamily: "'Barlow Condensed', sans-serif",
+                letterSpacing: 1.5, textTransform: "uppercase",
+                boxShadow: "0 4px 14px #e74c3c44",
+              }}>Reveal All</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
