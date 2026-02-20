@@ -20,7 +20,16 @@ const GAMES = [
     available: true,
   },
   {
-    id: 'nba-college-trivia',
+    id: 'super-bowl-history',
+    path: '/games/super-bowl-history',
+    title: 'Super Bowl History',
+    sport: 'NFL',
+    description: 'Name the winner, loser, and MVP for all 60 Super Bowls.',
+    tag: 'COMPLETE THE SET',
+    available: true,
+  },
+  {
+    id: 'nba-scorers-grid',
     path: '/games/nba-scorers-grid',
     title: 'All-Time Scorers',
     sport: 'NBA',
@@ -176,7 +185,6 @@ export default function Home() {
           <p style={{ fontSize: 15, color: '#ffffff40', lineHeight: 1.7, fontFamily: 'Georgia, serif', maxWidth: 420, margin: '0 auto' }}>
             Time to kill? Take a knee and run out the clock with some trivia.
           </p>
-
         </div>
       </div>
 
