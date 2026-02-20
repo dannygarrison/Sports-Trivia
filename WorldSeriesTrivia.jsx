@@ -316,7 +316,7 @@ function WorldSeriesRow({ ws, rowSolved, onSolve, gaveUp, index }) {
         <div style={{
           fontSize: 13, fontWeight: 900,
           color: allDone ? "#4db87a" : "#ffffff88",
-          fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: 0.5,
+          fontFamily: "'Oswald', sans-serif", letterSpacing: 0.5,
         }}>{ws.year}</div>
         <div style={{ marginTop: 5, height: 2, background: "#ffffff08", borderRadius: 1, overflow: "hidden", width: 36 }}>
           <div style={{
@@ -347,7 +347,7 @@ function WorldSeriesRow({ ws, rowSolved, onSolve, gaveUp, index }) {
             {noMvpData ? (
               <div style={{
                 fontSize: 10, color: "#ffffff12",
-                fontFamily: "'Barlow Condensed', sans-serif",
+                fontFamily: "'Oswald', sans-serif",
                 letterSpacing: 1, textTransform: "uppercase",
               }}>Pre-award era</div>
             ) : isSolved || reveal ? (
@@ -355,13 +355,13 @@ function WorldSeriesRow({ ws, rowSolved, onSolve, gaveUp, index }) {
                 <div style={{
                   fontSize: 12, fontWeight: 700,
                   color: isSolved ? "#ffffff" : "#e74c3c55",
-                  fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: 0.3,
+                  fontFamily: "'Oswald', sans-serif", letterSpacing: 0.3,
                   lineHeight: 1.2,
                 }}>{value}</div>
                 {isMvpField && ws.mvpPos && (
                   <div style={{
                     fontSize: 9, color: isSolved ? "#4db87a88" : "#e74c3c33",
-                    fontFamily: "'Barlow Condensed', sans-serif",
+                    fontFamily: "'Oswald', sans-serif",
                     letterSpacing: 1, marginTop: 2,
                   }}>{ws.mvpPos}</div>
                 )}
@@ -376,7 +376,7 @@ function WorldSeriesRow({ ws, rowSolved, onSolve, gaveUp, index }) {
                   background: "transparent", border: "none",
                   borderBottom: "1px solid #ffffff0f",
                   color: "#ffffff", fontSize: 12,
-                  fontFamily: "'Barlow Condensed', sans-serif",
+                  fontFamily: "'Oswald', sans-serif",
                   fontWeight: 600, letterSpacing: 0.3,
                   padding: "2px 0", outline: "none", width: "100%",
                 }}
@@ -446,10 +446,10 @@ export default function WorldSeriesTrivia() {
       background: "#07070f",
       backgroundImage: "radial-gradient(ellipse at 50% 0%, #050d0a 0%, #07070f 60%)",
       color: "#f0f0f0",
-      fontFamily: "'Barlow Condensed', sans-serif",
+      fontFamily: "'Oswald', sans-serif",
       padding: "84px 16px 60px",
     }}>
-      <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet" />
       <style>{`
         @keyframes fadeUp { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:translateY(0); } }
         @keyframes popIn  { 0% { transform:scale(0.85); opacity:0; } 60% { transform:scale(1.04); } 100% { transform:scale(1); opacity:1; } }
@@ -472,7 +472,7 @@ export default function WorldSeriesTrivia() {
             }}>
               World Series History
             </h1>
-            <p style={{ fontSize: 13, color: "#ffffff30", margin: "7px 0 0", fontFamily: "Georgia, serif" }}>
+            <p style={{ fontSize: 13, color: "#c8a050", margin: "7px 0 0", fontFamily: "Georgia, serif" }}>
               Name the winner, loser, and MVP for every World Series since 1903.
             </p>
           </div>
@@ -487,13 +487,13 @@ export default function WorldSeriesTrivia() {
             <div style={{ textAlign: "center" }}>
               <div style={{ fontSize: 9, letterSpacing: 3, textTransform: "uppercase", color: "#ffffff25", marginBottom: 2 }}>Answers</div>
               <div style={{ fontSize: 26, fontWeight: 900, color: "#ffffff", fontVariantNumeric: "tabular-nums" }}>
-                {totalSolved}<span style={{ fontSize: 14, color: "#ffffff30" }}>/{totalFields}</span>
+                {totalSolved}<span style={{ fontSize: 14, color: "#c8a05099" }}>/{totalFields}</span>
               </div>
             </div>
             <div style={{ textAlign: "center" }}>
               <div style={{ fontSize: 9, letterSpacing: 3, textTransform: "uppercase", color: "#ffffff25", marginBottom: 2 }}>Series</div>
               <div style={{ fontSize: 26, fontWeight: 900, color: "#ffffff", fontVariantNumeric: "tabular-nums" }}>
-                {rowsCompleted}<span style={{ fontSize: 14, color: "#ffffff30" }}>/{WORLD_SERIES.length}</span>
+                {rowsCompleted}<span style={{ fontSize: 14, color: "#c8a05099" }}>/{WORLD_SERIES.length}</span>
               </div>
             </div>
             {!finished && !gaveUp && (
@@ -501,7 +501,7 @@ export default function WorldSeriesTrivia() {
                 fontSize: 11, fontWeight: 800, letterSpacing: 2, textTransform: "uppercase",
                 padding: "9px 16px", borderRadius: 8, cursor: "pointer",
                 border: "1px solid #e74c3c33", background: "transparent", color: "#e74c3c88",
-                fontFamily: "'Barlow Condensed', sans-serif", transition: "all 0.18s",
+                fontFamily: "'Oswald', sans-serif", transition: "all 0.18s",
               }}
                 onMouseEnter={e => { e.currentTarget.style.color="#e74c3c"; e.currentTarget.style.borderColor="#e74c3c55"; e.currentTarget.style.background="#e74c3c0f"; }}
                 onMouseLeave={e => { e.currentTarget.style.color="#e74c3c88"; e.currentTarget.style.borderColor="#e74c3c33"; e.currentTarget.style.background="transparent"; }}
@@ -532,7 +532,7 @@ export default function WorldSeriesTrivia() {
           <div style={{ fontSize: 22, fontWeight: 900, color: gaveUp ? "#e74c3c" : "#4db87a", letterSpacing: 1, textTransform: "uppercase" }}>
             {gaveUp ? `Answers Revealed — ${totalSolved} of ${totalFields} found` : `All ${totalFields} answers correct!`}
           </div>
-          <div style={{ fontSize: 13, color: "#ffffff44", marginTop: 4, fontFamily: "Georgia, serif" }}>
+          <div style={{ fontSize: 13, color: "#c8a050", marginTop: 4, fontFamily: "Georgia, serif" }}>
             {gaveUp ? "Unfound answers shown in red below." : `${rowsCompleted} World Series completed in ${formatTime(elapsed)}.`}
           </div>
         </div>
@@ -554,7 +554,7 @@ export default function WorldSeriesTrivia() {
               padding: "10px 12px",
               fontSize: 9, fontWeight: 800, letterSpacing: 3,
               textTransform: "uppercase", color: "#ffffff30",
-              fontFamily: "'Barlow Condensed', sans-serif",
+              fontFamily: "'Oswald', sans-serif",
               borderRight: i < 3 ? "1px solid #ffffff07" : "none",
             }}>{h}</div>
           ))}
@@ -593,9 +593,9 @@ export default function WorldSeriesTrivia() {
             <div style={{ fontSize: 34, marginBottom: 10 }}>🏳️</div>
             <h3 style={{
               margin: "0 0 10px", fontSize: 20, fontWeight: 900, color: "#eeeeee",
-              fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: 1, textTransform: "uppercase",
+              fontFamily: "'Oswald', sans-serif", letterSpacing: 1, textTransform: "uppercase",
             }}>Give Up?</h3>
-            <p style={{ margin: "0 0 22px", fontSize: 13, color: "#ffffff44", lineHeight: 1.7, fontFamily: "Georgia, serif" }}>
+            <p style={{ margin: "0 0 22px", fontSize: 13, color: "#c8a050", lineHeight: 1.7, fontFamily: "Georgia, serif" }}>
               All answers will be revealed.<br />
               You found <span style={{ color: "#e74c3c", fontWeight: 900 }}>{totalSolved}</span> of {totalFields}.
             </p>
@@ -604,13 +604,13 @@ export default function WorldSeriesTrivia() {
                 flex: 1, background: "#0d1510", color: "#aaccaa",
                 border: "1px solid #253525", borderRadius: 10,
                 padding: "11px 0", fontSize: 13, fontWeight: 700,
-                cursor: "pointer", fontFamily: "'Barlow Condensed', sans-serif",
+                cursor: "pointer", fontFamily: "'Oswald', sans-serif",
                 letterSpacing: 1.5, textTransform: "uppercase",
               }}>Cancel</button>
               <button onClick={handleGiveUp} style={{
                 flex: 1, background: "#e74c3c", color: "#fff", border: "none",
                 borderRadius: 10, padding: "11px 0", fontSize: 13, fontWeight: 900,
-                cursor: "pointer", fontFamily: "'Barlow Condensed', sans-serif",
+                cursor: "pointer", fontFamily: "'Oswald', sans-serif",
                 letterSpacing: 1.5, textTransform: "uppercase",
                 boxShadow: "0 4px 14px #e74c3c44",
               }}>Reveal All</button>
