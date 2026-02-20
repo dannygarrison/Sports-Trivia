@@ -433,18 +433,18 @@ function TeamCard({ team, solved, onSolve, gaveUp }) {
             <div style={{
               fontSize: 9, fontWeight: 800, letterSpacing: 3,
               textTransform: "uppercase", color: team.color,
-              fontFamily: "'Barlow Condensed', sans-serif", opacity: 0.9,
+              fontFamily: "'Oswald', sans-serif", opacity: 0.9,
             }}>{team.abbr}</div>
             <div style={{
               fontSize: 13, fontWeight: 900, letterSpacing: 0.3,
-              color: "#ffffff", fontFamily: "'Barlow Condensed', sans-serif",
+              color: "#ffffff", fontFamily: "'Oswald', sans-serif",
               textTransform: "uppercase", lineHeight: 1.1, marginTop: 1,
             }}>{team.name.replace(/^.+ /, "")}</div>
           </div>
           <div style={{
             fontSize: 18, fontWeight: 900,
             color: allDone ? team.color : "#ffffff22",
-            fontFamily: "'Barlow Condensed', sans-serif",
+            fontFamily: "'Oswald', sans-serif",
             fontVariantNumeric: "tabular-nums",
           }}>
             {teamSolved.size}<span style={{ fontSize: 11, opacity: 0.5 }}>/5</span>
@@ -472,7 +472,7 @@ function TeamCard({ team, solved, onSolve, gaveUp }) {
               width: "100%", background: "#0d0d20",
               border: "1px solid #ffffff0a", borderRadius: 6,
               padding: "6px 8px", color: "#ffffff",
-              fontSize: 12, fontFamily: "'Barlow Condensed', sans-serif",
+              fontSize: 12, fontFamily: "'Oswald', sans-serif",
               fontWeight: 600, letterSpacing: 0.3, outline: "none",
               boxSizing: "border-box", transition: "border-color 0.15s",
             }}
@@ -499,14 +499,14 @@ function TeamCard({ team, solved, onSolve, gaveUp }) {
               <div style={{
                 fontSize: 12, fontWeight: isSolved ? 700 : 400,
                 color: isSolved ? "#ffffff" : reveal ? "#e74c3c55" : "#ffffff18",
-                fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: 0.3,
+                fontFamily: "'Oswald', sans-serif", letterSpacing: 0.3,
               }}>
                 {isSolved || reveal ? player.name : `— — —`}
               </div>
               <div style={{
                 fontSize: 10, fontWeight: 700,
                 color: isSolved ? team.color : reveal ? "#e74c3c33" : "#ffffff0a",
-                fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: 0.5,
+                fontFamily: "'Oswald', sans-serif", letterSpacing: 0.5,
               }}>
                 {(isSolved || reveal) && player.pts}
               </div>
@@ -566,10 +566,10 @@ export default function NBAScorersGrid() {
       background: "#07070f",
       backgroundImage: "radial-gradient(ellipse at 50% 0%, #0d0d1f 0%, #07070f 60%)",
       color: "#f0f0f0",
-      fontFamily: "'Barlow Condensed', sans-serif",
+      fontFamily: "'Oswald', sans-serif",
       padding: "84px 16px 60px",
     }}>
-      <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet" />
       <style>{`
         @keyframes fadeUp { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:translateY(0); } }
         @keyframes popIn { 0% { transform:scale(0.85); opacity:0; } 60% { transform:scale(1.04); } 100% { transform:scale(1); opacity:1; } }
@@ -592,7 +592,7 @@ export default function NBAScorersGrid() {
             }}>
               All-Time Scorers
             </h1>
-            <p style={{ fontSize: 13, color: "#ffffff30", margin: "7px 0 0", fontFamily: "Georgia, serif" }}>
+            <p style={{ fontSize: 13, color: "#c8a050", margin: "7px 0 0", fontFamily: "Georgia, serif" }}>
               Name the top 5 all-time scorers for all 30 NBA franchises.
             </p>
           </div>
@@ -607,13 +607,13 @@ export default function NBAScorersGrid() {
             <div style={{ textAlign: "center" }}>
               <div style={{ fontSize: 9, letterSpacing: 3, textTransform: "uppercase", color: "#ffffff25", marginBottom: 2 }}>Players</div>
               <div style={{ fontSize: 26, fontWeight: 900, color: "#ffffff", fontVariantNumeric: "tabular-nums" }}>
-                {totalSolved}<span style={{ fontSize: 14, color: "#ffffff30" }}>/{totalPossible}</span>
+                {totalSolved}<span style={{ fontSize: 14, color: "#c8a05099" }}>/{totalPossible}</span>
               </div>
             </div>
             <div style={{ textAlign: "center" }}>
               <div style={{ fontSize: 9, letterSpacing: 3, textTransform: "uppercase", color: "#ffffff25", marginBottom: 2 }}>Teams</div>
               <div style={{ fontSize: 26, fontWeight: 900, color: "#ffffff", fontVariantNumeric: "tabular-nums" }}>
-                {teamsCompleted}<span style={{ fontSize: 14, color: "#ffffff30" }}>/30</span>
+                {teamsCompleted}<span style={{ fontSize: 14, color: "#c8a05099" }}>/30</span>
               </div>
             </div>
             {!finished && !gaveUp && (
@@ -621,7 +621,7 @@ export default function NBAScorersGrid() {
                 fontSize: 11, fontWeight: 800, letterSpacing: 2, textTransform: "uppercase",
                 padding: "9px 16px", borderRadius: 8, cursor: "pointer",
                 border: "1px solid #e74c3c33", background: "transparent", color: "#e74c3c88",
-                fontFamily: "'Barlow Condensed', sans-serif", transition: "all 0.18s",
+                fontFamily: "'Oswald', sans-serif", transition: "all 0.18s",
               }}
                 onMouseEnter={e => { e.currentTarget.style.color = "#e74c3c"; e.currentTarget.style.borderColor = "#e74c3c55"; e.currentTarget.style.background = "#e74c3c0f"; }}
                 onMouseLeave={e => { e.currentTarget.style.color = "#e74c3c88"; e.currentTarget.style.borderColor = "#e74c3c33"; e.currentTarget.style.background = "transparent"; }}
@@ -655,7 +655,7 @@ export default function NBAScorersGrid() {
           <div style={{ fontSize: 20, fontWeight: 900, color: gaveUp ? "#e74c3c" : "#c8a050", letterSpacing: 1, textTransform: "uppercase" }}>
             {gaveUp ? `Answers Revealed — ${totalSolved} of ${totalPossible} found` : `All ${totalPossible} Players Found!`}
           </div>
-          <div style={{ fontSize: 13, color: "#ffffff44", marginTop: 4, fontFamily: "Georgia, serif" }}>
+          <div style={{ fontSize: 13, color: "#c8a050", marginTop: 4, fontFamily: "Georgia, serif" }}>
             {gaveUp ? "The unfound players are shown in red below." : `Completed ${teamsCompleted}/30 teams in ${formatTime(elapsed)}.`}
           </div>
         </div>
@@ -702,9 +702,9 @@ export default function NBAScorersGrid() {
             <div style={{ fontSize: 34, marginBottom: 10 }}>🏳️</div>
             <h3 style={{
               margin: "0 0 10px", fontSize: 20, fontWeight: 900, color: "#eeeeee",
-              fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: 1, textTransform: "uppercase",
+              fontFamily: "'Oswald', sans-serif", letterSpacing: 1, textTransform: "uppercase",
             }}>Give Up?</h3>
-            <p style={{ margin: "0 0 22px", fontSize: 13, color: "#ffffff44", lineHeight: 1.7, fontFamily: "Georgia, serif" }}>
+            <p style={{ margin: "0 0 22px", fontSize: 13, color: "#c8a050", lineHeight: 1.7, fontFamily: "Georgia, serif" }}>
               All {totalPossible} players will be revealed.<br />
               You found <span style={{ color: "#e74c3c", fontWeight: 900 }}>{totalSolved}</span> out of {totalPossible}.
             </p>
@@ -713,13 +713,13 @@ export default function NBAScorersGrid() {
                 flex: 1, background: "#141432", color: "#aaaacc",
                 border: "1px solid #252548", borderRadius: 10,
                 padding: "11px 0", fontSize: 13, fontWeight: 700,
-                cursor: "pointer", fontFamily: "'Barlow Condensed', sans-serif",
+                cursor: "pointer", fontFamily: "'Oswald', sans-serif",
                 letterSpacing: 1.5, textTransform: "uppercase",
               }}>Cancel</button>
               <button onClick={handleGiveUp} style={{
                 flex: 1, background: "#e74c3c", color: "#fff", border: "none",
                 borderRadius: 10, padding: "11px 0", fontSize: 13, fontWeight: 900,
-                cursor: "pointer", fontFamily: "'Barlow Condensed', sans-serif",
+                cursor: "pointer", fontFamily: "'Oswald', sans-serif",
                 letterSpacing: 1.5, textTransform: "uppercase",
                 boxShadow: "0 4px 14px #e74c3c44",
               }}>Reveal All</button>
