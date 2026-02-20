@@ -27001,21 +27001,137 @@ function normInput(s) {
   return s.toLowerCase().trim().replace(/\s+/g, " ");
 }
 
+// Phonetic normalization — collapse common spelling variants before comparing
+function phoneticNorm(s) {
+  return s.toLowerCase()
+    .replace(/ph/g, "f")
+    .replace(/ou/g, "u")
+    .replace(/ck/g, "k")
+    .replace(/ough/g, "o")
+    .replace(/ae/g, "e")
+    .replace(/oo/g, "u")
+    .replace(/[aeiou]+/g, "a") // collapse vowels — catches muhsin/mushin, desean/deshawn
+    .replace(/(.)\1+/g, "$1")  // collapse double letters
+    .trim();
+}
+
+// Levenshtein distance
+function levenshtein(a, b) {
+  const m = a.length, n = b.length;
+  const dp = Array.from({ length: m + 1 }, (_, i) => [i, ...Array(n).fill(0)]);
+  for (let j = 0; j <= n; j++) dp[0][j] = j;
+  for (let i = 1; i <= m; i++) {
+    for (let j = 1; j <= n; j++) {
+      dp[i][j] = a[i-1] === b[j-1]
+        ? dp[i-1][j-1]
+        : 1 + Math.min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1]);
+    }
+  }
+  return dp[m][n];
+}
+
+// Find closest match: first + last name phonetic similarity scored separately
+// Anchors on last-name initial and first-letter-of-first-name to stay fast + accurate
+function findSuggestion(raw, normalizedMap) {
+  const norm = normInput(raw);
+  const words = norm.split(" ");
+  if (words.length < 2) return null;
+
+  const inpFirst = words[0];
+  const inpLast = words.slice(1).join(" ");
+  const lastInitial = inpLast[0];
+  const firstInitial = inpFirst.charCodeAt(0);
+  const inpFirstPh = phoneticNorm(inpFirst);
+  const inpLastPh = phoneticNorm(inpLast);
+
+  let best = null;
+  let bestScore = [999, 999, 999];
+
+  for (const [key, canonical] of normalizedMap) {
+    const kwords = key.split(" ");
+    if (kwords.length < 2) continue;
+    const kFirst = kwords[0];
+    const kLast = kwords.slice(1).join(" ");
+
+    // Last name must start with same letter; first name first-letter within 1
+    if (!kLast.startsWith(lastInitial)) continue;
+    if (Math.abs(kFirst.charCodeAt(0) - firstInitial) > 1) continue;
+
+    const firstPd = levenshtein(inpFirstPh, phoneticNorm(kFirst));
+    const lastPd = levenshtein(inpLastPh, phoneticNorm(kLast));
+    if (firstPd > 2 || lastPd > 2) continue;
+
+    const fd = levenshtein(norm, key);
+    if (fd === 0 || fd > 7) continue;
+
+    const score = [firstPd + lastPd, fd, firstPd];
+    if (score[0] < bestScore[0] || (score[0] === bestScore[0] && score[1] < bestScore[1])) {
+      bestScore = score;
+      best = canonical;
+    }
+  }
+
+  return best;
+}
+
 export default function NFLNameDump() {
   const [input, setInput] = useState("");
   const [found, setFound] = useState([]);
   const [notFound, setNotFound] = useState(null);
   const [flash, setFlash] = useState(null);
   const [dupeMessage, setDupeMessage] = useState(null);
+  const [suggestion, setSuggestion] = useState(null); // "did you mean?" candidate
   const inputRef = useRef(null);
 
   useEffect(() => {
     inputRef.current?.focus();
   }, []);
 
+  const acceptSuggestion = useCallback((canonical) => {
+    if (!canonical) return;
+    setSuggestion(null);
+    if (found.some(f => f.name.toLowerCase() === canonical.toLowerCase())) {
+      setDupeMessage(canonical);
+      setFlash("dupe");
+      setTimeout(() => { setFlash(null); setDupeMessage(null); }, 1200);
+      return;
+    }
+    setFound(prev => [{ name: canonical, id: Date.now() }, ...prev]);
+    setFlash("hit");
+    setTimeout(() => setFlash(null), 500);
+  }, [found]);
+
+  // Global keydown so Enter/Esc work even when input isn't focused
+  const justSetSuggestion = useRef(false);
+
+  useEffect(() => {
+    const onKey = (e) => {
+      if (justSetSuggestion.current) return; // ignore the same keypress that set the suggestion
+      if (e.key === "Enter" && suggestion) {
+        acceptSuggestion(suggestion);
+        setInput("");
+      }
+      if (e.key === "Escape" && suggestion) {
+        setSuggestion(null);
+        setFlash(null);
+        inputRef.current?.focus();
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [suggestion, acceptSuggestion]);
+
   const handleSubmit = useCallback(() => {
+    // If there's a pending suggestion, Enter confirms it — check BEFORE empty guard
+    if (suggestion) {
+      acceptSuggestion(suggestion);
+      setInput("");
+      return;
+    }
+
     const raw = input.trim();
     if (!raw) return;
+
     const normalized = normInput(raw);
     const words = normalized.split(" ");
     if (words.length < 2) {
@@ -27024,12 +27140,23 @@ export default function NFLNameDump() {
     }
     const canonical = NFL_NORMALIZED.get(normalized);
     if (!canonical) {
-      setNotFound(raw);
-      setFlash("miss");
-      setTimeout(() => setFlash(null), 800);
+      // Try fuzzy match
+      const fuzzy = findSuggestion(raw, NFL_NORMALIZED);
+      if (fuzzy) {
+        justSetSuggestion.current = true;
+        setTimeout(() => { justSetSuggestion.current = false; }, 50);
+        setSuggestion(fuzzy);
+        setFlash("suggest");
+      } else {
+        setSuggestion(null);
+        setNotFound(raw);
+        setFlash("miss");
+        setTimeout(() => setFlash(null), 1500);
+      }
       setInput("");
       return;
     }
+    setSuggestion(null);
     if (found.some(f => f.name.toLowerCase() === canonical.toLowerCase())) {
       setDupeMessage(canonical);
       setFlash("dupe");
@@ -27041,10 +27168,11 @@ export default function NFLNameDump() {
     setFlash("hit");
     setTimeout(() => setFlash(null), 500);
     setInput("");
-  }, [input, found]);
+  }, [input, found, suggestion, acceptSuggestion]);
 
   const handleKey = (e) => {
     if (e.key === "Enter") handleSubmit();
+    if (e.key === "Escape") { setSuggestion(null); setFlash(null); }
   };
 
   const total = found.length;
@@ -27053,11 +27181,13 @@ export default function NFLNameDump() {
   const borderColor = flash === "hit" ? "#4db87a66"
     : flash === "miss" ? "#e74c3c44"
     : flash === "dupe" ? "#c8a05044"
+    : flash === "suggest" ? "#c8a05066"
     : "#ffffff12";
 
   const bgColor = flash === "hit" ? "#4db87a22"
     : flash === "miss" ? "#e74c3c18"
     : flash === "dupe" ? "#c8a05022"
+    : flash === "suggest" ? "#c8a05018"
     : "transparent";
 
   return (
@@ -27136,7 +27266,38 @@ export default function NFLNameDump() {
         </div>
 
         {/* Feedback */}
-        <div style={{ minHeight: 22, marginBottom: 16 }}>
+        <div style={{ minHeight: 44, marginBottom: 16 }}>
+          {flash === "suggest" && suggestion && (
+            <div style={{ fontFamily: "Georgia, serif" }}>
+              <div style={{ fontSize: 13, color: "#c8a050cc", marginBottom: 6 }}>
+                Did you mean <strong style={{ color: "#c8a050", fontStyle: "italic" }}>{suggestion}</strong>?
+              </div>
+              <div style={{ display: "flex", gap: 10 }}>
+                <button
+                  onClick={() => { acceptSuggestion(suggestion); }}
+                  style={{
+                    background: "#c8a05022", border: "1px solid #c8a05055",
+                    color: "#c8a050", borderRadius: 6, padding: "4px 14px",
+                    fontSize: 11, fontWeight: 700, letterSpacing: 1,
+                    textTransform: "uppercase", cursor: "pointer",
+                    fontFamily: "'Barlow Condensed', sans-serif",
+                  }}>
+                  Yes — Enter
+                </button>
+                <button
+                  onClick={() => { setSuggestion(null); setFlash(null); inputRef.current?.focus(); }}
+                  style={{
+                    background: "transparent", border: "1px solid #ffffff15",
+                    color: "#ffffff30", borderRadius: 6, padding: "4px 14px",
+                    fontSize: 11, fontWeight: 700, letterSpacing: 1,
+                    textTransform: "uppercase", cursor: "pointer",
+                    fontFamily: "'Barlow Condensed', sans-serif",
+                  }}>
+                  No — Esc
+                </button>
+              </div>
+            </div>
+          )}
           {flash === "miss" && notFound && (
             <div style={{ fontSize: 12, color: "#e74c3c88", fontFamily: "Georgia, serif" }}>
               "{notFound}" not in our database. Check spelling or try the full name.
