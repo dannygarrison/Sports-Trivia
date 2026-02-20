@@ -157,7 +157,7 @@ function checkGuess(guess, team) {
   return team.aliases.some(a => normalize(a) === g);
 }
 
-function LeagueColumn({ league, solvedSet, onSolve, activeLeagueId, setActiveLeague }) {
+function LeagueColumn({ league, solvedSet, onSolve, activeLeagueId, setActiveLeague, gaveUp }) {
   const [input, setInput] = useState("");
   const [shake, setShake] = useState(false);
   const [flash, setFlash] = useState(null);
@@ -271,22 +271,34 @@ function LeagueColumn({ league, solvedSet, onSolve, activeLeagueId, setActiveLea
       <div style={{ padding: "10px 12px 14px", flex: 1, overflowY: "auto" }}>
         {league.teams.map(team => {
           const isSolved = solvedSet.has(team.name);
+          const isRevealed = gaveUp && !isSolved;
           const isFlashing = flash === team.name;
+          const shown = isSolved || isRevealed;
           return (
             <div key={team.name} style={{
+              display: "flex", alignItems: "center", gap: 7,
               padding: "5px 8px",
               marginBottom: 3,
               borderRadius: 6,
-              fontSize: 12,
-              fontFamily: "'Oswald', sans-serif",
-              fontWeight: isSolved ? 700 : 400,
-              letterSpacing: 0.5,
-              color: isSolved ? "#ffffff" : "#ffffff18",
-              background: isFlashing ? league.textAccent + "25" : isSolved ? "#ffffff08" : "transparent",
+              background: isFlashing ? league.textAccent + "25" : isRevealed ? "#e74c3c08" : isSolved ? "#ffffff08" : "transparent",
               transition: "all 0.25s",
-              borderLeft: isSolved ? `2px solid ${league.textAccent}` : "2px solid transparent",
             }}>
-              {isSolved ? team.name : "—"}
+              <div style={{
+                width: 6, height: 6, borderRadius: "50%", flexShrink: 0,
+                background: isRevealed ? "#e74c3c" : isSolved ? league.textAccent : "#ffffff15",
+                boxShadow: isRevealed ? "0 0 5px #e74c3c88" : isSolved ? `0 0 5px ${league.textAccent}88` : "none",
+                transition: "background 0.25s",
+              }} />
+              <span style={{
+                fontSize: 12,
+                fontFamily: "'Oswald', sans-serif",
+                fontWeight: shown ? 700 : 400,
+                letterSpacing: 0.5,
+                color: isRevealed ? "#e8806070" : isSolved ? "#ffffff" : "#ffffff18",
+                transition: "color 0.25s",
+              }}>
+                {shown ? team.name : "—"}
+              </span>
             </div>
           );
         })}
@@ -471,6 +483,7 @@ export default function SoccerLeaguesTrivia() {
             onSolve={handleSolve}
             activeLeagueId={activeLeague}
             setActiveLeague={setActiveLeague}
+            gaveUp={gaveUp}
           />
         ))}
       </div>
