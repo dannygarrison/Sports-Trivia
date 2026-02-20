@@ -17,7 +17,7 @@ const PLAYERS = [
 
   { name: "Dallas Goedert", colleges: ["South Dakota State"], position: "TE", teams: ["Philadelphia Eagles"] },
   { name: "Jake Ferguson", colleges: ["Wisconsin"], position: "TE", teams: ["Dallas Cowboys"] },
-  { name: "Austin Ekeler", colleges: ["Western Colorado"], position: "RB", teams: ["Los Angeles Chargers", "New York Jets", "Washington Commanders"] },
+  { name: "Austin Ekeler", colleges: ["Western Colorado"], position: "RB", teams: ["Los Angeles Chargers", "Washington Commanders"] },
   { name: "Raheem Mostert", colleges: ["Purdue"], position: "RB", teams: ["San Francisco 49ers", "Miami Dolphins"] },
   { name: "Jordan Addison", colleges: ["Pittsburgh", "USC"], position: "WR", teams: ["Minnesota Vikings"] },
   { name: "Marvin Harrison Jr.", colleges: ["Ohio State"], position: "WR", teams: ["Arizona Cardinals"] },
@@ -64,7 +64,7 @@ const PLAYERS = [
   { name: "Khalil Mack", colleges: ["Buffalo"], position: "LB", teams: ["Oakland Raiders", "Chicago Bears", "Los Angeles Chargers"] },
   { name: "Aaron Donald", colleges: ["Pittsburgh"], position: "DT", teams: ["Los Angeles Rams"] },
   { name: "Myles Garrett", colleges: ["Texas A&M"], position: "DE", teams: ["Cleveland Browns"] },
-  { name: "Bradley Chubb", colleges: ["NC State"], position: "DE", teams: ["Denver Broncos", "Miami Dolphins", "San Francisco 49ers"] },
+  { name: "Bradley Chubb", colleges: ["NC State"], position: "DE", teams: ["Denver Broncos", "Miami Dolphins"] },
   { name: "Micah Parsons", colleges: ["Penn State"], position: "LB", teams: ["Dallas Cowboys", "Green Bay Packers"] },
   { name: "Justin Jefferson", colleges: ["LSU"], position: "WR", teams: ["Minnesota Vikings"] },
   { name: "Tyreek Hill", colleges: ["West Alabama", "Oklahoma State", "Garden City CC"], position: "WR", teams: ["Kansas City Chiefs", "Miami Dolphins"] },
@@ -255,7 +255,7 @@ const PLAYERS = [
   { name: "Chris Godwin", colleges: ["Penn State"], position: "WR", teams: ["Tampa Bay Buccaneers"] },
   { name: "Allen Robinson", colleges: ["Penn State"], position: "WR", teams: ["Jacksonville Jaguars", "Chicago Bears", "Los Angeles Rams"] },
   { name: "Alshon Jeffery", colleges: ["South Carolina"], position: "WR", teams: ["Chicago Bears", "Philadelphia Eagles"] },
-  { name: "Michael Thomas", colleges: ["Ohio State"], position: "WR", teams: ["New Orleans Saints", "Las Vegas Raiders"] },
+  { name: "Michael Thomas", colleges: ["Ohio State"], position: "WR", teams: ["New Orleans Saints"] },
   { name: "Adam Thielen", colleges: ["Minnesota State-Mankato"], position: "WR", teams: ["Minnesota Vikings", "Carolina Panthers"] },
   { name: "Jarvis Landry", colleges: ["LSU"], position: "WR", teams: ["Miami Dolphins", "Cleveland Browns", "New Orleans Saints"] },
   { name: "Marques Colston", colleges: ["Hofstra"], position: "WR", teams: ["New Orleans Saints"] },
@@ -359,7 +359,7 @@ const PLAYERS = [
   { name: "Ty Law", colleges: ["Michigan"], position: "CB", teams: ["New England Patriots", "New York Jets", "Denver Broncos", "Kansas City Chiefs"] },
   { name: "Aqib Talib", colleges: ["Kansas"], position: "CB", teams: ["Tampa Bay Buccaneers", "New England Patriots", "Denver Broncos", "Los Angeles Rams"] },
   { name: "Joe Haden", colleges: ["Florida"], position: "CB", teams: ["Cleveland Browns", "Pittsburgh Steelers"] },
-  { name: "Stephon Gilmore", colleges: ["South Carolina"], position: "CB", teams: ["Buffalo Bills", "New England Patriots", "Carolina Panthers", "Indianapolis Colts"] },
+  { name: "Stephon Gilmore", colleges: ["South Carolina"], position: "CB", teams: ["Buffalo Bills", "New England Patriots", "Carolina Panthers", "Indianapolis Colts", "Dallas Cowboys"] },
   { name: "Marshon Lattimore", colleges: ["Ohio State"], position: "CB", teams: ["New Orleans Saints"] },
   { name: "Xavien Howard", colleges: ["Baylor"], position: "CB", teams: ["Miami Dolphins"] },
   { name: "Jaire Alexander", colleges: ["Louisville"], position: "CB", teams: ["Green Bay Packers"] },
@@ -468,6 +468,7 @@ const PLAYERS = [
   { name: "Travon Walker", colleges: ["Georgia"], position: "DE", teams: ["Jacksonville Jaguars"] },
   { name: "Kayvon Thibodeaux", colleges: ["Oregon"], position: "LB", teams: ["New York Giants"] },
   { name: "Jadeveon Clowney", colleges: ["South Carolina"], position: "DE", teams: ["Houston Texans", "Seattle Seahawks", "Tennessee Titans", "Cleveland Browns", "Baltimore Ravens", "Carolina Panthers", "Dallas Cowboys"] },
+  { name: "Marshawn Lloyd", colleges: ["South Carolina", "USC"], position: "RB", teams: ["Green Bay Packers"] },
   { name: "Chandler Jones", colleges: ["Syracuse"], position: "DE", teams: ["New England Patriots", "Arizona Cardinals", "Las Vegas Raiders"] },
   { name: "Robert Quinn", colleges: ["North Carolina"], position: "DE", teams: ["St. Louis Rams", "Los Angeles Rams", "Miami Dolphins", "Dallas Cowboys", "Chicago Bears", "Philadelphia Eagles"] },
   { name: "Danielle Hunter", colleges: ["LSU"], position: "DE", teams: ["Minnesota Vikings", "Houston Texans"] },
@@ -533,7 +534,7 @@ const PLAYERS = [
   { name: "Bijan Robinson", colleges: ["Texas"], position: "RB", teams: ["Atlanta Falcons"] },
   { name: "Jahmyr Gibbs", colleges: ["Georgia Tech", "Alabama"], position: "RB", teams: ["Detroit Lions"] },
   { name: "Jaylen Wright", colleges: ["Tennessee"], position: "RB", teams: ["Miami Dolphins"] },
-  { name: "MarShawn Lloyd", colleges: ["USC"], position: "RB", teams: ["Green Bay Packers"] },
+
   { name: "Rome Odunze", colleges: ["Washington"], position: "WR", teams: ["Chicago Bears"] },
   { name: "Malik Nabers", colleges: ["LSU"], position: "WR", teams: ["New York Giants"] },
   { name: "Brian Thomas Jr.", colleges: ["LSU"], position: "WR", teams: ["Jacksonville Jaguars"] },
@@ -591,6 +592,7 @@ function normalize(s) {
     .replace(/[^a-z0-9]/g,"").trim();
 }
 const ALIASES = {
+  // Power conferences / well-known
   "usc":["southern california","southern cal"],"lsu":["louisiana state"],
   "smu":["southern methodist"],"tcu":["texas christian"],"byu":["brigham young"],
   "ole miss":["mississippi","miss"],"mississippi st":["miss state","miss st"],"miami fl":["miami florida","miami"],
@@ -606,16 +608,41 @@ const ALIASES = {
   "gt":["georgia tech"],"bc":["boston college"],
   "uconn":["connecticut"],"umass":["massachusetts"],
   "ecu":["east carolina"],
+  // Florida schools
+  "fau":["florida atlantic"],
+  "fiu":["florida international","fiu"],
+  "usf":["south florida"],
+  "ucf":["central florida"],
+  // Mid-American / Sun Belt / smaller programs
+  "mtsu":["middle tennessee state","middle tennessee"],
+  "niu":["northern illinois"],
+  "wku":["western kentucky"],
+  "ewu":["eastern washington"],
+  "eiu":["eastern illinois"],
+  "emu":["eastern michigan"],
+  "cmu":["central michigan"],
+  "wmu":["western michigan"],
+  "sdsu":["south dakota state"],
+  "mvsu":["mississippi valley state"],
+  "uapb":["arkansas-pine bluff","arkansas pine bluff"],
+  "utsa":["texas san antonio","ut san antonio"],"fsu":["florida state"],
+  "minnesota state":["minnesota state-mankato"],"minnesota st":["minnesota state-mankato"],
+  "mankato":["minnesota state-mankato"],
 };
 function checkAnswer(guess, colleges) {
   const g = normalize(guess);
   for (const college of colleges) {
     const c = normalize(college);
     if (g === c) return true;
-    // startsWith match: only allow if college is NOT a "state" school (ends in "st")
-    // OR if the guess itself ends in "st" (user typed "state" or "st")
-    if (c.startsWith(g) && g.length >= 4 && !c.endsWith("st")) return true;
-    if (c.startsWith(g) && g.length >= 4 && c.endsWith("st") && g.endsWith("st")) return true;
+    // startsWith match: allow only if the guess matches a full "word" prefix —
+    // i.e. the character right after the match in the college name is not alphanumeric.
+    // This prevents "alabama" from matching "alabama a&m" (normalizes to "alabamaam").
+    if (c.startsWith(g) && g.length >= 4) {
+      const nextChar = c[g.length];
+      const isWordBoundary = nextChar === undefined || !/[a-z0-9]/.test(nextChar);
+      if (isWordBoundary && !c.endsWith("st")) return true;
+      if (isWordBoundary && c.endsWith("st") && g.endsWith("st")) return true;
+    }
     // Alias match: each alias group defines a set of equivalent forms for one school
     for (const [key,variants] of Object.entries(ALIASES)) {
       const allForms = [normalize(key), ...variants.map(normalize)];
@@ -632,6 +659,144 @@ function shuffle(arr) {
   return a;
 }
 
+const SCHOOL_HINTS = {
+  "Alabama":             { conference:"SEC", colors:["Crimson","White"], alums:["Julio Jones","Mark Ingram","Amari Cooper","Derrick Henry"] },
+  "Alabama A&M":         { conference:"SWAC", colors:["Maroon","White"], alums:["Ahmad Bradshaw","Chimdi Chekwa"] },
+  "Alabama State":       { conference:"SWAC", colors:["Black","Gold"], alums:["Trai Essex","Lawrence Sidbury"] },
+  "Albany":              { conference:"CAA", colors:["Purple","Gold"], alums:["Will Blackmon","Jacquian Williams"] },
+  "Alcorn State":        { conference:"SWAC", colors:["Purple","Gold"], alums:["Steve McNair","Tramon Williams"] },
+  "Arizona":             { conference:"Big 12", colors:["Cardinal Red","Navy Blue"], alums:["Rob Gronkowski","Tedy Bruschi"] },
+  "Arizona State":       { conference:"Big 12", colors:["Maroon","Gold"], alums:["Terrell Suggs","Mike Haynes","Pat Tillman"] },
+  "Arkansas":            { conference:"SEC", colors:["Cardinal Red","White"], alums:["Darren McFadden","Felix Jones"] },
+  "Arkansas-Pine Bluff": { conference:"SWAC", colors:["Black","Gold"], alums:["Darius Philon"] },
+  "Auburn":              { conference:"SEC", colors:["Burnt Orange","Navy Blue"], alums:["Bo Jackson","Cam Newton","Kevin Greene"] },
+  "BYU":                 { conference:"Big 12", colors:["Royal Blue","White"], alums:["Steve Young","Marc Wilson","Todd Christensen"] },
+  "Baylor":              { conference:"Big 12", colors:["Green","Gold"], alums:["Robert Griffin III","Corey Coleman"] },
+  "Bethune-Cookman":     { conference:"SWAC", colors:["Maroon","Gold"], alums:["Rashean Mathis","Lavelle Hawkins"] },
+  "Boise State":         { conference:"Mountain West", colors:["Blue","Orange"], alums:["Quinton Spain"] },
+  "Boston College":      { conference:"ACC", colors:["Maroon","Gold"], alums:["Doug Flutie","Matt Ryan","Luke Kuechly"] },
+  "Buffalo":             { conference:"MAC", colors:["Royal Blue","White"], alums:["Khalil Mack","Lee Smith"] },
+  "California":          { conference:"ACC", colors:["Blue","Gold"], alums:["Aaron Rodgers","Marshawn Lynch"] },
+  "Central Florida":     { conference:"Big 12", colors:["Black","Gold"], alums:["Daunte Culpepper","Brandon Marshall"] },
+  "Central Michigan":    { conference:"MAC", colors:["Maroon","Gold"], alums:["Eric Fisher","Joe Staley"] },
+  "Chadron State":       { conference:"RMAC (D2)", colors:["Cardinal Red","Blue"], alums:[] },
+  "Charlotte":           { conference:"American Athletic", colors:["Green","White"], alums:["Markus Wheaton"] },
+  "Cincinnati":          { conference:"Big 12", colors:["Red","Black"], alums:["Mick Tingelhoff","Ickey Woods"] },
+  "Clemson":             { conference:"ACC", colors:["Orange","Purple"], alums:["Trevor Lawrence","DeAndre Hopkins","Sammy Watkins"] },
+  "Coastal Carolina":    { conference:"Sun Belt", colors:["Teal","Bronze"], alums:["Jaycee Horn"] },
+  "Colorado State":      { conference:"Mountain West", colors:["Green","Gold"], alums:["Clark Haggans","Isaiah Oliver"] },
+  "Connecticut":         { conference:"Independent", colors:["Navy Blue","White"], alums:["Donald Brown"] },
+  "Delaware":            { conference:"CAA", colors:["Royal Blue","Gold"], alums:["Joe Flacco","Rich Gannon"] },
+  "Duke":                { conference:"ACC", colors:["Royal Blue","White"], alums:["Ben Bennett","Conner Vernon"] },
+  "East Carolina":       { conference:"American Athletic", colors:["Purple","Gold"], alums:["Chris Johnson","Mario Williams"] },
+  "Eastern Illinois":    { conference:"OVC", colors:["Blue","Gray"], alums:["Tony Romo","Jimmy Garoppolo"] },
+  "Eastern Michigan":    { conference:"MAC", colors:["Green","White"], alums:["Charlie Batch"] },
+  "Eastern Washington":  { conference:"Big Sky", colors:["Red","White"], alums:["Cooper Kupp","Kendrick Bourne"] },
+  "FIU":                 { conference:"Conference USA", colors:["Navy Blue","Gold"], alums:["T.Y. Hilton","Jonathan Cyprien"] },
+  "Florida":             { conference:"SEC", colors:["Orange","Blue"], alums:["Emmitt Smith","Jevon Kearse","Reggie Nelson"] },
+  "Florida Atlantic":    { conference:"American Athletic", colors:["Red","Blue"], alums:["Daniel Thomas"] },
+  "Florida International":{ conference:"Conference USA", colors:["Navy Blue","Gold"], alums:["T.Y. Hilton","Jonathan Cyprien"] },
+  "Florida State":       { conference:"ACC", colors:["Garnet","Gold"], alums:["Deion Sanders","Warrick Dunn","Derrick Brooks"] },
+  "Fresno State":        { conference:"Mountain West", colors:["Cardinal Red","Blue"], alums:["David Carr","Derek Carr","Kevin Dyson"] },
+  "Garden City CC":      { conference:"NJCAA", colors:["Royal Blue","Gold"], alums:[] },
+  "Georgia":             { conference:"SEC", colors:["Red","Black"], alums:["Herschel Walker","Matthew Stafford","A.J. Green"] },
+  "Georgia Tech":        { conference:"ACC", colors:["Gold","White"], alums:["Demaryius Thomas","Calvin Johnson"] },
+  "Harvard":             { conference:"Ivy League", colors:["Crimson","White"], alums:["Ryan Fitzpatrick","Matt Birk"] },
+  "Hofstra":             { conference:"CAA (football discontinued)", colors:["Gold","Blue"], alums:["Wayne Chrebet"] },
+  "Houston":             { conference:"Big 12", colors:["Red","White"], alums:["Andre Ware","Kevin Kolb"] },
+  "Hutchinson CC":       { conference:"NJCAA", colors:["Blue","Orange"], alums:["Garrison Hearst"] },
+  "Idaho":               { conference:"Big Sky", colors:["Gold","Silver"], alums:["Brian Westbrook","John Friesz"] },
+  "Illinois":            { conference:"Big Ten", colors:["Orange","Blue"], alums:["Dick Butkus","Jeff George"] },
+  "Iowa":                { conference:"Big Ten", colors:["Black","Gold"], alums:["Bob Sanders","Dallas Clark"] },
+  "Iowa State":          { conference:"Big 12", colors:["Cardinal Red","Gold"], alums:["Seneca Wallace","David Montgomery"] },
+  "Jackson State":       { conference:"SWAC", colors:["Royal Blue","White"], alums:["Walter Payton","Lem Barney","Jackie Slater"] },
+  "Kansas":              { conference:"Big 12", colors:["Crimson","Blue"], alums:["Gale Sayers","John Riggins"] },
+  "Kansas State":        { conference:"Big 12", colors:["Purple","White"], alums:["Darren Sproles","Jordy Nelson"] },
+  "Kent State":          { conference:"MAC", colors:["Royal Blue","Gold"], alums:["Julian Edelman","Josh Cribbs"] },
+  "Kentucky":            { conference:"SEC", colors:["Blue","White"], alums:["Tim Couch","Randall Cobb"] },
+  "LSU":                 { conference:"SEC", colors:["Purple","Gold"], alums:["Patrick Peterson","Odell Beckham Jr."] },
+  "Louisiana":           { conference:"Sun Belt", colors:["Vermilion Red","White"], alums:["Phillip Tanner"] },
+  "Louisville":          { conference:"ACC", colors:["Cardinal Red","Black"], alums:["Johnny Unitas","Lamar Jackson"] },
+  "Marshall":            { conference:"Sun Belt", colors:["Kelly Green","White"], alums:["Randy Moss","Chad Pennington","Byron Leftwich"] },
+  "Maryland":            { conference:"Big Ten", colors:["Red","Gold","Black"], alums:["Stefon Diggs","D.J. Moore","Vernon Davis"] },
+  "Massachusetts":       { conference:"MAC (independent for football)", colors:["Maroon","White"], alums:["Victor Cruz"] },
+  "Memphis":             { conference:"American Athletic", colors:["Royal Blue","Gray"], alums:["DeAngelo Williams","Isaac Bruce"] },
+  "Miami (FL)":          { conference:"ACC", colors:["Orange","Green","White"], alums:["Warren Sapp","Ray Lewis","Ed Reed"] },
+  "Miami (OH)":          { conference:"MAC", colors:["Red","White"], alums:["Ben Roethlisberger","Travis Prentice"] },
+  "Michigan":            { conference:"Big Ten", colors:["Maize","Blue"], alums:["Charles Woodson","Tom Brady","Desmond Howard"] },
+  "Michigan State":      { conference:"Big Ten", colors:["Green","White"], alums:["Plaxico Burress","Carl Banks"] },
+  "Middle Tennessee State":{ conference:"Conference USA", colors:["Royal Blue","White"], alums:["Boo Mitchell"] },
+  "Minnesota":           { conference:"Big Ten", colors:["Maroon","Gold"], alums:["Matt Birk","Marion Barber"] },
+  "Minnesota State-Mankato":{ conference:"NSIC (D2)", colors:["Purple","Gold"], alums:["Adam Thielen"] },
+  "Mississippi State":   { conference:"SEC", colors:["Maroon","White"], alums:["Dak Prescott","Fletcher Cox"] },
+  "Mississippi Valley State":{ conference:"SWAC", colors:["Forest Green","White"], alums:["Jerry Rice"] },
+  "Missouri":            { conference:"SEC", colors:["Black","Gold"], alums:["Blaine Gabbert"] },
+  "NC State":            { conference:"ACC", colors:["Red","White"], alums:["Philip Rivers","Torry Holt"] },
+  "Nebraska":            { conference:"Big Ten", colors:["Scarlet Red","Cream"], alums:["Mike Rozier","Ahman Green"] },
+  "Nevada":              { conference:"Mountain West", colors:["Navy Blue","Silver"], alums:["Colin Kaepernick"] },
+  "New Mexico":          { conference:"Mountain West", colors:["Cherry Red","Silver"], alums:["Bobby Anderson"] },
+  "North Carolina":      { conference:"ACC", colors:["Carolina Blue","White"], alums:["Lawrence Taylor","Julius Peppers","Hakeem Nicks"] },
+  "North Dakota State":  { conference:"Missouri Valley (FCS)", colors:["Green","Yellow"], alums:["Carson Wentz","Trey Lance"] },
+  "Northern Colorado":   { conference:"Big Sky", colors:["Blue","Gold"], alums:["Austin Ekeler","Vincent Jackson"] },
+  "Northern Illinois":   { conference:"MAC", colors:["Cardinal Red","Black"], alums:["Lerentee McCray"] },
+  "Northwest Mississippi CC":{ conference:"NJCAA", colors:["Navy Blue","Gold"], alums:[] },
+  "Notre Dame":          { conference:"Independent", colors:["Gold","Blue"], alums:["Joe Montana","Jerome Bettis","Tim Brown"] },
+  "Ohio State":          { conference:"Big Ten", colors:["Scarlet Red","Gray"], alums:["Ezekiel Elliott","Joey Bosa","Cris Carter"] },
+  "Oklahoma":            { conference:"SEC", colors:["Crimson","Cream"], alums:["Adrian Peterson","Sam Bradford"] },
+  "Oklahoma State":      { conference:"Big 12", colors:["Orange","Black"], alums:["Barry Sanders","Thurman Thomas","Dez Bryant"] },
+  "Ole Miss":            { conference:"SEC", colors:["Cardinal Red","Navy Blue"], alums:["Archie Manning","Patrick Willis"] },
+  "Oregon":              { conference:"Big Ten", colors:["Green","Yellow"], alums:["Marcus Mariota","LaMichael James"] },
+  "Oregon State":        { conference:"Pac-12", colors:["Orange","Black"], alums:["Steven Jackson","Brandin Cooks"] },
+  "Penn State":          { conference:"Big Ten", colors:["Navy Blue","White"], alums:["Franco Harris","Saquon Barkley","Jack Ham"] },
+  "Pittsburgh":          { conference:"ACC", colors:["Royal Blue","Gold"], alums:["Dan Marino","Tony Dorsett","Larry Fitzgerald"] },
+  "Portland State":      { conference:"Big Sky", colors:["Green","White"], alums:["Neil Lomax","Jerry Rice (no)"] },
+  "Purdue":              { conference:"Big Ten", colors:["Black","Gold"], alums:["Drew Brees","Bob Griese","Len Dawson"] },
+  "Rutgers":             { conference:"Big Ten", colors:["Scarlet Red","White"], alums:["Mohamed Sanu","Kenny Britt"] },
+  "SMU":                 { conference:"ACC", colors:["Red","Blue"], alums:["Eric Dickerson","Craig James"] },
+  "Santa Monica CC":     { conference:"CCCAA", colors:["Blue","White"], alums:[] },
+  "Savannah State":      { conference:"SIAC (D2)", colors:["Orange","Blue"], alums:["Lorenzo Booker"] },
+  "South Alabama":       { conference:"Sun Belt", colors:["Red","Blue","White"], alums:["Terrence Magee"] },
+  "South Carolina":      { conference:"SEC", colors:["Garnet","Black"], alums:["Stephon Gilmore","Jadeveon Clowney","Marcus Lattimore"] },
+  "South Dakota State":  { conference:"Missouri Valley", colors:["Yellow","Blue"], alums:["Adam Vinatieri","Dallas Goedert"] },
+  "South Florida":       { conference:"American Athletic", colors:["Green","Gold"], alums:["Carlton Hadden"] },
+  "Southern Miss":       { conference:"Sun Belt", colors:["Black","Gold"], alums:["Brett Favre","Ray Guy"] },
+  "Stanford":            { conference:"ACC", colors:["Cardinal Red","White"], alums:["John Elway","Andrew Luck","Christian McCaffrey"] },
+  "Syracuse":            { conference:"ACC", colors:["Orange","Blue"], alums:["Jim Brown","Marvin Harrison","Floyd Little"] },
+  "TCU":                 { conference:"Big 12", colors:["Purple","White"], alums:["LaDainian Tomlinson","Sammy Baugh"] },
+  "Temple":              { conference:"American Athletic", colors:["Cherry Red","White"], alums:["Paul Palmer"] },
+  "Tennessee":           { conference:"SEC", colors:["Orange","White"], alums:["Peyton Manning","Reggie White","Alvin Kamara"] },
+  "Tennessee-Chattanooga":{ conference:"Southern Conference", colors:["Navy Blue","Gold"], alums:["Terrell Davis","Ray Brown"] },
+  "Texas":               { conference:"SEC", colors:["Burnt Orange","White"], alums:["Vince Young","Earl Campbell","Ricky Williams"] },
+  "Texas A&M":           { conference:"SEC", colors:["Maroon","White"], alums:["Von Miller","Mike Evans","Dat Nguyen"] },
+  "Texas Southern":      { conference:"SWAC", colors:["Maroon","Gray"], alums:["Michael Strahan","Johnnie Morton"] },
+  "Texas Tech":          { conference:"Big 12", colors:["Scarlet Red","Black"], alums:["Michael Crabtree","Wes Welker","Zach Thomas"] },
+  "Toledo":              { conference:"MAC", colors:["Midnight Blue","Gold"], alums:["Kareem Hunt"] },
+  "Troy":                { conference:"Sun Belt", colors:["Cardinal Red","Silver"], alums:["DeMarcus Ware","Emmanuel Ogbah"] },
+  "Tulane":              { conference:"American Athletic", colors:["Olive Green","Sky Blue"], alums:["Shaun King","Patrick Ramsey"] },
+  "UCF":                 { conference:"Big 12", colors:["Black","Gold"], alums:["Daunte Culpepper","Brandon Marshall"] },
+  "UCLA":                { conference:"Big Ten", colors:["Blue","Gold"], alums:["Troy Aikman","Jonathan Ogden","Keenan Allen"] },
+  "UNLV":                { conference:"Mountain West", colors:["Scarlet Red","Gray"], alums:["Nolan Harrison"] },
+  "USC":                 { conference:"Big Ten", colors:["Cardinal Red","Gold"], alums:["Marcus Allen","Reggie Bush"] },
+  "UTEP":                { conference:"Mountain West", colors:["Orange","Blue","White"], alums:["Don Maynard"] },
+  "UTSA":                { conference:"American Athletic", colors:["Orange","Blue","White"], alums:[] },
+  "Utah":                { conference:"Big 12", colors:["Crimson Red","White"], alums:["Alex Smith","Steve Smith Sr."] },
+  "Utah State":          { conference:"Mountain West", colors:["Midnight Blue","White"], alums:["Jordan Love"] },
+  "VCU":                 { conference:"Atlantic 10 (no football)", colors:["Black","Gold"], alums:[] },
+  "Virginia":            { conference:"ACC", colors:["Navy Blue","Orange"], alums:["Chris Long","Thomas Jones"] },
+  "Virginia Tech":       { conference:"ACC", colors:["Chicago Maroon","Burnt Orange"], alums:["Michael Vick","Bruce Smith","DeAngelo Hall"] },
+  "Wake Forest":         { conference:"ACC", colors:["Old Gold","Black"], alums:["Brian Piccolo","Bill George"] },
+  "Washington":          { conference:"Big Ten", colors:["Purple","Gold"], alums:["Warren Moon","Marcus Peters"] },
+  "Washington State":    { conference:"Pac-12", colors:["Crimson","Gray"], alums:["Drew Bledsoe","Gardner Minshew"] },
+  "West Alabama":        { conference:"Gulf South (D2)", colors:["Royal Blue","Gold"], alums:[] },
+  "West Virginia":       { conference:"Big 12", colors:["Gold","Blue"], alums:["Pat White","Tavon Austin"] },
+  "Western Colorado":    { conference:"RMAC (D2)", colors:["Maroon","Gold"], alums:["Austin Ekeler"] },
+  "Western Kentucky":    { conference:"Conference USA", colors:["Red","White"], alums:["Willie Taggart"] },
+  "Western Michigan":    { conference:"MAC", colors:["Brown","Gold"], alums:["Greg Jennings"] },
+  "Wisconsin":           { conference:"Big Ten", colors:["Cardinal Red","White"], alums:["Ron Dayne","J.J. Watt","Montee Ball"] },
+  "Wyoming":             { conference:"Mountain West", colors:["Brown","Gold"], alums:["Trevor Reilly"] },
+  "Yale":                { conference:"Ivy League", colors:["Yale Blue","White"], alums:["Gary Fencik","Rich Diana"] },
+};
+
 export default function NFLCollegeTrivia() {
   const [phase, setPhase] = useState("idle");
   const [player, setPlayer] = useState(null);
@@ -644,6 +809,9 @@ export default function NFLCollegeTrivia() {
   const [shake, setShake] = useState(false);
   const [showGiveUp, setShowGiveUp] = useState(false);
   const [milestone, setMilestone] = useState(null);
+  const [hintAvailable, setHintAvailable] = useState(false);
+  const [hintText, setHintText] = useState(null);
+  const [hintUsedThisStreak, setHintUsedThisStreak] = useState(false);
 
   const MILESTONES = {
     5:  { emoji: "📈", msg: "Good Start" },
@@ -664,7 +832,7 @@ export default function NFLCollegeTrivia() {
   function nextPlayer(q) {
     const nq = q.length > 0 ? q : shuffle(PLAYERS);
     setPlayer(nq[0]); setQueue(nq.slice(1));
-    setAnswer(""); setAttempts(0); setShake(false); setPhase("playing");
+    setAnswer(""); setAttempts(0); setShake(false); setPhase("playing"); setHintText(null);
     setTimeout(() => inputRef.current?.focus(), 80);
   }
 
@@ -673,7 +841,7 @@ export default function NFLCollegeTrivia() {
     if (!answer.trim() || phase !== "playing") return;
     const correct = checkAnswer(answer.trim(), player.colleges);
     if (correct) {
-      const ns = streak + 1; setStreak(ns);
+      const ns = streak + 1; setStreak(ns); if (!hintUsedThisStreak) setHintAvailable(true);
       if (ns > bestStreak) setBestStreak(ns);
       setHistory(h => [...h, { name: player.name, colleges: player.colleges, correct: true }]);
       setPhase("correct");
@@ -685,7 +853,7 @@ export default function NFLCollegeTrivia() {
     } else {
       const na = attempts + 1; setShake(true); setTimeout(() => setShake(false), 500);
       if (na >= 3) {
-        setStreak(0);
+        setStreak(0); setHintAvailable(false); setHintUsedThisStreak(false);
         setHistory(h => [...h, { name: player.name, colleges: player.colleges, correct: false }]);
         setAttempts(na); setPhase("reveal");
         setTimeout(() => nextPlayer(queue), 3000);
@@ -693,6 +861,41 @@ export default function NFLCollegeTrivia() {
         setAttempts(na); setAnswer(""); inputRef.current?.focus();
       }
     }
+  }
+
+  function handleHint() {
+    if (!hintAvailable || !player || phase !== "playing") return;
+    const college = player.colleges[0];
+    const info = SCHOOL_HINTS[college];
+
+    // Build available hint types for this school
+    const options = [];
+    if (info?.conference) {
+      options.push({ type: "conference", text: `Conference: ${info.conference}.` });
+    }
+    if (info?.colors?.length) {
+      const colorStr = info.colors.join(" & ");
+      options.push({ type: "colors", text: `School colors: ${colorStr}.` });
+    }
+    // Alum hint: pick one that is NOT the current player
+    const otherAlums = (info?.alums || []).filter(a => a !== player.name);
+    if (otherAlums.length > 0) {
+      const alum = otherAlums[Math.floor(Math.random() * otherAlums.length)];
+      options.push({ type: "alum", text: `Notable NFL alum: ${alum}.` });
+    }
+
+    // Fall back to first-letter if no data available
+    if (options.length === 0) {
+      const firstLetter = college.charAt(0).toUpperCase();
+      setHintText(`School name starts with "${firstLetter}".`);
+    } else {
+      const pick = options[Math.floor(Math.random() * options.length)];
+      setHintText(pick.text);
+    }
+
+    setHintAvailable(false);
+    setHintUsedThisStreak(true);
+    inputRef.current?.focus();
   }
 
   const posColor = player ? (POS_COLORS[player.position] || "#888") : "#888";
@@ -815,6 +1018,14 @@ export default function NFLCollegeTrivia() {
                 <div style={{fontSize:9,color:"#ffffff33",marginTop:5,letterSpacing:2,textTransform:"uppercase"}}>Next player incoming</div>
               </div>
             )}
+            {phase==="playing" && hintText && (
+              <div style={{
+                marginBottom:10,padding:"8px 14px",
+                background:"#c8a05015",border:"1px solid #c8a05044",
+                borderRadius:8,fontSize:13,color:"#c8a050",
+                letterSpacing:0.5,fontStyle:"italic",
+              }}>💡 {hintText}</div>
+            )}
             {phase==="playing" && (
               <div style={{display:"flex",gap:8,animation:shake?"shake .5s ease":"none"}}>
                 <input ref={inputRef} value={answer} onChange={e=>setAnswer(e.target.value)}
@@ -839,15 +1050,33 @@ export default function NFLCollegeTrivia() {
             )}
 
             {phase==="playing" && (
-              <button onClick={()=>setShowGiveUp(true)} style={{
-                marginTop:10,width:"100%",background:"transparent",
-                color:"#ffffff55",border:"1px solid #ffffff22",borderRadius:10,
-                padding:"8px 0",fontSize:11,fontWeight:700,cursor:"pointer",
-                letterSpacing:1.5,textTransform:"uppercase",transition:"color .2s, border-color .2s",
-              }}
-                onMouseEnter={e=>{e.target.style.color="#e74c3c";e.target.style.borderColor="#e74c3c44";}}
-                onMouseLeave={e=>{e.target.style.color="#ffffff55";e.target.style.borderColor="#ffffff22";}}
-              >No Idea</button>
+              <div style={{display:"flex",gap:8,marginTop:10}}>
+                <button
+                  onClick={handleHint}
+                  disabled={!hintAvailable}
+                  title={hintAvailable ? "Use your hint" : "Earn a hint by getting the next one right"}
+                  style={{
+                    flex:1,background:"transparent",
+                    color:hintAvailable?"#c8a050":"#ffffff22",
+                    border:`1px solid ${hintAvailable?"#c8a05055":"#ffffff11"}`,
+                    borderRadius:10,padding:"8px 0",fontSize:11,fontWeight:700,
+                    cursor:hintAvailable?"pointer":"default",
+                    letterSpacing:1.5,textTransform:"uppercase",
+                    transition:"color .2s, border-color .2s, background .2s",
+                  }}
+                  onMouseEnter={e=>{if(hintAvailable){e.currentTarget.style.background="#c8a05015";e.currentTarget.style.borderColor="#c8a05099";}}}
+                  onMouseLeave={e=>{e.currentTarget.style.background="transparent";e.currentTarget.style.borderColor=hintAvailable?"#c8a05055":"#ffffff11";}}
+                >💡 Hint {hintAvailable ? "●" : "○"}</button>
+                <button onClick={()=>setShowGiveUp(true)} style={{
+                  flex:1,background:"transparent",
+                  color:"#ffffff55",border:"1px solid #ffffff22",borderRadius:10,
+                  padding:"8px 0",fontSize:11,fontWeight:700,cursor:"pointer",
+                  letterSpacing:1.5,textTransform:"uppercase",transition:"color .2s, border-color .2s",
+                }}
+                  onMouseEnter={e=>{e.target.style.color="#e74c3c";e.target.style.borderColor="#e74c3c44";}}
+                  onMouseLeave={e=>{e.target.style.color="#ffffff55";e.target.style.borderColor="#ffffff22";}}
+                >No Idea</button>
+              </div>
             )}
 
           </div>
@@ -903,6 +1132,7 @@ export default function NFLCollegeTrivia() {
               <button onClick={()=>{
                 setShowGiveUp(false);
                 setStreak(0);
+                setHintUsedThisStreak(false);
                 setHistory(h=>[...h,{name:player.name,colleges:player.colleges,correct:false}]);
                 setAttempts(3);
                 setPhase("reveal");
