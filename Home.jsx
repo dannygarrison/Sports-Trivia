@@ -29,6 +29,15 @@ const GAMES = [
     available: true,
   },
   {
+    id: 'nfl-name-dump',
+    path: '/games/nfl-name-dump',
+    title: 'Name Every Player',
+    sport: 'NFL',
+    description: 'Just name as many NFL players as you can. ~27,000 in the database.',
+    tag: 'FREE RECALL',
+    available: true,
+  },
+  {
     id: 'nba-scorers-grid',
     path: '/games/nba-scorers-grid',
     title: 'All-Time Scorers',
