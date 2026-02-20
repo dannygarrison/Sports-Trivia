@@ -182,8 +182,8 @@ export default function Home() {
             <span style={{ color: 'transparent', WebkitTextStroke: '1px #c8a050' }}>Ball</span>
             {' '}Knowledge
           </h1>
-          <p style={{ fontSize: 18, color: '#ffffff70', lineHeight: 1.7, fontFamily: 'Georgia, serif', maxWidth: 420, margin: '0 auto' }}>
-            Time to kill? Take a knee and run out the clock with some trivia.
+          <p style={{ fontSize: 18, color: '#c8a050', lineHeight: 1.7, fontFamily: 'Georgia, serif', maxWidth: 420, margin: '0 auto' }}>
+            Time to kill?<br />Take a knee and run out the clock with some trivia.
           </p>
         </div>
       </div>
