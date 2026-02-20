@@ -809,7 +809,7 @@ export default function NFLCollegeTrivia() {
   const [shake, setShake] = useState(false);
   const [showGiveUp, setShowGiveUp] = useState(false);
   const [milestone, setMilestone] = useState(null);
-  const [hintAvailable, setHintAvailable] = useState(false);
+  const [hintAvailable, setHintAvailable] = useState(true);
   const [hintText, setHintText] = useState(null);
   const [hintUsedThisStreak, setHintUsedThisStreak] = useState(false);
 
@@ -853,7 +853,7 @@ export default function NFLCollegeTrivia() {
     } else {
       const na = attempts + 1; setShake(true); setTimeout(() => setShake(false), 500);
       if (na >= 3) {
-        setStreak(0); setHintAvailable(false); setHintUsedThisStreak(false);
+        setStreak(0); setHintAvailable(true); setHintUsedThisStreak(false);
         setHistory(h => [...h, { name: player.name, colleges: player.colleges, correct: false }]);
         setAttempts(na); setPhase("reveal");
         setTimeout(() => nextPlayer(queue), 3000);
@@ -871,23 +871,23 @@ export default function NFLCollegeTrivia() {
     // Build available hint types for this school
     const options = [];
     if (info?.conference) {
-      options.push({ type: "conference", text: `Conference: ${info.conference}.` });
+      options.push({ type: "conference", text: `Conference: ${info.conference}` });
     }
     if (info?.colors?.length) {
       const colorStr = info.colors.join(" & ");
-      options.push({ type: "colors", text: `School colors: ${colorStr}.` });
+      options.push({ type: "colors", text: `School colors: ${colorStr}` });
     }
     // Alum hint: pick one that is NOT the current player
     const otherAlums = (info?.alums || []).filter(a => a !== player.name);
     if (otherAlums.length > 0) {
       const alum = otherAlums[Math.floor(Math.random() * otherAlums.length)];
-      options.push({ type: "alum", text: `Notable NFL alum: ${alum}.` });
+      options.push({ type: "alum", text: `Notable NFL alum: ${alum}` });
     }
 
     // Fall back to first-letter if no data available
     if (options.length === 0) {
       const firstLetter = college.charAt(0).toUpperCase();
-      setHintText(`School name starts with "${firstLetter}".`);
+      setHintText(`School name starts with "${firstLetter}"`);
     } else {
       const pick = options[Math.floor(Math.random() * options.length)];
       setHintText(pick.text);
@@ -1132,6 +1132,7 @@ export default function NFLCollegeTrivia() {
               <button onClick={()=>{
                 setShowGiveUp(false);
                 setStreak(0);
+                setHintAvailable(true);
                 setHintUsedThisStreak(false);
                 setHistory(h=>[...h,{name:player.name,colleges:player.colleges,correct:false}]);
                 setAttempts(3);
