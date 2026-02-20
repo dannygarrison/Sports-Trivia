@@ -14,7 +14,7 @@ const PLAYERS = [
   { name: "Tee Higgins", colleges: ["Clemson"], position: "WR", teams: ["Cincinnati Bengals"] },
   { name: "A.J. Brown", colleges: ["Ole Miss"], position: "WR", teams: ["Tennessee Titans", "Philadelphia Eagles"] },
   { name: "DeVonta Smith", colleges: ["Alabama"], position: "WR", teams: ["Philadelphia Eagles"] },
-  { name: "D.J. Moore", colleges: ["Maryland"], position: "WR", teams: ["Carolina Panthers", "Chicago Bears", "New York Giants"] },
+
   { name: "Dallas Goedert", colleges: ["South Dakota State"], position: "TE", teams: ["Philadelphia Eagles"] },
   { name: "Jake Ferguson", colleges: ["Wisconsin"], position: "TE", teams: ["Dallas Cowboys"] },
   { name: "Austin Ekeler", colleges: ["Western Colorado"], position: "RB", teams: ["Los Angeles Chargers", "New York Jets", "Washington Commanders"] },
