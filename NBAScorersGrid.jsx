@@ -651,7 +651,7 @@ export default function NBAScorersGrid() {
           borderRadius: 14, padding: "18px 24px", textAlign: "center",
           animation: "popIn 0.4s ease both",
         }}>
-          <div style={{ fontSize: 28, marginBottom: 6 }}>{gaveUp ? "😔" : "🏆"}</div>
+          <div style={{ fontSize: 28, marginBottom: 6 }}>{gaveUp ? "" : "🏆"}</div>
           <div style={{ fontSize: 20, fontWeight: 900, color: gaveUp ? "#e74c3c" : "#c8a050", letterSpacing: 1, textTransform: "uppercase" }}>
             {gaveUp ? `Answers Revealed — ${totalSolved} of ${totalPossible} found` : `All ${totalPossible} Players Found!`}
           </div>
