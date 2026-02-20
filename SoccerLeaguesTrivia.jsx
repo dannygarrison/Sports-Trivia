@@ -439,7 +439,7 @@ export default function SoccerLeaguesTrivia() {
           animation: "confetti 0.5s ease both",
           boxShadow: `0 0 40px ${gaveUp ? "#e74c3c15" : "#22c55e15"}`,
         }}>
-          <div style={{ fontSize: 32, marginBottom: 6 }}>{gaveUp ? "😔" : "🏆"}</div>
+          <div style={{ fontSize: 32, marginBottom: 6 }}>{gaveUp ? "" : "🏆"}</div>
           <div style={{ fontSize: 22, fontWeight: 900, color: gaveUp ? "#e74c3c" : "#22c55e", letterSpacing: 1, textTransform: "uppercase" }}>
             {gaveUp ? "Answers Revealed" : `All ${totalTeams} Teams Found!`}
           </div>
