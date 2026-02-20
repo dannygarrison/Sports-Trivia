@@ -21,12 +21,12 @@ const GAMES = [
   },
   {
     id: 'nba-college-trivia',
-    path: '/games/nba-college-trivia',
-    title: 'NBA College Trivia',
+    path: '/games/nba-scorers-grid',
+    title: 'All-Time Scorers',
     sport: 'NBA',
-    description: 'Coming soon.',
-    tag: 'COMING SOON',
-    available: false,
+    description: 'Name the top 5 all-time scorers for all 30 NBA franchises.',
+    tag: 'COMPLETE THE SET',
+    available: true,
   },
   {
     id: 'mlb-draft-trivia',
