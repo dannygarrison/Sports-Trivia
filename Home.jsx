@@ -87,22 +87,22 @@ function GameCard({ game, index }) {
       }} />
       <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom: 16 }}>
         <span style={{
-          fontSize: 9, fontWeight: 800, fontFamily: "'Barlow Condensed', sans-serif",
+          fontSize: 9, fontWeight: 800, fontFamily: "'Oswald', sans-serif",
           letterSpacing: 3, textTransform: 'uppercase',
           color: accent, background: accent + '18', padding: '3px 8px', borderRadius: 4,
         }}>{game.sport}</span>
         <span style={{
-          fontSize: 9, fontWeight: 700, fontFamily: "'Barlow Condensed', sans-serif",
+          fontSize: 9, fontWeight: 700, fontFamily: "'Oswald', sans-serif",
           letterSpacing: 2.5, textTransform: 'uppercase', color: '#ffffff22',
         }}>{game.tag}</span>
       </div>
       <h3 style={{
-        fontSize: 21, fontWeight: 900, fontFamily: "'Barlow Condensed', sans-serif",
+        fontSize: 21, fontWeight: 900, fontFamily: "'Oswald', sans-serif",
         letterSpacing: 1, textTransform: 'uppercase',
         color: hovered ? '#ffffff' : '#ddddee',
         margin: '0 0 8px', lineHeight: 1.1, transition: 'color 0.2s',
       }}>{game.title}</h3>
-      <p style={{ fontSize: 13, color: '#ffffff40', lineHeight: 1.6, margin: 0, fontFamily: 'Georgia, serif' }}>
+      <p style={{ fontSize: 13, color: '#c8a050', lineHeight: 1.6, margin: 0, fontFamily: 'Georgia, serif' }}>
         {game.description}
       </p>
       {game.available && (
@@ -113,7 +113,7 @@ function GameCard({ game, index }) {
           transition: 'all 0.22s ease',
         }}>
           <span style={{
-            fontSize: 11, fontWeight: 800, fontFamily: "'Barlow Condensed', sans-serif",
+            fontSize: 11, fontWeight: 800, fontFamily: "'Oswald', sans-serif",
             letterSpacing: 3, textTransform: 'uppercase', color: accent,
           }}>Play Now →</span>
         </div>
@@ -158,8 +158,8 @@ export default function Home() {
   const showGrouped = activeTab === 'ALL' && search === ''
 
   return (
-    <div style={{ minHeight: '100vh', background: '#07070f', fontFamily: "'Barlow Condensed', 'Arial Narrow', sans-serif", paddingTop: 56 }}>
-      <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+    <div style={{ minHeight: '100vh', background: '#07070f', fontFamily: "'Oswald', sans-serif", paddingTop: 56 }}>
+      <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet" />
       <style>{`
         @keyframes fadeUp { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:translateY(0); } }
         @keyframes heroIn { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
@@ -205,7 +205,7 @@ export default function Home() {
             const isActive = activeTab === key
             return (
               <button key={key} className="tab-btn" onClick={() => setActiveTab(key)} style={{
-                fontSize: 11, fontWeight: 800, fontFamily: "'Barlow Condensed', sans-serif",
+                fontSize: 11, fontWeight: 800, fontFamily: "'Oswald', sans-serif",
                 letterSpacing: 2.5, textTransform: 'uppercase',
                 padding: '7px 16px', borderRadius: 8, cursor: 'pointer',
                 border: `1px solid ${isActive ? meta.accent + '55' : '#ffffff10'}`,
@@ -238,12 +238,12 @@ export default function Home() {
             placeholder="Search games..."
             style={{
               background: 'transparent', border: 'none', color: '#ffffff',
-              fontSize: 13, fontFamily: "'Barlow Condensed', sans-serif",
+              fontSize: 13, fontFamily: "'Oswald', sans-serif",
               fontWeight: 600, letterSpacing: 1, width: '100%',
             }}
           />
           {search && (
-            <button onClick={() => setSearch('')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#ffffff33', fontSize: 14, padding: 0, lineHeight: 1 }}>✕</button>
+            <button onClick={() => setSearch('')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#c8a05099', fontSize: 14, padding: 0, lineHeight: 1 }}>✕</button>
           )}
         </div>
       </div>
@@ -251,7 +251,7 @@ export default function Home() {
       {/* Games */}
       <div style={{ maxWidth: 960, margin: '0 auto', padding: '28px 28px 80px' }}>
         {filteredGames.length === 0 ? (
-          <div style={{ textAlign: 'center', padding: '60px 0', color: '#ffffff22', fontFamily: 'Georgia, serif', fontSize: 14 }}>
+          <div style={{ textAlign: 'center', padding: '60px 0', color: '#c8a05066', fontFamily: 'Georgia, serif', fontSize: 14 }}>
             No games found for "{search}"
           </div>
         ) : showGrouped ? (
@@ -263,7 +263,7 @@ export default function Home() {
                   onClick={() => setActiveTab(section.sport)}
                   style={{
                     fontSize: 10, fontWeight: 800, cursor: 'pointer',
-                    fontFamily: "'Barlow Condensed', sans-serif",
+                    fontFamily: "'Oswald', sans-serif",
                     letterSpacing: 4, textTransform: 'uppercase',
                     color: SPORT_META[section.sport].accent,
                     background: SPORT_META[section.sport].accent + '14',
@@ -289,7 +289,7 @@ export default function Home() {
 
       {/* Footer */}
       <div style={{ borderTop: '1px solid #ffffff06', padding: '22px 28px', textAlign: 'center' }}>
-        <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: 3, textTransform: 'uppercase', color: '#ffffff12', fontFamily: "'Barlow Condensed', sans-serif" }}>
+        <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: 3, textTransform: 'uppercase', color: '#ffffff12', fontFamily: "'Oswald', sans-serif" }}>
           Ball Knowledge Games
         </span>
       </div>
