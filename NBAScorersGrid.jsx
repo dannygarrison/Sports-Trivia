@@ -1,4 +1,5 @@
 import { useState, useRef, useCallback } from "react";
+import { usePlayCount } from "./usePlayCount.jsx";
 
 // Top 5 all-time scorers by franchise (career points with that franchise)
 const TEAMS = [
@@ -391,11 +392,13 @@ function TeamCard({ team, solved, onSolve, gaveUp }) {
   const [input, setInput] = useState("");
   const [flash, setFlash] = useState(null);
   const [shake, setShake] = useState(false);
+  const trackPlay = usePlayCount("nba-scorers-grid");
   const inputRef = useRef(null);
   const teamSolved = solved[team.id] || new Set();
   const allDone = teamSolved.size === 5;
 
   const handleInput = (e) => {
+    trackPlay();
     const val = e.target.value;
     setInput(val);
     const match = team.players.find(
