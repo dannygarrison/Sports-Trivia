@@ -38,7 +38,7 @@ export default function Nav() {
         <span style={{
           fontSize: 18,
           fontWeight: 900,
-          fontFamily: "'Barlow Condensed', sans-serif",
+          fontFamily: "'Oswald', sans-serif",
           letterSpacing: 2,
           textTransform: 'uppercase',
           color: '#ffffff',
@@ -49,7 +49,7 @@ export default function Nav() {
         <span style={{
           fontSize: 18,
           fontWeight: 900,
-          fontFamily: "'Barlow Condensed', sans-serif",
+          fontFamily: "'Oswald', sans-serif",
           letterSpacing: 2,
           textTransform: 'uppercase',
           color: '#c8a050',
@@ -66,7 +66,7 @@ export default function Nav() {
           letterSpacing: 2.5,
           textTransform: 'uppercase',
           color: '#ffffff44',
-          fontFamily: "'Barlow Condensed', sans-serif",
+          fontFamily: "'Oswald', sans-serif",
           transition: 'color 0.2s',
           ':hover': { color: '#ffffff99' },
         }}
