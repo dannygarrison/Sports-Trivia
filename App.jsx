@@ -9,6 +9,7 @@ import WorldSeriesTrivia from './WorldSeriesTrivia.jsx'
 import NFLNameDump from './NFLNameDump.jsx'
 import MLSTeams from './MLSTeams.jsx'
 import NFLChain from './NFLChain.jsx'
+import PLTeams from './PLTeams.jsx'
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
         <Route path="/games/nfl-name-dump" element={<NFLNameDump />} />
         <Route path="/games/mls-teams" element={<MLSTeams />} />
         <Route path="/games/nfl-chain" element={<NFLChain />} />
+        <Route path="/games/pl-teams" element={<PLTeams />} />
       </Routes>
     </div>
   )
