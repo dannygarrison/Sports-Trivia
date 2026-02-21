@@ -1,5 +1,5 @@
 import { useState, useRef, useCallback, useEffect } from "react";
-import { usePlayCount } from "./usePlayCount.js";
+import { usePlayCount } from "./usePlayCount.jsx";
 
 // MVP award started in 1955. Pre-1955 entries have mvp: null.
 const WORLD_SERIES = [
@@ -143,7 +143,7 @@ const TEAM_ALIASES = {
   "kansas city royals":       ["kansas city", "royals", "kc"],
   "new york mets":            ["ny mets", "mets", "nyy mets"],
   "san francisco giants":     ["san francisco", "sf giants", "giants", "sfg"],
-  "new york giants":          ["ny giants", "new york giants"],
+  "new york giants":          ["ny giants", "new york giants", "ny giants baseball"],
   "detroit tigers":           ["detroit", "tigers"],
   "st. louis cardinals":      ["st louis cardinals", "st. louis", "st louis", "cardinals", "cards", "stl"],
   "minnesota twins":          ["minnesota", "twins"],
@@ -166,7 +166,6 @@ const TEAM_ALIASES = {
   "philadelphia athletics":   ["philadelphia athletics", "philly athletics"],
   "washington senators":      ["washington senators", "senators"],
   "st. louis browns":         ["st louis browns", "browns"],
-  "new york giants":          ["ny giants baseball"],
   "cleveland guardians":      ["cleveland guardians", "guardians"],
 };
 
