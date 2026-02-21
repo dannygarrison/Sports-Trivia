@@ -41,6 +41,17 @@ export default function Nav() {
           fontFamily: "'Barlow Condensed', sans-serif",
           letterSpacing: 2,
           textTransform: 'uppercase',
+          color: '#ffffff33',
+          lineHeight: 1,
+        }}>
+          Project
+        </span>
+        <span style={{
+          fontSize: 18,
+          fontWeight: 900,
+          fontFamily: "'Barlow Condensed', sans-serif",
+          letterSpacing: 2,
+          textTransform: 'uppercase',
           color: '#ffffff',
           lineHeight: 1,
         }}>
@@ -56,19 +67,6 @@ export default function Nav() {
           lineHeight: 1,
         }}>
           Knowledge
-        </span>
-        <span style={{
-          fontSize: 9,
-          fontWeight: 700,
-          fontFamily: "'Barlow Condensed', sans-serif",
-          letterSpacing: 3,
-          textTransform: 'uppercase',
-          color: '#ffffff33',
-          lineHeight: 1,
-          alignSelf: 'flex-end',
-          marginBottom: 1,
-        }}>
-          Games
         </span>
       </Link>
 
