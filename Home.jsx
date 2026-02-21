@@ -225,7 +225,7 @@ export default function Home() {
     games: filteredGames.filter(g => g.sport === sport),
   })).filter(s => s.games.length > 0)
 
-  const showGrouped = activeTab === 'ALL' && search === ''
+  const showGrouped = false
 
   return (
     <div style={{ minHeight: '100vh', background: '#07070f', fontFamily: "'Oswald', sans-serif", paddingTop: 56 }}>
