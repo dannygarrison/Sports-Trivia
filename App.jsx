@@ -10,6 +10,7 @@ import NFLNameDump from './NFLNameDump.jsx'
 import MLSTeams from './MLSTeams.jsx'
 import NFLChain from './NFLChain.jsx'
 import PLTeams from './PLTeams.jsx'
+import OlympicsHostCities from './OlympicsHostCities.jsx'
 
 export default function App() {
   return (
@@ -26,6 +27,7 @@ export default function App() {
         <Route path="/games/mls-teams" element={<MLSTeams />} />
         <Route path="/games/nfl-chain" element={<NFLChain />} />
         <Route path="/games/pl-teams" element={<PLTeams />} />
+        <Route path="/games/olympics-host-cities" element={<OlympicsHostCities />} />
       </Routes>
     </div>
   )
