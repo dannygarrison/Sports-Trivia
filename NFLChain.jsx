@@ -2831,7 +2831,8 @@ const PLAYERS = [
   {name:"Upton Stout",colleges:["Western Kentucky"],teams:["Dallas Cowboys"]},
   {name:"Jaylen Reed",colleges:["Penn State"],teams:["San Francisco 49ers"]},
   {name:"Dadrion Taylor-Demerson",colleges:["Texas Tech"],teams:["Tennessee Titans"]},
-  {name:"Theo Melin",colleges:["Iowa"],teams:["New England Patriots"]}
+  {name:"Theo Melin",colleges:["Iowa"],teams:["New England Patriots"]},
+  {name:"Josh Hines-Allen",colleges:["Kentucky"],teams:["Jacksonville Jaguars"]}
 ];
 
 // ── HELPERS ──────────────────────────────────────────────────────────────────
