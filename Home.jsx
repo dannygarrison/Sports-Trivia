@@ -38,6 +38,15 @@ const GAMES = [
     available: true,
   },
   {
+    id: 'nfl-chain',
+    path: '/games/nfl-chain',
+    title: 'The Chain',
+    sport: 'NFL',
+    description: 'Link all 32 NFL teams through players and colleges. No repeats allowed.',
+    tag: 'CHAIN GAME',
+    available: true,
+  },
+  {
     id: 'nba-scorers-grid',
     path: '/games/nba-scorers-grid',
     title: 'All-Time Scorers',
