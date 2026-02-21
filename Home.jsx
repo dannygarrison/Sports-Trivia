@@ -242,11 +242,17 @@ export default function Home() {
           pointerEvents: 'none', animation: 'pulse 4s ease infinite',
         }} />
         <div style={{ position: 'relative', animation: 'heroIn 0.55s ease both', maxWidth: 600, margin: '0 auto' }}>
-          <img
-            src="/ts_transparent_logo.png"
-            alt="Trivial Sports"
-            style={{ width: 280, maxWidth: '80vw', display: 'block', margin: '0 auto' }}
-          />
+          <h1 style={{
+            fontSize: 'clamp(48px, 9vw, 82px)', fontWeight: 900, letterSpacing: -1,
+            textTransform: 'uppercase', lineHeight: 0.92, margin: '0 0 22px',
+            fontFamily: "'Oswald', sans-serif",
+          }}>
+            <span style={{ color: '#ffffff' }}>Trivial </span>
+            <span style={{ color: '#c8a050' }}>Sports</span>
+          </h1>
+          <p style={{ fontSize: 18, color: '#a0a0c0', lineHeight: 1.7, fontFamily: 'Georgia, serif', maxWidth: 420, margin: '0 auto' }}>
+            Need to kill time? Run out the clock with some sports trivia.
+          </p>
         </div>
       </div>
 
