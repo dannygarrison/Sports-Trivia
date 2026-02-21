@@ -1,4 +1,5 @@
 import { useState, useRef, useCallback, useEffect } from "react";
+import { usePlayCount } from "./usePlayCount.js";
 
 // MVP award started in 1955. Pre-1955 entries have mvp: null.
 const WORLD_SERIES = [
@@ -272,6 +273,7 @@ function WorldSeriesRow({ ws, rowSolved, onSolve, gaveUp, index }) {
   const [inputs, setInputs] = useState({ winner: "", loser: "", mvp: "" });
   const [flash, setFlash] = useState(null);
   const refs = { winner: useRef(null), loser: useRef(null), mvp: useRef(null) };
+  const trackPlay = usePlayCount("world-series-history");
 
   const hasMvp = !!ws.mvp;
   const requiredFields = hasMvp ? 3 : 2;
@@ -279,6 +281,7 @@ function WorldSeriesRow({ ws, rowSolved, onSolve, gaveUp, index }) {
   const isEven = index % 2 === 0;
 
   const handleInput = (field, val) => {
+    trackPlay();
     setInputs(prev => ({ ...prev, [field]: val }));
     let matched = false;
     if (field === "winner" && !rowSolved.has("winner") && matchesTeam(val, ws.winner)) matched = true;
