@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from "react";
-import { usePlayCount } from "./usePlayCount.js";
+import { usePlayCount } from "./usePlayCount.jsx";
 
 // ── DATA ─────────────────────────────────────────────────────────────────────
 
