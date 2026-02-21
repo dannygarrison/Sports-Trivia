@@ -250,7 +250,7 @@ export default function Home() {
             <span style={{ color: '#ffffff' }}>Trivial </span>
             <span style={{ color: '#c8a050' }}>Sports</span>
           </h1>
-          <p style={{ fontSize: 18, color: '#a0a0c0', lineHeight: 1.7, fontFamily: 'Georgia, serif', whiteSpace: 'nowrap', margin: '0 auto' }}>
+          <p style={{ fontSize: 18, color: '#a0a0c0', lineHeight: 1.7, fontFamily: "'Oswald', sans-serif", whiteSpace: 'nowrap', margin: '0 auto' }}>
             Need to kill time? Run out the clock with some sports trivia.
           </p>
         </div>
