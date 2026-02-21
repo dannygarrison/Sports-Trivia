@@ -82,6 +82,15 @@ const GAMES = [
     tag: 'FILL IN THE BLANK',
     available: true,
   },
+  {
+    id: 'pl-teams',
+    path: '/games/pl-teams',
+    title: 'All-Time Premier League Teams',
+    sport: 'SOCCER',
+    description: 'Name all 51 clubs that have ever played in the Premier League since 1992.',
+    tag: 'FILL IN THE BLANK',
+    available: true,
+  },
 ]
 
 function GameCard({ game, index }) {
