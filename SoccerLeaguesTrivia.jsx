@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { usePlayCount } from "./usePlayCount.jsx";
 
 const LEAGUES = [
   {
@@ -161,6 +162,7 @@ function LeagueColumn({ league, solvedSet, onSolve, activeLeagueId, setActiveLea
   const [input, setInput] = useState("");
   const [shake, setShake] = useState(false);
   const [flash, setFlash] = useState(null);
+  const trackPlay = usePlayCount("soccer-trivia");
   const inputRef = useRef(null);
   const isActive = activeLeagueId === league.id;
   const solved = league.teams.filter(t => solvedSet.has(t.name));
@@ -168,6 +170,7 @@ function LeagueColumn({ league, solvedSet, onSolve, activeLeagueId, setActiveLea
   const allDone = remaining.length === 0;
 
   const handleInput = (e) => {
+    trackPlay();
     const val = e.target.value;
     setInput(val);
     const match = remaining.find(t => checkGuess(val, t));
