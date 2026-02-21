@@ -173,7 +173,7 @@ const PLAYERS = [
   {name:"Christian McCaffrey",colleges:["Stanford"],teams:["Carolina Panthers","San Francisco 49ers"]},
   {name:"Nick Chubb",colleges:["Georgia"],teams:["Cleveland Browns","Houston Texans"]},
   {name:"Derrick Henry",colleges:["Alabama"],teams:["Tennessee Titans","Baltimore Ravens"]},
-  {name:"Alvin Kamara",colleges:["Tennessee","Hutchinson CC"],teams:["New Orleans Saints"]},
+  {name:"Alvin Kamara",colleges:["Tennessee","Hutchinson CC"],teams:["New Orleans Saints", "Atlanta Falcons"]},
   {name:"Ezekiel Elliott",colleges:["Ohio State"],teams:["Dallas Cowboys","New England Patriots"]},
   {name:"Devonta Freeman",colleges:["Florida State"],teams:["Atlanta Falcons","New York Giants","Baltimore Ravens"]},
   {name:"DeAngelo Williams",colleges:["Memphis"],teams:["Carolina Panthers","Pittsburgh Steelers"]},
@@ -181,7 +181,7 @@ const PLAYERS = [
   {name:"De'Von Achane",colleges:["Texas A&M"],teams:["Miami Dolphins"]},
   {name:"DeAndre Hopkins",colleges:["Clemson"],teams:["Houston Texans","Arizona Cardinals","Tennessee Titans","Kansas City Chiefs","Baltimore Ravens"]},
   {name:"Mike Evans",colleges:["Texas A&M"],teams:["Tampa Bay Buccaneers"]},
-  {name:"Cooper Kupp",colleges:["Eastern Washington"],teams:["Los Angeles Rams","Seattle Seahawks"]},
+  {name:"Cooper Kupp",colleges:["Eastern Washington"],teams:["Los Angeles Rams", "Seattle Seahawks"]},
   {name:"Ja'Marr Chase",colleges:["LSU"],teams:["Cincinnati Bengals"]},
   {name:"CeeDee Lamb",colleges:["Oklahoma"],teams:["Dallas Cowboys"]},
   {name:"DK Metcalf",colleges:["Ole Miss"],teams:["Seattle Seahawks","Pittsburgh Steelers"]},
@@ -232,7 +232,7 @@ const PLAYERS = [
   {name:"Sam Darnold",colleges:["USC"],teams:["New York Jets","Carolina Panthers","San Francisco 49ers","Minnesota Vikings","Seattle Seahawks"]},
   {name:"Daniel Jones",colleges:["Duke"],teams:["New York Giants","Indianapolis Colts"]},
   {name:"Josh Rosen",colleges:["UCLA"],teams:["Arizona Cardinals","Miami Dolphins"]},
-  {name:"Trey Lance",colleges:["North Dakota State"],teams:["San Francisco 49ers","Dallas Cowboys"]},
+  {name:"Trey Lance",colleges:["North Dakota State"],teams:["San Francisco 49ers","Dallas Cowboys","Los Angeles Chargers"]},
   {name:"Mac Jones",colleges:["Alabama"],teams:["New England Patriots","Jacksonville Jaguars"]},
   {name:"Zach Wilson",colleges:["BYU"],teams:["New York Jets","Denver Broncos"]},
   {name:"Trevor Lawrence",colleges:["Clemson"],teams:["Jacksonville Jaguars"]},
@@ -444,8 +444,8 @@ const PLAYERS = [
   {name:"Ty Law",colleges:["Michigan"],teams:["New England Patriots","New York Jets","Denver Broncos","Kansas City Chiefs"]},
   {name:"Aqib Talib",colleges:["Kansas"],teams:["Tampa Bay Buccaneers","New England Patriots","Denver Broncos","Los Angeles Rams"]},
   {name:"Joe Haden",colleges:["Florida"],teams:["Cleveland Browns","Pittsburgh Steelers"]},
-  {name:"Stephon Gilmore",colleges:["South Carolina"],teams:["Buffalo Bills","New England Patriots","Carolina Panthers","Indianapolis Colts","Dallas Cowboys"]},
-  {name:"Marshon Lattimore",colleges:["Ohio State"],teams:["New Orleans Saints"]},
+  {name:"Stephon Gilmore",colleges:["South Carolina"],teams:["Buffalo Bills", "New England Patriots", "Carolina Panthers", "Indianapolis Colts", "Dallas Cowboys", "Minnesota Vikings"]},
+  {name:"Marshon Lattimore",colleges:["Ohio State"],teams:["New Orleans Saints", "Washington Commanders"]},
   {name:"Xavien Howard",colleges:["Baylor"],teams:["Miami Dolphins"]},
   {name:"Jaire Alexander",colleges:["Louisville"],teams:["Green Bay Packers"]},
   {name:"Denzel Ward",colleges:["Ohio State"],teams:["Cleveland Browns"]},
@@ -542,7 +542,7 @@ const PLAYERS = [
   {name:"Will Dissly",colleges:["Washington"],teams:["Seattle Seahawks"]},
   {name:"Demarcus Lawrence",colleges:["Boise State"],teams:["Dallas Cowboys"]},
   {name:"Randy Gregory",colleges:["Nebraska"],teams:["Dallas Cowboys","Denver Broncos"]},
-  {name:"Za'Darius Smith",colleges:["Kentucky"],teams:["Baltimore Ravens","Green Bay Packers","Minnesota Vikings","Philadelphia Eagles"]},
+  {name:"Za'Darius Smith",colleges:["Kentucky"],teams:["Baltimore Ravens", "Green Bay Packers", "Minnesota Vikings", "Philadelphia Eagles", "Cleveland Browns"]},
   {name:"Preston Smith",colleges:["Mississippi State"],teams:["Green Bay Packers","Pittsburgh Steelers"]},
   {name:"Alex Highsmith",colleges:["Charlotte"],teams:["Pittsburgh Steelers"]},
   {name:"Carl Lawson",colleges:["Auburn"],teams:["Cincinnati Bengals","New York Jets"]},
@@ -568,9 +568,9 @@ const PLAYERS = [
   {name:"Kendall Fuller",colleges:["Virginia Tech"],teams:["Kansas City Chiefs"]},
   {name:"Eli Apple",colleges:["Ohio State"],teams:["New York Giants","New Orleans Saints","Carolina Panthers"]},
   {name:"Adoree' Jackson",colleges:["USC"],teams:["Tennessee Titans","New York Giants"]},
-  {name:"Tre'Davious White",colleges:["LSU"],teams:["Buffalo Bills"]},
+  {name:"Tre'Davious White",colleges:["LSU"],teams:["Buffalo Bills", "Los Angeles Rams"]},
   {name:"Terence Newman",colleges:["Kansas State"],teams:["Dallas Cowboys","Cincinnati Bengals","Minnesota Vikings"]},
-  {name:"Quandre Diggs",colleges:["Texas"],teams:["Detroit Lions","Seattle Seahawks"]},
+  {name:"Quandre Diggs",colleges:["Texas"],teams:["Detroit Lions", "Seattle Seahawks"]},
   {name:"Jessie Bates III",colleges:["Wake Forest"],teams:["Cincinnati Bengals","Atlanta Falcons"]},
   {name:"Marcus Williams",colleges:["Utah"],teams:["New Orleans Saints","Baltimore Ravens"]},
   {name:"Minkah Fitzpatrick",colleges:["Alabama"],teams:["Miami Dolphins","Pittsburgh Steelers"]},
@@ -678,7 +678,7 @@ const PLAYERS = [
   {name:"Mike McGlinchey",colleges:["Notre Dame"],teams:["San Francisco 49ers","Denver Broncos"]},
   {name:"Alejandro Villanueva",colleges:["Army"],teams:["Pittsburgh Steelers","Baltimore Ravens"]},
   {name:"Mitchell Schwartz",colleges:["California"],teams:["Cleveland Browns","Kansas City Chiefs"]},
-  {name:"Chase Young",colleges:["Ohio State"],teams:["Washington Commanders","San Francisco 49ers"]},
+  {name:"Chase Young",colleges:["Ohio State"],teams:["Washington Commanders", "San Francisco 49ers", "New Orleans Saints"]},
   {name:"Jalen Carter",colleges:["Georgia"],teams:["Philadelphia Eagles"]},
   {name:"Josh Uche",colleges:["Michigan"],teams:["New England Patriots","Kansas City Chiefs"]},
   {name:"Uchenna Nwosu",colleges:["USC"],teams:["Los Angeles Chargers","Seattle Seahawks"]},
@@ -2287,7 +2287,7 @@ const PLAYERS = [
   {name:"Jack Bech",colleges:["TCU"],teams:["Las Vegas Raiders"]},
   {name:"Konata Mumpfield",colleges:["Pittsburgh"],teams:["Cincinnati Bengals"]},
   {name:"Jalen Milroe",colleges:["Alabama"],teams:["Seattle Seahawks"]},
-  {name:"Dillon Gabriel",colleges:["Oklahoma","Oregon"],teams:["Cleveland Browns"]},
+  {name:"Dillon Gabriel",colleges:["UCF","Oklahoma","Oregon"],teams:["Cleveland Browns"]},
   {name:"Jaxson Dart",colleges:["Ole Miss"],teams:["New York Giants"]},
   {name:"Devin Neal",colleges:["Kansas"],teams:["New England Patriots"]},
   {name:"Nick Martin",colleges:["Notre Dame"],teams:["Tampa Bay Buccaneers"]},
@@ -2802,7 +2802,36 @@ const PLAYERS = [
   {name:"AJ Barner",colleges:["Michigan","Indiana"],teams:["Seattle Seahawks"]},
   {name:"Landen King",colleges:["Louisiana"],teams:["Los Angeles Chargers"]},
   {name:"Nviri Obukwelu",colleges:["Florida"],teams:["Denver Broncos"]},
-  {name:"Mekhi Wingo",colleges:["LSU"],teams:["New York Giants","Atlanta Falcons"]}
+  {name:"Mekhi Wingo",colleges:["LSU"],teams:["New York Giants","Atlanta Falcons"]},
+  {name:"Tre Harris",colleges:["Ole Miss","Louisiana"],teams:["Los Angeles Chargers"]},
+  {name:"Jayden Higgins",colleges:["Iowa State"],teams:["Houston Texans"]},
+  {name:"Savion Williams",colleges:["TCU"],teams:["Pittsburgh Steelers"]},
+  {name:"Dorian Singer",colleges:["Arizona","USC"],teams:["Buffalo Bills"]},
+  {name:"Pat Bryant",colleges:["Illinois"],teams:["Denver Broncos"]},
+  {name:"Chimere Dike",colleges:["Wisconsin"],teams:["Houston Texans"]},
+  {name:"Jalen Royals",colleges:["Utah State"],teams:["Denver Broncos"]},
+  {name:"Cam Camper",colleges:["Indiana"],teams:["Minnesota Vikings"]},
+  {name:"Brashard Smith",colleges:["SMU"],teams:["Kansas City Chiefs"]},
+  {name:"Tyler Shough",colleges:["Texas Tech","Oregon","Louisville"],teams:["New Orleans Saints"]},
+  {name:"Darius Taylor",colleges:["Minnesota"],teams:["Tennessee Titans"]},
+  {name:"Jacory Croskey-Merritt",colleges:["Arizona"],teams:["Las Vegas Raiders"]},
+  {name:"Sione Vaki",colleges:["Utah"],teams:["Atlanta Falcons"]},
+  {name:"Josh Cuevas",colleges:["Pittsburgh"],teams:["Pittsburgh Steelers"]},
+  {name:"Aireontae Ersery",colleges:["Minnesota"],teams:["Green Bay Packers"]},
+  {name:"Will Windham",colleges:["Alabama"],teams:["San Francisco 49ers"]},
+  {name:"Miles Frazier",colleges:["Florida International"],teams:["Las Vegas Raiders"]},
+  {name:"Jaylen Moody",colleges:["Alabama"],teams:["Las Vegas Raiders"]},
+  {name:"Caden Prieskorn",colleges:["Ole Miss"],teams:["Tennessee Titans"]},
+  {name:"Trey Amos",colleges:["Ole Miss"],teams:["Washington Commanders"]},
+  {name:"Jabari Butler",colleges:["Tennessee"],teams:["New England Patriots"]},
+  {name:"Darien Porter",colleges:["Iowa State"],teams:["Las Vegas Raiders"]},
+  {name:"Zah Frazier",colleges:["UTSA"],teams:["Dallas Cowboys"]},
+  {name:"Denzel Burke",colleges:["Ohio State"],teams:["Indianapolis Colts"]},
+  {name:"Kevin Winston Jr.",colleges:["Penn State"],teams:["Miami Dolphins"]},
+  {name:"Upton Stout",colleges:["Western Kentucky"],teams:["Dallas Cowboys"]},
+  {name:"Jaylen Reed",colleges:["Penn State"],teams:["San Francisco 49ers"]},
+  {name:"Dadrion Taylor-Demerson",colleges:["Texas Tech"],teams:["Tennessee Titans"]},
+  {name:"Theo Melin",colleges:["Iowa"],teams:["New England Patriots"]}
 ];
 
 // ── HELPERS ──────────────────────────────────────────────────────────────────
@@ -2916,7 +2945,7 @@ const STEP_LABELS = {
   [STEP.TEAM]: (ctx) => { const d = TEAM_DEMONYM[ctx.currentTarget] || ctx.currentTarget; const article = /^[aeiou]/i.test(d) ? 'an' : 'a'; return `Name ${article} ${d}`; },
   [STEP.PLAYER_TO_COLLEGE]: (ctx) => `Where did ${ctx.currentTarget} go to college?`,
   [STEP.COLLEGE]: (ctx) => `Name an NFL player who went to ${ctx.currentTarget}`,
-  [STEP.PLAYER_TO_TEAM]: (ctx) => `Name an NFL team ${ctx.currentTarget} played for`,
+  [STEP.PLAYER_TO_TEAM]: (ctx) => `Name an NFL team ${ctx.currentTarget} has played for`,
 };
 
 const STEP_HINT = {
@@ -2971,8 +3000,8 @@ function ChainConnector() {
   return (
     <div style={{
       display: "flex", alignItems: "center",
-      color: "#ffffff15", fontSize: 14, padding: "0 4px",
-    }}>→</div>
+      fontSize: 14, padding: "0 4px",
+    }}>🔗</div>
   );
 }
 
@@ -3009,9 +3038,9 @@ function TeamTracker({ usedTeams, total }) {
             fontSize: 9, fontFamily: "'Oswald', sans-serif",
             fontWeight: 700, letterSpacing: 0.5,
             padding: "3px 7px", borderRadius: 4,
-            background: used ? "#0d2a18" : "#0d0d1e",
-            border: `1px solid ${used ? "#22c55e55" : "#ffffff08"}`,
-            color: used ? "#22c55e" : "#ffffff18",
+            background: used ? "#0d2a18" : "#1a1408",
+            border: `1px solid ${used ? "#22c55e55" : "#7a5f1a55"}`,
+            color: used ? "#22c55e" : "#e8c060",
             transition: "all 0.3s",
             textTransform: "uppercase",
           }}>
@@ -3178,9 +3207,16 @@ export default function NFLChain() {
           background: "linear-gradient(135deg,#1a6b9e,#5bb8f5,#e8c060,#5fd88a)",
           WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
           letterSpacing: -1,
-        }}>The Chain</h1>
-        <p style={{ color: "#ffffff28", fontSize: 10, margin: "6px 0 0", letterSpacing: 3, textTransform: "uppercase" }}>
-          Link all 32 NFL teams · No repeats
+        }}>Complete The Chain</h1>
+        <p style={{
+          fontSize: 12, margin: "8px 0 0", letterSpacing: 1, textTransform: "uppercase",
+          background: "linear-gradient(135deg,#5fd88a,#e8c060,#5bb8f5,#4a9fd4)",
+          WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
+        }}>
+          by linking all 32 NFL teams without repeating
+        </p>
+        <p style={{ color: "#e8c060", fontSize: 13, margin: "8px 0 0", letterSpacing: 0.5 }}>
+          NFL Team 🔗 NFL Player 🔗 College 🔗 NFL Player 🔗 NFL Team
         </p>
       </div>
 
