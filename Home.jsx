@@ -202,7 +202,7 @@ export default function Home() {
         }} />
         <div style={{ position: 'relative', animation: 'heroIn 0.55s ease both', maxWidth: 600, margin: '0 auto' }}>
           <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: 5, textTransform: 'uppercase', color: '#c8a050', marginBottom: 18, opacity: 0.8 }}>
-            Ball Knowledge Games
+            Project Ball Knowledge
           </div>
           <h1 style={{ fontSize: 'clamp(48px, 9vw, 82px)', fontWeight: 900, letterSpacing: -1, textTransform: 'uppercase', lineHeight: 0.92, margin: '0 0 22px', color: '#ffffff' }}>
             Test Your{' '}
@@ -308,7 +308,7 @@ export default function Home() {
       {/* Footer */}
       <div style={{ borderTop: '1px solid #ffffff06', padding: '22px 28px', textAlign: 'center' }}>
         <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: 3, textTransform: 'uppercase', color: '#ffffff12', fontFamily: "'Oswald', sans-serif" }}>
-          Ball Knowledge Games
+          Project Ball Knowledge
         </span>
       </div>
     </div>
