@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { usePlayCount } from "./usePlayCount.js";
 
 const POS_COLORS = {
   QB:"#e74c3c", RB:"#e67e22", WR:"#d4ac0d", TE:"#27ae60",
@@ -878,6 +879,7 @@ export default function NFLCollegeTrivia() {
     40: { emoji: "🤜", msg: "Everything else can wait. Keep going." },
     50: { emoji: "🐐", msg: "Ok goat." },
   };
+  const trackPlay = usePlayCount("nfl-college-trivia");
   const inputRef = useRef(null);
 
   useEffect(() => { setQueue(shuffle(PLAYERS)); }, []);
@@ -1084,7 +1086,7 @@ export default function NFLCollegeTrivia() {
             {phase==="playing" && (
               <div style={{display:"flex",gap:8,animation:shake?"shake .5s ease":"none"}}>
                 <input ref={inputRef} value={answer} onChange={e=>setAnswer(e.target.value)}
-                  onKeyDown={e=>{ if(e.key==="Enter") handleSubmit(e); }}
+                  onKeyDown={e=>{ trackPlay(); if(e.key==="Enter") handleSubmit(e); }}
                   placeholder="Type the college..."
                   style={{
                     flex:1,background:"#07071a",border:"2px solid #141432",
