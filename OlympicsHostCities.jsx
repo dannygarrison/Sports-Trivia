@@ -187,7 +187,7 @@ export default function OlympicsHostCities() {
 
         {/* Header */}
         <div style={{ textAlign: "center", marginBottom: 32 }}>
-          <div style={{ fontSize: 9, letterSpacing: 4, color: "#5bb8f5", textTransform: "uppercase", marginBottom: 10, opacity: 0.8 }}>
+          <div style={{ fontSize: 9, letterSpacing: 4, color: "#9b59b6", textTransform: "uppercase", marginBottom: 10, opacity: 0.8 }}>
             Olympics
           </div>
           <h1 style={{
