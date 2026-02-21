@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { usePlayCount } from "./usePlayCount.js";
+import { usePlayCount } from "./usePlayCount.jsx";
 
 const POS_COLORS = {
   QB:"#e74c3c", RB:"#e67e22", WR:"#d4ac0d", TE:"#27ae60",
