@@ -1,5 +1,5 @@
 import { useState, useRef, useCallback } from "react";
-import { usePlayCount } from "./usePlayCount.js";
+import { usePlayCount } from "./usePlayCount.jsx";
 
 const SUPER_BOWLS = [
   { roman: "LX",    year: 2026, winner: "Seattle Seahawks",         loser: "New England Patriots",    mvp: "Kenneth Walker III",   mvpPos: "RB" },
@@ -85,7 +85,6 @@ const TEAM_ALIASES = {
   "chicago bears":           ["chicago", "bears"],
   "new york giants":         ["ny giants", "giants", "nyg"],
   "denver broncos":          ["denver", "broncos"],
-  "washington redskins":     ["washington", "redskins"],
   "philadelphia eagles":     ["philadelphia", "eagles", "philly", "philly eagles"],
   "san diego chargers":      ["san diego", "chargers"],
   "tennessee titans":        ["tennessee", "titans"],
