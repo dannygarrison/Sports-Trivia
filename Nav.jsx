@@ -41,21 +41,10 @@ export default function Nav() {
           fontFamily: "'Barlow Condensed', sans-serif",
           letterSpacing: 2,
           textTransform: 'uppercase',
-          color: '#ffffff33',
-          lineHeight: 1,
-        }}>
-          Project
-        </span>
-        <span style={{
-          fontSize: 18,
-          fontWeight: 900,
-          fontFamily: "'Barlow Condensed', sans-serif",
-          letterSpacing: 2,
-          textTransform: 'uppercase',
           color: '#ffffff',
           lineHeight: 1,
         }}>
-          Ball
+          Trivial
         </span>
         <span style={{
           fontSize: 18,
@@ -66,8 +55,7 @@ export default function Nav() {
           color: '#c8a050',
           lineHeight: 1,
         }}>
-          Knowledge
-        </span>
+          Sports
       </Link>
 
       {!isHome && (
