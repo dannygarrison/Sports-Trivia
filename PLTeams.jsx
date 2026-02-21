@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { usePlayCount } from "./usePlayCount.jsx";
 
 // All 51 clubs to have played in the Premier League (1992/93 - 2024/25)
 const PL_TEAMS = [
@@ -111,6 +112,7 @@ export default function PLTeams() {
   const [flash, setFlash] = useState(null);
   const [giveUp, setGiveUp] = useState(false);
   const [confirmGiveUp, setConfirmGiveUp] = useState(false);
+  const trackPlay = usePlayCount("pl-teams");
   const inputRef = useRef(null);
 
   const solved = solvedSet.size;
@@ -121,6 +123,7 @@ export default function PLTeams() {
   }, [done]);
 
   function handleInput(e) {
+    trackPlay();
     const val = e.target.value;
     setInput(val);
     const match = PL_TEAMS.find(t =>
