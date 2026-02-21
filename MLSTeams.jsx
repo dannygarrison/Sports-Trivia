@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { usePlayCount } from "./usePlayCount.jsx";
 
 const EASTERN = [
   { name: "Atlanta United", aliases: ["Atlanta United FC", "Atlanta"] },
@@ -172,6 +173,7 @@ export default function MLSTeams() {
   const [started, setStarted] = useState(false);
   const [timeElapsed, setTimeElapsed] = useState(0);
   const [finished, setFinished] = useState(false);
+  const trackPlay = usePlayCount("mls-teams");
   const inputRef = useRef(null);
   const timerRef = useRef(null);
 
@@ -200,6 +202,7 @@ export default function MLSTeams() {
   };
 
   const handleInput = (e) => {
+    trackPlay();
     if (!started) setStarted(true);
     const val = e.target.value;
     setInput(val);
