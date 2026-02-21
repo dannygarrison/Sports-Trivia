@@ -290,7 +290,7 @@ export default function PLTeams() {
             background: "#1a0808", border: "1px solid #e74c3c33", borderRadius: 12,
           }}>
             <div style={{ fontSize: 15, color: "#e74c3c", fontWeight: 700 }}>
-              You got {solved} of {TOTAL} — {TOTAL - solved} remaining shown in red
+              You got {solved} of {TOTAL}
             </div>
           </div>
         )}
