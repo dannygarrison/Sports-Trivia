@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useState, useRef, useEffect } from 'react'
-import { fetchPlayCounts } from './supabase.js'
+import { fetchPlayCounts } from './supabase.jsx'
 
 const SPORT_META = {
   ALL:    { label: 'All',    accent: '#c8a050' },
