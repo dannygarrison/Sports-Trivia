@@ -1,4 +1,5 @@
 import { useState, useRef, useCallback } from "react";
+import { usePlayCount } from "./usePlayCount.js";
 
 const SUPER_BOWLS = [
   { roman: "LX",    year: 2026, winner: "Seattle Seahawks",         loser: "New England Patriots",    mvp: "Kenneth Walker III",   mvpPos: "RB" },
@@ -185,7 +186,8 @@ const FIELDS = ["winner", "loser", "mvp"];
 function SuperBowlRow({ sb, rowSolved, onSolve, gaveUp, index }) {
   const [inputs, setInputs] = useState({ winner: "", loser: "", mvp: "" });
   const [flash, setFlash] = useState(null);
-  const winnerRef = useRef(null);
+const trackPlay = usePlayCount("super-bowl-history");
+    const winnerRef = useRef(null);
   const loserRef = useRef(null);
   const mvpRef = useRef(null);
   const refs = { winner: winnerRef, loser: loserRef, mvp: mvpRef };
@@ -193,6 +195,7 @@ function SuperBowlRow({ sb, rowSolved, onSolve, gaveUp, index }) {
   const allDone = rowSolved.size === 3;
 
   const handleInput = (field, val) => {
+    trackPlay();
     setInputs(prev => ({ ...prev, [field]: val }));
     let matched = false;
     if (field === "winner" && !rowSolved.has("winner") && matchesTeam(val, sb.winner)) matched = true;
