@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from "react";
+import { usePlayCount } from "./usePlayCount.jsx";
 
 // ~27,000 NFL players all-time (complete historical database)
 const NFL_PLAYER_SET = [
@@ -27297,6 +27298,7 @@ export default function NFLNameDump() {
   const [flash, setFlash] = useState(null);
   const [dupeMessage, setDupeMessage] = useState(null);
   const [suggestion, setSuggestion] = useState(null); // "did you mean?" candidate
+  const trackPlay = usePlayCount("nfl-name-dump");
   const inputRef = useRef(null);
 
   useEffect(() => {
@@ -27387,6 +27389,7 @@ export default function NFLNameDump() {
   }, [input, found, suggestion, acceptSuggestion]);
 
   const handleKey = (e) => {
+    trackPlay();
     if (e.key === "Enter") handleSubmit();
     if (e.key === "Escape") { setSuggestion(null); setFlash(null); }
   };
