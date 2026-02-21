@@ -8,7 +8,7 @@ const SPORT_META = {
   NBA:     { label: 'NBA',      accent: '#e67e22' },
   MLB:     { label: 'MLB',      accent: '#3498db' },
   SOCCER:  { label: 'Soccer',   accent: '#27ae60' },
-  OLYMPICS:{ label: 'Olympics', accent: '#5bb8f5' },
+  OLYMPICS:{ label: 'Olympics', accent: '#9b59b6' },
 }
 
 const GAMES = [
