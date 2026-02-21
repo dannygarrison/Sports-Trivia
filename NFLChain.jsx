@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from "react";
+import { usePlayCount } from "./usePlayCount.js";
 
 // ── DATA ─────────────────────────────────────────────────────────────────────
 
@@ -3068,6 +3069,7 @@ export default function NFLChain() {
   const [started, setStarted] = useState(false);
   const inputRef = useRef(null);
   const chainContainerRef = useRef(null);
+  const trackPlay = usePlayCount("nfl-chain");
 
   // Initialize with random team
   useEffect(() => {
@@ -3161,6 +3163,7 @@ export default function NFLChain() {
   }, [step, currentTarget, input, usedTeams, usedColleges, usedPlayers, reject]);
 
   const handleKeyDown = (e) => {
+    trackPlay();
     if (e.key === "Enter") handleSubmit();
   };
 
