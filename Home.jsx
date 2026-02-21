@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
+import { fetchPlayCounts } from './supabase.js'
 
 const SPORT_META = {
   ALL:    { label: 'All',    accent: '#c8a050' },
@@ -18,6 +19,8 @@ const GAMES = [
     description: 'Name the college for each NFL player. How long can you streak?',
     tag: 'STREAKS',
     available: true,
+    dateAdded: 1,
+    plays: 500,
   },
   {
     id: 'super-bowl-history',
@@ -27,6 +30,8 @@ const GAMES = [
     description: 'Name the winner, loser, and MVP for all 60 Super Bowls.',
     tag: 'COMPLETE THE SET',
     available: true,
+    dateAdded: 2,
+    plays: 300,
   },
   {
     id: 'nfl-name-dump',
@@ -36,15 +41,19 @@ const GAMES = [
     description: 'Just name as many NFL players as you can. ~27,000 in the database.',
     tag: 'FREE RECALL',
     available: true,
+    dateAdded: 3,
+    plays: 400,
   },
   {
     id: 'nfl-chain',
     path: '/games/nfl-chain',
-    title: 'The Chain',
+    title: 'Complete The Chain',
     sport: 'NFL',
     description: 'Link all 32 NFL teams through players and colleges. No repeats allowed.',
     tag: 'CHAIN GAME',
     available: true,
+    dateAdded: 9,
+    plays: 100,
   },
   {
     id: 'nba-scorers-grid',
@@ -54,6 +63,8 @@ const GAMES = [
     description: 'Name the top 5 all-time scorers for all 30 NBA franchises.',
     tag: 'COMPLETE THE SET',
     available: true,
+    dateAdded: 4,
+    plays: 250,
   },
   {
     id: 'world-series-history',
@@ -63,6 +74,8 @@ const GAMES = [
     description: 'Name the winner, loser, and MVP for every World Series since 1903.',
     tag: 'COMPLETE THE SET',
     available: true,
+    dateAdded: 5,
+    plays: 150,
   },
   {
     id: 'soccer-trivia',
@@ -72,6 +85,8 @@ const GAMES = [
     description: 'Name all 96 teams across the EPL, La Liga, Bundesliga, Serie A, and Ligue 1.',
     tag: 'FILL IN THE BLANK',
     available: true,
+    dateAdded: 6,
+    plays: 200,
   },
   {
     id: 'mls-teams',
@@ -81,6 +96,8 @@ const GAMES = [
     description: 'Name all 30 Major League Soccer clubs across the Eastern and Western Conferences.',
     tag: 'FILL IN THE BLANK',
     available: true,
+    dateAdded: 7,
+    plays: 175,
   },
   {
     id: 'pl-teams',
@@ -90,6 +107,8 @@ const GAMES = [
     description: 'Name all 51 clubs that have ever played in the Premier League since 1992.',
     tag: 'FILL IN THE BLANK',
     available: true,
+    dateAdded: 8,
+    plays: 125,
   },
 ]
 
@@ -165,16 +184,28 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState('ALL')
   const [search, setSearch] = useState('')
   const [searchFocused, setSearchFocused] = useState(false)
+  const [sortBy, setSortBy] = useState('newest')
+  const [playCounts, setPlayCounts] = useState({})
   const inputRef = useRef(null)
 
-  const filteredGames = GAMES.filter(g => {
+  useEffect(() => {
+    fetchPlayCounts().then(counts => setPlayCounts(counts))
+  }, [])
+
+  function sortGames(games) {
+    if (sortBy === 'newest') return [...games].sort((a, b) => b.dateAdded - a.dateAdded)
+    if (sortBy === 'popular') return [...games].sort((a, b) => (playCounts[b.id] ?? b.plays) - (playCounts[a.id] ?? a.plays))
+    return games
+  }
+
+  const filteredGames = sortGames(GAMES.filter(g => {
     const matchesSport = activeTab === 'ALL' || g.sport === activeTab
     const q = search.toLowerCase()
     const matchesSearch = g.title.toLowerCase().includes(q) ||
       g.sport.toLowerCase().includes(q) ||
       g.description.toLowerCase().includes(q)
     return matchesSport && matchesSearch
-  })
+  }))
 
   const sports = ['NFL', 'NBA', 'MLB', 'SOCCER']
   const groupedBySport = sports.map(sport => ({
@@ -195,6 +226,7 @@ export default function Home() {
         input[type=text]:focus { outline: none; }
         .tab-btn:hover { background: rgba(255,255,255,0.06) !important; color: #ffffff88 !important; }
         .sport-label:hover { background: rgba(200,160,80,0.22) !important; }
+        select option { background: #0e0e22; }
       `}</style>
 
       {/* Hero */}
@@ -240,8 +272,27 @@ export default function Home() {
           })}
         </div>
 
-        {/* Search */}
-        <div style={{
+        {/* Search + Sort */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          {/* Sort dropdown */}
+          <select
+            value={sortBy}
+            onChange={e => setSortBy(e.target.value)}
+            style={{
+              background: '#0a0a18', border: '1px solid #ffffff10',
+              borderRadius: 10, padding: '8px 14px',
+              color: '#ffffff66', fontSize: 12,
+              fontFamily: "'Oswald', sans-serif",
+              fontWeight: 600, letterSpacing: 1,
+              cursor: 'pointer', outline: 'none',
+            }}
+          >
+            <option value="newest">Newest</option>
+            <option value="popular">Most Popular</option>
+          </select>
+
+          {/* Search */}
+          <div style={{
           display: 'flex', alignItems: 'center', gap: 8,
           background: searchFocused ? '#0e0e22' : '#0a0a18',
           border: `1px solid ${searchFocused ? '#c8a05044' : '#ffffff10'}`,
@@ -264,8 +315,9 @@ export default function Home() {
             }}
           />
           {search && (
-            <button onClick={() => setSearch('')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#c8a05099', fontSize: 14, padding: 0, lineHeight: 1 }}>✕</button>
-          )}
+              <button onClick={() => setSearch('')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#c8a05099', fontSize: 14, padding: 0, lineHeight: 1 }}>✕</button>
+            )}
+          </div>
         </div>
       </div>
 
