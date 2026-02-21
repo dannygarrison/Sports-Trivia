@@ -3,11 +3,12 @@ import { useState, useRef, useEffect } from 'react'
 import { fetchPlayCounts } from './supabase.jsx'
 
 const SPORT_META = {
-  ALL:    { label: 'All',    accent: '#c8a050' },
-  NFL:    { label: 'NFL',    accent: '#e74c3c' },
-  NBA:    { label: 'NBA',    accent: '#e67e22' },
-  MLB:    { label: 'MLB',    accent: '#3498db' },
-  SOCCER: { label: 'Soccer', accent: '#27ae60' },
+  ALL:     { label: 'All',      accent: '#c8a050' },
+  NFL:     { label: 'NFL',      accent: '#e74c3c' },
+  NBA:     { label: 'NBA',      accent: '#e67e22' },
+  MLB:     { label: 'MLB',      accent: '#3498db' },
+  SOCCER:  { label: 'Soccer',   accent: '#27ae60' },
+  OLYMPICS:{ label: 'Olympics', accent: '#5bb8f5' },
 }
 
 const GAMES = [
@@ -110,6 +111,17 @@ const GAMES = [
     dateAdded: 8,
     plays: 125,
   },
+  {
+    id: 'olympics-host-cities',
+    path: '/games/olympics-host-cities',
+    title: 'Olympic Host Cities',
+    sport: 'OLYMPICS',
+    description: 'Name all 55 cities that have hosted the Summer and Winter Olympic Games.',
+    tag: 'FILL IN THE BLANK',
+    available: true,
+    dateAdded: 10,
+    plays: 0,
+  },
 ]
 
 function GameCard({ game, index }) {
@@ -207,7 +219,7 @@ export default function Home() {
     return matchesSport && matchesSearch
   }))
 
-  const sports = ['NFL', 'NBA', 'MLB', 'SOCCER']
+  const sports = ['NFL', 'NBA', 'MLB', 'SOCCER', 'OLYMPICS']
   const groupedBySport = sports.map(sport => ({
     sport,
     games: filteredGames.filter(g => g.sport === sport),
