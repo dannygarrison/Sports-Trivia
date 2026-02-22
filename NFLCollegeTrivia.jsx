@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import { usePlayCount } from "./usePlayCount.jsx";
 
 const POS_COLORS = {
@@ -958,6 +959,10 @@ export default function NFLCollegeTrivia() {
       display:"flex", flexDirection:"column", alignItems:"center",
       padding:"84px 16px 56px",
     }}>
+      <Helmet>
+  <title>NFL College Trivia – TrivialSports</title>
+  <meta name="description" content="Guess which college each NFL player attended. Test your knowledge of football's pipeline from campus to the pros." />
+</Helmet>
       <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet" />
       <style>{`
         @keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}
