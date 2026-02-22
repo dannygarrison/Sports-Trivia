@@ -6,4 +6,13 @@ export default defineConfig({
   server: {
     historyApiFallback: true,
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'supabase': ['@supabase/supabase-js'],
+        }
+      }
+    }
+  }
 })
