@@ -5966,7 +5966,7 @@ export default function NFLChain() {
         </div>
       )}
 
-      {/* Win state */}
+   {/* Win state */}
       {won && (
         <div style={{
           width: "100%", maxWidth: 520, marginBottom: 24,
@@ -5980,6 +5980,73 @@ export default function NFLChain() {
           <div style={{ fontSize: 13, color: "#a0a0c0", marginTop: 8 }}>
             All 32 NFL teams chained in {chain.length} links
           </div>
+
+          {/* Share section */}
+          <div style={{ marginTop: 24, borderTop: "1px solid #22c55e22", paddingTop: 20 }}>
+            <div style={{ fontSize: 9, letterSpacing: 3, textTransform: "uppercase", color: "#ffffff30", marginBottom: 12, fontFamily: "'Oswald', sans-serif" }}>
+              Share your result
+            </div>
+            <div style={{ display: "flex", gap: 8, justifyContent: "center", flexWrap: "wrap" }}>
+
+              {/* Copy to clipboard */}
+              <button onClick={() => {
+                const text = `💪 I completed the NFL Chain on TrivialSports!\n⛓️ Linked all 32 NFL teams using players and colleges\n🏈 Can you do it? trivialsports.com/games/nfl-chain`;
+                navigator.clipboard.writeText(text).then(() => {
+                  const btn = document.getElementById('copy-btn');
+                  btn.innerText = '✓ Copied!';
+                  setTimeout(() => btn.innerText = 'Copy', 2000);
+                });
+              }} id="copy-btn" style={{
+                background: "#ffffff12", color: "#ffffff88",
+                border: "1px solid #ffffff22", borderRadius: 8,
+                padding: "9px 16px", fontSize: 11, fontWeight: 700,
+                cursor: "pointer", letterSpacing: 1.5, textTransform: "uppercase",
+                fontFamily: "'Oswald', sans-serif", transition: "all .2s",
+              }}>Copy</button>
+
+              {/* Twitter/X */}
+              <button onClick={() => {
+                const text = encodeURIComponent(`💪 I completed the NFL Chain on TrivialSports!\n⛓️ Linked all 32 NFL teams using players and colleges\n🏈 Can you do it? trivialsports.com/games/nfl-chain`);
+                window.open(`https://twitter.com/intent/tweet?text=${text}`, '_blank');
+              }} style={{
+                background: "#000000", color: "#ffffff",
+                border: "1px solid #333333", borderRadius: 8,
+                padding: "9px 16px", fontSize: 11, fontWeight: 700,
+                cursor: "pointer", letterSpacing: 1.5, textTransform: "uppercase",
+                fontFamily: "'Oswald', sans-serif", transition: "all .2s",
+              }}>𝕏 Post</button>
+
+              {/* Bluesky */}
+              <button onClick={() => {
+                const text = encodeURIComponent(`💪 I completed the NFL Chain on TrivialSports!\n⛓️ Linked all 32 NFL teams using players and colleges\n🏈 Can you do it? trivialsports.com/games/nfl-chain`);
+                window.open(`https://bsky.app/intent/compose?text=${text}`, '_blank');
+              }} style={{
+                background: "#0085ff", color: "#ffffff",
+                border: "none", borderRadius: 8,
+                padding: "9px 16px", fontSize: 11, fontWeight: 700,
+                cursor: "pointer", letterSpacing: 1.5, textTransform: "uppercase",
+                fontFamily: "'Oswald', sans-serif", transition: "all .2s",
+              }}>Bluesky</button>
+
+              {/* Instagram */}
+              <button onClick={() => {
+                const text = `💪 I completed the NFL Chain on TrivialSports!\n⛓️ Linked all 32 NFL teams using players and colleges\n🏈 Can you do it? trivialsports.com/games/nfl-chain`;
+                navigator.clipboard.writeText(text).then(() => {
+                  const btn = document.getElementById('ig-btn');
+                  btn.innerText = '✓ Copied — paste in story!';
+                  setTimeout(() => btn.innerText = '📸 Instagram', 3000);
+                });
+              }} id="ig-btn" style={{
+                background: "linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045)",
+                color: "#ffffff", border: "none", borderRadius: 8,
+                padding: "9px 16px", fontSize: 11, fontWeight: 700,
+                cursor: "pointer", letterSpacing: 1.5, textTransform: "uppercase",
+                fontFamily: "'Oswald', sans-serif", transition: "all .2s",
+              }}>📸 Instagram</button>
+
+            </div>
+          </div>
+
           <button onClick={handleReset} style={{
             marginTop: 20, background: "#22c55e", color: "#07070f",
             border: "none", borderRadius: 10, padding: "11px 32px",
