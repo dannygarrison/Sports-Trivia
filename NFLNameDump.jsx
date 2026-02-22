@@ -27438,6 +27438,7 @@ export default function NFLNameDump() {
           <h1 style={{
             fontSize: "clamp(28px, 5vw, 48px)", fontWeight: 900, textTransform: "uppercase",
             lineHeight: 1, margin: "0 0 10px", color: "#ffffff", letterSpacing: -0.5,
+            whiteSpace: "nowrap",
           }}>
             Name as many NFL players as you can.
           </h1>
