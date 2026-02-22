@@ -176,10 +176,15 @@ export default function OlympicsHostCities() {
       fontFamily: "'Oswald', sans-serif",
       paddingTop: 80, paddingBottom: 60,
     }}>
-       <Helmet>                                  
-        <title>Olympics Host Cities – TrivialSports</title>
-        <meta name="description" content="Name every city to host the Summer or Winter Olympics. How many can you remember?" />
-      </Helmet>    
+       <Helmet>
+  <title>Olympics Host Cities – TrivialSports</title>
+  <meta name="description" content="Name every city to host the Summer or Winter Olympics. How many can you remember?" />
+  <meta property="og:title" content="Olympics Host Cities – TrivialSports" />
+  <meta property="og:description" content="Name every city to host the Summer or Winter Olympics. How many can you remember?" />
+  <meta property="og:url" content="https://trivialsports.com/games/olympics-host-cities" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://trivialsports.com/trivspo_banner.png" />
+</Helmet>
       <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
       <style>{`
         @keyframes shake { 0%,100%{transform:translateX(0)} 20%{transform:translateX(-6px)} 40%{transform:translateX(6px)} 60%{transform:translateX(-4px)} 80%{transform:translateX(4px)} }
