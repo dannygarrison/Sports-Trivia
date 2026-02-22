@@ -435,6 +435,11 @@ function TeamCard({ team, solved, onSolve, gaveUp }) {
         <Helmet>
   <title>NBA Scorers Grid – TrivialSports</title>
   <meta name="description" content="Name the top 5 all-time scorers for all 30 NBA franchises. A new challenge every day." />
+  <meta property="og:title" content="NBA Scorers Grid – TrivialSports" />
+  <meta property="og:description" content="Name the top 5 all-time scorers for all 30 NBA franchises. A new challenge every day." />
+  <meta property="og:url" content="https://trivialsports.com/games/nba-scorers-grid" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://trivialsports.com/trivspo_banner.png" />
 </Helmet>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <div>
