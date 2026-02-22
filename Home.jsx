@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "react-helmet-async"
 import { useState, useRef, useEffect } from 'react'
-import { fetchPlayCounts } from './supabase.jsx'
 
 const SPORT_META = {
   ALL:     { label: 'All',      accent: '#c8a050' },
@@ -139,15 +138,6 @@ function GameCard({ game, index }) {
       boxShadow: hovered ? `0 16px 40px ${accent}18, 0 4px 12px #00000066` : '0 2px 8px #00000044',
       position: 'relative', overflow: 'hidden', height: '100%',
     }}>
-      <Helmet>
-  <title>TrivialSports – Free Sports Trivia Games for NFL, NBA & Soccer</title>
-  <meta name="description" content="Test your sports knowledge with free trivia games covering the NFL, NBA, Premier League, MLS, MLB, Olympics, and more. Play now at TrivialSports." />
-  <meta property="og:title" content="TrivialSports – Free Sports Trivia Games for NFL, NBA & Soccer" />
-  <meta property="og:description" content="Test your sports knowledge with free trivia games covering the NFL, NBA, Premier League, MLS, MLB, Olympics, and more. Play now at TrivialSports." />
-  <meta property="og:url" content="https://trivialsports.com" />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://trivialsports.com/trivspo_banner.png" />
-</Helmet>
       <div style={{
         position: 'absolute', top: -20, left: -20, width: 120, height: 120,
         borderRadius: '50%', background: accent, opacity: hovered ? 0.07 : 0.03,
@@ -211,7 +201,9 @@ export default function Home() {
   const inputRef = useRef(null)
 
   useEffect(() => {
-    fetchPlayCounts().then(counts => setPlayCounts(counts))
+    import('./supabase.jsx').then(({ fetchPlayCounts }) => {
+      fetchPlayCounts().then(counts => setPlayCounts(counts))
+    })
   }, [])
 
   function sortGames(games) {
@@ -239,6 +231,15 @@ export default function Home() {
 
   return (
     <div style={{ minHeight: '100vh', background: '#07070f', fontFamily: "'Oswald', sans-serif", paddingTop: 56 }}>
+      <Helmet>
+        <title>TrivialSports – Free Sports Trivia Games for NFL, NBA & Soccer</title>
+        <meta name="description" content="Test your sports knowledge with free trivia games covering the NFL, NBA, Premier League, MLS, MLB, Olympics, and more. Play now at TrivialSports." />
+        <meta property="og:title" content="TrivialSports – Free Sports Trivia Games for NFL, NBA & Soccer" />
+        <meta property="og:description" content="Test your sports knowledge with free trivia games covering the NFL, NBA, Premier League, MLS, MLB, Olympics, and more. Play now at TrivialSports." />
+        <meta property="og:url" content="https://trivialsports.com" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://trivialsports.com/trivspo_banner.png" />
+      </Helmet>
       <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet" />
       <style>{`
         @keyframes fadeUp { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:translateY(0); } }
@@ -305,7 +306,6 @@ export default function Home() {
 
         {/* Search + Sort */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          {/* Sort dropdown */}
           <select
             value={sortBy}
             onChange={e => setSortBy(e.target.value)}
@@ -322,30 +322,29 @@ export default function Home() {
             <option value="popular">Most Popular</option>
           </select>
 
-          {/* Search */}
           <div style={{
-          display: 'flex', alignItems: 'center', gap: 8,
-          background: searchFocused ? '#0e0e22' : '#0a0a18',
-          border: `1px solid ${searchFocused ? '#c8a05044' : '#ffffff10'}`,
-          borderRadius: 10, padding: '8px 14px',
-          transition: 'all 0.2s ease', minWidth: 220,
-        }}>
-          <span style={{ color: '#ffffff28', fontSize: 15, lineHeight: 1 }}>⌕</span>
-          <input
-            type="text"
-            ref={inputRef}
-            value={search}
-            onChange={e => setSearch(e.target.value)}
-            onFocus={() => setSearchFocused(true)}
-            onBlur={() => setSearchFocused(false)}
-            placeholder="Search games..."
-            style={{
-              background: 'transparent', border: 'none', color: '#ffffff',
-              fontSize: 13, fontFamily: "'Oswald', sans-serif",
-              fontWeight: 600, letterSpacing: 1, width: '100%',
-            }}
-          />
-          {search && (
+            display: 'flex', alignItems: 'center', gap: 8,
+            background: searchFocused ? '#0e0e22' : '#0a0a18',
+            border: `1px solid ${searchFocused ? '#c8a05044' : '#ffffff10'}`,
+            borderRadius: 10, padding: '8px 14px',
+            transition: 'all 0.2s ease', minWidth: 220,
+          }}>
+            <span style={{ color: '#ffffff28', fontSize: 15, lineHeight: 1 }}>⌕</span>
+            <input
+              type="text"
+              ref={inputRef}
+              value={search}
+              onChange={e => setSearch(e.target.value)}
+              onFocus={() => setSearchFocused(true)}
+              onBlur={() => setSearchFocused(false)}
+              placeholder="Search games..."
+              style={{
+                background: 'transparent', border: 'none', color: '#ffffff',
+                fontSize: 13, fontFamily: "'Oswald', sans-serif",
+                fontWeight: 600, letterSpacing: 1, width: '100%',
+              }}
+            />
+            {search && (
               <button onClick={() => setSearch('')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#c8a05099', fontSize: 14, padding: 0, lineHeight: 1 }}>✕</button>
             )}
           </div>
