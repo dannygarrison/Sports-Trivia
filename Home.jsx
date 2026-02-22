@@ -140,9 +140,8 @@ function GameCard({ game, index }) {
       position: 'relative', overflow: 'hidden', height: '100%',
     }}>
       <Helmet>
-  <title>TrivialSports – Sports Trivia Games</title>
-  <meta name="description" content="Free sports trivia games covering the NFL, NBA, Premier League, MLS, MLB, and more. Play now." />
-  <meta property="og:title" content="TrivialSports – Sports Trivia Games" />
+<title>TrivialSports – Free Sports Trivia Games for NFL, NBA & Soccer</title>
+<meta name="description" content="Test your sports knowledge with free trivia games covering the NFL, NBA, Premier League, MLS, MLB, Olympics, and more. Play now at TrivialSports." />  <meta property="og:title" content="TrivialSports – Sports Trivia Games" />
   <meta property="og:description" content="Free sports trivia games covering the NFL, NBA, Premier League, MLS, MLB, and more. Play now." />
   <meta property="og:url" content="https://trivialsports.com" />
   <meta property="og:type" content="website" />
