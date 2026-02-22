@@ -293,7 +293,7 @@ const PLAYERS = [
   {name:"Dameon Pierce",colleges:["Florida"],teams:["Houston Texans"]},
   {name:"Rachaad White",colleges:["Arizona State","Portland State"],teams:["Tampa Bay Buccaneers"]},
   {name:"Tony Pollard",colleges:["Memphis"],teams:["Dallas Cowboys","Tennessee Titans"]},
-  {name:"Rico Dowdle",colleges:["South Carolina"],teams:["Dallas Cowboys"]},
+  {name:"Rico Dowdle",colleges:["South Carolina"],teams:["Dallas Cowboys","Carolina Panthers"]},
   {name:"James Conner",colleges:["Pittsburgh"],teams:["Pittsburgh Steelers","Arizona Cardinals"]},
   {name:"Zack Moss",colleges:["Utah"],teams:["Buffalo Bills","Indianapolis Colts","Cincinnati Bengals"]},
   {name:"David Montgomery",colleges:["Iowa State"],teams:["Chicago Bears","Detroit Lions"]},
@@ -3057,6 +3057,53 @@ function TeamTracker({ usedTeams, total }) {
   );
 }
 
+// ── COLLEGE TRACKER ──────────────────────────────────────────────────────────
+// Build a lookup: canonical college name → shortest display label
+const COLLEGE_SHORT_LABEL = (() => {
+  const map = {};
+  // For each alias entry, the key is usually shorter than the full name
+  for (const [short, variants] of Object.entries(COLLEGE_ALIASES)) {
+    // Map every variant back to the short key
+    for (const v of variants) {
+      if (!map[v] || short.length < map[v].length) map[v] = short;
+    }
+    if (!map[short]) map[short] = short;
+  }
+  return map;
+})();
+
+function getShortLabel(college) {
+  const lower = college.toLowerCase();
+  // Check if any alias key matches
+  for (const [short, variants] of Object.entries(COLLEGE_ALIASES)) {
+    if (variants.includes(lower) || short === lower) return short.toUpperCase();
+  }
+  // Fallback: use the college name itself, trimmed
+  return college.length > 12 ? college.substring(0, 11).trim() + '…' : college;
+}
+
+function CollegeTracker({ usedColleges }) {
+  const colleges = [...usedColleges].sort();
+  if (colleges.length === 0) return null;
+  return (
+    <div style={{ display: "flex", flexWrap: "wrap", gap: 4, maxWidth: 760 }}>
+      {colleges.map(college => (
+        <div key={college} title={college} style={{
+          fontSize: 9, fontFamily: "'Oswald', sans-serif",
+          fontWeight: 700, letterSpacing: 0.5,
+          padding: "3px 7px", borderRadius: 4,
+          background: "#0a1a2a",
+          border: "1px solid #5bb8f533",
+          color: "#5bb8f5",
+          textTransform: "uppercase",
+        }}>
+          {getShortLabel(college)}
+        </div>
+      ))}
+    </div>
+  );
+}
+
 // ── MAIN GAME ────────────────────────────────────────────────────────────────
 export default function NFLChain() {
   const [step, setStep] = useState(STEP.TEAM);
@@ -3255,9 +3302,19 @@ export default function NFLChain() {
       </div>
 
       {/* Team tracker */}
-      <div style={{ marginBottom: 24, width: "100%", maxWidth: 640 }}>
+      <div style={{ marginBottom: 12, width: "100%", maxWidth: 760 }}>
         <TeamTracker usedTeams={usedTeams} total={32} />
       </div>
+
+      {/* College tracker */}
+      {usedColleges.size > 0 && (
+        <div style={{ marginBottom: 24, width: "100%", maxWidth: 760 }}>
+          <div style={{ fontSize: 8, color: "#ffffff15", letterSpacing: 4, textTransform: "uppercase", marginBottom: 6 }}>
+            Colleges Used
+          </div>
+          <CollegeTracker usedColleges={usedColleges} />
+        </div>
+      )}
 
       {/* Win state */}
       {won && (
