@@ -56,7 +56,6 @@ export default function Nav() {
           lineHeight: 1,
         }}>
           Sports
-        </span>
       </Link>
 
       {!isHome && (
