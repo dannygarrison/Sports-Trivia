@@ -1,4 +1,5 @@
 import { useState, useRef, useCallback } from "react";
+import { Helmet } from "react-helmet-async";
 import { usePlayCount } from "./usePlayCount.jsx";
 
 const SUPER_BOWLS = [
@@ -231,6 +232,10 @@ const trackPlay = usePlayCount("super-bowl-history");
         display: "flex", flexDirection: "column", justifyContent: "center",
         borderRight: "1px solid #ffffff07",
       }}>
+        <Helmet>
+  <title>Super Bowl History – TrivialSports</title>
+  <meta name="description" content="Test your Super Bowl knowledge. Can you name the winners, MVPs, and scores from NFL championship history?" />
+</Helmet>
         <div style={{
           fontSize: 13, fontWeight: 900, color: allDone ? "#c8a050" : "#ffffff88",
           fontFamily: "'Oswald', sans-serif", letterSpacing: 0.5,
