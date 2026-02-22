@@ -1,4 +1,5 @@
 import { useState, useRef, useCallback, useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import { usePlayCount } from "./usePlayCount.jsx";
 
 // MVP award started in 1955. Pre-1955 entries have mvp: null.
@@ -315,6 +316,10 @@ function WorldSeriesRow({ ws, rowSolved, onSolve, gaveUp, index }) {
         display: "flex", flexDirection: "column", justifyContent: "center",
         borderRight: "1px solid #ffffff07",
       }}>
+        <Helmet>
+  <title>World Series History – TrivialSports</title>
+  <meta name="description" content="How well do you know baseball's biggest stage? Test your World Series knowledge across decades of MLB history." />
+</Helmet>
         <div style={{
           fontSize: 13, fontWeight: 900,
           color: allDone ? "#4db87a" : "#ffffff88",
