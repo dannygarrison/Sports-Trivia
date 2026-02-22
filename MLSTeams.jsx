@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import { usePlayCount } from "./usePlayCount.jsx";
 
 const EASTERN = [
@@ -64,6 +65,10 @@ function TeamSlot({ team, solved, revealed, flashing }) {
       border: `1px solid ${flashing ? "#22c55e55" : revealed ? "#e74c3c22" : solved ? "#ffffff10" : "#ffffff07"}`,
       transition: "all 0.3s",
     }}>
+      <Helmet>
+  <title>MLS Teams – TrivialSports</title>
+  <meta name="description" content="Name every team in Major League Soccer. How many MLS clubs can you recall?" />
+</Helmet>
       <div style={{
         width: 7,
         height: 7,
