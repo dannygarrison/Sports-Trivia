@@ -27456,7 +27456,7 @@ export default function NFLNameDump() {
           </div>
           <div style={{ color: "#ffffff10", fontSize: 28, fontWeight: 100 }}>|</div>
           <div style={{ fontSize: 13, color: "#c8a050", fontFamily: "Georgia, serif", maxWidth: 340, lineHeight: 1.6 }}>
-            Database covers ~27,000 players.<br />First + last name required.
+            First + last name required.
           </div>
         </div>
 
@@ -27519,7 +27519,7 @@ export default function NFLNameDump() {
           )}
           {flash === "miss" && notFound && (
             <div style={{ fontSize: 12, color: "#e74c3c88", fontFamily: "Georgia, serif" }}>
-              "{notFound}" not in our database. Check spelling or try the full name.
+              "{notFound}" not found. Check spelling or try the full name.
             </div>
           )}
           {flash === "dupe" && dupeMessage && (
