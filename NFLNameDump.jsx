@@ -27439,7 +27439,7 @@ export default function NFLNameDump() {
             fontSize: "clamp(28px, 5vw, 48px)", fontWeight: 900, textTransform: "uppercase",
             lineHeight: 1, margin: "0 0 10px", color: "#ffffff", letterSpacing: -0.5,
           }}>
-            Just Naming Dudes.
+            Name as many NFL players as you can.
           </h1>
           <p style={{ fontSize: 14, color: "#c8a050", fontFamily: "Georgia, serif", margin: 0 }}>
             Type a first and last name, hit Enter. See how many you can name.
