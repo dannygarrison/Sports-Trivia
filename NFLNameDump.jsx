@@ -27422,6 +27422,11 @@ export default function NFLNameDump() {
       <Helmet>
   <title>NFL Name Dump – TrivialSports</title>
   <meta name="description" content="Name as many NFL players as you can. How many can you remember?" />
+  <meta property="og:title" content="NFL Name Dump – TrivialSports" />
+  <meta property="og:description" content="Name as many NFL players as you can. How many can you remember?" />
+  <meta property="og:url" content="https://trivialsports.com/games/nfl-name-dump" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://trivialsports.com/trivspo_banner.png" />
 </Helmet>
       <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet" />
       <style>{`
