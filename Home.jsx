@@ -276,9 +276,6 @@ export default function Home() {
               fill="url(#goldGrad)"
             >TRIVIAL SPORTS</text>
           </svg>
-          <p style={{ fontSize: 18, color: '#a0a0c0', lineHeight: 1.7, fontFamily: "'Oswald', sans-serif", whiteSpace: 'nowrap', margin: '0 auto' }}>
-            Need to kill time? Run out the clock with some sports trivia.
-          </p>
         </div>
       </div>
 
