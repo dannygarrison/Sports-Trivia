@@ -207,7 +207,7 @@ const PLAYERS = [
   { name: "Dameon Pierce", colleges: ["Florida"], position: "RB", teams: ["Houston Texans"] },
   { name: "Rachaad White", colleges: ["Arizona State", "Portland State"], position: "RB", teams: ["Tampa Bay Buccaneers"] },
   { name: "Tony Pollard", colleges: ["Memphis"], position: "RB", teams: ["Dallas Cowboys", "Tennessee Titans"] },
-  { name: "Rico Dowdle", colleges: ["South Carolina"], position: "RB", teams: ["Dallas Cowboys"] },
+  { name: "Rico Dowdle", colleges: ["South Carolina"], position: "RB", teams: ["Dallas Cowboys", "Carolina Panthers"] },
   { name: "James Conner", colleges: ["Pittsburgh"], position: "RB", teams: ["Pittsburgh Steelers", "Arizona Cardinals"] },
   { name: "Zack Moss", colleges: ["Utah"], position: "RB", teams: ["Buffalo Bills", "Indianapolis Colts", "Cincinnati Bengals"] },
   { name: "David Montgomery", colleges: ["Iowa State"], position: "RB", teams: ["Chicago Bears", "Detroit Lions"] },
