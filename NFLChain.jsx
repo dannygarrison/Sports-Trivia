@@ -4852,7 +4852,7 @@ const PLAYERS = [
   {name:"Zion Tupuola-Fetui",colleges:["Washington"],teams:["Las Vegas Raiders"]},
   {name:"Tanner McLachlan",colleges:["Arizona"],teams:["Indianapolis Colts"]},
   {name:"Travis Hunter",colleges:["Colorado"],teams:["Jacksonville Jaguars"]},
-  {name:"Cam Ward",colleges:["Washington","Miami (FL)"],teams:["Tennessee Titans"]},
+  {name:"Cam Ward",colleges:["Washington State","Miami (FL)","Incarnate Word"],teams:["Tennessee Titans"]},
   {name:"Shedeur Sanders",colleges:["Jackson State","Colorado"],teams:["Cleveland Browns"]},
   {name:"Abdul Carter",colleges:["Penn State"],teams:["New York Giants"]},
   {name:"Will Campbell",colleges:["LSU"],teams:["New England Patriots"]},
