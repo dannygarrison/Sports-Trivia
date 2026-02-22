@@ -235,6 +235,11 @@ const trackPlay = usePlayCount("super-bowl-history");
         <Helmet>
   <title>Super Bowl History – TrivialSports</title>
   <meta name="description" content="Test your Super Bowl knowledge. Can you name the winners, MVPs, and scores from NFL championship history?" />
+  <meta property="og:title" content="Super Bowl History – TrivialSports" />
+  <meta property="og:description" content="Test your Super Bowl knowledge. Can you name the winners, MVPs, and scores from NFL championship history?" />
+  <meta property="og:url" content="https://trivialsports.com/games/super-bowl-history" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://trivialsports.com/trivspo_banner.png" />
 </Helmet>
         <div style={{
           fontSize: 13, fontWeight: 900, color: allDone ? "#c8a050" : "#ffffff88",
