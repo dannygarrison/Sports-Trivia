@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import { usePlayCount } from "./usePlayCount.jsx";
 
 // All 51 clubs to have played in the Premier League (1992/93 - 2024/25)
@@ -84,6 +85,10 @@ function TeamSlot({ team, solved, revealed, flashing }) {
       border: `1px solid ${flashing ? "#22c55e55" : revealed ? "#e74c3c22" : solved ? "#ffffff12" : "#ffffff07"}`,
       transition: "all 0.3s",
     }}>
+      <Helmet>
+  <title>Premier League Teams – TrivialSports</title>
+  <meta name="description" content="Name every club to have played in the Premier League since 1992. Think you know them all?" />
+</Helmet>
       <div style={{
         width: 7, height: 7, borderRadius: "50%", flexShrink: 0,
         background: revealed ? "#e74c3c" : solved ? "#22c55e" : "#ffffff15",
