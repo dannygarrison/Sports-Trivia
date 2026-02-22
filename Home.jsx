@@ -261,26 +261,11 @@ export default function Home() {
           />
           <svg viewBox="0 0 520 90" style={{ width: 'clamp(300px, 70vw, 520px)', display: 'block', margin: '0 auto 22px', overflow: 'visible' }}>
             <defs>
-              <linearGradient id="goldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
                 <stop offset="0%" stopColor="#f0d070" />
                 <stop offset="100%" stopColor="#b8860b" />
               </linearGradient>
             </defs>
-            {/* Blue outline layer */}
-            <text
-              x="50%" y="78"
-              textAnchor="middle"
-              fontFamily="'Oswald', sans-serif"
-              fontWeight="900"
-              fontSize="82"
-              letterSpacing="-1"
-              textTransform="uppercase"
-              fill="none"
-              stroke="#5bb8f5"
-              strokeWidth="6"
-              strokeLinejoin="round"
-            >TRIVIAL SPORTS</text>
-            {/* Gold gradient fill layer */}
             <text
               x="50%" y="78"
               textAnchor="middle"
