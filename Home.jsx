@@ -37,7 +37,7 @@ const GAMES = [
   {
     id: 'nfl-name-dump',
     path: '/games/nfl-name-dump',
-    title: 'Name Every Player',
+    title: 'Just Naming Dudes',
     sport: 'NFL',
     description: 'Just name as many NFL players as you can. ~27,000 in the database.',
     tag: 'FREE RECALL',
