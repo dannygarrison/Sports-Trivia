@@ -319,6 +319,11 @@ function WorldSeriesRow({ ws, rowSolved, onSolve, gaveUp, index }) {
         <Helmet>
   <title>World Series History – TrivialSports</title>
   <meta name="description" content="How well do you know baseball's biggest stage? Test your World Series knowledge across decades of MLB history." />
+  <meta property="og:title" content="World Series History – TrivialSports" />
+  <meta property="og:description" content="How well do you know baseball's biggest stage? Test your World Series knowledge across decades of MLB history." />
+  <meta property="og:url" content="https://trivialsports.com/games/world-series-history" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://trivialsports.com/trivspo_banner.png" />
 </Helmet>
         <div style={{
           fontSize: 13, fontWeight: 900,
