@@ -259,14 +259,38 @@ export default function Home() {
             alt="Trivial Sports Logo"
             style={{ width: 120, display: 'block', margin: '0 auto 16px' }}
           />
-          <h1 style={{
-            fontSize: 'clamp(48px, 9vw, 82px)', fontWeight: 900, letterSpacing: -1,
-            textTransform: 'uppercase', lineHeight: 0.92, margin: '0 0 22px',
-            fontFamily: "'Oswald', sans-serif",
-          }}>
-            <span style={{ color: '#ffffff' }}>Trivial </span>
-            <span style={{ color: '#c8a050' }}>Sports</span>
-          </h1>
+          <svg viewBox="0 0 520 90" style={{ width: 'clamp(300px, 70vw, 520px)', display: 'block', margin: '0 auto 22px', overflow: 'visible' }}>
+            <defs>
+              <linearGradient id="goldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stopColor="#f0d070" />
+                <stop offset="100%" stopColor="#b8860b" />
+              </linearGradient>
+            </defs>
+            {/* Blue outline layer */}
+            <text
+              x="50%" y="78"
+              textAnchor="middle"
+              fontFamily="'Oswald', sans-serif"
+              fontWeight="900"
+              fontSize="82"
+              letterSpacing="-1"
+              textTransform="uppercase"
+              fill="none"
+              stroke="#5bb8f5"
+              strokeWidth="6"
+              strokeLinejoin="round"
+            >TRIVIAL SPORTS</text>
+            {/* Gold gradient fill layer */}
+            <text
+              x="50%" y="78"
+              textAnchor="middle"
+              fontFamily="'Oswald', sans-serif"
+              fontWeight="900"
+              fontSize="82"
+              letterSpacing="-1"
+              fill="url(#goldGrad)"
+            >TRIVIAL SPORTS</text>
+          </svg>
           <p style={{ fontSize: 18, color: '#a0a0c0', lineHeight: 1.7, fontFamily: "'Oswald', sans-serif", whiteSpace: 'nowrap', margin: '0 auto' }}>
             Need to kill time? Run out the clock with some sports trivia.
           </p>
