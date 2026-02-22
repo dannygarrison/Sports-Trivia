@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from "react";
+import { Helmet } from "react-helmet-async";
 import { usePlayCount } from "./usePlayCount.jsx";
 
 // ── DATA ─────────────────────────────────────────────────────────────────────
@@ -5605,6 +5606,10 @@ function ChainNode({ item, type, isLatest }) {
         lineHeight: 1.3,
         boxShadow: isLatest ? `0 0 12px ${colors.border}55` : "none",
       }}>
+        <Helmet>
+  <title>NFL Chain – TrivialSports</title>
+  <meta name="description" content="Link NFL teams through shared players and colleges. How long can you make your chain?" />
+</Helmet>
         {item}
       </div>
     </div>
