@@ -1,8 +1,4 @@
-<Helmet>
-  <title>NFL Chain Game — Connect Players by Team & College | Trivial Sports</title>
-  <meta name="description" content="Chain NFL players together by the teams they played for and colleges they attended. Can you connect all 32 NFL teams?" />
-</Helmet>
-  import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { usePlayCount } from "./usePlayCount.jsx";
 
 // ── DATA ─────────────────────────────────────────────────────────────────────
