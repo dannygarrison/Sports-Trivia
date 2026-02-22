@@ -54,7 +54,8 @@ export default function Nav() {
       )}
 
       
-        href="https://docs.google.com/forms/d/e/1FAIpQLSe_CaVhmcpFGCdIqTX5Rjh2SDGef486kZUrHV6L71nepl4Eeg/viewform"
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSe_CaVhmcpFGCdIqTX5Rjh2SDGef486kZUrHV6L71nepl4Eeg/viewform"
         target="_blank"
         rel="noopener noreferrer"
         style={{
