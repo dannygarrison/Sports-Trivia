@@ -88,6 +88,11 @@ function TeamSlot({ team, solved, revealed, flashing }) {
       <Helmet>
   <title>Premier League Teams – TrivialSports</title>
   <meta name="description" content="Name every club to have played in the Premier League since 1992. Think you know them all?" />
+  <meta property="og:title" content="Premier League Teams – TrivialSports" />
+  <meta property="og:description" content="Name every club to have played in the Premier League since 1992. Think you know them all?" />
+  <meta property="og:url" content="https://trivialsports.com/games/pl-teams" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://trivialsports.com/trivspo_banner.png" />
 </Helmet>
       <div style={{
         width: 7, height: 7, borderRadius: "50%", flexShrink: 0,
