@@ -28,7 +28,6 @@ export default function Nav() {
       transition: 'background 0.3s, border-color 0.3s, backdrop-filter 0.3s',
     }}>
 
-      {/* Logo */}
       <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
         <img
           src="/ts_whistle_logo_blueoutline.png"
@@ -37,7 +36,6 @@ export default function Nav() {
         />
       </Link>
 
-      {/* Center — back link on game pages */}
       {!isHome && (
         <Link to="/"
           style={{
@@ -55,7 +53,6 @@ export default function Nav() {
         </Link>
       )}
 
-      {/* Suggest a Game button */}
       
         href="https://docs.google.com/forms/d/e/1FAIpQLSe_CaVhmcpFGCdIqTX5Rjh2SDGef486kZUrHV6L71nepl4Eeg/viewform"
         target="_blank"
