@@ -15,9 +15,7 @@ export default function Nav() {
   return (
     <nav style={{
       position: 'fixed',
-      top: 0,
-      left: 0,
-      right: 0,
+      top: 0, left: 0, right: 0,
       zIndex: 100,
       padding: '0 28px',
       height: 56,
@@ -29,47 +27,24 @@ export default function Nav() {
       backdropFilter: scrolled || !isHome ? 'blur(12px)' : 'none',
       transition: 'background 0.3s, border-color 0.3s, backdrop-filter 0.3s',
     }}>
-      <Link to="/" style={{
-        textDecoration: 'none',
-        display: 'flex',
-        alignItems: 'center',
-        gap: 10,
-      }}>
-        <span style={{
-          fontSize: 18,
-          fontWeight: 900,
-          fontFamily: "'Oswald', sans-serif",
-          letterSpacing: 2,
-          textTransform: 'uppercase',
-          color: '#ffffff',
-          lineHeight: 1,
-        }}>
-          Trivial
-        </span>
-        <span style={{
-          fontSize: 18,
-          fontWeight: 900,
-          fontFamily: "'Oswald', sans-serif",
-          letterSpacing: 2,
-          textTransform: 'uppercase',
-          color: '#c8a050',
-          lineHeight: 1,
-        }}>
-          Sports
+      <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+        <img
+          src="/ts_whistle_logo_blueoutline.png"
+          alt="Trivial Sports"
+          style={{ height: 36, width: 36, objectFit: 'contain' }}
+        />
       </Link>
 
       {!isHome && (
-        <Link to="/" style={{
-          textDecoration: 'none',
-          fontSize: 11,
-          fontWeight: 700,
-          letterSpacing: 2.5,
-          textTransform: 'uppercase',
-          color: '#ffffff44',
-          fontFamily: "'Oswald', sans-serif",
-          transition: 'color 0.2s',
-          ':hover': { color: '#ffffff99' },
-        }}
+        <Link to="/"
+          style={{
+            textDecoration: 'none',
+            fontSize: 11, fontWeight: 700,
+            letterSpacing: 2.5, textTransform: 'uppercase',
+            color: '#ffffff44',
+            fontFamily: "'Oswald', sans-serif",
+            transition: 'color 0.2s',
+          }}
           onMouseEnter={e => e.target.style.color = '#ffffff99'}
           onMouseLeave={e => e.target.style.color = '#ffffff44'}
         >
