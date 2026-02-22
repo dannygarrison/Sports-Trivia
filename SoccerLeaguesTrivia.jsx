@@ -206,6 +206,11 @@ function LeagueColumn({ league, solvedSet, onSolve, activeLeagueId, setActiveLea
         <Helmet>
   <title>Soccer Leagues Trivia – TrivialSports</title>
   <meta name="description" content="Name the teams from Europe's top five soccer leagues — the EPL, La Liga, Bundesliga, Serie A, and Ligue 1." />
+  <meta property="og:title" content="Soccer Leagues Trivia – TrivialSports" />
+  <meta property="og:description" content="Name the teams from Europe's top five soccer leagues — the EPL, La Liga, Bundesliga, Serie A, and Ligue 1." />
+  <meta property="og:url" content="https://trivialsports.com/games/soccer-leagues-trivia" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://trivialsports.com/trivspo_banner.png" />
 </Helmet>
         <div style={{
           fontSize: 10,
