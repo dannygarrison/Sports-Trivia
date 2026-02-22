@@ -271,7 +271,7 @@ const PLAYERS = [
   {name:"Aaron Jones",colleges:["UTEP"],teams:["Green Bay Packers","Minnesota Vikings"]},
   {name:"Jamal Lewis",colleges:["Tennessee"],teams:["Baltimore Ravens","Cleveland Browns"]},
   {name:"Shaun Alexander",colleges:["Alabama"],teams:["Seattle Seahawks"]},
-  {name:"Clinton Portis",colleges:["Miami (FL)"],teams:["Denver Broncos"]},
+  {name:"Clinton Portis",colleges:["Miami (FL)"],teams:["Denver Broncos","Washington Commanders"]},
   {name:"Jamal Charles",colleges:["Texas"],teams:["Kansas City Chiefs","Denver Broncos"]},
   {name:"Arian Foster",colleges:["Tennessee"],teams:["Houston Texans","Miami Dolphins"]},
   {name:"Chris Johnson",colleges:["East Carolina"],teams:["Tennessee Titans","New York Jets","Arizona Cardinals"]},
