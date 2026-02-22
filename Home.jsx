@@ -263,14 +263,9 @@ export default function Home() {
             <defs>
               <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
                 <stop offset="0%" stopColor="#f0d070" />
-                <stop offset="100%" stopColor="#b8860b" />
+                <stop offset="100%" stopColor="#5bb8f5" />
               </linearGradient>
             </defs>
-            {/* Outer blue outline */}
-            <text x="50%" y="78" textAnchor="middle" fontFamily="'Oswald', sans-serif" fontWeight="900" fontSize="82" letterSpacing="-1" fill="none" stroke="#5bb8f5" strokeWidth="10" strokeLinejoin="round">TRIVIAL SPORTS</text>
-            {/* Inner transparent/dark outline */}
-            <text x="50%" y="78" textAnchor="middle" fontFamily="'Oswald', sans-serif" fontWeight="900" fontSize="82" letterSpacing="-1" fill="none" stroke="rgba(0,0,0,0.6)" strokeWidth="5" strokeLinejoin="round">TRIVIAL SPORTS</text>
-            {/* Gold gradient fill */}
             <text x="50%" y="78" textAnchor="middle" fontFamily="'Oswald', sans-serif" fontWeight="900" fontSize="82" letterSpacing="-1" fill="url(#goldGrad)">TRIVIAL SPORTS</text>
           </svg>
         </div>
