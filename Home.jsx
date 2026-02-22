@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { Helmet } from "react-helmet-async";
 import { useState, useRef, useEffect } from 'react'
 import { fetchPlayCounts } from './supabase.jsx'
 
@@ -138,6 +139,14 @@ function GameCard({ game, index }) {
       boxShadow: hovered ? `0 16px 40px ${accent}18, 0 4px 12px #00000066` : '0 2px 8px #00000044',
       position: 'relative', overflow: 'hidden', height: '100%',
     }}>
+      <Helmet>
+  <title>TrivialSports – Sports Trivia Games</title>
+  <meta name="description" content="Free sports trivia games covering the NFL, NBA, Premier League, MLS, MLB, and more. Play now." />
+  <meta property="og:title" content="TrivialSports – Sports Trivia Games" />
+  <meta property="og:description" content="Free sports trivia games covering the NFL, NBA, Premier League, MLS, MLB, and more. Play now." />
+  <meta property="og:url" content="https://trivialsports.com" />
+  <meta property="og:type" content="website" />
+</Helmet>
       <div style={{
         position: 'absolute', top: -20, left: -20, width: 120, height: 120,
         borderRadius: '50%', background: accent, opacity: hovered ? 0.07 : 0.03,
