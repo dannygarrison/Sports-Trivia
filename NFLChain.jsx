@@ -3030,8 +3030,10 @@ const TEAM_ABBR = {
 function TeamTracker({ usedTeams, total }) {
   return (
     <div style={{
-      display: "flex", flexWrap: "wrap", gap: 4,
-      justifyContent: "center", maxWidth: 640,
+      display: "grid",
+      gridTemplateColumns: "repeat(16, 1fr)",
+      gap: 4,
+      maxWidth: 760,
     }}>
       {NFL_TEAMS.map(team => {
         const used = usedTeams.has(team);
@@ -3045,6 +3047,7 @@ function TeamTracker({ usedTeams, total }) {
             color: used ? "#22c55e" : "#e8c060",
             transition: "all 0.3s",
             textTransform: "uppercase",
+            textAlign: "center",
           }}>
             {TEAM_ABBR[team]}
           </div>
