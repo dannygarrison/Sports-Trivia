@@ -1,4 +1,15 @@
-import { useState, useRef, useEffect, useCallback } from "react";
+import { Helmet } from 'react-helmet-async'
+
+// then inside your component, right at the top of the return statement:
+return (
+  <>
+    <Helmet>
+      <title>NFL Chain Game — Connect Players by Team & College | Trivial Sports</title>
+      <meta name="description" content="Chain NFL players together by the teams they played for and colleges they attended. How many of all 32 NFL teams can you connect?" />
+    </Helmet>
+    {/* rest of your existing JSX */}
+  </>
+)import { useState, useRef, useEffect, useCallback } from "react";
 import { usePlayCount } from "./usePlayCount.jsx";
 
 // ── DATA ─────────────────────────────────────────────────────────────────────
