@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from "react";
+import { Helmet } from "react-helmet-async";
 import { usePlayCount } from "./usePlayCount.jsx";
 
 // ~27,000 NFL players all-time (complete historical database)
@@ -27418,6 +27419,10 @@ export default function NFLNameDump() {
       fontFamily: "'Oswald', sans-serif",
       padding: "84px 16px 60px",
     }}>
+      <Helmet>
+  <title>NFL Name Dump – TrivialSports</title>
+  <meta name="description" content="Name as many NFL players as you can. How many can you remember?" />
+</Helmet>
       <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet" />
       <style>{`
         @keyframes fadeUp { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
