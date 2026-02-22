@@ -962,6 +962,11 @@ export default function NFLCollegeTrivia() {
       <Helmet>
   <title>NFL College Trivia – TrivialSports</title>
   <meta name="description" content="Guess which college each NFL player attended. Test your knowledge of football's pipeline from campus to the pros." />
+  <meta property="og:title" content="NFL College Trivia – TrivialSports" />
+  <meta property="og:description" content="Guess which college each NFL player attended. Test your knowledge of football's pipeline from campus to the pros." />
+  <meta property="og:url" content="https://trivialsports.com/games/nfl-college-trivia" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://trivialsports.com/trivspo_banner.png" />
 </Helmet>
       <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet" />
       <style>{`
