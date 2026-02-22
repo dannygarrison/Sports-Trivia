@@ -49,7 +49,7 @@ export default function Nav() {
           onMouseEnter={e => e.target.style.color = '#ffffff99'}
           onMouseLeave={e => e.target.style.color = '#ffffff44'}
         >
-          ← All Games
+          &larr; All Games
         </Link>
       )}
 
