@@ -254,6 +254,11 @@ export default function Home() {
           pointerEvents: 'none', animation: 'pulse 4s ease infinite',
         }} />
         <div style={{ position: 'relative', animation: 'heroIn 0.55s ease both', maxWidth: 600, margin: '0 auto' }}>
+          <img
+            src="/ts_whistle_logo_blueoutline.png"
+            alt="Trivial Sports Logo"
+            style={{ width: 120, display: 'block', margin: '0 auto 16px' }}
+          />
           <h1 style={{
             fontSize: 'clamp(48px, 9vw, 82px)', fontWeight: 900, letterSpacing: -1,
             textTransform: 'uppercase', lineHeight: 0.92, margin: '0 0 22px',
