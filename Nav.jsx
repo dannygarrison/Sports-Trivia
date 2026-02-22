@@ -27,6 +27,8 @@ export default function Nav() {
       backdropFilter: scrolled || !isHome ? 'blur(12px)' : 'none',
       transition: 'background 0.3s, border-color 0.3s, backdrop-filter 0.3s',
     }}>
+
+      {/* Logo */}
       <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
         <img
           src="/ts_whistle_logo_blueoutline.png"
@@ -35,6 +37,7 @@ export default function Nav() {
         />
       </Link>
 
+      {/* Center — back link on game pages */}
       {!isHome && (
         <Link to="/"
           style={{
@@ -51,6 +54,37 @@ export default function Nav() {
           ← All Games
         </Link>
       )}
+
+      {/* Suggest a Game button */}
+      
+        href="https://docs.google.com/forms/d/e/1FAIpQLSe_CaVhmcpFGCdIqTX5Rjh2SDGef486kZUrHV6L71nepl4Eeg/viewform"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          textDecoration: 'none',
+          fontSize: 11, fontWeight: 700,
+          letterSpacing: 2, textTransform: 'uppercase',
+          fontFamily: "'Oswald', sans-serif",
+          color: '#c8a050',
+          background: '#c8a05018',
+          border: '1px solid #c8a05044',
+          borderRadius: 8,
+          padding: '7px 14px',
+          transition: 'all 0.2s',
+          whiteSpace: 'nowrap',
+        }}
+        onMouseEnter={e => {
+          e.currentTarget.style.background = '#c8a05030'
+          e.currentTarget.style.borderColor = '#c8a05088'
+        }}
+        onMouseLeave={e => {
+          e.currentTarget.style.background = '#c8a05018'
+          e.currentTarget.style.borderColor = '#c8a05044'
+        }}
+      >
+        Suggest a Game
+      </a>
+
     </nav>
   )
 }
