@@ -5609,6 +5609,10 @@ function ChainNode({ item, type, isLatest }) {
         <Helmet>
   <title>NFL Chain – TrivialSports</title>
   <meta name="description" content="Link NFL teams through shared players and colleges. How long can you make your chain?" />
+  <meta property="og:title" content="NFL Chain – TrivialSports" />
+  <meta property="og:description" content="Link NFL teams through shared players and colleges. How long can you make your chain?" />
+  <meta property="og:url" content="https://trivialsports.com/games/nfl-chain" />
+  <meta property="og:type" content="website" />
 </Helmet>
         {item}
       </div>
