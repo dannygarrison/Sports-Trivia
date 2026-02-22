@@ -1,4 +1,5 @@
 import { useState, useRef, useCallback } from "react";
+import { Helmet } from "react-helmet-async";
 import { usePlayCount } from "./usePlayCount.jsx";
 
 // Top 5 all-time scorers by franchise (career points with that franchise)
@@ -431,6 +432,10 @@ function TeamCard({ team, solved, onSolve, gaveUp }) {
         borderBottom: `1px solid ${team.color}22`,
         position: "relative",
       }}>
+        <Helmet>
+  <title>NBA Scorers Grid – TrivialSports</title>
+  <meta name="description" content="Name the top 5 all-time scorers for all 30 NBA franchises. A new challenge every day." />
+</Helmet>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <div>
             <div style={{
