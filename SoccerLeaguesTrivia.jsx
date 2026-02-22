@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import { usePlayCount } from "./usePlayCount.jsx";
 
 const LEAGUES = [
@@ -202,6 +203,10 @@ function LeagueColumn({ league, solvedSet, onSolve, activeLeagueId, setActiveLea
         background: league.accent,
         borderBottom: `1px solid ${league.textAccent}22`,
       }}>
+        <Helmet>
+  <title>Soccer Leagues Trivia – TrivialSports</title>
+  <meta name="description" content="Name the teams from Europe's top five soccer leagues — the EPL, La Liga, Bundesliga, Serie A, and Ligue 1." />
+</Helmet>
         <div style={{
           fontSize: 10,
           fontWeight: 800,
