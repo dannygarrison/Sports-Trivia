@@ -156,6 +156,7 @@ const PLAYERS = [
   { name: "Jameis Winston", colleges: ["Florida State"], position: "QB", teams: ["Tampa Bay Buccaneers", "New Orleans Saints", "Cleveland Browns"] },
   { name: "Marcus Mariota", colleges: ["Oregon"], position: "QB", teams: ["Tennessee Titans", "Las Vegas Raiders", "Atlanta Falcons"] },
   { name: "Derek Carr", colleges: ["Fresno State"], position: "QB", teams: ["Oakland Raiders", "Las Vegas Raiders", "New Orleans Saints"] },
+  { name: "Kenny Pickett", colleges: ["Pittsburgh"], position: "QB", teams: ["Pittsburgh Steelers", "Philadelphia Eagles", "Las Vegas Raiders"] },
   { name: "Ryan Tannehill", colleges: ["Texas A&M"], position: "QB", teams: ["Miami Dolphins", "Tennessee Titans"] },
   { name: "Teddy Bridgewater", colleges: ["Louisville"], position: "QB", teams: ["Minnesota Vikings", "New Orleans Saints", "Carolina Panthers", "Denver Broncos", "Miami Dolphins"] },
   { name: "Andy Dalton", colleges: ["TCU"], position: "QB", teams: ["Cincinnati Bengals", "Dallas Cowboys", "Chicago Bears", "New Orleans Saints", "Carolina Panthers"] },
