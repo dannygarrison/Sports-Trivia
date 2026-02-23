@@ -10132,7 +10132,7 @@ const PLAYERS = [
   {name:"Ozzie Newsome",colleges:["Alabama"],teams:["Cleveland Browns"]},
   {name:"Tony Newson",colleges:[],teams:["Kansas City Chiefs"]},
   {name:"Kendall Newson",colleges:["Middle Tennessee State"],teams:["Miami Dolphins"]},
-  {name:"Nate Newton",colleges:[Florida A&M],teams:["Dallas Cowboys","Carolina Panthers"]},
+  {name:"Nate Newton",colleges:["Florida A&M"],teams:["Dallas Cowboys","Carolina Panthers"]},
   {name:"Jim Newton",colleges:[],teams:["Indianapolis Colts"]},
   {name:"Cam Newton",colleges:["Auburn","Florida"],teams:["Carolina Panthers","New England Patriots"]},
   {name:"Cecil Newton",colleges:[],teams:["Jacksonville Jaguars"]},
