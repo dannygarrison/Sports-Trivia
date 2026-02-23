@@ -1,17 +1,14 @@
 import { Link, useLocation } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-
 export default function Nav() {
   const location = useLocation()
   const isHome = location.pathname === '/'
   const [scrolled, setScrolled] = useState(false)
-
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
     window.addEventListener('scroll', onScroll)
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
-
   return (
     <nav style={{
       position: 'fixed',
@@ -27,15 +24,18 @@ export default function Nav() {
       backdropFilter: scrolled || !isHome ? 'blur(12px)' : 'none',
       transition: 'background 0.3s, border-color 0.3s, backdrop-filter 0.3s',
     }}>
-
       <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
-        <img
-          src="/ts_whistle_logo_blueoutline.png"
-          alt="Trivial Sports"
-          style={{ height: 36, width: 36, objectFit: 'contain' }}
-        />
+        <picture>
+          <source srcSet="/ts_whistle_logo.webp" type="image/webp" />
+          <img
+            src="/ts_whistle_logo_420.png"
+            alt="Trivial Sports"
+            width="36"
+            height="36"
+            style={{ height: 36, width: 36, objectFit: 'contain' }}
+          />
+        </picture>
       </Link>
-
       {!isHome && (
         <Link to="/"
           style={{
@@ -52,7 +52,6 @@ export default function Nav() {
           &larr; All Games
         </Link>
       )}
-
       
         <a
           href="https://docs.google.com/forms/d/e/1FAIpQLSe_CaVhmcpFGCdIqTX5Rjh2SDGef486kZUrHV6L71nepl4Eeg/viewform"
@@ -82,7 +81,6 @@ export default function Nav() {
       >
         Suggest a Game
       </a>
-
     </nav>
   )
 }
