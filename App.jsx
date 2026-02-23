@@ -13,6 +13,7 @@ const MLSTeams = lazy(() => import('./MLSTeams.jsx'))
 const NFLChain = lazy(() => import('./NFLChain.jsx'))
 const PLTeams = lazy(() => import('./PLTeams.jsx'))
 const OlympicsHostCities = lazy(() => import('./OlympicsHostCities.jsx'))
+const NFLMockDraft = lazy(() => import('./NFLMockDraft.jsx'))
 
 export default function App() {
   return (
@@ -46,6 +47,7 @@ export default function App() {
           <Route path="/games/nfl-chain" element={<NFLChain />} />
           <Route path="/games/pl-teams" element={<PLTeams />} />
           <Route path="/games/olympics-host-cities" element={<OlympicsHostCities />} />
+          <Route path="/games/nfl-mock-draft" element={<NFLMockDraft />} />
         </Routes>
       </Suspense>
     </div>
