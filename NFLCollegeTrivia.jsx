@@ -418,7 +418,7 @@ const PLAYERS = [
   { name: "Andre Ellington", colleges: ["Clemson"], position: "RB", teams: ["Arizona Cardinals", "Houston Texans"] },
   { name: "Doug Martin", colleges: ["Boise State"], position: "RB", teams: ["Tampa Bay Buccaneers", "Oakland Raiders"] },
   { name: "BenJarvus Green-Ellis", colleges: ["Ole Miss"], position: "RB", teams: ["New England Patriots", "Cincinnati Bengals"] },
-  { name: "Ryan Grant", colleges: ["Notre Dame", "Tulane"], position: "RB", teams: ["New York Giants", "Green Bay Packers", "Indianapolis Colts"] },
+  { name: "Ryan Grant", colleges: ["Notre Dame"], position: "RB", teams: ["New York Giants", "Green Bay Packers", "Washington Redskins"] },
   { name: "Darren Sproles", colleges: ["Kansas State"], position: "RB", teams: ["San Diego Chargers", "New Orleans Saints", "Philadelphia Eagles"] },
   { name: "Danny Woodhead", colleges: ["Chadron State"], position: "RB", teams: ["New England Patriots", "San Diego Chargers", "Baltimore Ravens"] },
   { name: "Michael Turner", colleges: ["Northern Illinois"], position: "RB", teams: ["San Diego Chargers", "Atlanta Falcons"] },
