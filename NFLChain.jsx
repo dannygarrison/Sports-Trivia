@@ -340,7 +340,7 @@ const PLAYERS = [
   {name:"Robert Woods",colleges:["USC"],teams:["Buffalo Bills","Los Angeles Rams","Tennessee Titans"]},
   {name:"Brandin Cooks",colleges:["Oregon State"],teams:["New Orleans Saints","New England Patriots","Los Angeles Rams","Houston Texans","Dallas Cowboys"]},
   {name:"Tyler Boyd",colleges:["Pittsburgh"],teams:["Cincinnati Bengals","Tennessee Titans"]},
-  {name:"Diontae Johnson",colleges:["Toledo"],teams:["Pittsburgh Steelers","Carolina Panthers","Baltimore Ravens"]},
+  {name:"Diontae Johnson",colleges:["Toledo"],teams:["Pittsburgh Steelers","Carolina Panthers","Baltimore Ravens","Houston Texans"]},
   {name:"Chris Godwin",colleges:["Penn State"],teams:["Tampa Bay Buccaneers"]},
   {name:"Allen Robinson",colleges:["Penn State"],teams:["Jacksonville Jaguars","Chicago Bears","Los Angeles Rams"]},
   {name:"Alshon Jeffery",colleges:["South Carolina"],teams:["Chicago Bears","Philadelphia Eagles"]},
