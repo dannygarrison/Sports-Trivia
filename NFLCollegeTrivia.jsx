@@ -625,7 +625,6 @@ const PLAYERS = [
   { name: "Juan Thornhill", colleges: ["Virginia"], position: "S", teams: ["Kansas City Chiefs","Cleveland Browns"] },
   { name: "Darnell Savage", colleges: ["Maryland"], position: "S", teams: ["Green Bay Packers", "Jacksonville Jaguars", "Washington Commanders", "Buffalo Bills"] },
   { name: "Greedy Williams", colleges: ["LSU"], position: "CB", teams: ["Cleveland Browns","Houston Texans"] },
-  { name: "Joejuan Williams", colleges: ["Vanderbilt"], position: "CB", teams: ["New England Patriots","Tampa Bay Buccaneers"] },
   { name: "Dillon Gabriel", colleges: ["UCF", "Oklahoma", "Oregon"], position: "QB", teams: ["Cleveland Browns"] },
   { name: "Omarion Hampton", colleges: ["North Carolina"], position: "RB", teams: ["Los Angeles Chargers"] }
 ];
