@@ -246,7 +246,7 @@ const PLAYERS = [
   { name: "Doug Baldwin", colleges: ["Stanford"], position: "WR", teams: ["Seattle Seahawks"] },
   { name: "Greg Jennings", colleges: ["Western Michigan"], position: "WR", teams: ["Green Bay Packers", "Minnesota Vikings", "Miami Dolphins"] },
   { name: "Jordy Nelson", colleges: ["Kansas State"], position: "WR", teams: ["Green Bay Packers", "Oakland Raiders"] },
-  { name: "Randall Cobb", colleges: ["Kentucky"], position: "WR", teams: ["Green Bay Packers", "Dallas Cowboys", "Houston Texans", "New York Giants"] },
+  { name: "Randall Cobb", colleges: ["Kentucky"], position: "WR", teams: ["Green Bay Packers", "Dallas Cowboys", "Houston Texans", "New York Jets"] },
   { name: "Emmanuel Sanders", colleges: ["SMU"], position: "WR", teams: ["Pittsburgh Steelers", "Denver Broncos", "San Francisco 49ers", "New Orleans Saints", "Buffalo Bills"] },
   { name: "Demaryius Thomas", colleges: ["Georgia Tech"], position: "WR", teams: ["Denver Broncos", "Houston Texans", "New York Jets", "New England Patriots"] },
   { name: "Michael Crabtree", colleges: ["Texas Tech"], position: "WR", teams: ["San Francisco 49ers", "Oakland Raiders", "Baltimore Ravens", "Arizona Cardinals"] },
