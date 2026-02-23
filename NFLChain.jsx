@@ -147,7 +147,7 @@ const PLAYERS = [
   {name:"Odell Beckham Jr.",colleges:["LSU"],teams:["New York Giants","Cleveland Browns","Los Angeles Rams","Baltimore Ravens","Miami Dolphins"]},
   {name:"Antonio Brown",colleges:["Central Michigan"],teams:["Pittsburgh Steelers","New England Patriots","Tampa Bay Buccaneers"]},
   {name:"Frank Gore",colleges:["Miami (FL)"],teams:["San Francisco 49ers","Indianapolis Colts","Miami Dolphins","Buffalo Bills","New York Jets"]},
-  {name:"Charles Woodson",colleges:["Michigan"],teams:["Green Bay Packers"]},
+  {name:"Charles Woodson",colleges:["Michigan"],teams:["Green Bay Packers","Las Vegas Raiders"]},
   {name:"Richard Sherman",colleges:["Stanford"],teams:["Seattle Seahawks","San Francisco 49ers","Tampa Bay Buccaneers"]},
   {name:"Von Miller",colleges:["Texas A&M"],teams:["Denver Broncos","Los Angeles Rams","Buffalo Bills","Washington Commanders"]},
   {name:"J.J. Watt",colleges:["Wisconsin"],teams:["Houston Texans","Arizona Cardinals"]},
