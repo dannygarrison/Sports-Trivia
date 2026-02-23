@@ -160,7 +160,7 @@ const PLAYERS = [
   { name: "Ryan Tannehill", colleges: ["Texas A&M"], position: "QB", teams: ["Miami Dolphins", "Tennessee Titans"] },
   { name: "Teddy Bridgewater", colleges: ["Louisville"], position: "QB", teams: ["Minnesota Vikings", "New Orleans Saints", "Carolina Panthers", "Denver Broncos", "Miami Dolphins"] },
   { name: "Andy Dalton", colleges: ["TCU"], position: "QB", teams: ["Cincinnati Bengals", "Dallas Cowboys", "Chicago Bears", "New Orleans Saints", "Carolina Panthers"] },
-  { name: "Joe Flacco", colleges: ["Delaware"], position: "QB", teams: ["Baltimore Ravens", "Denver Broncos", "New York Jets", "Philadelphia Eagles", "Cleveland Browns", "Indianapolis Colts"] },
+  { name: "Joe Flacco", colleges: ["Delaware"], position: "QB", teams: ["Baltimore Ravens", "Denver Broncos", "New York Jets", "Philadelphia Eagles", "Cleveland Browns", "Indianapolis Colts", "Cincinnati Bengals"] },
   { name: "Carson Palmer", colleges: ["USC"], position: "QB", teams: ["Cincinnati Bengals", "Oakland Raiders", "Arizona Cardinals"] },
   { name: "Chad Pennington", colleges: ["Marshall"], position: "QB", teams: ["New York Jets", "Miami Dolphins"] },
   { name: "David Garrard", colleges: ["East Carolina"], position: "QB", teams: ["Jacksonville Jaguars"] },
