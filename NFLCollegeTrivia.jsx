@@ -624,7 +624,7 @@ const PLAYERS = [
   { name: "Amani Oruwariye", colleges: ["Penn State"], position: "CB", teams: ["Detroit Lions","Las Vegas Raiders"] },
   { name: "Julian Love", colleges: ["Notre Dame"], position: "S", teams: ["New York Giants","Seattle Seahawks"] },
   { name: "Juan Thornhill", colleges: ["Virginia"], position: "S", teams: ["Kansas City Chiefs","Cleveland Browns"] },
-  { name: "Darnell Savage", colleges: ["Maryland"], position: "S", teams: ["Green Bay Packers"] },
+  { name: "Darnell Savage", colleges: ["Maryland"], position: "S", teams: ["Green Bay Packers", "Jacksonville Jaguars", "Washington Commanders", "Buffalo Bills"] },
   { name: "Greedy Williams", colleges: ["LSU"], position: "CB", teams: ["Cleveland Browns","Houston Texans"] },
   { name: "Joejuan Williams", colleges: ["Vanderbilt"], position: "CB", teams: ["New England Patriots","Tampa Bay Buccaneers"] },
   { name: "Dillon Gabriel", colleges: ["UCF", "Oklahoma", "Oregon"], position: "QB", teams: ["Cleveland Browns"] },
