@@ -265,11 +265,16 @@ export default function Home() {
           pointerEvents: 'none', animation: 'pulse 4s ease infinite',
         }} />
         <div style={{ position: 'relative', animation: 'heroIn 0.55s ease both', maxWidth: 600, margin: '0 auto' }}>
-          <img
-            src="/ts_whistle_logo_blueoutline.png"
-            alt="Trivial Sports Logo"
-            style={{ width: 120, display: 'block', margin: '0 auto 16px' }}
-          />
+          <picture>
+            <source srcSet="/ts_whistle_logo.webp" type="image/webp" />
+            <img
+              src="/ts_whistle_logo_420.png"
+              alt="Trivial Sports Logo"
+              width="120"
+              height="120"
+              style={{ width: 120, display: 'block', margin: '0 auto 16px' }}
+            />
+          </picture>
           <svg viewBox="0 0 520 90" style={{ width: 'clamp(300px, 70vw, 520px)', display: 'block', margin: '0 auto 22px', overflow: 'visible' }}>
             <defs>
               <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
