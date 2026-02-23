@@ -187,7 +187,7 @@ const PLAYERS = [
   { name: "Jamal Lewis", colleges: ["Tennessee"], position: "RB", teams: ["Baltimore Ravens", "Cleveland Browns"] },
   { name: "Shaun Alexander", colleges: ["Alabama"], position: "RB", teams: ["Seattle Seahawks"] },
   { name: "Clinton Portis", colleges: ["Miami (FL)"], position: "RB", teams: ["Denver Broncos", "Washington Redskins"] },
-  { name: "Jamal Charles", colleges: ["Texas"], position: "RB", teams: ["Kansas City Chiefs", "Denver Broncos"] },
+  { name: "Jamaal Charles", colleges: ["Texas"], position: "RB", teams: ["Kansas City Chiefs", "Denver Broncos"] },
   { name: "Arian Foster", colleges: ["Tennessee"], position: "RB", teams: ["Houston Texans", "Miami Dolphins"] },
   { name: "Chris Johnson", colleges: ["East Carolina"], position: "RB", teams: ["Tennessee Titans", "New York Jets", "Arizona Cardinals"] },
   { name: "DeMarco Murray", colleges: ["Oklahoma"], position: "RB", teams: ["Dallas Cowboys", "Philadelphia Eagles", "Tennessee Titans"] },
