@@ -20180,21 +20180,36 @@ const TEAM_ABBR = {
   "Tennessee Titans": "TEN", "Washington Commanders": "WSH",
 };
 
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth < 600);
+  useEffect(() => {
+    const handler = () => setIsMobile(window.innerWidth < 600);
+    window.addEventListener("resize", handler);
+    return () => window.removeEventListener("resize", handler);
+  }, []);
+  return isMobile;
+}
+
 function TeamTracker({ usedTeams, total }) {
+  const isMobile = useIsMobile();
+  const cols = isMobile ? 8 : 16;
   return (
     <div style={{
       display: "grid",
-      gridTemplateColumns: "repeat(16, 1fr)",
-      gap: 4,
+      gridTemplateColumns: `repeat(${cols}, 1fr)`,
+      gap: isMobile ? 3 : 4,
       maxWidth: 760,
+      width: "100%",
     }}>
       {NFL_TEAMS.map(team => {
         const used = usedTeams.has(team);
         return (
           <div key={team} title={team} style={{
-            fontSize: 9, fontFamily: "'Oswald', sans-serif",
+            fontSize: isMobile ? 8 : 9,
+            fontFamily: "'Oswald', sans-serif",
             fontWeight: 700, letterSpacing: 0.5,
-            padding: "3px 7px", borderRadius: 4,
+            padding: isMobile ? "3px 2px" : "3px 7px",
+            borderRadius: 4,
             background: used ? "#0d2a18" : "#1a1408",
             border: `1px solid ${used ? "#22c55e55" : "#7a5f1a55"}`,
             color: used ? "#22c55e" : "#e8c060",
