@@ -26,9 +26,9 @@ export default function Nav() {
     }}>
       <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
         <picture>
-          <source srcSet="/ts_whistle_logo.webp" type="image/webp" />
+          <source srcSet="/ts_logo_blueoutline_420.webp" type="image/webp" />
           <img
-            src="/ts_whistle_logo_420.png"
+            src="/ts_logo_blueoutline_420.png"
             alt="Trivial Sports"
             width="36"
             height="36"
