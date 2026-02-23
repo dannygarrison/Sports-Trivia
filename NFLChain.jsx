@@ -213,7 +213,7 @@ const PLAYERS = [
   {name:"Jimmy Graham",colleges:["Miami (FL)"],teams:["New Orleans Saints","Seattle Seahawks","Green Bay Packers","Chicago Bears"]},
   {name:"Kyle Pitts",colleges:["Florida"],teams:["Atlanta Falcons"]},
   {name:"Eric Dickerson",colleges:["SMU"],teams:["Los Angeles Rams","Indianapolis Colts"]},
-  {name:"Marcus Allen",colleges:["USC"],teams:["Kansas City Chiefs"]},
+  {name:"Marcus Allen",colleges:["USC"],teams:["Kansas City Chiefs","Las Vegas Raiders"]},
   {name:"Todd Gurley",colleges:["Georgia"],teams:["Los Angeles Rams","Atlanta Falcons"]},
   {name:"Melvin Gordon",colleges:["Wisconsin"],teams:["Los Angeles Chargers","Denver Broncos"]},
   {name:"Le'Veon Bell",colleges:["Michigan State"],teams:["Pittsburgh Steelers","New York Jets","Kansas City Chiefs","Baltimore Ravens"]},
