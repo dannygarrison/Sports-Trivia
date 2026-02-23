@@ -397,7 +397,7 @@ const PLAYERS = [
   {name:"Luke Kuechly",colleges:["Boston College"],teams:["Carolina Panthers"]},
   {name:"Patrick Willis",colleges:["Ole Miss"],teams:["San Francisco 49ers"]},
   {name:"NaVorro Bowman",colleges:["Penn State"],teams:["San Francisco 49ers"]},
-  {name:"Bobby Wagner",colleges:["Utah State"],teams:["Seattle Seahawks","Los Angeles Rams","Las Vegas Raiders"]},
+  {name:"Bobby Wagner",colleges:["Utah State"],teams:["Seattle Seahawks","Los Angeles Rams","Washington Commanders"]},
   {name:"Lavonte David",colleges:["Nebraska"],teams:["Tampa Bay Buccaneers"]},
   {name:"Deion Jones",colleges:["LSU"],teams:["Atlanta Falcons","Cleveland Browns","Carolina Panthers"]},
   {name:"Shaquil Barrett",colleges:["Colorado State"],teams:["Denver Broncos","Tampa Bay Buccaneers"]},
