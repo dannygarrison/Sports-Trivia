@@ -254,7 +254,7 @@ export default function Home() {
       `}</style>
 
       {/* Hero */}
-      <div style={{ position: 'relative', overflow: 'hidden', padding: '72px 28px 64px', textAlign: 'center', borderBottom: '1px solid #ffffff06' }}>
+      <div style={{ position: 'relative', overflow: 'hidden', padding: '28px 28px 20px', textAlign: 'center', borderBottom: '1px solid #ffffff06' }}>
         <div className="hero-grid" style={{
           position: 'absolute', inset: 0,
           backgroundImage: `linear-gradient(rgba(200,160,80,0.018) 1px, transparent 1px), linear-gradient(90deg, rgba(200,160,80,0.018) 1px, transparent 1px)`,
@@ -273,10 +273,10 @@ export default function Home() {
               alt="Trivial Sports Logo"
               width="120"
               height="120"
-              style={{ width: 120, display: 'block', margin: '0 auto 16px' }}
+              style={{ width: 120, display: 'block', margin: '0 auto 8px' }}
             />
           </picture>
-          <svg viewBox="0 0 520 90" style={{ width: 'clamp(300px, 70vw, 520px)', display: 'block', margin: '0 auto 22px', overflow: 'visible' }}>
+          <svg viewBox="0 0 520 90" style={{ width: 'clamp(300px, 70vw, 520px)', display: 'block', margin: '0 auto 10px', overflow: 'visible' }}>
             <defs>
               <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
                 <stop offset="0%" stopColor="#f0d070" />
@@ -289,7 +289,7 @@ export default function Home() {
       </div>
 
       {/* Controls */}
-      <div style={{ maxWidth: 960, margin: '0 auto', padding: '36px 28px 0', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 14 }}>
+      <div style={{ maxWidth: 960, margin: '0 auto', padding: '16px 28px 0', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 14 }}>
         {/* Sport tabs */}
         <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
           {Object.entries(SPORT_META).map(([key, meta]) => {
@@ -358,15 +358,15 @@ export default function Home() {
       </div>
 
       {/* Games */}
-      <div style={{ maxWidth: 960, margin: '0 auto', padding: '28px 28px 80px' }}>
+      <div style={{ maxWidth: 960, margin: '0 auto', padding: '12px 28px 48px' }}>
         {filteredGames.length === 0 ? (
           <div style={{ textAlign: 'center', padding: '60px 0', color: '#c8a05066', fontFamily: 'Georgia, serif', fontSize: 14 }}>
             No games found for "{search}"
           </div>
         ) : showGrouped ? (
           groupedBySport.map((section, si) => (
-            <div key={section.sport} style={{ marginBottom: 44, animation: 'fadeUp 0.45s ease both', animationDelay: `${si * 0.08}s` }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 18 }}>
+            <div key={section.sport} style={{ marginBottom: 28, animation: 'fadeUp 0.45s ease both', animationDelay: `${si * 0.08}s` }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 12 }}>
                 <button
                   className="sport-label"
                   onClick={() => setActiveTab(section.sport)}
