@@ -10132,7 +10132,7 @@ const PLAYERS = [
   {name:"Ozzie Newsome",colleges:["Alabama"],teams:["Cleveland Browns"]},
   {name:"Tony Newson",colleges:[],teams:["Kansas City Chiefs"]},
   {name:"Kendall Newson",colleges:["Middle Tennessee State"],teams:["Miami Dolphins"]},
-  {name:"Nate Newton",colleges:["Florida A&M"],teams:["Dallas Cowboys","Carolina Panthers"]},
+  {name:"Nate Newton",colleges:[Florida A&M],teams:["Dallas Cowboys","Carolina Panthers"]},
   {name:"Jim Newton",colleges:[],teams:["Indianapolis Colts"]},
   {name:"Cam Newton",colleges:["Auburn","Florida"],teams:["Carolina Panthers","New England Patriots"]},
   {name:"Cecil Newton",colleges:[],teams:["Jacksonville Jaguars"]},
@@ -20180,36 +20180,21 @@ const TEAM_ABBR = {
   "Tennessee Titans": "TEN", "Washington Commanders": "WSH",
 };
 
-function useIsMobile() {
-  const [isMobile, setIsMobile] = useState(() => window.innerWidth < 600);
-  useEffect(() => {
-    const handler = () => setIsMobile(window.innerWidth < 600);
-    window.addEventListener("resize", handler);
-    return () => window.removeEventListener("resize", handler);
-  }, []);
-  return isMobile;
-}
-
 function TeamTracker({ usedTeams, total }) {
-  const isMobile = useIsMobile();
-  const cols = isMobile ? 8 : 16;
   return (
     <div style={{
       display: "grid",
-      gridTemplateColumns: `repeat(${cols}, 1fr)`,
-      gap: isMobile ? 3 : 4,
+      gridTemplateColumns: "repeat(16, 1fr)",
+      gap: 4,
       maxWidth: 760,
-      width: "100%",
     }}>
       {NFL_TEAMS.map(team => {
         const used = usedTeams.has(team);
         return (
           <div key={team} title={team} style={{
-            fontSize: isMobile ? 8 : 9,
-            fontFamily: "'Oswald', sans-serif",
+            fontSize: 9, fontFamily: "'Oswald', sans-serif",
             fontWeight: 700, letterSpacing: 0.5,
-            padding: isMobile ? "3px 2px" : "3px 7px",
-            borderRadius: 4,
+            padding: "3px 7px", borderRadius: 4,
             background: used ? "#0d2a18" : "#1a1408",
             border: `1px solid ${used ? "#22c55e55" : "#7a5f1a55"}`,
             color: used ? "#22c55e" : "#e8c060",
@@ -20226,28 +20211,83 @@ function TeamTracker({ usedTeams, total }) {
 }
 
 // ── COLLEGE TRACKER ──────────────────────────────────────────────────────────
-// Build a lookup: canonical college name → shortest display label
-const COLLEGE_SHORT_LABEL = (() => {
-  const map = {};
-  // For each alias entry, the key is usually shorter than the full name
-  for (const [short, variants] of Object.entries(COLLEGE_ALIASES)) {
-    // Map every variant back to the short key
-    for (const v of variants) {
-      if (!map[v] || short.length < map[v].length) map[v] = short;
-    }
-    if (!map[short]) map[short] = short;
-  }
-  return map;
-})();
+// Common name overrides for schools that have a well-known shorter name
+const COLLEGE_DISPLAY_NAME = {
+  "florida state":          "Florida State",
+  "michigan state":         "Michigan State",
+  "ohio state":             "Ohio State",
+  "penn state":             "Penn State",
+  "iowa state":             "Iowa State",
+  "kansas state":           "Kansas State",
+  "arizona state":          "Arizona State",
+  "colorado state":         "Colorado State",
+  "washington state":       "Washington State",
+  "oregon state":           "Oregon State",
+  "utah state":             "Utah State",
+  "boise state":            "Boise State",
+  "north dakota state":     "North Dakota State",
+  "south dakota state":     "South Dakota State",
+  "mississippi state":      "Mississippi State",
+  "georgia state":          "Georgia State",
+  "appalachian state":      "App State",
+  "brigham young":          "BYU",
+  "byu":                    "BYU",
+  "lsu":                    "LSU",
+  "smu":                    "SMU",
+  "tcu":                    "TCU",
+  "usc":                    "USC",
+  "ucla":                   "UCLA",
+  "ucf":                    "UCF",
+  "uconn":                  "UConn",
+  "utep":                   "UTEP",
+  "utsa":                   "UTSA",
+  "ole miss":               "Ole Miss",
+  "miami (fl)":             "Miami",
+  "miami fl":               "Miami",
+  "miami (oh)":             "Miami (OH)",
+  "miami oh":               "Miami (OH)",
+  "north carolina":         "UNC",
+  "nc state":               "NC State",
+  "north carolina state":   "NC State",
+  "west virginia":          "West Virginia",
+  "virginia tech":          "Virginia Tech",
+  "southern miss":          "Southern Miss",
+  "southern mississippi":   "Southern Miss",
+  "tennessee-chattanooga":  "UTC",
+  "grambling state":        "Grambling",
+  "grambling":              "Grambling",
+  "mississippi valley state":"Miss Valley St",
+  "central florida":        "UCF",
+  "south florida":          "USF",
+  "florida atlantic":       "FAU",
+  "florida international":  "FIU",
+  "east carolina":          "ECU",
+  "western kentucky":       "WKU",
+  "eastern washington":     "Eastern Wash",
+  "northern illinois":      "NIU",
+  "middle tennessee state": "Middle Tenn",
+  "middle tennessee":       "Middle Tenn",
+  "georgia tech":           "Georgia Tech",
+  "boston college":         "Boston College",
+  "notre dame":             "Notre Dame",
+  "texas christian":        "TCU",
+  "texas a&m":              "Texas A&M",
+  "texas el paso":          "UTEP",
+  "arkansas-pine bluff":    "UAPB",
+  "minnesota state-mankato":"Minn State",
+  "alabama-birmingham":     "UAB",
+};
 
-function getShortLabel(college) {
-  const lower = college.toLowerCase();
-  // Check if any alias key matches
-  for (const [short, variants] of Object.entries(COLLEGE_ALIASES)) {
-    if (variants.includes(lower) || short === lower) return short.toUpperCase();
+function getDisplayLabel(college) {
+  const lower = college.toLowerCase().trim();
+  if (COLLEGE_DISPLAY_NAME[lower]) return COLLEGE_DISPLAY_NAME[lower];
+  // Truncate very long names gracefully at a word boundary
+  if (college.length > 16) {
+    const trimmed = college.substring(0, 15).trim();
+    const lastSpace = trimmed.lastIndexOf(" ");
+    return (lastSpace > 6 ? trimmed.substring(0, lastSpace) : trimmed) + "…";
   }
-  // Fallback: use the college name itself, trimmed
-  return college.length > 12 ? college.substring(0, 11).trim() + '…' : college;
+  return college;
 }
 
 function CollegeTracker({ usedColleges }) {
@@ -20265,7 +20305,7 @@ function CollegeTracker({ usedColleges }) {
           color: "#5bb8f5",
           textTransform: "uppercase",
         }}>
-          {getShortLabel(college)}
+          {getDisplayLabel(college)}
         </div>
       ))}
     </div>
