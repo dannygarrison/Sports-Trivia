@@ -19889,6 +19889,80 @@ function normalize(s) {
   return s.toLowerCase().trim().replace(/[^a-z0-9 ]/g, "").replace(/\s+/g, " ");
 }
 
+// Phonetic normalization — collapse common spelling variants before comparing
+function phoneticNorm(s) {
+  return s.toLowerCase()
+    .replace(/ph/g, "f")
+    .replace(/ou/g, "u")
+    .replace(/ck/g, "k")
+    .replace(/ough/g, "o")
+    .replace(/ae/g, "e")
+    .replace(/oo/g, "u")
+    .replace(/[aeiou]+/g, "a")
+    .replace(/(.)\1+/g, "$1")
+    .trim();
+}
+
+// Levenshtein distance
+function levenshtein(a, b) {
+  const m = a.length, n = b.length;
+  const dp = Array.from({ length: m + 1 }, (_, i) => [i, ...Array(n).fill(0)]);
+  for (let j = 0; j <= n; j++) dp[0][j] = j;
+  for (let i = 1; i <= m; i++) {
+    for (let j = 1; j <= n; j++) {
+      dp[i][j] = a[i-1] === b[j-1]
+        ? dp[i-1][j-1]
+        : 1 + Math.min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1]);
+    }
+  }
+  return dp[m][n];
+}
+
+// Normalized player name map — populated after PLAYERS array
+const PLAYER_NORMALIZED = new Map();
+
+// Find closest matching player name using phonetic + levenshtein scoring
+function findPlayerSuggestion(raw) {
+  const norm = normalize(raw);
+  const words = norm.split(" ");
+  if (words.length < 2) return null;
+
+  const inpFirst = words[0];
+  const inpLast = words.slice(1).join(" ");
+  const lastInitial = inpLast[0];
+  const firstInitial = inpFirst.charCodeAt(0);
+  const inpFirstPh = phoneticNorm(inpFirst);
+  const inpLastPh = phoneticNorm(inpLast);
+
+  let best = null;
+  let bestScore = [999, 999, 999];
+
+  for (const [key, canonical] of PLAYER_NORMALIZED) {
+    const kwords = key.split(" ");
+    if (kwords.length < 2) continue;
+    const kFirst = kwords[0];
+    const kLast = kwords.slice(1).join(" ");
+
+    if (!kLast.startsWith(lastInitial)) continue;
+    if (Math.abs(kFirst.charCodeAt(0) - firstInitial) > 1) continue;
+
+    const firstPd = levenshtein(inpFirstPh, phoneticNorm(kFirst));
+    const lastPd = levenshtein(inpLastPh, phoneticNorm(kLast));
+    if (firstPd > 2 || lastPd > 2) continue;
+
+    const fd = levenshtein(norm, key);
+    if (fd === 0 || fd > 7) continue;
+
+    const score = [firstPd + lastPd, fd, firstPd];
+    if (score[0] < bestScore[0] || (score[0] === bestScore[0] && score[1] < bestScore[1])) {
+      bestScore = score;
+      best = canonical;
+    }
+  }
+
+  return best;
+}
+
 function resolveTeam(input) {
   const n = normalize(input);
   for (const [canonical, aliases] of Object.entries(TEAM_ALIASES)) {
@@ -20023,6 +20097,8 @@ function resolvePlayer(input, players) {
   return null;
 }
 
+// Populate PLAYER_NORMALIZED map from PLAYERS array
+PLAYERS.forEach(p => PLAYER_NORMALIZED.set(normalize(p.name), p.name));
 
 const TEAM_LEGACY_MAP = {
   "Los Angeles Rams": ["St. Louis Rams"],
@@ -20270,6 +20346,8 @@ export default function NFLChain() {
   const [input, setInput] = useState("");
   const [shake, setShake] = useState(false);
   const [rejectMsg, setRejectMsg] = useState("");
+  const [suggestion, setSuggestion] = useState(null);
+  const justSetSuggestion = useRef(false);
   const [won, setWon] = useState(false);
   const [started, setStarted] = useState(false);
   const [history, setHistory] = useState([]); // stack of snapshots for undo
@@ -20320,14 +20398,61 @@ export default function NFLChain() {
     });
   }, []);
 
+  const acceptSuggestion = useCallback((canonical) => {
+    setSuggestion(null);
+    setInput(canonical);
+    setTimeout(() => inputRef.current?.focus(), 50);
+  }, []);
+
   const handleSubmit = useCallback(() => {
+    // If there's a pending suggestion, Enter confirms it
+    if (suggestion) {
+      const canonical = suggestion;
+      setSuggestion(null);
+      setInput("");
+      // Re-run submit logic with the canonical name
+      const player = resolvePlayer(canonical, PLAYERS);
+      if (player) {
+        if (step === STEP.TEAM && playerOnTeam(player, currentTarget) && !usedPlayers.has(player.name)) {
+          pushHistory();
+          const newUsed = new Set(usedPlayers); newUsed.add(player.name);
+          setUsedPlayers(newUsed);
+          setChain(c => [...c, { item: player.name, type: "player" }]);
+          setCurrentTarget(player.name);
+          setStep(STEP.PLAYER_TO_COLLEGE);
+        } else if (step === STEP.COLLEGE && playerAtCollege(player, currentTarget) && !usedPlayers.has(player.name)) {
+          pushHistory();
+          const newUsed = new Set(usedPlayers); newUsed.add(player.name);
+          setUsedPlayers(newUsed);
+          setChain(c => [...c, { item: player.name, type: "player" }]);
+          setCurrentTarget(player.name);
+          setStep(STEP.PLAYER_TO_TEAM);
+        } else {
+          reject("That doesn't work here");
+        }
+      }
+      return;
+    }
+
     const val = input.trim();
     if (!val) return;
 
     if (step === STEP.TEAM) {
       // Need a player who played for currentTarget team
       const player = resolvePlayer(val, PLAYERS);
-      if (!player) return reject("Player not found in our database");
+      if (!player) {
+        const fuzzy = findPlayerSuggestion(val);
+        if (fuzzy) {
+          justSetSuggestion.current = true;
+          setTimeout(() => { justSetSuggestion.current = false; }, 50);
+          setSuggestion(fuzzy);
+          setRejectMsg("");
+          setInput("");
+        } else {
+          reject("Player not found in our database");
+        }
+        return;
+      }
       if (!playerOnTeam(player, currentTarget)) return reject(`${player.name} didn't play for the ${currentTarget}`);
       if (usedPlayers.has(player.name)) return reject(`${player.name} already used`);
 
@@ -20358,7 +20483,19 @@ export default function NFLChain() {
     } else if (step === STEP.COLLEGE) {
       // Need a player who went to currentTarget college
       const player = resolvePlayer(val, PLAYERS);
-      if (!player) return reject("Player not found in our database");
+      if (!player) {
+        const fuzzy = findPlayerSuggestion(val);
+        if (fuzzy) {
+          justSetSuggestion.current = true;
+          setTimeout(() => { justSetSuggestion.current = false; }, 50);
+          setSuggestion(fuzzy);
+          setRejectMsg("");
+          setInput("");
+        } else {
+          reject("Player not found in our database");
+        }
+        return;
+      }
       if (!playerAtCollege(player, currentTarget)) return reject(`${player.name} didn't go to ${currentTarget}`);
       if (usedPlayers.has(player.name)) return reject(`${player.name} already used`);
 
@@ -20396,6 +20533,7 @@ export default function NFLChain() {
   const handleKeyDown = (e) => {
     trackPlay();
     if (e.key === "Enter") handleSubmit();
+    if (e.key === "Escape" && suggestion) { setSuggestion(null); setRejectMsg(""); }
   };
 
   const handleReset = () => {
@@ -20613,7 +20751,7 @@ export default function NFLChain() {
             <input
               ref={inputRef}
               value={input}
-              onChange={e => { setInput(e.target.value); setRejectMsg(""); }}
+              onChange={e => { setInput(e.target.value); setRejectMsg(""); setSuggestion(null); }}
               onKeyDown={handleKeyDown}
               placeholder={
                 step === STEP.TEAM || step === STEP.COLLEGE ? "Player name..." :
@@ -20637,7 +20775,38 @@ export default function NFLChain() {
           </div>
 
           {/* Reject message */}
-          {rejectMsg && (
+          {suggestion && (
+            <div style={{ marginTop: 8, fontFamily: "Georgia, serif" }}>
+              <div style={{ fontSize: 13, color: "#c8a050cc", marginBottom: 6, textAlign: "center" }}>
+                Did you mean <strong style={{ color: "#c8a050", fontStyle: "italic" }}>{suggestion}</strong>?
+              </div>
+              <div style={{ display: "flex", gap: 10, justifyContent: "center" }}>
+                <button
+                  onClick={() => { acceptSuggestion(suggestion); }}
+                  style={{
+                    background: "#c8a05022", border: "1px solid #c8a05055",
+                    color: "#c8a050", borderRadius: 6, padding: "4px 14px",
+                    fontSize: 11, fontWeight: 700, letterSpacing: 1,
+                    textTransform: "uppercase", cursor: "pointer",
+                    fontFamily: "'Oswald', sans-serif",
+                  }}>
+                  Yes — Enter
+                </button>
+                <button
+                  onClick={() => { setSuggestion(null); setRejectMsg(""); inputRef.current?.focus(); }}
+                  style={{
+                    background: "transparent", border: "1px solid #ffffff15",
+                    color: "#ffffff30", borderRadius: 6, padding: "4px 14px",
+                    fontSize: 11, fontWeight: 700, letterSpacing: 1,
+                    textTransform: "uppercase", cursor: "pointer",
+                    fontFamily: "'Oswald', sans-serif",
+                  }}>
+                  No — Esc
+                </button>
+              </div>
+            </div>
+          )}
+          {!suggestion && rejectMsg && (
             <div style={{
               marginTop: 8, fontSize: 11, color: "#e74c3c99",
               fontFamily: "'Oswald', sans-serif", letterSpacing: 1, textAlign: "center",
