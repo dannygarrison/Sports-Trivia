@@ -14516,7 +14516,7 @@ const PLAYERS = [
   {name:"Todd Watkins",colleges:["BYU"],teams:["Las Vegas Raiders"]},
   {name:"Danny Watkins",colleges:["Bucks County","Calgary"],teams:["Philadelphia Eagles","Miami Dolphins"]},
   {name:"Rokevious Watkins",colleges:["South Carolina"],teams:["Kansas City Chiefs","Green Bay Packers"]},
-  {name:"Jaylen Watkins",colleges:["Florida"],teams:["Philadelphia Eagles","Los Angeles Chargers"]},
+  {name:"Jaylen Watkins",colleges:["Florida"],teams:["Philadelphia Eagles","Los Angeles Chargers","Green Bay Packers"]},
   {name:"Sammy Watkins",colleges:["Clemson"],teams:["Buffalo Bills","Los Angeles Rams","Kansas City Chiefs","Baltimore Ravens"]},
   {name:"Carlos Watkins",colleges:["Clemson"],teams:["Houston Texans","Dallas Cowboys","Arizona Cardinals"]},
   {name:"Quez Watkins",colleges:["Southern Mississippi"],teams:["Philadelphia Eagles","Pittsburgh Steelers"]},
