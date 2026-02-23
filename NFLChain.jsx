@@ -10134,7 +10134,7 @@ const PLAYERS = [
   {name:"Kendall Newson",colleges:["Middle Tennessee State"],teams:["Miami Dolphins"]},
   {name:"Nate Newton",colleges:[],teams:["Carolina Panthers"]},
   {name:"Jim Newton",colleges:[],teams:["Indianapolis Colts"]},
-  {name:"Cam Newton",colleges:["Auburn"],teams:["Atlanta Falcons","Carolina Panthers","New England Patriots"]},
+  {name:"Cam Newton",colleges:["Auburn","Florida"],teams:["Carolina Panthers","New England Patriots"]},
   {name:"Cecil Newton",colleges:[],teams:["Jacksonville Jaguars"]},
   {name:"Mike Newton",colleges:[],teams:["Indianapolis Colts"]},
   {name:"Derek Newton",colleges:["Arkansas State"],teams:["Houston Texans","New Orleans Saints"]},
