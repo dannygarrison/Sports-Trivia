@@ -131,7 +131,6 @@ const PLAYERS = [
   {name:"Calvin Johnson",colleges:["Georgia Tech"],teams:["Detroit Lions"]},
   {name:"Adrian Peterson",colleges:["Oklahoma"],teams:["Minnesota Vikings","New Orleans Saints","Arizona Cardinals","Seattle Seahawks","Detroit Lions","Tennessee Titans"]},
   {name:"Ray Lewis",colleges:["Miami (FL)"],teams:["Baltimore Ravens"]},
-  {name:"Jason Taylor",colleges:["Miami (FL)"],teams:["Miami Dolphins","Washington Commanders,"New York Jets"]},
   {name:"Troy Polamalu",colleges:["USC"],teams:["Pittsburgh Steelers"]},
   {name:"Marshawn Lynch",colleges:["California"],teams:["Buffalo Bills","Seattle Seahawks"]},
   {name:"Steve Young",colleges:["BYU"],teams:["Tampa Bay Buccaneers","San Francisco 49ers"]},
