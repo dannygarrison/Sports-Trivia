@@ -329,7 +329,6 @@ const PLAYERS = [
   { name: "Dwight Freeney", colleges: ["Syracuse"], position: "DE", teams: ["Indianapolis Colts", "San Diego Chargers", "Arizona Cardinals", "Atlanta Falcons", "Seattle Seahawks", "Detroit Lions"] },
   { name: "Julius Peppers", colleges: ["North Carolina"], position: "DE", teams: ["Carolina Panthers", "Chicago Bears", "Green Bay Packers"] },
   { name: "Osi Umenyiora", colleges: ["Troy"], position: "DE", teams: ["New York Giants", "Atlanta Falcons"] },
-  { name: "Robert Mathis", colleges: ["Alabama A&M"], position: "DE", teams: ["Indianapolis Colts"] },
   { name: "John Abraham", colleges: ["South Carolina"], position: "DE", teams: ["New York Jets", "Atlanta Falcons", "Arizona Cardinals"] },
   { name: "Mario Williams", colleges: ["NC State"], position: "DE", teams: ["Houston Texans", "Buffalo Bills", "Miami Dolphins"] },
   { name: "Joey Bosa", colleges: ["Ohio State"], position: "DE", teams: ["Los Angeles Chargers", "Buffalo Bills"] },
