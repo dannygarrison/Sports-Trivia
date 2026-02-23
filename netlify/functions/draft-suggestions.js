@@ -12,13 +12,16 @@ let cache = {
 
 const CACHE_TTL_MS = 24 * 60 * 60 * 1000; // 24 hours
 
-const PROMPT = `You are an NFL draft expert. Search the web for the most current 2025 NFL Draft prospect rankings, big boards, and mock drafts available today.
+const PROMPT = `Search the web for the most current 2025 NFL Draft prospect rankings and mock drafts.
 
-Return a JSON object with exactly two keys:
-1. "picks": an object where each key is a pick number as a string ("1" through "32") and the value is an array of 4-5 top prospects likely to be selected at or near that pick. Each prospect: { "name": string, "position": string, "school": string }
-2. "allProspects": a flat array of all top ~70 first-round-caliber 2025 NFL Draft prospects. Each: { "name": string, "position": string, "school": string }
+You must respond with ONLY a valid JSON object. No introduction, no explanation, no markdown, no code fences. Start your response with { and end with }.
 
-Use current consensus mock drafts and big boards. Only return valid JSON — no markdown fences, no explanation, no preamble.`;
+The JSON object must have exactly these two keys:
+- "picks": object with keys "1" through "32", each value is array of 4 prospects: [{"name":"...","position":"...","school":"..."}]
+- "allProspects": array of ~70 first-round prospects: [{"name":"...","position":"...","school":"..."}]
+
+Example of correct format:
+{"picks":{"1":[{"name":"Travis Hunter","position":"CB/WR","school":"Colorado"}],"2":[...]},"allProspects":[{"name":"Travis Hunter","position":"CB/WR","school":"Colorado"},...]}``;
 
 exports.handler = async function (event, context) {
   const headers = {
@@ -58,8 +61,13 @@ exports.handler = async function (event, context) {
     const textBlock = response.content.find((b) => b.type === "text");
     if (!textBlock) throw new Error("No text block in response");
 
-    let raw = textBlock.text.trim().replace(/^```json\s*/i, "").replace(/\s*```$/, "").trim();
-    const parsed = JSON.parse(raw);
+    let raw = textBlock.text.trim();
+    // Strip markdown fences if present
+    raw = raw.replace(/^```json\s*/i, "").replace(/^```\s*/i, "").replace(/\s*```$/, "").trim();
+    // Extract JSON object if there's surrounding text
+    const jsonMatch = raw.match(/\{[\s\S]*\}/);
+    if (!jsonMatch) throw new Error("No JSON object found in response");
+    const parsed = JSON.parse(jsonMatch[0]);
 
     if (!parsed.picks || !parsed.allProspects) {
       throw new Error("Response missing required keys");
