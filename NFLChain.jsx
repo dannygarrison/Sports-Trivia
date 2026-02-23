@@ -20117,7 +20117,17 @@ function playerOnTeam(player, team) {
 }
 
 function playerAtCollege(player, college) {
-  return player.colleges.some(c => normalize(c) === normalize(college));
+  const normCollege = normalizeCollege(college);
+  return player.colleges.some(c => {
+    const normC = normalizeCollege(c);
+    if (normC === normCollege) return true;
+    // Check if both map to the same alias group
+    for (const [key, variants] of Object.entries(COLLEGE_ALIASES)) {
+      const allForms = [normalizeCollege(key), ...variants.map(normalizeCollege)];
+      if (allForms.includes(normC) && allForms.includes(normCollege)) return true;
+    }
+    return false;
+  });
 }
 
 // ── CONSTANTS ────────────────────────────────────────────────────────────────
