@@ -267,9 +267,9 @@ export default function Home() {
         }} />
         <div style={{ position: 'relative', animation: 'heroIn 0.55s ease both', maxWidth: 600, margin: '0 auto' }}>
           <picture>
-            <source srcSet="/ts_whistle_logo.webp" type="image/webp" />
+            <source srcSet="/ts_logo_blueoutline_420.webp" type="image/webp" />
             <img
-              src="/ts_whistle_logo_420.png"
+              src="/ts_logo_blueoutline_420.png"
               alt="Trivial Sports Logo"
               width="120"
               height="120"
