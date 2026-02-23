@@ -14516,7 +14516,7 @@ const PLAYERS = [
   {name:"Todd Watkins",colleges:["BYU"],teams:["Las Vegas Raiders"]},
   {name:"Danny Watkins",colleges:["Bucks County","Calgary"],teams:["Philadelphia Eagles","Miami Dolphins"]},
   {name:"Rokevious Watkins",colleges:["South Carolina"],teams:["Kansas City Chiefs","Green Bay Packers"]},
-  {name:"Jaylen Watkins",colleges:["Florida"],teams:["Philadelphia Eagles","Los Angeles Chargers","Green Bay Packers"]},
+  {name:"Jaylen Watkins",colleges:["Florida"],teams:["Philadelphia Eagles","Los Angeles Chargers"]},
   {name:"Sammy Watkins",colleges:["Clemson"],teams:["Buffalo Bills","Los Angeles Rams","Kansas City Chiefs","Baltimore Ravens"]},
   {name:"Carlos Watkins",colleges:["Clemson"],teams:["Houston Texans","Dallas Cowboys","Arizona Cardinals"]},
   {name:"Quez Watkins",colleges:["Southern Mississippi"],teams:["Philadelphia Eagles","Pittsburgh Steelers"]},
@@ -19775,6 +19775,7 @@ const PLAYERS = [
   {name:"Chuck Cecil",colleges:["Arizona"],teams:["Green Bay Packers","Arizona Cardinals","Tennessee Titans"]},
   {name:"Bennie Blades",colleges:["Miami (FL)"],teams:["Detroit Lions","Seattle Seahawks"]},
   {name:"Dean Biasucci",colleges:["Western Carolina"],teams:["Indianapolis Colts","Arizona Cardinals"]}
+  {name:"Jim Plunkett",colleges:["Stanford"],teams:["New England Patriots","San Francisco 49ers","Las Vegas Raiders"]}
 ];
 
 // ── HELPERS ──────────────────────────────────────────────────────────────────
