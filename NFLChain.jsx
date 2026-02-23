@@ -3942,7 +3942,7 @@ const PLAYERS = [
   {name:"Hale Hentges",colleges:["Alabama"],teams:["Washington Commanders"]},
   {name:"Jordan Chunn",colleges:["Troy"],teams:["New York Jets"]},
   {name:"Max Scharping",colleges:["Northern Illinois"],teams:["Houston Texans"]},
-  {name:"Cody Barton",colleges:["Utah"],teams:["Seattle Seahawks","Cleveland Browns"]},
+  {name:"Cody Barton",colleges:["Utah"],teams:["Seattle Seahawks","Cleveland Browns","Denver Broncos","Tennessee Titans"]},
   {name:"Fred Johnson",colleges:["Florida"],teams:["Pittsburgh Steelers"]},
   {name:"Matt Pryor",colleges:["TCU"],teams:["Philadelphia Eagles"]},
   {name:"Dan Brunskill",colleges:["San Diego State"],teams:["San Francisco 49ers","Las Vegas Raiders"]},
