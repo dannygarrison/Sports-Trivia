@@ -620,7 +620,6 @@ const PLAYERS = [
   { name: "Jerry Tillery", colleges: ["Notre Dame"], position: "DT", teams: ["Los Angeles Chargers","Las Vegas Raiders"] },
   { name: "Chauncey Gardner-Johnson", colleges: ["Florida"], position: "S", teams: ["New Orleans Saints","Philadelphia Eagles","Detroit Lions"] },
   { name: "Sean Murphy-Bunting", colleges: ["Central Michigan"], position: "CB", teams: ["Tampa Bay Buccaneers","Tennessee Titans","New England Patriots","Jacksonville Jaguars"] },
-  { name: "Ugo Amadi", colleges: ["Oregon"], position: "S", teams: ["Seattle Seahawks","Philadelphia Eagles","Tennessee Titans"] },
   { name: "Amani Oruwariye", colleges: ["Penn State"], position: "CB", teams: ["Detroit Lions","Las Vegas Raiders"] },
   { name: "Julian Love", colleges: ["Notre Dame"], position: "S", teams: ["New York Giants","Seattle Seahawks"] },
   { name: "Juan Thornhill", colleges: ["Virginia"], position: "S", teams: ["Kansas City Chiefs","Cleveland Browns"] },
