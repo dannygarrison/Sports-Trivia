@@ -276,7 +276,7 @@ export default function Home() {
               style={{ width: 120, display: 'block', margin: '0 auto 8px' }}
             />
           </picture>
-          <svg viewBox="0 0 520 90" style={{ width: 'clamp(300px, 70vw, 520px)', display: 'block', margin: '0 auto 10px', overflow: 'visible' }}>
+          <svg viewBox="0 0 520 90" style={{ width: 'clamp(300px, 70vw, 520px)', display: 'block', margin: '0 auto 16px', overflow: 'visible' }}>
             <defs>
               <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
                 <stop offset="0%" stopColor="#f0d070" />
@@ -285,11 +285,41 @@ export default function Home() {
             </defs>
             <text x="50%" y="78" textAnchor="middle" fontFamily="'Oswald', sans-serif" fontWeight="900" fontSize="82" letterSpacing="-1" fill="url(#goldGrad)">TRIVIAL SPORTS</text>
           </svg>
+          {/* Search bar in hero */}
+          <div style={{
+            display: 'flex', alignItems: 'center', gap: 8,
+            background: searchFocused ? '#0e0e22' : '#0c0c1e',
+            border: `1px solid ${searchFocused ? '#c8a05066' : '#ffffff18'}`,
+            borderRadius: 12, padding: '10px 18px',
+            transition: 'all 0.2s ease',
+            maxWidth: 400, margin: '0 auto',
+            boxShadow: searchFocused ? '0 0 0 3px #c8a05018' : 'none',
+          }}>
+            <span style={{ color: '#ffffff44', fontSize: 16, lineHeight: 1 }}>⌕</span>
+            <input
+              type="text"
+              ref={inputRef}
+              value={search}
+              onChange={e => setSearch(e.target.value)}
+              onFocus={() => setSearchFocused(true)}
+              onBlur={() => setSearchFocused(false)}
+              placeholder="Search games..."
+              style={{
+                background: 'transparent', border: 'none', color: '#ffffff',
+                fontSize: 15, fontFamily: "'Oswald', sans-serif",
+                fontWeight: 600, letterSpacing: 1.5, width: '100%',
+                outline: 'none',
+              }}
+            />
+            {search && (
+              <button onClick={() => setSearch('')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#c8a05099', fontSize: 14, padding: 0, lineHeight: 1 }}>✕</button>
+            )}
+          </div>
         </div>
       </div>
 
       {/* Controls */}
-      <div style={{ maxWidth: 960, margin: '0 auto', padding: '16px 28px 0', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 14 }}>
+      <div style={{ maxWidth: 960, margin: '0 auto', padding: '14px 28px 0', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 10 }}>
         {/* Sport tabs */}
         <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
           {Object.entries(SPORT_META).map(([key, meta]) => {
@@ -310,51 +340,22 @@ export default function Home() {
           })}
         </div>
 
-        {/* Search + Sort */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <select
-            value={sortBy}
-            onChange={e => setSortBy(e.target.value)}
-            style={{
-              background: '#0a0a18', border: '1px solid #ffffff10',
-              borderRadius: 10, padding: '8px 14px',
-              color: '#ffffff66', fontSize: 12,
-              fontFamily: "'Oswald', sans-serif",
-              fontWeight: 600, letterSpacing: 1,
-              cursor: 'pointer', outline: 'none',
-            }}
-          >
-            <option value="newest">Newest</option>
-            <option value="popular">Most Popular</option>
-          </select>
-
-          <div style={{
-            display: 'flex', alignItems: 'center', gap: 8,
-            background: searchFocused ? '#0e0e22' : '#0a0a18',
-            border: `1px solid ${searchFocused ? '#c8a05044' : '#ffffff10'}`,
+        {/* Sort only */}
+        <select
+          value={sortBy}
+          onChange={e => setSortBy(e.target.value)}
+          style={{
+            background: '#0a0a18', border: '1px solid #ffffff10',
             borderRadius: 10, padding: '8px 14px',
-            transition: 'all 0.2s ease', minWidth: 220,
-          }}>
-            <span style={{ color: '#ffffff28', fontSize: 15, lineHeight: 1 }}>⌕</span>
-            <input
-              type="text"
-              ref={inputRef}
-              value={search}
-              onChange={e => setSearch(e.target.value)}
-              onFocus={() => setSearchFocused(true)}
-              onBlur={() => setSearchFocused(false)}
-              placeholder="Search games..."
-              style={{
-                background: 'transparent', border: 'none', color: '#ffffff',
-                fontSize: 13, fontFamily: "'Oswald', sans-serif",
-                fontWeight: 600, letterSpacing: 1, width: '100%',
-              }}
-            />
-            {search && (
-              <button onClick={() => setSearch('')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#c8a05099', fontSize: 14, padding: 0, lineHeight: 1 }}>✕</button>
-            )}
-          </div>
-        </div>
+            color: '#ffffff66', fontSize: 12,
+            fontFamily: "'Oswald', sans-serif",
+            fontWeight: 600, letterSpacing: 1,
+            cursor: 'pointer', outline: 'none',
+          }}
+        >
+          <option value="newest">Newest</option>
+          <option value="popular">Most Popular</option>
+        </select>
       </div>
 
       {/* Games */}
