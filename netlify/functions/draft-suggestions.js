@@ -21,7 +21,7 @@ The JSON object must have exactly these two keys:
 - "allProspects": array of ~70 first-round prospects: [{"name":"...","position":"...","school":"..."}]
 
 Example of correct format:
-{"picks":{"1":[{"name":"Travis Hunter","position":"CB/WR","school":"Colorado"}],"2":[...]},"allProspects":[{"name":"Travis Hunter","position":"CB/WR","school":"Colorado"},...]}``;
+{"picks":{"1":[{"name":"Travis Hunter","position":"CB/WR","school":"Colorado"}],"2":[...]},"allProspects":[{"name":"Travis Hunter","position":"CB/WR","school":"Colorado"},...]}`;
 
 exports.handler = async function (event, context) {
   const headers = {
