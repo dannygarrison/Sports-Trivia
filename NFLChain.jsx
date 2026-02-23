@@ -886,6 +886,7 @@ const PLAYERS = [
   {name:"Pete Retzlaff",colleges:["South Dakota State"],teams:["Philadelphia Eagles"]},
   {name:"Mike Mularkey",colleges:["Florida"],teams:["Minnesota Vikings","Pittsburgh Steelers","Buffalo Bills"]},
   {name:"Derek Tennell",colleges:["UCLA"],teams:["Cleveland Browns","Seattle Seahawks","Minnesota Vikings"]},
+  {name:"Cade McNown",colleges:["UCLA"],teams:["Chicago Bears","Miami Dolphins","San Francisco 49ers"]},
   {name:"Ethan Albright",colleges:["North Carolina"],teams:["Miami Dolphins","Washington Commanders","Buffalo Bills"]},
   {name:"Daniel Graham",colleges:["Colorado"],teams:["New England Patriots","Denver Broncos"]},
   {name:"Bubba Franks",colleges:["Miami (FL)"],teams:["Green Bay Packers","New York Jets"]},
