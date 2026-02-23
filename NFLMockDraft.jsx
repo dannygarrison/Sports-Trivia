@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 
-// ── 2025 NFL Draft Order (1st round) ─────────────────────────────────────────
+// ── 2026 NFL Draft Order (1st round, estimated) ─────────────────────────────────────────
 const INITIAL_PICKS = [
   { pick: 1,  team: "Las Vegas Raiders",        abbr: "LV",  color: "#A5ACAF" },
   { pick: 2,  team: "Cleveland Browns",          abbr: "CLE", color: "#FF3C00" },
@@ -529,7 +529,7 @@ function ShareModal({ picks, onClose }) {
     ctx.font = "bold 28px 'Oswald', Impact, sans-serif";
     ctx.letterSpacing = "3px";
     ctx.textAlign = "center";
-    ctx.fillText("MY 2025 NFL MOCK DRAFT", W / 2, 44);
+    ctx.fillText("MY 2026 NFL MOCK DRAFT", W / 2, 44);
     ctx.fillStyle = "#ffffff22";
     ctx.font = "13px 'Oswald', sans-serif";
     ctx.fillText("trivialsports.com", W / 2, 66);
@@ -601,7 +601,7 @@ function ShareModal({ picks, onClose }) {
 
   const download = () => {
     const a = document.createElement("a");
-    a.download = "my-2025-nfl-mock-draft.png";
+    a.download = "my-2026-nfl-mock-draft.png";
     a.href = canvasRef.current.toDataURL("image/png");
     a.click();
   };
@@ -642,44 +642,18 @@ export default function NFLMockDraft() {
 
   const fetchSuggestions = async () => {
     setLoadingState("loading");
-    setLoadingPct(10);
-
-    const prompt = `You are an NFL draft expert. Today's date context: early 2025 NFL Draft season.
-
-Search the web for the most current 2025 NFL Draft prospect rankings and big board information.
-
-Return a JSON object with two keys:
-1. "picks": an object where each key is a pick number (1-32) and the value is an array of 4-5 top prospects likely to be selected at or near that pick. Each prospect should have: name, position, school.
-2. "allProspects": a flat array of all ~60-80 top 2025 NFL Draft prospects (first round talent), each with name, position, school.
-
-Format each prospect exactly like: {"name": "Travis Hunter", "position": "CB/WR", "school": "Colorado"}
-
-Base this on the most current mock drafts, big boards, and draft news available. Only return valid JSON, no markdown, no explanation.`;
+    setLoadingPct(30);
 
     try {
-      setLoadingPct(30);
-      const response = await fetch("https://api.anthropic.com/v1/messages", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          model: "claude-sonnet-4-20250514",
-          max_tokens: 4000,
-          tools: [{ type: "web_search_20250305", name: "web_search" }],
-          messages: [{ role: "user", content: prompt }],
-        }),
-      });
-      setLoadingPct(70);
+      const response = await fetch("/.netlify/functions/draft-suggestions");
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      setLoadingPct(80);
       const data = await response.json();
-      const textBlock = data.content?.find(b => b.type === "text");
-      if (!textBlock) throw new Error("No text response");
 
-      let raw = textBlock.text.trim();
-      // Strip markdown fences if present
-      raw = raw.replace(/^```json\s*/i, "").replace(/\s*```$/, "").trim();
-      const parsed = JSON.parse(raw);
+      if (data.error) throw new Error(data.error);
 
-      setSuggestions(parsed.picks || {});
-      setAllProspects(parsed.allProspects || []);
+      setSuggestions(data.picks || {});
+      setAllProspects(data.allProspects || []);
       setLoadingPct(100);
       setLoadingState("done");
     } catch (err) {
@@ -751,7 +725,7 @@ Base this on the most current mock drafts, big boards, and draft news available.
 
       {/* Header */}
       <div style={S.header}>
-        <h1 style={S.headerTitle}>2025 NFL Mock Draft</h1>
+        <h1 style={S.headerTitle}>2026 NFL Mock Draft</h1>
         <div style={S.headerSub}>1st Round · Build Your Predictions</div>
 
         {loadingState === "loading" && (
