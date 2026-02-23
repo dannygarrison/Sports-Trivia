@@ -12,13 +12,13 @@ let cache = {
 
 const CACHE_TTL_MS = 24 * 60 * 60 * 1000; // 24 hours
 
-const PROMPT = `Search the web for the most current 2025 NFL Draft prospect rankings and mock drafts.
+const PROMPT = `Search the web for the most current 2026 NFL Draft prospect rankings, early big boards, and mock drafts.
 
 You must respond with ONLY a valid JSON object. No introduction, no explanation, no markdown, no code fences. Start your response with { and end with }.
 
 The JSON object must have exactly these two keys:
-- "picks": object with keys "1" through "32", each value is array of 4 prospects: [{"name":"...","position":"...","school":"..."}]
-- "allProspects": array of ~70 first-round prospects: [{"name":"...","position":"...","school":"..."}]
+- "picks": object with keys "1" through "32", each value is array of 4 top 2026 NFL Draft prospects: [{"name":"...","position":"...","school":"..."}]
+- "allProspects": array of ~70 top 2026 NFL Draft first-round prospects: [{"name":"...","position":"...","school":"..."}]
 
 Example of correct format:
 {"picks":{"1":[{"name":"Travis Hunter","position":"CB/WR","school":"Colorado"}],"2":[...]},"allProspects":[{"name":"Travis Hunter","position":"CB/WR","school":"Colorado"},...]}`;
