@@ -9,8 +9,10 @@ let cache = {
   data: null,
   timestamp: null,
 };
+let lastApiCall = null; // rate limit tracker
 
 const CACHE_TTL_MS = 24 * 60 * 60 * 1000; // 24 hours
+const RATE_LIMIT_MS = 60 * 1000; // min 60s between real API calls
 
 const PROMPT = `Search the web for the most current 2026 NFL Draft prospect rankings, early big boards, and mock drafts.
 
@@ -37,7 +39,7 @@ exports.handler = async function (event, context) {
 
   // Return cached data if fresh
   const now = Date.now();
-  if (cache.data && cache.timestamp && now - cache.timestamp < CACHE_TTL_MS) {
+  if (cache.data && cache.timestamp && (now - cache.timestamp) < CACHE_TTL_MS) {
     console.log("Returning cached draft suggestions, age:", Math.round((now - cache.timestamp) / 60000), "min");
     return {
       statusCode: 200,
@@ -46,13 +48,25 @@ exports.handler = async function (event, context) {
     };
   }
 
+  // Enforce rate limit - refuse to call API more than once per minute
+  const now2 = Date.now();
+  if (lastApiCall && now2 - lastApiCall < RATE_LIMIT_MS) {
+    const waitSec = Math.ceil((RATE_LIMIT_MS - (now2 - lastApiCall)) / 1000);
+    return {
+      statusCode: 429,
+      headers,
+      body: JSON.stringify({ error: `Rate limited. Try again in ${waitSec}s.` }),
+    };
+  }
+  lastApiCall = now2;
+
   // Fetch fresh from Anthropic
   try {
     console.log("Fetching fresh draft suggestions from Anthropic...");
     const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
     const response = await client.messages.create({
-      model: "claude-sonnet-4-20250514",
+      model: "claude-haiku-4-5-20251001",
       max_tokens: 4000,
       tools: [{ type: "web_search_20250305", name: "web_search" }],
       messages: [{ role: "user", content: PROMPT }],
@@ -74,7 +88,7 @@ exports.handler = async function (event, context) {
     }
 
     // Store in cache
-    cache = { data: parsed, timestamp: now };
+    cache = { data: parsed, timestamp: Date.now() };
     console.log("Draft suggestions cached successfully. Prospects:", parsed.allProspects.length);
 
     return {
