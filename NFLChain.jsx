@@ -15568,17 +15568,104 @@ function resolveCollege(input, players) {
   return null;
 }
 
+// Common first-name nicknames — allows "Matt Stafford" to find "Matthew Stafford" etc.
+const FIRST_NAME_ALIASES = {
+  "matthew": ["matt"],
+  "michael": ["mike"],
+  "robert": ["rob", "bob", "bobby"],
+  "william": ["will", "bill", "billy"],
+  "james": ["jim", "jimmy"],
+  "joseph": ["joe", "joey"],
+  "thomas": ["tom", "tommy"],
+  "christopher": ["chris"],
+  "nicholas": ["nick"],
+  "anthony": ["tony"],
+  "jonathan": ["jon", "jonny"],
+  "nathaniel": ["nate"],
+  "nathanael": ["nate"],
+  "benjamin": ["ben"],
+  "daniel": ["dan", "danny"],
+  "timothy": ["tim", "timmy"],
+  "jeffrey": ["jeff"],
+  "geoffrey": ["jeff"],
+  "stephen": ["steve"],
+  "steven": ["steve"],
+  "richard": ["rick", "rich", "richie", "dick"],
+  "charles": ["charlie", "chuck"],
+  "patrick": ["pat"],
+  "kenneth": ["ken", "kenny"],
+  "donald": ["don"],
+  "ronald": ["ron"],
+  "lawrence": ["larry"],
+  "raymond": ["ray"],
+  "gregory": ["greg"],
+  "gerald": ["jerry"],
+  "jerome": ["jerry"],
+  "terrence": ["terry"],
+  "terrell": ["terry"],
+  "frederick": ["fred"],
+  "douglas": ["doug"],
+  "edward": ["ed", "eddie"],
+  "theodore": ["ted", "theo"],
+  "leonard": ["len", "lenny"],
+  "reginald": ["reggie"],
+  "roderick": ["rod"],
+  "cornelius": ["neil"],
+  "ezekiel": ["zeke"],
+  "isaiah": ["zay"],
+  "alejandro": ["alex"],
+  "alexander": ["alex"],
+  "emmanuel": ["manny"],
+};
+
+// Build reverse lookup: short form -> [full form, ...]
+const FIRST_NAME_REVERSE = {};
+for (const [full, shorts] of Object.entries(FIRST_NAME_ALIASES)) {
+  for (const short of shorts) {
+    if (!FIRST_NAME_REVERSE[short]) FIRST_NAME_REVERSE[short] = [];
+    FIRST_NAME_REVERSE[short].push(full);
+  }
+}
+
 function resolvePlayer(input, players) {
   const n = normalize(input);
-  // Exact match first
+  const stripSuffix = s => s.replace(/\b(jr|sr|ii|iii|iv)\b/g, "").replace(/\s+/g, " ").trim();
+
+  // 1. Exact match
   const exact = players.find(p => normalize(p.name) === n);
   if (exact) return exact;
-  // Also match ignoring name suffixes (Jr, Sr, II, III, IV)
-  // so "Kenneth Walker" finds "Kenneth Walker III"
-  const stripSuffix = s => s.replace(/\b(jr|sr|ii|iii|iv)\b/g, "").replace(/\s+/g, " ").trim();
+
+  // 2. Suffix-stripped match ("Kenneth Walker" -> "Kenneth Walker III")
   const nStripped = stripSuffix(n);
-  return players.find(p => stripSuffix(normalize(p.name)) === nStripped) || null;
+  const suffixMatch = players.find(p => stripSuffix(normalize(p.name)) === nStripped);
+  if (suffixMatch) return suffixMatch;
+
+  // 3. First-name nickname match ("Matt Stafford" -> "Matthew Stafford")
+  const parts = nStripped.split(" ");
+  if (parts.length >= 2) {
+    const firstName = parts[0];
+    const lastName = parts.slice(1).join(" ");
+
+    // Expand nickname to full name (matt -> matthew)
+    const fullNames = FIRST_NAME_REVERSE[firstName] || [];
+    for (const fullFirst of fullNames) {
+      const expanded = fullFirst + " " + lastName;
+      const match = players.find(p => stripSuffix(normalize(p.name)) === expanded);
+      if (match) return match;
+    }
+
+    // Shorten full name to nickname (matthew -> matt)
+    const nicknames = FIRST_NAME_ALIASES[firstName] || [];
+    for (const nick of nicknames) {
+      const shortened = nick + " " + lastName;
+      const match = players.find(p => stripSuffix(normalize(p.name)) === shortened);
+      if (match) return match;
+    }
+  }
+
+  return null;
 }
+
 
 const TEAM_LEGACY_MAP = {
   "Los Angeles Rams": ["St. Louis Rams"],
