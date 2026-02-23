@@ -344,7 +344,7 @@ const PLAYERS = [
   {name:"Jonathan Allen",colleges:["Alabama"],teams:["Washington Commanders"]},
   {name:"Randy Allen",colleges:["South Alabama"],teams:["Baltimore Ravens"]},
   {name:"Julian Allen",colleges:["Southern Mississippi"],teams:["Cleveland Browns"]},
-  {name:"Marcus Allen",colleges:["Penn State"],teams:["Pittsburgh Steelers","Kansas City Chiefs","Las Vegas Raiders"]},
+  {name:"Marcus Allen",colleges:["USC"],teams:["Las Vegas Raiders","Kansas City Chiefs"]},
   {name:"Kyle Allen",colleges:["Houston"],teams:["Carolina Panthers","Washington Commanders","Houston Texans","Buffalo Bills","Pittsburgh Steelers"]},
   {name:"Dejon Allen",colleges:["Hawaii"],teams:["Chicago Bears","Green Bay Packers"]},
   {name:"Austin Allen",colleges:["Arkansas","Nebraska"],teams:["Tampa Bay Buccaneers","Green Bay Packers"]},
