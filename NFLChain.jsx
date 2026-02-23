@@ -117,6 +117,7 @@ const PLAYERS = [
   {name:"Peyton Manning",colleges:["Tennessee"],teams:["Indianapolis Colts","Denver Broncos"]},
   {name:"Barry Sanders",colleges:["Oklahoma State"],teams:["Detroit Lions"]},
   {name:"Lawrence Taylor",colleges:["North Carolina"],teams:["New York Giants"]},
+  {name:"Jason Taylor',colleges:["Miami (FL)"],teams:["Miami Dolphins","Washingon Commanders","New York Jets"]},
   {name:"Emmitt Smith",colleges:["Florida"],teams:["Dallas Cowboys","Arizona Cardinals"]},
   {name:"Randy Moss",colleges:["Marshall"],teams:["Minnesota Vikings","New England Patriots","San Francisco 49ers","Tennessee Titans"]},
   {name:"Joe Montana",colleges:["Notre Dame"],teams:["San Francisco 49ers","Kansas City Chiefs"]},
