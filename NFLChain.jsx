@@ -19774,7 +19774,7 @@ const PLAYERS = [
   {name:"Dennis Smith",colleges:["USC"],teams:["Denver Broncos"]},
   {name:"Chuck Cecil",colleges:["Arizona"],teams:["Green Bay Packers","Arizona Cardinals","Tennessee Titans"]},
   {name:"Bennie Blades",colleges:["Miami (FL)"],teams:["Detroit Lions","Seattle Seahawks"]},
-  {name:"Dean Biasucci",colleges:["Western Carolina"],teams:["Indianapolis Colts","Arizona Cardinals"]}
+  {name:"Dean Biasucci",colleges:["Western Carolina"],teams:["Indianapolis Colts","Arizona Cardinals"]},
   {name:"Jim Plunkett",colleges:["Stanford"],teams:["New England Patriots","San Francisco 49ers","Las Vegas Raiders"]}
 ,
   {name:"Sammy Baugh",colleges:["TCU"],teams:["Washington Commanders"]},
