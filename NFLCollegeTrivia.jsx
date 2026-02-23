@@ -255,7 +255,7 @@ const PLAYERS = [
   { name: "Tyler Boyd", colleges: ["Pittsburgh"], position: "WR", teams: ["Cincinnati Bengals", "Tennessee Titans"] },
   { name: "Diontae Johnson", colleges: ["Toledo"], position: "WR", teams: ["Pittsburgh Steelers", "Carolina Panthers", "Baltimore Ravens"] },
   { name: "Chris Godwin", colleges: ["Penn State"], position: "WR", teams: ["Tampa Bay Buccaneers"] },
-  { name: "Allen Robinson", colleges: ["Penn State"], position: "WR", teams: ["Jacksonville Jaguars", "Chicago Bears", "Los Angeles Rams"] },
+  { name: "Allen Robinson", colleges: ["Penn State"], position: "WR", teams: ["Jacksonville Jaguars", "Chicago Bears", "Los Angeles Rams", "Pittsburgh Steelers", "Detroit Lions"] },
   { name: "Alshon Jeffery", colleges: ["South Carolina"], position: "WR", teams: ["Chicago Bears", "Philadelphia Eagles"] },
   { name: "Michael Thomas", colleges: ["Ohio State"], position: "WR", teams: ["New Orleans Saints"] },
   { name: "Adam Thielen", colleges: ["Minnesota State-Mankato"], position: "WR", teams: ["Minnesota Vikings", "Carolina Panthers"] },
