@@ -212,12 +212,24 @@ export default function Home() {
     return games
   }
 
+  const SPORT_ALIASES = {
+    NFL: ['football', 'nfl', 'american football'],
+    NBA: ['basketball', 'nba', 'hoops'],
+    MLB: ['baseball', 'mlb'],
+    SOCCER: ['soccer', 'football', 'futbol', 'mls', 'premier league', 'epl'],
+    OLYMPICS: ['olympics', 'olympic'],
+  }
+
   const filteredGames = sortGames(GAMES.filter(g => {
     const matchesSport = activeTab === 'ALL' || g.sport === activeTab
     const q = search.toLowerCase()
+    const sportAliasMatch = Object.entries(SPORT_ALIASES).some(([sport, aliases]) =>
+      g.sport === sport && aliases.some(alias => alias.includes(q) || q.includes(alias))
+    )
     const matchesSearch = g.title.toLowerCase().includes(q) ||
       g.sport.toLowerCase().includes(q) ||
-      g.description.toLowerCase().includes(q)
+      g.description.toLowerCase().includes(q) ||
+      sportAliasMatch
     return matchesSport && matchesSearch
   }))
 
