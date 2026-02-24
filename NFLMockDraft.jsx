@@ -1466,13 +1466,6 @@ function ShareModal({ picks, onClose }) {
       ctx.fillStyle = "#080810";
       ctx.fillRect(0, 0, W, totalH);
 
-      // Header gradient bar
-      const grad = ctx.createLinearGradient(0, 0, W, 0);
-      grad.addColorStop(0, "#f0d070");
-      grad.addColorStop(1, "#e87040");
-      ctx.fillStyle = grad;
-      ctx.fillRect(0, 0, W, 4);
-
       // Logo top-left
       const LOGO_H = 34;
       if (logo) {
@@ -1568,7 +1561,6 @@ function ShareModal({ picks, onClose }) {
           ctx.textAlign = "left";
           ctx.fillText(pick.player.name, nameX, midY);
 
-          // Position · School
           ctx.fillStyle = accent + "77";
           ctx.font = "11px Oswald, sans-serif";
           ctx.textAlign = "right";
@@ -1592,7 +1584,6 @@ function ShareModal({ picks, onClose }) {
   const saveImage = async () => {
     const dataUrl = canvasRef.current.toDataURL("image/png");
 
-    // Mobile: use Web Share API to offer camera roll
     if (navigator.share && navigator.canShare) {
       try {
         const blob = await (await fetch(dataUrl)).blob();
@@ -1611,7 +1602,6 @@ function ShareModal({ picks, onClose }) {
       }
     }
 
-    // Desktop fallback
     const a = document.createElement("a");
     a.download = "2026-nfl-mock-draft.png";
     a.href = dataUrl;
