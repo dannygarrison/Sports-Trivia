@@ -1445,8 +1445,8 @@ function ShareModal({ picks, onClose }) {
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
 
-    // Ensure Oswald is loaded before drawing
-    document.fonts.load("bold 26px Oswald").then(() => drawCanvas(canvas, ctx));
+    // Ensure all fonts are ready before drawing
+    document.fonts.ready.then(() => drawCanvas(canvas, ctx));
     return;
 
     function drawCanvas(canvas, ctx) {
