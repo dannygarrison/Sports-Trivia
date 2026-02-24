@@ -938,6 +938,46 @@ const ALL_TEAMS = [
 ];
 
 // ── Styles ────────────────────────────────────────────────────────────────────
+// ── Team color pairs: [darkBg, lightAccent] ──────────────────────────────────
+const TEAM_COLORS = {
+  "LV":  ["#1a1a1a", "#A5ACAF"],
+  "NYJ": ["#001008", "#28b050"],
+  "ARI": ["#2a0010", "#ff5070"],
+  "TEN": ["#001428", "#6aaaff"],
+  "NYG": ["#0a1540", "#8cacff"],
+  "CLE": ["#2a0f00", "#FF6030"],
+  "WSH": ["#1a0000", "#ff5555"],
+  "NO":  ["#1a1408", "#D3BC8D"],
+  "KC":  ["#1a0008", "#ff3355"],
+  "CIN": ["#1a0800", "#FB6020"],
+  "MIA": ["#002830", "#30c8d8"],
+  "DAL": ["#001030", "#7aaaff"],
+  "LAR": ["#001030", "#FFC72C"],
+  "BAL": ["#0a0018", "#a060ff"],
+  "TB":  ["#1a0000", "#ff4444"],
+  "DET": ["#001830", "#40aaff"],
+  "MIN": ["#180828", "#b060ff"],
+  "CAR": ["#001840", "#50aaff"],
+  "PIT": ["#0a0a00", "#FFB612"],
+  "LAC": ["#001840", "#50a8ff"],
+  "PHI": ["#001408", "#30d870"],
+  "CHI": ["#1a0800", "#E87722"],
+  "BUF": ["#001430", "#4080ff"],
+  "SF":  ["#2a0000", "#ff8888"],
+  "HOU": ["#000a14", "#ff3348"],
+  "DEN": ["#1a0800", "#FB7010"],
+  "NE":  ["#1a0808", "#E03050"],
+  "SEA": ["#001228", "#5090d8"],
+  "ATL": ["#1a0005", "#e84060"],
+  "GB":  ["#0a1810", "#40d870"],
+  "IND": ["#001030", "#5090ff"],
+  "JAX": ["#00292f", "#40c8d8"],
+};
+
+function getTeamColors(abbr) {
+  return TEAM_COLORS[abbr] || ["#0e0e1e", "#e8e0d0"];
+}
+
 const S = {
   app: {
     minHeight: "100vh",
@@ -992,64 +1032,69 @@ const S = {
     textTransform: "uppercase",
   },
   grid: {
-    maxWidth: 900,
+    maxWidth: 640,
     margin: "20px auto 0",
     padding: "0 16px",
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))",
-    gap: 10,
+    display: "flex",
+    flexDirection: "column",
+    gap: 6,
   },
-  pickCard: (filled, isDragging) => ({
-    background: filled ? "#0e0e1e" : "#0a0a16",
-    border: `1px solid ${filled ? "#ffffff14" : "#ffffff08"}`,
+  pickCard: (isDragging, darkBg, lightAccent) => ({
+    background: darkBg,
+    border: `1px solid ${lightAccent}18`,
     borderRadius: 10,
-    padding: "10px 12px",
+    padding: "12px 16px",
     cursor: "pointer",
     transition: "all 0.18s ease",
     opacity: isDragging ? 0.4 : 1,
     position: "relative",
     overflow: "hidden",
+    display: "flex",
+    alignItems: "center",
+    gap: 16,
   }),
-  pickNum: (color) => ({
-    fontSize: 10,
+  pickNum: (lightAccent) => ({
+    fontSize: 11,
     fontWeight: 700,
     letterSpacing: 2,
-    color: color + "cc",
+    color: lightAccent + "88",
     textTransform: "uppercase",
+    minWidth: 46,
+    flexShrink: 0,
   }),
-  teamTag: (color) => ({
+  teamTag: (lightAccent) => ({
     display: "inline-block",
-    fontSize: 10,
+    fontSize: 11,
     fontWeight: 800,
     letterSpacing: 1.5,
-    padding: "2px 7px",
+    padding: "2px 8px",
     borderRadius: 4,
-    background: color + "22",
-    border: `1px solid ${color}44`,
-    color: color === "#A5ACAF" ? "#c8c8c8" : color,
+    background: lightAccent + "18",
+    border: `1px solid ${lightAccent}44`,
+    color: lightAccent,
     textTransform: "uppercase",
+    minWidth: 44,
+    textAlign: "center",
+    flexShrink: 0,
   }),
-  playerName: {
+  playerName: (lightAccent) => ({
     fontSize: 15,
     fontWeight: 700,
     letterSpacing: 0.5,
-    color: "#f0e8d8",
-    marginTop: 4,
+    color: lightAccent,
     lineHeight: 1.2,
-  },
-  playerPos: {
+  }),
+  playerPos: (lightAccent) => ({
     fontSize: 11,
-    color: "#ffffff44",
+    color: lightAccent + "88",
     letterSpacing: 1,
-    marginTop: 2,
-  },
-  emptySlot: {
+  }),
+  emptySlot: (lightAccent) => ({
     fontSize: 13,
-    color: "#ffffff20",
+    color: lightAccent + "55",
     letterSpacing: 1,
-    marginTop: 6,
     fontStyle: "italic",
-  },
+  }),
   tradeBadge: {
     position: "absolute",
     top: 8,
@@ -1581,37 +1626,34 @@ export default function NFLMockDraft() {
 
       {/* Pick grid */}
       <div style={S.grid}>
-        {picks.map(pick => (
-          <div
-            key={pick.pick}
-            style={S.pickCard(!!pick.player, dragSrc === pick.pick)}
-            onClick={() => setActivePick(pick.pick)}
-            draggable={!!pick.player}
-            onDragStart={() => handleDragStart(pick.pick)}
-            onDragOver={handleDragOver}
-            onDrop={() => handleDrop(pick.pick)}
-          >
-            {/* Color accent line */}
-            <div style={{ position: "absolute", top: 0, left: 0, width: 3, height: "100%", background: pick.color, borderRadius: "10px 0 0 10px", opacity: 0.7 }} />
-            <div style={{ paddingLeft: 8 }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                <span style={S.pickNum(pick.color)}>Pick {pick.pick}</span>
-                <span style={S.teamTag(pick.color)}>{pick.abbr}</span>
+        {picks.map(pick => {
+          const [darkBg, lightAccent] = getTeamColors(pick.abbr);
+          return (
+            <div
+              key={pick.pick}
+              style={S.pickCard(dragSrc === pick.pick, darkBg, lightAccent)}
+              onClick={() => setActivePick(pick.pick)}
+              draggable={!!pick.player}
+              onDragStart={() => handleDragStart(pick.pick)}
+              onDragOver={handleDragOver}
+              onDrop={() => handleDrop(pick.pick)}
+            >
+              <span style={S.pickNum(lightAccent)}>#{pick.pick}</span>
+              <span style={S.teamTag(lightAccent)}>{pick.abbr}</span>
+              <div style={{ flex: 1 }}>
+                {pick.player ? (
+                  <>
+                    <div style={S.playerName(lightAccent)}>{pick.player.name}</div>
+                    <div style={S.playerPos(lightAccent)}>{pick.player.position} · {pick.player.school}</div>
+                  </>
+                ) : (
+                  <div style={S.emptySlot(lightAccent)}>Select a player…</div>
+                )}
               </div>
-              {pick.player ? (
-                <>
-                  <div style={S.playerName}>{pick.player.name}</div>
-                  <div style={S.playerPos}>{pick.player.position} · {pick.player.school}</div>
-                </>
-              ) : (
-                <div style={S.emptySlot}>
-                  {PICK_SUGGESTIONS[pick.pick]?.length > 0 ? `${PICK_SUGGESTIONS[pick.pick][0].name}?` : "Select a player…"}
-                </div>
-              )}
+              {pick.traded && <span style={S.tradeBadge}>Traded</span>}
             </div>
-            {pick.traded && <span style={S.tradeBadge}>Traded</span>}
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       {/* Modals */}
