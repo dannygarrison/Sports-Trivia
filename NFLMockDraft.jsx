@@ -938,44 +938,61 @@ const ALL_TEAMS = [
 ];
 
 // ── Styles ────────────────────────────────────────────────────────────────────
-// ── Team color pairs: [darkBg, lightAccent] ──────────────────────────────────
+// ── Team color pairs: [darkBg, accent] ───────────────────────────────────────
+// darkBg: deep tint of official primary. accent: most recognizable team color.
 const TEAM_COLORS = {
-  "LV":  ["#1a1a1a", "#A5ACAF"],
-  "NYJ": ["#001008", "#28b050"],
-  "ARI": ["#2a0010", "#ff5070"],
-  "TEN": ["#001428", "#6aaaff"],
-  "NYG": ["#0a1540", "#8cacff"],
-  "CLE": ["#2a0f00", "#FF6030"],
-  "WSH": ["#1a0000", "#ff5555"],
-  "NO":  ["#1a1408", "#D3BC8D"],
-  "KC":  ["#1a0008", "#ff3355"],
-  "CIN": ["#1a0800", "#FB6020"],
-  "MIA": ["#002830", "#30c8d8"],
-  "DAL": ["#001030", "#7aaaff"],
-  "LAR": ["#001030", "#FFC72C"],
-  "BAL": ["#0a0018", "#a060ff"],
-  "TB":  ["#1a0000", "#ff4444"],
-  "DET": ["#001830", "#40aaff"],
-  "MIN": ["#180828", "#b060ff"],
-  "CAR": ["#001840", "#50aaff"],
-  "PIT": ["#0a0a00", "#FFB612"],
-  "LAC": ["#001840", "#50a8ff"],
-  "PHI": ["#001408", "#30d870"],
-  "CHI": ["#1a0800", "#E87722"],
-  "BUF": ["#001430", "#4080ff"],
-  "SF":  ["#2a0000", "#ff8888"],
-  "HOU": ["#000a14", "#ff3348"],
-  "DEN": ["#1a0800", "#FB7010"],
-  "NE":  ["#1a0808", "#E03050"],
-  "SEA": ["#001228", "#5090d8"],
-  "ATL": ["#1a0005", "#e84060"],
-  "GB":  ["#0a1810", "#40d870"],
-  "IND": ["#001030", "#5090ff"],
-  "JAX": ["#00292f", "#40c8d8"],
+  //        darkBg       accent (official hex)
+  "ARI": ["#1a0008", "#97233F"],  // Cardinals Red
+  "ATL": ["#1a0005", "#A71930"],  // Falcons Red
+  "BAL": ["#0a0018", "#9E7C0C"],  // Ravens Gold
+  "BUF": ["#060f22", "#C60C30"],  // Bills Red
+  "CAR": ["#001220", "#0085CA"],  // Panthers Blue
+  "CHI": ["#060b14", "#C83803"],  // Bears Orange
+  "CIN": ["#0d0800", "#FB4F14"],  // Bengals Orange
+  "CLE": ["#100800", "#FF3C00"],  // Browns Orange
+  "DAL": ["#000d1a", "#002244"],  // Cowboys Navy (silver not visible on dark)
+  "DEN": ["#0d0600", "#FB4F14"],  // Broncos Orange
+  "DET": ["#001220", "#0076B6"],  // Lions Blue
+  "GB":  ["#070e09", "#FFB612"],  // Packers Gold
+  "HOU": ["#000810", "#A71930"],  // Texans Red
+  "IND": ["#00081a", "#002C5F"],  // Colts Blue (brightened below)
+  "JAX": ["#00100f", "#D7A22A"],  // Jaguars Gold
+  "KC":  ["#120005", "#E31837"],  // Chiefs Red
+  "LAC": ["#00091a", "#0080C6"],  // Chargers Powder Blue
+  "LAR": ["#00091a", "#FFC72C"],  // Rams Gold
+  "LV":  ["#0a0a0a", "#A5ACAF"],  // Raiders Silver
+  "MIA": ["#001a1c", "#008E97"],  // Dolphins Aqua
+  "MIN": ["#0f0620", "#4F2683"],  // Vikings Purple (brightened below)
+  "NE":  ["#000a18", "#C60C30"],  // Patriots Red
+  "NO":  ["#130f05", "#D3BC8D"],  // Saints Gold
+  "NYG": ["#030a1e", "#A71930"],  // Giants Red
+  "NYJ": ["#001209", "#003F2D"],  // Jets Green (brightened below)
+  "PHI": ["#001214", "#A5ACAF"],  // Eagles Silver
+  "PIT": ["#0a0800", "#FFB612"],  // Steelers Gold
+  "SEA": ["#000a18", "#69BE28"],  // Seahawks Green
+  "SF":  ["#150000", "#AA0000"],  // 49ers Red
+  "TB":  ["#120000", "#D50A0A"],  // Bucs Red
+  "TEN": ["#000e1e", "#4B92DB"],  // Titans Blue
+  "WSH": ["#150000", "#FFB612"],  // Commanders Gold
+};
+
+// Some official primaries are too dark to read on dark bg — override accent
+const ACCENT_BOOST = {
+  "DAL": "#6699CC",   // Cowboys: lighten navy
+  "IND": "#4488CC",   // Colts: lighten navy
+  "MIN": "#8B5FCF",   // Vikings: lighten purple
+  "NYJ": "#00AA55",   // Jets: brighten green
+  "SF":  "#CC2222",   // 49ers: brighten red
+  "TB":  "#FF3333",   // Bucs: brighten red
+  "HOU": "#CC2233",   // Texans: brighten red
+  "ATL": "#CC2233",   // Falcons: brighten red
+  "ARI": "#B02848",   // Cardinals: brighten red
 };
 
 function getTeamColors(abbr) {
-  return TEAM_COLORS[abbr] || ["#0e0e1e", "#e8e0d0"];
+  const pair = TEAM_COLORS[abbr] || ["#0e0e1e", "#e8e0d0"];
+  const accent = ACCENT_BOOST[abbr] || pair[1];
+  return [pair[0], accent];
 }
 
 const S = {
@@ -1039,9 +1056,9 @@ const S = {
     flexDirection: "column",
     gap: 6,
   },
-  pickCard: (isDragging, darkBg, lightAccent) => ({
+  pickCard: (isDragging, darkBg, accent) => ({
     background: darkBg,
-    border: `1px solid ${lightAccent}18`,
+    border: `1px solid ${accent}22`,
     borderRadius: 10,
     padding: "12px 16px",
     cursor: "pointer",
@@ -1053,45 +1070,45 @@ const S = {
     alignItems: "center",
     gap: 16,
   }),
-  pickNum: (lightAccent) => ({
+  pickNum: (accent) => ({
     fontSize: 11,
     fontWeight: 700,
     letterSpacing: 2,
-    color: lightAccent + "88",
+    color: accent + "88",
     textTransform: "uppercase",
     minWidth: 46,
     flexShrink: 0,
   }),
-  teamTag: (lightAccent) => ({
+  teamTag: (accent) => ({
     display: "inline-block",
     fontSize: 11,
     fontWeight: 800,
     letterSpacing: 1.5,
     padding: "2px 8px",
     borderRadius: 4,
-    background: lightAccent + "18",
-    border: `1px solid ${lightAccent}44`,
-    color: lightAccent,
+    background: accent + "20",
+    border: `1px solid ${accent}55`,
+    color: accent,
     textTransform: "uppercase",
     minWidth: 44,
     textAlign: "center",
     flexShrink: 0,
   }),
-  playerName: (lightAccent) => ({
+  playerName: (accent) => ({
     fontSize: 15,
     fontWeight: 700,
     letterSpacing: 0.5,
-    color: lightAccent,
+    color: accent,
     lineHeight: 1.2,
   }),
-  playerPos: (lightAccent) => ({
+  playerPos: (accent) => ({
     fontSize: 11,
-    color: lightAccent + "88",
+    color: accent + "77",
     letterSpacing: 1,
   }),
-  emptySlot: (lightAccent) => ({
+  emptySlot: (accent) => ({
     fontSize: 13,
-    color: lightAccent + "55",
+    color: accent + "55",
     letterSpacing: 1,
     fontStyle: "italic",
   }),
@@ -1627,27 +1644,27 @@ export default function NFLMockDraft() {
       {/* Pick grid */}
       <div style={S.grid}>
         {picks.map(pick => {
-          const [darkBg, lightAccent] = getTeamColors(pick.abbr);
+          const [darkBg, accent] = getTeamColors(pick.abbr);
           return (
             <div
               key={pick.pick}
-              style={S.pickCard(dragSrc === pick.pick, darkBg, lightAccent)}
+              style={S.pickCard(dragSrc === pick.pick, darkBg, accent)}
               onClick={() => setActivePick(pick.pick)}
               draggable={!!pick.player}
               onDragStart={() => handleDragStart(pick.pick)}
               onDragOver={handleDragOver}
               onDrop={() => handleDrop(pick.pick)}
             >
-              <span style={S.pickNum(lightAccent)}>#{pick.pick}</span>
-              <span style={S.teamTag(lightAccent)}>{pick.abbr}</span>
+              <span style={S.pickNum(accent)}>#{pick.pick}</span>
+              <span style={S.teamTag(accent)}>{pick.abbr}</span>
               <div style={{ flex: 1 }}>
                 {pick.player ? (
                   <>
-                    <div style={S.playerName(lightAccent)}>{pick.player.name}</div>
-                    <div style={S.playerPos(lightAccent)}>{pick.player.position} · {pick.player.school}</div>
+                    <div style={S.playerName(accent)}>{pick.player.name}</div>
+                    <div style={S.playerPos(accent)}>{pick.player.position} · {pick.player.school}</div>
                   </>
                 ) : (
-                  <div style={S.emptySlot(lightAccent)}>Select a player…</div>
+                  <div style={S.emptySlot(accent)}>Select a player…</div>
                 )}
               </div>
               {pick.traded && <span style={S.tradeBadge}>Traded</span>}
