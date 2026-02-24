@@ -6039,7 +6039,7 @@ const PLAYERS = [
   {name:"Troy Hill",colleges:["Oregon"],teams:["New England Patriots","Cincinnati Bengals","Los Angeles Rams","Cleveland Browns","Carolina Panthers","Tampa Bay Buccaneers","Kansas City Chiefs"]},
   {name:"Bronson Hill",colleges:["Eastern Michigan"],teams:["Jacksonville Jaguars","Arizona Cardinals","Green Bay Packers"]},
   {name:"Rashod Hill",colleges:["Southern Mississippi"],teams:["Minnesota Vikings"]},
-  {name:"Tyreek Hill",colleges:["West Alabama"],teams:["Kansas City Chiefs","Miami Dolphins"]},
+  {name:"Tyreek Hill",colleges:["West Alabama","Oklahoma State"],teams:["Kansas City Chiefs","Miami Dolphins"]},
   {name:"Taysom Hill",colleges:["Brigham Young"],teams:["New Orleans Saints"]},
   {name:"Brian Hill",colleges:["Wyoming"],teams:["Cincinnati Bengals","Atlanta Falcons","San Francisco 49ers","New York Jets","Tennessee Titans"]},
   {name:"Alvin Hill",colleges:["Maryland"],teams:["Cleveland Browns"]},
