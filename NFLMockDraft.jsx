@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 
 // ── 2026 NFL Draft Order (1st round, estimated) ─────────────────────────────────────────
 const INITIAL_PICKS = [
