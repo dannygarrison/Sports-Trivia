@@ -937,6 +937,21 @@ const ALL_TEAMS = [
   { team: "Washington Commanders",  abbr: "WSH", color: "#5A1414" },
 ];
 
+// ── Color helper: lighten team colors that are too dark to show on dark bg ──
+function ensureVisible(hex) {
+  const r = parseInt(hex.slice(1,3),16);
+  const g = parseInt(hex.slice(3,5),16);
+  const b = parseInt(hex.slice(5,7),16);
+  const luminance = (0.299*r + 0.587*g + 0.114*b) / 255;
+  if (luminance > 0.18) return hex; // bright enough, use as-is
+  // Lighten by blending toward white
+  const factor = 0.55;
+  const lr = Math.round(r + (255-r)*factor);
+  const lg = Math.round(g + (255-g)*factor);
+  const lb = Math.round(b + (255-b)*factor);
+  return `#${lr.toString(16).padStart(2,'0')}${lg.toString(16).padStart(2,'0')}${lb.toString(16).padStart(2,'0')}`;
+}
+
 // ── Styles ────────────────────────────────────────────────────────────────────
 const S = {
   app: {
@@ -999,36 +1014,42 @@ const S = {
     gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))",
     gap: 10,
   },
-  pickCard: (filled, isDragging) => ({
-    background: filled ? "#0e0e1e" : "#0a0a16",
-    border: `1px solid ${filled ? "#ffffff14" : "#ffffff08"}`,
-    borderRadius: 10,
-    padding: "10px 12px",
-    cursor: "pointer",
-    transition: "all 0.18s ease",
-    opacity: isDragging ? 0.4 : 1,
-    position: "relative",
-    overflow: "hidden",
-  }),
+  pickCard: (filled, isDragging, color) => {
+    const vc = ensureVisible(color);
+    return {
+      background: filled ? "#0e0e1e" : "#0a0a16",
+      border: `1px solid ${vc}28`,
+      borderRadius: 10,
+      padding: "10px 12px",
+      cursor: "pointer",
+      transition: "all 0.18s ease",
+      opacity: isDragging ? 0.4 : 1,
+      position: "relative",
+      overflow: "hidden",
+    };
+  },
   pickNum: (color) => ({
     fontSize: 10,
     fontWeight: 700,
     letterSpacing: 2,
-    color: color + "cc",
+    color: ensureVisible(color) + "cc",
     textTransform: "uppercase",
   }),
-  teamTag: (color) => ({
-    display: "inline-block",
-    fontSize: 10,
-    fontWeight: 800,
-    letterSpacing: 1.5,
-    padding: "2px 7px",
-    borderRadius: 4,
-    background: color + "22",
-    border: `1px solid ${color}44`,
-    color: color === "#A5ACAF" ? "#c8c8c8" : color,
-    textTransform: "uppercase",
-  }),
+  teamTag: (color) => {
+    const vc = ensureVisible(color);
+    return {
+      display: "inline-block",
+      fontSize: 10,
+      fontWeight: 800,
+      letterSpacing: 1.5,
+      padding: "2px 7px",
+      borderRadius: 4,
+      background: vc + "22",
+      border: `1px solid ${vc}55`,
+      color: vc,
+      textTransform: "uppercase",
+    };
+  },
   playerName: {
     fontSize: 15,
     fontWeight: 700,
@@ -1584,7 +1605,7 @@ export default function NFLMockDraft() {
         {picks.map(pick => (
           <div
             key={pick.pick}
-            style={S.pickCard(!!pick.player, dragSrc === pick.pick)}
+            style={S.pickCard(!!pick.player, dragSrc === pick.pick, pick.color)}
             onClick={() => setActivePick(pick.pick)}
             draggable={!!pick.player}
             onDragStart={() => handleDragStart(pick.pick)}
@@ -1592,7 +1613,7 @@ export default function NFLMockDraft() {
             onDrop={() => handleDrop(pick.pick)}
           >
             {/* Color accent line */}
-            <div style={{ position: "absolute", top: 0, left: 0, width: 3, height: "100%", background: pick.color, borderRadius: "10px 0 0 10px", opacity: 0.7 }} />
+            <div style={{ position: "absolute", top: 0, left: 0, width: 3, height: "100%", background: ensureVisible(pick.color), borderRadius: "10px 0 0 10px", opacity: 0.9 }} />
             <div style={{ paddingLeft: 8 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
                 <span style={S.pickNum(pick.color)}>Pick {pick.pick}</span>
