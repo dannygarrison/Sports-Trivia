@@ -1445,99 +1445,176 @@ function ShareModal({ picks, onClose }) {
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
 
-    // Ensure all fonts are ready before drawing
-    document.fonts.ready.then(() => drawCanvas(canvas, ctx));
-    return;
+    const logo = new Image();
+    logo.src = "/ts_transparent_logo.png";
+    logo.onload = () => document.fonts.ready.then(() => drawCanvas(canvas, ctx, logo));
+    logo.onerror = () => document.fonts.ready.then(() => drawCanvas(canvas, ctx, null));
 
-    function drawCanvas(canvas, ctx) {
-    const W = 800, ROW = 36, PAD = 20, HEADER = 80;
-    canvas.width = W;
-    canvas.height = HEADER + picks.length * ROW + PAD * 2;
+    function drawCanvas(canvas, ctx, logo) {
+      const W = 640;
+      const CARD_H = 56;
+      const CARD_GAP = 6;
+      const PAD = 20;
+      const HEADER_H = 100;
+      const FOOTER_H = 36;
+      const totalH = HEADER_H + picks.length * (CARD_H + CARD_GAP) - CARD_GAP + PAD + FOOTER_H;
 
-    // Background
-    ctx.fillStyle = "#080810";
-    ctx.fillRect(0, 0, W, canvas.height);
+      canvas.width = W;
+      canvas.height = totalH;
 
-    // Header
-    ctx.fillStyle = "#f0d070";
-    ctx.font = "bold 28px 'Oswald', Impact, sans-serif";
-    ctx.letterSpacing = "3px";
-    ctx.textAlign = "center";
-    ctx.fillText("MY 2026 NFL MOCK DRAFT", W / 2, 44);
-    ctx.fillStyle = "#ffffff22";
-    ctx.font = "13px 'Oswald', sans-serif";
-    ctx.fillText("trivialsports.com", W / 2, 66);
+      // Page background
+      ctx.fillStyle = "#080810";
+      ctx.fillRect(0, 0, W, totalH);
 
-    // Divider
-    ctx.strokeStyle = "#ffffff10";
-    ctx.lineWidth = 1;
-    ctx.beginPath();
-    ctx.moveTo(PAD, HEADER - 4);
-    ctx.lineTo(W - PAD, HEADER - 4);
-    ctx.stroke();
+      // Header gradient bar
+      const grad = ctx.createLinearGradient(0, 0, W, 0);
+      grad.addColorStop(0, "#f0d070");
+      grad.addColorStop(1, "#e87040");
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, W, 4);
 
-    // Picks
-    picks.forEach((pick, i) => {
-      const y = HEADER + i * ROW + PAD;
-      const isEven = i % 2 === 0;
-      if (isEven) {
-        ctx.fillStyle = "#0d0d1c";
-        ctx.fillRect(PAD, y - 4, W - PAD * 2, ROW);
+      // Logo top-left
+      const LOGO_H = 34;
+      if (logo) {
+        const logoW = LOGO_H * (logo.naturalWidth / logo.naturalHeight);
+        ctx.drawImage(logo, PAD, 16, logoW, LOGO_H);
       }
 
-      // Pick number
-      ctx.fillStyle = "#ffffff33";
-      ctx.font = "bold 12px 'Oswald', sans-serif";
-      ctx.textAlign = "left";
-      ctx.fillText(`#${String(pick.pick).padStart(2, "0")}`, PAD + 8, y + 16);
-
-      // Team tag
-      const tagColor = pick.color || "#888";
-      ctx.fillStyle = tagColor + "33";
-      ctx.roundRect?.(PAD + 48, y + 1, 46, 22, 4) || ctx.fillRect(PAD + 48, y + 1, 46, 22);
-      ctx.fill();
-      ctx.strokeStyle = tagColor + "66";
-      ctx.lineWidth = 1;
-      ctx.roundRect?.(PAD + 48, y + 1, 46, 22, 4) || ctx.strokeRect(PAD + 48, y + 1, 46, 22);
-      ctx.stroke();
-      ctx.fillStyle = tagColor === "#A5ACAF" ? "#c8c8c8" : tagColor;
-      ctx.font = "bold 11px 'Oswald', sans-serif";
+      // Title centered
+      ctx.fillStyle = "#f0d070";
+      ctx.font = "bold 26px Oswald, sans-serif";
       ctx.textAlign = "center";
-      ctx.fillText(pick.abbr, PAD + 48 + 23, y + 16);
+      ctx.fillText("2026 NFL MOCK DRAFT", W / 2, 42);
 
-      // Trade badge
-      if (pick.traded) {
-        ctx.fillStyle = "#f0a030";
-        ctx.font = "bold 9px 'Oswald', sans-serif";
+      // Site URL
+      ctx.fillStyle = "#ffffff44";
+      ctx.font = "13px Oswald, sans-serif";
+      ctx.fillText("trivialsports.com", W / 2, 64);
+
+      // Divider
+      ctx.strokeStyle = "#ffffff10";
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(PAD, HEADER_H - 8);
+      ctx.lineTo(W - PAD, HEADER_H - 8);
+      ctx.stroke();
+
+      // Cards
+      picks.forEach((pick, i) => {
+        const [darkBg, accent] = getTeamColors(pick.abbr);
+        const cardX = PAD;
+        const cardY = HEADER_H + i * (CARD_H + CARD_GAP);
+        const cardW = W - PAD * 2;
+
+        // Card background
+        ctx.fillStyle = darkBg;
+        ctx.beginPath();
+        ctx.roundRect(cardX, cardY, cardW, CARD_H, 8);
+        ctx.fill();
+
+        // Card border
+        ctx.strokeStyle = accent + "22";
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.roundRect(cardX, cardY, cardW, CARD_H, 8);
+        ctx.stroke();
+
+        // Left accent bar
+        ctx.fillStyle = accent + "cc";
+        ctx.beginPath();
+        ctx.roundRect(cardX, cardY, 3, CARD_H, [8, 0, 0, 8]);
+        ctx.fill();
+
+        const midY = cardY + CARD_H / 2 + 5;
+
+        // Pick number
+        ctx.fillStyle = accent + "88";
+        ctx.font = "bold 11px Oswald, sans-serif";
         ctx.textAlign = "left";
-        ctx.fillText("TRADED", PAD + 102, y + 16);
-      }
+        ctx.fillText(`#${pick.pick}`, cardX + 12, midY);
 
-      // Player name
-      ctx.fillStyle = pick.player ? "#f0e8d8" : "#ffffff22";
-      ctx.font = pick.player ? "bold 15px 'Oswald', sans-serif" : "13px 'Oswald', sans-serif";
-      ctx.textAlign = "left";
-      ctx.fillText(
-        pick.player ? pick.player.name : "— not selected —",
-        PAD + (pick.traded ? 165 : 110),
-        y + 16
-      );
+        // Team tag pill
+        const tagX = cardX + 52;
+        const tagW = 52;
+        const tagH = 22;
+        const tagY = cardY + (CARD_H - tagH) / 2;
+        ctx.fillStyle = accent + "20";
+        ctx.beginPath();
+        ctx.roundRect(tagX, tagY, tagW, tagH, 4);
+        ctx.fill();
+        ctx.strokeStyle = accent + "55";
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.roundRect(tagX, tagY, tagW, tagH, 4);
+        ctx.stroke();
+        ctx.fillStyle = accent;
+        ctx.font = "bold 11px Oswald, sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillText(pick.abbr, tagX + tagW / 2, midY);
 
-      // Position + school
-      if (pick.player) {
-        ctx.fillStyle = "#ffffff33";
-        ctx.font = "12px 'Oswald', sans-serif";
-        ctx.textAlign = "right";
-        ctx.fillText(`${pick.player.position} · ${pick.player.school}`, W - PAD - 8, y + 16);
-      }
-    });
-    } // end drawCanvas
+        // Trade badge
+        if (pick.traded) {
+          ctx.fillStyle = "#FFB612";
+          ctx.font = "bold 9px Oswald, sans-serif";
+          ctx.textAlign = "left";
+          ctx.fillText("TRADED", cardX + 116, midY - 6);
+        }
+
+        // Player name
+        const nameX = cardX + (pick.traded ? 174 : 116);
+        if (pick.player) {
+          ctx.fillStyle = accent;
+          ctx.font = "bold 15px Oswald, sans-serif";
+          ctx.textAlign = "left";
+          ctx.fillText(pick.player.name, nameX, midY);
+
+          // Position · School
+          ctx.fillStyle = accent + "77";
+          ctx.font = "11px Oswald, sans-serif";
+          ctx.textAlign = "right";
+          ctx.fillText(`${pick.player.position} · ${pick.player.school}`, cardX + cardW - 10, midY);
+        } else {
+          ctx.fillStyle = accent + "44";
+          ctx.font = "italic 13px Oswald, sans-serif";
+          ctx.textAlign = "left";
+          ctx.fillText("—", nameX, midY);
+        }
+      });
+
+      // Footer watermark
+      ctx.fillStyle = "#ffffff22";
+      ctx.font = "12px Oswald, sans-serif";
+      ctx.textAlign = "center";
+      ctx.fillText("trivialsports.com · Build your mock draft", W / 2, totalH - 12);
+    }
   }, [picks]);
 
-  const download = () => {
+  const saveImage = async () => {
+    const dataUrl = canvasRef.current.toDataURL("image/png");
+
+    // Mobile: use Web Share API to offer camera roll
+    if (navigator.share && navigator.canShare) {
+      try {
+        const blob = await (await fetch(dataUrl)).blob();
+        const file = new File([blob], "2026-nfl-mock-draft.png", { type: "image/png" });
+        if (navigator.canShare({ files: [file] })) {
+          await navigator.share({
+            files: [file],
+            title: "2026 NFL Mock Draft",
+            text: "Check out my 2026 NFL Mock Draft! trivialsports.com",
+          });
+          return;
+        }
+      } catch (err) {
+        if (err.name !== "AbortError") console.error(err);
+        return;
+      }
+    }
+
+    // Desktop fallback
     const a = document.createElement("a");
-    a.download = "my-2026-nfl-mock-draft.png";
-    a.href = canvasRef.current.toDataURL("image/png");
+    a.download = "2026-nfl-mock-draft.png";
+    a.href = dataUrl;
     a.click();
   };
 
@@ -1550,7 +1627,7 @@ function ShareModal({ picks, onClose }) {
         </div>
         <canvas ref={canvasRef} style={{ width: "100%", borderRadius: 8, border: "1px solid #ffffff10", display: "block", marginBottom: 16 }} />
         <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-          <button style={S.btn("primary")} onClick={download}>⬇ Save Image</button>
+          <button style={S.btn("primary")} onClick={saveImage}>⬇ Save Image</button>
           <button style={S.btn("secondary")} onClick={onClose}>Close</button>
         </div>
       </div>
