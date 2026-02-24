@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useRef } from "react";
 
 // ── 2026 NFL Draft Order (1st round, estimated) ─────────────────────────────────────────
 const INITIAL_PICKS = [
@@ -35,6 +35,92 @@ const INITIAL_PICKS = [
   { pick: 31, team: "Kansas City Chiefs",        abbr: "KC",  color: "#E31837" },
   { pick: 32, team: "Philadelphia Eagles",       abbr: "PHI", color: "#004C54" },
 ];
+
+// ── 2026 NFL Draft Prospects (last updated February 23, 2026) ─────────────────────
+// Run refresh-prospects.cjs to update these
+
+const ALL_PROSPECTS = [
+  { name: "Fernando Mendoza", position: "QB", school: "Indiana" },
+  { name: "Jeremiyah Love", position: "RB", school: "Notre Dame" },
+  { name: "Arvell Reese", position: "LB", school: "Ohio State" },
+  { name: "Caleb Downs", position: "S", school: "Ohio State" },
+  { name: "Rueben Bain Jr.", position: "EDGE", school: "Miami" },
+  { name: "Carnell Tate", position: "WR", school: "Ohio State" },
+  { name: "Peter Woods", position: "DT", school: "Clemson" },
+  { name: "Francis Mauigoa", position: "OT", school: "Miami" },
+  { name: "Mansoor Delane", position: "CB", school: "LSU" },
+  { name: "Spencer Fano", position: "OT", school: "Utah" },
+  { name: "Kenyon Sadiq", position: "TE", school: "Oregon" },
+  { name: "Makai Lemon", position: "WR", school: "USC" },
+  { name: "Jordyn Tyson", position: "WR", school: "Arizona State" },
+  { name: "Sonny Styles", position: "LB", school: "Ohio State" },
+  { name: "David Bailey", position: "EDGE", school: "Texas Tech" },
+  { name: "Keldric Faulk", position: "EDGE", school: "Auburn" },
+  { name: "Kadyn Proctor", position: "OT", school: "Alabama" },
+  { name: "Ty Simpson", position: "QB", school: "Alabama" },
+  { name: "TJ Parker", position: "EDGE", school: "Clemson" },
+  { name: "Jermod McCoy", position: "CB", school: "Tennessee" },
+  { name: "Kayden McDonald", position: "DT", school: "Ohio State" },
+  { name: "Avieon Terrell", position: "CB", school: "Clemson" },
+  { name: "Cashius Howell", position: "OLB", school: "Texas A&M" },
+  { name: "Caleb Lomu", position: "OT", school: "Utah" },
+  { name: "Joshua Cisse", position: "CB", school: "Auburn" },
+  { name: "Jadarian Price", position: "RB", school: "Notre Dame" },
+  { name: "Blake Miller", position: "OT", school: "Clemson" },
+  { name: "Emmett Johnson", position: "RB", school: "Nebraska" },
+  { name: "Jonah Coleman", position: "RB", school: "Washington" },
+  { name: "Demond Claiborne", position: "RB", school: "Wake Forest" },
+  { name: "Kaytron Allen", position: "RB", school: "Penn State" },
+  { name: "Nicholas Singleton", position: "RB", school: "Penn State" },
+  { name: "Drew Allar", position: "QB", school: "Penn State" },
+  { name: "Garrett Nussmeier", position: "QB", school: "LSU" },
+  { name: "Carson Beck", position: "QB", school: "Miami" },
+  { name: "Cade Klubnik", position: "QB", school: "Clemson" },
+  { name: "Tetairoa McMillan", position: "WR", school: "Arizona" },
+  { name: "A.J. Harris", position: "CB", school: "Penn State" },
+  { name: "Suntarine Perkins", position: "LB", school: "Ole Miss" },
+  { name: "Kenyatta Jackson", position: "EDGE", school: "Ohio State" },
+  { name: "Michael Taaffe", position: "S", school: "Texas" },
+  { name: "Dante Moore", position: "QB", school: "Oregon" },
+  { name: "Taylen Green", position: "QB", school: "Arkansas" },
+  { name: "Jaydn Ott", position: "RB", school: "Oklahoma" },
+  { name: "Kaelon Black", position: "RB", school: "Indiana" },
+];
+
+const PICK_SUGGESTIONS = {
+  "1": [{ name: "Fernando Mendoza", position: "QB", school: "Indiana" }, { name: "Dante Moore", position: "QB", school: "Oregon" }, { name: "Ty Simpson", position: "QB", school: "Alabama" }],
+  "2": [{ name: "Arvell Reese", position: "LB", school: "Ohio State" }, { name: "Rueben Bain Jr.", position: "EDGE", school: "Miami" }, { name: "Caleb Downs", position: "S", school: "Ohio State" }],
+  "3": [{ name: "Jeremiyah Love", position: "RB", school: "Notre Dame" }, { name: "Peter Woods", position: "DT", school: "Clemson" }, { name: "Francis Mauigoa", position: "OT", school: "Miami" }],
+  "4": [{ name: "Peter Woods", position: "DT", school: "Clemson" }, { name: "Rueben Bain Jr.", position: "EDGE", school: "Miami" }, { name: "Mansoor Delane", position: "CB", school: "LSU" }],
+  "5": [{ name: "Carnell Tate", position: "WR", school: "Ohio State" }, { name: "Jeremiyah Love", position: "RB", school: "Notre Dame" }, { name: "Caleb Downs", position: "S", school: "Ohio State" }],
+  "6": [{ name: "Makai Lemon", position: "WR", school: "USC" }, { name: "Kenyon Sadiq", position: "TE", school: "Oregon" }, { name: "Jordyn Tyson", position: "WR", school: "Arizona State" }],
+  "7": [{ name: "Spencer Fano", position: "OT", school: "Utah" }, { name: "David Bailey", position: "EDGE", school: "Texas Tech" }, { name: "Keldric Faulk", position: "EDGE", school: "Auburn" }],
+  "8": [{ name: "Caleb Downs", position: "S", school: "Ohio State" }, { name: "Arvell Reese", position: "LB", school: "Ohio State" }, { name: "Peter Woods", position: "DT", school: "Clemson" }],
+  "9": [{ name: "Jeremiyah Love", position: "RB", school: "Notre Dame" }, { name: "Sonny Styles", position: "LB", school: "Ohio State" }, { name: "TJ Parker", position: "EDGE", school: "Clemson" }],
+  "10": [{ name: "Mansoor Delane", position: "CB", school: "LSU" }, { name: "Jermod McCoy", position: "CB", school: "Tennessee" }, { name: "Kayden McDonald", position: "DT", school: "Ohio State" }],
+  "11": [{ name: "Kenyon Sadiq", position: "TE", school: "Oregon" }, { name: "Francis Mauigoa", position: "OT", school: "Miami" }, { name: "Carnell Tate", position: "WR", school: "Ohio State" }],
+  "12": [{ name: "Jordyn Tyson", position: "WR", school: "Arizona State" }, { name: "Kadyn Proctor", position: "OT", school: "Alabama" }, { name: "Avieon Terrell", position: "CB", school: "Clemson" }],
+  "13": [{ name: "Jermod McCoy", position: "CB", school: "Tennessee" }, { name: "Mansoor Delane", position: "CB", school: "LSU" }, { name: "Makai Lemon", position: "WR", school: "USC" }],
+  "14": [{ name: "Kadyn Proctor", position: "OT", school: "Alabama" }, { name: "Francis Mauigoa", position: "OT", school: "Miami" }, { name: "Spencer Fano", position: "OT", school: "Utah" }],
+  "15": [{ name: "Carnell Tate", position: "WR", school: "Ohio State" }, { name: "Sonny Styles", position: "LB", school: "Ohio State" }, { name: "David Bailey", position: "EDGE", school: "Texas Tech" }],
+  "16": [{ name: "TJ Parker", position: "EDGE", school: "Clemson" }, { name: "Keldric Faulk", position: "EDGE", school: "Auburn" }, { name: "Cashius Howell", position: "OLB", school: "Texas A&M" }],
+  "17": [{ name: "David Bailey", position: "EDGE", school: "Texas Tech" }, { name: "Ty Simpson", position: "QB", school: "Alabama" }, { name: "Caleb Lomu", position: "OT", school: "Utah" }],
+  "18": [{ name: "Rueben Bain Jr.", position: "EDGE", school: "Miami" }, { name: "Joshua Cisse", position: "CB", school: "Auburn" }, { name: "Blake Miller", position: "OT", school: "Clemson" }],
+  "19": [{ name: "Sonny Styles", position: "LB", school: "Ohio State" }, { name: "Jadarian Price", position: "RB", school: "Notre Dame" }, { name: "Emmett Johnson", position: "RB", school: "Nebraska" }],
+  "20": [{ name: "Keldric Faulk", position: "EDGE", school: "Auburn" }, { name: "Cashius Howell", position: "OLB", school: "Texas A&M" }, { name: "Jonah Coleman", position: "RB", school: "Washington" }],
+  "21": [{ name: "Kayden McDonald", position: "DT", school: "Ohio State" }, { name: "Avieon Terrell", position: "CB", school: "Clemson" }, { name: "Demond Claiborne", position: "RB", school: "Wake Forest" }],
+  "22": [{ name: "Cashius Howell", position: "OLB", school: "Texas A&M" }, { name: "Caleb Lomu", position: "OT", school: "Utah" }, { name: "Kaytron Allen", position: "RB", school: "Penn State" }],
+  "23": [{ name: "Blake Miller", position: "OT", school: "Clemson" }, { name: "Joshua Cisse", position: "CB", school: "Auburn" }, { name: "Nicholas Singleton", position: "RB", school: "Penn State" }],
+  "24": [{ name: "Caleb Lomu", position: "OT", school: "Utah" }, { name: "Nicholas Singleton", position: "RB", school: "Penn State" }, { name: "Kaelon Black", position: "RB", school: "Indiana" }],
+  "25": [{ name: "Joshua Cisse", position: "CB", school: "Auburn" }, { name: "Drew Allar", position: "QB", school: "Penn State" }, { name: "Jadarian Price", position: "RB", school: "Notre Dame" }],
+  "26": [{ name: "Jadarian Price", position: "RB", school: "Notre Dame" }, { name: "Emmett Johnson", position: "RB", school: "Nebraska" }, { name: "Garrett Nussmeier", position: "QB", school: "LSU" }],
+  "27": [{ name: "Emmett Johnson", position: "RB", school: "Nebraska" }, { name: "Jonah Coleman", position: "RB", school: "Washington" }, { name: "Carson Beck", position: "QB", school: "Miami" }],
+  "28": [{ name: "Jonah Coleman", position: "RB", school: "Washington" }, { name: "Demond Claiborne", position: "RB", school: "Wake Forest" }, { name: "Cade Klubnik", position: "QB", school: "Clemson" }],
+  "29": [{ name: "Demond Claiborne", position: "RB", school: "Wake Forest" }, { name: "Kaytron Allen", position: "RB", school: "Penn State" }, { name: "Tetairoa McMillan", position: "WR", school: "Arizona" }],
+  "30": [{ name: "Kaytron Allen", position: "RB", school: "Penn State" }, { name: "A.J. Harris", position: "CB", school: "Penn State" }, { name: "Taylen Green", position: "QB", school: "Arkansas" }],
+  "31": [{ name: "Nicholas Singleton", position: "RB", school: "Penn State" }, { name: "Suntarine Perkins", position: "LB", school: "Ole Miss" }, { name: "Kenyatta Jackson", position: "EDGE", school: "Ohio State" }],
+  "32": [{ name: "Kaelon Black", position: "RB", school: "Indiana" }, { name: "Michael Taaffe", position: "S", school: "Texas" }, { name: "Jaydn Ott", position: "RB", school: "Oklahoma" }],
+};
 
 const ALL_TEAMS = [
   { team: "Arizona Cardinals",      abbr: "ARI", color: "#97233F" },
@@ -626,42 +712,10 @@ function ShareModal({ picks, onClose }) {
 // ── Main component ────────────────────────────────────────────────────────────
 export default function NFLMockDraft() {
   const [picks, setPicks] = useState(INITIAL_PICKS.map(p => ({ ...p, player: null, traded: false })));
-  const [suggestions, setSuggestions] = useState({});
-  const [allProspects, setAllProspects] = useState([]);
-  const [loadingState, setLoadingState] = useState("idle"); // idle | loading | done | error
-  const [loadingPct, setLoadingPct] = useState(0);
   const [activePick, setActivePick] = useState(null);
   const [tradePick, setTradePick] = useState(null);
   const [showShare, setShowShare] = useState(false);
   const [dragSrc, setDragSrc] = useState(null);
-
-  // ── Fetch AI suggestions on mount ──────────────────────────────────────────
-  useEffect(() => {
-    fetchSuggestions();
-  }, []);
-
-  const fetchSuggestions = async () => {
-    setLoadingState("loading");
-    setLoadingPct(30);
-
-    try {
-      const response = await fetch("/.netlify/functions/draft-suggestions");
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      setLoadingPct(80);
-      const data = await response.json();
-
-      if (data.error) throw new Error(data.error);
-
-      setSuggestions(data.picks || {});
-      setAllProspects(data.allProspects || []);
-      setLoadingPct(100);
-      setLoadingState("done");
-    } catch (err) {
-      console.error("Failed to load suggestions:", err);
-      setLoadingState("error");
-      setLoadingPct(0);
-    }
-  };
 
   // ── Handlers ────────────────────────────────────────────────────────────────
   const handleSelect = (pickNum, player) => {
@@ -728,27 +782,9 @@ export default function NFLMockDraft() {
         <h1 style={S.headerTitle}>2026 NFL Mock Draft</h1>
         <div style={S.headerSub}>1st Round · Build Your Predictions</div>
 
-        {loadingState === "loading" && (
-          <>
-            <div style={S.loadingBar}>
-              <div style={{ ...S.loadingFill, width: `${loadingPct}%` }} />
-            </div>
-            <div style={S.loadingText}>Loading live draft intel…</div>
-          </>
-        )}
-        {loadingState === "error" && (
-          <div style={{ marginTop: 8 }}>
-            <span style={{ fontSize: 11, color: "#e84030aa", letterSpacing: 1 }}>Failed to load suggestions · </span>
-            <button onClick={fetchSuggestions} style={{ background: "none", border: "none", color: "#f0d07099", fontSize: 11, cursor: "pointer", letterSpacing: 1, fontFamily: "'Oswald', sans-serif", padding: 0 }}>
-              Retry
-            </button>
-          </div>
-        )}
-        {loadingState === "done" && (
-          <div style={{ marginTop: 8, fontSize: 11, color: "#22c55e88", letterSpacing: 1 }}>
-            ✓ Live suggestions loaded · {allProspects.length} prospects
-          </div>
-        )}
+        <div style={{ marginTop: 6, fontSize: 11, color: "#ffffff33", letterSpacing: 1 }}>
+          {ALL_PROSPECTS.length} prospects · updated {new Date().toLocaleDateString("en-US", { month: "short", year: "numeric" })}
+        </div>
 
         {/* Progress + share */}
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 16, marginTop: 14 }}>
@@ -789,7 +825,7 @@ export default function NFLMockDraft() {
                 </>
               ) : (
                 <div style={S.emptySlot}>
-                  {suggestions[pick.pick]?.length > 0 ? `${suggestions[pick.pick][0].name}?` : "Select a player…"}
+                  {PICK_SUGGESTIONS[pick.pick]?.length > 0 ? `${PICK_SUGGESTIONS[pick.pick][0].name}?` : "Select a player…"}
                 </div>
               )}
             </div>
@@ -802,8 +838,8 @@ export default function NFLMockDraft() {
       {activePkObj && (
         <PickModal
           pick={activePkObj}
-          suggestions={suggestions}
-          allProspects={allProspects}
+          suggestions={PICK_SUGGESTIONS}
+          allProspects={ALL_PROSPECTS}
           onSelect={handleSelect}
           onTrade={handleTrade}
           onClear={handleClear}
