@@ -1089,7 +1089,7 @@ const S = {
     flexShrink: 0,
   }),
   playerName: (accent) => ({
-    fontSize: 15,
+    fontSize: 16,
     fontWeight: 700,
     letterSpacing: 0.5,
     color: accent,
@@ -1099,6 +1099,7 @@ const S = {
     fontSize: 11,
     color: accent + "77",
     letterSpacing: 1,
+    whiteSpace: "nowrap",
   }),
   emptySlot: (accent) => ({
     fontSize: 13,
@@ -1410,7 +1411,6 @@ function PickModal({ pick, suggestions, allProspects, draftedNames, onSelect, on
           />
         ))}
 
-        </div>
       </div>
     </div>
   );
@@ -1841,8 +1841,10 @@ export default function NFLMockDraft() {
               <div style={{ flex: 1 }}>
                 {pick.player ? (
                   <>
-                    <div style={S.playerName(accent)}>{pick.player.name}</div>
-                    <div style={S.playerPos(accent)}>{pick.player.position} · {pick.player.school}</div>
+                    <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
+                      <div style={S.playerName(accent)}>{pick.player.name}</div>
+                      <div style={S.playerPos(accent)}>{pick.player.position} · {pick.player.school}</div>
+                    </div>
                   </>
                 ) : (
                   <div style={S.emptySlot(accent)}>Select a player…</div>
