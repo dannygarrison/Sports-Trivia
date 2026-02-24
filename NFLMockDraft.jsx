@@ -1444,93 +1444,166 @@ function ShareModal({ picks, onClose }) {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
-    const W = 800, ROW = 36, PAD = 20, HEADER = 80;
+
+    const W = 640;
+    const CARD_H = 56;
+    const CARD_GAP = 6;
+    const PAD = 20;
+    const HEADER_H = 90;
+    const FOOTER_H = 36;
+    const totalH = HEADER_H + picks.length * (CARD_H + CARD_GAP) - CARD_GAP + PAD + FOOTER_H;
+
     canvas.width = W;
-    canvas.height = HEADER + picks.length * ROW + PAD * 2;
+    canvas.height = totalH;
 
-    // Background
+    // Page background
     ctx.fillStyle = "#080810";
-    ctx.fillRect(0, 0, W, canvas.height);
+    ctx.fillRect(0, 0, W, totalH);
 
-    // Header
+    // Header gradient bar
+    const grad = ctx.createLinearGradient(0, 0, W, 0);
+    grad.addColorStop(0, "#f0d070");
+    grad.addColorStop(1, "#e87040");
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, W, 4);
+
+    // Title
     ctx.fillStyle = "#f0d070";
-    ctx.font = "bold 28px 'Oswald', Impact, sans-serif";
-    ctx.letterSpacing = "3px";
+    ctx.font = "bold 26px 'Oswald', Impact, sans-serif";
     ctx.textAlign = "center";
-    ctx.fillText("MY 2026 NFL MOCK DRAFT", W / 2, 44);
-    ctx.fillStyle = "#ffffff22";
-    ctx.font = "13px 'Oswald', sans-serif";
-    ctx.fillText("trivialsports.com", W / 2, 66);
+    ctx.fillText("MY 2026 NFL MOCK DRAFT", W / 2, 40);
 
-    // Divider
+    // Subtitle
+    ctx.fillStyle = "#ffffff44";
+    ctx.font = "13px 'Oswald', sans-serif";
+    ctx.fillText("trivialsports.com", W / 2, 62);
+
+    // Thin divider
     ctx.strokeStyle = "#ffffff10";
     ctx.lineWidth = 1;
     ctx.beginPath();
-    ctx.moveTo(PAD, HEADER - 4);
-    ctx.lineTo(W - PAD, HEADER - 4);
+    ctx.moveTo(PAD, HEADER_H - 8);
+    ctx.lineTo(W - PAD, HEADER_H - 8);
     ctx.stroke();
 
-    // Picks
+    // Cards
     picks.forEach((pick, i) => {
-      const y = HEADER + i * ROW + PAD;
-      const isEven = i % 2 === 0;
-      if (isEven) {
-        ctx.fillStyle = "#0d0d1c";
-        ctx.fillRect(PAD, y - 4, W - PAD * 2, ROW);
-      }
+      const [darkBg, accent] = getTeamColors(pick.abbr);
+      const cardX = PAD;
+      const cardY = HEADER_H + i * (CARD_H + CARD_GAP);
+      const cardW = W - PAD * 2;
+
+      // Card background
+      ctx.fillStyle = darkBg;
+      ctx.beginPath();
+      ctx.roundRect(cardX, cardY, cardW, CARD_H, 8);
+      ctx.fill();
+
+      // Card border
+      ctx.strokeStyle = accent + "22";
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.roundRect(cardX, cardY, cardW, CARD_H, 8);
+      ctx.stroke();
+
+      // Left accent bar
+      ctx.fillStyle = accent + "cc";
+      ctx.beginPath();
+      ctx.roundRect(cardX, cardY, 3, CARD_H, [8, 0, 0, 8]);
+      ctx.fill();
+
+      const midY = cardY + CARD_H / 2 + 1;
 
       // Pick number
-      ctx.fillStyle = "#ffffff33";
-      ctx.font = "bold 12px 'Oswald', sans-serif";
+      ctx.fillStyle = accent + "88";
+      ctx.font = "bold 11px 'Oswald', sans-serif";
       ctx.textAlign = "left";
-      ctx.fillText(`#${String(pick.pick).padStart(2, "0")}`, PAD + 8, y + 16);
+      ctx.fillText(`#${pick.pick}`, cardX + 12, midY + 4);
 
-      // Team tag
-      const tagColor = pick.color || "#888";
-      ctx.fillStyle = tagColor + "33";
-      ctx.roundRect?.(PAD + 48, y + 1, 46, 22, 4) || ctx.fillRect(PAD + 48, y + 1, 46, 22);
+      // Team tag pill
+      const tagX = cardX + 52;
+      const tagW = 52;
+      const tagH = 22;
+      const tagY = cardY + (CARD_H - tagH) / 2;
+      ctx.fillStyle = accent + "20";
+      ctx.beginPath();
+      ctx.roundRect(tagX, tagY, tagW, tagH, 4);
       ctx.fill();
-      ctx.strokeStyle = tagColor + "66";
+      ctx.strokeStyle = accent + "55";
       ctx.lineWidth = 1;
-      ctx.roundRect?.(PAD + 48, y + 1, 46, 22, 4) || ctx.strokeRect(PAD + 48, y + 1, 46, 22);
+      ctx.beginPath();
+      ctx.roundRect(tagX, tagY, tagW, tagH, 4);
       ctx.stroke();
-      ctx.fillStyle = tagColor === "#A5ACAF" ? "#c8c8c8" : tagColor;
+      ctx.fillStyle = accent;
       ctx.font = "bold 11px 'Oswald', sans-serif";
       ctx.textAlign = "center";
-      ctx.fillText(pick.abbr, PAD + 48 + 23, y + 16);
+      ctx.fillText(pick.abbr, tagX + tagW / 2, midY + 4);
 
       // Trade badge
+      let nameX = cardX + 116;
       if (pick.traded) {
-        ctx.fillStyle = "#f0a030";
+        ctx.fillStyle = "#FFB612";
         ctx.font = "bold 9px 'Oswald', sans-serif";
         ctx.textAlign = "left";
-        ctx.fillText("TRADED", PAD + 102, y + 16);
+        ctx.fillText("TRADED", nameX, midY - 4);
+        nameX += 58;
       }
 
-      // Player name
-      ctx.fillStyle = pick.player ? "#f0e8d8" : "#ffffff22";
-      ctx.font = pick.player ? "bold 15px 'Oswald', sans-serif" : "13px 'Oswald', sans-serif";
-      ctx.textAlign = "left";
-      ctx.fillText(
-        pick.player ? pick.player.name : "— not selected —",
-        PAD + (pick.traded ? 165 : 110),
-        y + 16
-      );
-
-      // Position + school
+      // Player name or empty
       if (pick.player) {
-        ctx.fillStyle = "#ffffff33";
-        ctx.font = "12px 'Oswald', sans-serif";
+        ctx.fillStyle = accent;
+        ctx.font = "bold 15px 'Oswald', sans-serif";
+        ctx.textAlign = "left";
+        ctx.fillText(pick.player.name, pick.traded ? cardX + 174 : cardX + 116, midY + 5);
+
+        // Position · School (right aligned)
+        ctx.fillStyle = accent + "77";
+        ctx.font = "11px 'Oswald', sans-serif";
         ctx.textAlign = "right";
-        ctx.fillText(`${pick.player.position} · ${pick.player.school}`, W - PAD - 8, y + 16);
+        ctx.fillText(`${pick.player.position} · ${pick.player.school}`, cardX + cardW - 10, midY + 5);
+      } else {
+        ctx.fillStyle = accent + "44";
+        ctx.font = "italic 13px 'Oswald', sans-serif";
+        ctx.textAlign = "left";
+        ctx.fillText("Select a player…", cardX + 116, midY + 5);
       }
     });
+
+    // Footer watermark
+    ctx.fillStyle = "#ffffff22";
+    ctx.font = "12px 'Oswald', sans-serif";
+    ctx.textAlign = "center";
+    ctx.fillText("trivialsports.com · Build your mock draft", W / 2, totalH - 12);
+
   }, [picks]);
 
-  const download = () => {
+  const saveImage = async () => {
+    const dataUrl = canvasRef.current.toDataURL("image/png");
+
+    // On mobile with Web Share API + file support — triggers camera roll option
+    if (navigator.share && navigator.canShare) {
+      try {
+        const blob = await (await fetch(dataUrl)).blob();
+        const file = new File([blob], "my-2026-nfl-mock-draft.png", { type: "image/png" });
+        if (navigator.canShare({ files: [file] })) {
+          await navigator.share({
+            files: [file],
+            title: "My 2026 NFL Mock Draft",
+            text: "Check out my 2026 NFL Mock Draft! trivialsports.com",
+          });
+          return;
+        }
+      } catch (err) {
+        // User cancelled or share failed — fall through to download
+        if (err.name !== "AbortError") console.error(err);
+        return;
+      }
+    }
+
+    // Desktop fallback: trigger download
     const a = document.createElement("a");
     a.download = "my-2026-nfl-mock-draft.png";
-    a.href = canvasRef.current.toDataURL("image/png");
+    a.href = dataUrl;
     a.click();
   };
 
@@ -1543,7 +1616,7 @@ function ShareModal({ picks, onClose }) {
         </div>
         <canvas ref={canvasRef} style={{ width: "100%", borderRadius: 8, border: "1px solid #ffffff10", display: "block", marginBottom: 16 }} />
         <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-          <button style={S.btn("primary")} onClick={download}>⬇ Save Image</button>
+          <button style={S.btn("primary")} onClick={saveImage}>⬇ Save Image</button>
           <button style={S.btn("secondary")} onClick={onClose}>Close</button>
         </div>
       </div>
