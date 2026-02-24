@@ -937,6 +937,21 @@ const ALL_TEAMS = [
   { team: "Washington Commanders",  abbr: "WSH", color: "#5A1414" },
 ];
 
+// ── Position group ordering and labels ────────────────────────────────────────
+const POSITION_GROUPS = [
+  { key: "QB",   label: "Quarterbacks" },
+  { key: "RB",   label: "Running Backs" },
+  { key: "WR",   label: "Wide Receivers" },
+  { key: "TE",   label: "Tight Ends" },
+  { key: "OT",   label: "Offensive Tackles" },
+  { key: "IOL",  label: "Interior O-Line" },
+  { key: "EDGE", label: "Edge Rushers" },
+  { key: "DT",   label: "Defensive Tackles" },
+  { key: "LB",   label: "Linebackers" },
+  { key: "CB",   label: "Cornerbacks" },
+  { key: "S",    label: "Safeties" },
+];
+
 // ── Styles ────────────────────────────────────────────────────────────────────
 // ── Team color pairs: [darkBg, accent] ───────────────────────────────────────
 // darkBg: deep tint of official primary. accent: most recognizable team color.
@@ -1025,27 +1040,6 @@ const S = {
     letterSpacing: 2,
     color: "#ffffff33",
     marginTop: 4,
-    textTransform: "uppercase",
-  },
-  loadingBar: {
-    margin: "10px auto 0",
-    maxWidth: 300,
-    height: 3,
-    background: "#ffffff10",
-    borderRadius: 2,
-    overflow: "hidden",
-  },
-  loadingFill: {
-    height: "100%",
-    background: "linear-gradient(90deg, #f0d070, #e87040)",
-    borderRadius: 2,
-    transition: "width 0.4s ease",
-  },
-  loadingText: {
-    fontSize: 11,
-    color: "#f0d07066",
-    letterSpacing: 1.5,
-    marginTop: 6,
     textTransform: "uppercase",
   },
   grid: {
@@ -1182,20 +1176,6 @@ const S = {
     transition: "all 0.15s",
     marginBottom: 6,
   }),
-  searchInput: {
-    width: "100%",
-    background: "#080814",
-    border: "1px solid #ffffff14",
-    borderRadius: 8,
-    padding: "10px 14px",
-    color: "#e8e0d0",
-    fontSize: 14,
-    fontFamily: "'Oswald', sans-serif",
-    letterSpacing: 1,
-    outline: "none",
-    boxSizing: "border-box",
-    marginBottom: 10,
-  },
   btn: (variant) => ({
     padding: variant === "primary" ? "11px 24px" : "9px 18px",
     borderRadius: 8,
@@ -1215,21 +1195,142 @@ const S = {
   }),
 };
 
-// ── Player search modal ───────────────────────────────────────────────────────
-function PickModal({ pick, suggestions, allProspects, onSelect, onTrade, onClear, onClose }) {
-  const [query, setQuery] = useState("");
+// ── Position group dropdown styles ────────────────────────────────────────────
+const posGroupStyles = {
+  header: (isOpen) => ({
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    padding: "10px 14px",
+    borderRadius: 8,
+    border: `1px solid ${isOpen ? "#ffffff18" : "#ffffff0a"}`,
+    background: isOpen ? "#ffffff08" : "#ffffff04",
+    cursor: "pointer",
+    transition: "all 0.15s",
+    marginBottom: isOpen ? 4 : 6,
+  }),
+  label: {
+    fontSize: 13,
+    fontWeight: 700,
+    letterSpacing: 1.5,
+    textTransform: "uppercase",
+    color: "#e8e0d0",
+  },
+  count: {
+    fontSize: 11,
+    fontWeight: 600,
+    letterSpacing: 1,
+    color: "#ffffff44",
+  },
+  arrow: (isOpen) => ({
+    fontSize: 10,
+    color: "#ffffff44",
+    transition: "transform 0.2s",
+    transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
+  }),
+  list: {
+    padding: "0 0 6px 0",
+    marginBottom: 6,
+  },
+  playerRow: (selected, taken) => ({
+    display: "flex",
+    alignItems: "center",
+    gap: 8,
+    padding: "8px 12px",
+    borderRadius: 8,
+    border: `1px solid ${selected ? "#f0d07055" : "#ffffff08"}`,
+    background: selected ? "#f0d07010" : "transparent",
+    cursor: taken ? "default" : "pointer",
+    opacity: taken ? 0.35 : 1,
+    transition: "all 0.15s",
+    marginBottom: 4,
+  }),
+  rank: {
+    fontSize: 10,
+    fontWeight: 700,
+    letterSpacing: 1,
+    color: "#ffffff28",
+    minWidth: 22,
+    textAlign: "center",
+    flexShrink: 0,
+  },
+  takenLabel: {
+    fontSize: 10,
+    fontWeight: 700,
+    letterSpacing: 1.5,
+    color: "#e8403088",
+    textTransform: "uppercase",
+    flexShrink: 0,
+  },
+};
+
+// ── Position Group Dropdown component ─────────────────────────────────────────
+function PositionGroupDropdown({ group, prospects, selected, onSelect, draftedNames }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const available = prospects.filter(p => !draftedNames.has(p.name));
+  const taken = prospects.filter(p => draftedNames.has(p.name));
+
+  return (
+    <div>
+      <div
+        style={posGroupStyles.header(isOpen)}
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+          <span style={posGroupStyles.label}>{group.label}</span>
+          <span style={posGroupStyles.count}>
+            {available.length} available
+          </span>
+        </div>
+        <span style={posGroupStyles.arrow(isOpen)}>▼</span>
+      </div>
+
+      {isOpen && (
+        <div style={posGroupStyles.list}>
+          {prospects.map((p, idx) => {
+            const isTaken = draftedNames.has(p.name);
+            const isSelected = selected?.name === p.name;
+            return (
+              <div
+                key={p.name}
+                style={posGroupStyles.playerRow(isSelected, isTaken)}
+                onClick={() => !isTaken && onSelect(p)}
+              >
+                <span style={posGroupStyles.rank}>{idx + 1}</span>
+                <div style={{ flex: 1, display: "flex", alignItems: "baseline", gap: 8 }}>
+                  <div style={{ fontSize: 16, fontWeight: 700, letterSpacing: 0.5 }}>
+                    {p.name}
+                  </div>
+                  <div style={{ fontSize: 11, color: "#ffffff44", letterSpacing: 1, whiteSpace: "nowrap" }}>
+                    {p.school}
+                  </div>
+                </div>
+                {isTaken && <span style={posGroupStyles.takenLabel}>Drafted</span>}
+                {isSelected && !isTaken && <span style={{ color: "#f0d070", fontSize: 14 }}>✓</span>}
+              </div>
+            );
+          })}
+          {prospects.length === 0 && (
+            <div style={{ fontSize: 12, color: "#ffffff22", textAlign: "center", padding: "8px 0", fontStyle: "italic" }}>
+              No prospects at this position
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ── Player selection modal ────────────────────────────────────────────────────
+function PickModal({ pick, suggestions, allProspects, draftedNames, onSelect, onTrade, onClear, onClose }) {
   const [selected, setSelected] = useState(pick.player || null);
-  const inputRef = useRef(null);
 
-  useEffect(() => { inputRef.current?.focus(); }, []);
-
-  const filtered = query.length > 1
-    ? allProspects.filter(p =>
-        p.name.toLowerCase().includes(query.toLowerCase()) ||
-        p.position.toLowerCase().includes(query.toLowerCase()) ||
-        p.school.toLowerCase().includes(query.toLowerCase())
-      ).slice(0, 12)
-    : [];
+  // Build position groups from ALL_PROSPECTS (preserving rank order)
+  const prospectsByPosition = {};
+  for (const group of POSITION_GROUPS) {
+    prospectsByPosition[group.key] = allProspects.filter(p => p.position === group.key);
+  }
 
   const pickSuggestions = suggestions[pick.pick] || [];
 
@@ -1249,56 +1350,8 @@ function PickModal({ pick, suggestions, allProspects, onSelect, onTrade, onClear
           <button onClick={onClose} style={{ background: "none", border: "none", color: "#ffffff33", fontSize: 20, cursor: "pointer", padding: 0, lineHeight: 1 }}>✕</button>
         </div>
 
-        {/* Suggestions */}
-        {pickSuggestions.length > 0 && (
-          <>
-            <div style={S.sectionLabel}>AI Suggestions for this pick</div>
-            {pickSuggestions.map(p => (
-              <div
-                key={p.name}
-                style={S.suggestionChip(selected?.name === p.name)}
-                onClick={() => setSelected(p)}
-              >
-                <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: 14, fontWeight: 700, letterSpacing: 0.5 }}>{p.name}</div>
-                  <div style={{ fontSize: 11, color: "#ffffff44", letterSpacing: 1 }}>{p.position} · {p.school}</div>
-                </div>
-                {selected?.name === p.name && <span style={{ color: "#f0d070", fontSize: 14 }}>✓</span>}
-              </div>
-            ))}
-          </>
-        )}
-
-        {/* Search all prospects */}
-        <div style={S.sectionLabel}>Search all prospects</div>
-        <input
-          ref={inputRef}
-          style={S.searchInput}
-          placeholder="Name, position, school..."
-          value={query}
-          onChange={e => setQuery(e.target.value)}
-        />
-        {filtered.map(p => (
-          <div
-            key={p.name}
-            style={S.suggestionChip(selected?.name === p.name)}
-            onClick={() => { setSelected(p); setQuery(""); }}
-          >
-            <div style={{ flex: 1 }}>
-              <div style={{ fontSize: 14, fontWeight: 700, letterSpacing: 0.5 }}>{p.name}</div>
-              <div style={{ fontSize: 11, color: "#ffffff44", letterSpacing: 1 }}>{p.position} · {p.school}</div>
-            </div>
-            {selected?.name === p.name && <span style={{ color: "#f0d070", fontSize: 14 }}>✓</span>}
-          </div>
-        ))}
-        {query.length > 1 && filtered.length === 0 && (
-          <div style={{ fontSize: 13, color: "#ffffff30", textAlign: "center", padding: "12px 0", fontStyle: "italic" }}>
-            No prospects found
-          </div>
-        )}
-
-        {/* Actions */}
-        <div style={{ display: "flex", gap: 8, marginTop: 20, flexWrap: "wrap" }}>
+        {/* Actions — pinned to top */}
+        <div style={{ display: "flex", gap: 8, marginBottom: 16, flexWrap: "wrap" }}>
           <button
             style={S.btn("primary")}
             onClick={() => selected && onSelect(pick.pick, selected)}
@@ -1314,6 +1367,49 @@ function PickModal({ pick, suggestions, allProspects, onSelect, onTrade, onClear
               Clear
             </button>
           )}
+        </div>
+
+        {/* Suggestions */}
+        {pickSuggestions.length > 0 && (
+          <>
+            <div style={S.sectionLabel}>Suggestions for this pick</div>
+            {pickSuggestions.map(p => {
+              const isTaken = draftedNames.has(p.name);
+              return (
+                <div
+                  key={p.name}
+                  style={{
+                    ...S.suggestionChip(selected?.name === p.name),
+                    opacity: isTaken ? 0.35 : 1,
+                    cursor: isTaken ? "default" : "pointer",
+                  }}
+                  onClick={() => !isTaken && setSelected(p)}
+                >
+                  <div style={{ flex: 1, display: "flex", alignItems: "baseline", gap: 8 }}>
+                    <div style={{ fontSize: 16, fontWeight: 700, letterSpacing: 0.5 }}>{p.name}</div>
+                    <div style={{ fontSize: 11, color: "#ffffff44", letterSpacing: 1, whiteSpace: "nowrap" }}>{p.position} · {p.school}</div>
+                  </div>
+                  {isTaken && <span style={posGroupStyles.takenLabel}>Drafted</span>}
+                  {selected?.name === p.name && !isTaken && <span style={{ color: "#f0d070", fontSize: 14 }}>✓</span>}
+                </div>
+              );
+            })}
+          </>
+        )}
+
+        {/* Big Board — Position Group Dropdowns */}
+        <div style={S.sectionLabel}>Big Board</div>
+        {POSITION_GROUPS.map(group => (
+          <PositionGroupDropdown
+            key={group.key}
+            group={group}
+            prospects={prospectsByPosition[group.key]}
+            selected={selected}
+            onSelect={setSelected}
+            draftedNames={draftedNames}
+          />
+        ))}
+
         </div>
       </div>
     </div>
@@ -1633,6 +1729,17 @@ export default function NFLMockDraft() {
   const [showShare, setShowShare] = useState(false);
   const [dragSrc, setDragSrc] = useState(null);
 
+  // Build a set of already-drafted player names (excluding current pick's player)
+  const getDraftedNames = (excludePickNum) => {
+    const names = new Set();
+    for (const p of picks) {
+      if (p.player && p.pick !== excludePickNum) {
+        names.add(p.player.name);
+      }
+    }
+    return names;
+  };
+
   // ── Handlers ────────────────────────────────────────────────────────────────
   const handleSelect = (pickNum, player) => {
     setPicks(prev => prev.map(p => p.pick === pickNum ? { ...p, player } : p));
@@ -1753,6 +1860,7 @@ export default function NFLMockDraft() {
           pick={activePkObj}
           suggestions={PICK_SUGGESTIONS}
           allProspects={ALL_PROSPECTS}
+          draftedNames={getDraftedNames(activePkObj.pick)}
           onSelect={handleSelect}
           onTrade={handleTrade}
           onClear={handleClear}
