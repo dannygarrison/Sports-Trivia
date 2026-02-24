@@ -1446,7 +1446,7 @@ function ShareModal({ picks, onClose }) {
     const ctx = canvas.getContext("2d");
 
     const logo = new Image();
-    logo.src = "/ts_transparent_logo.png";
+    logo.src = "/ts_logo_blueoutline_420.webp";
     logo.onload = () => document.fonts.ready.then(() => drawCanvas(canvas, ctx, logo));
     logo.onerror = () => document.fonts.ready.then(() => drawCanvas(canvas, ctx, null));
 
