@@ -78,7 +78,7 @@ const S = {
     background: "#080810",
     fontFamily: "'Oswald', sans-serif",
     color: "#e8e0d0",
-    padding: "0 0 80px",
+    padding: "56px 0 80px",
   },
   header: {
     background: "linear-gradient(180deg, #0d0d1a 0%, #080810 100%)",
