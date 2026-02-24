@@ -62,7 +62,7 @@ const COLLEGE_ALIASES = {
   // Power conferences / well-known
   "usc":["southern california","southern cal"],"lsu":["louisiana state"],
   "smu":["southern methodist"],"TCU":["TCU"],"byu":["brigham young"],
-  "ole miss":["Ole Miss","miss"],"mississippi st":["miss state","miss st"],"miami fl":["miami florida","Miami (FL)"],
+  "ole miss":["Ole Miss","miss"],"mississippi st":["miss state","miss st"],"miami fl":["miami florida","Miami (FL)","miami"],
   "miami oh":["miami ohio"],"unc":["north carolina"],"nc state":["north carolina state"],
   "pitt":["pittsburgh"],"penn st":["penn state"],"ohio st":["ohio state"],
   "michigan st":["michigan state"],"florida st":["florida state"],"utep":["texas el paso"],
