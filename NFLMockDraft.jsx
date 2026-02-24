@@ -4,36 +4,36 @@ import { useState, useEffect, useRef } from "react";
 const INITIAL_PICKS = [
   { pick: 1,  team: "Las Vegas Raiders",        abbr: "LV",  color: "#A5ACAF" },
   { pick: 2,  team: "Cleveland Browns",          abbr: "CLE", color: "#FF3C00" },
-  { pick: 3,  team: "New York Giants",           abbr: "NYG", color: "#0033A0" },
-  { pick: 4,  team: "New England Patriots",      abbr: "NE",  color: "#C8102E" },
-  { pick: 5,  team: "Jacksonville Jaguars",      abbr: "JAX", color: "#007F9F" },
+  { pick: 3,  team: "New York Giants",           abbr: "NYG", color: "#0B2265" },
+  { pick: 4,  team: "New England Patriots",      abbr: "NE",  color: "#002244" },
+  { pick: 5,  team: "Jacksonville Jaguars",      abbr: "JAX", color: "#006778" },
   { pick: 6,  team: "Las Vegas Raiders",         abbr: "LV",  color: "#A5ACAF" },
   { pick: 7,  team: "New York Jets",             abbr: "NYJ", color: "#125740" },
   { pick: 8,  team: "Carolina Panthers",         abbr: "CAR", color: "#0085CA" },
   { pick: 9,  team: "New Orleans Saints",        abbr: "NO",  color: "#D3BC8D" },
-  { pick: 10, team: "Chicago Bears",             abbr: "CHI", color: "#E87722" },
+  { pick: 10, team: "Chicago Bears",             abbr: "CHI", color: "#0B162A" },
   { pick: 11, team: "San Francisco 49ers",       abbr: "SF",  color: "#AA0000" },
-  { pick: 12, team: "Dallas Cowboys",            abbr: "DAL", color: "#6F9FD8" },
+  { pick: 12, team: "Dallas Cowboys",            abbr: "DAL", color: "#003594" },
   { pick: 13, team: "Miami Dolphins",            abbr: "MIA", color: "#008E97" },
-  { pick: 14, team: "Indianapolis Colts",        abbr: "IND", color: "#0067B9" },
+  { pick: 14, team: "Indianapolis Colts",        abbr: "IND", color: "#002C5F" },
   { pick: 15, team: "Atlanta Falcons",           abbr: "ATL", color: "#A71930" },
   { pick: 16, team: "Arizona Cardinals",         abbr: "ARI", color: "#97233F" },
   { pick: 17, team: "Cincinnati Bengals",        abbr: "CIN", color: "#FB4F14" },
-  { pick: 18, team: "Seattle Seahawks",          abbr: "SEA", color: "#C8102E" },
+  { pick: 18, team: "Seattle Seahawks",          abbr: "SEA", color: "#002244" },
   { pick: 19, team: "Tampa Bay Buccaneers",      abbr: "TB",  color: "#D50A0A" },
   { pick: 20, team: "Denver Broncos",            abbr: "DEN", color: "#FB4F14" },
   { pick: 21, team: "Pittsburgh Steelers",       abbr: "PIT", color: "#FFB612" },
   { pick: 22, team: "Los Angeles Chargers",      abbr: "LAC", color: "#0080C6" },
   { pick: 23, team: "Green Bay Packers",         abbr: "GB",  color: "#203731" },
   { pick: 24, team: "Minnesota Vikings",         abbr: "MIN", color: "#4F2683" },
-  { pick: 25, team: "Houston Texans",            abbr: "HOU", color: "#E31837" },
-  { pick: 26, team: "Los Angeles Rams",          abbr: "LAR", color: "#FFC72C" },
-  { pick: 27, team: "Baltimore Ravens",          abbr: "BAL", color: "#9B59D0" },
+  { pick: 25, team: "Houston Texans",            abbr: "HOU", color: "#03202F" },
+  { pick: 26, team: "Los Angeles Rams",          abbr: "LAR", color: "#003594" },
+  { pick: 27, team: "Baltimore Ravens",          abbr: "BAL", color: "#241773" },
   { pick: 28, team: "Detroit Lions",             abbr: "DET", color: "#0076B6" },
-  { pick: 29, team: "Washington Commanders",     abbr: "WSH", color: "#C8102E" },
-  { pick: 30, team: "Buffalo Bills",             abbr: "BUF", color: "#0057B8" },
+  { pick: 29, team: "Washington Commanders",     abbr: "WSH", color: "#5A1414" },
+  { pick: 30, team: "Buffalo Bills",             abbr: "BUF", color: "#00338D" },
   { pick: 31, team: "Kansas City Chiefs",        abbr: "KC",  color: "#E31837" },
-  { pick: 32, team: "Philadelphia Eagles",       abbr: "PHI", color: "#00B140" },
+  { pick: 32, team: "Philadelphia Eagles",       abbr: "PHI", color: "#004C54" },
 ];
 
 // ── 2026 NFL Draft Prospects (last updated February 23, 2026) ─────────────────────
@@ -905,39 +905,79 @@ const PICK_SUGGESTIONS = {
 const ALL_TEAMS = [
   { team: "Arizona Cardinals",      abbr: "ARI", color: "#97233F" },
   { team: "Atlanta Falcons",        abbr: "ATL", color: "#A71930" },
-  { team: "Baltimore Ravens",       abbr: "BAL", color: "#9B59D0" },
-  { team: "Buffalo Bills",          abbr: "BUF", color: "#0057B8" },
+  { team: "Baltimore Ravens",       abbr: "BAL", color: "#241773" },
+  { team: "Buffalo Bills",          abbr: "BUF", color: "#00338D" },
   { team: "Carolina Panthers",      abbr: "CAR", color: "#0085CA" },
-  { team: "Chicago Bears",          abbr: "CHI", color: "#E87722" },
+  { team: "Chicago Bears",          abbr: "CHI", color: "#0B162A" },
   { team: "Cincinnati Bengals",     abbr: "CIN", color: "#FB4F14" },
   { team: "Cleveland Browns",       abbr: "CLE", color: "#FF3C00" },
-  { team: "Dallas Cowboys",         abbr: "DAL", color: "#6F9FD8" },
+  { team: "Dallas Cowboys",         abbr: "DAL", color: "#003594" },
   { team: "Denver Broncos",         abbr: "DEN", color: "#FB4F14" },
   { team: "Detroit Lions",          abbr: "DET", color: "#0076B6" },
   { team: "Green Bay Packers",      abbr: "GB",  color: "#203731" },
-  { team: "Houston Texans",         abbr: "HOU", color: "#E31837" },
-  { team: "Indianapolis Colts",     abbr: "IND", color: "#0067B9" },
-  { team: "Jacksonville Jaguars",   abbr: "JAX", color: "#007F9F" },
+  { team: "Houston Texans",         abbr: "HOU", color: "#03202F" },
+  { team: "Indianapolis Colts",     abbr: "IND", color: "#002C5F" },
+  { team: "Jacksonville Jaguars",   abbr: "JAX", color: "#006778" },
   { team: "Kansas City Chiefs",     abbr: "KC",  color: "#E31837" },
   { team: "Las Vegas Raiders",      abbr: "LV",  color: "#A5ACAF" },
   { team: "Los Angeles Chargers",   abbr: "LAC", color: "#0080C6" },
-  { team: "Los Angeles Rams",       abbr: "LAR", color: "#FFC72C" },
+  { team: "Los Angeles Rams",       abbr: "LAR", color: "#003594" },
   { team: "Miami Dolphins",         abbr: "MIA", color: "#008E97" },
   { team: "Minnesota Vikings",      abbr: "MIN", color: "#4F2683" },
-  { team: "New England Patriots",   abbr: "NE",  color: "#C8102E" },
+  { team: "New England Patriots",   abbr: "NE",  color: "#002244" },
   { team: "New Orleans Saints",     abbr: "NO",  color: "#D3BC8D" },
-  { team: "New York Giants",        abbr: "NYG", color: "#0033A0" },
+  { team: "New York Giants",        abbr: "NYG", color: "#0B2265" },
   { team: "New York Jets",          abbr: "NYJ", color: "#125740" },
-  { team: "Philadelphia Eagles",    abbr: "PHI", color: "#00B140" },
+  { team: "Philadelphia Eagles",    abbr: "PHI", color: "#004C54" },
   { team: "Pittsburgh Steelers",    abbr: "PIT", color: "#FFB612" },
   { team: "San Francisco 49ers",    abbr: "SF",  color: "#AA0000" },
-  { team: "Seattle Seahawks",       abbr: "SEA", color: "#C8102E" },
+  { team: "Seattle Seahawks",       abbr: "SEA", color: "#002244" },
   { team: "Tampa Bay Buccaneers",   abbr: "TB",  color: "#D50A0A" },
   { team: "Tennessee Titans",       abbr: "TEN", color: "#4B92DB" },
-  { team: "Washington Commanders",  abbr: "WSH", color: "#C8102E" },
+  { team: "Washington Commanders",  abbr: "WSH", color: "#5A1414" },
 ];
 
 // ── Styles ────────────────────────────────────────────────────────────────────
+// ── Team color pairs: [darkBg, lightAccent] ──────────────────────────────────
+const TEAM_COLORS = {
+  "LV":  ["#1a1a1a", "#A5ACAF"],
+  "CLE": ["#2a0f00", "#FF6030"],
+  "NYG": ["#0a1540", "#8cacff"],
+  "NE":  ["#1a0808", "#E03050"],
+  "JAX": ["#00292f", "#40c8d8"],
+  "CAR": ["#001840", "#50aaff"],
+  "NO":  ["#1a1408", "#D3BC8D"],
+  "CHI": ["#1a0800", "#E87722"],
+  "SF":  ["#2a0000", "#ff8888"],
+  "DAL": ["#001030", "#7aaaff"],
+  "MIA": ["#002830", "#30c8d8"],
+  "IND": ["#001030", "#5090ff"],
+  "ATL": ["#1a0005", "#e84060"],
+  "ARI": ["#2a0010", "#ff5070"],
+  "CIN": ["#1a0800", "#FB6020"],
+  "SEA": ["#001228", "#5090d8"],
+  "TB":  ["#1a0000", "#ff4444"],
+  "DEN": ["#1a0800", "#FB7010"],
+  "PIT": ["#0a0a00", "#FFB612"],
+  "LAC": ["#001840", "#50a8ff"],
+  "GB":  ["#0a1810", "#40d870"],
+  "MIN": ["#180828", "#b060ff"],
+  "HOU": ["#000a14", "#ff3348"],
+  "LAR": ["#001030", "#FFC72C"],
+  "BAL": ["#0a0018", "#a060ff"],
+  "DET": ["#001830", "#40aaff"],
+  "WSH": ["#1a0000", "#ff5555"],
+  "BUF": ["#001430", "#4080ff"],
+  "KC":  ["#1a0008", "#ff3355"],
+  "PHI": ["#001408", "#30d870"],
+  "TEN": ["#001428", "#6aaaff"],
+  "NYJ": ["#001008", "#28b050"],
+};
+
+function getTeamColors(abbr) {
+  return TEAM_COLORS[abbr] || ["#0e0e1e", "#e8e0d0"];
+}
+
 const S = {
   app: {
     minHeight: "100vh",
@@ -992,64 +1032,69 @@ const S = {
     textTransform: "uppercase",
   },
   grid: {
-    maxWidth: 900,
+    maxWidth: 640,
     margin: "20px auto 0",
     padding: "0 16px",
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))",
-    gap: 10,
+    display: "flex",
+    flexDirection: "column",
+    gap: 6,
   },
-  pickCard: (filled, isDragging) => ({
-    background: filled ? "#0e0e1e" : "#0a0a16",
-    border: `1px solid ${filled ? "#ffffff14" : "#ffffff08"}`,
+  pickCard: (filled, isDragging, darkColor, lightColor) => ({
+    background: darkColor,
+    border: `1px solid ${lightColor}18`,
     borderRadius: 10,
-    padding: "10px 12px",
+    padding: "12px 16px",
     cursor: "pointer",
     transition: "all 0.18s ease",
     opacity: isDragging ? 0.4 : 1,
     position: "relative",
     overflow: "hidden",
+    display: "flex",
+    alignItems: "center",
+    gap: 16,
   }),
-  pickNum: (color) => ({
-    fontSize: 10,
+  pickNum: (lightColor) => ({
+    fontSize: 11,
     fontWeight: 700,
     letterSpacing: 2,
-    color: color + "cc",
+    color: lightColor + "88",
     textTransform: "uppercase",
+    minWidth: 46,
+    flexShrink: 0,
   }),
-  teamTag: (color) => ({
+  teamTag: (lightColor) => ({
     display: "inline-block",
-    fontSize: 10,
+    fontSize: 11,
     fontWeight: 800,
     letterSpacing: 1.5,
-    padding: "2px 7px",
+    padding: "2px 8px",
     borderRadius: 4,
-    background: color + "22",
-    border: `1px solid ${color}44`,
-    color: color === "#A5ACAF" ? "#c8c8c8" : color,
+    background: lightColor + "18",
+    border: `1px solid ${lightColor}44`,
+    color: lightColor,
     textTransform: "uppercase",
+    minWidth: 44,
+    textAlign: "center",
+    flexShrink: 0,
   }),
-  playerName: {
+  playerName: (lightColor) => ({
     fontSize: 15,
     fontWeight: 700,
     letterSpacing: 0.5,
-    color: "#f0e8d8",
-    marginTop: 4,
+    color: lightColor,
     lineHeight: 1.2,
-  },
-  playerPos: {
+  }),
+  playerPos: (lightColor) => ({
     fontSize: 11,
-    color: "#ffffff44",
+    color: lightColor + "88",
     letterSpacing: 1,
-    marginTop: 2,
-  },
-  emptySlot: {
+  }),
+  emptySlot: (lightColor) => ({
     fontSize: 13,
-    color: "#ffffff20",
+    color: lightColor + "44",
     letterSpacing: 1,
-    marginTop: 6,
     fontStyle: "italic",
-  },
+  }),
   tradeBadge: {
     position: "absolute",
     top: 8,
@@ -1581,37 +1626,37 @@ export default function NFLMockDraft() {
 
       {/* Pick grid */}
       <div style={S.grid}>
-        {picks.map(pick => (
-          <div
-            key={pick.pick}
-            style={S.pickCard(!!pick.player, dragSrc === pick.pick)}
-            onClick={() => setActivePick(pick.pick)}
-            draggable={!!pick.player}
-            onDragStart={() => handleDragStart(pick.pick)}
-            onDragOver={handleDragOver}
-            onDrop={() => handleDrop(pick.pick)}
-          >
-            {/* Color accent line */}
-            <div style={{ position: "absolute", top: 0, left: 0, width: 3, height: "100%", background: pick.color, borderRadius: "10px 0 0 10px", opacity: 0.7 }} />
-            <div style={{ paddingLeft: 8 }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                <span style={S.pickNum(pick.color)}>Pick {pick.pick}</span>
-                <span style={S.teamTag(pick.color)}>{pick.abbr}</span>
+        {picks.map(pick => {
+          const [darkBg, lightAccent] = getTeamColors(pick.abbr);
+          return (
+            <div
+              key={pick.pick}
+              style={S.pickCard(!!pick.player, dragSrc === pick.pick, darkBg, lightAccent)}
+              onClick={() => setActivePick(pick.pick)}
+              draggable={!!pick.player}
+              onDragStart={() => handleDragStart(pick.pick)}
+              onDragOver={handleDragOver}
+              onDrop={() => handleDrop(pick.pick)}
+            >
+              {/* Pick number */}
+              <span style={S.pickNum(lightAccent)}>#{pick.pick}</span>
+              {/* Team tag */}
+              <span style={S.teamTag(lightAccent)}>{pick.abbr}</span>
+              {/* Player info */}
+              <div style={{ flex: 1 }}>
+                {pick.player ? (
+                  <>
+                    <div style={S.playerName(lightAccent)}>{pick.player.name}</div>
+                    <div style={S.playerPos(lightAccent)}>{pick.player.position} · {pick.player.school}</div>
+                  </>
+                ) : (
+                  <div style={S.emptySlot(lightAccent)}>Select a player…</div>
+                )}
               </div>
-              {pick.player ? (
-                <>
-                  <div style={S.playerName}>{pick.player.name}</div>
-                  <div style={S.playerPos}>{pick.player.position} · {pick.player.school}</div>
-                </>
-              ) : (
-                <div style={S.emptySlot}>
-                  {PICK_SUGGESTIONS[pick.pick]?.length > 0 ? `${PICK_SUGGESTIONS[pick.pick][0].name}?` : "Select a player…"}
-                </div>
-              )}
+              {pick.traded && <span style={S.tradeBadge}>Traded</span>}
             </div>
-            {pick.traded && <span style={S.tradeBadge}>Traded</span>}
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       {/* Modals */}
