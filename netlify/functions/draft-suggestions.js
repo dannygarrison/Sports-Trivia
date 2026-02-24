@@ -66,9 +66,8 @@ exports.handler = async function (event, context) {
     const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
     const response = await client.messages.create({
-      model: "claude-haiku-4-5-20251001",
-      max_tokens: 4000,
-      system: "You are a JSON API. You only ever respond with valid JSON. Never include any text, explanation, markdown, or code fences outside of the JSON object itself. Your entire response must be parseable by JSON.parse().",
+      model: "claude-sonnet-4-20250514",
+      max_tokens: 2500,
       tools: [{ type: "web_search_20250305", name: "web_search" }],
       messages: [{ role: "user", content: PROMPT }],
     });
