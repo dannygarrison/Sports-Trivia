@@ -1733,7 +1733,7 @@ const PLAYERS = [
   {name:"Josh Brown",colleges:["Nebraska"],teams:["Seattle Seahawks","Cincinnati Bengals","New York Giants","Kansas City Chiefs"]},
   {name:"Michael Brown",colleges:[],teams:["Washington Commanders"]},
   {name:"Rufus Brown",colleges:["Florida State"],teams:["Washington Commanders"]},
-  {name:"Ronnie Brown",colleges:["Shepherd"],teams:["Miami Dolphins","Philadelphia Eagles","Los Angeles Chargers","Tampa Bay Buccaneers","Houston Texans"]},
+  {name:"Ronnie Brown",colleges:["Auburn"],teams:["Miami Dolphins","Philadelphia Eagles","Los Angeles Chargers","Houston Texans"]},
   {name:"Jammal Brown",colleges:["Oklahoma"],teams:["New Orleans Saints","Washington Commanders"]},
   {name:"C.C. Brown",colleges:["Louisiana Lafayette"],teams:["New York Giants","Detroit Lions","Jacksonville Jaguars","Houston Texans","Buffalo Bills"]},
   {name:"Levi Brown",colleges:["Penn State"],teams:["Buffalo Bills","Pittsburgh Steelers","Arizona Cardinals"]},
