@@ -127,7 +127,7 @@ const GAMES = [
     path: '/games/nfl-mock-draft',
     title: 'NFL Mock Draft',
     sport: 'NFL',
-    description: 'Build your 2025 NFL Draft predictions with AI-powered suggestions for every pick.',
+    description: 'Build your 2026 NFL Draft predictions with AI-powered suggestions for every pick.',
     tag: 'MOCK DRAFT',
     available: true,
     dateAdded: 11,
