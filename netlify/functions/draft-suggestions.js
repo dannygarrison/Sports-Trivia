@@ -14,16 +14,15 @@ let lastApiCall = null; // rate limit tracker
 const CACHE_TTL_MS = 24 * 60 * 60 * 1000; // 24 hours
 const RATE_LIMIT_MS = 60 * 1000; // min 60s between real API calls
 
-const PROMPT = `Search the web for the most current 2026 NFL Draft prospect rankings, early big boards, and mock drafts.
+const PROMPT = `Search the web for the most current 2026 NFL Draft prospect rankings and big boards.
 
-You must respond with ONLY a valid JSON object. No introduction, no explanation, no markdown, no code fences. Start your response with { and end with }.
+Respond with ONLY a JSON object. No explanation, no markdown. Start with { and end with }.
 
-The JSON object must have exactly these two keys:
-- "picks": object with keys "1" through "32", each value is array of 4 top 2026 NFL Draft prospects: [{"name":"...","position":"...","school":"..."}]
-- "allProspects": array of ~70 top 2026 NFL Draft first-round prospects: [{"name":"...","position":"...","school":"..."}]
+Two keys required:
+- "picks": keys "1" to "32", each an array of 3 prospects: [{"name":"...","pos":"...","school":"..."}]
+- "all": array of 50 top 2026 prospects: [{"name":"...","pos":"...","school":"..."}]
 
-Example of correct format:
-{"picks":{"1":[{"name":"Travis Hunter","position":"CB/WR","school":"Colorado"}],"2":[...]},"allProspects":[{"name":"Travis Hunter","position":"CB/WR","school":"Colorado"},...]}`;
+Example: {"picks":{"1":[{"name":"Arch Manning","pos":"QB","school":"Texas"}]},"all":[{"name":"Arch Manning","pos":"QB","school":"Texas"}]}`;
 
 exports.handler = async function (event, context) {
   const headers = {
@@ -67,7 +66,7 @@ exports.handler = async function (event, context) {
 
     const response = await client.messages.create({
       model: "claude-sonnet-4-20250514",
-      max_tokens: 2500,
+      max_tokens: 3500,
       tools: [{ type: "web_search_20250305", name: "web_search" }],
       messages: [{ role: "user", content: PROMPT }],
     });
@@ -83,18 +82,21 @@ exports.handler = async function (event, context) {
     if (!jsonMatch) throw new Error("No JSON object found in response");
     const parsed = JSON.parse(jsonMatch[0]);
 
-    if (!parsed.picks || !parsed.allProspects) {
+    if (!parsed.picks || !parsed.all) {
       throw new Error("Response missing required keys");
     }
 
+    // Normalize to expected shape
+    const normalized = { picks: parsed.picks, allProspects: parsed.all };
+
     // Store in cache
-    cache = { data: parsed, timestamp: Date.now() };
-    console.log("Draft suggestions cached successfully. Prospects:", parsed.allProspects.length);
+    cache = { data: normalized, timestamp: Date.now() };
+    console.log("Draft suggestions cached successfully. Prospects:", normalized.allProspects.length);
 
     return {
       statusCode: 200,
       headers,
-      body: JSON.stringify({ ...parsed, cached: false }),
+      body: JSON.stringify({ ...normalized, cached: false }),
     };
   } catch (err) {
     console.error("Draft suggestions error:", err.message);
