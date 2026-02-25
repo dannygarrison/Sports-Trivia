@@ -682,6 +682,7 @@ export default function NFLChain() {
 
   // Reset game when mode changes
   const toggleHardMode = useCallback(() => {
+    clearSave();
     setHardMode(prev => {
       const newMode = !prev;
       const team = NFL_TEAMS[Math.floor(Math.random() * NFL_TEAMS.length)];
@@ -701,13 +702,71 @@ export default function NFLChain() {
     });
   }, []);
 
-  // Initialize with random team
+  // ── LocalStorage persistence ──
+  const SAVE_KEY = "nflChain_save";
+
+  function saveGame(state) {
+    try {
+      localStorage.setItem(SAVE_KEY, JSON.stringify({
+        step: state.step,
+        currentTarget: state.currentTarget,
+        chain: state.chain,
+        usedTeams: [...state.usedTeams],
+        usedColleges: [...state.usedColleges],
+        usedPlayers: [...state.usedPlayers],
+        hardMode: state.hardMode,
+        won: state.won,
+        history: state.history.map(h => ({
+          ...h,
+          usedTeams: [...h.usedTeams],
+          usedColleges: [...h.usedColleges],
+          usedPlayers: [...h.usedPlayers],
+        })),
+      }));
+    } catch (e) { /* storage full or unavailable */ }
+  }
+
+  function clearSave() {
+    try { localStorage.removeItem(SAVE_KEY); } catch (e) {}
+  }
+
+  // Initialize: restore saved game or start fresh
   useEffect(() => {
+    try {
+      const raw = localStorage.getItem(SAVE_KEY);
+      if (raw) {
+        const s = JSON.parse(raw);
+        if (s.chain && s.chain.length > 1) {
+          setStep(s.step);
+          seTCUrrentTarget(s.currentTarget);
+          setChain(s.chain);
+          setUsedTeams(new Set(s.usedTeams));
+          setUsedColleges(new Set(s.usedColleges));
+          setUsedPlayers(new Set(s.usedPlayers));
+          setHardMode(s.hardMode || false);
+          setWon(s.won || false);
+          setHistory((s.history || []).map(h => ({
+            ...h,
+            usedTeams: new Set(h.usedTeams),
+            usedColleges: new Set(h.usedColleges),
+            usedPlayers: new Set(h.usedPlayers),
+          })));
+          return;
+        }
+      }
+    } catch (e) { /* corrupted save, start fresh */ }
     const team = NFL_TEAMS[Math.floor(Math.random() * NFL_TEAMS.length)];
     seTCUrrentTarget(team);
     setUsedTeams(new Set([team]));
     setChain([{ item: team, type: "team" }]);
   }, []);
+
+  // Auto-save on every meaningful state change
+  useEffect(() => {
+    if (chain.length > 0 && currentTarget) {
+      saveGame({ step, currentTarget, chain, usedTeams, usedColleges, usedPlayers, hardMode, won, history });
+    }
+  }, [step, currentTarget, chain, usedTeams, usedColleges, usedPlayers, hardMode, won, history]);
 
   // Scroll chain container horizontally to show latest link, without moving the page
   useEffect(() => {
@@ -898,6 +957,7 @@ export default function NFLChain() {
   };
 
   const handleReset = () => {
+    clearSave();
     const team = NFL_TEAMS[Math.floor(Math.random() * NFL_TEAMS.length)];
     seTCUrrentTarget(team);
     setUsedTeams(new Set([team]));
