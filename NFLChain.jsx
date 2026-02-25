@@ -312,6 +312,19 @@ function resolvePlayer(input, players) {
         if (!matches.includes(p) && stripSuffix(normalize(p.name)) === shortened) matches.push(p);
       });
     }
+
+    // 4. Close-spelling matches — same last name, first name within edit distance 2
+    //    Catches typos like "Jeffrey" -> "Jeffery", "Dwyane" -> "Dwayne"
+    players.forEach(p => {
+      if (matches.includes(p)) return;
+      const pStripped = stripSuffix(normalize(p.name));
+      const pParts = pStripped.split(" ");
+      if (pParts.length < 2) return;
+      const pFirst = pParts[0];
+      const pLast = pParts.slice(1).join(" ");
+      if (pLast !== lastName) return;
+      if (levenshtein(firstName, pFirst) <= 2) matches.push(p);
+    });
   }
 
   return matches.length > 0 ? matches : null;
