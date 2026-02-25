@@ -1045,10 +1045,11 @@ const S = {
   headerTitle: {
     fontSize: "clamp(22px, 4vw, 34px)",
     fontWeight: 700,
+    fontStyle: "italic",
     fontFamily: "'Oswald', sans-serif",
     letterSpacing: 3,
     textTransform: "uppercase",
-    background: "linear-gradient(90deg, #f0d070, #e87040)",
+    background: "linear-gradient(135deg, #ffffff, #e0e0e8, #b0b0c0)",
     WebkitBackgroundClip: "text",
     WebkitTextFillColor: "transparent",
     margin: 0,
@@ -1090,13 +1091,17 @@ const S = {
     maxWidth: "22%",
     padding: "10px 0",
     flexShrink: 0,
-    clipPath: "polygon(0 0, 82% 0, 100% 100%, 0 100%)",
+    clipPath: "polygon(0 0, 100% 0, 82% 100%, 0 100%)",
   }),
   teamTabAbbr: (textColor) => ({
     fontSize: 15,
     fontWeight: 700,
+    fontStyle: "italic",
     letterSpacing: 2,
-    color: textColor,
+    background: `linear-gradient(135deg, ${textColor}, ${textColor}aa)`,
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+    filter: "drop-shadow(1px 1px 2px rgba(0,0,0,0.5))",
     textTransform: "uppercase",
     marginRight: 8,
   }),
@@ -1112,17 +1117,23 @@ const S = {
   playerName: () => ({
     fontSize: 22,
     fontWeight: 700,
+    fontStyle: "italic",
     letterSpacing: 0.5,
-    background: "linear-gradient(90deg, #f0d070, #e87040)",
+    background: "linear-gradient(135deg, #ffffff, #e0e0e8, #b0b0c0)",
     WebkitBackgroundClip: "text",
     WebkitTextFillColor: "transparent",
     lineHeight: 1.2,
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    paddingRight: 6,
   }),
   playerPos: () => ({
     fontSize: 11,
     color: "#ffffff88",
     letterSpacing: 1,
     whiteSpace: "nowrap",
+    flexShrink: 0,
   }),
   emptySlot: () => ({
     fontSize: 13,
@@ -1673,7 +1684,7 @@ function ShareModal({ picks, onClose }) {
       const PAD = 28;
       const GAP = 10;
       const HEADER_H = 140;
-      const FOOTER_H = 52;
+      const FOOTER_H = 16;
       const GRID_W = W - PAD * 2;
       const GRID_H = H - HEADER_H - FOOTER_H;
       const CELL_W = Math.floor((GRID_W - (COLS - 1) * GAP) / COLS);
@@ -1699,15 +1710,19 @@ function ShareModal({ picks, onClose }) {
       }
 
       // Title
-      ctx.fillStyle = "#f0d070";
-      ctx.font = "bold 42px Oswald, sans-serif";
+      const titleGrad = ctx.createLinearGradient(W / 2 - 200, 20, W / 2 + 200, 65);
+      titleGrad.addColorStop(0, "#ffffff");
+      titleGrad.addColorStop(0.5, "#e0e0e8");
+      titleGrad.addColorStop(1, "#b0b0c0");
+      ctx.fillStyle = titleGrad;
+      ctx.font = "italic bold 42px Oswald, sans-serif";
       ctx.textAlign = "center";
-      ctx.fillText("2026 NFL MOCK DRAFT", W / 2, 60);
+      ctx.fillText("2026 NFL DRAFT FIRST ROUND MOCK", W / 2, 60);
 
-      // Subtitle
-      ctx.fillStyle = "#ffffff55";
-      ctx.font = "18px Oswald, sans-serif";
-      ctx.fillText("1st Round Predictions", W / 2, 90);
+      // Site tag
+      ctx.fillStyle = "#ffffffaa";
+      ctx.font = "bold 22px Oswald, sans-serif";
+      ctx.fillText("TrivialSports.com", W / 2, 92);
 
       // Divider
       ctx.strokeStyle = "#ffffff10";
@@ -1759,7 +1774,7 @@ function ShareModal({ picks, onClose }) {
         ctx.beginPath();
         ctx.roundRect(x, y, CELL_W, CELL_H, RADIUS);
         ctx.clip();
-        const triSize = 62;
+        const triSize = 76;
         ctx.fillStyle = "rgba(0,0,0,0.40)";
         ctx.beginPath();
         ctx.moveTo(x, y);
@@ -1769,9 +1784,9 @@ function ShareModal({ picks, onClose }) {
         ctx.fill();
         ctx.restore();
         ctx.fillStyle = "#ffffffdd";
-        ctx.font = "bold 24px Oswald, sans-serif";
+        ctx.font = "bold 26px Oswald, sans-serif";
         ctx.textAlign = "left";
-        ctx.fillText(`${pick.pick}`, x + 10, y + 28);
+        ctx.fillText(`${pick.pick}`, x + 10, y + 30);
 
         // Trade indicator — top-right
         if (pick.traded) {
@@ -1787,9 +1802,9 @@ function ShareModal({ picks, onClose }) {
 
         // Team abbreviation — upper right corner
         ctx.fillStyle = textColor;
-        ctx.font = "bold 22px Oswald, sans-serif";
+        ctx.font = "bold 28px Oswald, sans-serif";
         ctx.textAlign = "right";
-        ctx.fillText(pick.abbr, x + CELL_W - 10, y + 28);
+        ctx.fillText(pick.abbr, x + CELL_W - 10, y + 30);
 
         // Player info — centered in tile
         if (pick.player) {
@@ -1797,38 +1812,59 @@ function ShareModal({ picks, onClose }) {
           const firstName = nameParts[0];
           const lastName = nameParts.slice(1).join(" ");
 
-          // First name
-          const nameGrad1 = ctx.createLinearGradient(cx - 60, 0, cx + 60, 0);
-          nameGrad1.addColorStop(0, "#fffbe6");
-          nameGrad1.addColorStop(1, "#f5e6b8");
+          // First name — italic with diagonal gradient (smaller)
+          ctx.shadowColor = "rgba(0,0,0,0.7)";
+          ctx.shadowBlur = 6;
+          ctx.shadowOffsetX = 1;
+          ctx.shadowOffsetY = 1;
+          const nameGrad1 = ctx.createLinearGradient(cx - 80, y + 30, cx + 80, y + 65);
+          nameGrad1.addColorStop(0, "#ffffff");
+          nameGrad1.addColorStop(0.5, "#e0e0e8");
+          nameGrad1.addColorStop(1, "#b0b0c0");
           ctx.fillStyle = nameGrad1;
-          ctx.font = "bold 28px Oswald, sans-serif";
+          ctx.font = "italic bold 26px Oswald, sans-serif";
           ctx.textAlign = "center";
-          ctx.fillText(firstName, cx, y + 62);
+          // Shrink first name if too wide
+          let firstFont = 26;
+          while (ctx.measureText(firstName).width > CELL_W - 16 && firstFont > 18) {
+            firstFont -= 2;
+            ctx.font = `italic bold ${firstFont}px Oswald, sans-serif`;
+          }
+          ctx.fillText(firstName, cx, y + 58);
 
-          // Last name
-          const nameGrad2 = ctx.createLinearGradient(cx - 60, 0, cx + 60, 0);
-          nameGrad2.addColorStop(0, "#fffbe6");
-          nameGrad2.addColorStop(1, "#f5e6b8");
+          // Last name — italic with diagonal gradient (larger)
+          const nameGrad2 = ctx.createLinearGradient(cx - 80, y + 65, cx + 80, y + 100);
+          nameGrad2.addColorStop(0, "#ffffff");
+          nameGrad2.addColorStop(0.5, "#e0e0e8");
+          nameGrad2.addColorStop(1, "#b0b0c0");
           ctx.fillStyle = nameGrad2;
-          ctx.font = "bold 28px Oswald, sans-serif";
+          ctx.font = "italic bold 40px Oswald, sans-serif";
           ctx.textAlign = "center";
           // Shrink last name if it's too wide
-          let lastFont = 28;
-          while (ctx.measureText(lastName).width > CELL_W - 16 && lastFont > 16) {
+          let lastFont = 40;
+          while (ctx.measureText(lastName).width > CELL_W - 16 && lastFont > 22) {
             lastFont -= 2;
-            ctx.font = `bold ${lastFont}px Oswald, sans-serif`;
+            ctx.font = `italic bold ${lastFont}px Oswald, sans-serif`;
           }
-          ctx.fillText(lastName, cx, y + 92);
+          ctx.fillText(lastName, cx, y + 96);
 
           // Position + school
+          ctx.shadowColor = "rgba(0,0,0,0.5)";
+          ctx.shadowBlur = 4;
+          ctx.shadowOffsetX = 1;
+          ctx.shadowOffsetY = 1;
           ctx.fillStyle = "rgba(255,255,255,0.65)";
-          ctx.font = "17px Oswald, sans-serif";
+          ctx.font = "21px Oswald, sans-serif";
           ctx.textAlign = "center";
           const info = `${pick.player.position} · ${pick.player.school}`;
           const infoW = ctx.measureText(info).width;
           const displayInfo = infoW <= CELL_W - 16 ? info : pick.player.position;
-          ctx.fillText(displayInfo, cx, y + 115);
+          ctx.fillText(displayInfo, cx, y + 120);
+          // Reset shadow
+          ctx.shadowColor = "transparent";
+          ctx.shadowBlur = 0;
+          ctx.shadowOffsetX = 0;
+          ctx.shadowOffsetY = 0;
         } else {
           ctx.fillStyle = "rgba(255,255,255,0.25)";
           ctx.font = "italic 24px Oswald, sans-serif";
@@ -1837,11 +1873,7 @@ function ShareModal({ picks, onClose }) {
         }
       });
 
-      // Footer
-      ctx.fillStyle = "#ffffff22";
-      ctx.font = "16px Oswald, sans-serif";
-      ctx.textAlign = "center";
-      ctx.fillText("trivialsports.com · Build your mock draft", W / 2, H - 20);
+      // (no footer)
     }
   }, [picks]);
 
@@ -1970,8 +2002,8 @@ export default function NFLMockDraft() {
 
       {/* Header */}
       <div style={S.header}>
-        <div style={S.headerTitle}>2026 NFL Mock Draft</div>
-        <div style={S.headerSub}>1st Round · Build Your Predictions</div>
+        <div style={S.headerTitle}>2026 NFL Draft</div>
+        <div style={S.headerSub}>First Round Mock</div>
 
         <div style={{ marginTop: 6, fontSize: 11, color: "#c8a050", letterSpacing: 1 }}>
           {ALL_PROSPECTS.length} prospects · updated {new Date().toLocaleDateString("en-US", { month: "short", year: "numeric" })}
@@ -2010,7 +2042,7 @@ export default function NFLMockDraft() {
               </div>
               <div style={{ flex: 1, display: "flex", alignItems: "center", gap: 12, padding: "10px 14px" }}>
                 <span style={S.pickNum()}>#{pick.pick}</span>
-                <div style={{ flex: 1 }}>
+                <div style={{ flex: 1, minWidth: 0 }}>
                   {pick.player ? (
                     <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
                       <div style={S.playerName()}>{pick.player.name}</div>
