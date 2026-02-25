@@ -1703,10 +1703,10 @@ function ShareModal({ picks, onClose }) {
       ctx.fillRect(0, 0, W, H);
 
       // Logo top-left
-      const LOGO_H = 44;
+      const LOGO_H = 68;
       if (logo) {
         const logoW = LOGO_H * (logo.naturalWidth / logo.naturalHeight);
-        ctx.drawImage(logo, PAD, 24, logoW, LOGO_H);
+        ctx.drawImage(logo, PAD, 16, logoW, LOGO_H);
       }
 
       // Title
