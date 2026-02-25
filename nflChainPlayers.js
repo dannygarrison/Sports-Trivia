@@ -3,7 +3,7 @@ export const PLAYERS = [
 {name:"A'Shawn Robinson",teams:["Carolina Panthers","Detroit Lions","Los Angeles Rams","New York Giants"],colleges:["Alabama"]},
 {name:"A.B. Brown",teams:["New York Jets"],colleges:["West Virginia"]},
 {name:"A.D. Whitfield",teams:["Washington Commanders"],colleges:[]},
-{name:"A.J. Bouye",teams:["Carolina Panthers","Denver Broncos","Houston Texans","Jacksonville Jaguars"],colleges:[]},
+{name:"A.J. Bouye",teams:["Carolina Panthers","Denver Broncos","Houston Texans","Jacksonville Jaguars"],colleges:[UCF]},
 {name:"A.J. Brown",teams:["Philadelphia Eagles","Tennessee Titans"],colleges:["Ole Miss"]},
 {name:"A.J. Cann",teams:["Houston Texans","Jacksonville Jaguars"],colleges:["South Carolina"]},
 {name:"A.J. Davis",teams:["New Orleans Saints"],colleges:[]},
