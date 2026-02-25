@@ -14914,7 +14914,7 @@ export const PLAYERS = [
 {name:"Jonathan Jones",teams:["New England Patriots","Washington Commanders"],colleges:[]},
 {name:"Frank Wattelet",teams:["New Orleans Saints","Los Angeles Rams"],colleges:[]},
 {name:"Mike Brisiel",teams:["Houston Texans","Las Vegas Raiders"],colleges:[]},
-{name:"Vontaze Burfict",teams:["Cincinnati Bengals","Las Vegas Raiders"],colleges:[]},
+{name:"Vontaze Burfict",teams:["Cincinnati Bengals","Las Vegas Raiders"],colleges:["Arizona State"]},
 {name:"Preston Dennard",teams:["Buffalo Bills","Green Bay Packers","Los Angeles Rams"],colleges:[]},
 {name:"Malcom Floyd",teams:["Los Angeles Chargers"],colleges:[]},
 {name:"Josh Kline",teams:["Minnesota Vikings","New England Patriots","Tennessee Titans"],colleges:[]},
