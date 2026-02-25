@@ -5716,7 +5716,7 @@ export const PLAYERS = [
 {name:"Phillip Gaines",teams:["Buffalo Bills","Cleveland Browns","Houston Texans","Kansas City Chiefs"],colleges:["Rice"]},
 {name:"Neville Gallimore",teams:["Dallas Cowboys","Indianapolis Colts","Los Angeles Rams"],colleges:["Oklahoma"]},
 {name:"Zach Gentry",teams:["Las Vegas Raiders","Pittsburgh Steelers"],colleges:["Michigan"]},
-{name:"Ryan Grant",teams:["Indianapolis Colts","Las Vegas Raiders","Washington Commanders","Green Bay Packers"],colleges:["Tulane"]},
+{name:"Ryan Grant",teams:["New York Giants","Washington Commanders","Green Bay Packers"],colleges:["Notre Dame"]},
 {name:"Van Green",teams:["Buffalo Bills","Cleveland Browns"],colleges:["Shaw"]},
 {name:"Bryce Hall",teams:["New York Jets","Tampa Bay Buccaneers"],colleges:["Virginia"]},
 {name:"Korey Hall",teams:["Green Bay Packers","New Orleans Saints"],colleges:["Boise State"]},
