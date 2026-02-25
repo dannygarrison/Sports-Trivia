@@ -419,7 +419,7 @@ const STEP_LABELS = {
   [STEP.TEAM]: (ctx) => { const d = TEAM_DEMONYM[ctx.currentTarget] || ctx.currentTarget; const article = /^[aeiou]/i.test(d) ? 'an' : 'a'; return `Name ${article} ${d}`; },
   [STEP.PLAYER_TO_COLLEGE]: (ctx) => `Where did ${ctx.currentTarget} go to college?`,
   [STEP.COLLEGE]: (ctx) => `Name an NFL player who went to ${ctx.currentTarget}`,
-  [STEP.PLAYER_TO_TEAM]: (ctx) => `Name an NFL team ${ctx.currentTarget} has played for`,
+  [STEP.PLAYER_TO_TEAM]: (ctx) => ctx.hardMode ? `What team does ${ctx.currentTarget} play for?` : `Name an NFL team ${ctx.currentTarget} has played for`,
 };
 
 const STEP_HINT = {
@@ -912,7 +912,7 @@ export default function NFLChain() {
     setTimeout(() => inputRef.current?.focus(), 50);
   };
 
-  const prompt = currentTarget ? STEP_LABELS[step]({ currentTarget }) : "";
+  const prompt = currentTarget ? STEP_LABELS[step]({ currentTarget, hardMode }) : "";
   const hint = STEP_HINT[step];
   const teamsLeft = 32 - usedTeams.size;
 
@@ -972,7 +972,7 @@ export default function NFLChain() {
             transition: "all 0.2s",
           }}
         >
-          {hardMode ? "🔥 Hard Mode: Active Players Only" : "Hard Mode: Off"}
+          {hardMode ? "🔥 " : ""}Hard Mode: Only Active Players On Their Current Teams
         </button>
       </div>
 
