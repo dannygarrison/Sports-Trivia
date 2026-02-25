@@ -1667,139 +1667,186 @@ function ShareModal({ picks, onClose }) {
     logo.onerror = () => document.fonts.ready.then(() => drawCanvas(canvas, ctx, null));
 
     function drawCanvas(canvas, ctx, logo) {
-      const W = 640;
-      const CARD_H = 56;
-      const CARD_GAP = 6;
-      const PAD = 20;
-      const HEADER_H = 100;
-      const FOOTER_H = 36;
-      const totalH = HEADER_H + picks.length * (CARD_H + CARD_GAP) - CARD_GAP + PAD + FOOTER_H;
-
+      // 3:4 ratio — matches standard iPhone photo dimensions
+      const W = 1080;
+      const H = 1440;
       canvas.width = W;
-      canvas.height = totalH;
+      canvas.height = H;
+
+      const COLS = 4;
+      const ROWS = 8;
+      const PAD = 28;
+      const GAP = 10;
+      const HEADER_H = 140;
+      const FOOTER_H = 52;
+      const GRID_W = W - PAD * 2;
+      const GRID_H = H - HEADER_H - FOOTER_H;
+      const CELL_W = Math.floor((GRID_W - (COLS - 1) * GAP) / COLS);
+      const CELL_H = Math.floor((GRID_H - (ROWS - 1) * GAP) / ROWS);
+      const RADIUS = 14;
 
       // Page background
       ctx.fillStyle = "#080810";
-      ctx.fillRect(0, 0, W, totalH);
+      ctx.fillRect(0, 0, W, H);
+
+      // Subtle grid glow
+      const bgGrad = ctx.createRadialGradient(W / 2, H / 2, 100, W / 2, H / 2, W);
+      bgGrad.addColorStop(0, "#12121f");
+      bgGrad.addColorStop(1, "#080810");
+      ctx.fillStyle = bgGrad;
+      ctx.fillRect(0, 0, W, H);
 
       // Logo top-left
-      const LOGO_H = 34;
+      const LOGO_H = 44;
       if (logo) {
         const logoW = LOGO_H * (logo.naturalWidth / logo.naturalHeight);
-        ctx.drawImage(logo, PAD, 16, logoW, LOGO_H);
+        ctx.drawImage(logo, PAD, 24, logoW, LOGO_H);
       }
 
-      // Title centered
+      // Title
       ctx.fillStyle = "#f0d070";
-      ctx.font = "bold 26px Oswald, sans-serif";
+      ctx.font = "bold 42px Oswald, sans-serif";
       ctx.textAlign = "center";
-      ctx.fillText("2026 NFL MOCK DRAFT", W / 2, 42);
+      ctx.fillText("2026 NFL MOCK DRAFT", W / 2, 60);
 
-      // Site URL
-      ctx.fillStyle = "#ffffff44";
-      ctx.font = "13px Oswald, sans-serif";
-      ctx.fillText("trivialsports.com", W / 2, 64);
+      // Subtitle
+      ctx.fillStyle = "#ffffff55";
+      ctx.font = "18px Oswald, sans-serif";
+      ctx.fillText("1st Round Predictions", W / 2, 90);
 
       // Divider
       ctx.strokeStyle = "#ffffff10";
       ctx.lineWidth = 1;
       ctx.beginPath();
-      ctx.moveTo(PAD, HEADER_H - 8);
-      ctx.lineTo(W - PAD, HEADER_H - 8);
+      ctx.moveTo(PAD, HEADER_H - 16);
+      ctx.lineTo(W - PAD, HEADER_H - 16);
       ctx.stroke();
 
-      // Cards
-      const cardW = W - PAD * 2;
-      const TAB_W = Math.round(cardW * 0.22);
-      const SLANT = Math.round(TAB_W * 0.18);
+      // Draw grid of tiles
       picks.forEach((pick, i) => {
+        const col = i % COLS;
+        const row = Math.floor(i / COLS);
+        const x = PAD + col * (CELL_W + GAP);
+        const y = HEADER_H + row * (CELL_H + GAP);
         const teamColor = getTeamColor(pick.abbr);
-        const cardX = PAD;
-        const cardY = HEADER_H + i * (CARD_H + CARD_GAP);
+        const textColor = TAB_TEXT_COLOR[pick.abbr] || "#ffffff";
 
-        // Card background
-        ctx.fillStyle = "#0e0e1a";
+        // Cell background with team color gradient
+        const cellGrad = ctx.createLinearGradient(x, y, x, y + CELL_H);
+        cellGrad.addColorStop(0, teamColor);
+        cellGrad.addColorStop(1, teamColor + "aa");
+        ctx.fillStyle = cellGrad;
         ctx.beginPath();
-        ctx.roundRect(cardX, cardY, cardW, CARD_H, 8);
+        ctx.roundRect(x, y, CELL_W, CELL_H, RADIUS);
         ctx.fill();
 
-        // Card border
-        ctx.strokeStyle = "#ffffff12";
+        // Subtle inner shadow / overlay for depth
+        const overlay = ctx.createLinearGradient(x, y, x, y + CELL_H);
+        overlay.addColorStop(0, "rgba(255,255,255,0.12)");
+        overlay.addColorStop(0.5, "rgba(0,0,0,0)");
+        overlay.addColorStop(1, "rgba(0,0,0,0.25)");
+        ctx.fillStyle = overlay;
+        ctx.beginPath();
+        ctx.roundRect(x, y, CELL_W, CELL_H, RADIUS);
+        ctx.fill();
+
+        // Thin border
+        ctx.strokeStyle = "rgba(255,255,255,0.08)";
         ctx.lineWidth = 1;
         ctx.beginPath();
-        ctx.roundRect(cardX, cardY, cardW, CARD_H, 8);
+        ctx.roundRect(x, y, CELL_W, CELL_H, RADIUS);
         ctx.stroke();
 
-        // Team color slanted gradient tab
+        const cx = x + CELL_W / 2;
+
+        // Pick number — shaded triangle in top-left corner
         ctx.save();
         ctx.beginPath();
-        ctx.roundRect(cardX, cardY, cardW, CARD_H, 8);
+        ctx.roundRect(x, y, CELL_W, CELL_H, RADIUS);
         ctx.clip();
-        const grad = ctx.createLinearGradient(cardX, cardY, cardX + TAB_W + SLANT, cardY + CARD_H);
-        grad.addColorStop(0, teamColor);
-        grad.addColorStop(0.6, teamColor + "cc");
-        grad.addColorStop(1, teamColor + "33");
-        ctx.fillStyle = grad;
+        const triSize = 62;
+        ctx.fillStyle = "rgba(0,0,0,0.40)";
         ctx.beginPath();
-        ctx.moveTo(cardX, cardY);
-        ctx.lineTo(cardX + TAB_W, cardY);
-        ctx.lineTo(cardX + TAB_W + SLANT, cardY + CARD_H);
-        ctx.lineTo(cardX, cardY + CARD_H);
+        ctx.moveTo(x, y);
+        ctx.lineTo(x + triSize, y);
+        ctx.lineTo(x, y + triSize);
         ctx.closePath();
         ctx.fill();
         ctx.restore();
-
-        // Team abbreviation in tab
-        const tabMidX = cardX + (TAB_W - SLANT / 2) / 2;
-        const midY = cardY + CARD_H / 2 + 5;
-        ctx.fillStyle = TAB_TEXT_COLOR[pick.abbr] || "#ffffff";
-        ctx.font = "bold 14px Oswald, sans-serif";
-        ctx.textAlign = "center";
-        ctx.fillText(pick.abbr, tabMidX, midY);
-
-        // Pick number
-        const contentX = cardX + TAB_W + SLANT + 8;
-        ctx.fillStyle = "#ffffff66";
-        ctx.font = "bold 11px Oswald, sans-serif";
+        ctx.fillStyle = "#ffffffdd";
+        ctx.font = "bold 24px Oswald, sans-serif";
         ctx.textAlign = "left";
-        ctx.fillText(`#${pick.pick}`, contentX, midY);
+        ctx.fillText(`${pick.pick}`, x + 10, y + 28);
 
-        // Trade badge
+        // Trade indicator — top-right
         if (pick.traded) {
+          ctx.fillStyle = "rgba(0,0,0,0.35)";
+          ctx.beginPath();
+          ctx.roundRect(x + CELL_W - 56, y + 8, 48, 22, 6);
+          ctx.fill();
           ctx.fillStyle = "#FFB612";
-          ctx.font = "bold 9px Oswald, sans-serif";
-          ctx.textAlign = "left";
-          ctx.fillText("TRADED", contentX + 42, midY - 6);
+          ctx.font = "bold 11px Oswald, sans-serif";
+          ctx.textAlign = "center";
+          ctx.fillText("TRADE", x + CELL_W - 32, y + 24);
         }
 
-        // Player name
-        const nameX = contentX + (pick.traded ? 100 : 42);
-        if (pick.player) {
-          const nameGrad = ctx.createLinearGradient(nameX, 0, nameX + 180, 0);
-          nameGrad.addColorStop(0, "#f0d070");
-          nameGrad.addColorStop(1, "#e87040");
-          ctx.fillStyle = nameGrad;
-          ctx.font = "bold 20px Oswald, sans-serif";
-          ctx.textAlign = "left";
-          ctx.fillText(pick.player.name, nameX, midY);
+        // Team abbreviation — upper right corner
+        ctx.fillStyle = textColor;
+        ctx.font = "bold 22px Oswald, sans-serif";
+        ctx.textAlign = "right";
+        ctx.fillText(pick.abbr, x + CELL_W - 10, y + 28);
 
-          ctx.fillStyle = "#ffffff88";
-          ctx.font = "11px Oswald, sans-serif";
-          ctx.textAlign = "right";
-          ctx.fillText(`${pick.player.position} · ${pick.player.school}`, cardX + cardW - 10, midY);
+        // Player info — centered in tile
+        if (pick.player) {
+          const nameParts = pick.player.name.split(" ");
+          const firstName = nameParts[0];
+          const lastName = nameParts.slice(1).join(" ");
+
+          // First name
+          const nameGrad1 = ctx.createLinearGradient(cx - 60, 0, cx + 60, 0);
+          nameGrad1.addColorStop(0, "#fffbe6");
+          nameGrad1.addColorStop(1, "#f5e6b8");
+          ctx.fillStyle = nameGrad1;
+          ctx.font = "bold 28px Oswald, sans-serif";
+          ctx.textAlign = "center";
+          ctx.fillText(firstName, cx, y + 62);
+
+          // Last name
+          const nameGrad2 = ctx.createLinearGradient(cx - 60, 0, cx + 60, 0);
+          nameGrad2.addColorStop(0, "#fffbe6");
+          nameGrad2.addColorStop(1, "#f5e6b8");
+          ctx.fillStyle = nameGrad2;
+          ctx.font = "bold 28px Oswald, sans-serif";
+          ctx.textAlign = "center";
+          // Shrink last name if it's too wide
+          let lastFont = 28;
+          while (ctx.measureText(lastName).width > CELL_W - 16 && lastFont > 16) {
+            lastFont -= 2;
+            ctx.font = `bold ${lastFont}px Oswald, sans-serif`;
+          }
+          ctx.fillText(lastName, cx, y + 92);
+
+          // Position + school
+          ctx.fillStyle = "rgba(255,255,255,0.65)";
+          ctx.font = "17px Oswald, sans-serif";
+          ctx.textAlign = "center";
+          const info = `${pick.player.position} · ${pick.player.school}`;
+          const infoW = ctx.measureText(info).width;
+          const displayInfo = infoW <= CELL_W - 16 ? info : pick.player.position;
+          ctx.fillText(displayInfo, cx, y + 115);
         } else {
-          ctx.fillStyle = "#ffffff44";
-          ctx.font = "italic 13px Oswald, sans-serif";
-          ctx.textAlign = "left";
-          ctx.fillText("—", nameX, midY);
+          ctx.fillStyle = "rgba(255,255,255,0.25)";
+          ctx.font = "italic 24px Oswald, sans-serif";
+          ctx.textAlign = "center";
+          ctx.fillText("—", cx, y + 80);
         }
       });
 
-      // Footer watermark
+      // Footer
       ctx.fillStyle = "#ffffff22";
-      ctx.font = "12px Oswald, sans-serif";
+      ctx.font = "16px Oswald, sans-serif";
       ctx.textAlign = "center";
-      ctx.fillText("trivialsports.com · Build your mock draft", W / 2, totalH - 12);
+      ctx.fillText("trivialsports.com · Build your mock draft", W / 2, H - 20);
     }
   }, [picks]);
 
@@ -1832,7 +1879,7 @@ function ShareModal({ picks, onClose }) {
 
   return (
     <div style={S.modal} onClick={e => e.target === e.currentTarget && onClose()}>
-      <div style={{ ...S.modalBox, maxWidth: 560 }}>
+      <div style={{ ...S.modalBox, maxWidth: 480 }}>
         <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 16 }}>
           <div style={S.modalTitle}>Share Your Mock Draft</div>
           <button onClick={onClose} style={{ background: "none", border: "none", color: "#ffffff66", fontSize: 20, cursor: "pointer", padding: 0 }}>✕</button>
