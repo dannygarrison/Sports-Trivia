@@ -14923,7 +14923,7 @@ export const PLAYERS = [
 {name:"Brian Sochia",teams:["Denver Broncos","Tennessee Titans","Miami Dolphins"],colleges:[]},
 {name:"Lonnie Warwick",teams:["Atlanta Falcons","Minnesota Vikings"],colleges:[]},
 {name:"Danny Amendola",teams:["Detroit Lions","Houston Texans","Miami Dolphins","New England Patriots","Los Angeles Rams"],colleges:["Texas Tech"]},
-{name:"A.J. Bouye",teams:["Carolina Panthers","Denver Broncos","Houston Texans","Jacksonville Jaguars"],colleges:[]},
+{name:"A.J. Bouye",teams:["Carolina Panthers","Denver Broncos","Houston Texans","Jacksonville Jaguars"],colleges:["UCF"]},
 {name:"Maurice Carthon",teams:["Indianapolis Colts","New York Giants"],colleges:[]},
 {name:"Michael Davis",teams:["Los Angeles Chargers","New Orleans Saints","Washington Commanders"],colleges:[]},
 {name:"Austin Ekeler",teams:["Los Angeles Chargers","Washington Commanders"],colleges:["Western Colorado"]},
