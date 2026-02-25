@@ -1014,26 +1014,40 @@ export default function NFLChain() {
           NFL Team 🔗 NFL Player 🔗 College 🔗 NFL Player 🔗 NFL Team
         </p>
 
-        {/* Sicko Mode Toggle */}
-        <button
-          onClick={toggleHardMode}
-          style={{
-            marginTop: 14,
-            padding: "6px 16px",
-            borderRadius: 20,
-            border: hardMode ? "1px solid #e74c3c" : "1px solid #ffffff20",
-            background: hardMode ? "#e74c3c18" : "transparent",
-            color: hardMode ? "#e74c3c" : "#ffffff50",
-            fontSize: 11,
-            fontWeight: 700,
-            letterSpacing: 1,
-            textTransform: "uppercase",
-            cursor: "pointer",
-            transition: "all 0.2s",
+        {/* Sicko Mode Toggle + New Game */}
+        <div style={{ display: "flex", gap: 10, marginTop: 14, flexWrap: "wrap", justifyContent: "center" }}>
+          <button
+            onClick={toggleHardMode}
+            style={{
+              padding: "6px 16px",
+              borderRadius: 20,
+              border: hardMode ? "1px solid #e74c3c" : "1px solid #ffffff20",
+              background: hardMode ? "#e74c3c18" : "transparent",
+              color: hardMode ? "#e74c3c" : "#ffffff50",
+              fontSize: 11,
+              fontWeight: 700,
+              letterSpacing: 1,
+              textTransform: "uppercase",
+              cursor: "pointer",
+              transition: "all 0.2s",
+            }}
+          >
+            {hardMode ? "🔥 Sicko Mode: Only Active Players On Their Current Teams" : "Activate Sicko Mode? Only Active Players On Their Current Teams"}
+          </button>
+          <button onClick={handleReset} style={{
+            padding: "6px 16px", borderRadius: 20,
+            border: "1px solid #ffffff20", background: "transparent",
+            color: "#ffffff50", fontSize: 11, fontWeight: 700,
+            letterSpacing: 1, textTransform: "uppercase",
+            cursor: "pointer", transition: "all 0.2s",
+            fontFamily: "'Oswald', sans-serif",
           }}
-        >
-          {hardMode ? "🔥 Sicko Mode: Only Active Players On Their Current Teams" : "Activate Sicko Mode? Only Active Players On Their Current Teams"}
-        </button>
+            onMouseEnter={e => { e.currentTarget.style.color = "#e74c3c"; e.currentTarget.style.borderColor = "#e74c3c55"; }}
+            onMouseLeave={e => { e.currentTarget.style.color = "#ffffff50"; e.currentTarget.style.borderColor = "#ffffff20"; }}
+          >
+            ↺ New Game
+          </button>
+        </div>
       </div>
 
       {/* Progress */}
@@ -1316,20 +1330,6 @@ export default function NFLChain() {
         </div>
       </div>
 
-      {/* Reset */}
-      <button onClick={handleReset} style={{
-        background: "transparent", color: "#ffffff22",
-        border: "1px solid #ffffff0a", borderRadius: 10,
-        padding: "8px 24px", fontSize: 11, fontWeight: 700,
-        cursor: "pointer", letterSpacing: 1.5, textTransform: "uppercase",
-        transition: "color .2s, border-color .2s",
-        fontFamily: "'Oswald', sans-serif",
-      }}
-        onMouseEnter={e => { e.target.style.color = "#e74c3c99"; e.target.style.borderColor = "#e74c3c33"; }}
-        onMouseLeave={e => { e.target.style.color = "#ffffff22"; e.target.style.borderColor = "#ffffff0a"; }}
-      >
-        New Game
-      </button>
     </div>
   );
 }
