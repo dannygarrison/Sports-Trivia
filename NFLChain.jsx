@@ -279,40 +279,42 @@ for (const [full, shorts] of Object.entries(FIRST_NAME_ALIASES)) {
 function resolvePlayer(input, players) {
   const n = normalize(input);
   const stripSuffix = s => s.replace(/\b(jr|sr|ii|iii|iv)\b/g, "").replace(/\s+/g, " ").trim();
+  const matches = [];
 
   // 1. Exact match
   const exact = players.find(p => normalize(p.name) === n);
-  if (exact) return exact;
+  if (exact) matches.push(exact);
 
-  // 2. Suffix-stripped match ("Kenneth Walker" -> "Kenneth Walker III")
+  // 2. Suffix-stripped matches ("Kenneth Walker" -> "Kenneth Walker III")
   const nStripped = stripSuffix(n);
-  const suffixMatch = players.find(p => stripSuffix(normalize(p.name)) === nStripped);
-  if (suffixMatch) return suffixMatch;
+  players.forEach(p => {
+    if (p !== exact && stripSuffix(normalize(p.name)) === nStripped) matches.push(p);
+  });
 
-  // 3. First-name nickname match ("Matt Stafford" -> "Matthew Stafford")
+  // 3. First-name nickname matches ("Matt Stafford" -> "Matthew Stafford")
   const parts = nStripped.split(" ");
   if (parts.length >= 2) {
     const firstName = parts[0];
     const lastName = parts.slice(1).join(" ");
 
-    // Expand nickname to full name (matt -> matthew)
     const fullNames = FIRST_NAME_REVERSE[firstName] || [];
     for (const fullFirst of fullNames) {
       const expanded = fullFirst + " " + lastName;
-      const match = players.find(p => stripSuffix(normalize(p.name)) === expanded);
-      if (match) return match;
+      players.forEach(p => {
+        if (!matches.includes(p) && stripSuffix(normalize(p.name)) === expanded) matches.push(p);
+      });
     }
 
-    // Shorten full name to nickname (matthew -> matt)
     const nicknames = FIRST_NAME_ALIASES[firstName] || [];
     for (const nick of nicknames) {
       const shortened = nick + " " + lastName;
-      const match = players.find(p => stripSuffix(normalize(p.name)) === shortened);
-      if (match) return match;
+      players.forEach(p => {
+        if (!matches.includes(p) && stripSuffix(normalize(p.name)) === shortened) matches.push(p);
+      });
     }
   }
 
-  return null;
+  return matches.length > 0 ? matches : null;
 }
 
 // Populate PLAYER_NORMALIZED map from PLAYERS array
@@ -709,22 +711,28 @@ export default function NFLChain() {
       setSuggestion(null);
       setInput("");
       // Re-run submit logic with the canonical name
-      const player = resolvePlayer(canonical, PLAYERS);
-      if (player) {
-        if (step === STEP.TEAM && playerOnTeam(player, currentTarget) && !usedPlayers.has(player.name)) {
-          pushHistory();
-          const newUsed = new Set(usedPlayers); newUsed.add(player.name);
-          setUsedPlayers(newUsed);
-          setChain(c => [...c, { item: player.name, type: "player" }]);
-          seTCUrrentTarget(player.name);
-          setStep(STEP.PLAYER_TO_COLLEGE);
-        } else if (step === STEP.COLLEGE && playerAtCollege(player, currentTarget) && !usedPlayers.has(player.name)) {
-          pushHistory();
-          const newUsed = new Set(usedPlayers); newUsed.add(player.name);
-          setUsedPlayers(newUsed);
-          setChain(c => [...c, { item: player.name, type: "player" }]);
-          seTCUrrentTarget(player.name);
-          setStep(STEP.PLAYER_TO_TEAM);
+      const candidates = resolvePlayer(canonical, PLAYERS);
+      if (candidates) {
+        if (step === STEP.TEAM) {
+          const player = candidates.find(p => playerOnTeam(p, currentTarget) && !usedPlayers.has(p.name));
+          if (player) {
+            pushHistory();
+            const newUsed = new Set(usedPlayers); newUsed.add(player.name);
+            setUsedPlayers(newUsed);
+            setChain(c => [...c, { item: player.name, type: "player" }]);
+            seTCUrrentTarget(player.name);
+            setStep(STEP.PLAYER_TO_COLLEGE);
+          } else { reject("That doesn't work here"); }
+        } else if (step === STEP.COLLEGE) {
+          const player = candidates.find(p => playerAtCollege(p, currentTarget) && !usedPlayers.has(p.name));
+          if (player) {
+            pushHistory();
+            const newUsed = new Set(usedPlayers); newUsed.add(player.name);
+            setUsedPlayers(newUsed);
+            setChain(c => [...c, { item: player.name, type: "player" }]);
+            seTCUrrentTarget(player.name);
+            setStep(STEP.PLAYER_TO_TEAM);
+          } else { reject("That doesn't work here"); }
         } else {
           reject("That doesn't work here");
         }
@@ -737,8 +745,8 @@ export default function NFLChain() {
 
     if (step === STEP.TEAM) {
       // Need a player who played for currentTarget team
-      const player = resolvePlayer(val, PLAYERS);
-      if (!player) {
+      const candidates = resolvePlayer(val, PLAYERS);
+      if (!candidates) {
         const fuzzy = findPlayerSuggestion(val);
         if (fuzzy) {
           justSetSuggestion.current = true;
@@ -751,8 +759,12 @@ export default function NFLChain() {
         }
         return;
       }
-      if (!playerOnTeam(player, currentTarget)) return reject(`${player.name} didn't play for the ${currentTarget}`);
-      if (usedPlayers.has(player.name)) return reject(`${player.name} already used`);
+      const player = candidates.find(p => playerOnTeam(p, currentTarget) && !usedPlayers.has(p.name));
+      if (!player) {
+        const anyOnTeam = candidates.find(p => playerOnTeam(p, currentTarget));
+        if (anyOnTeam) return reject(`${anyOnTeam.name} already used`);
+        return reject(`${candidates[0].name} didn't play for the ${currentTarget}`);
+      }
 
       pushHistory();
       const newUsed = new Set(usedPlayers); newUsed.add(player.name);
@@ -780,8 +792,8 @@ export default function NFLChain() {
 
     } else if (step === STEP.COLLEGE) {
       // Need a player who went to currentTarget college
-      const player = resolvePlayer(val, PLAYERS);
-      if (!player) {
+      const candidates = resolvePlayer(val, PLAYERS);
+      if (!candidates) {
         const fuzzy = findPlayerSuggestion(val);
         if (fuzzy) {
           justSetSuggestion.current = true;
@@ -794,7 +806,12 @@ export default function NFLChain() {
         }
         return;
       }
-      if (!playerAtCollege(player, currentTarget)) return reject(`${player.name} didn't go to ${currentTarget}`);
+      const player = candidates.find(p => playerAtCollege(p, currentTarget) && !usedPlayers.has(p.name));
+      if (!player) {
+        const anyAtCollege = candidates.find(p => playerAtCollege(p, currentTarget));
+        if (anyAtCollege) return reject(`${anyAtCollege.name} already used`);
+        return reject(`${candidates[0].name} didn't go to ${currentTarget}`);
+      }
       if (usedPlayers.has(player.name)) return reject(`${player.name} already used`);
 
       pushHistory();
