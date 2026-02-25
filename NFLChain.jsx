@@ -809,7 +809,7 @@ export default function NFLChain() {
       if (!player) {
         const anyOnTeam = candidates.find(p => playerOnTeam(p, currentTarget));
         if (anyOnTeam) return reject(`${anyOnTeam.name} already used`);
-        return reject(`${candidates[0].name} didn't play for the ${currentTarget}`);
+        return reject(hardMode ? `${candidates[0].name} isn't on the ${currentTarget}` : `${candidates[0].name} didn't play for the ${currentTarget}`);
       }
 
       pushHistory();
@@ -873,7 +873,7 @@ export default function NFLChain() {
       const team = resolveTeam(val);
       if (!team) return reject("NFL team not recognized");
       const player = playerList.find(p => p.name === currentTarget);
-      if (!playerOnTeam(player, team)) return reject(`${player.name} didn't play for the ${team}`);
+      if (!playerOnTeam(player, team)) return reject(hardMode ? `${player.name} isn't on the ${team}` : `${player.name} didn't play for the ${team}`);
       if (usedTeams.has(team)) return reject(`${team} already used`);
 
       pushHistory();
