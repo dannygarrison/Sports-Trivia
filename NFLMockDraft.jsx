@@ -1027,7 +1027,7 @@ const S = {
   },
   headerTitle: {
     fontSize: "clamp(22px, 4vw, 34px)",
-    fontWeight: 900,
+    fontWeight: 700,
     fontFamily: "'Oswald', sans-serif",
     letterSpacing: 3,
     textTransform: "uppercase",
@@ -1077,7 +1077,7 @@ const S = {
   teamTag: (accent) => ({
     display: "inline-block",
     fontSize: 11,
-    fontWeight: 800,
+    fontWeight: 700,
     letterSpacing: 1.5,
     padding: "2px 8px",
     borderRadius: 4,
@@ -1113,7 +1113,7 @@ const S = {
     top: 8,
     right: 8,
     fontSize: 9,
-    fontWeight: 800,
+    fontWeight: 700,
     letterSpacing: 1.5,
     padding: "2px 6px",
     borderRadius: 4,
@@ -1145,7 +1145,7 @@ const S = {
   },
   modalTitle: {
     fontSize: 18,
-    fontWeight: 900,
+    fontWeight: 700,
     letterSpacing: 2,
     textTransform: "uppercase",
     marginBottom: 4,
@@ -1187,7 +1187,7 @@ const S = {
       : variant === "danger" ? "#e8403011" : "#ffffff08",
     color: variant === "primary" ? "#1a1008" : variant === "danger" ? "#e84030" : "#e8e0d0",
     fontSize: 12,
-    fontWeight: 800,
+    fontWeight: 700,
     letterSpacing: 2,
     textTransform: "uppercase",
     cursor: "pointer",
@@ -1860,7 +1860,7 @@ export default function NFLMockDraft() {
   return (
     <div style={S.app}>
       {/* Google Font */}
-      <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&display=swap" rel="stylesheet" />
 
       {/* Header */}
       <div style={S.header}>
