@@ -13,7 +13,7 @@ const INITIAL_PICKS = [
   { pick: 9,  team: "Kansas City Chiefs",        abbr: "KC",  color: "#E31837" },
   { pick: 10, team: "Cincinnati Bengals",        abbr: "CIN", color: "#FB4F14" },
   { pick: 11, team: "Miami Dolphins",            abbr: "MIA", color: "#008E97" },
-  { pick: 12, team: "Dallas Cowboys",            abbr: "DAL", color: "#003594" },
+  { pick: 12, team: "Dallas Cowboys",            abbr: "DAL", color: "#002244" },
   { pick: 13, team: "Los Angeles Rams",          abbr: "LAR", color: "#003594" },
   { pick: 14, team: "Baltimore Ravens",          abbr: "BAL", color: "#241773" },
   { pick: 15, team: "Tampa Bay Buccaneers",      abbr: "TB",  color: "#D50A0A" },
@@ -21,7 +21,7 @@ const INITIAL_PICKS = [
   { pick: 17, team: "Detroit Lions",             abbr: "DET", color: "#0076B6" },
   { pick: 18, team: "Minnesota Vikings",         abbr: "MIN", color: "#4F2683" },
   { pick: 19, team: "Carolina Panthers",         abbr: "CAR", color: "#0085CA" },
-  { pick: 20, team: "Dallas Cowboys",            abbr: "DAL", color: "#003594" },
+  { pick: 20, team: "Dallas Cowboys",            abbr: "DAL", color: "#002244" },
   { pick: 21, team: "Pittsburgh Steelers",       abbr: "PIT", color: "#FFB612" },
   { pick: 22, team: "Los Angeles Chargers",      abbr: "LAC", color: "#0080C6" },
   { pick: 23, team: "Philadelphia Eagles",       abbr: "PHI", color: "#004C54" },
@@ -911,7 +911,7 @@ const ALL_TEAMS = [
   { team: "Chicago Bears",          abbr: "CHI", color: "#0B162A" },
   { team: "Cincinnati Bengals",     abbr: "CIN", color: "#FB4F14" },
   { team: "Cleveland Browns",       abbr: "CLE", color: "#FF3C00" },
-  { team: "Dallas Cowboys",         abbr: "DAL", color: "#003594" },
+  { team: "Dallas Cowboys",         abbr: "DAL", color: "#002244" },
   { team: "Denver Broncos",         abbr: "DEN", color: "#FB4F14" },
   { team: "Detroit Lions",          abbr: "DET", color: "#0076B6" },
   { team: "Green Bay Packers",      abbr: "GB",  color: "#203731" },
@@ -953,61 +953,84 @@ const POSITION_GROUPS = [
 ];
 
 // ── Styles ────────────────────────────────────────────────────────────────────
-// ── Team color pairs: [darkBg, accent] ───────────────────────────────────────
-// darkBg: deep tint of official primary. accent: most recognizable team color.
-const TEAM_COLORS = {
-  //        darkBg       accent (official hex)
-  "ARI": ["#1a0008", "#97233F"],  // Cardinals Red
-  "ATL": ["#1a0005", "#A71930"],  // Falcons Red
-  "BAL": ["#0a0018", "#9E7C0C"],  // Ravens Gold
-  "BUF": ["#060f22", "#C60C30"],  // Bills Red
-  "CAR": ["#001220", "#0085CA"],  // Panthers Blue
-  "CHI": ["#060b14", "#C83803"],  // Bears Orange
-  "CIN": ["#0d0800", "#FB4F14"],  // Bengals Orange
-  "CLE": ["#100800", "#FF3C00"],  // Browns Orange
-  "DAL": ["#000d1a", "#002244"],  // Cowboys Navy (silver not visible on dark)
-  "DEN": ["#0d0600", "#FB4F14"],  // Broncos Orange
-  "DET": ["#001220", "#0076B6"],  // Lions Blue
-  "GB":  ["#070e09", "#FFB612"],  // Packers Gold
-  "HOU": ["#000810", "#A71930"],  // Texans Red
-  "IND": ["#00081a", "#002C5F"],  // Colts Blue (brightened below)
-  "JAX": ["#00100f", "#D7A22A"],  // Jaguars Gold
-  "KC":  ["#120005", "#E31837"],  // Chiefs Red
-  "LAC": ["#00091a", "#0080C6"],  // Chargers Powder Blue
-  "LAR": ["#00091a", "#FFC72C"],  // Rams Gold
-  "LV":  ["#0a0a0a", "#A5ACAF"],  // Raiders Silver
-  "MIA": ["#001a1c", "#008E97"],  // Dolphins Aqua
-  "MIN": ["#0f0620", "#4F2683"],  // Vikings Purple (brightened below)
-  "NE":  ["#000a18", "#C60C30"],  // Patriots Red
-  "NO":  ["#130f05", "#D3BC8D"],  // Saints Gold
-  "NYG": ["#030a1e", "#A71930"],  // Giants Red
-  "NYJ": ["#001209", "#003F2D"],  // Jets Green (brightened below)
-  "PHI": ["#001214", "#A5ACAF"],  // Eagles Silver
-  "PIT": ["#0a0800", "#FFB612"],  // Steelers Gold
-  "SEA": ["#000a18", "#69BE28"],  // Seahawks Green
-  "SF":  ["#150000", "#AA0000"],  // 49ers Red
-  "TB":  ["#120000", "#D50A0A"],  // Bucs Red
-  "TEN": ["#000e1e", "#4B92DB"],  // Titans Blue
-  "WSH": ["#150000", "#FFB612"],  // Commanders Gold
+// ── Team Pantone colors (official primary) ───────────────────────────────────
+const TEAM_COLOR = {
+  "ARI": "#97233F",
+  "ATL": "#A71930",
+  "BAL": "#241773",
+  "BUF": "#00338D",
+  "CAR": "#0085CA",
+  "CHI": "#0B162A",
+  "CIN": "#FB4F14",
+  "CLE": "#311D00",
+  "DAL": "#002244",
+  "DEN": "#002244",
+  "DET": "#0076B6",
+  "GB":  "#203731",
+  "HOU": "#03202F",
+  "IND": "#002C5F",
+  "JAX": "#006778",
+  "KC":  "#E31837",
+  "LAC": "#0080C6",
+  "LAR": "#003594",
+  "LV":  "#A5ACAF",
+  "MIA": "#008E97",
+  "MIN": "#4F2683",
+  "NE":  "#002244",
+  "NO":  "#D3BC8D",
+  "NYG": "#0B2265",
+  "NYJ": "#125740",
+  "PHI": "#004C54",
+  "PIT": "#FFB612",
+  "SEA": "#002244",
+  "SF":  "#AA0000",
+  "TB":  "#D50A0A",
+  "TEN": "#4B92DB",
+  "WSH": "#5A1414",
 };
 
-// Some official primaries are too dark to read on dark bg — override accent
-const ACCENT_BOOST = {
-  "DAL": "#6699CC",   // Cowboys: lighten navy
-  "IND": "#4488CC",   // Colts: lighten navy
-  "MIN": "#8B5FCF",   // Vikings: lighten purple
-  "NYJ": "#00AA55",   // Jets: brighten green
-  "SF":  "#CC2222",   // 49ers: brighten red
-  "TB":  "#FF3333",   // Bucs: brighten red
-  "HOU": "#CC2233",   // Texans: brighten red
-  "ATL": "#CC2233",   // Falcons: brighten red
-  "ARI": "#B02848",   // Cardinals: brighten red
+function getTeamColor(abbr) {
+  return TEAM_COLOR[abbr] || "#444444";
+}
+
+// Tab text: use each team's non-white secondary color for contrast
+const TAB_TEXT_COLOR = {
+  "ARI": "#ffffff",
+  "ATL": "#ffffff",
+  "BAL": "#9E7C0C",
+  "BUF": "#C60C30",
+  "CAR": "#B0B7BC",
+  "CHI": "#C83803",
+  "CIN": "#000000",
+  "CLE": "#FF3C00",
+  "DAL": "#869397",
+  "DEN": "#FB4F14",
+  "DET": "#B0B7BC",
+  "GB":  "#FFB612",
+  "HOU": "#A71930",
+  "IND": "#ffffff",
+  "JAX": "#D7A22A",
+  "KC":  "#FFB81C",
+  "LAC": "#FFC20E",
+  "LAR": "#FFC72C",
+  "LV":  "#000000",
+  "MIA": "#F58220",
+  "MIN": "#FFC62F",
+  "NE":  "#C60C30",
+  "NO":  "#101820",
+  "NYG": "#A71930",
+  "NYJ": "#ffffff",
+  "PHI": "#A5ACAF",
+  "PIT": "#101820",
+  "SEA": "#69BE28",
+  "SF":  "#B3995D",
+  "TB":  "#B1BABF",
+  "TEN": "#ffffff",
+  "WSH": "#FFB612",
 };
 
-function getTeamColors(abbr) {
-  const pair = TEAM_COLORS[abbr] || ["#0e0e1e", "#e8e0d0"];
-  const accent = ACCENT_BOOST[abbr] || pair[1];
-  return [pair[0], accent];
+function getTabTextColor(abbr) {
+  return TAB_TEXT_COLOR[abbr] || "#ffffff";
 }
 
 const S = {
@@ -1051,62 +1074,82 @@ const S = {
     flexDirection: "column",
     gap: 6,
   },
-  pickCard: (isDragging, darkBg, accent) => ({
-    background: darkBg,
-    border: `1px solid ${accent}22`,
+  pickCard: (isDragging) => ({
+    background: "#0e0e1a",
+    border: "1px solid #ffffff12",
     borderRadius: 10,
-    padding: "12px 16px",
     cursor: "pointer",
     transition: "all 0.18s ease",
     opacity: isDragging ? 0.4 : 1,
     position: "relative",
     overflow: "hidden",
     display: "flex",
-    alignItems: "center",
-    gap: 16,
+    alignItems: "stretch",
   }),
-  pickNum: (accent) => ({
+  teamTab: (teamColor) => ({
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    background: `linear-gradient(120deg, ${teamColor} 0%, ${teamColor}cc 60%, ${teamColor}33 100%)`,
+    minWidth: "22%",
+    maxWidth: "22%",
+    padding: "10px 0",
+    flexShrink: 0,
+    clipPath: "polygon(0 0, 82% 0, 100% 100%, 0 100%)",
+  }),
+  teamTabAbbr: (textColor) => ({
+    fontSize: 15,
+    fontWeight: 700,
+    letterSpacing: 2,
+    color: textColor,
+    textTransform: "uppercase",
+    marginRight: 8,
+  }),
+  pickNum: () => ({
     fontSize: 11,
     fontWeight: 700,
     letterSpacing: 2,
-    color: accent + "88",
+    color: "#ffffff66",
     textTransform: "uppercase",
-    minWidth: 46,
+    minWidth: 40,
     flexShrink: 0,
   }),
-  teamTag: (accent) => ({
+  playerName: () => ({
+    fontSize: 22,
+    fontWeight: 700,
+    letterSpacing: 0.5,
+    background: "linear-gradient(90deg, #f0d070, #e87040)",
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+    lineHeight: 1.2,
+  }),
+  playerPos: () => ({
+    fontSize: 11,
+    color: "#ffffff88",
+    letterSpacing: 1,
+    whiteSpace: "nowrap",
+  }),
+  emptySlot: () => ({
+    fontSize: 13,
+    color: "#ffffff55",
+    letterSpacing: 1,
+    fontStyle: "italic",
+  }),
+  teamTag: (color) => ({
     display: "inline-block",
     fontSize: 11,
     fontWeight: 700,
     letterSpacing: 1.5,
     padding: "2px 8px",
     borderRadius: 4,
-    background: accent + "20",
-    border: `1px solid ${accent}55`,
-    color: accent,
+    background: color + "30",
+    border: `1px solid ${color}66`,
+    color: "#e8e0d0",
     textTransform: "uppercase",
     minWidth: 44,
     textAlign: "center",
     flexShrink: 0,
-  }),
-  playerName: (accent) => ({
-    fontSize: 16,
-    fontWeight: 700,
-    letterSpacing: 0.5,
-    color: accent,
-    lineHeight: 1.2,
-  }),
-  playerPos: (accent) => ({
-    fontSize: 11,
-    color: accent + "99",
-    letterSpacing: 1,
-    whiteSpace: "nowrap",
-  }),
-  emptySlot: (accent) => ({
-    fontSize: 13,
-    color: accent + "88",
-    letterSpacing: 1,
-    fontStyle: "italic",
   }),
   tradeBadge: {
     position: "absolute",
@@ -1381,7 +1424,7 @@ function BestAvailableDropdown({ allProspects, selected, onSelect, draftedNames 
 
 // ── Player selection modal ────────────────────────────────────────────────────
 function PickModal({ pick, suggestions, allProspects, draftedNames, onSelect, onTrade, onClear, onClose }) {
-  const [selected, setSelected] = useState(pick.player || null);
+  const handlePick = (player) => onSelect(pick.pick, player);
 
   // Build position groups from ALL_PROSPECTS (preserving rank order)
   const prospectsByPosition = {};
@@ -1398,7 +1441,7 @@ function PickModal({ pick, suggestions, allProspects, draftedNames, onSelect, on
         <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: 16 }}>
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
-              <span style={S.teamTag(pick.color)}>{pick.abbr}</span>
+              <span style={S.teamTag(getTeamColor(pick.abbr))}>{pick.abbr}</span>
               {pick.traded && <span style={{ ...S.tradeBadge, position: "static" }}>TRADED</span>}
             </div>
             <div style={S.modalTitle}>Pick #{pick.pick}</div>
@@ -1407,24 +1450,32 @@ function PickModal({ pick, suggestions, allProspects, draftedNames, onSelect, on
           <button onClick={onClose} style={{ background: "none", border: "none", color: "#ffffff66", fontSize: 20, cursor: "pointer", padding: 0, lineHeight: 1 }}>✕</button>
         </div>
 
-        {/* Actions — pinned to top */}
-        <div style={{ display: "flex", gap: 8, marginBottom: 16, flexWrap: "wrap" }}>
-          <button
-            style={S.btn("primary")}
-            onClick={() => selected && onSelect(pick.pick, selected)}
-            disabled={!selected}
-          >
-            Confirm Pick
-          </button>
-          <button style={{ ...S.btn("secondary"), color: "#f0a030", borderColor: "#f0a03033", background: "#f0a03011" }} onClick={() => onTrade(pick.pick)}>
-            🔀 Trade
-          </button>
-          {pick.player && (
+        {/* Actions */}
+        {pick.player && (
+          <div style={{ display: "flex", gap: 8, marginBottom: 16, flexWrap: "wrap" }}>
             <button style={S.btn("danger")} onClick={() => onClear(pick.pick)}>
-              Clear
+              Clear Pick
             </button>
-          )}
-        </div>
+          </div>
+        )}
+
+        {/* Current pick indicator */}
+        {pick.player && (
+          <div style={{
+            padding: "10px 14px",
+            borderRadius: 8,
+            border: "1px solid #f0d07055",
+            background: "#f0d07010",
+            marginBottom: 16,
+            display: "flex",
+            alignItems: "baseline",
+            gap: 8,
+          }}>
+            <span style={{ color: "#f0d070", fontSize: 14 }}>✓</span>
+            <div style={{ fontSize: 16, fontWeight: 700, letterSpacing: 0.5, color: "#f0d070" }}>{pick.player.name}</div>
+            <div style={{ fontSize: 11, color: "#ffffff88", letterSpacing: 1 }}>{pick.player.position} · {pick.player.school}</div>
+          </div>
+        )}
 
         {/* Suggestions */}
         {pickSuggestions.length > 0 && (
@@ -1432,22 +1483,23 @@ function PickModal({ pick, suggestions, allProspects, draftedNames, onSelect, on
             <div style={S.sectionLabel}>Suggestions for this pick</div>
             {pickSuggestions.map(p => {
               const isTaken = draftedNames.has(p.name);
+              const isCurrent = pick.player?.name === p.name;
               return (
                 <div
                   key={p.name}
                   style={{
-                    ...S.suggestionChip(selected?.name === p.name),
+                    ...S.suggestionChip(isCurrent),
                     opacity: isTaken ? 0.35 : 1,
                     cursor: isTaken ? "default" : "pointer",
                   }}
-                  onClick={() => !isTaken && setSelected(p)}
+                  onClick={() => !isTaken && handlePick(p)}
                 >
                   <div style={{ flex: 1, display: "flex", alignItems: "baseline", gap: 8 }}>
                     <div style={{ fontSize: 16, fontWeight: 700, letterSpacing: 0.5 }}>{p.name}</div>
                     <div style={{ fontSize: 11, color: "#ffffff88", letterSpacing: 1, whiteSpace: "nowrap" }}>{p.position} · {p.school}</div>
                   </div>
                   {isTaken && <span style={posGroupStyles.takenLabel}>Drafted</span>}
-                  {selected?.name === p.name && !isTaken && <span style={{ color: "#f0d070", fontSize: 14 }}>✓</span>}
+                  {isCurrent && !isTaken && <span style={{ color: "#f0d070", fontSize: 14 }}>✓</span>}
                 </div>
               );
             })}
@@ -1458,8 +1510,8 @@ function PickModal({ pick, suggestions, allProspects, draftedNames, onSelect, on
         <div style={S.sectionLabel}>Big Board</div>
         <BestAvailableDropdown
           allProspects={allProspects}
-          selected={selected}
-          onSelect={setSelected}
+          selected={pick.player}
+          onSelect={handlePick}
           draftedNames={draftedNames}
         />
         {POSITION_GROUPS.map(group => (
@@ -1467,11 +1519,18 @@ function PickModal({ pick, suggestions, allProspects, draftedNames, onSelect, on
             key={group.key}
             group={group}
             prospects={prospectsByPosition[group.key]}
-            selected={selected}
-            onSelect={setSelected}
+            selected={pick.player}
+            onSelect={handlePick}
             draftedNames={draftedNames}
           />
         ))}
+
+        {/* Trade option at bottom */}
+        <div style={{ marginTop: 20, paddingTop: 16, borderTop: "1px solid #ffffff10" }}>
+          <button style={{ ...S.btn("secondary"), color: "#f0a030", borderColor: "#f0a03033", background: "#f0a03011", width: "100%" }} onClick={() => onTrade(pick.pick)}>
+            🔀 Trade Pick
+          </button>
+        </div>
 
       </div>
     </div>
@@ -1500,8 +1559,8 @@ function TradeModal({ pick, picks, onConfirm, onClose }) {
           <>
             <div style={S.sectionLabel}>What kind of trade?</div>
             {[
-              { id: true,  label: "Pick swap", desc: "Two teams exchange picks" },
-              { id: false, label: "One-way acquisition", desc: "A team gets this pick without giving one back" },
+              { id: true,  label: "Pick swap", desc: "Two teams exchange picks. Details on additional compensation not required." },
+              { id: false, label: "One-way acquisition", desc: "A team gets this pick and keeps their other pick(s). Details on additional compensation not required." },
             ].map(opt => (
               <div
                 key={String(opt.id)}
@@ -1651,80 +1710,86 @@ function ShareModal({ picks, onClose }) {
       ctx.stroke();
 
       // Cards
+      const cardW = W - PAD * 2;
+      const TAB_W = Math.round(cardW * 0.22);
+      const SLANT = Math.round(TAB_W * 0.18);
       picks.forEach((pick, i) => {
-        const [darkBg, accent] = getTeamColors(pick.abbr);
+        const teamColor = getTeamColor(pick.abbr);
         const cardX = PAD;
         const cardY = HEADER_H + i * (CARD_H + CARD_GAP);
-        const cardW = W - PAD * 2;
 
         // Card background
-        ctx.fillStyle = darkBg;
+        ctx.fillStyle = "#0e0e1a";
         ctx.beginPath();
         ctx.roundRect(cardX, cardY, cardW, CARD_H, 8);
         ctx.fill();
 
         // Card border
-        ctx.strokeStyle = accent + "22";
+        ctx.strokeStyle = "#ffffff12";
         ctx.lineWidth = 1;
         ctx.beginPath();
         ctx.roundRect(cardX, cardY, cardW, CARD_H, 8);
         ctx.stroke();
 
-        // Left accent bar
-        ctx.fillStyle = accent + "cc";
+        // Team color slanted gradient tab
+        ctx.save();
         ctx.beginPath();
-        ctx.roundRect(cardX, cardY, 3, CARD_H, [8, 0, 0, 8]);
+        ctx.roundRect(cardX, cardY, cardW, CARD_H, 8);
+        ctx.clip();
+        const grad = ctx.createLinearGradient(cardX, cardY, cardX + TAB_W + SLANT, cardY + CARD_H);
+        grad.addColorStop(0, teamColor);
+        grad.addColorStop(0.6, teamColor + "cc");
+        grad.addColorStop(1, teamColor + "33");
+        ctx.fillStyle = grad;
+        ctx.beginPath();
+        ctx.moveTo(cardX, cardY);
+        ctx.lineTo(cardX + TAB_W, cardY);
+        ctx.lineTo(cardX + TAB_W + SLANT, cardY + CARD_H);
+        ctx.lineTo(cardX, cardY + CARD_H);
+        ctx.closePath();
         ctx.fill();
+        ctx.restore();
 
+        // Team abbreviation in tab
+        const tabMidX = cardX + (TAB_W - SLANT / 2) / 2;
         const midY = cardY + CARD_H / 2 + 5;
+        ctx.fillStyle = TAB_TEXT_COLOR[pick.abbr] || "#ffffff";
+        ctx.font = "bold 14px Oswald, sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillText(pick.abbr, tabMidX, midY);
 
         // Pick number
-        ctx.fillStyle = accent + "88";
+        const contentX = cardX + TAB_W + SLANT + 8;
+        ctx.fillStyle = "#ffffff66";
         ctx.font = "bold 11px Oswald, sans-serif";
         ctx.textAlign = "left";
-        ctx.fillText(`#${pick.pick}`, cardX + 12, midY);
-
-        // Team tag pill
-        const tagX = cardX + 52;
-        const tagW = 52;
-        const tagH = 22;
-        const tagY = cardY + (CARD_H - tagH) / 2;
-        ctx.fillStyle = accent + "20";
-        ctx.beginPath();
-        ctx.roundRect(tagX, tagY, tagW, tagH, 4);
-        ctx.fill();
-        ctx.strokeStyle = accent + "55";
-        ctx.lineWidth = 1;
-        ctx.beginPath();
-        ctx.roundRect(tagX, tagY, tagW, tagH, 4);
-        ctx.stroke();
-        ctx.fillStyle = accent;
-        ctx.font = "bold 11px Oswald, sans-serif";
-        ctx.textAlign = "center";
-        ctx.fillText(pick.abbr, tagX + tagW / 2, midY);
+        ctx.fillText(`#${pick.pick}`, contentX, midY);
 
         // Trade badge
         if (pick.traded) {
           ctx.fillStyle = "#FFB612";
           ctx.font = "bold 9px Oswald, sans-serif";
           ctx.textAlign = "left";
-          ctx.fillText("TRADED", cardX + 116, midY - 6);
+          ctx.fillText("TRADED", contentX + 42, midY - 6);
         }
 
         // Player name
-        const nameX = cardX + (pick.traded ? 174 : 116);
+        const nameX = contentX + (pick.traded ? 100 : 42);
         if (pick.player) {
-          ctx.fillStyle = accent;
-          ctx.font = "bold 15px Oswald, sans-serif";
+          const nameGrad = ctx.createLinearGradient(nameX, 0, nameX + 180, 0);
+          nameGrad.addColorStop(0, "#f0d070");
+          nameGrad.addColorStop(1, "#e87040");
+          ctx.fillStyle = nameGrad;
+          ctx.font = "bold 20px Oswald, sans-serif";
           ctx.textAlign = "left";
           ctx.fillText(pick.player.name, nameX, midY);
 
-          ctx.fillStyle = accent + "77";
+          ctx.fillStyle = "#ffffff88";
           ctx.font = "11px Oswald, sans-serif";
           ctx.textAlign = "right";
           ctx.fillText(`${pick.player.position} · ${pick.player.school}`, cardX + cardW - 10, midY);
         } else {
-          ctx.fillStyle = accent + "44";
+          ctx.fillStyle = "#ffffff44";
           ctx.font = "italic 13px Oswald, sans-serif";
           ctx.textAlign = "left";
           ctx.fillText("—", nameX, midY);
@@ -1887,32 +1952,35 @@ export default function NFLMockDraft() {
       {/* Pick grid */}
       <div style={S.grid}>
         {picks.map(pick => {
-          const [darkBg, accent] = getTeamColors(pick.abbr);
+          const teamColor = getTeamColor(pick.abbr);
+          const tabText = getTabTextColor(pick.abbr);
           return (
             <div
               key={pick.pick}
-              style={S.pickCard(dragSrc === pick.pick, darkBg, accent)}
+              style={S.pickCard(dragSrc === pick.pick)}
               onClick={() => setActivePick(pick.pick)}
               draggable={!!pick.player}
               onDragStart={() => handleDragStart(pick.pick)}
               onDragOver={handleDragOver}
               onDrop={() => handleDrop(pick.pick)}
             >
-              <span style={S.pickNum(accent)}>#{pick.pick}</span>
-              <span style={S.teamTag(accent)}>{pick.abbr}</span>
-              <div style={{ flex: 1 }}>
-                {pick.player ? (
-                  <>
-                    <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
-                      <div style={S.playerName(accent)}>{pick.player.name}</div>
-                      <div style={S.playerPos(accent)}>{pick.player.position} · {pick.player.school}</div>
-                    </div>
-                  </>
-                ) : (
-                  <div style={S.emptySlot(accent)}>Select a player…</div>
-                )}
+              <div style={S.teamTab(teamColor)}>
+                <div style={S.teamTabAbbr(tabText)}>{pick.abbr}</div>
               </div>
-              {pick.traded && <span style={S.tradeBadge}>Traded</span>}
+              <div style={{ flex: 1, display: "flex", alignItems: "center", gap: 12, padding: "10px 14px" }}>
+                <span style={S.pickNum()}>#{pick.pick}</span>
+                <div style={{ flex: 1 }}>
+                  {pick.player ? (
+                    <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
+                      <div style={S.playerName()}>{pick.player.name}</div>
+                      <div style={S.playerPos()}>{pick.player.position} · {pick.player.school}</div>
+                    </div>
+                  ) : (
+                    <div style={S.emptySlot()}>Select a player…</div>
+                  )}
+                </div>
+                {pick.traded && <span style={S.tradeBadge}>Traded</span>}
+              </div>
             </div>
           );
         })}
