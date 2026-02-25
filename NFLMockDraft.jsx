@@ -1864,7 +1864,7 @@ export default function NFLMockDraft() {
 
       {/* Header */}
       <div style={S.header}>
-        <h1 style={S.headerTitle}>2026 NFL Mock Draft</h1>
+        <div style={S.headerTitle}>2026 NFL Mock Draft</div>
         <div style={S.headerSub}>1st Round · Build Your Predictions</div>
 
         <div style={{ marginTop: 6, fontSize: 11, color: "#c8a050", letterSpacing: 1 }}>
