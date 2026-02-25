@@ -13170,7 +13170,7 @@ export const PLAYERS = [
 {name:"Steve Little",teams:["Arizona Cardinals"],colleges:["Arkansas"]},
 {name:"Dale Livingston",teams:["Green Bay Packers"],colleges:["Western Michigan"]},
 {name:"Doug Lloyd",teams:["Las Vegas Raiders"],colleges:["North Dakota State"]},
-{name:"MarShawn Lloyd",teams:["Green Bay Packers"],colleges:["Southern California"]},
+{name:"MarShawn Lloyd",teams:["Green Bay Packers"],colleges:["Southern California","South Carolina"]},
 {name:"Frank Lockett",teams:["Miami Dolphins"],colleges:["Nebraska"]},
 {name:"Jeff Locke",teams:["Detroit Lions","Minnesota Vikings"],colleges:["UCLA"]},
 {name:"Kerry Locklin",teams:["Denver Broncos","Los Angeles Rams"],colleges:["New Mexico State"]},
