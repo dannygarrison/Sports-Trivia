@@ -1667,12 +1667,9 @@ function ShareModal({ picks, onClose }) {
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
 
-    const logo = new Image();
-    logo.src = "/ts_logo_blueoutline_420.webp";
-    logo.onload = () => document.fonts.ready.then(() => drawCanvas(canvas, ctx, logo));
-    logo.onerror = () => document.fonts.ready.then(() => drawCanvas(canvas, ctx, null));
+    document.fonts.ready.then(() => drawCanvas(canvas, ctx));
 
-    function drawCanvas(canvas, ctx, logo) {
+    function drawCanvas(canvas, ctx) {
       // 3:4 ratio — matches standard iPhone photo dimensions
       const W = 1080;
       const H = 1440;
@@ -1701,13 +1698,6 @@ function ShareModal({ picks, onClose }) {
       bgGrad.addColorStop(1, "#080810");
       ctx.fillStyle = bgGrad;
       ctx.fillRect(0, 0, W, H);
-
-      // Logo top-left
-      const LOGO_H = 68;
-      if (logo) {
-        const logoW = LOGO_H * (logo.naturalWidth / logo.naturalHeight);
-        ctx.drawImage(logo, PAD, 16, logoW, LOGO_H);
-      }
 
       // Title
       const titleGrad = ctx.createLinearGradient(W / 2 - 200, 20, W / 2 + 200, 65);
