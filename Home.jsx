@@ -135,7 +135,7 @@ const GAMES = [
   },
 ]
 
-function GameCard({ game, index }) {
+function GameCard({ game, index, playCount }) {
   const [hovered, setHovered] = useState(false)
   const accent = SPORT_META[game.sport].accent
 
@@ -174,6 +174,15 @@ function GameCard({ game, index }) {
       <p style={{ fontSize: 13, color: '#c8a050', lineHeight: 1.6, margin: 0, fontFamily: 'Georgia, serif' }}>
         {game.description}
       </p>
+      {playCount > 0 && (
+        <div style={{
+          marginTop: 12, fontSize: 10, fontWeight: 700,
+          fontFamily: "'Oswald', sans-serif", letterSpacing: 2,
+          color: '#ffffff28', textTransform: 'uppercase',
+        }}>
+          🎮 {playCount.toLocaleString()} plays
+        </div>
+      )}
       {game.available && (
         <div style={{
           marginTop: 18, display: 'flex', alignItems: 'center', gap: 6,
@@ -207,7 +216,7 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState('ALL')
   const [search, setSearch] = useState('')
   const [searchFocused, setSearchFocused] = useState(false)
-  const [sortBy, setSortBy] = useState('newest')
+  const [sortBy, setSortBy] = useState('popular')
   const [playCounts, setPlayCounts] = useState({})
   const inputRef = useRef(null)
 
@@ -409,13 +418,13 @@ export default function Home() {
                 <div style={{ flex: 1, height: 1, background: '#ffffff07' }} />
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 14 }}>
-                {section.games.map((game, i) => <GameCard key={game.id} game={game} index={i} />)}
+                {section.games.map((game, i) => <GameCard key={game.id} game={game} index={i} playCount={playCounts[game.id] ?? game.plays} />)}
               </div>
             </div>
           ))
         ) : (
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 14 }}>
-            {filteredGames.map((game, i) => <GameCard key={game.id} game={game} index={i} />)}
+            {filteredGames.map((game, i) => <GameCard key={game.id} game={game} index={i} playCount={playCounts[game.id] ?? game.plays} />)}
           </div>
         )}
       </div>
