@@ -1,7 +1,8 @@
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useRef, useEffect, useCallback, useMemo } from "react";
 import { Helmet } from "react-helmet-async";
 import { usePlayCount } from "./usePlayCount.jsx";
 import { PLAYERS } from "./nflChainPlayers.js";
+import { ACTIVE_PLAYERS } from "./activeNflPlayers.js";
 
 // ── DATA ─────────────────────────────────────────────────────────────────────
 
@@ -136,11 +137,17 @@ function levenshtein(a, b) {
   return dp[m][n];
 }
 
-// Normalized player name map — populated after PLAYERS array
-const PLAYER_NORMALIZED = new Map();
+// Normalized player name map — built dynamically based on mode
+let PLAYER_NORMALIZED = new Map();
+
+function buildPlayerNormalized(players) {
+  const map = new Map();
+  players.forEach(p => map.set(normalize(p.name), p.name));
+  return map;
+}
 
 // Find closest matching player name using phonetic + levenshtein scoring
-function findPlayerSuggestion(raw) {
+function findPlayerSuggestion(raw, normalizedMap) {
   const norm = normalize(raw);
   const words = norm.split(" ");
   if (words.length < 2) return null;
@@ -155,7 +162,7 @@ function findPlayerSuggestion(raw) {
   let best = null;
   let bestScore = [999, 999, 999];
 
-  for (const [key, canonical] of PLAYER_NORMALIZED) {
+  for (const [key, canonical] of normalizedMap) {
     const kwords = key.split(" ");
     if (kwords.length < 2) continue;
     const kFirst = kwords[0];
@@ -330,8 +337,8 @@ function resolvePlayer(input, players) {
   return matches.length > 0 ? matches : null;
 }
 
-// Populate PLAYER_NORMALIZED map from PLAYERS array
-PLAYERS.forEach(p => PLAYER_NORMALIZED.set(normalize(p.name), p.name));
+// Default normalized map (all-time mode)
+PLAYER_NORMALIZED = buildPlayerNormalized(PLAYERS);
 
 const TEAM_LEGACY_MAP = {
   "Los Angeles Rams": ["St. Louis Rams"],
@@ -663,10 +670,36 @@ export default function NFLChain() {
   const justSetSuggestion = useRef(false);
   const [won, setWon] = useState(false);
   const [started, setStarted] = useState(false);
+  const [hardMode, setHardMode] = useState(false);
   const [history, setHistory] = useState([]); // stack of snapshots for undo
   const inputRef = useRef(null);
   const chainContainerRef = useRef(null);
   const trackPlay = usePlayCount("nfl-chain");
+
+  // Derived player list and normalized map based on mode
+  const playerList = hardMode ? ACTIVE_PLAYERS : PLAYERS;
+  const normalizedMap = useMemo(() => buildPlayerNormalized(playerList), [hardMode]);
+
+  // Reset game when mode changes
+  const toggleHardMode = useCallback(() => {
+    setHardMode(prev => {
+      const newMode = !prev;
+      const team = NFL_TEAMS[Math.floor(Math.random() * NFL_TEAMS.length)];
+      seTCUrrentTarget(team);
+      setUsedTeams(new Set([team]));
+      setChain([{ item: team, type: "team" }]);
+      setUsedColleges(new Set());
+      setUsedPlayers(new Set());
+      setStep(STEP.TEAM);
+      setInput("");
+      setRejectMsg("");
+      setSuggestion(null);
+      setWon(false);
+      setStarted(false);
+      setHistory([]);
+      return newMode;
+    });
+  }, []);
 
   // Initialize with random team
   useEffect(() => {
@@ -724,7 +757,7 @@ export default function NFLChain() {
       setSuggestion(null);
       setInput("");
       // Re-run submit logic with the canonical name
-      const candidates = resolvePlayer(canonical, PLAYERS);
+      const candidates = resolvePlayer(canonical, playerList);
       if (candidates) {
         if (step === STEP.TEAM) {
           const player = candidates.find(p => playerOnTeam(p, currentTarget) && !usedPlayers.has(p.name));
@@ -758,9 +791,9 @@ export default function NFLChain() {
 
     if (step === STEP.TEAM) {
       // Need a player who played for currentTarget team
-      const candidates = resolvePlayer(val, PLAYERS);
+      const candidates = resolvePlayer(val, playerList);
       if (!candidates) {
-        const fuzzy = findPlayerSuggestion(val);
+        const fuzzy = findPlayerSuggestion(val, normalizedMap);
         if (fuzzy) {
           justSetSuggestion.current = true;
           setTimeout(() => { justSetSuggestion.current = false; }, 50);
@@ -789,9 +822,9 @@ export default function NFLChain() {
 
     } else if (step === STEP.PLAYER_TO_COLLEGE) {
       // Need college for currentTarget player
-      const college = resolveCollege(val, PLAYERS);
+      const college = resolveCollege(val, playerList);
       if (!college) return reject("College not found — try the full name");
-      const player = PLAYERS.find(p => p.name === currentTarget);
+      const player = playerList.find(p => p.name === currentTarget);
       if (!playerAtCollege(player, college)) return reject(`${player.name} didn't attend ${college}`);
       if (usedColleges.has(college)) return reject(`${college} already used`);
 
@@ -805,9 +838,9 @@ export default function NFLChain() {
 
     } else if (step === STEP.COLLEGE) {
       // Need a player who went to currentTarget college
-      const candidates = resolvePlayer(val, PLAYERS);
+      const candidates = resolvePlayer(val, playerList);
       if (!candidates) {
-        const fuzzy = findPlayerSuggestion(val);
+        const fuzzy = findPlayerSuggestion(val, normalizedMap);
         if (fuzzy) {
           justSetSuggestion.current = true;
           setTimeout(() => { justSetSuggestion.current = false; }, 50);
@@ -839,7 +872,7 @@ export default function NFLChain() {
       // Need a team that currentTarget player played for
       const team = resolveTeam(val);
       if (!team) return reject("NFL team not recognized");
-      const player = PLAYERS.find(p => p.name === currentTarget);
+      const player = playerList.find(p => p.name === currentTarget);
       if (!playerOnTeam(player, team)) return reject(`${player.name} didn't play for the ${team}`);
       if (usedTeams.has(team)) return reject(`${team} already used`);
 
@@ -856,7 +889,7 @@ export default function NFLChain() {
         setStep(STEP.TEAM);
       }
     }
-  }, [step, currentTarget, input, usedTeams, usedColleges, usedPlayers, reject, pushHistory]);
+  }, [step, currentTarget, input, usedTeams, usedColleges, usedPlayers, reject, pushHistory, playerList, normalizedMap]);
 
   const handleKeyDown = (e) => {
     trackPlay();
@@ -920,6 +953,27 @@ export default function NFLChain() {
         <p style={{ color: "#e8c060", fontSize: 13, margin: "8px 0 0", letterSpacing: 0.5 }}>
           NFL Team 🔗 NFL Player 🔗 College 🔗 NFL Player 🔗 NFL Team
         </p>
+
+        {/* Hard Mode Toggle */}
+        <button
+          onClick={toggleHardMode}
+          style={{
+            marginTop: 14,
+            padding: "6px 16px",
+            borderRadius: 20,
+            border: hardMode ? "1px solid #e74c3c" : "1px solid #ffffff20",
+            background: hardMode ? "#e74c3c18" : "transparent",
+            color: hardMode ? "#e74c3c" : "#ffffff50",
+            fontSize: 11,
+            fontWeight: 700,
+            letterSpacing: 1,
+            textTransform: "uppercase",
+            cursor: "pointer",
+            transition: "all 0.2s",
+          }}
+        >
+          {hardMode ? "🔥 Hard Mode: Active Players Only" : "Hard Mode: Off"}
+        </button>
       </div>
 
       {/* Progress */}
@@ -988,7 +1042,7 @@ export default function NFLChain() {
 
               {/* Copy to clipboard */}
               <button onClick={() => {
-                const text = `💪 I completed the NFL Chain on TrivialSports!\n⛓️ Linked all 32 NFL teams using players and colleges\n🏈 Can you do it? trivialsports.com/games/nfl-chain`;
+                const text = `💪 I completed the NFL Chain${hardMode ? " (HARD MODE 🔥)" : ""} on TrivialSports!\n⛓️ Linked all 32 NFL teams using ${hardMode ? "only active" : ""} players and colleges\n🏈 Can you do it? trivialsports.com/games/nfl-chain`;
                 navigator.clipboard.writeText(text).then(() => {
                   const btn = document.getElementById('copy-btn');
                   btn.innerText = '✓ Copied!';
@@ -1004,7 +1058,7 @@ export default function NFLChain() {
 
               {/* Twitter/X */}
               <button onClick={() => {
-                const text = encodeURIComponent(`💪 I completed the NFL Chain on TrivialSports!\n⛓️ Linked all 32 NFL teams using players and colleges\n🏈 Can you do it? trivialsports.com/games/nfl-chain`);
+                const text = encodeURIComponent(`💪 I completed the NFL Chain${hardMode ? " (HARD MODE 🔥)" : ""} on TrivialSports!\n⛓️ Linked all 32 NFL teams using ${hardMode ? "only active" : ""} players and colleges\n🏈 Can you do it? trivialsports.com/games/nfl-chain`);
                 window.open(`https://twitter.com/intent/tweet?text=${text}`, '_blank');
               }} style={{
                 background: "#000000", color: "#ffffff",
@@ -1016,7 +1070,7 @@ export default function NFLChain() {
 
               {/* Bluesky */}
               <button onClick={() => {
-                const text = encodeURIComponent(`💪 I completed the NFL Chain on TrivialSports!\n⛓️ Linked all 32 NFL teams using players and colleges\n🏈 Can you do it? trivialsports.com/games/nfl-chain`);
+                const text = encodeURIComponent(`💪 I completed the NFL Chain${hardMode ? " (HARD MODE 🔥)" : ""} on TrivialSports!\n⛓️ Linked all 32 NFL teams using ${hardMode ? "only active" : ""} players and colleges\n🏈 Can you do it? trivialsports.com/games/nfl-chain`);
                 window.open(`https://bsky.app/intent/compose?text=${text}`, '_blank');
               }} style={{
                 background: "#0085ff", color: "#ffffff",
@@ -1028,7 +1082,7 @@ export default function NFLChain() {
 
               {/* Instagram */}
               <button onClick={() => {
-                const text = `💪 I completed the NFL Chain on TrivialSports!\n⛓️ Linked all 32 NFL teams using players and colleges\n🏈 Can you do it? trivialsports.com/games/nfl-chain`;
+                const text = `💪 I completed the NFL Chain${hardMode ? " (HARD MODE 🔥)" : ""} on TrivialSports!\n⛓️ Linked all 32 NFL teams using ${hardMode ? "only active" : ""} players and colleges\n🏈 Can you do it? trivialsports.com/games/nfl-chain`;
                 navigator.clipboard.writeText(text).then(() => {
                   const btn = document.getElementById('ig-btn');
                   btn.innerText = '✓ Copied — paste in story!';
