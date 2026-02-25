@@ -15158,7 +15158,7 @@ export const PLAYERS = [
 {name:"Kelly Herndon",teams:["Denver Broncos","Seattle Seahawks","Tennessee Titans"],colleges:[]},
 {name:"Leo Lewis",teams:["Cleveland Browns","Minnesota Vikings"],colleges:[]},
 {name:"James McKnight",teams:["Dallas Cowboys","Miami Dolphins","Seattle Seahawks"],colleges:[]},
-{name:"Tim Patrick",teams:["Denver Broncos","Detroit Lions","Jacksonville Jaguars"],colleges:[]},
+{name:"Tim Patrick",teams:["Denver Broncos","Detroit Lions","Jacksonville Jaguars"],colleges:["Utah"]},
 {name:"Fred Wakefield",teams:["Arizona Cardinals","Las Vegas Raiders"],colleges:[]},
 {name:"Ryan Wendell",teams:["Carolina Panthers","New England Patriots"],colleges:["Fresno State"]},
 {name:"Grant Williams",teams:["New England Patriots","Seattle Seahawks","Los Angeles Rams"],colleges:[]},
