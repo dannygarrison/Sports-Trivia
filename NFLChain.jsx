@@ -972,7 +972,7 @@ export default function NFLChain() {
             transition: "all 0.2s",
           }}
         >
-          {hardMode ? "🔥 " : ""}Sicko Mode: Only Active Players On Their Current Teams
+          {hardMode ? "🔥 Sicko Mode: Only Active Players On Their Current Teams" : "Activate Sicko Mode? Only Active Players On Their Current Teams"}
         </button>
       </div>
 
