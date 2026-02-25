@@ -8750,6 +8750,7 @@ export const PLAYERS = [
 {name:"Fred Brown",teams:["Philadelphia Eagles","Denver Broncos"],colleges:["Miami (FL)"]},
 {name:"Jalil Brown",teams:["Indianapolis Colts","Kansas City Chiefs"],colleges:["Colorado"]},
 {name:"Jim Browner",teams:["Cincinnati Bengals"],colleges:["Notre Dame"]},
+{name:"Jim Brown",teams:["Cleveland Browns"],colleges:["Syracuse"]},
 {name:"Lance Brown",teams:["Arizona Cardinals","Buffalo Bills","Pittsburgh Steelers"],colleges:["Indiana"]},
 {name:"Tony Brown",teams:["Tennessee Titans","Seattle Seahawks","Carolina Panthers","San Francisco 49ers","Cincinnati Bengals","Cleveland Browns","Green Bay Packers","Indianapolis Colts","Buffalo Bills","Washington Commanders"],colleges:["Fresno State"]},
 {name:"Ryan Broyles",teams:["Detroit Lions"],colleges:["Oklahoma"]},
