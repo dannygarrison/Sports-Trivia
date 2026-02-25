@@ -105,7 +105,7 @@ const COLLEGE_ALIASES = {
 // ── HELPERS ──────────────────────────────────────────────────────────────────
 
 function normalize(s) {
-  return s.toLowerCase().trim().replace(/[^a-z0-9 ]/g, "").replace(/\s+/g, " ");
+  return s.toLowerCase().trim().replace(/-/g, " ").replace(/[^a-z0-9 ]/g, "").replace(/\s+/g, " ");
 }
 
 // Phonetic normalization — collapse common spelling variants before comparing
