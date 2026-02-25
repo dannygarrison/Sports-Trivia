@@ -16048,7 +16048,7 @@ export const PLAYERS = [
 {name:"Lemuel Jeanpierre",teams:["Seattle Seahawks"],colleges:[]},
 {name:"Doug Johnson",teams:["Atlanta Falcons","Tennessee Titans"],colleges:[]},
 {name:"Nick Leverett",teams:["Arizona Cardinals","Dallas Cowboys","New England Patriots","Tampa Bay Buccaneers"],colleges:[]},
-{name:"Jordan Mason",teams:["Minnesota Vikings","San Francisco 49ers"],colleges:[]},
+{name:"Jordan Mason",teams:["Minnesota Vikings","San Francisco 49ers"],colleges:["Georgia Tech"]},
 {name:"Michael Matthews",teams:["Detroit Lions","New England Patriots","New York Giants"],colleges:[]},
 {name:"Oscar McBride",teams:["Arizona Cardinals"],colleges:[]},
 {name:"Hurvin McCormack",teams:["Cleveland Browns","Dallas Cowboys"],colleges:[]},
