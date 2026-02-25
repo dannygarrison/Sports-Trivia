@@ -8084,7 +8084,7 @@ export const PLAYERS = [
 {name:"John Stallworth",teams:["Pittsburgh Steelers"],colleges:["Alabama A&M"]},
 {name:"Bill Bergey",teams:["Cincinnati Bengals","Philadelphia Eagles"],colleges:["Arkansas State"]},
 {name:"Chris Chester",teams:["Atlanta Falcons","Baltimore Ravens","Washington Commanders"],colleges:["Oklahoma"]},
-{name:"Kenny Clark",teams:["Dallas Cowboys","Green Bay Packers","Minnesota Vikings"],colleges:["UCLA"]},
+{name:"Kenny Clark",teams:["Dallas Cowboys","Green Bay Packers"],colleges:["UCLA"]},
 {name:"Amari Cooper",teams:["Buffalo Bills","Cleveland Browns","Dallas Cowboys","Las Vegas Raiders"],colleges:["Alabama"]},
 {name:"Zach Ertz",teams:["Arizona Cardinals","Philadelphia Eagles","Washington Commanders"],colleges:["Stanford"]},
 {name:"Simon Fletcher",teams:["Denver Broncos"],colleges:["Houston"]},
