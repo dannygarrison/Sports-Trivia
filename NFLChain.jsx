@@ -954,7 +954,7 @@ export default function NFLChain() {
           NFL Team 🔗 NFL Player 🔗 College 🔗 NFL Player 🔗 NFL Team
         </p>
 
-        {/* Hard Mode Toggle */}
+        {/* Sicko Mode Toggle */}
         <button
           onClick={toggleHardMode}
           style={{
@@ -972,7 +972,7 @@ export default function NFLChain() {
             transition: "all 0.2s",
           }}
         >
-          {hardMode ? "🔥 " : ""}Hard Mode: Only Active Players On Their Current Teams
+          {hardMode ? "🔥 " : ""}Sicko Mode: Only Active Players On Their Current Teams
         </button>
       </div>
 
@@ -1042,7 +1042,7 @@ export default function NFLChain() {
 
               {/* Copy to clipboard */}
               <button onClick={() => {
-                const text = `💪 I completed the NFL Chain${hardMode ? " (HARD MODE 🔥)" : ""} on TrivialSports!\n⛓️ Linked all 32 NFL teams using ${hardMode ? "only active" : ""} players and colleges\n🏈 Can you do it? trivialsports.com/games/nfl-chain`;
+                const text = `💪 I completed the NFL Chain${hardMode ? " (SICKO MODE 🔥)" : ""} on TrivialSports!\n⛓️ Linked all 32 NFL teams using ${hardMode ? "only active" : ""} players and colleges\n🏈 Can you do it? trivialsports.com/games/nfl-chain`;
                 navigator.clipboard.writeText(text).then(() => {
                   const btn = document.getElementById('copy-btn');
                   btn.innerText = '✓ Copied!';
@@ -1058,7 +1058,7 @@ export default function NFLChain() {
 
               {/* Twitter/X */}
               <button onClick={() => {
-                const text = encodeURIComponent(`💪 I completed the NFL Chain${hardMode ? " (HARD MODE 🔥)" : ""} on TrivialSports!\n⛓️ Linked all 32 NFL teams using ${hardMode ? "only active" : ""} players and colleges\n🏈 Can you do it? trivialsports.com/games/nfl-chain`);
+                const text = encodeURIComponent(`💪 I completed the NFL Chain${hardMode ? " (SICKO MODE 🔥)" : ""} on TrivialSports!\n⛓️ Linked all 32 NFL teams using ${hardMode ? "only active" : ""} players and colleges\n🏈 Can you do it? trivialsports.com/games/nfl-chain`);
                 window.open(`https://twitter.com/intent/tweet?text=${text}`, '_blank');
               }} style={{
                 background: "#000000", color: "#ffffff",
@@ -1070,7 +1070,7 @@ export default function NFLChain() {
 
               {/* Bluesky */}
               <button onClick={() => {
-                const text = encodeURIComponent(`💪 I completed the NFL Chain${hardMode ? " (HARD MODE 🔥)" : ""} on TrivialSports!\n⛓️ Linked all 32 NFL teams using ${hardMode ? "only active" : ""} players and colleges\n🏈 Can you do it? trivialsports.com/games/nfl-chain`);
+                const text = encodeURIComponent(`💪 I completed the NFL Chain${hardMode ? " (SICKO MODE 🔥)" : ""} on TrivialSports!\n⛓️ Linked all 32 NFL teams using ${hardMode ? "only active" : ""} players and colleges\n🏈 Can you do it? trivialsports.com/games/nfl-chain`);
                 window.open(`https://bsky.app/intent/compose?text=${text}`, '_blank');
               }} style={{
                 background: "#0085ff", color: "#ffffff",
@@ -1082,7 +1082,7 @@ export default function NFLChain() {
 
               {/* Instagram */}
               <button onClick={() => {
-                const text = `💪 I completed the NFL Chain${hardMode ? " (HARD MODE 🔥)" : ""} on TrivialSports!\n⛓️ Linked all 32 NFL teams using ${hardMode ? "only active" : ""} players and colleges\n🏈 Can you do it? trivialsports.com/games/nfl-chain`;
+                const text = `💪 I completed the NFL Chain${hardMode ? " (SICKO MODE 🔥)" : ""} on TrivialSports!\n⛓️ Linked all 32 NFL teams using ${hardMode ? "only active" : ""} players and colleges\n🏈 Can you do it? trivialsports.com/games/nfl-chain`;
                 navigator.clipboard.writeText(text).then(() => {
                   const btn = document.getElementById('ig-btn');
                   btn.innerText = '✓ Copied — paste in story!';
