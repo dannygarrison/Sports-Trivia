@@ -1430,6 +1430,10 @@ function BestAvailableDropdown({ allProspects, selected, onSelect, draftedNames 
 // ── Player selection modal ────────────────────────────────────────────────────
 function PickModal({ pick, suggestions, allProspects, draftedNames, onSelect, onTrade, onClear, onClose }) {
   const handlePick = (player) => onSelect(pick.pick, player);
+  const [customOpen, setCustomOpen] = useState(false);
+  const [customName, setCustomName] = useState("");
+  const [customPos, setCustomPos] = useState("QB");
+  const [customSchool, setCustomSchool] = useState("");
 
   // Build position groups from ALL_PROSPECTS (preserving rank order)
   const prospectsByPosition = {};
@@ -1529,6 +1533,109 @@ function PickModal({ pick, suggestions, allProspects, draftedNames, onSelect, on
             draftedNames={draftedNames}
           />
         ))}
+
+        {/* Custom Player Entry */}
+        <div style={{ marginTop: 12 }}>
+          <div
+            style={{
+              ...S.sectionLabel,
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              userSelect: "none",
+            }}
+            onClick={() => setCustomOpen(!customOpen)}
+          >
+            <span>✏️ Add Custom Player</span>
+            <span style={{ fontSize: 12, color: "#ffffff44" }}>{customOpen ? "▲" : "▼"}</span>
+          </div>
+          {customOpen && (
+            <div style={{
+              padding: 14,
+              borderRadius: 8,
+              background: "#ffffff08",
+              border: "1px solid #ffffff10",
+              display: "flex",
+              flexDirection: "column",
+              gap: 10,
+            }}>
+              <input
+                type="text"
+                placeholder="Player name"
+                value={customName}
+                onChange={e => setCustomName(e.target.value)}
+                style={{
+                  background: "#ffffff10",
+                  border: "1px solid #ffffff20",
+                  borderRadius: 6,
+                  color: "#fff",
+                  padding: "8px 12px",
+                  fontSize: 14,
+                  fontFamily: "'Oswald', sans-serif",
+                  outline: "none",
+                }}
+              />
+              <div style={{ display: "flex", gap: 8 }}>
+                <select
+                  value={customPos}
+                  onChange={e => setCustomPos(e.target.value)}
+                  style={{
+                    background: "#ffffff10",
+                    border: "1px solid #ffffff20",
+                    borderRadius: 6,
+                    color: "#fff",
+                    padding: "8px 12px",
+                    fontSize: 14,
+                    fontFamily: "'Oswald', sans-serif",
+                    outline: "none",
+                    flex: "0 0 auto",
+                  }}
+                >
+                  {["QB","RB","WR","TE","OT","OG","C","EDGE","DT","LB","CB","S","K","P"].map(p => (
+                    <option key={p} value={p} style={{ background: "#1a1a2e" }}>{p}</option>
+                  ))}
+                </select>
+                <input
+                  type="text"
+                  placeholder="School"
+                  value={customSchool}
+                  onChange={e => setCustomSchool(e.target.value)}
+                  style={{
+                    background: "#ffffff10",
+                    border: "1px solid #ffffff20",
+                    borderRadius: 6,
+                    color: "#fff",
+                    padding: "8px 12px",
+                    fontSize: 14,
+                    fontFamily: "'Oswald', sans-serif",
+                    outline: "none",
+                    flex: 1,
+                  }}
+                />
+              </div>
+              <button
+                style={{
+                  ...S.btn("primary"),
+                  width: "100%",
+                  opacity: customName.trim() && customSchool.trim() ? 1 : 0.4,
+                  cursor: customName.trim() && customSchool.trim() ? "pointer" : "default",
+                }}
+                disabled={!customName.trim() || !customSchool.trim()}
+                onClick={() => {
+                  if (customName.trim() && customSchool.trim()) {
+                    handlePick({ name: customName.trim(), position: customPos, school: customSchool.trim() });
+                    setCustomName("");
+                    setCustomSchool("");
+                    setCustomOpen(false);
+                  }
+                }}
+              >
+                Add Player
+              </button>
+            </div>
+          )}
+        </div>
 
         {/* Trade option at bottom */}
         <div style={{ marginTop: 20, paddingTop: 16, borderTop: "1px solid #ffffff10" }}>
