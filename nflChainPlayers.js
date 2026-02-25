@@ -15512,7 +15512,7 @@ export const PLAYERS = [
 {name:"Harvey Clayton",teams:["New York Giants","Pittsburgh Steelers"],colleges:[]},
 {name:"Greg DeLong",teams:["Baltimore Ravens","Jacksonville Jaguars","Minnesota Vikings"],colleges:[]},
 {name:"Kyle DeVan",teams:["Indianapolis Colts","Philadelphia Eagles","Tennessee Titans"],colleges:[]},
-{name:"Rico Dowdle",teams:["Carolina Panthers","Dallas Cowboys"],colleges:[]},
+{name:"Rico Dowdle",teams:["Carolina Panthers","Dallas Cowboys"],colleges:["South Carolina"]},
 {name:"Elbert Foules",teams:["Philadelphia Eagles"],colleges:[]},
 {name:"Ronnie Hickman",teams:["Cleveland Browns"],colleges:[]},
 {name:"Julian Hill",teams:["Miami Dolphins"],colleges:[]},
