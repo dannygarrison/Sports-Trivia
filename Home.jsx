@@ -125,9 +125,9 @@ const GAMES = [
   {
     id: 'nfl-mock-draft',
     path: '/games/nfl-mock-draft',
-    title: 'NFL Mock Draft',
+    title: 'Build Your Own Mock Draft',
     sport: 'NFL',
-    description: 'Build your 2026 NFL Draft predictions with AI-powered suggestions for every pick.',
+    description: 'Use pick suggestions and the big board to create a shareable 2026 NFL Draft 1st round mock.',
     tag: 'MOCK DRAFT',
     available: true,
     dateAdded: 11,
