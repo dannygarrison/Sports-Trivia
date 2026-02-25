@@ -18207,7 +18207,7 @@ export const PLAYERS = [
 {name:"Nephi Sewell",teams:["New Orleans Saints"],colleges:[]},
 {name:"John Shannon",teams:["Chicago Bears"],colleges:[]},
 {name:"Hunter Sharp",teams:["Denver Broncos","New York Giants"],colleges:[]},
-{name:"Connor Shaw",teams:["Cleveland Browns"],colleges:[]},
+{name:"Connor Shaw",teams:["Cleveland Browns"],colleges:["South Carolina"]},
 {name:"Kendel Shello",teams:["Indianapolis Colts"],colleges:[]},
 {name:"Johnny Shepherd",teams:["Buffalo Bills"],colleges:[]},
 {name:"Malcolm Sheppard",teams:["Houston Texans","Tennessee Titans"],colleges:[]},
