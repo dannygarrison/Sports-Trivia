@@ -1028,6 +1028,7 @@ const S = {
   headerTitle: {
     fontSize: "clamp(22px, 4vw, 34px)",
     fontWeight: 900,
+    fontFamily: "'Oswald', sans-serif",
     letterSpacing: 3,
     textTransform: "uppercase",
     background: "linear-gradient(90deg, #f0d070, #e87040)",
@@ -1038,7 +1039,7 @@ const S = {
   headerSub: {
     fontSize: 12,
     letterSpacing: 2,
-    color: "#ffffff33",
+    color: "#c8a050",
     marginTop: 4,
     textTransform: "uppercase",
   },
@@ -1097,13 +1098,13 @@ const S = {
   }),
   playerPos: (accent) => ({
     fontSize: 11,
-    color: accent + "77",
+    color: accent + "99",
     letterSpacing: 1,
     whiteSpace: "nowrap",
   }),
   emptySlot: (accent) => ({
     fontSize: 13,
-    color: accent + "55",
+    color: accent + "88",
     letterSpacing: 1,
     fontStyle: "italic",
   }),
@@ -1151,7 +1152,7 @@ const S = {
   },
   modalSub: {
     fontSize: 12,
-    color: "#ffffff44",
+    color: "#c8a050",
     letterSpacing: 1,
     marginBottom: 20,
     textTransform: "uppercase",
@@ -1161,7 +1162,7 @@ const S = {
     fontWeight: 700,
     letterSpacing: 2.5,
     textTransform: "uppercase",
-    color: "#ffffff33",
+    color: "#c8a050",
     marginBottom: 8,
     marginTop: 16,
   },
@@ -1221,11 +1222,11 @@ const posGroupStyles = {
     fontSize: 11,
     fontWeight: 600,
     letterSpacing: 1,
-    color: "#ffffff44",
+    color: "#ffffff77",
   },
   arrow: (isOpen) => ({
     fontSize: 10,
-    color: "#ffffff44",
+    color: "#ffffff77",
     transition: "transform 0.2s",
     transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
   }),
@@ -1250,7 +1251,7 @@ const posGroupStyles = {
     fontSize: 10,
     fontWeight: 700,
     letterSpacing: 1,
-    color: "#ffffff28",
+    color: "#ffffff55",
     minWidth: 22,
     textAlign: "center",
     flexShrink: 0,
@@ -1303,7 +1304,7 @@ function PositionGroupDropdown({ group, prospects, selected, onSelect, draftedNa
                   <div style={{ fontSize: 16, fontWeight: 700, letterSpacing: 0.5 }}>
                     {p.name}
                   </div>
-                  <div style={{ fontSize: 11, color: "#ffffff44", letterSpacing: 1, whiteSpace: "nowrap" }}>
+                  <div style={{ fontSize: 11, color: "#ffffff88", letterSpacing: 1, whiteSpace: "nowrap" }}>
                     {p.school}
                   </div>
                 </div>
@@ -1313,10 +1314,65 @@ function PositionGroupDropdown({ group, prospects, selected, onSelect, draftedNa
             );
           })}
           {prospects.length === 0 && (
-            <div style={{ fontSize: 12, color: "#ffffff22", textAlign: "center", padding: "8px 0", fontStyle: "italic" }}>
+            <div style={{ fontSize: 12, color: "#ffffff66", textAlign: "center", padding: "8px 0", fontStyle: "italic" }}>
               No prospects at this position
             </div>
           )}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ── Best Available Dropdown component ─────────────────────────────────────────
+function BestAvailableDropdown({ allProspects, selected, onSelect, draftedNames }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const available = allProspects.filter(p => !draftedNames.has(p.name));
+  const totalCount = available.length;
+
+  return (
+    <div>
+      <div
+        style={{
+          ...posGroupStyles.header(isOpen),
+          border: `1px solid ${isOpen ? "#f0d07033" : "#f0d07018"}`,
+          background: isOpen ? "#f0d07010" : "#f0d07008",
+        }}
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+          <span style={{ ...posGroupStyles.label, color: "#f0d070" }}>★ Best Available</span>
+          <span style={posGroupStyles.count}>
+            {totalCount} available
+          </span>
+        </div>
+        <span style={posGroupStyles.arrow(isOpen)}>▼</span>
+      </div>
+
+      {isOpen && (
+        <div style={posGroupStyles.list}>
+          {available.map((p, idx) => {
+            const isSelected = selected?.name === p.name;
+            return (
+              <div
+                key={p.name}
+                style={posGroupStyles.playerRow(isSelected, false)}
+                onClick={() => onSelect(p)}
+              >
+                <span style={posGroupStyles.rank}>{idx + 1}</span>
+                <div style={{ flex: 1, display: "flex", alignItems: "baseline", gap: 8 }}>
+                  <div style={{ fontSize: 16, fontWeight: 700, letterSpacing: 0.5 }}>
+                    {p.name}
+                  </div>
+                  <div style={{ fontSize: 11, color: "#ffffff88", letterSpacing: 1, whiteSpace: "nowrap" }}>
+                    {p.position} · {p.school}
+                  </div>
+                </div>
+                {isSelected && <span style={{ color: "#f0d070", fontSize: 14 }}>✓</span>}
+              </div>
+            );
+          })}
         </div>
       )}
     </div>
@@ -1348,7 +1404,7 @@ function PickModal({ pick, suggestions, allProspects, draftedNames, onSelect, on
             <div style={S.modalTitle}>Pick #{pick.pick}</div>
             <div style={S.modalSub}>{pick.team}</div>
           </div>
-          <button onClick={onClose} style={{ background: "none", border: "none", color: "#ffffff33", fontSize: 20, cursor: "pointer", padding: 0, lineHeight: 1 }}>✕</button>
+          <button onClick={onClose} style={{ background: "none", border: "none", color: "#ffffff66", fontSize: 20, cursor: "pointer", padding: 0, lineHeight: 1 }}>✕</button>
         </div>
 
         {/* Actions — pinned to top */}
@@ -1388,7 +1444,7 @@ function PickModal({ pick, suggestions, allProspects, draftedNames, onSelect, on
                 >
                   <div style={{ flex: 1, display: "flex", alignItems: "baseline", gap: 8 }}>
                     <div style={{ fontSize: 16, fontWeight: 700, letterSpacing: 0.5 }}>{p.name}</div>
-                    <div style={{ fontSize: 11, color: "#ffffff44", letterSpacing: 1, whiteSpace: "nowrap" }}>{p.position} · {p.school}</div>
+                    <div style={{ fontSize: 11, color: "#ffffff88", letterSpacing: 1, whiteSpace: "nowrap" }}>{p.position} · {p.school}</div>
                   </div>
                   {isTaken && <span style={posGroupStyles.takenLabel}>Drafted</span>}
                   {selected?.name === p.name && !isTaken && <span style={{ color: "#f0d070", fontSize: 14 }}>✓</span>}
@@ -1398,8 +1454,14 @@ function PickModal({ pick, suggestions, allProspects, draftedNames, onSelect, on
           </>
         )}
 
-        {/* Big Board — Position Group Dropdowns */}
+        {/* Big Board — Best Available + Position Group Dropdowns */}
         <div style={S.sectionLabel}>Big Board</div>
+        <BestAvailableDropdown
+          allProspects={allProspects}
+          selected={selected}
+          onSelect={setSelected}
+          draftedNames={draftedNames}
+        />
         {POSITION_GROUPS.map(group => (
           <PositionGroupDropdown
             key={group.key}
@@ -1431,7 +1493,7 @@ function TradeModal({ pick, picks, onConfirm, onClose }) {
             <div style={S.modalTitle}>Trade Pick #{pick.pick}</div>
             <div style={S.modalSub}>{pick.team}</div>
           </div>
-          <button onClick={onClose} style={{ background: "none", border: "none", color: "#ffffff33", fontSize: 20, cursor: "pointer", padding: 0 }}>✕</button>
+          <button onClick={onClose} style={{ background: "none", border: "none", color: "#ffffff66", fontSize: 20, cursor: "pointer", padding: 0 }}>✕</button>
         </div>
 
         {step === "type" && (
@@ -1448,7 +1510,7 @@ function TradeModal({ pick, picks, onConfirm, onClose }) {
               >
                 <div>
                   <div style={{ fontSize: 14, fontWeight: 700 }}>{opt.label}</div>
-                  <div style={{ fontSize: 11, color: "#ffffff44" }}>{opt.desc}</div>
+                  <div style={{ fontSize: 11, color: "#ffffff88" }}>{opt.desc}</div>
                 </div>
                 {isSwap === opt.id && <span style={{ color: "#f0d070" }}>✓</span>}
               </div>
@@ -1508,7 +1570,7 @@ function TradeModal({ pick, picks, onConfirm, onClose }) {
                     </div>
                   ))}
                   {picks.filter(p => p.team === newTeam.team && p.pick !== pick.pick).length === 0 && (
-                    <div style={{ fontSize: 12, color: "#ffffff33", fontStyle: "italic" }}>
+                    <div style={{ fontSize: 12, color: "#ffffff77", fontStyle: "italic" }}>
                       {newTeam.abbr} has no other 1st round picks
                     </div>
                   )}
@@ -1709,7 +1771,7 @@ function ShareModal({ picks, onClose }) {
       <div style={{ ...S.modalBox, maxWidth: 560 }}>
         <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 16 }}>
           <div style={S.modalTitle}>Share Your Mock Draft</div>
-          <button onClick={onClose} style={{ background: "none", border: "none", color: "#ffffff33", fontSize: 20, cursor: "pointer", padding: 0 }}>✕</button>
+          <button onClick={onClose} style={{ background: "none", border: "none", color: "#ffffff66", fontSize: 20, cursor: "pointer", padding: 0 }}>✕</button>
         </div>
         <canvas ref={canvasRef} style={{ width: "100%", borderRadius: 8, border: "1px solid #ffffff10", display: "block", marginBottom: 16 }} />
         <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
@@ -1805,13 +1867,13 @@ export default function NFLMockDraft() {
         <h1 style={S.headerTitle}>2026 NFL Mock Draft</h1>
         <div style={S.headerSub}>1st Round · Build Your Predictions</div>
 
-        <div style={{ marginTop: 6, fontSize: 11, color: "#ffffff33", letterSpacing: 1 }}>
+        <div style={{ marginTop: 6, fontSize: 11, color: "#c8a050", letterSpacing: 1 }}>
           {ALL_PROSPECTS.length} prospects · updated {new Date().toLocaleDateString("en-US", { month: "short", year: "numeric" })}
         </div>
 
         {/* Progress + share */}
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 16, marginTop: 14 }}>
-          <div style={{ fontSize: 12, color: "#ffffff44", letterSpacing: 1 }}>
+          <div style={{ fontSize: 12, color: "#ffffff88", letterSpacing: 1 }}>
             <span style={{ color: "#f0d070", fontWeight: 700 }}>{filledCount}</span> / 32 picks made
           </div>
           {filledCount > 0 && (
