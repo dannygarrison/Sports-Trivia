@@ -1083,7 +1083,7 @@ export const ACTIVE_PLAYERS = [
 {name:"Jake Andrews",teams:["Houston Texans"],colleges:["Troy"]},
 {name:"Jake Bailey",teams:["Miami Dolphins"],colleges:["Stanford"]},
 {name:"Jake Bates",teams:["Detroit Lions"],colleges:["Arkansas"]},
-{name:"Jake Bobo",teams:["Seattle Seahawks"],colleges:["UCLA"]},
+{name:"Jake Bobo",teams:["Seattle Seahawks"],colleges:["UCLA","Duke"]},
 {name:"Jake Brendel",teams:["San Francisco 49ers"],colleges:["UCLA"]},
 {name:"Jake Briningstool",teams:["Kansas City Chiefs"],colleges:["Clemson"]},
 {name:"Jake Browning",teams:["Cincinnati Bengals"],colleges:["Washington"]},
