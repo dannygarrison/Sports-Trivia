@@ -1336,7 +1336,7 @@ export const ACTIVE_PLAYERS = [
 {name:"Jonathon Brooks",teams:["Carolina Panthers"],colleges:["Texas"]},
 {name:"Jonathon Cooper",teams:["Denver Broncos"],colleges:["Ohio State"]},
 {name:"Jonnu Smith",teams:["Pittsburgh Steelers"],colleges:["FIU"]},
-{name:"Jordan Addison",teams:["Minnesota Vikings"],colleges:["USC"]},
+{name:"Jordan Addison",teams:["Minnesota Vikings"],colleges:["USC","Pittsburgh"]},
 {name:"Jordan Battle",teams:["Cincinnati Bengals"],colleges:["Alabama"]},
 {name:"Jordan Burch",teams:["Arizona Cardinals"],colleges:["Oregon"]},
 {name:"Jordan Clark",teams:["New York Jets"],colleges:["Notre Dame"]},
