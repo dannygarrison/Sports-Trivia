@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { ALL_PROSPECTS, PICK_SUGGESTIONS } from "../data/draftProspects2026.js";
+import { ALL_PROSPECTS, PICK_SUGGESTIONS } from "./draftProspects2026.js";
 
 // ── 2026 NFL Draft Order (1st round, estimated) ─────────────────────────────────────────
 const INITIAL_PICKS = [
