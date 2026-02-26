@@ -585,8 +585,17 @@ function PickModal({ pick, suggestions, allProspects, draftedNames, onSelect, on
     prospectsByPosition[group.key] = allProspects.filter(p => p.position === group.key);
   }
 
-  const pickSuggestions = suggestions[pick.pick] || [];
+// Static suggestions for this pick
+const staticSuggestions = suggestions[pick.pick] || [];
 
+// Best Player Available — highest-ranked undrafted player not already suggested
+const staticNames = new Set(staticSuggestions.map(p => p.name));
+const bpa = allProspects.find(p => !draftedNames.has(p.name) && !staticNames.has(p.name));
+
+// Slot BPA into position 1 (after the top suggestion) so the user sees a "falling" star
+const pickSuggestions = bpa
+  ? [staticSuggestions[0], bpa, ...staticSuggestions.slice(1)].filter(Boolean).slice(0, 5)
+  : staticSuggestions;
   return (
     <div style={S.modal} onClick={e => e.target === e.currentTarget && onClose()}>
       <div style={S.modalBox}>
