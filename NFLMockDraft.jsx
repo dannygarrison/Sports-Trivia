@@ -148,7 +148,7 @@ const ALL_PROSPECTS = [
   {
     "name": "Denzel Boston",
     "position": "WR",
-    "school": "North Carolina"
+    "school": "Washington"
   },
   {
     "name": "Monroe Freeling",
@@ -796,7 +796,7 @@ const PICK_SUGGESTIONS = {
     {
       "name": "Denzel Boston",
       "position": "WR",
-      "school": "North Carolina"
+      "school": "Washington"
     }
   ],
   "14": [
@@ -862,7 +862,7 @@ const PICK_SUGGESTIONS = {
     {
       "name": "Denzel Boston",
       "position": "WR",
-      "school": "North Carolina"
+      "school": "Washington"
     }
   ],
   "17": [
@@ -945,7 +945,7 @@ const PICK_SUGGESTIONS = {
     {
       "name": "Denzel Boston",
       "position": "WR",
-      "school": "North Carolina"
+      "school": "Washington"
     },
     {
       "name": "Kenyon Sadiq",
@@ -957,7 +957,7 @@ const PICK_SUGGESTIONS = {
     {
       "name": "Denzel Boston",
       "position": "WR",
-      "school": "North Carolina"
+      "school": "Washington"
     },
     {
       "name": "Caleb Lomu",
@@ -1072,7 +1072,7 @@ const PICK_SUGGESTIONS = {
     {
       "name": "Denzel Boston",
       "position": "WR",
-      "school": "North Carolina"
+      "school": "Washington"
     },
     {
       "name": "Malachi Fields",
