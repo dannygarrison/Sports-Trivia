@@ -16974,7 +16974,7 @@ export const PLAYERS = [
 {name:"Karl Bernard",teams:["Detroit Lions"],colleges:[]},
 {name:"Freddie Bishop",teams:["New York Jets"],colleges:[]},
 {name:"Christian Blake",teams:["Atlanta Falcons"],colleges:[]},
-{name:"Jake Bobo",teams:["Seattle Seahawks"],colleges:[]},
+{name:"Jake Bobo",teams:["Seattle Seahawks"],colleges:["UCLA","Duke"]},
 {name:"Ron Bohm",teams:["Arizona Cardinals"],colleges:[]},
 {name:"Rich Borresen",teams:["Dallas Cowboys"],colleges:[]},
 {name:"Tashawn Bower",teams:["Las Vegas Raiders","Minnesota Vikings","New England Patriots"],colleges:[]},
