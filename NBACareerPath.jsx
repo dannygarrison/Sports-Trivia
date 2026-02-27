@@ -1,24 +1,27 @@
 import { useState, useRef, useEffect, useCallback, useMemo } from "react";
 import { Helmet } from "react-helmet-async";
 import { usePlayCount } from "./usePlayCount.jsx";
-import { NBA_CAREER_PATHS } from "./nbaCareerPathData.js";
+import { NFL_CAREER_PATHS } from "./nflCareerPathData.js";
 
 // ── TEAM COLORS ─────────────────────────────────────────────────────────────
 const TEAM_COLORS = {
-  "Atlanta Hawks":"#E03A3E","Boston Celtics":"#007A33","Brooklyn Nets":"#000000",
-  "Charlotte Hornets":"#1D1160","Chicago Bulls":"#CE1141","Cleveland Cavaliers":"#860038",
-  "Dallas Mavericks":"#00538C","Denver Nuggets":"#0E2240","Detroit Pistons":"#C8102E",
-  "Golden State Warriors":"#1D428A","Houston Rockets":"#CE1141","Indiana Pacers":"#002D62",
-  "Los Angeles Clippers":"#C8102E","Los Angeles Lakers":"#552583","Memphis Grizzlies":"#5D76A9",
-  "Miami Heat":"#98002E","Milwaukee Bucks":"#00471B","Minnesota Timberwolves":"#0C2340",
-  "New Orleans Pelicans":"#0C2340","New York Knicks":"#006BB6","Oklahoma City Thunder":"#007AC1",
-  "Orlando Magic":"#0077C0","Philadelphia 76ers":"#006BB6","Phoenix Suns":"#1D1160",
-  "Portland Trail Blazers":"#E03A3E","Sacramento Kings":"#5A2D81","San Antonio Spurs":"#C4CED4",
-  "Toronto Raptors":"#CE1141","Utah Jazz":"#002B5C","Washington Wizards":"#002B5C",
+  "Arizona Cardinals":"#97233F","Atlanta Falcons":"#A71930","Baltimore Ravens":"#241773",
+  "Buffalo Bills":"#00338D","Carolina Panthers":"#0085CA","Chicago Bears":"#0B162A",
+  "Cincinnati Bengals":"#FB4F14","Cleveland Browns":"#311D00","Dallas Cowboys":"#003594",
+  "Denver Broncos":"#FB4F14","Detroit Lions":"#0076B6","Green Bay Packers":"#203731",
+  "Houston Texans":"#03202F","Indianapolis Colts":"#002C5F","Jacksonville Jaguars":"#006778",
+  "Kansas City Chiefs":"#E31837","Las Vegas Raiders":"#000000","Los Angeles Chargers":"#0080C6",
+  "Los Angeles Rams":"#003594","Miami Dolphins":"#008E97","Minnesota Vikings":"#4F2683",
+  "New England Patriots":"#002244","New Orleans Saints":"#D3BC8D","New York Giants":"#0B2265",
+  "New York Jets":"#125740","Philadelphia Eagles":"#004C54","Pittsburgh Steelers":"#FFB612",
+  "San Francisco 49ers":"#AA0000","Seattle Seahawks":"#002244","Tampa Bay Buccaneers":"#D50A0A",
+  "Tennessee Titans":"#0C2340","Washington Commanders":"#5A1414",
   // Legacy names
-  "New Jersey Nets":"#002A60","Seattle SuperSonics":"#FFC200",
-  "Charlotte Bobcats":"#F26532","Vancouver Grizzlies":"#6B9DAA",
-  "New Orleans Hornets":"#00778B",
+  "Washington Redskins":"#773141","Washington Football Team":"#5A1414",
+  "Oakland Raiders":"#000000","San Diego Chargers":"#002A5E","St. Louis Rams":"#003594",
+  "St. Louis Cardinals":"#97233F","Houston Oilers":"#4F8FC0","New Jersey Nets":"#002A60",
+  "New Orleans Hornets":"#00778B","Charlotte Bobcats":"#F26532","Vancouver Grizzlies":"#6B9DAA",
+  "Seattle SuperSonics":"#FFC200",
 };
 
 // ── HELPERS ──────────────────────────────────────────────────────────────────
@@ -87,19 +90,19 @@ function TeamBadge({ team, revealed, index }) {
       display: "flex", flexDirection: "column", alignItems: "center",
       animation: revealed ? "popIn .35s cubic-bezier(.34,1.56,.64,1)" : "none",
     }}>
-      <div style={{ fontSize: 8, color: "#ffffff28", letterSpacing: 2, textTransform: "uppercase", marginBottom: 3 }}>
-        {index + 1}{index === 0 ? "st" : index === 1 ? "nd" : index === 2 ? "rd" : "th"}
+      <div style={{ fontSize: 9, color: "#ffffff60", letterSpacing: 2, textTransform: "uppercase", marginBottom: 3 }}>
+        {index + 1}{index === 0 ? "st" : index === 1 ? "nd" : index === 2 ? "rd" : "th"} Team
       </div>
       <div style={{
         background: revealed ? color + "25" : "#0a0a1a",
-        border: `2px solid ${revealed ? color : "#ffffff0a"}`,
+        border: `2px solid ${revealed ? color : "#ffffff18"}`,
         borderRadius: 10, padding: "10px 18px", minWidth: 100,
         textAlign: "center", transition: "all 0.3s",
       }}>
         {revealed ? (
           <span style={{ fontSize: 13, fontWeight: 700, color: "#f0f0f0", letterSpacing: 0.5 }}>{team}</span>
         ) : (
-          <span style={{ fontSize: 18, color: "#ffffff15" }}>?</span>
+          <span style={{ fontSize: 18, color: "#ffffff35" }}>?</span>
         )}
       </div>
     </div>
@@ -107,12 +110,12 @@ function TeamBadge({ team, revealed, index }) {
 }
 
 function ConnectorArrow() {
-  return <div style={{ fontSize: 16, color: "#ffffff15", padding: "0 6px" }}>→</div>;
+  return <div style={{ fontSize: 16, color: "#ffffff50", padding: "0 6px" }}>→</div>;
 }
 
 // ── MAIN GAME ────────────────────────────────────────────────────────────────
-export default function NBACareerPath() {
-  const [queue, setQueue] = useState(() => shuffleArray(NBA_CAREER_PATHS));
+export default function NFLCareerPath() {
+  const [queue, setQueue] = useState(() => shuffleArray(NFL_CAREER_PATHS));
   const [currentIndex, setCurrentIndex] = useState(0);
   const [revealed, setRevealed] = useState(1); // how many teams shown
   const [input, setInput] = useState("");
@@ -127,7 +130,7 @@ export default function NBACareerPath() {
   const [totalRounds, setTotalRounds] = useState(0);
   const [guessesUsed, setGuessesUsed] = useState(0);
   const inputRef = useRef(null);
-  const trackPlay = usePlayCount("nba-career-path");
+  const trackPlay = usePlayCount("nfl-career-path");
 
   const current = queue[currentIndex % queue.length];
   const totalTeams = current?.teams.length || 0;
@@ -148,6 +151,7 @@ export default function NBACareerPath() {
 
     if (matchesPlayer(val, current.name)) {
       setSolved(true);
+      setRevealed(totalTeams);
       const points = Math.max(1, maxPoints - revealed + 1);
       setScore(s => s + points);
       setStreak(s => { const n = s + 1; setBestStreak(b => Math.max(b, n)); return n; });
@@ -184,6 +188,12 @@ export default function NBACareerPath() {
     setTimeout(() => inputRef.current?.focus(), 50);
   }, []);
 
+  const handleReveal = useCallback(() => {
+    if (revealed < totalTeams) {
+      setRevealed(r => r + 1);
+    }
+  }, [revealed, totalTeams]);
+
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       if (solved || skipped) handleNext();
@@ -193,30 +203,22 @@ export default function NBACareerPath() {
 
   useEffect(() => { inputRef.current?.focus(); }, [currentIndex]);
 
-  // Auto-advance after correct answer
-  useEffect(() => {
-    if (solved) {
-      const timer = setTimeout(handleNext, 1200);
-      return () => clearTimeout(timer);
-    }
-  }, [solved, handleNext]);
-
   if (!current) return null;
 
   return (
     <div style={{
       minHeight: "100vh", background: "#07070f",
-      backgroundImage: "radial-gradient(ellipse at 30% 10%, #1a0f0a 0%, #07070f 55%), radial-gradient(ellipse at 70% 90%, #0a120f 0%, transparent 50%)",
+      backgroundImage: "radial-gradient(ellipse at 30% 10%, #0f0a1a 0%, #07070f 55%), radial-gradient(ellipse at 70% 90%, #0a120f 0%, transparent 50%)",
       color: "#f0f0f0", fontFamily: "'Oswald', sans-serif",
       display: "flex", flexDirection: "column", alignItems: "center",
       padding: "84px 16px 60px",
     }}>
       <Helmet>
-        <title>NBA Career Path – TrivialSports</title>
-        <meta name="description" content="Guess the NBA player from their career journey. Teams are revealed one at a time — can you name them with fewer clues?" />
-        <meta property="og:title" content="NBA Career Path – TrivialSports" />
-        <meta property="og:description" content="Guess the NBA player from their career journey." />
-        <meta property="og:url" content="https://trivialsports.com/games/nba-career-path" />
+        <title>NFL Career Path – TrivialSports</title>
+        <meta name="description" content="Guess the NFL player from their career journey. Teams are revealed one at a time — can you name them with fewer clues?" />
+        <meta property="og:title" content="NFL Career Path – TrivialSports" />
+        <meta property="og:description" content="Guess the NFL player from their career journey." />
+        <meta property="og:url" content="https://trivialsports.com/games/nfl-career-path" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://trivialsports.com/trivspo_banner.png" />
       </Helmet>
@@ -229,14 +231,14 @@ export default function NBACareerPath() {
 
       {/* Header */}
       <div style={{ textAlign: "center", marginBottom: 28 }}>
-        <div style={{ fontSize: 9, letterSpacing: 7, color: "#ffffff18", textTransform: "uppercase", marginBottom: 6 }}>NBA</div>
+        <div style={{ fontSize: 9, letterSpacing: 7, color: "#ffffff50", textTransform: "uppercase", marginBottom: 6 }}>NFL</div>
         <h1 style={{
           fontSize: "clamp(26px,5vw,42px)", fontWeight: 900, margin: 0, lineHeight: 1,
-          background: "linear-gradient(135deg,#e67e22,#f39c12,#e8c060)",
+          background: "linear-gradient(135deg,#e74c3c,#f39c12,#e8c060)",
           WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
           letterSpacing: -1,
         }}>Career Path</h1>
-        <p style={{ fontSize: 12, margin: "8px 0 0", letterSpacing: 1, textTransform: "uppercase", color: "#ffffff40" }}>
+        <p style={{ fontSize: 12, margin: "8px 0 0", letterSpacing: 1, textTransform: "uppercase", color: "#ffffff60" }}>
           Guess the player from their team history
         </p>
       </div>
@@ -249,27 +251,27 @@ export default function NBACareerPath() {
       }}>
         <div style={{ textAlign: "center" }}>
           <div style={{ fontSize: 28, fontWeight: 900, color: "#f39c12", lineHeight: 1 }}>{score}</div>
-          <div style={{ fontSize: 8, color: "#ffffff28", letterSpacing: 3, textTransform: "uppercase", marginTop: 2 }}>Score</div>
+          <div style={{ fontSize: 9, color: "#ffffff55", letterSpacing: 3, textTransform: "uppercase", marginTop: 2 }}>Score</div>
         </div>
         <div style={{ width: 1, height: 36, background: "#161632" }} />
         <div style={{ textAlign: "center" }}>
-          <div style={{ fontSize: 28, fontWeight: 900, color: streak > 0 ? "#22c55e" : "#ffffff28", lineHeight: 1 }}>{streak}</div>
-          <div style={{ fontSize: 8, color: "#ffffff28", letterSpacing: 3, textTransform: "uppercase", marginTop: 2 }}>Streak</div>
+          <div style={{ fontSize: 28, fontWeight: 900, color: streak > 0 ? "#22c55e" : "#ffffff40", lineHeight: 1 }}>{streak}</div>
+          <div style={{ fontSize: 9, color: "#ffffff55", letterSpacing: 3, textTransform: "uppercase", marginTop: 2 }}>Streak</div>
         </div>
         <div style={{ width: 1, height: 36, background: "#161632" }} />
         <div style={{ textAlign: "center" }}>
           <div style={{ fontSize: 28, fontWeight: 900, color: "#5bb8f5", lineHeight: 1 }}>{bestStreak}</div>
-          <div style={{ fontSize: 8, color: "#ffffff28", letterSpacing: 3, textTransform: "uppercase", marginTop: 2 }}>Best</div>
+          <div style={{ fontSize: 9, color: "#ffffff55", letterSpacing: 3, textTransform: "uppercase", marginTop: 2 }}>Best</div>
         </div>
         <div style={{ width: 1, height: 36, background: "#161632" }} />
         <div style={{ textAlign: "center" }}>
           <div style={{ fontSize: 28, fontWeight: 900, color: "#c8a050", lineHeight: 1 }}>{totalRounds}</div>
-          <div style={{ fontSize: 8, color: "#ffffff28", letterSpacing: 3, textTransform: "uppercase", marginTop: 2 }}>Played</div>
+          <div style={{ fontSize: 9, color: "#ffffff55", letterSpacing: 3, textTransform: "uppercase", marginTop: 2 }}>Played</div>
         </div>
       </div>
 
       {/* Round indicator */}
-      <div style={{ fontSize: 9, color: "#ffffff20", letterSpacing: 4, textTransform: "uppercase", marginBottom: 16 }}>
+      <div style={{ fontSize: 10, color: "#ffffff55", letterSpacing: 3, textTransform: "uppercase", marginBottom: 16 }}>
         Round {round} — {totalTeams} career stops — {revealed}/{totalTeams} revealed
       </div>
 
@@ -365,10 +367,18 @@ export default function NBACareerPath() {
               fontSize: 12, fontWeight: 900, color: "#5bb8f5",
               cursor: "pointer", letterSpacing: 2, textTransform: "uppercase",
             }}>Guess →</button>
+            <button onClick={handleReveal} disabled={revealed >= totalTeams} style={{
+              padding: "12px 16px", background: revealed >= totalTeams ? "transparent" : "linear-gradient(135deg,#3a2a0e,#4a350f)",
+              border: `1px solid ${revealed >= totalTeams ? "#ffffff10" : "#f39c1244"}`,
+              borderRadius: 10,
+              fontSize: 11, fontWeight: 700, color: revealed >= totalTeams ? "#ffffff20" : "#f39c12",
+              cursor: revealed >= totalTeams ? "default" : "pointer",
+              letterSpacing: 1, textTransform: "uppercase",
+            }}>Reveal Team</button>
             <button onClick={handleSkip} style={{
               padding: "12px 20px", background: "transparent",
-              border: "1px solid #ffffff18", borderRadius: 10,
-              fontSize: 11, fontWeight: 700, color: "#ffffff44",
+              border: "1px solid #ffffff30", borderRadius: 10,
+              fontSize: 11, fontWeight: 700, color: "#ffffff66",
               cursor: "pointer", letterSpacing: 2, textTransform: "uppercase",
             }}>Give Up</button>
           </div>
