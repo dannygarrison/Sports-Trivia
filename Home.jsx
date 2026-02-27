@@ -5,7 +5,9 @@ import { useState, useRef, useEffect } from "react"
 const SPORT_META = {
   ALL:     { label: "All",      accent: "#c8a050" },
   NFL:     { label: "NFL",      accent: "#e74c3c" },
+  CFB:     { label: "CFB",      accent: "#e74c3c" },
   NBA:     { label: "NBA",      accent: "#e67e22" },
+  NCAAB:   { label: "CBB",      accent: "#e67e22" },
   MLB:     { label: "MLB",      accent: "#3498db" },
   SOCCER:  { label: "Soccer",   accent: "#27ae60" },
   OLYMPICS:{ label: "Olympics", accent: "#9b59b6" },
@@ -50,6 +52,7 @@ const GAMES = [
     path: "/games/nfl-chain",
     title: "NFL Chain Game",
     sport: "NFL",
+    sports: ["NFL", "CFB"],
     description: "Link all 32 NFL teams through players and colleges. No repeats allowed.",
     tag: "CHAIN GAME",
     available: true,
@@ -201,6 +204,17 @@ const GAMES = [
     dateAdded: 17,
     plays: 0,
   },
+  {
+    id: "final-four-trivia",
+    path: "/games/final-four-trivia",
+    title: "Final Four Trivia",
+    sport: "NCAAB",
+    description: "Name all 4 Final Four teams for every NCAA Tournament since 1985. Teams auto-sort into Champion, Runner-Up, and Final Four.",
+    tag: "COMPLETE THE SET",
+    available: true,
+    dateAdded: 18,
+    plays: 0,
+  },
 ]
 
 function GameCard({ game, index, playCount }) {
@@ -306,7 +320,9 @@ export default function Home() {
 
   const SPORT_ALIASES = {
     NFL: ["football", "nfl", "american football"],
+    CFB: ["college football", "cfb", "ncaa football", "ncaaf"],
     NBA: ["basketball", "nba", "hoops"],
+    NCAAB: ["college basketball", "cbb", "ncaa basketball", "march madness", "ncaab", "final four"],
     MLB: ["baseball", "mlb"],
     SOCCER: ["soccer", "football", "futbol", "mls", "premier league", "epl"],
     OLYMPICS: ["olympics", "olympic"],
@@ -325,7 +341,7 @@ export default function Home() {
     return matchesSport && matchesSearch
   }))
 
-  const sports = ["NFL", "NBA", "MLB", "SOCCER", "OLYMPICS"]
+  const sports = ["NFL", "CFB", "NBA", "NCAAB", "MLB", "SOCCER", "OLYMPICS"]
   const groupedBySport = sports.map(sport => ({
     sport,
     games: filteredGames.filter(g => g.sport === sport || (g.sports && g.sports.includes(sport))),
