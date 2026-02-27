@@ -264,15 +264,14 @@ function TeamTracker({ usedTeams }) {
     <div style={{ display: "grid", gridTemplateColumns: `repeat(${cols}, 1fr)`, gap: isMobile ? 3 : 4, maxWidth: 760, width: "100%" }}>
       {NBA_TEAMS.map(team => {
         const used = usedTeams.has(team);
-        const color = TEAM_COLORS[team] || "#e67e22";
         return (
           <div key={team} title={team} style={{
             fontSize: isMobile ? 8 : 9, fontFamily: "'Oswald', sans-serif",
             fontWeight: 700, letterSpacing: 0.5,
             padding: isMobile ? "3px 2px" : "3px 7px", borderRadius: 4,
-            background: used ? "#0d2a18" : color + "15",
-            border: `1px solid ${used ? "#22c55e55" : color + "44"}`,
-            color: used ? "#22c55e" : color,
+            background: used ? "#0d2a18" : "#1a1408",
+            border: `1px solid ${used ? "#22c55e55" : "#7a5f1a55"}`,
+            color: used ? "#22c55e" : "#e8c060",
             transition: "all 0.3s", textTransform: "uppercase", textAlign: "center",
           }}>{TEAM_ABBR[team]}</div>
         );
