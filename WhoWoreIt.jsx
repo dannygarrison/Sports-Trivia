@@ -24,7 +24,7 @@ const JERSEY_DATA = [
   { number: 32, team: "Cleveland Browns", sport: "NFL", players: ["Jim Brown"], hints: ["Many consider him the GOAT running back"] },
   { number: 22, team: "Dallas Cowboys", sport: "NFL", players: ["Emmitt Smith"], hints: ["NFL's all-time leading rusher"] },
   { number: 8, team: "Dallas Cowboys", sport: "NFL", players: ["Troy Aikman"], hints: ["3x Super Bowl champion, Hall of Fame QB"] },
-  { number: 88, team: "Dallas Cowboys", sport: "NFL", players: ["Michael Irvin", "Dez Bryant", "CeeDee Lamb"], hints: ["The Playmaker wore it first"] },
+  { number: 88, team: "Dallas Cowboys", sport: "NFL", players: ["Michael Irvin"], hints: ["The Playmaker wore it first"] },
   { number: 21, team: "Dallas Cowboys", sport: "NFL", players: ["Deion Sanders"], hints: ["Prime Time, also played baseball"] },
   { number: 9, team: "New Orleans Saints", sport: "NFL", players: ["Drew Brees"], hints: ["Held passing yards record until 2021"] },
   { number: 85, team: "Cincinnati Bengals", sport: "NFL", players: ["Chad Johnson"], hints: ["Ochocinco"] },
@@ -37,10 +37,10 @@ const JERSEY_DATA = [
   { number: 52, team: "Baltimore Ravens", sport: "NFL", players: ["Ray Lewis"], hints: ["13x Pro Bowl linebacker"] },
   { number: 75, team: "Pittsburgh Steelers", sport: "NFL", players: ["Joe Greene"], hints: ["Mean Joe"] },
   { number: 43, team: "Pittsburgh Steelers", sport: "NFL", players: ["Troy Polamalu"], hints: ["Famous for his hair and ball-hawking"] },
-  { number: 26, team: "Pittsburgh Steelers", sport: "NFL", players: ["Rod Woodson", "Le'Veon Bell"], hints: ["Hall of Fame cornerback wore it first"] },
+  { number: 26, team: "Pittsburgh Steelers", sport: "NFL", players: ["Rod Woodson"], hints: ["Hall of Fame cornerback"] },
   { number: 58, team: "Denver Broncos", sport: "NFL", players: ["Von Miller"], hints: ["Super Bowl 50 MVP"] },
   { number: 19, team: "Baltimore Colts", sport: "NFL", players: ["Johnny Unitas"], hints: ["The Golden Arm, pioneered the modern QB"] },
-  { number: 32, team: "Buffalo Bills", sport: "NFL", players: ["O.J. Simpson"], hints: ["2,003 rushing yards in 14 games (1973)"] },
+
   { number: 34, team: "Houston Oilers", sport: "NFL", players: ["Earl Campbell"], hints: ["The Tyler Rose"] },
 
   { number: 28, team: "St. Louis Rams", sport: "NFL", players: ["Marshall Faulk"], hints: ["Greatest Show on Turf, 2000 MVP"] },
@@ -48,7 +48,7 @@ const JERSEY_DATA = [
   { number: 15, team: "Kansas City Chiefs", sport: "NFL", players: ["Patrick Mahomes"], hints: ["2x Super Bowl MVP"] },
   { number: 87, team: "Kansas City Chiefs", sport: "NFL", players: ["Travis Kelce"], hints: ["All-time great tight end"] },
   { number: 13, team: "Miami Dolphins", sport: "NFL", players: ["Dan Marino"], hints: ["First QB to throw 5,000 yards in a season"] },
-  { number: 12, team: "Miami Dolphins", sport: "NFL", players: ["Bob Griese"], hints: ["Led the 1972 perfect season"] },
+
   { number: 12, team: "Pittsburgh Steelers", sport: "NFL", players: ["Terry Bradshaw"], hints: ["4x Super Bowl champion"] },
   { number: 16, team: "Kansas City Chiefs", sport: "NFL", players: ["Len Dawson"], hints: ["Super Bowl IV MVP"] },
   { number: 12, team: "New York Jets", sport: "NFL", players: ["Joe Namath"], hints: ["Guaranteed a Super Bowl III win"] },
@@ -60,7 +60,7 @@ const JERSEY_DATA = [
   { number: 55, team: "San Diego Chargers", sport: "NFL", players: ["Junior Seau"], hints: ["12x Pro Bowl, tragic ending"] },
   { number: 94, team: "Dallas Cowboys", sport: "NFL", players: ["DeMarcus Ware"], hints: ["2nd all-time in Cowboys sack history"] },
   { number: 54, team: "Chicago Bears", sport: "NFL", players: ["Brian Urlacher"], hints: ["8x Pro Bowl, anchor of the 2006 Bears"] },
-  { number: 24, team: "Green Bay Packers", sport: "NFL", players: ["Charles Woodson"], hints: ["Heisman winner, 2009 DPOY, Super Bowl XLV champion"] },
+
   { number: 5, team: "Green Bay Packers", sport: "NFL", players: ["Paul Hornung"], hints: ["The Golden Boy, 1956 Heisman winner"] },
   { number: 99, team: "Houston Texans", sport: "NFL", players: ["J.J. Watt"], hints: ["3x DPOY, dominated the 2010s"] },
   { number: 29, team: "Los Angeles Rams", sport: "NFL", players: ["Eric Dickerson"], hints: ["Single-season rushing record, 2,105 yards in 1984"] },
@@ -76,7 +76,7 @@ const JERSEY_DATA = [
   { number: 8, team: "Baltimore Ravens", sport: "NFL", players: ["Lamar Jackson"], hints: ["2x MVP, revolutionized QB running"] },
   { number: 86, team: "Pittsburgh Steelers", sport: "NFL", players: ["Hines Ward"], hints: ["Super Bowl XL MVP, always smiling"] },
   { number: 80, team: "Denver Broncos", sport: "NFL", players: ["Rod Smith"], hints: ["Undrafted, all-time Broncos receiving leader"] },
-  { number: 24, team: "Oakland Raiders", sport: "NFL", players: ["Charles Woodson", "Willie Brown"], hints: ["Two Hall of Fame DBs in silver and black"] },
+
   { number: 89, team: "Chicago Bears", sport: "NFL", players: ["Mike Ditka"], hints: ["Iron Mike, won a title as player and coach here"] },
   { number: 25, team: "Seattle Seahawks", sport: "NFL", players: ["Richard Sherman"], hints: ["Best corner you've seen, tip in the NFC Championship"] },
   { number: 31, team: "Dallas Cowboys", sport: "NFL", players: ["Roy Williams"], hints: ["5x Pro Bowl safety in the early 2000s"] },
@@ -96,7 +96,7 @@ const JERSEY_DATA = [
   { number: 3, team: "Philadelphia 76ers", sport: "NBA", players: ["Allen Iverson"], hints: ["The Answer, pound for pound toughest"] },
   { number: 15, team: "Toronto Raptors", sport: "NBA", players: ["Vince Carter"], hints: ["Greatest dunker ever, 2000 Dunk Contest"] },
   { number: 21, team: "Minnesota Timberwolves", sport: "NBA", players: ["Kevin Garnett"], hints: ["The Big Ticket, 2004 MVP"] },
-  { number: 1, team: "Orlando Magic", sport: "NBA", players: ["Penny Hardaway", "Tracy McGrady"], hints: ["Two superstars in succession"] },
+  { number: 1, team: "Orlando Magic", sport: "NBA", players: ["Penny Hardaway"], hints: ["Lil Penny, dynamic duo with Shaq in the 90s"] },
   { number: 34, team: "Houston Rockets", sport: "NBA", players: ["Hakeem Olajuwon"], hints: ["The Dream, back-to-back titles"] },
   { number: 12, team: "Utah Jazz", sport: "NBA", players: ["John Stockton"], hints: ["All-time assists and steals leader"] },
   { number: 32, team: "Utah Jazz", sport: "NBA", players: ["Karl Malone"], hints: ["The Mailman, 2x MVP"] },
@@ -115,7 +115,7 @@ const JERSEY_DATA = [
   { number: 1, team: "Chicago Bulls", sport: "NBA", players: ["Derrick Rose"], hints: ["Youngest MVP ever at age 22"] },
   { number: 50, team: "San Antonio Spurs", sport: "NBA", players: ["David Robinson"], hints: ["The Admiral, 1995 MVP"] },
   { number: 55, team: "Denver Nuggets", sport: "NBA", players: ["Dikembe Mutombo"], hints: ["Finger-wagging shot blocker"] },
-  { number: 4, team: "Detroit Pistons", sport: "NBA", players: ["Joe Dumars"], hints: ["Bad Boys guard, 1989 Finals MVP"] },
+
   { number: 11, team: "Detroit Pistons", sport: "NBA", players: ["Isiah Thomas"], hints: ["Zeke, led the Bad Boys to back-to-back titles"] },
   { number: 10, team: "Detroit Pistons", sport: "NBA", players: ["Dennis Rodman"], hints: ["Wore this before switching to 91 in Chicago"] },
 
@@ -149,6 +149,7 @@ function shuffle(arr) {
 function normalize(s) {
   return s.toLowerCase().trim()
     .replace(/[''`\.]/g, "")
+    .replace(/-/g, " ")
     .replace(/\s+/g, " ");
 }
 
@@ -162,6 +163,11 @@ function matchesAnyPlayer(input, players) {
     const parts = np.split(" ");
     const last = parts[parts.length - 1];
     if (last.length > 3 && last === ni) return player;
+    // Multi-word last name (e.g. "abdul jabbar" matches "kareem abdul jabbar")
+    if (parts.length > 2 && ni.includes(" ")) {
+      const tail = parts.slice(1).join(" ");
+      if (tail === ni) return player;
+    }
   }
   return null;
 }
