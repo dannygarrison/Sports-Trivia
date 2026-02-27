@@ -52,6 +52,12 @@ function matchesPlayer(guess, playerName) {
   const p = normalize(playerName);
   const stripSuffix = s => s.replace(/\b(jr|sr|ii|iii|iv)\b/g, "").replace(/\s+/g, " ").trim();
   if (g === p || stripSuffix(g) === stripSuffix(p)) return true;
+  // Last name only matching
+  const pParts = stripSuffix(p).split(" ");
+  if (pParts.length >= 2) {
+    const pLast = pParts.slice(1).join(" ");
+    if (stripSuffix(g) === pLast) return true;
+  }
   // Nickname matching
   const gParts = stripSuffix(g).split(" ");
   if (gParts.length >= 2) {
