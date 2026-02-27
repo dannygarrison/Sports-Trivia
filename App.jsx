@@ -17,6 +17,9 @@ const NFLMockDraft = lazy(() => import("./NFLMockDraft.jsx"))
 const WhoHasMore = lazy(() => import("./WhoHasMore.jsx"))
 const DraftClassQuiz = lazy(() => import("./DraftClassQuiz.jsx"))
 const WhoWoreIt = lazy(() => import("./WhoWoreIt.jsx"))
+const NBAChain = lazy(() => import("./NBAChain.jsx"))
+const NFLCareerPath = lazy(() => import("./NFLCareerPath.jsx"))
+const NBACareerPath = lazy(() => import("./NBACareerPath.jsx"))
 
 export default function App() {
   return (
@@ -54,6 +57,9 @@ export default function App() {
           <Route path="/games/who-has-more" element={<WhoHasMore />} />
           <Route path="/games/draft-class-quiz" element={<DraftClassQuiz />} />
           <Route path="/games/who-wore-it" element={<WhoWoreIt />} />
+          <Route path="/games/nba-chain" element={<NBAChain />} />
+          <Route path="/games/nfl-career-path" element={<NFLCareerPath />} />
+          <Route path="/games/nba-career-path" element={<NBACareerPath />} />
         </Routes>
       </Suspense>
     </div>
