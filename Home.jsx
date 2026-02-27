@@ -48,7 +48,7 @@ const GAMES = [
   {
     id: "nfl-chain",
     path: "/games/nfl-chain",
-    title: "Complete The Chain",
+    title: "NFL Chain Game",
     sport: "NFL",
     description: "Link all 32 NFL teams through players and colleges. No repeats allowed.",
     tag: "CHAIN GAME",
@@ -171,7 +171,7 @@ const GAMES = [
   {
     id: "nba-chain",
     path: "/games/nba-chain",
-    title: "NBA Chain",
+    title: "NBA Chain Game",
     sport: "NBA",
     description: "Link all 30 NBA teams through shared players. No repeats. Can you go for the double chain?",
     tag: "CHAIN GAME",
