@@ -196,6 +196,14 @@ export default function NFLCareerPath() {
 
   useEffect(() => { inputRef.current?.focus(); }, [currentIndex]);
 
+  // Auto-advance after correct answer
+  useEffect(() => {
+    if (solved) {
+      const timer = setTimeout(handleNext, 1200);
+      return () => clearTimeout(timer);
+    }
+  }, [solved, handleNext]);
+
   if (!current) return null;
 
   return (
