@@ -20,6 +20,7 @@ const WhoWoreIt = lazy(() => import("./WhoWoreIt.jsx"))
 const NBAChain = lazy(() => import("./NBAChain.jsx"))
 const NFLCareerPath = lazy(() => import("./NFLCareerPath.jsx"))
 const NBACareerPath = lazy(() => import("./NBACareerPath.jsx"))
+const FinalFourTrivia = lazy(() => import("./FinalFourTrivia.jsx"))
 
 export default function App() {
   return (
@@ -60,6 +61,7 @@ export default function App() {
           <Route path="/games/nba-chain" element={<NBAChain />} />
           <Route path="/games/nfl-career-path" element={<NFLCareerPath />} />
           <Route path="/games/nba-career-path" element={<NBACareerPath />} />
+          <Route path="/games/final-four-trivia" element={<FinalFourTrivia />} />
         </Routes>
       </Suspense>
     </div>
