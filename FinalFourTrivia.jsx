@@ -1,9 +1,7 @@
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { usePlayCount } from "./usePlayCount.jsx";
 
-// year: tournament year, champion, runnerUp, ff1/ff2: other two semifinalists
-// 2020 excluded (cancelled due to COVID-19)
 const FINAL_FOURS = [
   { year: 2025, champion: "Florida", runnerUp: "Houston", ff1: "Auburn", ff2: "Duke" },
   { year: 2024, champion: "UConn", runnerUp: "Purdue", ff1: "NC State", ff2: "Alabama" },
@@ -216,45 +214,16 @@ function matchesTeam(input, teamName) {
 }
 
 const FIELDS = ["champion", "runnerUp", "ff1", "ff2"];
-const COL_HEADERS = ["Year", "", "Champion", "Runner-Up", "Final Four", "Final Four"];
 
-function FinalFourRow({ ff, rowSolved, onSolve, gaveUp, index }) {
-  const [input, setInput] = useState("");
-  const [flash, setFlash] = useState(null);
-  const inputRef = useRef(null);
-  const trackPlay = usePlayCount("final-four-trivia");
-
+function FinalFourRow({ ff, rowSolved, flashFields, index, gaveUp }) {
   const allDone = rowSolved.size === 4;
-
-  const handleInput = (val) => {
-    trackPlay();
-    setInput(val);
-
-    for (const field of FIELDS) {
-      if (rowSolved.has(field)) continue;
-      const teamName = ff[field];
-      if (matchesTeam(val, teamName)) {
-        onSolve(ff.year, field);
-        setInput("");
-        setFlash(field);
-        setTimeout(() => setFlash(null), 700);
-        const remaining = FIELDS.filter(f => f !== field && !rowSolved.has(f));
-        if (remaining.length > 0 && inputRef.current) {
-          setTimeout(() => inputRef.current?.focus(), 50);
-        }
-        return;
-      }
-    }
-  };
-
   const progress = rowSolved.size / 4;
   const isEven = index % 2 === 0;
-  const showInput = !allDone && !gaveUp;
 
   return (
     <div style={{
       display: "grid",
-      gridTemplateColumns: "56px minmax(90px,140px) 1fr 1fr 1fr 1fr",
+      gridTemplateColumns: "56px 1fr 1fr 1fr 1fr",
       gap: 0,
       borderBottom: "1px solid #ffffff07",
       background: allDone ? "#0a1200" : isEven ? "#09090f" : "#07070d",
@@ -279,39 +248,10 @@ function FinalFourRow({ ff, rowSolved, onSolve, gaveUp, index }) {
         </div>
       </div>
 
-      {/* Input field column */}
-      <div style={{
-        padding: "8px 8px",
-        display: "flex", alignItems: "center",
-        borderRight: "1px solid #ffffff07",
-      }}>
-        {showInput ? (
-          <input
-            ref={inputRef}
-            value={input}
-            onChange={e => handleInput(e.target.value)}
-            placeholder={`${4 - rowSolved.size} left…`}
-            style={{
-              background: "transparent", border: "none",
-              borderBottom: "1px solid #ffffff12",
-              color: "#ffffff", fontSize: 12,
-              fontFamily: "'Oswald', sans-serif",
-              fontWeight: 600, letterSpacing: 0.3,
-              padding: "4px 0", outline: "none", width: "100%",
-              transition: "border-color 0.15s",
-            }}
-            onFocus={e => e.target.style.borderColor = "#c8a05088"}
-            onBlur={e => e.target.style.borderColor = "#ffffff12"}
-          />
-        ) : allDone ? (
-          <div style={{ fontSize: 10, color: "#c8a050", fontFamily: "'Oswald', sans-serif", letterSpacing: 1, fontWeight: 700 }}>✓ DONE</div>
-        ) : null}
-      </div>
-
       {/* Team slots */}
       {FIELDS.map((field, fi) => {
         const isSolved = rowSolved.has(field);
-        const isFlashing = flash === field;
+        const isFlashing = flashFields.has(`${ff.year}-${field}`);
         const reveal = gaveUp && !isSolved;
         const value = ff[field];
         const isChamp = field === "champion";
@@ -322,12 +262,12 @@ function FinalFourRow({ ff, rowSolved, onSolve, gaveUp, index }) {
             padding: "8px 8px",
             borderRight: fi < 3 ? "1px solid #ffffff07" : "none",
             display: "flex", flexDirection: "column", justifyContent: "center",
-            background: isFlashing ? (isChamp ? "#c8a05018" : "#ffffff08") : reveal ? "#e74c3c08" : "transparent",
+            background: isFlashing ? (isChamp ? "#c8a05022" : "#ffffff0c") : reveal ? "#e74c3c08" : "transparent",
             transition: "background 0.3s",
             minHeight: 44,
           }}>
             {isSolved || reveal ? (
-              <div style={{ animation: isSolved && isFlashing ? "popIn 0.35s ease both" : "none" }}>
+              <div style={{ animation: isFlashing ? "popIn 0.35s ease both" : "none" }}>
                 <div style={{
                   fontSize: 12, fontWeight: 700,
                   color: isSolved ? (isChamp ? "#c8a050" : isRunner ? "#e8e8f0" : "#ffffffbb") : "#e74c3c88",
@@ -338,9 +278,7 @@ function FinalFourRow({ ff, rowSolved, onSolve, gaveUp, index }) {
                 </div>
               </div>
             ) : (
-              <div style={{
-                height: 16, borderBottom: "1px dashed #ffffff08",
-              }} />
+              <div style={{ height: 16, borderBottom: "1px dashed #ffffff08" }} />
             )}
           </div>
         );
@@ -350,39 +288,77 @@ function FinalFourRow({ ff, rowSolved, onSolve, gaveUp, index }) {
 }
 
 export default function FinalFourTrivia() {
-  const [solved, setSolved] = useState({});
+  const [solved, setSolved] = useState({});     // { year: Set(["champion","ff1",...]) }
+  const [flashFields, setFlashFields] = useState(new Set()); // "year-field" keys
   const [showGiveUpConfirm, setShowGiveUpConfirm] = useState(false);
   const [gaveUp, setGaveUp] = useState(false);
   const [finished, setFinished] = useState(false);
   const [startTime] = useState(Date.now());
   const [elapsed, setElapsed] = useState(0);
   const [timerActive, setTimerActive] = useState(true);
+  const [input, setInput] = useState("");
+  const [lastMatch, setLastMatch] = useState(null); // { name, count }
+  const inputRef = useRef(null);
+  const trackPlay = usePlayCount("final-four-trivia");
 
   const totalFields = FINAL_FOURS.length * 4;
   const totalSolved = Object.values(solved).reduce((s, v) => s + v.size, 0);
   const rowsCompleted = Object.values(solved).filter(s => s.size === 4).length;
 
-  useState(() => {
+  useEffect(() => {
     const iv = setInterval(() => {
       if (timerActive) setElapsed(Math.floor((Date.now() - startTime) / 1000));
     }, 1000);
     return () => clearInterval(iv);
-  });
+  }, [timerActive, startTime]);
 
   const formatTime = s => `${Math.floor(s / 60)}:${(s % 60).toString().padStart(2, "0")}`;
 
-  const handleSolve = useCallback((year, field) => {
-    setSolved(prev => {
-      const next = { ...prev, [year]: new Set(prev[year] || []) };
-      next[year].add(field);
-      const newTotal = Object.values(next).reduce((s, v) => s + v.size, 0);
-      if (newTotal === totalFields) {
-        setTimerActive(false);
-        setFinished(true);
+  const handleInput = useCallback((val) => {
+    trackPlay();
+    setInput(val);
+
+    // Check every unsolved cell in the entire grid
+    const newSolves = []; // [{year, field}]
+    for (const ff of FINAL_FOURS) {
+      const rowSolved = solved[ff.year] || new Set();
+      for (const field of FIELDS) {
+        if (rowSolved.has(field)) continue;
+        if (matchesTeam(val, ff[field])) {
+          newSolves.push({ year: ff.year, field });
+        }
       }
-      return next;
-    });
-  }, [totalFields]);
+    }
+
+    if (newSolves.length > 0) {
+      // Find display name from first match
+      const firstFF = FINAL_FOURS.find(f => f.year === newSolves[0].year);
+      const displayName = firstFF[newSolves[0].field];
+
+      setSolved(prev => {
+        const next = { ...prev };
+        for (const { year, field } of newSolves) {
+          next[year] = new Set(next[year] || []);
+          next[year].add(field);
+        }
+        const newTotal = Object.values(next).reduce((s, v) => s + v.size, 0);
+        if (newTotal === totalFields) {
+          setTimerActive(false);
+          setFinished(true);
+        }
+        return next;
+      });
+
+      // Flash
+      const flashKeys = new Set(newSolves.map(s => `${s.year}-${s.field}`));
+      setFlashFields(flashKeys);
+      setTimeout(() => setFlashFields(new Set()), 800);
+
+      setLastMatch({ name: displayName, count: newSolves.length });
+      setInput("");
+      setTimeout(() => inputRef.current?.focus(), 30);
+    }
+  }, [solved, totalFields, trackPlay]);
 
   const handleGiveUp = () => {
     setGaveUp(true);
@@ -412,6 +388,7 @@ export default function FinalFourTrivia() {
       <style>{`
         @keyframes fadeUp { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:translateY(0); } }
         @keyframes popIn  { 0% { transform:scale(0.85); opacity:0; } 60% { transform:scale(1.04); } 100% { transform:scale(1); opacity:1; } }
+        @keyframes matchPulse { 0% { opacity:1; transform:translateY(0); } 100% { opacity:0; transform:translateY(-8px); } }
         input::placeholder { color: #ffffff30; }
         input:focus { outline: none !important; }
         ::-webkit-scrollbar { width: 4px; }
@@ -419,7 +396,7 @@ export default function FinalFourTrivia() {
       `}</style>
 
       {/* Header */}
-      <div style={{ maxWidth: 1020, margin: "0 auto 24px", animation: "fadeUp 0.4s ease both" }}>
+      <div style={{ maxWidth: 960, margin: "0 auto 20px", animation: "fadeUp 0.4s ease both" }}>
         <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
           <div>
             <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: 4, textTransform: "uppercase", color: "#e67e22", marginBottom: 6 }}>
@@ -477,12 +454,51 @@ export default function FinalFourTrivia() {
             borderRadius: 2, transition: "width 0.3s ease",
           }} />
         </div>
+
+        {/* Global input */}
+        {!finished && !gaveUp && (
+          <div style={{ marginTop: 16, position: "relative" }}>
+            <div style={{
+              display: "flex", alignItems: "center", gap: 10,
+              background: "#0c0c1e", border: "1px solid #c8a05044",
+              borderRadius: 12, padding: "12px 18px",
+              boxShadow: "0 0 0 2px #c8a05010",
+            }}>
+              <span style={{ fontSize: 16, color: "#c8a05088" }}>🏀</span>
+              <input
+                ref={inputRef}
+                value={input}
+                onChange={e => handleInput(e.target.value)}
+                placeholder="Type a school name…"
+                autoFocus
+                style={{
+                  background: "transparent", border: "none",
+                  color: "#ffffff", fontSize: 16,
+                  fontFamily: "'Oswald', sans-serif",
+                  fontWeight: 600, letterSpacing: 1,
+                  width: "100%", outline: "none",
+                }}
+              />
+              {lastMatch && (
+                <div key={lastMatch.name + lastMatch.count + totalSolved} style={{
+                  position: "absolute", right: 18, top: -6,
+                  fontSize: 11, fontWeight: 800, color: "#c8a050",
+                  fontFamily: "'Oswald', sans-serif", letterSpacing: 1,
+                  animation: "matchPulse 1.2s ease forwards",
+                  pointerEvents: "none", whiteSpace: "nowrap",
+                }}>
+                  {lastMatch.name} ×{lastMatch.count}
+                </div>
+              )}
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Finished / gave up banner */}
       {(finished || gaveUp) && (
         <div style={{
-          maxWidth: 1020, margin: "0 auto 20px",
+          maxWidth: 960, margin: "0 auto 20px",
           background: gaveUp ? "linear-gradient(135deg,#1a0808,#2a1010)" : "linear-gradient(135deg,#0f0d00,#1a1500)",
           border: `1px solid ${gaveUp ? "#e74c3c33" : "#c8a05044"}`,
           borderRadius: 14, padding: "16px 24px", textAlign: "center",
@@ -499,23 +515,23 @@ export default function FinalFourTrivia() {
 
       {/* Table */}
       <div style={{
-        maxWidth: 1020, margin: "0 auto",
+        maxWidth: 960, margin: "0 auto",
         border: "1px solid #ffffff0a", borderRadius: 12, overflow: "hidden",
         animation: "fadeUp 0.5s ease both", animationDelay: "0.1s",
       }}>
         {/* Column headers */}
         <div style={{
-          display: "grid", gridTemplateColumns: "56px minmax(90px,140px) 1fr 1fr 1fr 1fr",
+          display: "grid", gridTemplateColumns: "56px 1fr 1fr 1fr 1fr",
           background: "#0d0d1e", borderBottom: "1px solid #ffffff12",
         }}>
-          {COL_HEADERS.map((h, i) => (
+          {["Year", "🏆 Champion", "Runner-Up", "Final Four", "Final Four"].map((h, i) => (
             <div key={h + i} style={{
               padding: "10px 8px",
               fontSize: 9, fontWeight: 800, letterSpacing: 2.5,
               textTransform: "uppercase",
-              color: i === 2 ? "#c8a050" : i === 3 ? "#a8a8c8" : "#ffffff40",
+              color: i === 1 ? "#c8a050" : i === 2 ? "#a8a8c8" : "#ffffff40",
               fontFamily: "'Oswald', sans-serif",
-              borderRight: i < 5 ? "1px solid #ffffff07" : "none",
+              borderRight: i < 4 ? "1px solid #ffffff07" : "none",
               textAlign: i === 0 ? "center" : "left",
             }}>{h}</div>
           ))}
@@ -527,13 +543,13 @@ export default function FinalFourTrivia() {
             ff={ff}
             index={i}
             rowSolved={solved[ff.year] || new Set()}
-            onSolve={handleSolve}
+            flashFields={flashFields}
             gaveUp={gaveUp}
           />
         ))}
       </div>
 
-      <div style={{ maxWidth: 1020, margin: "16px auto 0", textAlign: "center" }}>
+      <div style={{ maxWidth: 960, margin: "16px auto 0", textAlign: "center" }}>
         <div style={{ fontSize: 10, color: "#c8a05044", letterSpacing: 2, textTransform: "uppercase" }}>
           School names, nicknames & abbreviations accepted · 2020 excluded (cancelled)
         </div>
