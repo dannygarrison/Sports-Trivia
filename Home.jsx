@@ -209,7 +209,7 @@ const GAMES = [
     path: "/games/final-four-trivia",
     title: "Final Four Trivia",
     sport: "NCAAB",
-    description: "Name all 4 Final Four teams for every NCAA Tournament since 1985. Teams auto-sort into Champion, Runner-Up, and Final Four.",
+    description: "Name all the Final Four teams by year.",
     tag: "COMPLETE THE SET",
     available: true,
     dateAdded: 18,
