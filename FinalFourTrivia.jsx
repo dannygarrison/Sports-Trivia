@@ -3,13 +3,13 @@ import { Helmet } from "react-helmet-async";
 import { usePlayCount } from "./usePlayCount.jsx";
 
 // year: tournament year, champion, runnerUp, ff1/ff2: other two semifinalists
+// 2020 excluded (cancelled due to COVID-19)
 const FINAL_FOURS = [
   { year: 2025, champion: "Florida", runnerUp: "Houston", ff1: "Auburn", ff2: "Duke" },
   { year: 2024, champion: "UConn", runnerUp: "Purdue", ff1: "NC State", ff2: "Alabama" },
   { year: 2023, champion: "UConn", runnerUp: "San Diego State", ff1: "FAU", ff2: "Miami" },
   { year: 2022, champion: "Kansas", runnerUp: "North Carolina", ff1: "Duke", ff2: "Villanova" },
   { year: 2021, champion: "Baylor", runnerUp: "Gonzaga", ff1: "Houston", ff2: "UCLA" },
-  // 2020 cancelled (COVID-19)
   { year: 2019, champion: "Virginia", runnerUp: "Texas Tech", ff1: "Michigan State", ff2: "Auburn" },
   { year: 2018, champion: "Villanova", runnerUp: "Michigan", ff1: "Kansas", ff2: "Loyola Chicago" },
   { year: 2017, champion: "North Carolina", runnerUp: "Gonzaga", ff1: "Oregon", ff2: "South Carolina" },
@@ -45,6 +45,52 @@ const FINAL_FOURS = [
   { year: 1987, champion: "Indiana", runnerUp: "Syracuse", ff1: "UNLV", ff2: "Providence" },
   { year: 1986, champion: "Louisville", runnerUp: "Duke", ff1: "Kansas", ff2: "LSU" },
   { year: 1985, champion: "Villanova", runnerUp: "Georgetown", ff1: "St. John's", ff2: "Memphis State" },
+  { year: 1984, champion: "Georgetown", runnerUp: "Houston", ff1: "Kentucky", ff2: "Virginia" },
+  { year: 1983, champion: "NC State", runnerUp: "Houston", ff1: "Georgia", ff2: "Louisville" },
+  { year: 1982, champion: "North Carolina", runnerUp: "Georgetown", ff1: "Houston", ff2: "Louisville" },
+  { year: 1981, champion: "Indiana", runnerUp: "North Carolina", ff1: "Virginia", ff2: "LSU" },
+  { year: 1980, champion: "Louisville", runnerUp: "UCLA", ff1: "Purdue", ff2: "Iowa" },
+  { year: 1979, champion: "Michigan State", runnerUp: "Indiana State", ff1: "DePaul", ff2: "Penn" },
+  { year: 1978, champion: "Kentucky", runnerUp: "Duke", ff1: "Arkansas", ff2: "Notre Dame" },
+  { year: 1977, champion: "Marquette", runnerUp: "North Carolina", ff1: "UNLV", ff2: "UNC Charlotte" },
+  { year: 1976, champion: "Indiana", runnerUp: "Michigan", ff1: "UCLA", ff2: "Rutgers" },
+  { year: 1975, champion: "UCLA", runnerUp: "Kentucky", ff1: "Louisville", ff2: "Syracuse" },
+  { year: 1974, champion: "NC State", runnerUp: "Marquette", ff1: "UCLA", ff2: "Kansas" },
+  { year: 1973, champion: "UCLA", runnerUp: "Memphis State", ff1: "Indiana", ff2: "Providence" },
+  { year: 1972, champion: "UCLA", runnerUp: "Florida State", ff1: "North Carolina", ff2: "Louisville" },
+  { year: 1971, champion: "UCLA", runnerUp: "Villanova", ff1: "Western Kentucky", ff2: "Kansas" },
+  { year: 1970, champion: "UCLA", runnerUp: "Jacksonville", ff1: "New Mexico State", ff2: "St. Bonaventure" },
+  { year: 1969, champion: "UCLA", runnerUp: "Purdue", ff1: "Drake", ff2: "North Carolina" },
+  { year: 1968, champion: "UCLA", runnerUp: "North Carolina", ff1: "Ohio State", ff2: "Houston" },
+  { year: 1967, champion: "UCLA", runnerUp: "Dayton", ff1: "Houston", ff2: "North Carolina" },
+  { year: 1966, champion: "Texas Western", runnerUp: "Kentucky", ff1: "Duke", ff2: "Utah" },
+  { year: 1965, champion: "UCLA", runnerUp: "Michigan", ff1: "Princeton", ff2: "Wichita State" },
+  { year: 1964, champion: "UCLA", runnerUp: "Duke", ff1: "Michigan", ff2: "Kansas State" },
+  { year: 1963, champion: "Loyola Chicago", runnerUp: "Cincinnati", ff1: "Duke", ff2: "Oregon State" },
+  { year: 1962, champion: "Cincinnati", runnerUp: "Ohio State", ff1: "Wake Forest", ff2: "UCLA" },
+  { year: 1961, champion: "Cincinnati", runnerUp: "Ohio State", ff1: "St. Joseph's", ff2: "Utah" },
+  { year: 1960, champion: "Ohio State", runnerUp: "California", ff1: "Cincinnati", ff2: "NYU" },
+  { year: 1959, champion: "California", runnerUp: "West Virginia", ff1: "Cincinnati", ff2: "Louisville" },
+  { year: 1958, champion: "Kentucky", runnerUp: "Seattle", ff1: "Temple", ff2: "Kansas State" },
+  { year: 1957, champion: "North Carolina", runnerUp: "Kansas", ff1: "San Francisco", ff2: "Michigan State" },
+  { year: 1956, champion: "San Francisco", runnerUp: "Iowa", ff1: "Temple", ff2: "SMU" },
+  { year: 1955, champion: "San Francisco", runnerUp: "La Salle", ff1: "Colorado", ff2: "Iowa" },
+  { year: 1954, champion: "La Salle", runnerUp: "Bradley", ff1: "Penn State", ff2: "USC" },
+  { year: 1953, champion: "Indiana", runnerUp: "Kansas", ff1: "Washington", ff2: "LSU" },
+  { year: 1952, champion: "Kansas", runnerUp: "St. John's", ff1: "Illinois", ff2: "Santa Clara" },
+  { year: 1951, champion: "Kentucky", runnerUp: "Kansas State", ff1: "Illinois", ff2: "Oklahoma State" },
+  { year: 1950, champion: "CCNY", runnerUp: "Bradley", ff1: "NC State", ff2: "Baylor" },
+  { year: 1949, champion: "Kentucky", runnerUp: "Oklahoma State", ff1: "Illinois", ff2: "Oregon State" },
+  { year: 1948, champion: "Kentucky", runnerUp: "Baylor", ff1: "Holy Cross", ff2: "Kansas State" },
+  { year: 1947, champion: "Holy Cross", runnerUp: "Oklahoma", ff1: "Texas", ff2: "CCNY" },
+  { year: 1946, champion: "Oklahoma State", runnerUp: "North Carolina", ff1: "Ohio State", ff2: "California" },
+  { year: 1945, champion: "Oklahoma State", runnerUp: "NYU", ff1: "Arkansas", ff2: "Ohio State" },
+  { year: 1944, champion: "Utah", runnerUp: "Dartmouth", ff1: "Iowa State", ff2: "Ohio State" },
+  { year: 1943, champion: "Wyoming", runnerUp: "Georgetown", ff1: "Texas", ff2: "DePaul" },
+  { year: 1942, champion: "Stanford", runnerUp: "Dartmouth", ff1: "Colorado", ff2: "Kentucky" },
+  { year: 1941, champion: "Wisconsin", runnerUp: "Washington State", ff1: "Pittsburgh", ff2: "Arkansas" },
+  { year: 1940, champion: "Indiana", runnerUp: "Kansas", ff1: "Duquesne", ff2: "USC" },
+  { year: 1939, champion: "Oregon", runnerUp: "Ohio State", ff1: "Oklahoma", ff2: "Villanova" },
 ];
 
 const TEAM_ALIASES = {
@@ -69,7 +115,7 @@ const TEAM_ALIASES = {
   "texas tech":         ["red raiders", "ttu"],
   "michigan state":     ["msu", "spartans", "mich state", "mich st"],
   "michigan":           ["wolverines", "umich"],
-  "loyola chicago":     ["loyola", "ramblers", "loyola-chicago"],
+  "loyola chicago":     ["loyola", "ramblers", "loyola-chicago", "loyola il"],
   "oregon":             ["ducks", "uo"],
   "south carolina":     ["gamecocks", "s carolina"],
   "oklahoma":           ["sooners", "ou"],
@@ -78,17 +124,18 @@ const TEAM_ALIASES = {
   "kentucky":           ["wildcats", "uk"],
   "louisville":         ["cardinals", "cards", "u of l"],
   "wichita state":      ["shockers", "wichita st", "wichita"],
-  "ohio state":         ["buckeyes", "osu"],
+  "ohio state":         ["buckeyes"],
   "butler":             ["bulldogs"],
   "vcu":                ["virginia commonwealth", "rams"],
   "west virginia":      ["mountaineers", "wvu"],
   "memphis":            ["tigers", "memphis state", "memphis st"],
+  "memphis state":      ["memphis", "tigers"],
   "georgetown":         ["hoyas"],
   "illinois":           ["illini", "fighting illini"],
   "lsu":                ["louisiana state", "tigers"],
   "george mason":       ["patriots", "gmu"],
   "georgia tech":       ["yellow jackets", "ga tech"],
-  "oklahoma state":     ["cowboys", "osu", "okla state", "okla st", "ok state"],
+  "oklahoma state":     ["cowboys", "okla state", "okla st", "ok state", "oklahoma a&m", "okla a&m", "osu"],
   "texas":              ["longhorns", "ut"],
   "marquette":          ["golden eagles"],
   "maryland":           ["terrapins", "terps", "umd"],
@@ -100,11 +147,53 @@ const TEAM_ALIASES = {
   "arkansas":           ["razorbacks", "hogs"],
   "cincinnati":         ["bearcats", "cincy"],
   "unlv":               ["rebels", "vegas", "nevada las vegas"],
-  "georgia tech":       ["yellow jackets", "ga tech", "georgia tech"],
   "seton hall":         ["pirates"],
   "providence":         ["friars"],
   "st. john's":         ["st johns", "saint johns", "red storm", "st john's"],
-  "memphis state":      ["memphis", "tigers"],
+  "minnesota":          ["golden gophers", "gophers"],
+  "utah":               ["utes"],
+  "georgia":            ["bulldogs", "uga"],
+  "indiana state":      ["sycamores", "indiana st"],
+  "depaul":             ["blue demons", "de paul"],
+  "penn":               ["quakers", "pennsylvania"],
+  "unc charlotte":      ["charlotte", "49ers"],
+  "rutgers":            ["scarlet knights"],
+  "florida state":      ["seminoles", "fsu", "florida st"],
+  "western kentucky":   ["hilltoppers", "wku", "w kentucky"],
+  "jacksonville":       ["dolphins"],
+  "new mexico state":   ["aggies", "nm state", "nmsu", "new mexico st"],
+  "st. bonaventure":    ["bonnies", "st bonaventure", "saint bonaventure"],
+  "drake":              ["bulldogs"],
+  "dayton":             ["flyers"],
+  "texas western":      ["utep", "miners"],
+  "princeton":          ["tigers"],
+  "kansas state":       ["wildcats", "k-state", "ksu", "k state", "kansas st"],
+  "oregon state":       ["beavers"],
+  "wake forest":        ["demon deacons"],
+  "st. joseph's":       ["st josephs", "saint josephs", "hawks", "st joes", "saint joes"],
+  "nyu":                ["new york university", "violets"],
+  "california":         ["cal", "golden bears", "cal berkeley", "uc berkeley", "berkeley"],
+  "seattle":            ["redhawks", "chieftains", "seattle u"],
+  "temple":             ["owls"],
+  "smu":                ["southern methodist", "mustangs"],
+  "la salle":           ["explorers", "lasalle"],
+  "san francisco":      ["dons", "usf"],
+  "colorado":           ["buffaloes", "buffs", "cu"],
+  "iowa":               ["hawkeyes"],
+  "penn state":         ["nittany lions", "psu"],
+  "usc":                ["trojans", "southern cal", "southern california"],
+  "santa clara":        ["broncos"],
+  "bradley":            ["braves"],
+  "ccny":               ["city college", "city college of new york", "beavers"],
+  "holy cross":         ["crusaders"],
+  "iowa state":         ["cyclones", "isu", "iowa st"],
+  "dartmouth":          ["big green"],
+  "wyoming":            ["cowboys"],
+  "pittsburgh":         ["panthers", "pitt"],
+  "washington state":   ["cougars", "wazzu", "wsu", "wash state", "wash st"],
+  "duquesne":           ["dukes"],
+  "notre dame":         ["fighting irish", "irish"],
+  "washington":         ["huskies", "udub", "uw"],
 };
 
 function normalize(s) {
@@ -118,26 +207,16 @@ function matchesTeam(input, teamName) {
   const nt = normalize(teamName);
   if (ni.length < 2) return false;
   if (nt === ni) return true;
-  // Check direct aliases
-  const aliasEntry = Object.entries(TEAM_ALIASES).find(([k]) => normalize(k) === nt);
-  const aliases = aliasEntry ? aliasEntry[1] : [];
-  if (aliases.some(a => normalize(a) === ni)) return true;
-  // Also check if any alias key matches the input and its canonical matches the team
   for (const [canonical, aliasList] of Object.entries(TEAM_ALIASES)) {
-    if (normalize(canonical) === nt) continue; // already checked above
-    if (aliasList.some(a => normalize(a) === ni) && normalize(canonical) === nt) return true;
+    if (normalize(canonical) === nt) {
+      if (aliasList.some(a => normalize(a) === ni)) return true;
+    }
   }
   return false;
 }
 
 const FIELDS = ["champion", "runnerUp", "ff1", "ff2"];
-const FIELD_LABELS = { champion: "🏆 Champion", runnerUp: "Runner-Up", ff1: "Final Four", ff2: "Final Four" };
-const FIELD_COLORS = {
-  champion: "#c8a050",
-  runnerUp: "#a0a0c0",
-  ff1: "#ffffff60",
-  ff2: "#ffffff60",
-};
+const COL_HEADERS = ["Year", "", "Champion", "Runner-Up", "Final Four", "Final Four"];
 
 function FinalFourRow({ ff, rowSolved, onSolve, gaveUp, index }) {
   const [input, setInput] = useState("");
@@ -146,13 +225,11 @@ function FinalFourRow({ ff, rowSolved, onSolve, gaveUp, index }) {
   const trackPlay = usePlayCount("final-four-trivia");
 
   const allDone = rowSolved.size === 4;
-  const allTeams = [ff.champion, ff.runnerUp, ff.ff1, ff.ff2];
 
   const handleInput = (val) => {
     trackPlay();
     setInput(val);
 
-    // Check each unsolved field
     for (const field of FIELDS) {
       if (rowSolved.has(field)) continue;
       const teamName = ff[field];
@@ -161,7 +238,6 @@ function FinalFourRow({ ff, rowSolved, onSolve, gaveUp, index }) {
         setInput("");
         setFlash(field);
         setTimeout(() => setFlash(null), 700);
-        // Refocus input if not all done
         const remaining = FIELDS.filter(f => f !== field && !rowSolved.has(f));
         if (remaining.length > 0 && inputRef.current) {
           setTimeout(() => inputRef.current?.focus(), 50);
@@ -173,11 +249,12 @@ function FinalFourRow({ ff, rowSolved, onSolve, gaveUp, index }) {
 
   const progress = rowSolved.size / 4;
   const isEven = index % 2 === 0;
+  const showInput = !allDone && !gaveUp;
 
   return (
     <div style={{
       display: "grid",
-      gridTemplateColumns: "70px 1fr 1fr 1fr 1fr",
+      gridTemplateColumns: "56px minmax(90px,140px) 1fr 1fr 1fr 1fr",
       gap: 0,
       borderBottom: "1px solid #ffffff07",
       background: allDone ? "#0a1200" : isEven ? "#09090f" : "#07070d",
@@ -185,22 +262,50 @@ function FinalFourRow({ ff, rowSolved, onSolve, gaveUp, index }) {
     }}>
       {/* Year label */}
       <div style={{
-        padding: "10px 8px",
+        padding: "8px 6px",
         display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center",
         borderRight: "1px solid #ffffff07",
       }}>
         <div style={{
-          fontSize: 15, fontWeight: 900, color: allDone ? "#c8a050" : "#ffffff88",
+          fontSize: 14, fontWeight: 900, color: allDone ? "#c8a050" : "#ffffffbb",
           fontFamily: "'Oswald', sans-serif", letterSpacing: 0.5,
         }}>{ff.year}</div>
-        {/* mini progress */}
-        <div style={{ marginTop: 5, height: 2, background: "#ffffff08", borderRadius: 1, overflow: "hidden", width: 36 }}>
+        <div style={{ marginTop: 4, height: 2, background: "#ffffff0c", borderRadius: 1, overflow: "hidden", width: 32 }}>
           <div style={{
             height: "100%", width: `${progress * 100}%`,
             background: "#c8a050", borderRadius: 1,
             transition: "width 0.3s",
           }} />
         </div>
+      </div>
+
+      {/* Input field column */}
+      <div style={{
+        padding: "8px 8px",
+        display: "flex", alignItems: "center",
+        borderRight: "1px solid #ffffff07",
+      }}>
+        {showInput ? (
+          <input
+            ref={inputRef}
+            value={input}
+            onChange={e => handleInput(e.target.value)}
+            placeholder={`${4 - rowSolved.size} left…`}
+            style={{
+              background: "transparent", border: "none",
+              borderBottom: "1px solid #ffffff12",
+              color: "#ffffff", fontSize: 12,
+              fontFamily: "'Oswald', sans-serif",
+              fontWeight: 600, letterSpacing: 0.3,
+              padding: "4px 0", outline: "none", width: "100%",
+              transition: "border-color 0.15s",
+            }}
+            onFocus={e => e.target.style.borderColor = "#c8a05088"}
+            onBlur={e => e.target.style.borderColor = "#ffffff12"}
+          />
+        ) : allDone ? (
+          <div style={{ fontSize: 10, color: "#c8a050", fontFamily: "'Oswald', sans-serif", letterSpacing: 1, fontWeight: 700 }}>✓ DONE</div>
+        ) : null}
       </div>
 
       {/* Team slots */}
@@ -219,13 +324,13 @@ function FinalFourRow({ ff, rowSolved, onSolve, gaveUp, index }) {
             display: "flex", flexDirection: "column", justifyContent: "center",
             background: isFlashing ? (isChamp ? "#c8a05018" : "#ffffff08") : reveal ? "#e74c3c08" : "transparent",
             transition: "background 0.3s",
-            minHeight: 48,
+            minHeight: 44,
           }}>
             {isSolved || reveal ? (
               <div style={{ animation: isSolved && isFlashing ? "popIn 0.35s ease both" : "none" }}>
                 <div style={{
                   fontSize: 12, fontWeight: 700,
-                  color: isSolved ? (isChamp ? "#c8a050" : isRunner ? "#dddde8" : "#ffffff99") : "#e8806070",
+                  color: isSolved ? (isChamp ? "#c8a050" : isRunner ? "#e8e8f0" : "#ffffffbb") : "#e74c3c88",
                   fontFamily: "'Oswald', sans-serif", letterSpacing: 0.3,
                   lineHeight: 1.3,
                 }}>
@@ -233,29 +338,9 @@ function FinalFourRow({ ff, rowSolved, onSolve, gaveUp, index }) {
                 </div>
               </div>
             ) : (
-              /* Only show input in the first empty slot */
-              !allDone && fi === FIELDS.findIndex(f => !rowSolved.has(f)) ? (
-                <input
-                  ref={inputRef}
-                  value={input}
-                  onChange={e => handleInput(e.target.value)}
-                  placeholder="Team name…"
-                  disabled={gaveUp}
-                  style={{
-                    background: "transparent", border: "none",
-                    borderBottom: "1px solid #ffffff0f",
-                    color: "#ffffff", fontSize: 12,
-                    fontFamily: "'Oswald', sans-serif",
-                    fontWeight: 600, letterSpacing: 0.3,
-                    padding: "2px 0", outline: "none", width: "100%",
-                    transition: "border-color 0.15s",
-                  }}
-                  onFocus={e => e.target.style.borderColor = "#c8a05066"}
-                  onBlur={e => e.target.style.borderColor = "#ffffff0f"}
-                />
-              ) : (
-                <div style={{ height: 18 }} />
-              )
+              <div style={{
+                height: 16, borderBottom: "1px dashed #ffffff08",
+              }} />
             )}
           </div>
         );
@@ -316,9 +401,9 @@ export default function FinalFourTrivia() {
     }}>
       <Helmet>
         <title>Final Four Trivia – TrivialSports</title>
-        <meta name="description" content="Name all four Final Four teams for every NCAA Tournament since 1985. Test your March Madness knowledge!" />
+        <meta name="description" content="Name all four Final Four teams for every NCAA Tournament since 1939. Test your March Madness knowledge!" />
         <meta property="og:title" content="Final Four Trivia – TrivialSports" />
-        <meta property="og:description" content="Name all four Final Four teams for every NCAA Tournament since 1985. Test your March Madness knowledge!" />
+        <meta property="og:description" content="Name all four Final Four teams for every NCAA Tournament since 1939. Test your March Madness knowledge!" />
         <meta property="og:url" content="https://trivialsports.com/games/final-four-trivia" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://trivialsports.com/trivspo_banner.png" />
@@ -327,14 +412,14 @@ export default function FinalFourTrivia() {
       <style>{`
         @keyframes fadeUp { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:translateY(0); } }
         @keyframes popIn  { 0% { transform:scale(0.85); opacity:0; } 60% { transform:scale(1.04); } 100% { transform:scale(1); opacity:1; } }
-        input::placeholder { color: #ffffff15; }
+        input::placeholder { color: #ffffff30; }
         input:focus { outline: none !important; }
         ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-thumb { background: #ffffff15; border-radius: 2px; }
       `}</style>
 
       {/* Header */}
-      <div style={{ maxWidth: 960, margin: "0 auto 24px", animation: "fadeUp 0.4s ease both" }}>
+      <div style={{ maxWidth: 1020, margin: "0 auto 24px", animation: "fadeUp 0.4s ease both" }}>
         <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
           <div>
             <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: 4, textTransform: "uppercase", color: "#e67e22", marginBottom: 6 }}>
@@ -346,28 +431,28 @@ export default function FinalFourTrivia() {
             }}>
               Final Four Trivia
             </h1>
-            <p style={{ fontSize: 13, color: "#e67e22", margin: "7px 0 0", fontFamily: "Georgia, serif" }}>
-              Name all 4 Final Four teams for each year. They'll be sorted into Champion, Runner-Up, and Final Four.
+            <p style={{ fontSize: 13, color: "#c8a050", margin: "7px 0 0", fontFamily: "Georgia, serif" }}>
+              Name all 4 Final Four teams for each of the {FINAL_FOURS.length} NCAA Tournaments.
             </p>
           </div>
 
           <div style={{ display: "flex", alignItems: "center", gap: 20, flexWrap: "wrap" }}>
             <div style={{ textAlign: "center" }}>
-              <div style={{ fontSize: 9, letterSpacing: 3, textTransform: "uppercase", color: "#ffffff25", marginBottom: 2 }}>Time</div>
+              <div style={{ fontSize: 9, letterSpacing: 3, textTransform: "uppercase", color: "#c8a05066", marginBottom: 2 }}>Time</div>
               <div style={{ fontSize: 26, fontWeight: 900, color: finished ? "#e67e22" : "#ffffff", fontVariantNumeric: "tabular-nums" }}>
                 {formatTime(elapsed)}
               </div>
             </div>
             <div style={{ textAlign: "center" }}>
-              <div style={{ fontSize: 9, letterSpacing: 3, textTransform: "uppercase", color: "#ffffff25", marginBottom: 2 }}>Teams</div>
+              <div style={{ fontSize: 9, letterSpacing: 3, textTransform: "uppercase", color: "#c8a05066", marginBottom: 2 }}>Teams</div>
               <div style={{ fontSize: 26, fontWeight: 900, color: "#ffffff", fontVariantNumeric: "tabular-nums" }}>
-                {totalSolved}<span style={{ fontSize: 14, color: "#e67e2299" }}>/{totalFields}</span>
+                {totalSolved}<span style={{ fontSize: 14, color: "#c8a050" }}>/{totalFields}</span>
               </div>
             </div>
             <div style={{ textAlign: "center" }}>
-              <div style={{ fontSize: 9, letterSpacing: 3, textTransform: "uppercase", color: "#ffffff25", marginBottom: 2 }}>Years</div>
+              <div style={{ fontSize: 9, letterSpacing: 3, textTransform: "uppercase", color: "#c8a05066", marginBottom: 2 }}>Years</div>
               <div style={{ fontSize: 26, fontWeight: 900, color: "#ffffff", fontVariantNumeric: "tabular-nums" }}>
-                {rowsCompleted}<span style={{ fontSize: 14, color: "#e67e2299" }}>/{FINAL_FOURS.length}</span>
+                {rowsCompleted}<span style={{ fontSize: 14, color: "#c8a050" }}>/{FINAL_FOURS.length}</span>
               </div>
             </div>
             {!finished && !gaveUp && (
@@ -385,7 +470,7 @@ export default function FinalFourTrivia() {
         </div>
 
         {/* Progress bar */}
-        <div style={{ marginTop: 16, height: 3, background: "#ffffff06", borderRadius: 2, overflow: "hidden" }}>
+        <div style={{ marginTop: 16, height: 3, background: "#ffffff08", borderRadius: 2, overflow: "hidden" }}>
           <div style={{
             height: "100%", width: `${(totalSolved / totalFields) * 100}%`,
             background: "linear-gradient(90deg, #e67e22, #f5a623)",
@@ -397,16 +482,16 @@ export default function FinalFourTrivia() {
       {/* Finished / gave up banner */}
       {(finished || gaveUp) && (
         <div style={{
-          maxWidth: 960, margin: "0 auto 20px",
+          maxWidth: 1020, margin: "0 auto 20px",
           background: gaveUp ? "linear-gradient(135deg,#1a0808,#2a1010)" : "linear-gradient(135deg,#0f0d00,#1a1500)",
-          border: `1px solid ${gaveUp ? "#e74c3c33" : "#e67e2244"}`,
+          border: `1px solid ${gaveUp ? "#e74c3c33" : "#c8a05044"}`,
           borderRadius: 14, padding: "16px 24px", textAlign: "center",
           animation: "popIn 0.4s ease both",
         }}>
-          <div style={{ fontSize: 22, fontWeight: 900, color: gaveUp ? "#e74c3c" : "#e67e22", letterSpacing: 1, textTransform: "uppercase" }}>
+          <div style={{ fontSize: 22, fontWeight: 900, color: gaveUp ? "#e74c3c" : "#c8a050", letterSpacing: 1, textTransform: "uppercase" }}>
             {gaveUp ? `Answers Revealed — ${totalSolved} of ${totalFields} found` : `All ${totalFields} teams named!`}
           </div>
-          <div style={{ fontSize: 13, color: "#e67e22", marginTop: 4, fontFamily: "Georgia, serif" }}>
+          <div style={{ fontSize: 13, color: "#c8a050", marginTop: 4, fontFamily: "Georgia, serif" }}>
             {!gaveUp && `${rowsCompleted} Final Fours completed in ${formatTime(elapsed)}.`}
           </div>
         </div>
@@ -414,23 +499,23 @@ export default function FinalFourTrivia() {
 
       {/* Table */}
       <div style={{
-        maxWidth: 960, margin: "0 auto",
+        maxWidth: 1020, margin: "0 auto",
         border: "1px solid #ffffff0a", borderRadius: 12, overflow: "hidden",
         animation: "fadeUp 0.5s ease both", animationDelay: "0.1s",
       }}>
         {/* Column headers */}
         <div style={{
-          display: "grid", gridTemplateColumns: "70px 1fr 1fr 1fr 1fr",
+          display: "grid", gridTemplateColumns: "56px minmax(90px,140px) 1fr 1fr 1fr 1fr",
           background: "#0d0d1e", borderBottom: "1px solid #ffffff12",
         }}>
-          {["Year", "🏆 Champion", "Runner-Up", "Final Four", "Final Four"].map((h, i) => (
+          {COL_HEADERS.map((h, i) => (
             <div key={h + i} style={{
               padding: "10px 8px",
               fontSize: 9, fontWeight: 800, letterSpacing: 2.5,
               textTransform: "uppercase",
-              color: i === 1 ? "#c8a05066" : i === 2 ? "#a0a0c044" : "#ffffff25",
+              color: i === 2 ? "#c8a050" : i === 3 ? "#a8a8c8" : "#ffffff40",
               fontFamily: "'Oswald', sans-serif",
-              borderRight: i < 4 ? "1px solid #ffffff07" : "none",
+              borderRight: i < 5 ? "1px solid #ffffff07" : "none",
               textAlign: i === 0 ? "center" : "left",
             }}>{h}</div>
           ))}
@@ -448,8 +533,8 @@ export default function FinalFourTrivia() {
         ))}
       </div>
 
-      <div style={{ maxWidth: 960, margin: "16px auto 0", textAlign: "center" }}>
-        <div style={{ fontSize: 10, color: "#ffffff12", letterSpacing: 2, textTransform: "uppercase" }}>
+      <div style={{ maxWidth: 1020, margin: "16px auto 0", textAlign: "center" }}>
+        <div style={{ fontSize: 10, color: "#c8a05044", letterSpacing: 2, textTransform: "uppercase" }}>
           School names, nicknames & abbreviations accepted · 2020 excluded (cancelled)
         </div>
       </div>
@@ -471,7 +556,7 @@ export default function FinalFourTrivia() {
               margin: "0 0 10px", fontSize: 20, fontWeight: 900, color: "#eeeeee",
               fontFamily: "'Oswald', sans-serif", letterSpacing: 1, textTransform: "uppercase",
             }}>Give Up?</h3>
-            <p style={{ margin: "0 0 22px", fontSize: 13, color: "#e67e22", lineHeight: 1.7, fontFamily: "Georgia, serif" }}>
+            <p style={{ margin: "0 0 22px", fontSize: 13, color: "#c8a050", lineHeight: 1.7, fontFamily: "Georgia, serif" }}>
               All {totalFields} answers will be revealed.<br />
               You found <span style={{ color: "#e74c3c", fontWeight: 900 }}>{totalSolved}</span> of {totalFields}.
             </p>
