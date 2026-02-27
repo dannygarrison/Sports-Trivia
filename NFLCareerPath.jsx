@@ -90,19 +90,19 @@ function TeamBadge({ team, revealed, index }) {
       display: "flex", flexDirection: "column", alignItems: "center",
       animation: revealed ? "popIn .35s cubic-bezier(.34,1.56,.64,1)" : "none",
     }}>
-      <div style={{ fontSize: 8, color: "#ffffff28", letterSpacing: 2, textTransform: "uppercase", marginBottom: 3 }}>
-        {index + 1}{index === 0 ? "st" : index === 1 ? "nd" : index === 2 ? "rd" : "th"}
+      <div style={{ fontSize: 9, color: "#ffffff60", letterSpacing: 2, textTransform: "uppercase", marginBottom: 3 }}>
+        {index + 1}{index === 0 ? "st" : index === 1 ? "nd" : index === 2 ? "rd" : "th"} Team
       </div>
       <div style={{
         background: revealed ? color + "25" : "#0a0a1a",
-        border: `2px solid ${revealed ? color : "#ffffff0a"}`,
+        border: `2px solid ${revealed ? color : "#ffffff18"}`,
         borderRadius: 10, padding: "10px 18px", minWidth: 100,
         textAlign: "center", transition: "all 0.3s",
       }}>
         {revealed ? (
           <span style={{ fontSize: 13, fontWeight: 700, color: "#f0f0f0", letterSpacing: 0.5 }}>{team}</span>
         ) : (
-          <span style={{ fontSize: 18, color: "#ffffff15" }}>?</span>
+          <span style={{ fontSize: 18, color: "#ffffff35" }}>?</span>
         )}
       </div>
     </div>
@@ -110,7 +110,7 @@ function TeamBadge({ team, revealed, index }) {
 }
 
 function ConnectorArrow() {
-  return <div style={{ fontSize: 16, color: "#ffffff15", padding: "0 6px" }}>→</div>;
+  return <div style={{ fontSize: 16, color: "#ffffff50", padding: "0 6px" }}>→</div>;
 }
 
 // ── MAIN GAME ────────────────────────────────────────────────────────────────
@@ -151,6 +151,7 @@ export default function NFLCareerPath() {
 
     if (matchesPlayer(val, current.name)) {
       setSolved(true);
+      setRevealed(totalTeams);
       const points = Math.max(1, maxPoints - revealed + 1);
       setScore(s => s + points);
       setStreak(s => { const n = s + 1; setBestStreak(b => Math.max(b, n)); return n; });
@@ -187,6 +188,12 @@ export default function NFLCareerPath() {
     setTimeout(() => inputRef.current?.focus(), 50);
   }, []);
 
+  const handleReveal = useCallback(() => {
+    if (revealed < totalTeams) {
+      setRevealed(r => r + 1);
+    }
+  }, [revealed, totalTeams]);
+
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       if (solved || skipped) handleNext();
@@ -195,14 +202,6 @@ export default function NFLCareerPath() {
   };
 
   useEffect(() => { inputRef.current?.focus(); }, [currentIndex]);
-
-  // Auto-advance after correct answer
-  useEffect(() => {
-    if (solved) {
-      const timer = setTimeout(handleNext, 1200);
-      return () => clearTimeout(timer);
-    }
-  }, [solved, handleNext]);
 
   if (!current) return null;
 
@@ -232,14 +231,14 @@ export default function NFLCareerPath() {
 
       {/* Header */}
       <div style={{ textAlign: "center", marginBottom: 28 }}>
-        <div style={{ fontSize: 9, letterSpacing: 7, color: "#ffffff18", textTransform: "uppercase", marginBottom: 6 }}>NFL</div>
+        <div style={{ fontSize: 9, letterSpacing: 7, color: "#ffffff50", textTransform: "uppercase", marginBottom: 6 }}>NFL</div>
         <h1 style={{
           fontSize: "clamp(26px,5vw,42px)", fontWeight: 900, margin: 0, lineHeight: 1,
           background: "linear-gradient(135deg,#e74c3c,#f39c12,#e8c060)",
           WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
           letterSpacing: -1,
         }}>Career Path</h1>
-        <p style={{ fontSize: 12, margin: "8px 0 0", letterSpacing: 1, textTransform: "uppercase", color: "#ffffff40" }}>
+        <p style={{ fontSize: 12, margin: "8px 0 0", letterSpacing: 1, textTransform: "uppercase", color: "#ffffff60" }}>
           Guess the player from their team history
         </p>
       </div>
@@ -252,27 +251,27 @@ export default function NFLCareerPath() {
       }}>
         <div style={{ textAlign: "center" }}>
           <div style={{ fontSize: 28, fontWeight: 900, color: "#f39c12", lineHeight: 1 }}>{score}</div>
-          <div style={{ fontSize: 8, color: "#ffffff28", letterSpacing: 3, textTransform: "uppercase", marginTop: 2 }}>Score</div>
+          <div style={{ fontSize: 9, color: "#ffffff55", letterSpacing: 3, textTransform: "uppercase", marginTop: 2 }}>Score</div>
         </div>
         <div style={{ width: 1, height: 36, background: "#161632" }} />
         <div style={{ textAlign: "center" }}>
-          <div style={{ fontSize: 28, fontWeight: 900, color: streak > 0 ? "#22c55e" : "#ffffff28", lineHeight: 1 }}>{streak}</div>
-          <div style={{ fontSize: 8, color: "#ffffff28", letterSpacing: 3, textTransform: "uppercase", marginTop: 2 }}>Streak</div>
+          <div style={{ fontSize: 28, fontWeight: 900, color: streak > 0 ? "#22c55e" : "#ffffff40", lineHeight: 1 }}>{streak}</div>
+          <div style={{ fontSize: 9, color: "#ffffff55", letterSpacing: 3, textTransform: "uppercase", marginTop: 2 }}>Streak</div>
         </div>
         <div style={{ width: 1, height: 36, background: "#161632" }} />
         <div style={{ textAlign: "center" }}>
           <div style={{ fontSize: 28, fontWeight: 900, color: "#5bb8f5", lineHeight: 1 }}>{bestStreak}</div>
-          <div style={{ fontSize: 8, color: "#ffffff28", letterSpacing: 3, textTransform: "uppercase", marginTop: 2 }}>Best</div>
+          <div style={{ fontSize: 9, color: "#ffffff55", letterSpacing: 3, textTransform: "uppercase", marginTop: 2 }}>Best</div>
         </div>
         <div style={{ width: 1, height: 36, background: "#161632" }} />
         <div style={{ textAlign: "center" }}>
           <div style={{ fontSize: 28, fontWeight: 900, color: "#c8a050", lineHeight: 1 }}>{totalRounds}</div>
-          <div style={{ fontSize: 8, color: "#ffffff28", letterSpacing: 3, textTransform: "uppercase", marginTop: 2 }}>Played</div>
+          <div style={{ fontSize: 9, color: "#ffffff55", letterSpacing: 3, textTransform: "uppercase", marginTop: 2 }}>Played</div>
         </div>
       </div>
 
       {/* Round indicator */}
-      <div style={{ fontSize: 9, color: "#ffffff20", letterSpacing: 4, textTransform: "uppercase", marginBottom: 16 }}>
+      <div style={{ fontSize: 10, color: "#ffffff55", letterSpacing: 3, textTransform: "uppercase", marginBottom: 16 }}>
         Round {round} — {totalTeams} career stops — {revealed}/{totalTeams} revealed
       </div>
 
@@ -368,10 +367,18 @@ export default function NFLCareerPath() {
               fontSize: 12, fontWeight: 900, color: "#5bb8f5",
               cursor: "pointer", letterSpacing: 2, textTransform: "uppercase",
             }}>Guess →</button>
+            <button onClick={handleReveal} disabled={revealed >= totalTeams} style={{
+              padding: "12px 16px", background: revealed >= totalTeams ? "transparent" : "linear-gradient(135deg,#3a2a0e,#4a350f)",
+              border: `1px solid ${revealed >= totalTeams ? "#ffffff10" : "#f39c1244"}`,
+              borderRadius: 10,
+              fontSize: 11, fontWeight: 700, color: revealed >= totalTeams ? "#ffffff20" : "#f39c12",
+              cursor: revealed >= totalTeams ? "default" : "pointer",
+              letterSpacing: 1, textTransform: "uppercase",
+            }}>Reveal Team</button>
             <button onClick={handleSkip} style={{
               padding: "12px 20px", background: "transparent",
-              border: "1px solid #ffffff18", borderRadius: 10,
-              fontSize: 11, fontWeight: 700, color: "#ffffff44",
+              border: "1px solid #ffffff30", borderRadius: 10,
+              fontSize: 11, fontWeight: 700, color: "#ffffff66",
               cursor: "pointer", letterSpacing: 2, textTransform: "uppercase",
             }}>Give Up</button>
           </div>
