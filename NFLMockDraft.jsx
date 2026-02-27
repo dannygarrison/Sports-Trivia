@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { ALL_PROSPECTS, PICK_SUGGESTIONS } from "./draftProspects2026.js";
+import { usePlayCount } from "./usePlayCount.jsx";
 
 // ── 2026 NFL Draft Order (1st round, estimated) ─────────────────────────────────────────
 const INITIAL_PICKS = [
@@ -1178,6 +1179,7 @@ export default function NFLMockDraft() {
   const [tradePick, setTradePick] = useState(null);
   const [showShare, setShowShare] = useState(false);
   const [dragSrc, setDragSrc] = useState(null);
+  const trackPlay = usePlayCount("nfl-mock-draft");
 
   // Build a set of already-drafted player names (excluding current pick's player)
   const getDraftedNames = (excludePickNum) => {
@@ -1192,6 +1194,7 @@ export default function NFLMockDraft() {
 
   // ── Handlers ────────────────────────────────────────────────────────────────
   const handleSelect = (pickNum, player) => {
+    trackPlay();
     setPicks(prev => prev.map(p => p.pick === pickNum ? { ...p, player } : p));
     setActivePick(null);
   };
