@@ -567,9 +567,37 @@ export default function NBAChain() {
       </div>
 
       {/* Team tracker */}
-      <div style={{ marginBottom: 24, width: "100%", maxWidth: 760 }}>
+      <div style={{ marginBottom: 12, width: "100%", maxWidth: 760 }}>
         <TeamTracker usedTeams={usedTeams} />
       </div>
+
+      {/* Used players tracker — shown during multi-chain attempts */}
+      {chainNum > 1 && usedPlayers.size > 0 && (
+        <div style={{ marginBottom: 24, width: "100%", maxWidth: 760 }}>
+          <div style={{ fontSize: 8, color: "#ffffff15", letterSpacing: 4, textTransform: "uppercase", marginBottom: 6 }}>
+            Locked Out Players — {usedPlayers.size} used
+          </div>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
+            {[...usedPlayers].sort().map(player => {
+              // Check if player is in current chain
+              const inCurrentChain = chain.some(n => n.type === "player" && n.item === player);
+              return (
+                <div key={player} title={player} style={{
+                  fontSize: 9, fontFamily: "'Oswald', sans-serif",
+                  fontWeight: 700, letterSpacing: 0.5,
+                  padding: "3px 7px", borderRadius: 4,
+                  background: inCurrentChain ? "#0e1e10" : "#1a0e0e",
+                  border: `1px solid ${inCurrentChain ? "#2a7a4055" : "#e74c3c33"}`,
+                  color: inCurrentChain ? "#5fd88a" : "#e74c3c99",
+                  textTransform: "uppercase",
+                }}>
+                  {player}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
 
       {/* Win state */}
       {won && showMultiChainPrompt && (
