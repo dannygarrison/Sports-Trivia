@@ -1,27 +1,24 @@
 import { useState, useRef, useEffect, useCallback, useMemo } from "react";
 import { Helmet } from "react-helmet-async";
 import { usePlayCount } from "./usePlayCount.jsx";
-import { NFL_CAREER_PATHS } from "./nflCareerPathData.js";
+import { NBA_CAREER_PATHS } from "./nbaCareerPathData.js";
 
 // ── TEAM COLORS ─────────────────────────────────────────────────────────────
 const TEAM_COLORS = {
-  "Arizona Cardinals":"#97233F","Atlanta Falcons":"#A71930","Baltimore Ravens":"#241773",
-  "Buffalo Bills":"#00338D","Carolina Panthers":"#0085CA","Chicago Bears":"#0B162A",
-  "Cincinnati Bengals":"#FB4F14","Cleveland Browns":"#311D00","Dallas Cowboys":"#003594",
-  "Denver Broncos":"#FB4F14","Detroit Lions":"#0076B6","Green Bay Packers":"#203731",
-  "Houston Texans":"#03202F","Indianapolis Colts":"#002C5F","Jacksonville Jaguars":"#006778",
-  "Kansas City Chiefs":"#E31837","Las Vegas Raiders":"#000000","Los Angeles Chargers":"#0080C6",
-  "Los Angeles Rams":"#003594","Miami Dolphins":"#008E97","Minnesota Vikings":"#4F2683",
-  "New England Patriots":"#002244","New Orleans Saints":"#D3BC8D","New York Giants":"#0B2265",
-  "New York Jets":"#125740","Philadelphia Eagles":"#004C54","Pittsburgh Steelers":"#FFB612",
-  "San Francisco 49ers":"#AA0000","Seattle Seahawks":"#002244","Tampa Bay Buccaneers":"#D50A0A",
-  "Tennessee Titans":"#0C2340","Washington Commanders":"#5A1414",
+  "Atlanta Hawks":"#E03A3E","Boston Celtics":"#007A33","Brooklyn Nets":"#000000",
+  "Charlotte Hornets":"#1D1160","Chicago Bulls":"#CE1141","Cleveland Cavaliers":"#860038",
+  "Dallas Mavericks":"#00538C","Denver Nuggets":"#0E2240","Detroit Pistons":"#C8102E",
+  "Golden State Warriors":"#1D428A","Houston Rockets":"#CE1141","Indiana Pacers":"#002D62",
+  "Los Angeles Clippers":"#C8102E","Los Angeles Lakers":"#552583","Memphis Grizzlies":"#5D76A9",
+  "Miami Heat":"#98002E","Milwaukee Bucks":"#00471B","Minnesota Timberwolves":"#0C2340",
+  "New Orleans Pelicans":"#0C2340","New York Knicks":"#006BB6","Oklahoma City Thunder":"#007AC1",
+  "Orlando Magic":"#0077C0","Philadelphia 76ers":"#006BB6","Phoenix Suns":"#1D1160",
+  "Portland Trail Blazers":"#E03A3E","Sacramento Kings":"#5A2D81","San Antonio Spurs":"#C4CED4",
+  "Toronto Raptors":"#CE1141","Utah Jazz":"#002B5C","Washington Wizards":"#002B5C",
   // Legacy names
-  "Washington Redskins":"#773141","Washington Football Team":"#5A1414",
-  "Oakland Raiders":"#000000","San Diego Chargers":"#002A5E","St. Louis Rams":"#003594",
-  "St. Louis Cardinals":"#97233F","Houston Oilers":"#4F8FC0","New Jersey Nets":"#002A60",
-  "New Orleans Hornets":"#00778B","Charlotte Bobcats":"#F26532","Vancouver Grizzlies":"#6B9DAA",
-  "Seattle SuperSonics":"#FFC200",
+  "New Jersey Nets":"#002A60","Seattle SuperSonics":"#FFC200",
+  "Charlotte Bobcats":"#F26532","Vancouver Grizzlies":"#6B9DAA",
+  "New Orleans Hornets":"#00778B",
 };
 
 // ── HELPERS ──────────────────────────────────────────────────────────────────
@@ -114,8 +111,8 @@ function ConnectorArrow() {
 }
 
 // ── MAIN GAME ────────────────────────────────────────────────────────────────
-export default function NFLCareerPath() {
-  const [queue, setQueue] = useState(() => shuffleArray(NFL_CAREER_PATHS));
+export default function NBACareerPath() {
+  const [queue, setQueue] = useState(() => shuffleArray(NBA_CAREER_PATHS));
   const [currentIndex, setCurrentIndex] = useState(0);
   const [revealed, setRevealed] = useState(1); // how many teams shown
   const [input, setInput] = useState("");
@@ -130,7 +127,7 @@ export default function NFLCareerPath() {
   const [totalRounds, setTotalRounds] = useState(0);
   const [guessesUsed, setGuessesUsed] = useState(0);
   const inputRef = useRef(null);
-  const trackPlay = usePlayCount("nfl-career-path");
+  const trackPlay = usePlayCount("nba-career-path");
 
   const current = queue[currentIndex % queue.length];
   const totalTeams = current?.teams.length || 0;
@@ -208,17 +205,17 @@ export default function NFLCareerPath() {
   return (
     <div style={{
       minHeight: "100vh", background: "#07070f",
-      backgroundImage: "radial-gradient(ellipse at 30% 10%, #0f0a1a 0%, #07070f 55%), radial-gradient(ellipse at 70% 90%, #0a120f 0%, transparent 50%)",
+      backgroundImage: "radial-gradient(ellipse at 30% 10%, #1a0f0a 0%, #07070f 55%), radial-gradient(ellipse at 70% 90%, #0a120f 0%, transparent 50%)",
       color: "#f0f0f0", fontFamily: "'Oswald', sans-serif",
       display: "flex", flexDirection: "column", alignItems: "center",
       padding: "84px 16px 60px",
     }}>
       <Helmet>
-        <title>NFL Career Path – TrivialSports</title>
-        <meta name="description" content="Guess the NFL player from their career journey. Teams are revealed one at a time — can you name them with fewer clues?" />
-        <meta property="og:title" content="NFL Career Path – TrivialSports" />
-        <meta property="og:description" content="Guess the NFL player from their career journey." />
-        <meta property="og:url" content="https://trivialsports.com/games/nfl-career-path" />
+        <title>NBA Career Path – TrivialSports</title>
+        <meta name="description" content="Guess the NBA player from their career journey. Teams are revealed one at a time — can you name them with fewer clues?" />
+        <meta property="og:title" content="NBA Career Path – TrivialSports" />
+        <meta property="og:description" content="Guess the NBA player from their career journey." />
+        <meta property="og:url" content="https://trivialsports.com/games/nba-career-path" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://trivialsports.com/trivspo_banner.png" />
       </Helmet>
@@ -231,10 +228,10 @@ export default function NFLCareerPath() {
 
       {/* Header */}
       <div style={{ textAlign: "center", marginBottom: 28 }}>
-        <div style={{ fontSize: 9, letterSpacing: 7, color: "#ffffff50", textTransform: "uppercase", marginBottom: 6 }}>NFL</div>
+        <div style={{ fontSize: 9, letterSpacing: 7, color: "#ffffff50", textTransform: "uppercase", marginBottom: 6 }}>NBA</div>
         <h1 style={{
           fontSize: "clamp(26px,5vw,42px)", fontWeight: 900, margin: 0, lineHeight: 1,
-          background: "linear-gradient(135deg,#e74c3c,#f39c12,#e8c060)",
+          background: "linear-gradient(135deg,#e67e22,#f39c12,#e8c060)",
           WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
           letterSpacing: -1,
         }}>Career Path</h1>
