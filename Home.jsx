@@ -207,7 +207,7 @@ const GAMES = [
   {
     id: "soccer-chain",
     path: "/games/soccer-chain",
-    title: "Soccer Chain Game",
+    title: "European Football Chain Game",
     sport: "SOCCER",
     description: "Link clubs across the Big 5 European leagues through shared players. How long can you keep the chain going?",
     tag: "CHAIN GAME",
