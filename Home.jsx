@@ -517,6 +517,77 @@ export default function Home() {
         )}
       </div>
 
+      {/* Blog Section */}
+      <div style={{ maxWidth: 960, margin: "0 auto", padding: "0 28px 48px" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 20 }}>
+          <span style={{
+            fontSize: 10, fontWeight: 800, fontFamily: "'Oswald', sans-serif",
+            letterSpacing: 4, textTransform: "uppercase", color: "#c8a050",
+          }}>From the Blog</span>
+          <div style={{ flex: 1, height: 1, background: "#ffffff07" }} />
+          <Link to="/blog" style={{
+            fontSize: 10, fontWeight: 700, fontFamily: "'Oswald', sans-serif",
+            letterSpacing: 2.5, textTransform: "uppercase", color: "#ffffff33",
+            textDecoration: "none", transition: "color 0.2s",
+          }}
+            onMouseEnter={e => e.target.style.color = "#ffffff66"}
+            onMouseLeave={e => e.target.style.color = "#ffffff33"}
+          >View All &rarr;</Link>
+        </div>
+        <Link to="/blog/nfl-chain-cheat-codes" style={{ textDecoration: "none", display: "block" }}>
+          <div style={{
+            background: "linear-gradient(135deg, #0e0e1a, #12122a)",
+            border: "1px solid #c8a05022",
+            borderRadius: 16,
+            padding: "28px 28px 24px",
+            position: "relative",
+            overflow: "hidden",
+            transition: "all 0.22s ease",
+          }}
+            onMouseEnter={e => {
+              e.currentTarget.style.borderColor = "#c8a05044"
+              e.currentTarget.style.transform = "translateY(-3px)"
+              e.currentTarget.style.boxShadow = "0 16px 40px #c8a05018, 0 4px 12px #00000066"
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.borderColor = "#c8a05022"
+              e.currentTarget.style.transform = "translateY(0)"
+              e.currentTarget.style.boxShadow = "none"
+            }}
+          >
+            <div style={{
+              position: "absolute", top: -30, right: -30, width: 180, height: 180,
+              borderRadius: "50%", background: "#c8a050", opacity: 0.04,
+              filter: "blur(40px)", pointerEvents: "none",
+            }} />
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
+              <span style={{
+                fontSize: 9, fontWeight: 800, fontFamily: "'Oswald', sans-serif",
+                letterSpacing: 3, textTransform: "uppercase",
+                color: "#c8a050", background: "#c8a05018", padding: "3px 8px", borderRadius: 4,
+              }}>Strategy Guide</span>
+              <span style={{
+                fontSize: 9, fontWeight: 800, fontFamily: "'Oswald', sans-serif",
+                letterSpacing: 3, textTransform: "uppercase",
+                color: "#e74c3c", background: "#e74c3c18", padding: "3px 8px", borderRadius: 4,
+              }}>NFL</span>
+              <span style={{
+                fontSize: 10, fontWeight: 700, fontFamily: "'Oswald', sans-serif",
+                letterSpacing: 2, textTransform: "uppercase", color: "#ffffff22",
+                marginLeft: "auto",
+              }}>Feb 28, 2026</span>
+            </div>
+            <h3 style={{
+              fontSize: "clamp(18px, 3vw, 24px)", fontWeight: 700, fontFamily: "'Oswald', sans-serif",
+              letterSpacing: 0.5, color: "#e8e8f0", margin: "0 0 10px", lineHeight: 1.2,
+            }}>Top 7 NFL Chain Game Cheat Codes: Obscure College Connections You Need to Know</h3>
+            <p style={{
+              fontSize: 14, color: "#ffffff66", lineHeight: 1.6, margin: 0, fontFamily: "Georgia, serif",
+            }}>The secret to NFL Chain isn't Alabama or Ohio State. It's the schools that don't show up in the College Football Playoff.</p>
+          </div>
+        </Link>
+      </div>
+
       {/* Footer */}
       <div style={{ borderTop: "1px solid #ffffff06", padding: "22px 28px", textAlign: "center" }}>
         <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: 3, textTransform: "uppercase", color: "#ffffff12", fontFamily: "'Oswald', sans-serif" }}>
