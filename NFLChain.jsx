@@ -613,7 +613,6 @@ const COLLEGE_DISPLAY_NAME = {
   "georgia tech":           "Georgia Tech",
   "boston college":         "Boston College",
   "notre dame":             "Notre Dame",
-  "TCU":        "TCU",
   "texas a&m":              "Texas A&M",
   "texas el paso":          "UTEP",
   "arkansas-pine bluff":    "UAPB",
