@@ -20,6 +20,7 @@ const WhoWoreIt = lazy(() => import("./WhoWoreIt.jsx"))
 const NBAChain = lazy(() => import("./NBAChain.jsx"))
 const NFLCareerPath = lazy(() => import("./NFLCareerPath.jsx"))
 const NBACareerPath = lazy(() => import("./NBACareerPath.jsx"))
+const SoccerChain = lazy(() => import("./SoccerChain.jsx"))
 const FinalFourTrivia = lazy(() => import("./FinalFourTrivia.jsx"))
 const Blog = lazy(() => import("./Blog.jsx"))
 const BlogChainCheatCodes = lazy(() => import("./BlogChainCheatCodes.jsx"))
@@ -63,6 +64,7 @@ export default function App() {
           <Route path="/games/nba-chain" element={<NBAChain />} />
           <Route path="/games/nfl-career-path" element={<NFLCareerPath />} />
           <Route path="/games/nba-career-path" element={<NBACareerPath />} />
+          <Route path="/games/soccer-chain" element={<SoccerChain />} />
           <Route path="/games/final-four-trivia" element={<FinalFourTrivia />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/nfl-chain-cheat-codes" element={<BlogChainCheatCodes />} />
