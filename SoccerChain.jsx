@@ -809,7 +809,7 @@ export default function SoccerChain() {
         <div style={{
           marginTop: 14, maxWidth: 420, marginLeft: "auto", marginRight: "auto",
           background: "#0d1117", border: "1px solid #22c55e22", borderRadius: 10,
-          padding: "10px 16px", textAlign: "left",
+          padding: "10px 16px", textAlign: "center",
         }}>
           <p style={{ fontSize: 11, color: "#ffffffaa", margin: "0 0 6px", lineHeight: 1.5, fontWeight: 400, letterSpacing: 0.3 }}>
             Eligible players have made <span style={{ color: "#4ade80", fontWeight: 700 }}>50+ appearances</span> in Europe's Big 5 leagues:
