@@ -478,7 +478,7 @@ function Leaderboard({ entries, currentLength, onEnterScore, hasEnteredCurrent }
       <div style={{
         display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14,
       }}>
-        <div style={{ fontSize: 10, letterSpacing: 4, color: "#ffffff25", textTransform: "uppercase" }}>
+        <div style={{ fontSize: 10, letterSpacing: 4, color: "#ffffff88", textTransform: "uppercase" }}>
           🏆 Leaderboard
         </div>
         {currentLength >= 2 && !hasEnteredCurrent && (
@@ -864,16 +864,16 @@ export default function SoccerChain() {
             background: "#08081a", border: "1px solid #111128",
             borderRadius: 12, padding: "10px 14px", marginBottom: 12,
           }}>
-            <div style={{ fontSize: 8, color: "#ffffff18", letterSpacing: 3, textTransform: "uppercase", marginBottom: 8 }}>
+            <div style={{ fontSize: 8, color: "#ffffff55", letterSpacing: 3, textTransform: "uppercase", marginBottom: 8 }}>
               Clubs used ({usedTeams.size})
             </div>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
               {[...usedTeams].map(t => (
                 <span key={t} style={{
                   fontSize: 10, fontWeight: 600, fontFamily: "'Oswald', sans-serif",
-                  letterSpacing: 0.5, color: t === currentTarget && step === STEP.TEAM ? "#4ade80" : "#ffffff35",
-                  background: t === currentTarget && step === STEP.TEAM ? "#22c55e12" : "#ffffff06",
-                  border: `1px solid ${t === currentTarget && step === STEP.TEAM ? "#22c55e33" : "#ffffff0a"}`,
+                  letterSpacing: 0.5, color: t === currentTarget && step === STEP.TEAM ? "#4ade80" : "#ffffffaa",
+                  background: t === currentTarget && step === STEP.TEAM ? "#22c55e12" : "#ffffff0d",
+                  border: `1px solid ${t === currentTarget && step === STEP.TEAM ? "#22c55e33" : "#ffffff20"}`,
                   borderRadius: 5, padding: "3px 8px",
                 }}>{t}</span>
               ))}
