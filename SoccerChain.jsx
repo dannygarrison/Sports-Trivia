@@ -53,6 +53,8 @@ const TEAM_ALIASES = {
   "Ipswich Town":["ipswich","ipswich town","tractor boys"],
   "Coventry City":["coventry","coventry city","sky blues"],
   "Bradford City":["bradford","bradford city","bantams"],
+  "Blackpool":["blackpool","seasiders","tangerines"],
+  "Luton Town":["luton","luton town","hatters"],
   "Oldham Athletic":["oldham","oldham athletic"],
   "Wimbledon":["wimbledon","dons"],
   "Queens Park Rangers":["qpr","queens park rangers"],
@@ -95,6 +97,12 @@ const TEAM_ALIASES = {
   "Almería":["almeria","ud almeria"],
   "Sporting Gijón":["sporting gijon","sporting","gijon"],
   "Las Palmas":["las palmas","ud las palmas"],
+  "Albacete":["albacete","albacete balompie"],
+  "Córdoba":["cordoba","cordoba cf"],
+  "Gimnàstic":["gimnastic","nastic","gimnastic de tarragona"],
+  "Hércules":["hercules","hercules cf"],
+  "Málaga":["malaga","malaga cf"],
+  "Real Murcia":["real murcia","murcia"],
 
   // ── BUNDESLIGA ──
   "Bayern Munich":["bayern munich","bayern","fcb","fc bayern","bayern munchen","bayern münchen"],
@@ -131,6 +139,11 @@ const TEAM_ALIASES = {
   "Alemannia Aachen":["aachen","alemannia aachen"],
   "Holstein Kiel":["kiel","holstein kiel","holstein"],
   "FC St. Pauli":["st pauli","fc st pauli","sankt pauli"],
+  "1860 Munich":["1860 munich","1860 munchen","tsv 1860"],
+  "Eintracht Braunschweig":["braunschweig","eintracht braunschweig"],
+  "Hansa Rostock":["hansa rostock","rostock","hansa"],
+  "Karlsruher SC":["karlsruhe","karlsruher","karlsruher sc","ksc"],
+  "SpVgg Unterhaching":["unterhaching","spvgg unterhaching"],
 
   // ── SERIE A ──
   "Juventus":["juventus","juve","jfc","old lady","bianconeri"],
@@ -174,9 +187,15 @@ const TEAM_ALIASES = {
   "Reggina":["reggina"],
   "Palermo":["palermo","us palermo"],
   "Bari":["bari","as bari","ssc bari"],
+  "Carpi":["carpi","carpi fc"],
   "Treviso":["treviso"],
   "Messina":["messina"],
   "Ascoli":["ascoli"],
+  "Ancona":["ancona"],
+  "Modena":["modena","modena fc"],
+  "Piacenza":["piacenza"],
+  "Pisa":["pisa","ac pisa"],
+  "Vicenza":["vicenza","lanerossi vicenza"],
 
   // ── LIGUE 1 ──
   "Paris Saint-Germain":["psg","paris saint germain","paris sg","paris","paris saint-germain"],
@@ -214,6 +233,13 @@ const TEAM_ALIASES = {
   "Le Mans FC":["le mans","le mans fc","muc"],
   "AS Nancy":["nancy","as nancy","asnl"],
   "Évian TG":["evian","evian tg"],
+  "Boulogne":["boulogne","us boulogne"],
+  "Gazélec Ajaccio":["gazelec","gazelec ajaccio"],
+  "Grenoble Foot":["grenoble","grenoble foot"],
+  "Istres":["istres","fc istres"],
+  "Nîmes":["nimes","nimes olympique"],
+  "Paris FC":["paris fc"],
+  "Sedan":["sedan","cs sedan"],
   "Chamois Niortais":["niort","chamois niortais"],
 };
 
