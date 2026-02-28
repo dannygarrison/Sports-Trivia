@@ -1,0 +1,7326 @@
+// Soccer player data for Soccer Chain game
+// Source: FBRef (Sports Reference) — top players by appearances in Big 5 leagues since 2000
+// 7319 players across 219 clubs — COMPLETE dataset
+// Team names normalized to canonical forms
+
+export const SOCCER_PLAYERS = [
+,  {name:"Aaron Cresswell",teams:["West Ham United"]}
+  {name:"Aaron Hickey",teams:["Bologna","Brentford"]}
+  {name:"Aaron Hughes",teams:["Aston Villa","Fulham","Newcastle United"]}
+  {name:"Aaron Hunt",teams:["Hamburger SV","VfL Wolfsburg","Werder Bremen"]}
+  {name:"Aaron Lennon",teams:["Burnley","Everton","Leeds United","Tottenham Hotspur"]}
+  {name:"Aaron Leya Iseka",teams:["FC Metz","Olympique de Marseille","Toulouse FC"]}
+  {name:"Aaron Mokoena",teams:["Blackburn Rovers","Portsmouth"]}
+  {name:"Aaron Mooy",teams:["Brighton & Hove Albion","Huddersfield Town"]}
+  {name:"Aaron Ramsdale",teams:["AFC Bournemouth","Arsenal","Newcastle United","Sheffield United","Southampton"]}
+  {name:"Aaron Ramsey",teams:["Arsenal","Juventus","OGC Nice"]}
+  {name:"Aaron Wan-Bissaka",teams:["Crystal Palace","Manchester United","West Ham United"]}
+  {name:"Aarón Martín",teams:["1. FSV Mainz 05","Celta Vigo","Espanyol","Genoa"]}
+  {name:"Abdallah Sima",teams:["Angers SCO","RC Lens","Stade Brestois 29"]}
+  {name:"Abde Ezzalzouli",teams:["Barcelona","Osasuna","Real Betis"]}
+  {name:"Abde Rebbach",teams:["Alavés"]}
+  {name:"Abdel Abqar",teams:["Alavés","Getafe"]}
+  {name:"Abdelaziz Barrada",teams:["Getafe","Olympique de Marseille"]}
+  {name:"Abdelhafid Tasfaout",teams:["EA Guingamp"]}
+  {name:"Abdelhamid El Kaoutari",teams:["Montpellier HSC","Palermo","SC Bastia","Stade de Reims"]}
+  {name:"Abdelhamid Sabiri",teams:["Fiorentina","Huddersfield Town","SC Paderborn 07","Sampdoria"]}
+  {name:"Abdelilah Fahmi",teams:["LOSC Lille","RC Strasbourg"]}
+  {name:"Abdelkader Ghezzal",teams:["Bari","Cesena","Levante","Parma","Siena"]}
+  {name:"Abdelmalek Cherrad",teams:["OGC Nice","SC Bastia"]}
+  {name:"Abdelnasser Ouadah",teams:["FC Metz","GFC Ajaccio","Sedan"]}
+  {name:"Abdeslam Ouaddou",teams:["AS Nancy","FC Valenciennes","Fulham","Stade Rennais"]}
+  {name:"Abdou Diallo",teams:["1. FSV Mainz 05","AS Monaco","Borussia Dortmund","Paris Saint-Germain","RB Leipzig"]}
+  {name:"Abdou Harroui",teams:["Frosinone","Hellas Verona","Sassuolo"]}
+  {name:"Abdou Traoré",teams:["Girondins de Bordeaux","OGC Nice"]}
+  {name:"Abdoul Camara",teams:["Angers SCO","EA Guingamp","FC Sochaux","Stade Rennais"]}
+  {name:"Abdoul Kader Bamba",teams:["FC Nantes"]}
+  {name:"Abdoul Sissoko",teams:["Granada","Stade Brestois 29"]}
+  {name:"Abdoulay Konko",teams:["Atalanta","Genoa","Lazio","Sevilla","Siena"]}
+  {name:"Abdoulaye Bamba",teams:["Angers SCO","Dijon FCO"]}
+  {name:"Abdoulaye Doucouré",teams:["Everton","Granada","Stade Rennais","Watford"]}
+  {name:"Abdoulaye Faye",teams:["Bolton Wanderers","Hull City","Istres","Newcastle United","RC Lens","Stoke City"]}
+  {name:"Abdoulaye Méïté",teams:["Bolton Wanderers","Dijon FCO","Olympique de Marseille","West Bromwich Albion"]}
+  {name:"Abdoulaye Touré",teams:["FC Nantes","Genoa","Le Havre AC"]}
+  {name:"Abdul Kader Keïta",teams:["LOSC Lille","Olympique Lyonnais"]}
+  {name:"Abdul Majeed Waris",teams:["FC Lorient","FC Nantes","FC Valenciennes","RC Strasbourg"]}
+  {name:"Abdul Mumin",teams:["Rayo Vallecano"]}
+  {name:"Abdón Prats",teams:["Mallorca"]}
+  {name:"Abel Aguilar",teams:["Deportivo La Coruña","Hércules","Real Zaragoza","Toulouse FC","Udinese"]}
+  {name:"Abel Bretones",teams:["Osasuna"]}
+  {name:"Abel Gómez Moreno",teams:["Córdoba","Granada","Real Murcia","Xerez"]}
+  {name:"Abel Hernández",teams:["Hull City","Palermo"]}
+  {name:"Abel Xavier",teams:["AS Roma","Everton","Hannover 96","Liverpool","Middlesbrough"]}
+  {name:"Abelardo Fernández",teams:["Alavés","Barcelona"]}
+  {name:"Abner",teams:["Olympique Lyonnais","Real Betis"]}
+  {name:"Abou Diaby",teams:["AJ Auxerre","Arsenal","Olympique de Marseille"]}
+  {name:"Abraham González",teams:["Barcelona","Espanyol"]}
+  {name:"Abraham Minero",teams:["Eibar","Real Zaragoza"]}
+  {name:"Abraham Paz",teams:["Cádiz","Hércules"]}
+  {name:"Achille Emaná",teams:["Real Betis","Toulouse FC"]}
+  {name:"Achraf Hakimi",teams:["Borussia Dortmund","Inter Milan","Paris Saint-Germain","Real Madrid"]}
+  {name:"Achraf Lazaar",teams:["Benevento","Palermo"]}
+  {name:"Adam Armstrong",teams:["Newcastle United","Southampton","Wolverhampton Wanderers"]}
+  {name:"Adam Bodzek",teams:["Fortuna Düsseldorf","MSV Duisburg"]}
+  {name:"Adam Forshaw",teams:["Everton","Leeds United","Middlesbrough"]}
+  {name:"Adam Hloušek",teams:["1. FC Kaiserslautern","1. FC Nürnberg","VfB Stuttgart"]}
+  {name:"Adam Hložek",teams:["Bayer Leverkusen","TSG Hoffenheim"]}
+  {name:"Adam Johnson",teams:["Manchester City","Middlesbrough","Sunderland"]}
+  {name:"Adam Lallana",teams:["Brighton & Hove Albion","Liverpool","Southampton"]}
+  {name:"Adam Marušić",teams:["Lazio"]}
+  {name:"Adam Masina",teams:["Bologna","Torino","Udinese","Watford"]}
+  {name:"Adam Matuszczyk",teams:["FC Köln"]}
+  {name:"Adam Obert",teams:["Cagliari"]}
+  {name:"Adam Ounas",teams:["Cagliari","Crotone","Girondins de Bordeaux","LOSC Lille","Napoli","OGC Nice"]}
+  {name:"Adam Smith",teams:["AFC Bournemouth","Tottenham Hotspur"]}
+  {name:"Adam Webster",teams:["Brighton & Hove Albion"]}
+  {name:"Adam Wharton",teams:["Crystal Palace"]}
+  {name:"Adama Coulibaly",teams:["AJ Auxerre","RC Lens"]}
+  {name:"Adama Diakhaby",teams:["AS Monaco","Huddersfield Town","Stade Rennais"]}
+  {name:"Adama Soumaoro",teams:["Bologna","Genoa","LOSC Lille"]}
+  {name:"Adama Traoré",teams:["AS Monaco","Aston Villa","Barcelona","FC Metz","Fulham","LOSC Lille","Middlesbrough","West Ham United","Wolverhampton Wanderers"]}
+  {name:"Adaílton",teams:["Bologna","Hellas Verona"]}
+  {name:"Ade Akinbiyi",teams:["Leicester City","Sheffield United"]}
+  {name:"Adel Chedli",teams:["1. FC Nürnberg","FC Sochaux","Istres"]}
+  {name:"Adel Sellimi",teams:["SC Freiburg"]}
+  {name:"Adel Taarabt",teams:["AC Milan","Fulham","Genoa","Queens Park Rangers","RC Lens","Tottenham Hotspur"]}
+  {name:"Adem Ljajić",teams:["AS Roma","Fiorentina","Inter Milan","Torino"]}
+  {name:"Ademola Lookman",teams:["Atalanta","Atlético Madrid","Everton","Fulham","Leicester City","RB Leipzig"]}
+  {name:"Adil Aouchiche",teams:["AS Saint-Étienne","FC Lorient","Paris Saint-Germain"]}
+  {name:"Adil Chihi",teams:["FC Köln"]}
+  {name:"Adil Hermach",teams:["RC Lens","Toulouse FC"]}
+  {name:"Adil Rami",teams:["AC Milan","Estac Troyes","LOSC Lille","Olympique de Marseille","Sevilla","Valencia"]}
+  {name:"Adlène Guedioura",teams:["Crystal Palace","Middlesbrough","Watford","Wolverhampton Wanderers"]}
+  {name:"Admir Mehmedi",teams:["Bayer Leverkusen","SC Freiburg","VfL Wolfsburg"]}
+  {name:"Adnan Januzaj",teams:["Borussia Dortmund","Las Palmas","Manchester United","Real Sociedad","Sevilla","Sunderland"]}
+  {name:"Ado Onaiwu",teams:["AJ Auxerre","Toulouse FC"]}
+  {name:"Adri Embarba",teams:["Almería","Espanyol","Rayo Vallecano"]}
+  {name:"Adrian Beck",teams:["1. FC Heidenheim"]}
+  {name:"Adrian Grbić",teams:["FC Lorient"]}
+  {name:"Adrian Mariappa",teams:["Crystal Palace","Reading","Watford"]}
+  {name:"Adrian Mutu",teams:["Cesena","Chelsea","Fiorentina","GFC Ajaccio","Hellas Verona","Juventus","Parma"]}
+  {name:"Adrian Stoian",teams:["AS Roma","Chievo Verona","Crotone","Genoa"]}
+  {name:"Adriano",teams:["AS Monaco","AS Roma","Atalanta","Barcelona","Fiorentina","Inter Milan","Parma","Sevilla"]}
+  {name:"Adrien Hunou",teams:["Angers SCO","Stade Rennais"]}
+  {name:"Adrien Rabiot",teams:["AC Milan","Juventus","Olympique de Marseille","Paris Saint-Germain","Toulouse FC"]}
+  {name:"Adrien Regattin",teams:["Toulouse FC"]}
+  {name:"Adrien Silva",teams:["AS Monaco","Leicester City","Sampdoria"]}
+  {name:"Adrien Tameze",teams:["Atalanta","Hellas Verona","OGC Nice","Torino"]}
+  {name:"Adrien Thomasson",teams:["FC Nantes","RC Lens","RC Strasbourg","Évian TG"]}
+  {name:"Adrien Truffert",teams:["AFC Bournemouth","Stade Rennais"]}
+  {name:"AdriÃ Pedrosa",teams:["Elche","Espanyol","Sevilla"]}
+  {name:"Adrián",teams:["Liverpool","Real Betis","West Ham United"]}
+  {name:"Adrián Colunga",teams:["Getafe","Granada","Real Zaragoza","Recreativo","Sporting Gijón"]}
+  {name:"Adrián González",teams:["Eibar","Elche","Getafe","Málaga","Racing Santander","Rayo Vallecano"]}
+  {name:"Adrián Gunino",teams:["Córdoba","Toulouse FC"]}
+  {name:"Adrián López",teams:["Atlético Madrid","Deportivo La Coruña","Málaga","Osasuna","Villarreal"]}
+  {name:"Adrián Marín",teams:["Alavés","Granada","Leganés","Villarreal"]}
+  {name:"Adrián Ramos",teams:["Borussia Dortmund","Granada","Hertha BSC"]}
+  {name:"Adrián Ricchiuti",teams:["Catania"]}
+  {name:"Afriyie Acquah",teams:["Empoli","Palermo","Parma","Sampdoria","Torino"]}
+  {name:"Agustín Aranzábal",teams:["Real Sociedad","Real Zaragoza"]}
+  {name:"Ahmad Benali",teams:["Crotone","Pescara"]}
+  {name:"Ahmed Elmohamady",teams:["Aston Villa","Hull City","Sunderland"]}
+  {name:"Ahmed Kantari",teams:["RC Lens","Stade Brestois 29"]}
+  {name:"Ahmed Reda Madouni",teams:["Bayer Leverkusen","Borussia Dortmund"]}
+  {name:"Ahn Jung-hwan",teams:["FC Metz","MSV Duisburg","Perugia"]}
+  {name:"Aihen Muñoz",teams:["Real Sociedad"]}
+  {name:"Aimar Oroz",teams:["Osasuna"]}
+  {name:"Aimen Moueffek",teams:["AS Saint-Étienne"]}
+  {name:"Aimo Diana",teams:["Brescia","Palermo","Parma","Reggina","Sampdoria","Torino"]}
+  {name:"Ainsley Maitland-Niles",teams:["AS Roma","Arsenal","Olympique Lyonnais","Southampton","West Bromwich Albion"]}
+  {name:"Aitor Fernández",teams:["Levante","Osasuna"]}
+  {name:"Aitor Karanka",teams:["Athletic Bilbao","Real Madrid"]}
+  {name:"Aitor Larrazábal",teams:["Athletic Bilbao"]}
+  {name:"Aitor Ocio",teams:["Athletic Bilbao","Osasuna","Sevilla"]}
+  {name:"Aitor Paredes",teams:["Athletic Bilbao"]}
+  {name:"Aitor Ruibal",teams:["Leganés","Real Betis"]}
+  {name:"Aitor Tornavaca",teams:["Recreativo"]}
+  {name:"Akim Zedadka",teams:["AJ Auxerre","Clermont Foot","LOSC Lille"]}
+  {name:"Akis Zikos",teams:["AS Monaco"]}
+  {name:"Akor Adams",teams:["Montpellier HSC","Sevilla"]}
+  {name:"Alaeddine Yahia",teams:["AS Saint-Étienne","EA Guingamp","OGC Nice","RC Lens","SM Caen","Sedan"]}
+  {name:"Alain Goma",teams:["Fulham","Newcastle United"]}
+  {name:"Alain Traoré",teams:["AJ Auxerre","AS Monaco","FC Lorient"]}
+  {name:"Alaixys Romao",teams:["FC Lorient","Grenoble Foot","Olympique de Marseille","Stade de Reims"]}
+  {name:"Alan Hutton",teams:["Aston Villa","Mallorca","Sunderland","Tottenham Hotspur"]}
+  {name:"Alan Shearer",teams:["Newcastle United"]}
+  {name:"Alan Smith",teams:["Leeds United","Manchester United","Newcastle United"]}
+  {name:"Alan Stubbs",teams:["Derby County","Everton","Sunderland"]}
+  {name:"Alan Wright",teams:["Aston Villa","Middlesbrough","Sheffield United"]}
+  {name:"Alassane Pléa",teams:["Borussia Mönchengladbach","OGC Nice","Olympique Lyonnais"]}
+  {name:"Alban Lafont",teams:["FC Nantes","Fiorentina","Toulouse FC"]}
+  {name:"Albano Bizzarri",teams:["Catania","Chievo Verona","Genoa","Gimnàstic","Lazio","Pescara","Real Valladolid","Udinese"]}
+  {name:"Albert Celades",teams:["Girondins de Bordeaux","Real Madrid","Real Zaragoza"]}
+  {name:"Albert Crusat",teams:["Almería","Espanyol","Wigan Athletic"]}
+  {name:"Albert Guðmundsson",teams:["Fiorentina","Genoa"]}
+  {name:"Albert Luque",teams:["Deportivo La Coruña","Mallorca","Málaga","Newcastle United"]}
+  {name:"Albert Riera",teams:["Espanyol","Girondins de Bordeaux","Liverpool","Mallorca","Manchester City"]}
+  {name:"Albert Sambi Lokonga",teams:["Arsenal","Crystal Palace","Hamburger SV","Luton Town","Sevilla"]}
+  {name:"Albert Streit",teams:["Eintracht Frankfurt","FC Köln","FC Schalke 04","Hamburger SV","VfL Wolfsburg"]}
+  {name:"Alberto",teams:["Real Sociedad","Real Valladolid"]}
+  {name:"Alberto Aquilani",teams:["AC Milan","AS Roma","Fiorentina","Juventus","Las Palmas","Liverpool","Pescara","Sassuolo"]}
+  {name:"Alberto Botía",teams:["Barcelona","Elche","Sevilla","Sporting Gijón"]}
+  {name:"Alberto Bueno",teams:["Granada","Leganés","Málaga","Rayo Vallecano","Real Madrid","Real Valladolid"]}
+  {name:"Alberto Cerri",teams:["Cagliari","Como","Empoli","Parma","Pescara","SPAL"]}
+  {name:"Alberto Dossena",teams:["Cagliari","Como"]}
+  {name:"Alberto Fontana",teams:["Atalanta","Chievo Verona","Inter Milan","Napoli","Palermo"]}
+  {name:"Alberto Gilardino",teams:["AC Milan","Bologna","Empoli","Fiorentina","Genoa","Hellas Verona","Palermo","Parma","Pescara"]}
+  {name:"Alberto Giuliatto",teams:["Lecce","Treviso"]}
+  {name:"Alberto Grassi",teams:["Atalanta","Cagliari","Cremonese","Empoli","Parma","SPAL"]}
+  {name:"Alberto Lopo",teams:["Deportivo La Coruña","Espanyol","Getafe"]}
+  {name:"Alberto Lora",teams:["Sporting Gijón"]}
+  {name:"Alberto Marcos Rey",teams:["Real Valladolid"]}
+  {name:"Alberto Moleiro",teams:["Las Palmas","Villarreal"]}
+  {name:"Alberto Moreno",teams:["Como","Liverpool","Sevilla","Villarreal"]}
+  {name:"Alberto Paloschi",teams:["AC Milan","Atalanta","Cagliari","Chievo Verona","Genoa","Parma","SPAL","Swansea City"]}
+  {name:"Alberto Perea",teams:["Cádiz","Granada","Rayo Vallecano"]}
+  {name:"Alberto Rivera",teams:["Elche","Levante","Olympique de Marseille","Real Betis","Real Madrid","Sporting Gijón"]}
+  {name:"Alberto Savino",teams:["Lecce"]}
+  {name:"Alberto Valentim",teams:["Siena","Udinese"]}
+  {name:"Alberto Zapater",teams:["Genoa","Real Zaragoza"]}
+  {name:"Alberto de la Bella",teams:["Real Sociedad"]}
+  {name:"Albin Ebondo",teams:["AS Saint-Étienne","Toulouse FC"]}
+  {name:"Albin Ekdal",teams:["Bologna","Cagliari","Hamburger SV","Juventus","Sampdoria","Siena","Spezia"]}
+  {name:"Alcázar",teams:["Rayo Vallecano"]}
+  {name:"Aldo Angoula",teams:["Évian TG"]}
+  {name:"Aldo Duscher",teams:["Deportivo La Coruña","Espanyol","Racing Santander","Sevilla"]}
+  {name:"Aleandro Rosi",teams:["AS Roma","Crotone","Fiorentina","Frosinone","Genoa","Parma","Sassuolo","Siena"]}
+  {name:"Aleix Febas",teams:["Elche","Mallorca"]}
+  {name:"Aleix García",teams:["Bayer Leverkusen","Eibar","Girona","Manchester City"]}
+  {name:"Aleix Vidal",teams:["Alavés","Almería","Barcelona","Espanyol","Sevilla"]}
+  {name:"Alejandro Alfaro",teams:["Mallorca","Sevilla","Tenerife"]}
+  {name:"Alejandro Alonso",teams:["AS Monaco","AS Saint-Étienne","Girondins de Bordeaux"]}
+  {name:"Alejandro Arribas",teams:["Deportivo La Coruña","Osasuna","Rayo Vallecano","Sevilla"]}
+  {name:"Alejandro Balde",teams:["Barcelona"]}
+  {name:"Alejandro Bedoya",teams:["FC Nantes"]}
+  {name:"Alejandro Campano",teams:["Gimnàstic","Mallorca"]}
+  {name:"Alejandro Garnacho",teams:["Chelsea","Manchester United"]}
+  {name:"Alejandro Pozo Pozo",teams:["Almería","Eibar","Mallorca","Sevilla"]}
+  {name:"Alejandro Pozuelo",teams:["Rayo Vallecano","Real Betis","Swansea City"]}
+  {name:"Aleksandar Dragović",teams:["Bayer Leverkusen","Leicester City"]}
+  {name:"Aleksandar Ignjovski",teams:["Eintracht Frankfurt","SC Freiburg","Werder Bremen"]}
+  {name:"Aleksandar Kolarov",teams:["AS Roma","Inter Milan","Lazio","Manchester City"]}
+  {name:"Aleksandar Luković",teams:["Udinese"]}
+  {name:"Aleksandar Mitrović",teams:["Fulham","Newcastle United"]}
+  {name:"Aleksandar Pantić",teams:["Alavés","Córdoba","Eibar","Villarreal"]}
+  {name:"Aleksandar Pavlovic",teams:["Bayern Munich"]}
+  {name:"Aleksandar Pešić",teams:["Atalanta","Toulouse FC"]}
+  {name:"Aleksandar Tonev",teams:["Aston Villa","Crotone","Frosinone"]}
+  {name:"Aleksandar Trajkovski",teams:["Mallorca","Palermo"]}
+  {name:"Aleksandar Vasoski",teams:["Eintracht Frankfurt"]}
+  {name:"Aleksander Knavs",teams:["1. FC Kaiserslautern","VfL Bochum"]}
+  {name:"Aleksandr Golovin",teams:["AS Monaco"]}
+  {name:"Aleksandr Mostovoi",teams:["Celta Vigo"]}
+  {name:"Aleksandre Iashvili",teams:["Karlsruher SC","SC Freiburg"]}
+  {name:"Aleksei Miranchuk",teams:["Atalanta","Torino"]}
+  {name:"Alen Bokšić",teams:["Middlesbrough"]}
+  {name:"Alen Halilović",teams:["Hamburger SV","Las Palmas","Sporting Gijón"]}
+  {name:"Alessandro Agostini",teams:["Cagliari","Empoli","Fiorentina","Hellas Verona"]}
+  {name:"Alessandro Bastoni",teams:["Atalanta","Inter Milan","Parma"]}
+  {name:"Alessandro Birindelli",teams:["Juventus"]}
+  {name:"Alessandro Budel",teams:["Brescia","Cagliari","Empoli","Lecce","Parma"]}
+  {name:"Alessandro Buongiorno",teams:["Napoli","Torino"]}
+  {name:"Alessandro Calori",teams:["Brescia"]}
+  {name:"Alessandro Conticchio",teams:["Cagliari","Lecce","Torino"]}
+  {name:"Alessandro Costacurta",teams:["AC Milan"]}
+  {name:"Alessandro Deiola",teams:["Cagliari","Lecce","Parma","Spezia"]}
+  {name:"Alessandro Del Piero",teams:["Juventus"]}
+  {name:"Alessandro Diamanti",teams:["Atalanta","Bologna","Brescia","Fiorentina","Livorno","Palermo","Watford","West Ham United"]}
+  {name:"Alessandro Florenzi",teams:["AC Milan","AS Roma","Paris Saint-Germain","Valencia"]}
+  {name:"Alessandro Gamberini",teams:["Bologna","Chievo Verona","Fiorentina","Genoa","Napoli"]}
+  {name:"Alessandro Gazzi",teams:["Bari","Palermo","Reggina","Siena","Torino"]}
+  {name:"Alessandro Grandoni",teams:["Livorno","Modena"]}
+  {name:"Alessandro Longhi",teams:["Sassuolo"]}
+  {name:"Alessandro Lucarelli",teams:["Genoa","Livorno","Parma","Piacenza","Reggina"]}
+  {name:"Alessandro Matri",teams:["AC Milan","Brescia","Cagliari","Fiorentina","Genoa","Juventus","Lazio","Sassuolo"]}
+  {name:"Alessandro Murgia",teams:["Lazio","SPAL"]}
+  {name:"Alessandro Nesta",teams:["AC Milan","Lazio"]}
+  {name:"Alessandro Parisi",teams:["Bari","Messina"]}
+  {name:"Alessandro Pierini",teams:["Fiorentina","Parma","Racing Santander","Reggina","Udinese"]}
+  {name:"Alessandro Pistone",teams:["Everton"]}
+  {name:"Alessandro Potenza",teams:["Catania","Chievo Verona","Fiorentina","Genoa","Mallorca","Parma"]}
+  {name:"Alessandro Rosina",teams:["Cesena","Parma","Siena","Torino"]}
+  {name:"Alessandro Schöpf",teams:["Arminia Bielefeld","FC Schalke 04"]}
+  {name:"Alessandro Zanoli",teams:["Genoa","Napoli","Salernitana","Sampdoria","Udinese"]}
+  {name:"Alessio Cerci",teams:["AC Milan","AS Roma","Atalanta","Atlético Madrid","Fiorentina","Genoa","Hellas Verona","Torino"]}
+  {name:"Alessio Cragno",teams:["Cagliari","Monza","Sassuolo"]}
+  {name:"Alessio Romagnoli",teams:["AC Milan","AS Roma","Lazio","Sampdoria"]}
+  {name:"Alessio Sestu",teams:["Bari","Chievo Verona","Reggina","Sampdoria","Siena"]}
+  {name:"Alessio Tacchinardi",teams:["Juventus","Villarreal"]}
+  {name:"Alessio Zerbin",teams:["Cremonese","Monza","Napoli","Venezia"]}
+  {name:"Alex",teams:["AC Milan","Chelsea","Paris Saint-Germain"]}
+  {name:"Alex Alves",teams:["Hertha BSC"]}
+  {name:"Alex Baena",teams:["Atlético Madrid","Villarreal"]}
+  {name:"Alex Calderoni",teams:["Atalanta","Cesena","Torino"]}
+  {name:"Alex Cordaz",teams:["Crotone","Inter Milan"]}
+  {name:"Alex Fernández",teams:["Espanyol","Osasuna"]}
+  {name:"Alex Ferrari",teams:["Bologna","Cremonese","Hellas Verona","Sampdoria"]}
+  {name:"Alex Iwobi",teams:["Arsenal","Everton","Fulham"]}
+  {name:"Alex Král",teams:["1. FC Union Berlin","Espanyol","FC Schalke 04","West Ham United"]}
+  {name:"Alex Manninger",teams:["Arsenal","FC Augsburg","Fiorentina","Juventus","Siena","Torino"]}
+  {name:"Alex McCarthy",teams:["Crystal Palace","Queens Park Rangers","Reading","Southampton"]}
+  {name:"Alex Meret",teams:["Napoli","SPAL"]}
+  {name:"Alex Nyarko",teams:["AS Monaco","Everton","Paris Saint-Germain"]}
+  {name:"Alex Oxlade-Chamberlain",teams:["Arsenal","Liverpool"]}
+  {name:"Alex Pinardi",teams:["Atalanta","Cagliari","Lecce","Novara"]}
+  {name:"Alex Rae",teams:["Sunderland","Wolverhampton Wanderers"]}
+  {name:"Alex Sandro",teams:["Juventus"]}
+  {name:"Alex Scott",teams:["AFC Bournemouth"]}
+  {name:"Alex Sola",teams:["Alavés","Getafe","Real Sociedad"]}
+  {name:"Alex Telles",teams:["Inter Milan","Manchester United","Sevilla"]}
+  {name:"Alexander Baumjohann",teams:["Bayern Munich","Borussia Mönchengladbach","FC Schalke 04","Hertha BSC"]}
+  {name:"Alexander Bugera",teams:["1. FC Kaiserslautern","MSV Duisburg","SpVgg Unterhaching"]}
+  {name:"Alexander Djiku",teams:["RC Strasbourg","SC Bastia","SM Caen"]}
+  {name:"Alexander Esswein",teams:["1. FC Nürnberg","FC Augsburg","Hertha BSC","VfB Stuttgart","VfL Wolfsburg"]}
+  {name:"Alexander Farnerud",teams:["RC Strasbourg","Torino","VfB Stuttgart"]}
+  {name:"Alexander Frei",teams:["Borussia Dortmund","Stade Rennais"]}
+  {name:"Alexander Hack",teams:["1. FSV Mainz 05"]}
+  {name:"Alexander Hleb",teams:["Arsenal","Barcelona","Birmingham City","VfB Stuttgart","VfL Wolfsburg"]}
+  {name:"Alexander Isak",teams:["Borussia Dortmund","Liverpool","Newcastle United","Real Sociedad"]}
+  {name:"Alexander Kačaniklić",teams:["FC Nantes","Fulham"]}
+  {name:"Alexander Madlung",teams:["Eintracht Frankfurt","Hertha BSC","VfL Wolfsburg"]}
+  {name:"Alexander Meier",teams:["Eintracht Frankfurt","FC St. Pauli","Hamburger SV"]}
+  {name:"Alexander Nübel",teams:["AS Monaco","Bayern Munich","FC Schalke 04","VfB Stuttgart"]}
+  {name:"Alexander Schur",teams:["Eintracht Frankfurt"]}
+  {name:"Alexander Schwolow",teams:["1. FC Union Berlin","FC Schalke 04","Hertha BSC","SC Freiburg"]}
+  {name:"Alexander Sørloth",teams:["Atlético Madrid","Crystal Palace","RB Leipzig","Real Sociedad","Villarreal"]}
+  {name:"Alexander Tettey",teams:["Norwich City","Stade Rennais"]}
+  {name:"Alexander Voigt",teams:["Borussia Mönchengladbach","FC Köln"]}
+  {name:"Alexander Zickler",teams:["Bayern Munich"]}
+  {name:"Alexandre Cuvillier",teams:["AS Nancy","Boulogne"]}
+  {name:"Alexandre Geijo",teams:["Granada","Levante","Málaga","Racing Santander","Udinese"]}
+  {name:"Alexandre Lacazette",teams:["Arsenal","Olympique Lyonnais"]}
+  {name:"Alexandre Mendy",teams:["EA Guingamp","Girondins de Bordeaux","OGC Nice","Stade Brestois 29"]}
+  {name:"Alexandre Oukidja",teams:["FC Metz","RC Strasbourg"]}
+  {name:"Alexandre Pato",teams:["AC Milan","Chelsea","Villarreal"]}
+  {name:"Alexandre Raineau",teams:["SM Caen"]}
+  {name:"Alexandre Song",teams:["Arsenal","Barcelona","Charlton Athletic","SC Bastia","West Ham United"]}
+  {name:"Alexandros Tziolis",teams:["Racing Santander","Siena","Werder Bremen"]}
+  {name:"Alexandru Maxim",teams:["1. FSV Mainz 05","VfB Stuttgart"]}
+  {name:"Alexey Smertin",teams:["Charlton Athletic","Chelsea","Fulham","Girondins de Bordeaux","Portsmouth"]}
+  {name:"Alexis",teams:["Alavés","Getafe","Levante","Málaga","Real Valladolid","Sevilla","Tenerife","Valencia"]}
+  {name:"Alexis Blin",teams:["Amiens SC","Lecce","Toulouse FC"]}
+  {name:"Alexis Claude-Maurice",teams:["FC Augsburg","OGC Nice","RC Lens"]}
+  {name:"Alexis Flips",teams:["Stade de Reims"]}
+  {name:"Alexis Mac Allister",teams:["Brighton & Hove Albion","Liverpool"]}
+  {name:"Alexis Saelemaekers",teams:["AC Milan","AS Roma","Bologna"]}
+  {name:"Alexis Sánchez",teams:["Arsenal","Barcelona","Inter Milan","Manchester United","Olympique de Marseille","Sevilla","Udinese"]}
+  {name:"Alexis Thébaux",teams:["FC Nantes","SC Bastia","SM Caen","Stade Brestois 29"]}
+  {name:"Alexsandro Ribeiro",teams:["LOSC Lille"]}
+  {name:"Alexy Bosetti",teams:["OGC Nice"]}
+  {name:"Alfie Mawson",teams:["Fulham","Swansea City"]}
+  {name:"Alfonso Espino",teams:["Cádiz","Rayo Vallecano"]}
+  {name:"Alfonso Pedraza",teams:["Alavés","Real Betis","Villarreal"]}
+  {name:"Alfonso Pérez",teams:["Barcelona","Olympique de Marseille","Real Betis"]}
+  {name:"Alfred Duncan",teams:["Cagliari","Fiorentina","Inter Milan","Livorno","Sampdoria","Sassuolo","Venezia"]}
+  {name:"Alfred Gomis",teams:["Dijon FCO","SPAL","Stade Rennais"]}
+  {name:"Alfred N'Diaye",teams:["AS Nancy","Hull City","Real Betis","Sunderland","Villarreal"]}
+  {name:"Alfredo",teams:["Osasuna"]}
+  {name:"Alfredo Morales",teams:["FC Ingolstadt 04","Fortuna Düsseldorf","Hertha BSC"]}
+  {name:"Alfreð Finnbogason",teams:["FC Augsburg","Real Sociedad"]}
+  {name:"Ali Adnan Kadhim",teams:["Atalanta","Udinese"]}
+  {name:"Ali Ahamada",teams:["Toulouse FC"]}
+  {name:"Ali Al-Habsi",teams:["Bolton Wanderers","Wigan Athletic"]}
+  {name:"Alidu Seidu",teams:["Clermont Foot","Stade Rennais"]}
+  {name:"Alieu Fadera",teams:["Como","Sassuolo"]}
+  {name:"Aliou Cissé",teams:["Birmingham City","Montpellier HSC","Paris Saint-Germain","Portsmouth","Sedan"]}
+  {name:"Alireza Jahanbakhsh",teams:["Brighton & Hove Albion"]}
+  {name:"Alisson",teams:["AS Roma","Liverpool"]}
+  {name:"Allan",teams:["Everton","Napoli","Udinese"]}
+  {name:"Allan McGregor",teams:["Hull City"]}
+  {name:"Allan Nyom",teams:["Getafe","Granada","Leganés","Watford","West Bromwich Albion"]}
+  {name:"Allan Saint-Maximin",teams:["AS Monaco","AS Saint-Étienne","Hannover 96","Newcastle United","OGC Nice","RC Lens","SC Bastia"]}
+  {name:"Almamy Touré",teams:["AS Monaco","Eintracht Frankfurt"]}
+  {name:"Almen Abdi",teams:["Le Mans FC","Udinese","Watford"]}
+  {name:"Almog Cohen",teams:["1. FC Nürnberg","FC Ingolstadt 04"]}
+  {name:"Alou Diarra",teams:["AS Nancy","Girondins de Bordeaux","Le Havre AC","Olympique Lyonnais","Olympique de Marseille","RC Lens","SC Bastia","Stade Rennais","West Ham United"]}
+  {name:"Aloísio",teams:["AS Saint-Étienne","Paris Saint-Germain"]}
+  {name:"Alpay Özalan",teams:["Aston Villa","FC Köln"]}
+  {name:"Alphonse Areola",teams:["Fulham","Paris Saint-Germain","Real Madrid","SC Bastia","Villarreal","West Ham United"]}
+  {name:"Alphonso Davies",teams:["Bayern Munich"]}
+  {name:"Altin Lala",teams:["Hannover 96"]}
+  {name:"Alun Armstrong",teams:["Ipswich Town"]}
+  {name:"Aly Cissokho",teams:["Aston Villa","Liverpool","Olympique Lyonnais","Valencia"]}
+  {name:"Amad Diallo",teams:["Atalanta","Manchester United"]}
+  {name:"Amadou Diawara",teams:["AS Roma","Bologna","Napoli"]}
+  {name:"Amadou Haidara",teams:["RB Leipzig","RC Lens"]}
+  {name:"Amadou Onana",teams:["Aston Villa","Everton","LOSC Lille"]}
+  {name:"Amara Diané",teams:["Paris Saint-Germain","RC Strasbourg"]}
+  {name:"Amath",teams:["Getafe","Mallorca","Real Valladolid"]}
+  {name:"Amauri",teams:["Chievo Verona","Fiorentina","Juventus","Napoli","Palermo","Parma","Piacenza","Torino"]}
+  {name:"Ambroise Oyongo",teams:["Montpellier HSC"]}
+  {name:"Amdy Faye",teams:["AJ Auxerre","Charlton Athletic","Newcastle United","Portsmouth","Stoke City"]}
+  {name:"Amedeo Carboni",teams:["Valencia"]}
+  {name:"Amedeo Mangone",teams:["AS Roma","Brescia","Parma","Piacenza"]}
+  {name:"Amin Sarr",teams:["Hellas Verona","Olympique Lyonnais","VfL Wolfsburg"]}
+  {name:"Amin Younes",teams:["Borussia Mönchengladbach","Eintracht Frankfurt","Napoli"]}
+  {name:"Amine Adli",teams:["AFC Bournemouth","Bayer Leverkusen","Toulouse FC"]}
+  {name:"Amine Gouiri",teams:["OGC Nice","Olympique Lyonnais","Olympique de Marseille","Stade Rennais"]}
+  {name:"Amine Harit",teams:["FC Nantes","FC Schalke 04","Olympique de Marseille"]}
+  {name:"Amine Salama",teams:["Angers SCO","Stade de Reims"]}
+  {name:"Amir Abrashi",teams:["SC Freiburg"]}
+  {name:"Amir Richardson",teams:["Fiorentina","Stade de Reims"]}
+  {name:"Amir Rrahmani",teams:["Hellas Verona","Napoli"]}
+  {name:"Amos Pieper",teams:["Arminia Bielefeld","Werder Bremen"]}
+  {name:"Anaitz Arbilla",teams:["Eibar","Espanyol","Rayo Vallecano"]}
+  {name:"Anastasios Donis",teams:["OGC Nice","Stade de Reims","VfB Stuttgart"]}
+  {name:"Anastasios Douvikas",teams:["Celta Vigo","Como"]}
+  {name:"Anatoliy Tymoshchuk",teams:["Bayern Munich"]}
+  {name:"Ander Barrenetxea",teams:["Real Sociedad"]}
+  {name:"Ander Capa",teams:["Athletic Bilbao","Eibar"]}
+  {name:"Ander Guevara",teams:["Alavés","Real Sociedad"]}
+  {name:"Ander Herrera",teams:["Athletic Bilbao","Manchester United","Paris Saint-Germain","Real Zaragoza"]}
+  {name:"Ander Iturraspe",teams:["Athletic Bilbao","Espanyol"]}
+  {name:"Ander Murillo",teams:["Athletic Bilbao"]}
+  {name:"Anders Svensson",teams:["Southampton"]}
+  {name:"Anderson",teams:["Fiorentina","Manchester United"]}
+  {name:"Anderson Bamba",teams:["Borussia Mönchengladbach","Eintracht Frankfurt"]}
+  {name:"Anderson Silva",teams:["Everton","Málaga","Racing Santander"]}
+  {name:"Andoni Gorosabel",teams:["Alavés","Athletic Bilbao","Real Sociedad"]}
+  {name:"Andoni Iraola",teams:["Athletic Bilbao"]}
+  {name:"Andre Gray",teams:["Burnley","Watford"]}
+  {name:"Andre Mijatović",teams:["Arminia Bielefeld","Hertha BSC"]}
+  {name:"Andre-Frank Zambo Anguissa",teams:["Fulham","Napoli","Olympique de Marseille","Villarreal"]}
+  {name:"Andrea Ardito",teams:["Lecce","Siena","Torino"]}
+  {name:"Andrea Barberis",teams:["Crotone","Monza"]}
+  {name:"Andrea Barzagli",teams:["Chievo Verona","Juventus","Palermo","VfL Wolfsburg"]}
+  {name:"Andrea Belotti",teams:["AS Roma","Cagliari","Como","Fiorentina","Palermo","Torino"]}
+  {name:"Andrea Bertolacci",teams:["AC Milan","Genoa","Lecce","Sampdoria"]}
+  {name:"Andrea Cambiaso",teams:["Bologna","Genoa","Juventus"]}
+  {name:"Andrea Campagnolo",teams:["Cagliari","Catania","Reggina"]}
+  {name:"Andrea Capone",teams:["Cagliari"]}
+  {name:"Andrea Caracciolo",teams:["Brescia","Genoa","Novara","Palermo","Perugia","Sampdoria"]}
+  {name:"Andrea Carboni",teams:["Cagliari","Monza"]}
+  {name:"Andrea Coda",teams:["Empoli","Livorno","Parma","Pescara","Sampdoria","Udinese"]}
+  {name:"Andrea Colpani",teams:["Fiorentina","Monza"]}
+  {name:"Andrea Consigli",teams:["Atalanta","Sassuolo"]}
+  {name:"Andrea Conti",teams:["AC Milan","Atalanta","Parma","Sampdoria"]}
+  {name:"Andrea Cossu",teams:["Cagliari"]}
+  {name:"Andrea Costa",teams:["Benevento","Empoli","Parma","Reggina","Sampdoria"]}
+  {name:"Andrea Cupi",teams:["Empoli","Napoli"]}
+  {name:"Andrea Dossena",teams:["Hellas Verona","Liverpool","Napoli","Palermo","Sunderland","Treviso","Udinese"]}
+  {name:"Andrea Esposito",teams:["Bologna","Genoa","Lecce","Livorno"]}
+  {name:"Andrea Gasbarroni",teams:["Genoa","Palermo","Parma","Sampdoria","Torino"]}
+  {name:"Andrea Lazzari",teams:["Atalanta","Cagliari","Carpi","Fiorentina","Udinese"]}
+  {name:"Andrea Mantovani",teams:["Bologna","Chievo Verona","Palermo","Torino"]}
+  {name:"Andrea Masiello",teams:["Atalanta","Bari","Genoa","Juventus"]}
+  {name:"Andrea Parola",teams:["Ascoli","Cagliari","Sampdoria"]}
+  {name:"Andrea Petagna",teams:["AC Milan","Atalanta","Cagliari","Monza","Napoli","SPAL","Sampdoria"]}
+  {name:"Andrea Pinamonti",teams:["Empoli","Frosinone","Genoa","Inter Milan","Sassuolo"]}
+  {name:"Andrea Pirlo",teams:["AC Milan","Brescia","Inter Milan","Juventus"]}
+  {name:"Andrea Pisanu",teams:["Bologna","Parma"]}
+  {name:"Andrea Poli",teams:["AC Milan","Bologna","Inter Milan","Sampdoria"]}
+  {name:"Andrea Raggi",teams:["AS Monaco","Bari","Bologna","Empoli","Palermo","Sampdoria"]}
+  {name:"Andrea Ranocchia",teams:["Bari","Genoa","Hull City","Inter Milan","Monza","Sampdoria"]}
+  {name:"Andrea Rispoli",teams:["Crotone","Lecce","Palermo","Parma"]}
+  {name:"Andrea Rossi",teams:["Siena"]}
+  {name:"Andrea Sottil",teams:["Catania","Reggina","Udinese"]}
+  {name:"Andrea Sussi",teams:["Bologna","Brescia"]}
+  {name:"Andrea Zanchetta",teams:["Chievo Verona","Lecce","Reggina"]}
+  {name:"Andreas Beck",teams:["TSG Hoffenheim","VfB Stuttgart"]}
+  {name:"Andreas Christensen",teams:["Barcelona","Borussia Mönchengladbach","Chelsea"]}
+  {name:"Andreas Cornelius",teams:["Atalanta","Cardiff City","Girondins de Bordeaux","Parma"]}
+  {name:"Andreas Granqvist",teams:["Genoa","Wigan Athletic"]}
+  {name:"Andreas Görlitz",teams:["1860 Munich","Bayern Munich","Karlsruher SC"]}
+  {name:"Andreas Hanche-Olsen",teams:["1. FSV Mainz 05"]}
+  {name:"Andreas Hinkel",teams:["SC Freiburg","Sevilla","VfB Stuttgart"]}
+  {name:"Andreas Ibertsberger",teams:["SC Freiburg","TSG Hoffenheim"]}
+  {name:"Andreas Isaksson",teams:["Manchester City","Stade Rennais"]}
+  {name:"Andreas Ivanschitz",teams:["1. FSV Mainz 05","Levante"]}
+  {name:"Andreas Jakobsson",teams:["Hansa Rostock","Southampton"]}
+  {name:"Andreas Luthe",teams:["1. FC Union Berlin","FC Augsburg","VfL Bochum"]}
+  {name:"Andreas Möller",teams:["Eintracht Frankfurt","FC Schalke 04"]}
+  {name:"Andreas Neuendorf",teams:["Bayer Leverkusen","Hertha BSC"]}
+  {name:"Andreas Ottl",teams:["1. FC Nürnberg","Bayern Munich","FC Augsburg","Hertha BSC"]}
+  {name:"Andreas Pereira",teams:["Fulham","Granada","Lazio","Manchester United","Valencia"]}
+  {name:"Andreas Reinke",teams:["Werder Bremen"]}
+  {name:"Andreas Schmidt",teams:["Hertha BSC"]}
+  {name:"Andreas Skov Olsen",teams:["Bologna","VfL Wolfsburg"]}
+  {name:"Andreas Voglsammer",teams:["1. FC Union Berlin","Arminia Bielefeld"]}
+  {name:"Andreas Weimann",teams:["Aston Villa"]}
+  {name:"Andreas Wolf",teams:["1. FC Nürnberg","AS Monaco","Werder Bremen"]}
+  {name:"Andreas Zeyer",teams:["SC Freiburg"]}
+  {name:"Andrei Girotto",teams:["FC Nantes"]}
+  {name:"Andrei Ratiu",teams:["Rayo Vallecano"]}
+  {name:"Andrej Kramarić",teams:["Leicester City","TSG Hoffenheim"]}
+  {name:"Andreu Fontàs",teams:["Barcelona","Celta Vigo","Mallorca"]}
+  {name:"Andrew Davies",teams:["Middlesbrough","Stoke City"]}
+  {name:"Andrew Gravillon",teams:["Benevento","FC Lorient","Stade de Reims","Torino"]}
+  {name:"Andrew Johnson",teams:["Crystal Palace","Everton","Fulham","Queens Park Rangers"]}
+  {name:"Andrew Robertson",teams:["Hull City","Liverpool"]}
+  {name:"Andrew Surman",teams:["AFC Bournemouth","Norwich City","Wolverhampton Wanderers"]}
+  {name:"Andrew Taylor",teams:["Cardiff City","Middlesbrough"]}
+  {name:"Andrey Arshavin",teams:["Arsenal"]}
+  {name:"Andrey Santos",teams:["Chelsea","Nottingham Forest","RC Strasbourg"]}
+  {name:"Andrija Delibašić",teams:["Mallorca","Rayo Vallecano"]}
+  {name:"Andriy Shevchenko",teams:["AC Milan","Chelsea"]}
+  {name:"Andriy Voronin",teams:["Bayer Leverkusen","FC Köln","Fortuna Düsseldorf","Hertha BSC","Liverpool"]}
+  {name:"Andriy Yarmolenko",teams:["Borussia Dortmund","West Ham United"]}
+  {name:"Andros Townsend",teams:["Crystal Palace","Everton","Luton Town","Newcastle United","Queens Park Rangers","Tottenham Hotspur"]}
+  {name:"Andrzej Juskowiak",teams:["Energie Cottbus","VfL Wolfsburg"]}
+  {name:"Andrzej Kobylański",teams:["Energie Cottbus"]}
+  {name:"András Schäfer",teams:["1. FC Union Berlin"]}
+  {name:"André",teams:["Wolverhampton Wanderers"]}
+  {name:"André Ayew",teams:["FC Lorient","Le Havre AC","Nottingham Forest","Olympique de Marseille","Swansea City","West Ham United"]}
+  {name:"André Bikey",teams:["Burnley","Reading"]}
+  {name:"André Biyogo Poko",teams:["Girondins de Bordeaux"]}
+  {name:"André Dias",teams:["Lazio"]}
+  {name:"André Gomes",teams:["Barcelona","Everton","LOSC Lille","Valencia"]}
+  {name:"André Hahn",teams:["Borussia Mönchengladbach","FC Augsburg","Hamburger SV"]}
+  {name:"André Hoffmann",teams:["Fortuna Düsseldorf","Hannover 96"]}
+  {name:"André Luiz",teams:["AS Nancy"]}
+  {name:"André Luiz Moreira",teams:["GFC Ajaccio","Olympique de Marseille","Paris Saint-Germain"]}
+  {name:"André Onana",teams:["Inter Milan","Manchester United"]}
+  {name:"André Ooijer",teams:["Blackburn Rovers"]}
+  {name:"André Schürrle",teams:["1. FSV Mainz 05","Bayer Leverkusen","Borussia Dortmund","Chelsea","Fulham","VfL Wolfsburg"]}
+  {name:"André Silva",teams:["AC Milan","Eintracht Frankfurt","Elche","RB Leipzig","Real Sociedad","Sevilla","Werder Bremen"]}
+  {name:"André-Pierre Gignac",teams:["FC Lorient","Olympique de Marseille","Toulouse FC"]}
+  {name:"Andrés D'Alessandro",teams:["Portsmouth","Real Zaragoza","VfL Wolfsburg"]}
+  {name:"Andrés Fernández",teams:["Granada","Huesca","Osasuna","Villarreal"]}
+  {name:"Andrés Guardado",teams:["Bayer Leverkusen","Deportivo La Coruña","Real Betis","Valencia"]}
+  {name:"Andrés Guglielminpietro",teams:["AC Milan","Bologna","Inter Milan"]}
+  {name:"Andrés Iniesta",teams:["Barcelona"]}
+  {name:"Andrés Palop",teams:["Sevilla","Valencia"]}
+  {name:"Andy Carroll",teams:["Liverpool","Newcastle United","West Ham United"]}
+  {name:"Andy Cole",teams:["Blackburn Rovers","Fulham","Manchester City","Manchester United","Portsmouth","Sunderland"]}
+  {name:"Andy Dawson",teams:["Hull City"]}
+  {name:"Andy Delort",teams:["FC Nantes","GFC Ajaccio","Montpellier HSC","OGC Nice","SM Caen","Toulouse FC"]}
+  {name:"Andy Diouf",teams:["Inter Milan","RC Lens","Stade Rennais"]}
+  {name:"Andy Griffin",teams:["Derby County","Newcastle United","Portsmouth","Stoke City"]}
+  {name:"Andy Impey",teams:["Leicester City"]}
+  {name:"Andy Johnson",teams:["West Bromwich Albion"]}
+  {name:"Andy King",teams:["Leicester City","Swansea City"]}
+  {name:"Andy Melville",teams:["Fulham"]}
+  {name:"Andy O'Brien",teams:["Bolton Wanderers","Bradford City","Newcastle United","Portsmouth"]}
+  {name:"Andy Pelmard",teams:["Clermont Foot","Las Palmas","Lecce","OGC Nice"]}
+  {name:"Andy Reid",teams:["Blackpool","Charlton Athletic","Sunderland","Tottenham Hotspur"]}
+  {name:"Andy Todd",teams:["Blackburn Rovers","Charlton Athletic","Derby County"]}
+  {name:"Andy Wilkinson",teams:["Stoke City"]}
+  {name:"Andy van der Meyde",teams:["Everton","Inter Milan"]}
+  {name:"Ange-Yoan Bonny",teams:["Inter Milan","Parma"]}
+  {name:"Angel Gomes",teams:["LOSC Lille","Manchester United","Olympique de Marseille","Wolverhampton Wanderers"]}
+  {name:"Angeliño",teams:["AS Roma","Manchester City","RB Leipzig","TSG Hoffenheim"]}
+  {name:"Angelo Di Livio",teams:["Fiorentina"]}
+  {name:"Angelo Fulgini",teams:["1. FSV Mainz 05","Angers SCO","RC Lens"]}
+  {name:"Angelo Ogbonna",teams:["Juventus","Torino","West Ham United"]}
+  {name:"Angelo Palombo",teams:["Fiorentina","Inter Milan","Sampdoria"]}
+  {name:"Angelo Peruzzi",teams:["Lazio"]}
+  {name:"Angelo Stiller",teams:["TSG Hoffenheim","VfB Stuttgart"]}
+  {name:"Angelo da Costa Júnior",teams:["Bologna","Sampdoria"]}
+  {name:"Angelos Basinas",teams:["AC Arles-Avignon","Mallorca","Portsmouth"]}
+  {name:"Angelos Charisteas",teams:["1. FC Nürnberg","AC Arles-Avignon","Bayer Leverkusen","FC Schalke 04","Werder Bremen"]}
+  {name:"Ansgar Knauff",teams:["Borussia Dortmund","Eintracht Frankfurt"]}
+  {name:"Ansu Fati",teams:["AS Monaco","Barcelona","Brighton & Hove Albion"]}
+  {name:"Antar Yahia",teams:["1. FC Kaiserslautern","OGC Nice","SC Bastia","VfL Bochum"]}
+  {name:"Ante Budimir",teams:["Crotone","Mallorca","Osasuna","Sampdoria"]}
+  {name:"Ante Rebić",teams:["AC Milan","Eintracht Frankfurt","Fiorentina","Hellas Verona","Lecce"]}
+  {name:"Anthony Barness",teams:["Bolton Wanderers"]}
+  {name:"Anthony Briançon",teams:["AS Saint-Étienne","Nîmes"]}
+  {name:"Anthony Caci",teams:["1. FSV Mainz 05","RC Strasbourg"]}
+  {name:"Anthony Deroin",teams:["SM Caen"]}
+  {name:"Anthony Elanga",teams:["Manchester United","Newcastle United","Nottingham Forest"]}
+  {name:"Anthony Gardner",teams:["Hull City","Tottenham Hotspur"]}
+  {name:"Anthony Gordon",teams:["Everton","Newcastle United"]}
+  {name:"Anthony Jung",teams:["FC Ingolstadt 04","SC Freiburg","Werder Bremen"]}
+  {name:"Anthony Knockaert",teams:["Brighton & Hove Albion","Leicester City"]}
+  {name:"Anthony Le Tallec",teams:["AJ Auxerre","AS Saint-Étienne","FC Sochaux","FC Valenciennes","Le Havre AC","Le Mans FC","Liverpool","Sunderland"]}
+  {name:"Anthony Lopes",teams:["FC Nantes","Olympique Lyonnais"]}
+  {name:"Anthony Losilla",teams:["VfL Bochum"]}
+  {name:"Anthony Lozano",teams:["Almería","Cádiz","Getafe","Girona"]}
+  {name:"Anthony Martial",teams:["AS Monaco","Manchester United","Olympique Lyonnais","Sevilla"]}
+  {name:"Anthony Modeste",teams:["AS Saint-Étienne","Blackburn Rovers","Borussia Dortmund","FC Köln","Girondins de Bordeaux","OGC Nice","SC Bastia","TSG Hoffenheim"]}
+  {name:"Anthony Mounier",teams:["Atalanta","Bologna","Montpellier HSC","OGC Nice","Olympique Lyonnais"]}
+  {name:"Anthony Pilkington",teams:["Norwich City"]}
+  {name:"Anthony Rouault",teams:["Stade Rennais","Toulouse FC","VfB Stuttgart"]}
+  {name:"Anthony Réveillère",teams:["Napoli","Olympique Lyonnais","Stade Rennais","Sunderland","Valencia"]}
+  {name:"Anthony Ujah",teams:["1. FC Union Berlin","1. FSV Mainz 05","FC Köln","Werder Bremen"]}
+  {name:"Anthony Vanden Borre",teams:["Fiorentina","Genoa","Montpellier HSC","Portsmouth"]}
+  {name:"Anthony Weber",teams:["Stade de Reims"]}
+  {name:"Anthony Šerić",teams:["Brescia","Hellas Verona","Lazio","Parma"]}
+  {name:"Antoine Conte",teams:["Paris Saint-Germain","Stade de Reims"]}
+  {name:"Antoine Devaux",teams:["Stade de Reims","Toulouse FC"]}
+  {name:"Antoine Griezmann",teams:["Atlético Madrid","Barcelona","Real Sociedad"]}
+  {name:"Antoine Makoumbou",teams:["Cagliari"]}
+  {name:"Antoine Mendy",teams:["OGC Nice"]}
+  {name:"Antoine Semenyo",teams:["AFC Bournemouth","Manchester City"]}
+  {name:"Antoine Sibierski",teams:["Manchester City","Newcastle United","RC Lens","Wigan Athletic"]}
+  {name:"Antolín Alcaraz",teams:["Everton","Las Palmas","Wigan Athletic"]}
+  {name:"Anton Ferdinand",teams:["Queens Park Rangers","Sunderland","West Ham United"]}
+  {name:"Anton Putsila",teams:["Hamburger SV","SC Freiburg"]}
+  {name:"Anton Stach",teams:["1. FSV Mainz 05","Leeds United","TSG Hoffenheim"]}
+  {name:"Antonee Robinson",teams:["Fulham"]}
+  {name:"Antonin Bobichon",teams:["Angers SCO","Nîmes"]}
+  {name:"Antonino BarillÃ",teams:["Parma","Reggina","Sampdoria"]}
+  {name:"Antonino Bernardini",teams:["Atalanta","Vicenza"]}
+  {name:"Antonino Gallo",teams:["Lecce"]}
+  {name:"Antonino Ragusa",teams:["Genoa","Sassuolo"]}
+  {name:"Antonio Adán",teams:["Atlético Madrid","Cagliari","Real Betis","Real Madrid"]}
+  {name:"Antonio Amaya",teams:["Rayo Vallecano","Real Betis"]}
+  {name:"Antonio Balzano",teams:["Cagliari","Pescara"]}
+  {name:"Antonio Barragán",teams:["Deportivo La Coruña","Elche","Middlesbrough","Real Betis","Real Valladolid","Valencia"]}
+  {name:"Antonio Barreca",teams:["AS Monaco","Fiorentina","Genoa","Newcastle United","Torino"]}
+  {name:"Antonio Blanco",teams:["Alavés","Cádiz","Real Madrid"]}
+  {name:"Antonio Bocchetti",teams:["Napoli","Parma","Pescara"]}
+  {name:"Antonio Buscè",teams:["Bologna","Empoli"]}
+  {name:"Antonio Candreva",teams:["Cesena","Inter Milan","Juventus","Lazio","Livorno","Parma","Salernitana","Sampdoria","Udinese"]}
+  {name:"Antonio Caracciolo",teams:["Hellas Verona","Pisa"]}
+  {name:"Antonio Cassano",teams:["AC Milan","AS Roma","Bari","Inter Milan","Parma","Real Madrid","Sampdoria"]}
+  {name:"Antonio Chimenti",teams:["Cagliari","Juventus","Lecce","Udinese"]}
+  {name:"Antonio Conte",teams:["Juventus"]}
+  {name:"Antonio Di Natale",teams:["Empoli","Udinese"]}
+  {name:"Antonio Di Salvo",teams:["Bayern Munich","Hansa Rostock"]}
+  {name:"Antonio Filippini",teams:["Brescia","Lazio","Livorno","Treviso"]}
+  {name:"Antonio Floro Flores",teams:["Chievo Verona","Genoa","Granada","Napoli","Sampdoria","Sassuolo","Udinese"]}
+  {name:"Antonio Guayre",teams:["Celta Vigo","Las Palmas","Numancia","Villarreal"]}
+  {name:"Antonio Hidalgo",teams:["Málaga","Osasuna","Tenerife"]}
+  {name:"Antonio Karmona",teams:["Alavés"]}
+  {name:"Antonio Langella",teams:["Atalanta","Bari","Cagliari","Chievo Verona"]}
+  {name:"Antonio Luna",teams:["Almería","Aston Villa","Eibar","Levante","Mallorca","Sevilla"]}
+  {name:"Antonio López",teams:["Atlético Madrid","Mallorca","Málaga","Osasuna","Real Valladolid","Sevilla"]}
+  {name:"Antonio Marasco",teams:["Modena","Venezia"]}
+  {name:"Antonio Mirante",teams:["AC Milan","AS Roma","Bologna","Parma","Sampdoria","Siena"]}
+  {name:"Antonio Nocerino",teams:["AC Milan","Juventus","Messina","Palermo","Parma","Torino","West Ham United"]}
+  {name:"Antonio Notario",teams:["Real Murcia","Sevilla"]}
+  {name:"Antonio Núñez",teams:["Celta Vigo","Liverpool","Real Madrid"]}
+  {name:"Antonio Pacheco",teams:["Albacete","Espanyol","Inter Milan"]}
+  {name:"Antonio Puerta",teams:["Sevilla"]}
+  {name:"Antonio Puertas",teams:["Granada"]}
+  {name:"Antonio Raillo",teams:["Espanyol","Mallorca"]}
+  {name:"Antonio Rosati",teams:["Fiorentina","Lecce","Napoli","Sassuolo","Torino"]}
+  {name:"Antonio Rukavina",teams:["Borussia Dortmund","Real Valladolid","Villarreal"]}
+  {name:"Antonio Rüdiger",teams:["AS Roma","Chelsea","Real Madrid","VfB Stuttgart"]}
+  {name:"Antonio Sanabria",teams:["AS Roma","Cremonese","Genoa","Real Betis","Sassuolo","Sporting Gijón","Torino"]}
+  {name:"Antonio Sivera",teams:["Alavés"]}
+  {name:"Antonio Soldevilla",teams:["Espanyol"]}
+  {name:"Antonio Sánchez",teams:["Mallorca"]}
+  {name:"Antonio Tomás",teams:["Deportivo La Coruña","Racing Santander","Real Zaragoza"]}
+  {name:"Antonio Valencia",teams:["Manchester United","Villarreal","Wigan Athletic"]}
+  {name:"Antony",teams:["Manchester United","Real Betis"]}
+  {name:"Antonín Barák",teams:["Fiorentina","Hellas Verona","Lecce","Udinese"]}
+  {name:"Antoñito",teams:["Racing Santander","Sevilla","Xerez"]}
+  {name:"Antti Niemi",teams:["Fulham","Southampton"]}
+  {name:"Antônio da Silva",teams:["1. FSV Mainz 05","Borussia Dortmund","Karlsruher SC","VfB Stuttgart"]}
+  {name:"Anuar",teams:["Real Valladolid"]}
+  {name:"Anwar El Ghazi",teams:["1. FSV Mainz 05","Aston Villa","Everton","LOSC Lille"]}
+  {name:"Aníbal Matellán",teams:["FC Schalke 04","Getafe","Gimnàstic"]}
+  {name:"Apoño",teams:["Málaga","Real Zaragoza"]}
+  {name:"Arber Zeneli",teams:["Stade de Reims"]}
+  {name:"Archimede Morleo",teams:["Bologna"]}
+  {name:"Arda Güler",teams:["Real Madrid"]}
+  {name:"Arda Turan",teams:["Atlético Madrid","Barcelona"]}
+  {name:"Ardian Ismajli",teams:["Empoli","Spezia","Torino"]}
+  {name:"Aridane Hernández",teams:["Osasuna","Rayo Vallecano"]}
+  {name:"Arie van Lent",teams:["Borussia Mönchengladbach","Eintracht Frankfurt"]}
+  {name:"Ariel Ibagaza",teams:["Atlético Madrid","Mallorca","Villarreal"]}
+  {name:"Ariel Zárate",teams:["Málaga"]}
+  {name:"Arijanet Muric",teams:["Burnley","Ipswich Town","Sassuolo"]}
+  {name:"Aritz Aduriz",teams:["Athletic Bilbao","Mallorca","Valencia"]}
+  {name:"Aritz Elustondo",teams:["Real Sociedad"]}
+  {name:"Ariza Makukula",teams:["Bolton Wanderers","FC Nantes","Gimnàstic","Real Valladolid","Sevilla"]}
+  {name:"Arjan de Zeeuw",teams:["Portsmouth","Wigan Athletic"]}
+  {name:"Arjen Robben",teams:["Bayern Munich","Chelsea","Real Madrid"]}
+  {name:"Arkadiusz Milik",teams:["Bayer Leverkusen","FC Augsburg","Juventus","Napoli","Olympique de Marseille"]}
+  {name:"Arkadiusz Reca",teams:["Atalanta","Crotone","SPAL","Spezia"]}
+  {name:"Armand Lauriente",teams:["FC Lorient","Sassuolo","Stade Rennais"]}
+  {name:"Armand Traoré",teams:["Arsenal","Juventus","Portsmouth","Queens Park Rangers"]}
+  {name:"Armando Broja",teams:["Burnley","Chelsea","Everton","Fulham","Southampton"]}
+  {name:"Armando Izzo",teams:["Genoa","Monza","Torino"]}
+  {name:"Armel Bella Kotchap",teams:["Hellas Verona","Southampton","VfL Bochum"]}
+  {name:"Arnau Martinez",teams:["Girona"]}
+  {name:"Arnaud Gonzalez",teams:["AJ Auxerre"]}
+  {name:"Arnaud Kalimuendo",teams:["Eintracht Frankfurt","Nottingham Forest","Paris Saint-Germain","RC Lens","Stade Rennais"]}
+  {name:"Arnaud Le Lan",teams:["FC Lorient","Stade Rennais"]}
+  {name:"Arnaud Nordin",teams:["1. FSV Mainz 05","AS Saint-Étienne","Montpellier HSC","Stade Rennais"]}
+  {name:"Arnaud Souquet",teams:["LOSC Lille","Montpellier HSC","OGC Nice"]}
+  {name:"Arnaut Danjuma",teams:["AFC Bournemouth","Everton","Girona","Tottenham Hotspur","Valencia","Villarreal"]}
+  {name:"Arne Engels",teams:["FC Augsburg"]}
+  {name:"Arne Friedrich",teams:["Hertha BSC","VfL Wolfsburg"]}
+  {name:"Arne Maier",teams:["Arminia Bielefeld","FC Augsburg","Hertha BSC"]}
+  {name:"Arnold Bruggink",teams:["Hannover 96","Mallorca"]}
+  {name:"Arnold Mvuemba",teams:["FC Lorient","Olympique Lyonnais","Portsmouth","Stade Rennais"]}
+  {name:"Aron Dønnum",teams:["Toulouse FC"]}
+  {name:"Aron Gunnarsson",teams:["Cardiff City"]}
+  {name:"Arouna Koné",teams:["Everton","Hannover 96","Levante","Sevilla","Wigan Athletic"]}
+  {name:"Arouna Sangante",teams:["Le Havre AC"]}
+  {name:"Arteaga",teams:["Espanyol","Rayo Vallecano"]}
+  {name:"Artem Dovbyk",teams:["AS Roma","Girona"]}
+  {name:"Arthur Atta",teams:["FC Metz","Udinese"]}
+  {name:"Arthur Boka",teams:["Málaga","RC Strasbourg","VfB Stuttgart"]}
+  {name:"Arthur Desmas",teams:["Clermont Foot","Le Havre AC"]}
+  {name:"Arthur Masuaku",teams:["FC Valenciennes","RC Lens","Sunderland","West Ham United"]}
+  {name:"Arthur Melo",teams:["Barcelona","Fiorentina","Girona","Juventus"]}
+  {name:"Arthur Theate",teams:["Bologna","Eintracht Frankfurt","Stade Rennais"]}
+  {name:"Artjoms Rudņevs",teams:["FC Köln","Hamburger SV","Hannover 96"]}
+  {name:"Artur Boruc",teams:["AFC Bournemouth","Fiorentina","Southampton"]}
+  {name:"Artur Ioniță",teams:["Benevento","Cagliari","Hellas Verona"]}
+  {name:"Artur Sobiech",teams:["Hannover 96"]}
+  {name:"Artur Wichniarek",teams:["Arminia Bielefeld","Hertha BSC"]}
+  {name:"Arturo Calabresi",teams:["Amiens SC","Bologna","Cagliari","Pisa"]}
+  {name:"Arturo Di Napoli",teams:["Messina","Venezia"]}
+  {name:"Arturo Vidal",teams:["Barcelona","Bayer Leverkusen","Bayern Munich","Inter Milan","Juventus"]}
+  {name:"Aruna Dindane",teams:["Portsmouth","RC Lens"]}
+  {name:"Arzu",teams:["Real Betis"]}
+  {name:"Asamoah Gyan",teams:["Stade Rennais","Sunderland","Udinese"]}
+  {name:"Ashkan Dejagah",teams:["Fulham","Hertha BSC","VfL Wolfsburg"]}
+  {name:"Ashley Barnes",teams:["Burnley"]}
+  {name:"Ashley Cole",teams:["AS Roma","Arsenal","Chelsea"]}
+  {name:"Ashley Westwood",teams:["Aston Villa","Burnley"]}
+  {name:"Ashley Williams",teams:["Everton","Swansea City"]}
+  {name:"Ashley Young",teams:["Aston Villa","Everton","Inter Milan","Manchester United","Watford"]}
+  {name:"Asier Illarramendi",teams:["Real Madrid","Real Sociedad"]}
+  {name:"Asier Riesgo",teams:["Eibar","Osasuna","Real Sociedad","Recreativo"]}
+  {name:"Asier Villalibre",teams:["Alavés","Athletic Bilbao"]}
+  {name:"Asier del Horno",teams:["Athletic Bilbao","Chelsea","Levante","Real Valladolid","Valencia"]}
+  {name:"Asmir Begović",teams:["AC Milan","AFC Bournemouth","Chelsea","Everton","Portsmouth","Stoke City"]}
+  {name:"Assane Dioussé",teams:["AJ Auxerre","AS Saint-Étienne","Chievo Verona","Empoli"]}
+  {name:"Assani Lukimya-Mulongoti",teams:["Hansa Rostock","Werder Bremen"]}
+  {name:"Aster Vranckx",teams:["AC Milan","Sassuolo","VfL Wolfsburg"]}
+  {name:"Atakan Karazor",teams:["VfB Stuttgart"]}
+  {name:"Atsuto Uchida",teams:["FC Schalke 04"]}
+  {name:"Augusto Batalla",teams:["Granada","Rayo Vallecano"]}
+  {name:"Augusto Fernández",teams:["AS Saint-Étienne","Atlético Madrid","Celta Vigo","Cádiz"]}
+  {name:"Augusto Solari",teams:["Celta Vigo"]}
+  {name:"Auriol Guillaume",teams:["EA Guingamp","Estac Troyes"]}
+  {name:"Aurélien Capoue",teams:["AJ Auxerre","FC Nantes"]}
+  {name:"Aurélien Chedjou",teams:["Amiens SC","LOSC Lille"]}
+  {name:"Aurélien Tchouaméni",teams:["AS Monaco","Girondins de Bordeaux","Real Madrid"]}
+  {name:"Aurélio Buta",teams:["Eintracht Frankfurt","Stade de Reims"]}
+  {name:"Axel Bellinghausen",teams:["1. FC Kaiserslautern","FC Augsburg","Fortuna Düsseldorf"]}
+  {name:"Axel Cédric Konan",teams:["Lecce","Torino"]}
+  {name:"Axel Disasi",teams:["AS Monaco","Aston Villa","Chelsea","Stade de Reims","West Ham United"]}
+  {name:"Axel Tuanzebe",teams:["Aston Villa","Burnley","Ipswich Town","Manchester United","Napoli"]}
+  {name:"Axel Witsel",teams:["Atlético Madrid","Borussia Dortmund","Girona"]}
+  {name:"Aymen Abdennour",teams:["AS Monaco","Olympique de Marseille","Toulouse FC","Valencia","Werder Bremen"]}
+  {name:"Aymen Barkok",teams:["1. FSV Mainz 05","Eintracht Frankfurt","Fortuna Düsseldorf"]}
+  {name:"Aymeric Laporte",teams:["Athletic Bilbao","Manchester City"]}
+  {name:"Ayoze Díaz Díaz",teams:["Deportivo La Coruña","Mallorca","Racing Santander"]}
+  {name:"Ayoze García",teams:["Sporting Gijón","Tenerife"]}
+  {name:"Ayoze Pérez",teams:["Leicester City","Newcastle United","Real Betis","Villarreal"]}
+  {name:"Aytaç Sulu",teams:["SV Darmstadt 98"]}
+  {name:"Aythami Artiles",teams:["Deportivo La Coruña","Las Palmas","Xerez"]}
+  {name:"Ayyoub Bouaddi",teams:["LOSC Lille"]}
+  {name:"Azor Matusiwa",teams:["Stade Rennais","Stade de Reims"]}
+  {name:"Azzedine Ounahi",teams:["Angers SCO","Girona","Olympique de Marseille"]}
+  {name:"Aílton Gonçalves",teams:["FC Schalke 04","Hamburger SV","MSV Duisburg","Werder Bremen"]}
+  {name:"Aïssa Mandi",teams:["LOSC Lille","Real Betis","Stade de Reims","Villarreal"]}
+  {name:"Baba Diawara",teams:["Getafe","Levante","Sevilla"]}
+  {name:"Baba Rahman",teams:["Chelsea","FC Augsburg","FC Schalke 04","Mallorca","SpVgg Greuther Fürth","Stade de Reims"]}
+  {name:"Babacar Gueye",teams:["FC Metz"]}
+  {name:"Babis Lykogiannis",teams:["Bologna","Cagliari"]}
+  {name:"Bacary Sagna",teams:["AJ Auxerre","Arsenal","Benevento","Manchester City"]}
+  {name:"Badredine Bouanani",teams:["FC Lorient","OGC Nice","VfB Stuttgart"]}
+  {name:"Bafodé Diakité",teams:["AFC Bournemouth","LOSC Lille","Toulouse FC"]}
+  {name:"Bafétimbi Gomis",teams:["AS Saint-Étienne","Olympique Lyonnais","Olympique de Marseille","Swansea City"]}
+  {name:"Baissama Sankoh",teams:["EA Guingamp","SM Caen"]}
+  {name:"Bakari Koné",teams:["OGC Nice","Olympique de Marseille"]}
+  {name:"Bakary Koné",teams:["Málaga","Olympique Lyonnais","RC Strasbourg"]}
+  {name:"Bakary Sako",teams:["AS Saint-Étienne","Crystal Palace"]}
+  {name:"Bakaye Dibassy",teams:["Amiens SC"]}
+  {name:"Bakaye Traoré",teams:["AC Milan","AS Nancy"]}
+  {name:"Bamba Dieng",teams:["Angers SCO","FC Lorient","Olympique de Marseille"]}
+  {name:"Bamo Meïté",teams:["FC Lorient","Montpellier HSC","Olympique de Marseille"]}
+  {name:"Baptiste Guillaume",teams:["Angers SCO","LOSC Lille","Nîmes","RC Lens"]}
+  {name:"Baptiste Reynet",teams:["Dijon FCO","FC Lorient","Nîmes","Toulouse FC"]}
+  {name:"Baptiste Santamaria",teams:["Angers SCO","OGC Nice","SC Freiburg","Stade Rennais","Valencia"]}
+  {name:"Barry Bannan",teams:["Aston Villa","Crystal Palace"]}
+  {name:"Barry Ferguson",teams:["Birmingham City","Blackburn Rovers"]}
+  {name:"Barry Hayles",teams:["Fulham"]}
+  {name:"Bart Goor",teams:["Hertha BSC"]}
+  {name:"Bart Verbruggen",teams:["Brighton & Hove Albion"]}
+  {name:"Bartholomew Ogbeche",teams:["FC Metz","Paris Saint-Germain","Real Valladolid","SC Bastia"]}
+  {name:"Bartosz Bereszyński",teams:["Empoli","Napoli","Sampdoria"]}
+  {name:"Bartosz Salamon",teams:["Cagliari","Frosinone","SPAL","Sampdoria"]}
+  {name:"Bartłomiej Drągowski",teams:["Empoli","Fiorentina","Spezia"]}
+  {name:"Bas Dost",teams:["Eintracht Frankfurt","VfL Wolfsburg"]}
+  {name:"Bassem Srarfi",teams:["OGC Nice"]}
+  {name:"Bastian Oczipka",teams:["1. FC Union Berlin","Bayer Leverkusen","Eintracht Frankfurt","FC Schalke 04","FC St. Pauli"]}
+  {name:"Bastian Reinhardt",teams:["Arminia Bielefeld","Hamburger SV"]}
+  {name:"Bastian Schweinsteiger",teams:["Bayern Munich","Manchester United"]}
+  {name:"Bastos",teams:["Lazio"]}
+  {name:"Batista Mendy",teams:["Angers SCO","FC Nantes","Sevilla"]}
+  {name:"Bebé",teams:["Córdoba","Eibar","Manchester United","Rayo Vallecano"]}
+  {name:"Becir Omeragic",teams:["Montpellier HSC"]}
+  {name:"Ben Chilwell",teams:["Chelsea","Crystal Palace","Leicester City","RC Strasbourg"]}
+  {name:"Ben Davies",teams:["Swansea City","Tottenham Hotspur"]}
+  {name:"Ben Foster",teams:["Birmingham City","Manchester United","Watford","West Bromwich Albion"]}
+  {name:"Ben Gibson",teams:["Burnley","Middlesbrough","Norwich City"]}
+  {name:"Ben Godfrey",teams:["Atalanta","Everton","Ipswich Town","Norwich City"]}
+  {name:"Ben Johnson",teams:["Ipswich Town","West Ham United"]}
+  {name:"Ben Mee",teams:["Brentford","Burnley"]}
+  {name:"Ben Osborn",teams:["Sheffield United"]}
+  {name:"Ben Thatcher",teams:["Charlton Athletic","Leicester City","Manchester City","Tottenham Hotspur"]}
+  {name:"Ben Watson",teams:["Crystal Palace","Watford","Wigan Athletic"]}
+  {name:"Ben White",teams:["Arsenal","Brighton & Hove Albion"]}
+  {name:"Benedict Hollerbach",teams:["1. FC Union Berlin","1. FSV Mainz 05"]}
+  {name:"Benedikt Gimber",teams:["1. FC Heidenheim"]}
+  {name:"Benedikt Höwedes",teams:["FC Schalke 04","Juventus"]}
+  {name:"Benik Afobe",teams:["AFC Bournemouth"]}
+  {name:"Benito Carbone",teams:["Bradford City","Como","Derby County","Middlesbrough","Parma"]}
+  {name:"Benito Raman",teams:["FC Schalke 04","Fortuna Düsseldorf"]}
+  {name:"Benjamin André",teams:["GFC Ajaccio","LOSC Lille","Stade Rennais"]}
+  {name:"Benjamin Angoua",teams:["EA Guingamp","FC Valenciennes"]}
+  {name:"Benjamin Auer",teams:["1. FSV Mainz 05","Borussia Mönchengladbach","VfL Bochum"]}
+  {name:"Benjamin Bourigeaud",teams:["RC Lens","Stade Rennais"]}
+  {name:"Benjamin Corgnet",teams:["AS Saint-Étienne","Dijon FCO","FC Lorient","RC Strasbourg"]}
+  {name:"Benjamin Gavanon",teams:["AS Nancy","FC Sochaux","Olympique de Marseille"]}
+  {name:"Benjamin Henrichs",teams:["AS Monaco","Bayer Leverkusen","RB Leipzig"]}
+  {name:"Benjamin Huggel",teams:["Eintracht Frankfurt"]}
+  {name:"Benjamin Hübner",teams:["FC Ingolstadt 04","TSG Hoffenheim"]}
+  {name:"Benjamin Jeannot",teams:["AS Nancy","Dijon FCO","FC Lorient"]}
+  {name:"Benjamin Köhler",teams:["Eintracht Frankfurt","Hertha BSC"]}
+  {name:"Benjamin Lauth",teams:["1860 Munich","Hamburger SV","Hannover 96","VfB Stuttgart"]}
+  {name:"Benjamin Lecomte",teams:["AS Monaco","Espanyol","FC Lorient","Montpellier HSC"]}
+  {name:"Benjamin Lense",teams:["1. FC Nürnberg","Arminia Bielefeld","Hansa Rostock","VfL Bochum"]}
+  {name:"Benjamin Leroy",teams:["Dijon FCO","GFC Ajaccio","Évian TG"]}
+  {name:"Benjamin Mendy",teams:["AS Monaco","FC Lorient","Manchester City","Olympique de Marseille"]}
+  {name:"Benjamin Moukandjo",teams:["AS Monaco","AS Nancy","FC Lorient","Stade de Reims"]}
+  {name:"Benjamin Nivet",teams:["Estac Troyes","SM Caen"]}
+  {name:"Benjamin Pavard",teams:["Bayern Munich","Inter Milan","LOSC Lille","Olympique de Marseille","VfB Stuttgart"]}
+  {name:"Benjamin Stambouli",teams:["FC Metz","FC Schalke 04","Montpellier HSC","Paris Saint-Germain","Stade de Reims","Tottenham Hotspur"]}
+  {name:"Benjamin Weigelt",teams:["1. FSV Mainz 05"]}
+  {name:"Benjamin Šeško",teams:["Manchester United","RB Leipzig"]}
+  {name:"Benjamín Zarandona",teams:["Cádiz","Real Betis"]}
+  {name:"Benjani",teams:["AJ Auxerre","Blackburn Rovers","Manchester City","Portsmouth","Sunderland"]}
+  {name:"Benni McCarthy",teams:["Blackburn Rovers","Celta Vigo","West Ham United"]}
+  {name:"Benno Schmitz",teams:["FC Köln","RB Leipzig"]}
+  {name:"Benoît Assou-Ekotto",teams:["AS Saint-Étienne","FC Metz","RC Lens","Tottenham Hotspur"]}
+  {name:"Benoît Badiashile",teams:["AS Monaco","Chelsea"]}
+  {name:"Benoît Cauet",teams:["Como","Inter Milan","SC Bastia","Torino"]}
+  {name:"Benoît Cheyrou",teams:["AJ Auxerre","LOSC Lille","Olympique de Marseille"]}
+  {name:"Benoît Costil",teams:["AJ Auxerre","Girondins de Bordeaux","SM Caen","Salernitana","Stade Rennais"]}
+  {name:"Benoît Lesoimier",teams:["SM Caen","Stade Brestois 29"]}
+  {name:"Benoît Pedretti",teams:["AJ Auxerre","AS Nancy","FC Sochaux","GFC Ajaccio","LOSC Lille","Olympique Lyonnais","Olympique de Marseille"]}
+  {name:"Benoît Trémoulinas",teams:["AS Saint-Étienne","Girondins de Bordeaux","Sevilla"]}
+  {name:"Berat Djimsiti",teams:["Atalanta","Benevento"]}
+  {name:"Bernard",teams:["Everton"]}
+  {name:"Bernard Mendy",teams:["Bolton Wanderers","Hull City","Paris Saint-Germain","Stade Brestois 29"]}
+  {name:"Bernardo",teams:["Brighton & Hove Albion","RB Leipzig","TSG Hoffenheim","VfL Bochum"]}
+  {name:"Bernardo Corradi",teams:["Chievo Verona","Lazio","Manchester City","Parma","Reggina","Udinese","Valencia"]}
+  {name:"Bernardo Espinosa",teams:["Espanyol","Girona","Middlesbrough","Racing Santander","Sevilla","Sporting Gijón"]}
+  {name:"Bernardo Romeo",teams:["Hamburger SV","Mallorca","Osasuna"]}
+  {name:"Bernardo Silva",teams:["AS Monaco","Manchester City"]}
+  {name:"Bernd Hollerbach",teams:["Hamburger SV"]}
+  {name:"Bernd Korzynietz",teams:["Arminia Bielefeld","Borussia Mönchengladbach"]}
+  {name:"Bernd Leno",teams:["Arsenal","Bayer Leverkusen","Fulham"]}
+  {name:"Bernd Schneider",teams:["Bayer Leverkusen"]}
+  {name:"Bertrand Laquait",teams:["Recreativo","Évian TG"]}
+  {name:"Bertrand Robert",teams:["FC Lorient","Montpellier HSC"]}
+  {name:"Bertrand Traoré",teams:["Aston Villa","Chelsea","Olympique Lyonnais","Sunderland","Villarreal"]}
+  {name:"Beto",teams:["Everton","Girondins de Bordeaux","Recreativo","Sevilla","Udinese"]}
+  {name:"Beñat Etxebarria",teams:["Athletic Bilbao","Real Betis"]}
+  {name:"Beñat Prados",teams:["Athletic Bilbao"]}
+  {name:"Beñat Turrientes",teams:["Real Sociedad"]}
+  {name:"Bilal Brahimi",teams:["Angers SCO","OGC Nice","Stade Brestois 29"]}
+  {name:"Bill Tchato",teams:["1. FC Kaiserslautern","Montpellier HSC","OGC Nice"]}
+  {name:"Billy Gilmour",teams:["Brighton & Hove Albion","Chelsea","Napoli","Norwich City"]}
+  {name:"Billy Jones",teams:["Sunderland","West Bromwich Albion"]}
+  {name:"Billy Ketkeophomphone",teams:["Angers SCO"]}
+  {name:"Birama Touré",teams:["AJ Auxerre","FC Nantes","Montpellier HSC"]}
+  {name:"Birger Meling",teams:["Nîmes","Stade Rennais"]}
+  {name:"Birkir Bjarnason",teams:["Brescia","Pescara","Sampdoria"]}
+  {name:"Bittor Alkiza",teams:["Athletic Bilbao","Real Sociedad"]}
+  {name:"Bixente Lizarazu",teams:["Bayern Munich","Olympique de Marseille"]}
+  {name:"Björn Engels",teams:["Aston Villa","Stade de Reims"]}
+  {name:"Björn Schlicke",teams:["FC Köln","Hamburger SV","MSV Duisburg"]}
+  {name:"Bjørn Tore Kvarme",teams:["AS Saint-Étienne","Real Sociedad","SC Bastia"]}
+  {name:"Blaise Kouassi",teams:["EA Guingamp","Estac Troyes"]}
+  {name:"Blaise Matuidi",teams:["AS Saint-Étienne","Estac Troyes","Juventus","Paris Saint-Germain"]}
+  {name:"Blerim Džemaili",teams:["Bologna","Genoa","Napoli","Parma","Torino"]}
+  {name:"Bo Svensson",teams:["1. FSV Mainz 05","Borussia Mönchengladbach"]}
+  {name:"Boaz Myhill",teams:["Hull City","West Bromwich Albion"]}
+  {name:"Bobby De Cordova-Reid",teams:["Cardiff City","Fulham","Leicester City"]}
+  {name:"Bobby Wood",teams:["Hamburger SV","Hannover 96"]}
+  {name:"Bobby Zamora",teams:["Fulham","Queens Park Rangers","Tottenham Hotspur","West Ham United"]}
+  {name:"Bobo Baldé",teams:["AC Arles-Avignon","FC Valenciennes","Toulouse FC"]}
+  {name:"Bocundji Ca",teams:["AS Nancy","FC Nantes","Stade de Reims"]}
+  {name:"Bojan Jokić",teams:["Chievo Verona","FC Sochaux","Villarreal"]}
+  {name:"Bojan Krkić",teams:["1. FSV Mainz 05","AC Milan","AS Roma","Alavés","Barcelona","Stoke City"]}
+  {name:"Bolo",teams:["Rayo Vallecano"]}
+  {name:"Bolívar",teams:["AS Monaco"]}
+  {name:"Bonaventure Kalou",teams:["AJ Auxerre","Paris Saint-Germain","RC Lens"]}
+  {name:"Bongani Zungu",teams:["Amiens SC"]}
+  {name:"Boris",teams:["Numancia","Real Oviedo","Real Sociedad"]}
+  {name:"Boris Vukčević",teams:["TSG Hoffenheim"]}
+  {name:"Boris Živković",teams:["Bayer Leverkusen","FC Köln","Portsmouth","VfB Stuttgart"]}
+  {name:"Borja Bastón",teams:["Alavés","Aston Villa","Atlético Madrid","Eibar","Málaga","Swansea City"]}
+  {name:"Borja Ekiza",teams:["Athletic Bilbao","Eibar"]}
+  {name:"Borja Fernández",teams:["Eibar","Getafe","Mallorca","Real Madrid","Real Valladolid"]}
+  {name:"Borja García",teams:["Córdoba","Girona","Huesca"]}
+  {name:"Borja Iglesias",teams:["Bayer Leverkusen","Celta Vigo","Espanyol","Real Betis"]}
+  {name:"Borja Mayoral",teams:["AS Roma","Getafe","Levante","Real Madrid","VfL Wolfsburg"]}
+  {name:"Borja Oubiña",teams:["Birmingham City","Celta Vigo"]}
+  {name:"Borja Valero",teams:["Fiorentina","Inter Milan","Mallorca","Villarreal","West Bromwich Albion"]}
+  {name:"Borja Viguera",teams:["Athletic Bilbao","Real Sociedad","Sporting Gijón"]}
+  {name:"Borna Sosa",teams:["Crystal Palace","Torino","VfB Stuttgart"]}
+  {name:"Boubacar Diarra",teams:["SC Freiburg"]}
+  {name:"Boubacar Kamara",teams:["Aston Villa","Olympique de Marseille"]}
+  {name:"Boubacar Sanogo",teams:["1. FC Kaiserslautern","AS Saint-Étienne","Hamburger SV","TSG Hoffenheim","Werder Bremen"]}
+  {name:"Boubacar Traoré",teams:["FC Metz","Wolverhampton Wanderers"]}
+  {name:"Boubakar Kouyaté",teams:["FC Metz","Montpellier HSC"]}
+  {name:"Boubakary Soumaré",teams:["LOSC Lille","Leicester City","Sevilla"]}
+  {name:"Boudewijn Zenden",teams:["Barcelona","Chelsea","Liverpool","Middlesbrough","Olympique de Marseille","Sunderland"]}
+  {name:"Boukary Dramé",teams:["Atalanta","Chievo Verona","FC Sochaux","Paris Saint-Germain","SPAL"]}
+  {name:"Boulaye Dia",teams:["Lazio","Salernitana","Stade de Reims","Villarreal"]}
+  {name:"Bouna Sarr",teams:["Bayern Munich","FC Metz","Olympique de Marseille"]}
+  {name:"Boško Janković",teams:["Genoa","Hellas Verona","Mallorca","Palermo"]}
+  {name:"Boštjan Cesar",teams:["Chievo Verona","Grenoble Foot","Olympique de Marseille"]}
+  {name:"Brad Friedel",teams:["Aston Villa","Blackburn Rovers","Tottenham Hotspur"]}
+  {name:"Brad Guzan",teams:["Aston Villa","Middlesbrough"]}
+  {name:"Bradley Barcola",teams:["Olympique Lyonnais","Paris Saint-Germain"]}
+  {name:"Bradley Carnell",teams:["Borussia Mönchengladbach","Karlsruher SC","VfB Stuttgart"]}
+  {name:"Bradley Johnson",teams:["Norwich City"]}
+  {name:"Bradley Locko",teams:["Stade Brestois 29","Stade de Reims"]}
+  {name:"Brahim Díaz",teams:["AC Milan","Manchester City","Real Madrid"]}
+  {name:"Brahim Hemdani",teams:["Olympique de Marseille","RC Strasbourg"]}
+  {name:"Brais Méndez",teams:["Celta Vigo","Real Sociedad"]}
+  {name:"Brajan Gruda",teams:["1. FSV Mainz 05","Brighton & Hove Albion","RB Leipzig"]}
+  {name:"Bram Nuytinck",teams:["Sampdoria","Udinese"]}
+  {name:"Brandon Soppy",teams:["Atalanta","Stade Rennais","Torino","Udinese"]}
+  {name:"Brandão",teams:["AS Saint-Étienne","Olympique de Marseille","SC Bastia"]}
+  {name:"Branimir Hrgota",teams:["Borussia Mönchengladbach","Eintracht Frankfurt","SpVgg Greuther Fürth"]}
+  {name:"Branislav Ivanović",teams:["Chelsea","West Bromwich Albion"]}
+  {name:"Branko Bošković",teams:["Estac Troyes","Paris Saint-Germain"]}
+  {name:"Braulio Nóbrega",teams:["Atlético Madrid","Getafe","Mallorca","Real Zaragoza"]}
+  {name:"Brede Hangeland",teams:["Crystal Palace","Fulham"]}
+  {name:"Breel Embolo",teams:["AS Monaco","Borussia Mönchengladbach","FC Schalke 04","Stade Rennais"]}
+  {name:"Brendan Chardonnet",teams:["Stade Brestois 29"]}
+  {name:"Brenden Aaronson",teams:["1. FC Union Berlin","Leeds United"]}
+  {name:"Brennan Johnson",teams:["Crystal Palace","Nottingham Forest","Tottenham Hotspur"]}
+  {name:"Brett Emerton",teams:["Blackburn Rovers"]}
+  {name:"Brett Ormerod",teams:["Blackpool","Southampton"]}
+  {name:"Brian Deane",teams:["Leicester City","Middlesbrough"]}
+  {name:"Brian McBride",teams:["Everton","Fulham"]}
+  {name:"Brian Oliván",teams:["Espanyol","Mallorca"]}
+  {name:"Brice Dja Djédjé",teams:["Olympique de Marseille","Évian TG"]}
+  {name:"Brice Samba",teams:["Olympique de Marseille","RC Lens","SM Caen","Stade Rennais"]}
+  {name:"Brown Ideye",teams:["FC Sochaux","Málaga","West Bromwich Albion"]}
+  {name:"Bruma",teams:["RB Leipzig","Real Sociedad"]}
+  {name:"Bruno",teams:["Almería","Brighton & Hove Albion","Espanyol","Valencia"]}
+  {name:"Bruno Akrapović",teams:["Energie Cottbus"]}
+  {name:"Bruno Alves",teams:["Cagliari","Parma"]}
+  {name:"Bruno Basto",teams:["AS Saint-Étienne","Girondins de Bordeaux"]}
+  {name:"Bruno Carotti",teams:["Montpellier HSC","Toulouse FC"]}
+  {name:"Bruno Cheyrou",teams:["Girondins de Bordeaux","LOSC Lille","Liverpool","Olympique de Marseille","Stade Rennais"]}
+  {name:"Bruno Cirillo",teams:["Inter Milan","Lecce","Levante","Reggina","Siena"]}
+  {name:"Bruno Ecuele Manga",teams:["Cardiff City","Dijon FCO","FC Lorient"]}
+  {name:"Bruno Fernandes",teams:["Manchester United","Sampdoria","Udinese"]}
+  {name:"Bruno Gama",teams:["Deportivo La Coruña"]}
+  {name:"Bruno González",teams:["Getafe","Levante","Real Betis","Real Valladolid"]}
+  {name:"Bruno Grougi",teams:["Stade Brestois 29"]}
+  {name:"Bruno Guimarães",teams:["Newcastle United","Olympique Lyonnais"]}
+  {name:"Bruno Martella",teams:["Brescia","Crotone"]}
+  {name:"Bruno Martins Indi",teams:["Stoke City"]}
+  {name:"Bruno N'Gotty",teams:["Bolton Wanderers","Olympique de Marseille"]}
+  {name:"Bruno Peres",teams:["AS Roma","Torino"]}
+  {name:"Bruno Rodriguez",teams:["EA Guingamp","FC Metz","GFC Ajaccio","RC Lens","Rayo Vallecano"]}
+  {name:"Bruno Soriano",teams:["Villarreal"]}
+  {name:"Bryan Bergougnoux",teams:["Olympique Lyonnais","Toulouse FC"]}
+  {name:"Bryan Cristante",teams:["AC Milan","AS Roma","Atalanta","Palermo","Pescara"]}
+  {name:"Bryan Dabo",teams:["AS Saint-Étienne","Benevento","Fiorentina","Montpellier HSC","SPAL"]}
+  {name:"Bryan Gil",teams:["Eibar","Girona","Leganés","Sevilla","Tottenham Hotspur","Valencia"]}
+  {name:"Bryan Hughes",teams:["Birmingham City","Charlton Athletic","Hull City"]}
+  {name:"Bryan Mbeumo",teams:["Brentford","Estac Troyes","Manchester United"]}
+  {name:"Bryan Oviedo",teams:["Everton","Sunderland"]}
+  {name:"Bryan Pelé",teams:["Estac Troyes","FC Lorient"]}
+  {name:"Bryan Ruiz",teams:["Fulham"]}
+  {name:"Bryan Zaragoza",teams:["AS Roma","Bayern Munich","Celta Vigo","Granada","Osasuna"]}
+  {name:"Bukayo Saka",teams:["Arsenal"]}
+  {name:"Burak Yılmaz",teams:["LOSC Lille"]}
+  {name:"Burgui",teams:["Alavés","Espanyol","Sporting Gijón"]}
+  {name:"Cacau",teams:["1. FC Nürnberg","VfB Stuttgart"]}
+  {name:"Cafú",teams:["AC Milan","AS Roma"]}
+  {name:"Caio Alves",teams:["Eintracht Frankfurt"]}
+  {name:"Caio Henrique Oliveira Silva",teams:["AS Monaco"]}
+  {name:"Caiuby",teams:["FC Augsburg","VfL Wolfsburg"]}
+  {name:"Cala",teams:["Cardiff City","Cádiz","Getafe","Granada","Sevilla"]}
+  {name:"Caleb Ekuban",teams:["Genoa"]}
+  {name:"Caleb Okoli",teams:["Atalanta","Frosinone","Leicester City"]}
+  {name:"Callum Davidson",teams:["Leicester City"]}
+  {name:"Callum Hudson-Odoi",teams:["Bayer Leverkusen","Chelsea","Nottingham Forest"]}
+  {name:"Callum Wilson",teams:["AFC Bournemouth","Newcastle United","West Ham United"]}
+  {name:"Calum Chambers",teams:["Arsenal","Aston Villa","Fulham","Middlesbrough","Southampton"]}
+  {name:"Calvin Bassey",teams:["Fulham"]}
+  {name:"Camel Meriem",teams:["AC Arles-Avignon","AS Monaco","FC Sochaux","Girondins de Bordeaux","OGC Nice","Olympique de Marseille"]}
+  {name:"Cameron Archer",teams:["Aston Villa","Sheffield United","Southampton"]}
+  {name:"Cameron Jerome",teams:["Birmingham City","Crystal Palace","Norwich City","Stoke City"]}
+  {name:"Cani",teams:["Atlético Madrid","Deportivo La Coruña","Real Zaragoza","Villarreal"]}
+  {name:"Caoimhín Kelleher",teams:["Brentford","Liverpool"]}
+  {name:"Capi",teams:["Real Betis"]}
+  {name:"Carl Jenkinson",teams:["Arsenal","West Ham United"]}
+  {name:"Carl Medjani",teams:["FC Lorient","FC Metz","FC Valenciennes","GFC Ajaccio","Leganés","Levante"]}
+  {name:"Carl Starfelt",teams:["Celta Vigo"]}
+  {name:"Carl Tourenne",teams:["Estac Troyes"]}
+  {name:"Carles Aleñá",teams:["Alavés","Barcelona","Getafe","Real Betis"]}
+  {name:"Carles Gil",teams:["Aston Villa","Deportivo La Coruña","Elche","Valencia"]}
+  {name:"Carles Planas",teams:["Celta Vigo","Girona"]}
+  {name:"Carles Puyol",teams:["Barcelona"]}
+  {name:"Carles Pérez",teams:["AS Roma","Barcelona","Celta Vigo","Getafe"]}
+  {name:"Carlo Cudicini",teams:["Chelsea","Tottenham Hotspur"]}
+  {name:"Carlo Nervo",teams:["Bologna"]}
+  {name:"Carlos Aguilera",teams:["Atlético Madrid"]}
+  {name:"Carlos Akapo",teams:["Cádiz","Huesca"]}
+  {name:"Carlos Alcaraz",teams:["Everton","Juventus","Southampton"]}
+  {name:"Carlos Aranda",teams:["Albacete","Granada","Levante","Numancia","Osasuna","Real Zaragoza","Sevilla","Villarreal"]}
+  {name:"Carlos Augusto",teams:["Inter Milan","Monza"]}
+  {name:"Carlos Bacca",teams:["AC Milan","Granada","Sevilla","Villarreal"]}
+  {name:"Carlos Baleba",teams:["Brighton & Hove Albion","LOSC Lille"]}
+  {name:"Carlos Bellvís",teams:["Celta Vigo","Numancia","Tenerife"]}
+  {name:"Carlos Benavídez",teams:["Alavés"]}
+  {name:"Carlos Bocanegra",teams:["AS Saint-Étienne","Fulham","Stade Rennais"]}
+  {name:"Carlos Carmona",teams:["Atalanta","Reggina"]}
+  {name:"Carlos Castro",teams:["Sporting Gijón"]}
+  {name:"Carlos Clerc",teams:["Elche","Espanyol","Levante","Osasuna"]}
+  {name:"Carlos Cuéllar",teams:["Aston Villa","Osasuna","Sunderland"]}
+  {name:"Carlos Diogo",teams:["Real Madrid","Real Zaragoza"]}
+  {name:"Carlos Dominguez",teams:["Celta Vigo"]}
+  {name:"Carlos Domínguez",teams:["Mallorca","Sevilla"]}
+  {name:"Carlos Eduardo",teams:["TSG Hoffenheim"]}
+  {name:"Carlos Fernández",teams:["Granada","Real Sociedad","Sevilla"]}
+  {name:"Carlos García",teams:["Almería","Espanyol"]}
+  {name:"Carlos Grossmüller",teams:["FC Schalke 04","Lecce"]}
+  {name:"Carlos Gruezo",teams:["FC Augsburg","VfB Stuttgart"]}
+  {name:"Carlos Gurpegui",teams:["Athletic Bilbao"]}
+  {name:"Carlos Kameni",teams:["Espanyol","Málaga"]}
+  {name:"Carlos Llorens",teams:["Alavés","Osasuna"]}
+  {name:"Carlos Marchena",teams:["Deportivo La Coruña","Valencia","Villarreal"]}
+  {name:"Carlos Martins",teams:["Granada","Recreativo"]}
+  {name:"Carlos Martínez",teams:["Real Sociedad"]}
+  {name:"Carlos Merino",teams:["Athletic Bilbao","Gimnàstic","Numancia"]}
+  {name:"Carlos Neva",teams:["Granada"]}
+  {name:"Carlos Paredes",teams:["Reggina"]}
+  {name:"Carlos Peña",teams:["Real Valladolid"]}
+  {name:"Carlos Romero",teams:["Espanyol","Villarreal"]}
+  {name:"Carlos Soler",teams:["Paris Saint-Germain","Real Sociedad","Valencia","West Ham United"]}
+  {name:"Carlos Sánchez",teams:["Aston Villa","Elche","Espanyol","FC Valenciennes","Fiorentina","West Ham United"]}
+  {name:"Carlos Tevez",teams:["Juventus","Manchester City","Manchester United","West Ham United"]}
+  {name:"Carlos Valdez",teams:["Reggina","Treviso"]}
+  {name:"Carlos Vela",teams:["Arsenal","Osasuna","Real Sociedad","West Bromwich Albion"]}
+  {name:"Carlos Vicente",teams:["Alavés"]}
+  {name:"Carlos Vigaray",teams:["Alavés","Getafe"]}
+  {name:"Carlos Vinícius",teams:["AS Monaco","Fulham","Tottenham Hotspur"]}
+  {name:"Carlos Zambrano",teams:["Eintracht Frankfurt","FC Schalke 04","FC St. Pauli"]}
+  {name:"Carlton Cole",teams:["Aston Villa","Charlton Athletic","Chelsea","West Ham United"]}
+  {name:"Carlão",teams:["FC Sochaux","Torino"]}
+  {name:"Carmelo González",teams:["Las Palmas","Levante","Sporting Gijón"]}
+  {name:"Carmine Coppola",teams:["Livorno","Messina"]}
+  {name:"Carmine Gautieri",teams:["Atalanta","Piacenza"]}
+  {name:"Carmona",teams:["Elche","Getafe","Sevilla"]}
+  {name:"Carney Chukwuemeka",teams:["Aston Villa","Borussia Dortmund","Chelsea"]}
+  {name:"Carsten Cullmann",teams:["FC Köln"]}
+  {name:"Carsten Jancker",teams:["1. FC Kaiserslautern","Bayern Munich","Udinese"]}
+  {name:"Carsten Ramelow",teams:["Bayer Leverkusen"]}
+  {name:"Casemiro",teams:["Manchester United","Real Madrid"]}
+  {name:"Casimir Ninga",teams:["Angers SCO","Montpellier HSC","SM Caen"]}
+  {name:"Castello Lukeba",teams:["Olympique Lyonnais","RB Leipzig"]}
+  {name:"Casto",teams:["Real Betis"]}
+  {name:"Cata Díaz",teams:["Atlético Madrid","Getafe"]}
+  {name:"Catanha",teams:["Celta Vigo"]}
+  {name:"Catena",teams:["Osasuna","Rayo Vallecano"]}
+  {name:"Caçapa",teams:["Newcastle United","Olympique Lyonnais"]}
+  {name:"Ceará",teams:["Paris Saint-Germain"]}
+  {name:"Cedric Zesiger",teams:["FC Augsburg","VfL Wolfsburg"]}
+  {name:"Celestine Babayaro",teams:["Chelsea","Newcastle United"]}
+  {name:"Celso Borges",teams:["Deportivo La Coruña"]}
+  {name:"Cengiz Ünder",teams:["AS Roma","Leicester City","Olympique de Marseille"]}
+  {name:"Cenk Tosun",teams:["Crystal Palace","Eintracht Frankfurt","Everton"]}
+  {name:"Cenk Özkacar",teams:["FC Köln","Real Valladolid","Valencia"]}
+  {name:"Cesare Bovo",teams:["AS Roma","Genoa","Lecce","Palermo","Parma","Pescara","Torino"]}
+  {name:"Cesare Natali",teams:["Atalanta","Bologna","Fiorentina","Sassuolo","Torino","Udinese"]}
+  {name:"Cesc Fàbregas",teams:["AS Monaco","Arsenal","Barcelona","Chelsea"]}
+  {name:"Cha Du-ri",teams:["1. FSV Mainz 05","Arminia Bielefeld","Eintracht Frankfurt","Fortuna Düsseldorf","SC Freiburg"]}
+  {name:"Chadrac Akolo",teams:["Amiens SC","VfB Stuttgart"]}
+  {name:"Chancel Mbemba",teams:["LOSC Lille","Newcastle United","Olympique de Marseille"]}
+  {name:"Chaouki Ben Saada",teams:["Estac Troyes","OGC Nice","SC Bastia"]}
+  {name:"Charles",teams:["Celta Vigo","Eibar","Málaga"]}
+  {name:"Charles Akonnor",teams:["VfL Wolfsburg"]}
+  {name:"Charles Aránguiz",teams:["Bayer Leverkusen"]}
+  {name:"Charles De Ketelaere",teams:["AC Milan","Atalanta"]}
+  {name:"Charles Itandje",teams:["RC Lens"]}
+  {name:"Charles Kaboré",teams:["Olympique de Marseille"]}
+  {name:"Charles N'Zogbia",teams:["Aston Villa","Newcastle United","Wigan Athletic"]}
+  {name:"Charles Traore",teams:["Estac Troyes","FC Nantes"]}
+  {name:"Charles-Édouard Coridon",teams:["Paris Saint-Germain","RC Lens"]}
+  {name:"Charlie Adam",teams:["Blackpool","Liverpool","Stoke City"]}
+  {name:"Charlie Austin",teams:["Queens Park Rangers","Southampton","West Bromwich Albion"]}
+  {name:"Charlie Cresswell",teams:["Leeds United","Toulouse FC"]}
+  {name:"Charlie Daniels",teams:["AFC Bournemouth"]}
+  {name:"Charlie Taylor",teams:["Burnley","Southampton"]}
+  {name:"Chavdar Yankov",teams:["Hannover 96"]}
+  {name:"Che Adams",teams:["Southampton","Torino"]}
+  {name:"Chechu",teams:["Rayo Vallecano","Real Betis","Villarreal"]}
+  {name:"Cheick Diabaté",teams:["AS Nancy","Benevento","FC Metz","Girondins de Bordeaux"]}
+  {name:"Cheick Doucouré",teams:["Crystal Palace","RC Lens"]}
+  {name:"Cheick Doukouré",teams:["FC Lorient","FC Metz","Levante"]}
+  {name:"Cheick Tioté",teams:["Newcastle United"]}
+  {name:"Cheikh M'Bengue",teams:["AS Saint-Étienne","Stade Rennais","Toulouse FC"]}
+  {name:"Cheikh N'Doye",teams:["Angers SCO"]}
+  {name:"Cheikh Tidiane Sabaly",teams:["FC Metz"]}
+  {name:"Cheikhou Kouyaté",teams:["Crystal Palace","Nottingham Forest","West Ham United"]}
+  {name:"Chema",teams:["Getafe","Levante","Real Valladolid"]}
+  {name:"Chico Flores",teams:["Almería","Genoa","Mallorca","Swansea City"]}
+  {name:"Chidera Ejuke",teams:["Hertha BSC","Sevilla"]}
+  {name:"Chidozie Awaziem",teams:["FC Nantes","Leganés"]}
+  {name:"Chinedu Obasi",teams:["FC Schalke 04","TSG Hoffenheim"]}
+  {name:"Chori Domínguez",teams:["Rayo Vallecano","Valencia"]}
+  {name:"Chory Castro",teams:["Mallorca","Málaga","Real Sociedad"]}
+  {name:"Chris",teams:["Eintracht Frankfurt","VfL Wolfsburg"]}
+  {name:"Chris Baird",teams:["Fulham","Southampton","West Bromwich Albion"]}
+  {name:"Chris Basham",teams:["Blackpool","Bolton Wanderers","Sheffield United"]}
+  {name:"Chris Brunt",teams:["West Bromwich Albion"]}
+  {name:"Chris Eagles",teams:["Bolton Wanderers","Burnley","Manchester United"]}
+  {name:"Chris Führich",teams:["FC Köln","VfB Stuttgart"]}
+  {name:"Chris Kirkland",teams:["Coventry City","Liverpool","West Bromwich Albion","Wigan Athletic"]}
+  {name:"Chris Löwe",teams:["Borussia Dortmund","Huddersfield Town"]}
+  {name:"Chris Makin",teams:["Ipswich Town","Sunderland"]}
+  {name:"Chris Malonga",teams:["AS Monaco","AS Nancy"]}
+  {name:"Chris Marsden",teams:["Southampton"]}
+  {name:"Chris Mavinga",teams:["Estac Troyes","Stade Rennais","Stade de Reims"]}
+  {name:"Chris Mepham",teams:["AFC Bournemouth"]}
+  {name:"Chris Perry",teams:["Charlton Athletic","Tottenham Hotspur"]}
+  {name:"Chris Powell",teams:["Charlton Athletic","Watford"]}
+  {name:"Chris Ramos",teams:["Cádiz","Real Valladolid"]}
+  {name:"Chris Richards",teams:["Bayern Munich","Crystal Palace","TSG Hoffenheim"]}
+  {name:"Chris Riggott",teams:["Derby County","Middlesbrough"]}
+  {name:"Chris Smalling",teams:["AS Roma","Fulham","Manchester United"]}
+  {name:"Chris Wood",teams:["Burnley","Leicester City","Newcastle United","Nottingham Forest","West Bromwich Albion"]}
+  {name:"Chrislain Matsima",teams:["AS Monaco","Clermont Foot","FC Augsburg","FC Lorient"]}
+  {name:"Christian",teams:["Almería","Racing Santander"]}
+  {name:"Christian Abbiati",teams:["AC Milan","Atlético Madrid","Juventus","Torino"]}
+  {name:"Christian Amoroso",teams:["Bologna","Fiorentina"]}
+  {name:"Christian Atsu",teams:["Everton","Málaga","Newcastle United"]}
+  {name:"Christian Bassila",teams:["Energie Cottbus","RC Strasbourg","Stade Rennais","Sunderland","West Ham United"]}
+  {name:"Christian Beeck",teams:["Energie Cottbus"]}
+  {name:"Christian Benteke",teams:["Aston Villa","Crystal Palace","Liverpool"]}
+  {name:"Christian Clemens",teams:["1. FSV Mainz 05","FC Köln","FC Schalke 04"]}
+  {name:"Christian Dailly",teams:["West Ham United"]}
+  {name:"Christian Demirtaş",teams:["1. FSV Mainz 05"]}
+  {name:"Christian Eichner",teams:["FC Köln","Karlsruher SC","TSG Hoffenheim"]}
+  {name:"Christian Eigler",teams:["1. FC Nürnberg","Arminia Bielefeld"]}
+  {name:"Christian Eriksen",teams:["Brentford","Inter Milan","Manchester United","Tottenham Hotspur","VfL Wolfsburg"]}
+  {name:"Christian Fiedler",teams:["Hertha BSC"]}
+  {name:"Christian Fuchs",teams:["1. FSV Mainz 05","FC Schalke 04","Leicester City","VfL Bochum"]}
+  {name:"Christian Gentner",teams:["1. FC Union Berlin","VfB Stuttgart","VfL Wolfsburg"]}
+  {name:"Christian Giménez",teams:["Hertha BSC","Olympique de Marseille"]}
+  {name:"Christian Groß",teams:["Werder Bremen"]}
+  {name:"Christian Gytkjær",teams:["Monza","Venezia"]}
+  {name:"Christian Günter",teams:["SC Freiburg"]}
+  {name:"Christian Kabasele",teams:["Udinese","Watford"]}
+  {name:"Christian Kouamé",teams:["Empoli","Fiorentina","Genoa"]}
+  {name:"Christian Lell",teams:["Bayern Munich","FC Köln","Hertha BSC","Levante"]}
+  {name:"Christian Maggio",teams:["Benevento","Fiorentina","Napoli","Sampdoria","Treviso","Vicenza"]}
+  {name:"Christian Manfredini",teams:["Chievo Verona","Lazio","Osasuna","Perugia"]}
+  {name:"Christian Mathenia",teams:["1. FC Nürnberg","Hamburger SV","SV Darmstadt 98"]}
+  {name:"Christian Nørgaard",teams:["Arsenal","Brentford","Fiorentina"]}
+  {name:"Christian Obodo",teams:["Fiorentina","Lecce","Perugia","Udinese"]}
+  {name:"Christian Pander",teams:["FC Schalke 04","Hannover 96"]}
+  {name:"Christian Panucci",teams:["AS Monaco","AS Roma","Chelsea","Parma"]}
+  {name:"Christian Poulsen",teams:["FC Schalke 04","Juventus","Liverpool","Sevilla","Évian TG"]}
+  {name:"Christian Puggioni",teams:["Benevento","Chievo Verona","Reggina","Sampdoria"]}
+  {name:"Christian Pulisic",teams:["AC Milan","Borussia Dortmund","Chelsea"]}
+  {name:"Christian Rahn",teams:["FC Köln","FC St. Pauli","Hamburger SV","Hansa Rostock"]}
+  {name:"Christian Riganò",teams:["Empoli","Fiorentina","Levante","Messina","Siena"]}
+  {name:"Christian Schulz",teams:["Hannover 96","Werder Bremen"]}
+  {name:"Christian Springer",teams:["FC Köln"]}
+  {name:"Christian Terlizzi",teams:["Catania","Palermo","Pescara","Sampdoria","Siena"]}
+  {name:"Christian Tiffert",teams:["1. FC Kaiserslautern","MSV Duisburg","VfB Stuttgart"]}
+  {name:"Christian Timm",teams:["1. FC Kaiserslautern","FC Köln","Karlsruher SC"]}
+  {name:"Christian Träsch",teams:["VfB Stuttgart","VfL Wolfsburg"]}
+  {name:"Christian Vieri",teams:["AC Milan","AS Monaco","Atalanta","Fiorentina","Inter Milan"]}
+  {name:"Christian Wetklo",teams:["1. FSV Mainz 05"]}
+  {name:"Christian Wilhelmsson",teams:["AS Roma","Bolton Wanderers","Deportivo La Coruña","FC Nantes"]}
+  {name:"Christian Wörns",teams:["Borussia Dortmund"]}
+  {name:"Christian Ziege",teams:["Borussia Mönchengladbach","Liverpool","Tottenham Hotspur"]}
+  {name:"Christof Babatz",teams:["1. FSV Mainz 05"]}
+  {name:"Christoph Baumgartner",teams:["RB Leipzig","TSG Hoffenheim"]}
+  {name:"Christoph Dabrowski",teams:["Arminia Bielefeld","Hannover 96","VfL Bochum","Werder Bremen"]}
+  {name:"Christoph Janker",teams:["FC Augsburg","Hertha BSC","TSG Hoffenheim"]}
+  {name:"Christoph Kramer",teams:["Bayer Leverkusen","Borussia Mönchengladbach"]}
+  {name:"Christoph Metzelder",teams:["Borussia Dortmund","FC Schalke 04","Real Madrid"]}
+  {name:"Christoph Moritz",teams:["1. FSV Mainz 05","FC Schalke 04"]}
+  {name:"Christoph Preuß",teams:["Bayer Leverkusen","Eintracht Frankfurt","VfL Bochum"]}
+  {name:"Christoph Spycher",teams:["Eintracht Frankfurt"]}
+  {name:"Christophe Avezac",teams:["FC Metz","Toulouse FC"]}
+  {name:"Christophe Bastien",teams:["FC Metz","GFC Ajaccio","Sedan"]}
+  {name:"Christophe Berra",teams:["Wolverhampton Wanderers"]}
+  {name:"Christophe Delmotte",teams:["Olympique Lyonnais"]}
+  {name:"Christophe Dugarry",teams:["Birmingham City","Girondins de Bordeaux"]}
+  {name:"Christophe Hérelle",teams:["Estac Troyes","FC Metz","OGC Nice","Stade Brestois 29"]}
+  {name:"Christophe Jallet",teams:["Amiens SC","FC Lorient","OGC Nice","Olympique Lyonnais","Paris Saint-Germain"]}
+  {name:"Christophe Kerbrat",teams:["EA Guingamp"]}
+  {name:"Christophe Landrin",teams:["AS Saint-Étienne","LOSC Lille","Paris Saint-Germain"]}
+  {name:"Christophe Le Roux",teams:["EA Guingamp","Stade Rennais"]}
+  {name:"Christophe Mandanne",teams:["AS Nancy","Dijon FCO","EA Guingamp"]}
+  {name:"Christophe Revault",teams:["Le Havre AC","Toulouse FC"]}
+  {name:"Christophe Sanchez",teams:["AS Saint-Étienne","Girondins de Bordeaux"]}
+  {name:"Christopher Antwi-Adjei",teams:["SC Paderborn 07","VfL Bochum"]}
+  {name:"Christopher Jullien",teams:["Montpellier HSC","SC Freiburg","Toulouse FC"]}
+  {name:"Christopher Lenz",teams:["1. FC Union Berlin","Eintracht Frankfurt","RB Leipzig"]}
+  {name:"Christopher Nkunku",teams:["AC Milan","Chelsea","Paris Saint-Germain","RB Leipzig"]}
+  {name:"Christopher Samba",teams:["Blackburn Rovers","Hertha BSC","Queens Park Rangers"]}
+  {name:"Christopher Schindler",teams:["Huddersfield Town"]}
+  {name:"Christopher Trimmel",teams:["1. FC Union Berlin"]}
+  {name:"Christopher Wooh",teams:["RC Lens","Stade Rennais"]}
+  {name:"Chumi",teams:["Almería"]}
+  {name:"Ciaran Clark",teams:["Aston Villa","Newcastle United"]}
+  {name:"Cicinho",teams:["AS Roma","Real Madrid","Villarreal"]}
+  {name:"Ciprian Marica",teams:["FC Schalke 04","Getafe","VfB Stuttgart"]}
+  {name:"Ciprian Tătărușanu",teams:["AC Milan","FC Nantes","Fiorentina","Olympique Lyonnais"]}
+  {name:"Ciriaco Sforza",teams:["1. FC Kaiserslautern","Bayern Munich"]}
+  {name:"Ciro Capuano",teams:["Bologna","Catania","Palermo"]}
+  {name:"Ciro Ferrara",teams:["Juventus"]}
+  {name:"Ciro Immobile",teams:["Bologna","Borussia Dortmund","Genoa","Juventus","Lazio","Paris FC","Sevilla","Torino"]}
+  {name:"Clarck N'Sikulu",teams:["Évian TG"]}
+  {name:"Clarence Seedorf",teams:["AC Milan","Inter Milan"]}
+  {name:"Claude Makélélé",teams:["Chelsea","Paris Saint-Germain","Real Madrid"]}
+  {name:"Claude Michel",teams:["EA Guingamp"]}
+  {name:"Claudio Beauvue",teams:["Celta Vigo","EA Guingamp","Leganés","Olympique Lyonnais","SC Bastia","SM Caen"]}
+  {name:"Claudio Bellucci",teams:["Bologna","Livorno","Napoli","Sampdoria"]}
+  {name:"Claudio Bravo",teams:["Barcelona","Manchester City","Real Betis","Real Sociedad"]}
+  {name:"Claudio López",teams:["Lazio"]}
+  {name:"Claudio Marchisio",teams:["Empoli","Juventus"]}
+  {name:"Claudio Pizarro",teams:["Bayern Munich","Chelsea","FC Köln","Werder Bremen"]}
+  {name:"Claudio Reyna",teams:["Manchester City","Sunderland"]}
+  {name:"Claudio Rivalta",teams:["Atalanta","Perugia","Torino"]}
+  {name:"Claudio Terzi",teams:["Bologna","Palermo","Siena","Spezia"]}
+  {name:"Claudio Yacob",teams:["West Bromwich Albion"]}
+  {name:"Claudiu Keșerü",teams:["FC Nantes","SC Bastia"]}
+  {name:"Claus Jensen",teams:["Charlton Athletic","Fulham"]}
+  {name:"Claus Lundekvam",teams:["Southampton"]}
+  {name:"Claus Reitmaier",teams:["Borussia Mönchengladbach","VfL Wolfsburg"]}
+  {name:"Clemens Fritz",teams:["Bayer Leverkusen","Werder Bremen"]}
+  {name:"Clint Dempsey",teams:["Fulham","Tottenham Hotspur"]}
+  {name:"Clint Hill",teams:["Queens Park Rangers"]}
+  {name:"Clinton Mata",teams:["Olympique Lyonnais"]}
+  {name:"Clinton Morrison",teams:["Birmingham City"]}
+  {name:"Clinton N'Jie",teams:["Olympique Lyonnais","Olympique de Marseille","Tottenham Hotspur"]}
+  {name:"Cléber Santana",teams:["Atlético Madrid","Mallorca"]}
+  {name:"Clément Akpa",teams:["AJ Auxerre"]}
+  {name:"Clément Chantôme",teams:["Girondins de Bordeaux","Paris Saint-Germain","Stade Rennais","Toulouse FC"]}
+  {name:"Clément Grenier",teams:["AS Roma","EA Guingamp","Mallorca","Olympique Lyonnais","Stade Rennais"]}
+  {name:"Clément Lenglet",teams:["AS Nancy","Aston Villa","Atlético Madrid","Barcelona","Sevilla","Tottenham Hotspur"]}
+  {name:"Cody Gakpo",teams:["Liverpool"]}
+  {name:"Coke",teams:["FC Schalke 04","Levante","Sevilla"]}
+  {name:"Cole Palmer",teams:["Chelsea","Manchester City"]}
+  {name:"Colin Cooper",teams:["Middlesbrough"]}
+  {name:"Colin Dagba",teams:["Paris Saint-Germain","RC Strasbourg"]}
+  {name:"Collin Benjamin",teams:["Hamburger SV"]}
+  {name:"Collins John",teams:["Fulham"]}
+  {name:"Connor Wickham",teams:["Crystal Palace","Sunderland"]}
+  {name:"Conor Coady",teams:["Everton","Leicester City","Liverpool","Wolverhampton Wanderers"]}
+  {name:"Conor Gallagher",teams:["Atlético Madrid","Chelsea","Crystal Palace","Tottenham Hotspur","West Bromwich Albion"]}
+  {name:"Constant Djakpa",teams:["Bayer Leverkusen","Eintracht Frankfurt","Hannover 96"]}
+  {name:"Constantin Gâlcă",teams:["Espanyol","Villarreal"]}
+  {name:"Copete",teams:["Mallorca","Valencia"]}
+  {name:"Corentin Jean",teams:["AS Monaco","Estac Troyes","RC Lens","Toulouse FC"]}
+  {name:"Corentin Martins",teams:["RC Strasbourg"]}
+  {name:"Corentin Tolisso",teams:["Bayern Munich","Olympique Lyonnais"]}
+  {name:"Corona",teams:["Almería","Real Zaragoza"]}
+  {name:"Corrado Colombo",teams:["Atalanta","Inter Milan","Livorno","Sampdoria"]}
+  {name:"Cosmin Contra",teams:["AC Milan","Alavés","Atlético Madrid","Getafe","West Bromwich Albion"]}
+  {name:"Costel Pantilimon",teams:["Deportivo La Coruña","Manchester City","Sunderland","Watford"]}
+  {name:"Craig Bellamy",teams:["Blackburn Rovers","Cardiff City","Coventry City","Liverpool","Manchester City","Newcastle United","West Ham United"]}
+  {name:"Craig Cathcart",teams:["Blackpool","Watford"]}
+  {name:"Craig Dawson",teams:["Watford","West Bromwich Albion","West Ham United","Wolverhampton Wanderers"]}
+  {name:"Craig Fagan",teams:["Birmingham City","Derby County","Hull City"]}
+  {name:"Craig Gardner",teams:["Aston Villa","Birmingham City","Sunderland","West Bromwich Albion"]}
+  {name:"Craig Gordon",teams:["Sunderland"]}
+  {name:"Craig Short",teams:["Blackburn Rovers"]}
+  {name:"Cris",teams:["Bayer Leverkusen","Olympique Lyonnais"]}
+  {name:"Cristhian Mosquera",teams:["Arsenal","Valencia"]}
+  {name:"Cristhian Stuani",teams:["Espanyol","Girona","Levante","Middlesbrough","Racing Santander","Reggina"]}
+  {name:"Cristian Ansaldi",teams:["Atlético Madrid","Genoa","Inter Milan","Torino"]}
+  {name:"Cristian Brocchi",teams:["AC Milan","Fiorentina","Inter Milan","Lazio"]}
+  {name:"Cristian Chivu",teams:["AS Roma","Inter Milan"]}
+  {name:"Cristian Cásseres Jr.",teams:["Toulouse FC"]}
+  {name:"Cristian Dell'Orco",teams:["Empoli","Lecce","Sassuolo","Spezia"]}
+  {name:"Cristian Gamboa",teams:["VfL Bochum","West Bromwich Albion"]}
+  {name:"Cristian Herrera",teams:["Elche","Las Palmas"]}
+  {name:"Cristian Hidalgo",teams:["Deportivo La Coruña","Hércules"]}
+  {name:"Cristian Ledesma",teams:["Lazio","Lecce"]}
+  {name:"Cristian Llama",teams:["Catania","Fiorentina"]}
+  {name:"Cristian Molinaro",teams:["Frosinone","Juventus","Parma","Siena","Torino","Venezia","VfB Stuttgart"]}
+  {name:"Cristian Raimondi",teams:["Atalanta","Livorno","Palermo"]}
+  {name:"Cristian Rivera",teams:["Eibar","Huesca","Leganés"]}
+  {name:"Cristian Rodríguez",teams:["Atlético Madrid","Paris Saint-Germain","Parma"]}
+  {name:"Cristian Romero",teams:["Atalanta","Genoa","Tottenham Hotspur"]}
+  {name:"Cristian Silvestri",teams:["Catania","Lecce"]}
+  {name:"Cristian Tello",teams:["Barcelona","Fiorentina","Real Betis"]}
+  {name:"Cristian Zaccardo",teams:["AC Milan","Bologna","Carpi","Palermo","Parma","VfL Wolfsburg"]}
+  {name:"Cristian Zenoni",teams:["Atalanta","Bologna","Juventus","Sampdoria"]}
+  {name:"Cristian Álvarez",teams:["Espanyol","Rayo Vallecano"]}
+  {name:"Cristiano Biraghi",teams:["Catania","Chievo Verona","Fiorentina","Granada","Inter Milan","Pescara","Torino"]}
+  {name:"Cristiano Del Grosso",teams:["Ascoli","Atalanta","Cagliari","Siena"]}
+  {name:"Cristiano Doni",teams:["Atalanta","Mallorca","Sampdoria"]}
+  {name:"Cristiano Lucarelli",teams:["Lecce","Livorno","Napoli","Parma","Torino"]}
+  {name:"Cristiano Lupatelli",teams:["AS Roma","Bologna","Cagliari","Chievo Verona","Fiorentina","Palermo","Parma"]}
+  {name:"Cristiano Piccini",teams:["Atalanta","Fiorentina","Livorno","Real Betis","Valencia"]}
+  {name:"Cristiano Ronaldo",teams:["Juventus","Manchester United","Real Madrid"]}
+  {name:"Cristiano Zanetti",teams:["AS Roma","Brescia","Fiorentina","Inter Milan","Juventus"]}
+  {name:"Cristián Zapata",teams:["AC Milan","Genoa","Udinese","Villarreal"]}
+  {name:"Cristóbal Jorquera",teams:["Genoa","Parma"]}
+  {name:"Cristóbal Parralo",teams:["Espanyol","Paris Saint-Germain"]}
+  {name:"Crysencio Summerville",teams:["Leeds United","West Ham United"]}
+  {name:"Cucho",teams:["Getafe","Huesca","Mallorca","Real Betis","Watford"]}
+  {name:"Curro Torres",teams:["Real Murcia","Valencia"]}
+  {name:"Curtis Davies",teams:["Aston Villa","Birmingham City","Hull City","West Bromwich Albion"]}
+  {name:"Curtis Jones",teams:["Liverpool"]}
+  {name:"Cyle Larin",teams:["Mallorca","Real Valladolid"]}
+  {name:"Cyriaque Louvion",teams:["Le Mans FC"]}
+  {name:"Cyril Chapuis",teams:["FC Metz","GFC Ajaccio","Leeds United","Olympique de Marseille","RC Strasbourg","Stade Rennais"]}
+  {name:"Cyril Domoraud",teams:["AS Monaco","Espanyol","SC Bastia"]}
+  {name:"Cyril Jeunechamp",teams:["AJ Auxerre","Montpellier HSC","OGC Nice","SC Bastia","Stade Rennais"]}
+  {name:"Cyril Ngonge",teams:["Espanyol","Hellas Verona","Napoli","Torino"]}
+  {name:"Cyril Rool",teams:["AS Monaco","Girondins de Bordeaux","OGC Nice","Olympique de Marseille","RC Lens"]}
+  {name:"Cyril Théréau",teams:["Cagliari","Chievo Verona","Fiorentina","Udinese"]}
+  {name:"Cédric Bakambu",teams:["FC Sochaux","Olympique de Marseille","Real Betis","Villarreal"]}
+  {name:"Cédric Barbosa",teams:["Estac Troyes","FC Metz","Montpellier HSC","Stade Rennais","Évian TG"]}
+  {name:"Cédric Bardon",teams:["EA Guingamp","Stade Rennais"]}
+  {name:"Cédric Brunner",teams:["Arminia Bielefeld","FC Schalke 04"]}
+  {name:"Cédric Cambon",teams:["Évian TG"]}
+  {name:"Cédric Carrasso",teams:["Girondins de Bordeaux","Olympique de Marseille","Toulouse FC"]}
+  {name:"Cédric Elzéard",teams:["Sedan"]}
+  {name:"Cédric Fauré",teams:["EA Guingamp","Le Havre AC","Le Mans FC","Toulouse FC"]}
+  {name:"Cédric Hengbart",teams:["AJ Auxerre","GFC Ajaccio","SM Caen"]}
+  {name:"Cédric Hountondji",teams:["Angers SCO","Clermont Foot","Stade Rennais"]}
+  {name:"Cédric Kanté",teams:["FC Sochaux","OGC Nice","RC Strasbourg"]}
+  {name:"Cédric Makiadi",teams:["SC Freiburg","VfL Wolfsburg","Werder Bremen"]}
+  {name:"Cédric Mionnet",teams:["OGC Nice","Sedan"]}
+  {name:"Cédric Mongongu",teams:["AS Monaco","Montpellier HSC","Évian TG"]}
+  {name:"Cédric Soares",teams:["Arsenal","Fulham","Inter Milan","Southampton"]}
+  {name:"Cédric Uras",teams:["SC Bastia","Toulouse FC"]}
+  {name:"Cédric Varrault",teams:["AS Saint-Étienne","Dijon FCO","OGC Nice"]}
+  {name:"Cédric Yamberé",teams:["Dijon FCO","Girondins de Bordeaux"]}
+  {name:"César",teams:["Bologna","Inter Milan","Lazio","Livorno"]}
+  {name:"César Arzo",teams:["Real Murcia","Real Valladolid","Recreativo","Villarreal"]}
+  {name:"César Azpilicueta",teams:["Atlético Madrid","Chelsea","Olympique de Marseille","Osasuna","Sevilla"]}
+  {name:"César Cruchaga",teams:["Osasuna"]}
+  {name:"César Delgado",teams:["Olympique Lyonnais"]}
+  {name:"César Láinez",teams:["Real Zaragoza"]}
+  {name:"César Martín",teams:["Bolton Wanderers","Deportivo La Coruña","Levante"]}
+  {name:"César Navas",teams:["Gimnàstic","Málaga","Racing Santander"]}
+  {name:"César Palacios",teams:["Numancia","Osasuna"]}
+  {name:"César Sánchez",teams:["Real Madrid","Real Zaragoza","Valencia","Villarreal"]}
+  {name:"César Tárrega",teams:["Valencia"]}
+  {name:"Cícero Santos",teams:["Hertha BSC","VfL Wolfsburg"]}
+  {name:"DJ Campbell",teams:["Birmingham City","Blackpool","Queens Park Rangers"]}
+  {name:"Dado Pršo",teams:["AS Monaco"]}
+  {name:"Dady",teams:["Osasuna"]}
+  {name:"Dagui Bakari",teams:["AS Nancy","LOSC Lille","RC Lens"]}
+  {name:"Daichi Kamada",teams:["Crystal Palace","Eintracht Frankfurt","Lazio"]}
+  {name:"Daisuke Matsui",teams:["AS Saint-Étienne","Dijon FCO","Grenoble Foot","Le Mans FC"]}
+  {name:"Dalbert Henrique",teams:["Cagliari","Fiorentina","Inter Milan","OGC Nice","Stade Rennais"]}
+  {name:"Dale Stephens",teams:["Brighton & Hove Albion","Burnley"]}
+  {name:"Daley Blind",teams:["Bayern Munich","Girona","Manchester United"]}
+  {name:"Daley Sinkgraven",teams:["Bayer Leverkusen","Las Palmas"]}
+  {name:"Damiano Ferronetti",teams:["AS Roma","Genoa","Parma","Udinese"]}
+  {name:"Damiano Tommasi",teams:["AS Roma","Levante"]}
+  {name:"Damiano Zenoni",teams:["Atalanta","Parma","Udinese"]}
+  {name:"Damien Da Silva",teams:["Olympique Lyonnais","SM Caen","Stade Rennais"]}
+  {name:"Damien Delaney",teams:["Crystal Palace","Leicester City"]}
+  {name:"Damien Duff",teams:["Blackburn Rovers","Chelsea","Fulham","Newcastle United"]}
+  {name:"Damien Francis",teams:["Norwich City","Watford","Wigan Athletic"]}
+  {name:"Damien Gregorini",teams:["AS Nancy","OGC Nice","Olympique de Marseille"]}
+  {name:"Damien Johnson",teams:["Birmingham City","Blackburn Rovers"]}
+  {name:"Damien Le Tallec",teams:["Borussia Dortmund","Montpellier HSC"]}
+  {name:"Damien Marcq",teams:["Boulogne","Dijon FCO","SM Caen"]}
+  {name:"Damien Perquis",teams:["AS Saint-Étienne","FC Sochaux","Real Betis"]}
+  {name:"DamiÃ Abella",teams:["Barcelona","Osasuna","Racing Santander","Real Betis"]}
+  {name:"Damián Macaluso",teams:["AS Nancy"]}
+  {name:"Damián Suárez",teams:["Elche","Getafe","Sporting Gijón"]}
+  {name:"Damjan Đoković",teams:["Cesena","Gazélec Ajaccio"]}
+  {name:"Dan Burn",teams:["Brighton & Hove Albion","Fulham","Newcastle United"]}
+  {name:"Dan Eggen",teams:["Alavés","Le Mans FC"]}
+  {name:"Dan Gosling",teams:["AFC Bournemouth","Everton","Newcastle United","Watford"]}
+  {name:"Dan Ndoye",teams:["Bologna","Nottingham Forest","OGC Nice"]}
+  {name:"Dan-Axel Zagadou",teams:["Borussia Dortmund","VfB Stuttgart"]}
+  {name:"Dango Ouattara",teams:["AFC Bournemouth","Brentford","FC Lorient"]}
+  {name:"Dani Alves",teams:["Barcelona","Juventus","Paris Saint-Germain","Sevilla"]}
+  {name:"Dani Carvajal",teams:["Bayer Leverkusen","Real Madrid"]}
+  {name:"Dani Castellano",teams:["Las Palmas"]}
+  {name:"Dani Ceballos",teams:["Arsenal","Real Betis","Real Madrid"]}
+  {name:"Dani Estrada",teams:["Real Sociedad"]}
+  {name:"Dani García",teams:["Athletic Bilbao","Barcelona","Eibar","Espanyol","Real Zaragoza"]}
+  {name:"Dani Gómez",teams:["Espanyol","Levante","Valencia"]}
+  {name:"Dani Güiza",teams:["Getafe","Mallorca","Recreativo"]}
+  {name:"Dani Olmo",teams:["Barcelona","RB Leipzig"]}
+  {name:"Dani Osvaldo",teams:["AS Roma","Bologna","Espanyol","Fiorentina","Inter Milan","Juventus","Southampton"]}
+  {name:"Dani Raba",teams:["Granada","Leganés","Valencia","Villarreal"]}
+  {name:"Dani Rodríguez",teams:["Mallorca"]}
+  {name:"Daniel Agger",teams:["Liverpool"]}
+  {name:"Daniel Amartey",teams:["Leicester City"]}
+  {name:"Daniel Andersson",teams:["Ancona","Bari","Chievo Verona","Venezia"]}
+  {name:"Daniel Aranzubia",teams:["Athletic Bilbao","Atlético Madrid","Deportivo La Coruña"]}
+  {name:"Daniel Baier",teams:["1860 Munich","FC Augsburg","VfL Wolfsburg"]}
+  {name:"Daniel Bessa",teams:["Genoa","Hellas Verona"]}
+  {name:"Daniel Bierofka",teams:["1860 Munich","Bayer Leverkusen","VfB Stuttgart"]}
+  {name:"Daniel Borimirov",teams:["1860 Munich"]}
+  {name:"Daniel Braaten",teams:["Bolton Wanderers","Toulouse FC"]}
+  {name:"Daniel Brosinski",teams:["1. FSV Mainz 05","FC Köln"]}
+  {name:"Daniel Caligiuri",teams:["FC Augsburg","FC Schalke 04","SC Freiburg","VfL Wolfsburg"]}
+  {name:"Daniel Carriço",teams:["Reading","Sevilla"]}
+  {name:"Daniel Ciofani",teams:["Cremonese","Frosinone"]}
+  {name:"Daniel Congré",teams:["Montpellier HSC","Toulouse FC"]}
+  {name:"Daniel Cousin",teams:["Hull City","Le Mans FC","RC Lens"]}
+  {name:"Daniel Didavi",teams:["1. FC Nürnberg","VfB Stuttgart","VfL Wolfsburg"]}
+  {name:"Daniel Ginczek",teams:["1. FC Nürnberg","VfB Stuttgart","VfL Wolfsburg"]}
+  {name:"Daniel Gygax",teams:["1. FC Nürnberg","FC Metz","LOSC Lille"]}
+  {name:"Daniel Halfar",teams:["1. FC Kaiserslautern","Arminia Bielefeld","FC Köln"]}
+  {name:"Daniel Imhof",teams:["VfL Bochum"]}
+  {name:"Daniel James",teams:["Fulham","Leeds United","Manchester United"]}
+  {name:"Daniel Jarque",teams:["Espanyol"]}
+  {name:"Daniel Jensen",teams:["Novara","Real Murcia","Werder Bremen"]}
+  {name:"Daniel Maldini",teams:["AC Milan","Atalanta","Empoli","Lazio","Monza","Spezia"]}
+  {name:"Daniel Martín",teams:["Real Betis"]}
+  {name:"Daniel Moreira",teams:["Boulogne","Grenoble Foot","RC Lens","Stade Rennais","Toulouse FC"]}
+  {name:"Daniel Mosquera",teams:["Hellas Verona"]}
+  {name:"Daniel Muñoz",teams:["Crystal Palace"]}
+  {name:"Daniel N'Gom Kome",teams:["Getafe","Mallorca","Real Valladolid","Tenerife"]}
+  {name:"Daniel Niculae",teams:["AJ Auxerre","AS Monaco","AS Nancy"]}
+  {name:"Daniel Parejo",teams:["Getafe","Real Madrid","Valencia","Villarreal"]}
+  {name:"Daniel Podence",teams:["Wolverhampton Wanderers"]}
+  {name:"Daniel Schwaab",teams:["Bayer Leverkusen","VfB Stuttgart"]}
+  {name:"Daniel Stendel",teams:["Hannover 96"]}
+  {name:"Daniel Sturridge",teams:["Bolton Wanderers","Chelsea","Liverpool","Manchester City","West Bromwich Albion"]}
+  {name:"Daniel Van Buyten",teams:["Bayern Munich","Hamburger SV","Manchester City","Olympique de Marseille"]}
+  {name:"Daniel Vivian",teams:["Athletic Bilbao"]}
+  {name:"Daniel Wass",teams:["Atlético Madrid","Celta Vigo","Valencia","Évian TG"]}
+  {name:"Daniel Ziebig",teams:["Energie Cottbus"]}
+  {name:"Daniele Adani",teams:["Ascoli","Brescia","Empoli","Fiorentina","Inter Milan"]}
+  {name:"Daniele Balli",teams:["Empoli"]}
+  {name:"Daniele Baselli",teams:["Atalanta","Cagliari","Como","Torino"]}
+  {name:"Daniele Berretta",teams:["Ancona","Atalanta","Brescia"]}
+  {name:"Daniele Bonera",teams:["AC Milan","Brescia","Parma","Villarreal"]}
+  {name:"Daniele Capelli",teams:["Atalanta","Cesena"]}
+  {name:"Daniele Conti",teams:["Cagliari"]}
+  {name:"Daniele Corvia",teams:["AS Roma","Lecce","Siena"]}
+  {name:"Daniele Croce",teams:["Empoli"]}
+  {name:"Daniele De Rossi",teams:["AS Roma"]}
+  {name:"Daniele De Vezze",teams:["Bari","Livorno","Messina"]}
+  {name:"Daniele Delli Carri",teams:["Fiorentina","Siena","Torino"]}
+  {name:"Daniele Dessena",teams:["Brescia","Cagliari","Parma","Sampdoria"]}
+  {name:"Daniele Franceschini",teams:["Chievo Verona","Lecce","Sampdoria"]}
+  {name:"Daniele Galloppa",teams:["Parma","Siena"]}
+  {name:"Daniele Gastaldello",teams:["Bologna","Brescia","Sampdoria","Siena"]}
+  {name:"Daniele Mannini",teams:["Brescia","Napoli","Sampdoria","Siena"]}
+  {name:"Daniele Padelli",teams:["Bari","Inter Milan","Liverpool","Torino","Udinese"]}
+  {name:"Daniele Portanova",teams:["Bologna","Genoa","Siena"]}
+  {name:"Daniele Rugani",teams:["Cagliari","Empoli","Juventus","Stade Rennais"]}
+  {name:"Daniele Verde",teams:["AS Roma","Frosinone","Hellas Verona","Real Valladolid","Spezia"]}
+  {name:"Danijel Ljuboja",teams:["Grenoble Foot","Hamburger SV","OGC Nice","Paris Saint-Germain","RC Strasbourg","VfB Stuttgart","VfL Wolfsburg"]}
+  {name:"Danijel Pranjić",teams:["Bayern Munich","Celta Vigo"]}
+  {name:"Danijel Subašić",teams:["AS Monaco"]}
+  {name:"Danilho Doekhi",teams:["1. FC Union Berlin"]}
+  {name:"Danilo",teams:["Juventus","Manchester City","Nottingham Forest","Real Madrid"]}
+  {name:"Danilo Avelar",teams:["Amiens SC","Cagliari","FC Schalke 04","Torino"]}
+  {name:"Danilo Barbosa",teams:["OGC Nice","Valencia"]}
+  {name:"Danilo Cataldi",teams:["Benevento","Fiorentina","Genoa","Lazio"]}
+  {name:"Danilo D'Ambrosio",teams:["Inter Milan","Monza","Torino"]}
+  {name:"Danilo Larangeira",teams:["Bologna","Udinese"]}
+  {name:"Danilo Pereira",teams:["Paris Saint-Germain","Parma"]}
+  {name:"Danilo Soares",teams:["FC Ingolstadt 04","VfL Bochum"]}
+  {name:"Danny Collins",teams:["Stoke City","Sunderland"]}
+  {name:"Danny Drinkwater",teams:["Aston Villa","Burnley","Chelsea","Leicester City"]}
+  {name:"Danny Gabbidon",teams:["Crystal Palace","Queens Park Rangers","West Ham United"]}
+  {name:"Danny Graham",teams:["Hull City","Middlesbrough","Sunderland","Swansea City"]}
+  {name:"Danny Granville",teams:["Crystal Palace","Manchester City"]}
+  {name:"Danny Guthrie",teams:["Bolton Wanderers","Liverpool","Newcastle United","Reading"]}
+  {name:"Danny Higginbotham",teams:["Derby County","Southampton","Stoke City","Sunderland"]}
+  {name:"Danny Ings",teams:["Aston Villa","Burnley","Liverpool","Southampton","West Ham United"]}
+  {name:"Danny Latza",teams:["1. FSV Mainz 05","FC Schalke 04"]}
+  {name:"Danny Mills",teams:["Derby County","Leeds United","Manchester City","Middlesbrough"]}
+  {name:"Danny Murphy",teams:["Charlton Athletic","Fulham","Liverpool","Tottenham Hotspur"]}
+  {name:"Danny Rose",teams:["Newcastle United","Sunderland","Tottenham Hotspur","Watford"]}
+  {name:"Danny Schwarz",teams:["1860 Munich","SpVgg Unterhaching"]}
+  {name:"Danny Simpson",teams:["Blackburn Rovers","Leicester City","Manchester United","Newcastle United","Queens Park Rangers"]}
+  {name:"Danny Tiatto",teams:["Manchester City"]}
+  {name:"Danny Welbeck",teams:["Arsenal","Brighton & Hove Albion","Manchester United","Sunderland","Watford"]}
+  {name:"Danny Williams",teams:["Huddersfield Town","SC Freiburg","TSG Hoffenheim"]}
+  {name:"Danny da Costa",teams:["1. FSV Mainz 05","Bayer Leverkusen","Eintracht Frankfurt","FC Ingolstadt 04"]}
+  {name:"Dante",teams:["Bayern Munich","Borussia Mönchengladbach","LOSC Lille","OGC Nice","VfL Wolfsburg"]}
+  {name:"Dany Mota",teams:["Monza"]}
+  {name:"Daouda Jabi",teams:["GFC Ajaccio","RC Lens"]}
+  {name:"Dara O'Shea",teams:["Burnley","Ipswich Town","West Bromwich Albion"]}
+  {name:"Dario Dainelli",teams:["Brescia","Chievo Verona","Fiorentina","Genoa","Hellas Verona","Lecce"]}
+  {name:"Dario Hübner",teams:["Brescia","Perugia","Piacenza"]}
+  {name:"Dario Knežević",teams:["Juventus","Livorno"]}
+  {name:"Dario Lezcano",teams:["FC Ingolstadt 04"]}
+  {name:"Dario Passoni",teams:["Chievo Verona","Livorno"]}
+  {name:"Dario Šimić",teams:["AC Milan","AS Monaco","Inter Milan"]}
+  {name:"Darius Kampa",teams:["1. FC Nürnberg","Borussia Mönchengladbach"]}
+  {name:"Darius Vassell",teams:["Aston Villa","Manchester City"]}
+  {name:"Dariusz Dudka",teams:["AJ Auxerre","Levante"]}
+  {name:"Dariusz Wosz",teams:["Hertha BSC","VfL Bochum"]}
+  {name:"Dariusz Żuraw",teams:["Hannover 96"]}
+  {name:"Darko Brašanac",teams:["Alavés","Leganés","Osasuna","Real Betis"]}
+  {name:"Darko Kovačević",teams:["Juventus","Lazio","Real Sociedad"]}
+  {name:"Darko Lazović",teams:["Genoa","Hellas Verona"]}
+  {name:"Darlin Yongwa",teams:["FC Lorient"]}
+  {name:"Darren Ambrose",teams:["Charlton Athletic","Ipswich Town","Newcastle United"]}
+  {name:"Darren Anderton",teams:["Birmingham City","Tottenham Hotspur"]}
+  {name:"Darren Bent",teams:["Aston Villa","Charlton Athletic","Fulham","Ipswich Town","Sunderland","Tottenham Hotspur"]}
+  {name:"Darren Carter",teams:["Birmingham City","West Bromwich Albion"]}
+  {name:"Darren Fletcher",teams:["Manchester United","Stoke City","West Bromwich Albion"]}
+  {name:"Darren Huckerby",teams:["Leeds United","Manchester City","Norwich City"]}
+  {name:"Darren Moore",teams:["Derby County","West Bromwich Albion"]}
+  {name:"Darren Purse",teams:["Birmingham City","West Bromwich Albion"]}
+  {name:"Darren Williams",teams:["Sunderland"]}
+  {name:"Darron Gibson",teams:["Everton","Manchester United","Sunderland"]}
+  {name:"Darryl Powell",teams:["Birmingham City","Derby County"]}
+  {name:"Darwin Machís",teams:["Cádiz","Granada","Leganés","Real Valladolid","Udinese"]}
+  {name:"Darwin Núñez",teams:["Liverpool"]}
+  {name:"Daryl Janmaat",teams:["Newcastle United","Watford"]}
+  {name:"Daryl Murphy",teams:["Sunderland"]}
+  {name:"Darío Benedetto",teams:["Elche","Olympique de Marseille"]}
+  {name:"Darío Cvitanich",teams:["OGC Nice"]}
+  {name:"Darío Rodríguez",teams:["FC Schalke 04"]}
+  {name:"Darío Silva",teams:["Málaga","Portsmouth","Sevilla"]}
+  {name:"Dave Kitson",teams:["Reading","Stoke City"]}
+  {name:"David Abraham",teams:["Eintracht Frankfurt","Getafe","TSG Hoffenheim"]}
+  {name:"David Aganzo",teams:["Espanyol","Racing Santander","Real Valladolid"]}
+  {name:"David Alaba",teams:["Bayern Munich","Real Madrid","TSG Hoffenheim"]}
+  {name:"David Albelda",teams:["Valencia"]}
+  {name:"David Balleri",teams:["Lecce","Livorno"]}
+  {name:"David Barral",teams:["Granada","Levante","Sporting Gijón"]}
+  {name:"David Batty",teams:["Leeds United"]}
+  {name:"David Beckham",teams:["AC Milan","Manchester United","Paris Saint-Germain","Real Madrid"]}
+  {name:"David Belenguer",teams:["Getafe","Real Betis"]}
+  {name:"David Bellion",teams:["Girondins de Bordeaux","Manchester United","OGC Nice","Sunderland","West Ham United"]}
+  {name:"David Bentley",teams:["Arsenal","Birmingham City","Blackburn Rovers","Norwich City","Tottenham Hotspur"]}
+  {name:"David Brooks",teams:["AFC Bournemouth"]}
+  {name:"David Castedo",teams:["Levante","Sevilla"]}
+  {name:"David Cobeño",teams:["Almería","Rayo Vallecano","Sevilla"]}
+  {name:"David Coromina",teams:["Alavés","Racing Santander"]}
+  {name:"David Cortés",teams:["Getafe","Granada","Hércules","Mallorca"]}
+  {name:"David Costa",teams:["RC Lens"]}
+  {name:"David Costas",teams:["Celta Vigo","Real Oviedo"]}
+  {name:"David Di Michele",teams:["Chievo Verona","Lecce","Palermo","Reggina","Torino","Udinese","West Ham United"]}
+  {name:"David Di Tommaso",teams:["Sedan"]}
+  {name:"David Ducourtioux",teams:["FC Valenciennes","Gazélec Ajaccio","Sedan"]}
+  {name:"David Dunn",teams:["Birmingham City","Blackburn Rovers"]}
+  {name:"David Edwards",teams:["Wolverhampton Wanderers"]}
+  {name:"David Ferreiro",teams:["Huesca"]}
+  {name:"David García",teams:["Espanyol","Las Palmas","Osasuna"]}
+  {name:"David Generelo",teams:["Elche","Gimnàstic","Real Zaragoza"]}
+  {name:"David Gigliotti",teams:["AS Monaco","AS Saint-Étienne","Estac Troyes","GFC Ajaccio"]}
+  {name:"David Hamed",teams:["Estac Troyes","Istres","Sedan"]}
+  {name:"David Hellebuyck",teams:["AS Saint-Étienne","OGC Nice","Paris Saint-Germain"]}
+  {name:"David James",teams:["Aston Villa","Manchester City","Portsmouth","West Ham United"]}
+  {name:"David Jarolím",teams:["1. FC Nürnberg","Hamburger SV","Évian TG"]}
+  {name:"David Jemmali",teams:["Girondins de Bordeaux","Grenoble Foot"]}
+  {name:"David Jones",teams:["Burnley","Derby County","Wigan Athletic","Wolverhampton Wanderers"]}
+  {name:"David JuncÃ",teams:["Celta Vigo","Eibar"]}
+  {name:"David Kobylík",teams:["Arminia Bielefeld","RC Strasbourg"]}
+  {name:"David Linarès",teams:["Estac Troyes","Olympique Lyonnais"]}
+  {name:"David Lombán",teams:["Eibar","Elche","Granada","Valencia"]}
+  {name:"David Luiz",teams:["Arsenal","Chelsea","Paris Saint-Germain"]}
+  {name:"David López",teams:["Athletic Bilbao","Espanyol","Girona","Napoli","Osasuna"]}
+  {name:"David Marshall",teams:["Cardiff City","Hull City"]}
+  {name:"David McGoldrick",teams:["Sheffield United"]}
+  {name:"David Meyler",teams:["Hull City","Sunderland"]}
+  {name:"David N'Gog",teams:["Bolton Wanderers","Liverpool","Paris Saint-Germain","Stade de Reims","Swansea City"]}
+  {name:"David Navarro",teams:["Levante","Mallorca","Valencia"]}
+  {name:"David Nugent",teams:["Burnley","Leicester City","Middlesbrough","Portsmouth"]}
+  {name:"David Odonkor",teams:["Borussia Dortmund","Real Betis"]}
+  {name:"David Okereke",teams:["Cremonese","Torino","Venezia"]}
+  {name:"David Ospina",teams:["Arsenal","Napoli","OGC Nice"]}
+  {name:"David Pizarro",teams:["AS Roma","Fiorentina","Inter Milan","Manchester City","Udinese"]}
+  {name:"David Prieto",teams:["Sevilla","Xerez"]}
+  {name:"David Prutton",teams:["Southampton"]}
+  {name:"David Raum",teams:["RB Leipzig","TSG Hoffenheim"]}
+  {name:"David Raya",teams:["Arsenal","Brentford"]}
+  {name:"David Regis",teams:["Estac Troyes","FC Metz"]}
+  {name:"David Rivas",teams:["Real Betis"]}
+  {name:"David Rozehnal",teams:["Hamburger SV","LOSC Lille","Lazio","Newcastle United","Paris Saint-Germain"]}
+  {name:"David Sauget",teams:["AS Nancy","AS Saint-Étienne","FC Sochaux","Grenoble Foot","SC Bastia"]}
+  {name:"David Seaman",teams:["Arsenal","Manchester City"]}
+  {name:"David Silva",teams:["Celta Vigo","Manchester City","Real Sociedad","Valencia"]}
+  {name:"David Simón",teams:["Las Palmas"]}
+  {name:"David Sommeil",teams:["FC Valenciennes","Girondins de Bordeaux","Manchester City","Olympique de Marseille","Sheffield United"]}
+  {name:"David Soria",teams:["Getafe","Sevilla"]}
+  {name:"David Sousa",teams:["Getafe","Real Valladolid"]}
+  {name:"David Suazo",teams:["Cagliari","Catania","Genoa","Inter Milan"]}
+  {name:"David Terrier",teams:["GFC Ajaccio"]}
+  {name:"David Thompson",teams:["Blackburn Rovers","Bolton Wanderers","Coventry City","Portsmouth","Wigan Athletic"]}
+  {name:"David Timor",teams:["Getafe","Girona","Leganés","Osasuna"]}
+  {name:"David Trezeguet",teams:["Hércules","Juventus"]}
+  {name:"David Unsworth",teams:["Everton","Portsmouth","Sheffield United","Wigan Athletic"]}
+  {name:"David Vaughan",teams:["Blackpool","Sunderland"]}
+  {name:"David Villa",teams:["Atlético Madrid","Barcelona","Real Zaragoza","Valencia"]}
+  {name:"David Weir",teams:["Everton"]}
+  {name:"David Wheater",teams:["Bolton Wanderers","Middlesbrough"]}
+  {name:"David Zurutuza",teams:["Real Sociedad"]}
+  {name:"David de Gea",teams:["Atlético Madrid","Fiorentina","Manchester United"]}
+  {name:"Davide Astori",teams:["AS Roma","Cagliari","Fiorentina"]}
+  {name:"Davide Baiocco",teams:["Brescia","Catania","Juventus","Perugia","Piacenza","Reggina"]}
+  {name:"Davide Biondini",teams:["Atalanta","Cagliari","Genoa","Reggina","Sassuolo"]}
+  {name:"Davide Biraschi",teams:["Genoa"]}
+  {name:"Davide Bombardini",teams:["AS Roma","Atalanta","Bologna"]}
+  {name:"Davide Brivio",teams:["Atalanta","Fiorentina","Genoa","Hellas Verona","Lecce"]}
+  {name:"Davide Calabria",teams:["AC Milan","Bologna"]}
+  {name:"Davide Di Gennaro",teams:["AC Milan","Cagliari","Genoa","Lazio","Livorno","Reggina"]}
+  {name:"Davide Faraoni",teams:["Crotone","Fiorentina","Hellas Verona","Inter Milan","Udinese"]}
+  {name:"Davide Frattesi",teams:["Inter Milan","Sassuolo"]}
+  {name:"Davide Lanzafame",teams:["Brescia","Catania","Juventus","Palermo","Parma"]}
+  {name:"Davide Mandelli",teams:["Chievo Verona"]}
+  {name:"Davide Marchini",teams:["Bologna","Cagliari","Livorno"]}
+  {name:"Davide Moro",teams:["Empoli","Livorno"]}
+  {name:"Davide Moscardelli",teams:["Bologna","Chievo Verona"]}
+  {name:"Davide Santon",teams:["AS Roma","Cesena","Inter Milan","Newcastle United"]}
+  {name:"Davide Zappacosta",teams:["AS Roma","Atalanta","Chelsea","Genoa","Torino"]}
+  {name:"Davie Selke",teams:["FC Köln","Hertha BSC","RB Leipzig","Werder Bremen"]}
+  {name:"Davinson Sánchez",teams:["Tottenham Hotspur"]}
+  {name:"Davor Vugrinec",teams:["Atalanta","Lecce"]}
+  {name:"Davy Klaassen",teams:["Everton","Inter Milan","Werder Bremen"]}
+  {name:"Davy Pröpper",teams:["Brighton & Hove Albion"]}
+  {name:"Dawid Kownacki",teams:["Fortuna Düsseldorf","Sampdoria","Werder Bremen"]}
+  {name:"Dayot Upamecano",teams:["Bayern Munich","RB Leipzig"]}
+  {name:"DeAndre Yedlin",teams:["Newcastle United","Sunderland","Tottenham Hotspur"]}
+  {name:"Dean Ashton",teams:["Norwich City","West Ham United"]}
+  {name:"Dean Henderson",teams:["Crystal Palace","Manchester United","Nottingham Forest","Sheffield United"]}
+  {name:"Dean Huijsen",teams:["AFC Bournemouth","AS Roma","Juventus","Real Madrid"]}
+  {name:"Dean Kiely",teams:["Charlton Athletic","Portsmouth","West Bromwich Albion"]}
+  {name:"Dean Marney",teams:["Burnley","Hull City","Tottenham Hotspur"]}
+  {name:"Dean Richards",teams:["Southampton","Tottenham Hotspur"]}
+  {name:"Dean Whitehead",teams:["Huddersfield Town","Stoke City","Sunderland"]}
+  {name:"Dean Windass",teams:["Bradford City","Hull City","Middlesbrough"]}
+  {name:"Declan Rice",teams:["Arsenal","West Ham United"]}
+  {name:"Deco",teams:["Barcelona","Chelsea"]}
+  {name:"Dedryck Boyata",teams:["Bolton Wanderers","Hertha BSC","Manchester City"]}
+  {name:"Dedê",teams:["Borussia Dortmund"]}
+  {name:"Deiver Machado",teams:["FC Nantes","RC Lens"]}
+  {name:"Dejan Kulusevski",teams:["Atalanta","Juventus","Parma","Tottenham Hotspur"]}
+  {name:"Dejan Lekić",teams:["Eibar","Osasuna"]}
+  {name:"Dejan Ljubicic",teams:["FC Köln"]}
+  {name:"Dejan Lovren",teams:["Liverpool","Olympique Lyonnais","Southampton"]}
+  {name:"Dejan Stanković",teams:["Inter Milan","Lazio"]}
+  {name:"Dejan Stefanović",teams:["Fulham","Portsmouth"]}
+  {name:"Delano Hill",teams:["Hansa Rostock"]}
+  {name:"Dele Alli",teams:["Como","Everton","Tottenham Hotspur"]}
+  {name:"Delfí Geli",teams:["Alavés"]}
+  {name:"Delio Toledo",teams:["Espanyol","Real Zaragoza"]}
+  {name:"Delron Buckley",teams:["Arminia Bielefeld","Borussia Dortmund","VfL Bochum"]}
+  {name:"Delvin N'Dinga",teams:["AJ Auxerre","AS Monaco"]}
+  {name:"Demarai Gray",teams:["Bayer Leverkusen","Everton","Leicester City"]}
+  {name:"Demba Ba",teams:["Chelsea","Newcastle United","TSG Hoffenheim","West Ham United"]}
+  {name:"Demetrio Albertini",teams:["AC Milan","Atalanta","Atlético Madrid","Barcelona","Lazio"]}
+  {name:"Demetrius Ferreira",teams:["Estac Troyes","Olympique de Marseille","SC Bastia"]}
+  {name:"Denis Bouanga",teams:["AS Saint-Étienne","FC Lorient","Nîmes"]}
+  {name:"Denis Cheryshev",teams:["Real Madrid","Sevilla","Valencia","Villarreal"]}
+  {name:"Denis Huseinbasic",teams:["FC Köln"]}
+  {name:"Denis Irwin",teams:["Manchester United","Wolverhampton Wanderers"]}
+  {name:"Denis Suárez",teams:["Alavés","Arsenal","Barcelona","Celta Vigo","Espanyol","Sevilla","Villarreal"]}
+  {name:"Denis Vavro",teams:["Huesca","Lazio","VfL Wolfsburg"]}
+  {name:"Denis Zakaria",teams:["AS Monaco","Borussia Mönchengladbach","Chelsea","Juventus"]}
+  {name:"Deniz Undav",teams:["Brighton & Hove Albion","VfB Stuttgart"]}
+  {name:"Dennis Aogo",teams:["FC Schalke 04","Hamburger SV","SC Freiburg","VfB Stuttgart"]}
+  {name:"Dennis Appiah",teams:["AS Saint-Étienne","FC Nantes","SM Caen"]}
+  {name:"Dennis Bergkamp",teams:["Arsenal"]}
+  {name:"Dennis Diekmeier",teams:["1. FC Nürnberg","Hamburger SV"]}
+  {name:"Dennis Geiger",teams:["TSG Hoffenheim"]}
+  {name:"Dennis Grote",teams:["VfL Bochum"]}
+  {name:"Dennis Kruppke",teams:["Eintracht Braunschweig","SC Freiburg"]}
+  {name:"Dennis Oliech",teams:["AJ Auxerre","FC Nantes","GFC Ajaccio"]}
+  {name:"Dennis Praet",teams:["Leicester City","Sampdoria","Torino"]}
+  {name:"Dennis Rommedahl",teams:["Charlton Athletic"]}
+  {name:"Dennis Sørensen",teams:["Energie Cottbus"]}
+  {name:"Dennis Wise",teams:["Chelsea","Leicester City"]}
+  {name:"Denny Landzaat",teams:["Wigan Athletic"]}
+  {name:"Denzel Dumfries",teams:["Inter Milan"]}
+  {name:"Denílson",teams:["Arsenal","Girondins de Bordeaux","Real Betis"]}
+  {name:"Deon Burton",teams:["Derby County","Portsmouth"]}
+  {name:"Derek Boateng",teams:["Eibar","FC Köln","Fulham","Getafe"]}
+  {name:"Destiny Udogie",teams:["Hellas Verona","Tottenham Hotspur","Udinese"]}
+  {name:"Detlev Dammeier",teams:["Arminia Bielefeld"]}
+  {name:"Deyverson",teams:["Alavés","FC Köln","Getafe","Levante"]}
+  {name:"Diadie Samassékou",teams:["Cádiz","TSG Hoffenheim"]}
+  {name:"Diafra Sakho",teams:["Stade Rennais","West Ham United"]}
+  {name:"Dick van Burik",teams:["Hertha BSC"]}
+  {name:"Dickson Etuhu",teams:["Fulham","Sunderland"]}
+  {name:"Dida",teams:["AC Milan"]}
+  {name:"Didier Digard",teams:["Middlesbrough","OGC Nice","Osasuna","Paris Saint-Germain","Real Betis"]}
+  {name:"Didier Domi",teams:["Espanyol","Leeds United","Newcastle United","Paris Saint-Germain"]}
+  {name:"Didier Drogba",teams:["Chelsea","EA Guingamp","Olympique de Marseille"]}
+  {name:"Didier Ibrahim Ndong",teams:["Dijon FCO","EA Guingamp","FC Lorient","Sunderland"]}
+  {name:"Didier Ya Konan",teams:["Hannover 96"]}
+  {name:"Didier Zokora",teams:["AS Saint-Étienne","Sevilla","Tottenham Hotspur"]}
+  {name:"Diego",teams:["Atlético Madrid","Juventus","Stade de Reims","VfL Wolfsburg","Werder Bremen"]}
+  {name:"Diego Alonso",teams:["Málaga","Racing Santander","Valencia"]}
+  {name:"Diego Alves",teams:["Almería","Valencia"]}
+  {name:"Diego Benaglio",teams:["AS Monaco","VfL Wolfsburg"]}
+  {name:"Diego Buonanotte",teams:["Granada","Málaga"]}
+  {name:"Diego Cagna",teams:["Villarreal"]}
+  {name:"Diego Camacho",teams:["Levante","Real Valladolid","Recreativo","Sporting Gijón"]}
+  {name:"Diego Capel",teams:["Genoa","Sevilla"]}
+  {name:"Diego Carlos",teams:["Aston Villa","Como","FC Nantes","Sevilla"]}
+  {name:"Diego Castro",teams:["Getafe","Málaga","Sporting Gijón"]}
+  {name:"Diego Colotto",teams:["Deportivo La Coruña","Espanyol"]}
+  {name:"Diego Contento",teams:["Bayern Munich","Girondins de Bordeaux"]}
+  {name:"Diego Coppola",teams:["Brighton & Hove Albion","Hellas Verona","Paris FC"]}
+  {name:"Diego Costa",teams:["Atlético Madrid","Chelsea","Rayo Vallecano","Real Valladolid","Wolverhampton Wanderers"]}
+  {name:"Diego De Ascentis",teams:["Atalanta","Livorno","Torino"]}
+  {name:"Diego Demme",teams:["Napoli","RB Leipzig"]}
+  {name:"Diego Falcinelli",teams:["Bologna","Crotone","Fiorentina","Sassuolo"]}
+  {name:"Diego Farias",teams:["Cagliari","Empoli","Lecce","Sassuolo","Spezia"]}
+  {name:"Diego Forlán",teams:["Atlético Madrid","Inter Milan","Manchester United","Villarreal"]}
+  {name:"Diego Godín",teams:["Atlético Madrid","Cagliari","Inter Milan","Villarreal"]}
+  {name:"Diego González",teams:["Elche","Málaga","Sevilla"]}
+  {name:"Diego Ifrán",teams:["Real Sociedad"]}
+  {name:"Diego Klimowicz",teams:["Borussia Dortmund","VfL Bochum","VfL Wolfsburg"]}
+  {name:"Diego Lainez",teams:["Real Betis"]}
+  {name:"Diego Laxalt",teams:["AC Milan","Bologna","Empoli","Genoa","Torino"]}
+  {name:"Diego Llorente",teams:["AS Roma","Leeds United","Málaga","Rayo Vallecano","Real Betis","Real Madrid","Real Sociedad"]}
+  {name:"Diego López",teams:["AC Milan","Espanyol","Rayo Vallecano","Real Madrid","Sevilla","Valencia","Villarreal"]}
+  {name:"Diego Mainz",teams:["Granada","Rayo Vallecano"]}
+  {name:"Diego Mariño",teams:["Almería","Levante","Real Valladolid","Sporting Gijón"]}
+  {name:"Diego Mateo",teams:["Lecce","Racing Santander"]}
+  {name:"Diego Milito",teams:["Genoa","Inter Milan","Real Zaragoza"]}
+  {name:"Diego Moreira",teams:["Olympique Lyonnais","RC Strasbourg"]}
+  {name:"Diego Perotti",teams:["AS Roma","Genoa","Salernitana","Sevilla"]}
+  {name:"Diego Placente",teams:["Bayer Leverkusen","Celta Vigo","Girondins de Bordeaux"]}
+  {name:"Diego Pérez",teams:["AS Monaco","Bologna"]}
+  {name:"Diego Reyes",teams:["Espanyol","Leganés","Real Sociedad"]}
+  {name:"Diego Rico",teams:["AFC Bournemouth","Getafe","Leganés","Real Sociedad"]}
+  {name:"Diego Rivas",teams:["Atlético Madrid","Getafe","Real Sociedad"]}
+  {name:"Diego Rolán",teams:["Alavés","Girondins de Bordeaux","Leganés","Málaga"]}
+  {name:"Diego Simeone",teams:["Atlético Madrid","Lazio"]}
+  {name:"Diego Tristán",teams:["Deportivo La Coruña","Livorno","Mallorca","West Ham United"]}
+  {name:"Dietmar Hamann",teams:["Liverpool","Manchester City"]}
+  {name:"Dietmar Hirsch",teams:["Hansa Rostock","SpVgg Unterhaching"]}
+  {name:"Dieumerci Mbokani",teams:["AS Monaco","Hull City","Norwich City","VfL Wolfsburg"]}
+  {name:"Dilane Bakwa",teams:["Girondins de Bordeaux","Nottingham Forest","RC Strasbourg"]}
+  {name:"Dimitar Berbatov",teams:["AS Monaco","Bayer Leverkusen","Fulham","Manchester United","Tottenham Hotspur"]}
+  {name:"Dimitar Rangelov",teams:["Borussia Dortmund","Energie Cottbus"]}
+  {name:"Dimitri Foulquier",teams:["Getafe","Granada","RC Strasbourg","Stade Rennais","Valencia","Watford"]}
+  {name:"Dimitri Liénard",teams:["RC Strasbourg"]}
+  {name:"Dimitri Payet",teams:["AS Saint-Étienne","FC Nantes","LOSC Lille","Olympique de Marseille","West Ham United"]}
+  {name:"Dimitrios Grammozis",teams:["1. FC Kaiserslautern","FC Köln"]}
+  {name:"Dimitris Giannoulis",teams:["FC Augsburg","Norwich City"]}
+  {name:"Dimitris Nikolaou",teams:["Empoli","Spezia"]}
+  {name:"Dimitris Siovas",teams:["Huesca","Leganés"]}
+  {name:"Dimo Wache",teams:["1. FSV Mainz 05"]}
+  {name:"Diniyar Bilyaletdinov",teams:["Everton"]}
+  {name:"Dino Baggio",teams:["Ancona","Blackburn Rovers","Lazio"]}
+  {name:"Dino Djiba",teams:["FC Metz"]}
+  {name:"Dino Fava",teams:["Treviso","Udinese"]}
+  {name:"Diogo Dalot",teams:["AC Milan","Manchester United"]}
+  {name:"Diogo Figueiras",teams:["Genoa","Sevilla"]}
+  {name:"Diogo Jota",teams:["Liverpool","Wolverhampton Wanderers"]}
+  {name:"Diogo Leite",teams:["1. FC Union Berlin"]}
+  {name:"Diomansy Kamara",teams:["Fulham","Modena","Portsmouth","West Bromwich Albion"]}
+  {name:"Dion Dublin",teams:["Aston Villa"]}
+  {name:"Dion Lopy",teams:["Almería","Stade de Reims"]}
+  {name:"Dirk Kuyt",teams:["Liverpool"]}
+  {name:"Dirk Lottner",teams:["FC Köln","MSV Duisburg"]}
+  {name:"Divock Origi",teams:["AC Milan","LOSC Lille","Liverpool","Nottingham Forest","VfL Wolfsburg"]}
+  {name:"Djakaridja Koné",teams:["Évian TG"]}
+  {name:"Djalminha",teams:["Deportivo La Coruña"]}
+  {name:"Djamel Bakar",teams:["AS Monaco","AS Nancy","Montpellier HSC"]}
+  {name:"Djamel Belmadi",teams:["FC Valenciennes","Manchester City","Olympique de Marseille"]}
+  {name:"Djamel Mesbah",teams:["AC Milan","Crotone","Lecce","Livorno","Parma","Sampdoria"]}
+  {name:"Djed Spence",teams:["Genoa","Stade Rennais","Tottenham Hotspur"]}
+  {name:"Djené",teams:["Getafe"]}
+  {name:"Djibril Cissé",teams:["AJ Auxerre","Lazio","Liverpool","Olympique de Marseille","Queens Park Rangers","SC Bastia","Sunderland"]}
+  {name:"Djibril Sidibé",teams:["AS Monaco","Everton","LOSC Lille","Toulouse FC"]}
+  {name:"Djibril Sow",teams:["Borussia Mönchengladbach","Eintracht Frankfurt","Sevilla"]}
+  {name:"Djimi Traoré",teams:["AS Monaco","Charlton Athletic","Liverpool","Olympique de Marseille","Portsmouth","RC Lens","Stade Rennais"]}
+  {name:"Djézon Boutoille",teams:["LOSC Lille"]}
+  {name:"Dmitri Khokhlov",teams:["Real Sociedad"]}
+  {name:"Dodi Lukebakio",teams:["Fortuna Düsseldorf","Hertha BSC","Sevilla","Toulouse FC","VfL Wolfsburg","Watford"]}
+  {name:"Dodô",teams:["AS Roma","Fiorentina","Inter Milan","Sampdoria"]}
+  {name:"Domagoj Bradarić",teams:["Hellas Verona","LOSC Lille","Salernitana"]}
+  {name:"Domen Črnigoj",teams:["Salernitana","Venezia"]}
+  {name:"Domenico Berardi",teams:["Sassuolo"]}
+  {name:"Domenico Criscito",teams:["Genoa","Juventus"]}
+  {name:"Domenico GiampÃ",teams:["Ascoli","Messina"]}
+  {name:"Domenico Maietta",teams:["Bologna","Empoli","Hellas Verona"]}
+  {name:"Domenico Morfeo",teams:["Atalanta","Fiorentina","Inter Milan","Parma"]}
+  {name:"Domingo Cisma",teams:["Almería","Atlético Madrid","Elche","Numancia","Racing Santander"]}
+  {name:"Domingos André Ribeiro Almeida",teams:["Valencia"]}
+  {name:"Domingos Duarte",teams:["Getafe","Granada"]}
+  {name:"Dominic Calvert-Lewin",teams:["Everton","Leeds United"]}
+  {name:"Dominic Maroh",teams:["1. FC Nürnberg","FC Köln"]}
+  {name:"Dominic Matteo",teams:["Blackburn Rovers","Leeds United"]}
+  {name:"Dominic Solanke",teams:["AFC Bournemouth","Liverpool","Tottenham Hotspur"]}
+  {name:"Dominick Drexler",teams:["FC Köln","FC Schalke 04"]}
+  {name:"Dominik Greif",teams:["Mallorca","Olympique Lyonnais"]}
+  {name:"Dominik Kohr",teams:["1. FSV Mainz 05","Bayer Leverkusen","Eintracht Frankfurt","FC Augsburg"]}
+  {name:"Dominik Reinhardt",teams:["1. FC Nürnberg","FC Augsburg"]}
+  {name:"Dominik Szoboszlai",teams:["Liverpool","RB Leipzig"]}
+  {name:"Dominique Arribagé",teams:["Stade Rennais","Toulouse FC"]}
+  {name:"Dominique Heintz",teams:["1. FC Kaiserslautern","1. FC Union Berlin","FC Köln","SC Freiburg","VfL Bochum"]}
+  {name:"Don Hutchison",teams:["Sunderland","West Ham United"]}
+  {name:"Donato",teams:["Deportivo La Coruña"]}
+  {name:"Doni",teams:["AS Roma","Liverpool"]}
+  {name:"Donny van de Beek",teams:["Eintracht Frankfurt","Everton","Girona","Manchester United"]}
+  {name:"Donovan Léon",teams:["AJ Auxerre","Stade Brestois 29"]}
+  {name:"Donyell Malen",teams:["AS Roma","Aston Villa","Borussia Dortmund"]}
+  {name:"Dorian Lévêque",teams:["Boulogne","EA Guingamp"]}
+  {name:"Dorinel Munteanu",teams:["VfL Wolfsburg"]}
+  {name:"Doriva",teams:["Celta Vigo","Middlesbrough"]}
+  {name:"Douglas",teams:["FC Nantes"]}
+  {name:"Douglas Costa",teams:["Bayern Munich","Juventus"]}
+  {name:"Douglas Luiz",teams:["Aston Villa","Girona","Juventus","Nottingham Forest"]}
+  {name:"Douglas Santos",teams:["Hamburger SV","Udinese"]}
+  {name:"Dragan Ćirić",teams:["Real Valladolid"]}
+  {name:"Dries Mertens",teams:["Napoli"]}
+  {name:"Drissa Diakité",teams:["OGC Nice","SC Bastia"]}
+  {name:"Duda",teams:["Málaga","Sevilla"]}
+  {name:"Dudu Aouate",teams:["Deportivo La Coruña","Mallorca","Racing Santander"]}
+  {name:"Duje Ćaleta-Car",teams:["Olympique Lyonnais","Olympique de Marseille","Real Sociedad","Southampton"]}
+  {name:"Duje Čop",teams:["Cagliari","Málaga","Real Valladolid","Sporting Gijón"]}
+  {name:"Duncan Ferguson",teams:["Everton"]}
+  {name:"Duván Zapata",teams:["Atalanta","Napoli","Sampdoria","Torino","Udinese"]}
+  {name:"Dušan Basta",teams:["Lazio","Lecce","Udinese"]}
+  {name:"Dušan Tadić",teams:["Southampton"]}
+  {name:"Dušan Vlahović",teams:["Fiorentina","Juventus"]}
+  {name:"Duško Tošić",teams:["FC Sochaux","Real Betis","Werder Bremen"]}
+  {name:"Dwight Gayle",teams:["Crystal Palace","Newcastle United"]}
+  {name:"Dwight McNeil",teams:["Burnley","Everton"]}
+  {name:"Dwight Yorke",teams:["Birmingham City","Blackburn Rovers","Manchester United","Sunderland"]}
+  {name:"Dylan Bronn",teams:["FC Metz","Salernitana"]}
+  {name:"DÃ­dac VilÃ",teams:["AC Milan","Eibar","Espanyol","Real Betis"]}
+  {name:"Désiré Doué",teams:["Paris Saint-Germain","Stade Rennais"]}
+  {name:"Ebbe Sand",teams:["FC Schalke 04"]}
+  {name:"Eberechi Eze",teams:["Arsenal","Crystal Palace"]}
+  {name:"Eddie Nketiah",teams:["Arsenal","Crystal Palace"]}
+  {name:"Eddie Salcedo",teams:["Genoa","Hellas Verona","Spezia"]}
+  {name:"Eddy Capron",teams:["Le Mans FC","Sedan"]}
+  {name:"Eddy Gnahoré",teams:["Amiens SC","Crotone"]}
+  {name:"Eden Ben Basat",teams:["Stade Brestois 29","Toulouse FC"]}
+  {name:"Eden Hazard",teams:["Chelsea","LOSC Lille","Real Madrid"]}
+  {name:"Edenílson",teams:["Genoa","Udinese"]}
+  {name:"Ederson",teams:["Lazio","Manchester City","OGC Nice","Olympique Lyonnais"]}
+  {name:"Edgar Davids",teams:["Barcelona","Inter Milan","Juventus","Tottenham Hotspur"]}
+  {name:"Edgar Ié",teams:["FC Nantes","LOSC Lille"]}
+  {name:"Edgar Pacheco",teams:["Málaga"]}
+  {name:"Edgar Prib",teams:["Hannover 96","SpVgg Greuther Fürth"]}
+  {name:"Edgaras Jankauskas",teams:["OGC Nice","Real Sociedad"]}
+  {name:"Edimilson Fernandes",teams:["1. FSV Mainz 05","Arminia Bielefeld","Fiorentina","Stade Brestois 29","West Ham United"]}
+  {name:"Edin Džeko",teams:["AS Roma","Fiorentina","Inter Milan","Manchester City","VfL Wolfsburg"]}
+  {name:"Edinson Cavani",teams:["Manchester United","Napoli","Palermo","Paris Saint-Germain","Valencia"]}
+  {name:"Edmond Kapllani",teams:["FC Augsburg","Karlsruher SC"]}
+  {name:"Edmond Tapsoba",teams:["Bayer Leverkusen"]}
+  {name:"Edmílson",teams:["Barcelona","Olympique Lyonnais","Real Zaragoza","Villarreal"]}
+  {name:"Edoardo Bove",teams:["AS Roma","Fiorentina"]}
+  {name:"Edoardo Goldaniga",teams:["Cagliari","Como","Frosinone","Genoa","Palermo","Sassuolo"]}
+  {name:"Edon Zhegrova",teams:["Juventus","LOSC Lille"]}
+  {name:"Edouard Mendy",teams:["Chelsea","Stade Rennais","Stade de Reims"]}
+  {name:"Edson Braafheid",teams:["Bayern Munich","Lazio","TSG Hoffenheim"]}
+  {name:"Edson Álvarez",teams:["West Ham United"]}
+  {name:"Edu",teams:["1. FSV Mainz 05","Celta Vigo","FC Schalke 04","Real Betis","SpVgg Greuther Fürth","VfL Bochum"]}
+  {name:"Edu Alonso",teams:["Alavés","Las Palmas"]}
+  {name:"Edu Expósito",teams:["Deportivo La Coruña","Eibar","Espanyol"]}
+  {name:"Edu Gaspar",teams:["Arsenal","Valencia"]}
+  {name:"Eduard Löwen",teams:["1. FC Nürnberg","FC Augsburg","Hertha BSC","VfL Bochum"]}
+  {name:"Eduardo",teams:["Toulouse FC"]}
+  {name:"Eduardo Berizzo",teams:["Celta Vigo","Cádiz"]}
+  {name:"Eduardo Camavinga",teams:["Real Madrid","Stade Rennais"]}
+  {name:"Eduardo Costa",teams:["AS Monaco","Espanyol","Girondins de Bordeaux","Olympique de Marseille"]}
+  {name:"Eduardo Vargas",teams:["Napoli","Queens Park Rangers","TSG Hoffenheim","Valencia"]}
+  {name:"Eduardo dos Santos",teams:["GFC Ajaccio","RC Lens"]}
+  {name:"Edwin van der Sar",teams:["Fulham","Juventus","Manchester United"]}
+  {name:"Eiji Kawashima",teams:["FC Metz","RC Strasbourg"]}
+  {name:"Eirik Bakke",teams:["Aston Villa","Leeds United"]}
+  {name:"Eiður Guðjohnsen",teams:["AS Monaco","Barcelona","Chelsea","Fulham","Stoke City","Tottenham Hotspur"]}
+  {name:"El Bilal Touré",teams:["Almería","Atalanta","Stade de Reims","VfB Stuttgart"]}
+  {name:"El Hadji Diouf",teams:["Blackburn Rovers","Bolton Wanderers","Liverpool","RC Lens","Sunderland"]}
+  {name:"Elano",teams:["Manchester City"]}
+  {name:"Elba Rashani",teams:["Clermont Foot"]}
+  {name:"Elderson Echiéjilé",teams:["AS Monaco","Sporting Gijón","Stade Rennais"]}
+  {name:"Eldor Shomurodov",teams:["AS Roma","Cagliari","Genoa","Spezia"]}
+  {name:"Eli Junior Kroupi",teams:["AFC Bournemouth","FC Lorient"]}
+  {name:"Elia Caprile",teams:["Cagliari","Empoli","Napoli"]}
+  {name:"Eliaquim Mangala",teams:["AS Saint-Étienne","Everton","Manchester City","Valencia"]}
+  {name:"Elias Kachunga",teams:["Borussia Mönchengladbach","FC Ingolstadt 04","Huddersfield Town","SC Paderborn 07"]}
+  {name:"Eliesse Ben Seghir",teams:["AS Monaco","Bayer Leverkusen"]}
+  {name:"Elif Elmas",teams:["Napoli","RB Leipzig","Torino"]}
+  {name:"Eliot Matazo",teams:["AS Monaco"]}
+  {name:"Eliseu",teams:["Lazio","Málaga","Real Zaragoza"]}
+  {name:"Eljero Elia",teams:["Hamburger SV","Juventus","Southampton","Werder Bremen"]}
+  {name:"Elkin Soto",teams:["1. FSV Mainz 05"]}
+  {name:"Ellery Cairo",teams:["Hertha BSC","SC Freiburg"]}
+  {name:"Elliot Anderson",teams:["Newcastle United","Nottingham Forest"]}
+  {name:"Elliot Grandin",teams:["Blackpool","Grenoble Foot","OGC Nice","Olympique de Marseille","SM Caen"]}
+  {name:"Elliott Bennett",teams:["Norwich City"]}
+  {name:"Ellyes Skhiri",teams:["Eintracht Frankfurt","FC Köln","Montpellier HSC"]}
+  {name:"Eloge Enza Yamissi",teams:["Estac Troyes","FC Valenciennes"]}
+  {name:"Elseid Hysaj",teams:["Empoli","Lazio","Napoli"]}
+  {name:"Elvir Bolić",teams:["Rayo Vallecano"]}
+  {name:"Elvis Abbruscato",teams:["Chievo Verona","Pescara","Torino"]}
+  {name:"Elvis Rexhbeçaj",teams:["FC Augsburg","FC Köln","VfL Bochum","VfL Wolfsburg"]}
+  {name:"Elye Wahi",teams:["Eintracht Frankfurt","Montpellier HSC","OGC Nice","Olympique de Marseille","RC Lens"]}
+  {name:"Emanuel Emegha",teams:["RC Strasbourg"]}
+  {name:"Emanuel Pogatetz",teams:["1. FC Nürnberg","Hannover 96","Middlesbrough","VfL Wolfsburg","West Ham United"]}
+  {name:"Emanuel Vignato",teams:["Bologna","Chievo Verona","Empoli","Salernitana"]}
+  {name:"Emanuele Belardi",teams:["Juventus","Reggina","Udinese"]}
+  {name:"Emanuele Calaiò",teams:["Genoa","Napoli","Siena","Torino"]}
+  {name:"Emanuele Filippini",teams:["Brescia","Lazio","Livorno","Parma","Treviso"]}
+  {name:"Emanuele Giaccherini",teams:["Bologna","Cesena","Chievo Verona","Juventus","Napoli","Sunderland"]}
+  {name:"Emanuele Valeri",teams:["Cremonese","Frosinone","Parma"]}
+  {name:"Emerse Faé",teams:["FC Nantes","OGC Nice","Reading"]}
+  {name:"Emerson",teams:["AC Milan","AS Roma","Atlético Madrid","Barcelona","Deportivo La Coruña","Juventus","LOSC Lille","Real Betis","Real Madrid","Stade Rennais","Tottenham Hotspur"]}
+  {name:"Emerson Palmieri",teams:["AS Roma","Chelsea","Olympique Lyonnais","Olympique de Marseille","Palermo","West Ham United"]}
+  {name:"Emerson Thome",teams:["Bolton Wanderers","Chelsea","Sunderland"]}
+  {name:"Emi Buendía",teams:["Aston Villa","Bayer Leverkusen","Getafe","Norwich City"]}
+  {name:"Emil Audero",teams:["Como","Cremonese","Inter Milan","Juventus","Sampdoria"]}
+  {name:"Emil Bohinen",teams:["Genoa","Salernitana"]}
+  {name:"Emil Forsberg",teams:["RB Leipzig"]}
+  {name:"Emil Hallfreðsson",teams:["Frosinone","Hellas Verona","Reggina","Udinese"]}
+  {name:"Emil Holm",teams:["Atalanta","Bologna","Juventus","Spezia"]}
+  {name:"Emil Krafth",teams:["Amiens SC","Bologna","Newcastle United"]}
+  {name:"Emile Heskey",teams:["Aston Villa","Birmingham City","Liverpool","Wigan Athletic"]}
+  {name:"Emile Smith Rowe",teams:["Arsenal","Fulham","RB Leipzig"]}
+  {name:"Emiliano Armenteros",teams:["Osasuna","Rayo Vallecano","Sevilla","Xerez"]}
+  {name:"Emiliano Bonazzoli",teams:["Fiorentina","Hellas Verona","Parma","Reggina","Sampdoria"]}
+  {name:"Emiliano Insúa",teams:["Atlético Madrid","Liverpool","Rayo Vallecano","VfB Stuttgart"]}
+  {name:"Emiliano Martínez",teams:["Arsenal","Aston Villa","Getafe"]}
+  {name:"Emiliano Moretti",teams:["Bologna","Fiorentina","Genoa","Juventus","Modena","Torino","Valencia"]}
+  {name:"Emiliano Sala",teams:["FC Nantes","Girondins de Bordeaux","SM Caen"]}
+  {name:"Emiliano Salvetti",teams:["Bologna","Hellas Verona"]}
+  {name:"Emiliano Velázquez",teams:["Getafe","Rayo Vallecano"]}
+  {name:"Emiliano Viviano",teams:["Bologna","Fiorentina","Palermo","SPAL","Sampdoria"]}
+  {name:"Emilio Nsue",teams:["Mallorca","Middlesbrough"]}
+  {name:"Emilio Viqueira",teams:["Levante","Recreativo","Xerez"]}
+  {name:"Emir Spahić",teams:["Bayer Leverkusen","Hamburger SV","Montpellier HSC","Sevilla"]}
+  {name:"Emmanuel Adebayor",teams:["AS Monaco","Arsenal","Crystal Palace","FC Metz","Manchester City","Real Madrid","Tottenham Hotspur"]}
+  {name:"Emmanuel Agbadou",teams:["Stade de Reims","Wolverhampton Wanderers"]}
+  {name:"Emmanuel Agyemang-Badu",teams:["Hellas Verona","Udinese"]}
+  {name:"Emmanuel Cascione",teams:["Cesena","Pescara","Reggina"]}
+  {name:"Emmanuel Dennis",teams:["FC Köln","Nottingham Forest","Watford"]}
+  {name:"Emmanuel Duchemin",teams:["AS Nancy"]}
+  {name:"Emmanuel Eboué",teams:["Arsenal"]}
+  {name:"Emmanuel Gyasi",teams:["Empoli","Spezia"]}
+  {name:"Emmanuel Imorou",teams:["SM Caen"]}
+  {name:"Emmanuel Petit",teams:["Barcelona","Chelsea"]}
+  {name:"Emmanuel Rivière",teams:["AS Monaco","AS Saint-Étienne","Crotone","FC Metz","Newcastle United","Osasuna","Toulouse FC"]}
+  {name:"Emmerson Boyce",teams:["Crystal Palace","Wigan Athletic"]}
+  {name:"Emre Belözoğlu",teams:["Atlético Madrid","Inter Milan","Newcastle United"]}
+  {name:"Emre Can",teams:["Bayer Leverkusen","Bayern Munich","Borussia Dortmund","Juventus","Liverpool"]}
+  {name:"Emre Mor",teams:["Borussia Dortmund","Celta Vigo"]}
+  {name:"Emre Çolak",teams:["Deportivo La Coruña"]}
+  {name:"Emílson Cribari",teams:["Empoli","Lazio","Napoli","Siena","Udinese"]}
+  {name:"Enda Stevens",teams:["Aston Villa","Sheffield United"]}
+  {name:"Eneko Bóveda",teams:["Athletic Bilbao","Deportivo La Coruña","Eibar"]}
+  {name:"Enes Ünal",teams:["AFC Bournemouth","Getafe","Levante","Real Valladolid","Villarreal"]}
+  {name:"Enis Bardhi",teams:["Levante"]}
+  {name:"Enner Valencia",teams:["Everton","West Ham United"]}
+  {name:"Enock Kwateng",teams:["FC Nantes","Girondins de Bordeaux"]}
+  {name:"Enric Gallego",teams:["Getafe","Huesca","Osasuna"]}
+  {name:"Enrico Chiesa",teams:["Fiorentina","Lazio","Siena"]}
+  {name:"Enrico Del Prato",teams:["Parma"]}
+  {name:"Enrique Corrales",teams:["Mallorca","Osasuna"]}
+  {name:"Enrique Romero",teams:["Deportivo La Coruña","Real Betis"]}
+  {name:"Enrique Sola",teams:["Athletic Bilbao","Osasuna"]}
+  {name:"Enrique de Lucas",teams:["Alavés","Celta Vigo","Chelsea","Espanyol","Paris Saint-Germain","Real Murcia"]}
+  {name:"Enzo Barrenechea",teams:["Frosinone","Juventus","Valencia"]}
+  {name:"Enzo Boyomo",teams:["Osasuna","Real Valladolid"]}
+  {name:"Enzo Crivelli",teams:["AS Saint-Étienne","Angers SCO","Girondins de Bordeaux","SC Bastia","SM Caen"]}
+  {name:"Enzo Ebosse",teams:["Angers SCO","Hellas Verona","Torino","Udinese"]}
+  {name:"Enzo Fernández",teams:["Chelsea"]}
+  {name:"Enzo Le Fée",teams:["AS Roma","FC Lorient","Stade Rennais","Sunderland"]}
+  {name:"Enzo Loiodice",teams:["Dijon FCO","Las Palmas"]}
+  {name:"Enzo Maresca",teams:["Bologna","Fiorentina","Juventus","Málaga","Palermo","Piacenza","Sampdoria","Sevilla"]}
+  {name:"Enzo Millot",teams:["AS Monaco","VfB Stuttgart"]}
+  {name:"Enzo Pérez",teams:["Valencia"]}
+  {name:"Enzo Roco",teams:["Elche","Espanyol"]}
+  {name:"Enzo Tchato",teams:["Montpellier HSC"]}
+  {name:"Eray Cömert",teams:["FC Nantes","Real Valladolid","Valencia"]}
+  {name:"Eren Derdiyok",teams:["Bayer Leverkusen","TSG Hoffenheim"]}
+  {name:"Eren Dinkçi",teams:["1. FC Heidenheim","SC Freiburg","Werder Bremen"]}
+  {name:"Erhan Mašović",teams:["VfL Bochum"]}
+  {name:"Eric Bailly",teams:["Espanyol","Manchester United","Olympique de Marseille","Real Oviedo","Villarreal"]}
+  {name:"Eric Dier",teams:["AS Monaco","Bayern Munich","Tottenham Hotspur"]}
+  {name:"Eric Djemba-Djemba",teams:["Aston Villa","FC Nantes","Manchester United"]}
+  {name:"Eric García",teams:["Barcelona","Girona","Manchester City"]}
+  {name:"Eric Martel",teams:["FC Köln"]}
+  {name:"Eric Maxim Choupo-Moting",teams:["1. FC Nürnberg","1. FSV Mainz 05","Bayern Munich","FC Schalke 04","Hamburger SV","Paris Saint-Germain","Stoke City"]}
+  {name:"Eric Smith",teams:["FC St. Pauli"]}
+  {name:"Erick Cabaco",teams:["AS Nancy","Getafe","Levante"]}
+  {name:"Erick Pulgar",teams:["Bologna","Fiorentina"]}
+  {name:"Erik Durm",teams:["Borussia Dortmund","Eintracht Frankfurt","Huddersfield Town"]}
+  {name:"Erik Edman",teams:["Stade Rennais","Tottenham Hotspur","Wigan Athletic"]}
+  {name:"Erik Meijer",teams:["Hamburger SV","Liverpool"]}
+  {name:"Erik Nevland",teams:["Fulham"]}
+  {name:"Erik Palmer-Brown",teams:["Estac Troyes"]}
+  {name:"Erik Pieters",teams:["Amiens SC","Burnley","Stoke City"]}
+  {name:"Erik Thommy",teams:["FC Augsburg","Fortuna Düsseldorf","VfB Stuttgart"]}
+  {name:"Erjon Bogdani",teams:["Cesena","Chievo Verona","Livorno","Reggina","Siena"]}
+  {name:"Erling Haaland",teams:["Borussia Dortmund","Manchester City"]}
+  {name:"Ermedin Demirović",teams:["Alavés","FC Augsburg","SC Freiburg","VfB Stuttgart"]}
+  {name:"Ermin Bičakčić",teams:["Eintracht Braunschweig","TSG Hoffenheim","VfB Stuttgart"]}
+  {name:"Erminio Rullo",teams:["Lecce","Napoli"]}
+  {name:"Ernest Nuamah",teams:["Olympique Lyonnais"]}
+  {name:"Eros Pisano",teams:["Genoa","Hellas Verona","Palermo"]}
+  {name:"Ervin Skela",teams:["1. FC Kaiserslautern","Arminia Bielefeld","Ascoli","Eintracht Frankfurt","Energie Cottbus"]}
+  {name:"Ervin Zukanović",teams:["AS Roma","Atalanta","Chievo Verona","Genoa","SPAL","Sampdoria"]}
+  {name:"Erwin Lemmens",teams:["Espanyol","Racing Santander"]}
+  {name:"Esteban",teams:["Almería","Atlético Madrid","Celta Vigo","Real Oviedo","Sevilla"]}
+  {name:"Esteban Cambiasso",teams:["Inter Milan","Leicester City","Real Madrid"]}
+  {name:"Esteban Fuertes",teams:["RC Lens","Tenerife"]}
+  {name:"Esteban Granero",teams:["Espanyol","Getafe","Queens Park Rangers","Real Madrid","Real Sociedad"]}
+  {name:"Esteban Lepaul",teams:["Angers SCO","Stade Rennais"]}
+  {name:"Ethan Ampadu",teams:["Chelsea","Leeds United","RB Leipzig","Sheffield United","Spezia","Venezia"]}
+  {name:"Ethan Pinnock",teams:["Brentford"]}
+  {name:"Etienne Youte Kinkoue",teams:["Le Havre AC"]}
+  {name:"Etrit Berisha",teams:["Atalanta","Empoli","Lazio","SPAL","Torino"]}
+  {name:"Eugen Polanski",teams:["1. FSV Mainz 05","Borussia Mönchengladbach","Getafe","TSG Hoffenheim"]}
+  {name:"Eugenio Corini",teams:["Chievo Verona","Palermo","Torino"]}
+  {name:"Eusebio Di Francesco",teams:["AS Roma","Perugia","Piacenza"]}
+  {name:"Eusebio Sacristán",teams:["Real Valladolid"]}
+  {name:"Euzebiusz Smolarek",teams:["Bolton Wanderers","Borussia Dortmund","Racing Santander"]}
+  {name:"Evan Ferguson",teams:["AS Roma","Brighton & Hove Albion","West Ham United"]}
+  {name:"Evanilson",teams:["AFC Bournemouth"]}
+  {name:"Evann Guessand",teams:["Aston Villa","Crystal Palace","FC Nantes","OGC Nice"]}
+  {name:"Evanílson",teams:["Borussia Dortmund","FC Köln"]}
+  {name:"Everson",teams:["OGC Nice"]}
+  {name:"Everton Giovanella",teams:["Celta Vigo"]}
+  {name:"Ewerthon",teams:["Borussia Dortmund","Espanyol","Real Zaragoza","VfB Stuttgart"]}
+  {name:"Exequiel Palacios",teams:["Bayer Leverkusen"]}
+  {name:"Eyal Berkovic",teams:["Manchester City","Portsmouth"]}
+  {name:"Eyjólfur",teams:["Hertha BSC"]}
+  {name:"Ezequiel Carboni",teams:["Catania"]}
+  {name:"Ezequiel Garay",teams:["Racing Santander","Real Madrid","Valencia"]}
+  {name:"Ezequiel Lavezzi",teams:["Napoli","Paris Saint-Germain"]}
+  {name:"Ezequiel Muñoz",teams:["Genoa","Leganés","Palermo","Sampdoria"]}
+  {name:"Ezequiel Ponce",teams:["Elche","Granada","LOSC Lille"]}
+  {name:"Ezequiel Schelotto",teams:["Atalanta","Brighton & Hove Albion","Catania","Cesena","Chievo Verona","Inter Milan","Parma","Sassuolo"]}
+  {name:"Ezequiel Ávila",teams:["Huesca","Osasuna","Real Betis"]}
+  {name:"Ezio Brevi",teams:["Reggina","Siena"]}
+  {name:"Ezri Konsa",teams:["Aston Villa"]}
+  {name:"Fabian Delph",teams:["Aston Villa","Everton","Manchester City"]}
+  {name:"Fabian Ernst",teams:["FC Schalke 04","Werder Bremen"]}
+  {name:"Fabian Frei",teams:["1. FSV Mainz 05"]}
+  {name:"Fabian Gerber",teams:["1. FSV Mainz 05","SC Freiburg"]}
+  {name:"Fabian Holland",teams:["Hertha BSC","SV Darmstadt 98"]}
+  {name:"Fabian Johnson",teams:["Borussia Mönchengladbach","TSG Hoffenheim","VfL Wolfsburg"]}
+  {name:"Fabian Klos",teams:["Arminia Bielefeld"]}
+  {name:"Fabian Lustenberger",teams:["Hertha BSC"]}
+  {name:"Fabian Rieder",teams:["FC Augsburg","Stade Rennais","VfB Stuttgart"]}
+  {name:"Fabian Schär",teams:["Deportivo La Coruña","Newcastle United","TSG Hoffenheim"]}
+  {name:"Fabiano",teams:["Lecce"]}
+  {name:"Fabiano Parisi",teams:["Empoli","Fiorentina"]}
+  {name:"Fabiano Santacroce",teams:["Napoli","Parma"]}
+  {name:"Fabien Audard",teams:["AS Monaco","FC Lorient","Toulouse FC"]}
+  {name:"Fabien Barthez",teams:["FC Nantes","Manchester United","Olympique de Marseille"]}
+  {name:"Fabien Boudarène",teams:["AS Saint-Étienne","FC Sochaux"]}
+  {name:"Fabien Camus",teams:["Estac Troyes","Olympique de Marseille","Évian TG"]}
+  {name:"Fabien Centonze",teams:["FC Metz","FC Nantes","Hellas Verona"]}
+  {name:"Fabien Cool",teams:["AJ Auxerre"]}
+  {name:"Fabien Laurenti",teams:["AC Arles-Avignon","GFC Ajaccio","Olympique de Marseille","RC Lens"]}
+  {name:"Fabien Lemoine",teams:["AS Saint-Étienne","FC Lorient","Stade Rennais"]}
+  {name:"Fabien Robert",teams:["Boulogne","FC Lorient"]}
+  {name:"Fabinho",teams:["AS Monaco","Liverpool","Real Madrid"]}
+  {name:"Fabio Bazzani",teams:["Lazio","Perugia","Sampdoria","Venezia"]}
+  {name:"Fabio Borini",teams:["AC Milan","AS Roma","Chelsea","Hellas Verona","Liverpool","Sunderland"]}
+  {name:"Fabio Cannavaro",teams:["Inter Milan","Juventus","Parma","Real Madrid"]}
+  {name:"Fabio Carvalho",teams:["Brentford","Fulham","Liverpool","RB Leipzig"]}
+  {name:"Fabio Caserta",teams:["Atalanta","Catania","Cesena","Lecce","Palermo"]}
+  {name:"Fabio Celestini",teams:["Estac Troyes","Getafe","Levante","Olympique de Marseille"]}
+  {name:"Fabio Ceravolo",teams:["Atalanta","Benevento","Parma","Reggina"]}
+  {name:"Fabio Depaoli",teams:["Atalanta","Benevento","Chievo Verona","Hellas Verona","Sampdoria"]}
+  {name:"Fabio Firmani",teams:["Bologna","Lazio","Vicenza"]}
+  {name:"Fabio Galante",teams:["Livorno","Torino"]}
+  {name:"Fabio Gatti",teams:["Perugia"]}
+  {name:"Fabio Grosso",teams:["Inter Milan","Juventus","Olympique Lyonnais","Palermo","Perugia"]}
+  {name:"Fabio Liverani",teams:["Fiorentina","Lazio","Palermo","Perugia"]}
+  {name:"Fabio Miretti",teams:["Genoa","Juventus"]}
+  {name:"Fabio Moro",teams:["Chievo Verona"]}
+  {name:"Fabio Pecchia",teams:["Ascoli","Bologna","Como","Napoli","Siena"]}
+  {name:"Fabio Petruzzi",teams:["Bologna","Brescia"]}
+  {name:"Fabio Pisacane",teams:["Cagliari"]}
+  {name:"Fabio Quagliarella",teams:["Ascoli","Juventus","Napoli","Sampdoria","Torino","Udinese"]}
+  {name:"Fabio Vieira",teams:["Arsenal","Hamburger SV"]}
+  {name:"Fabio Vignaroli",teams:["Lazio","Modena","Parma"]}
+  {name:"Fabián Balbuena",teams:["West Ham United"]}
+  {name:"Fabián Canobbio",teams:["Celta Vigo","Real Valladolid","Valencia"]}
+  {name:"Fabián Estoyanoff",teams:["Cádiz","Deportivo La Coruña","Real Valladolid"]}
+  {name:"Fabián Monzón",teams:["Catania","OGC Nice","Olympique Lyonnais","Real Betis"]}
+  {name:"Fabián Orellana",teams:["Celta Vigo","Eibar","Granada","Real Valladolid","Valencia","Xerez"]}
+  {name:"Fabián Ruiz Peña",teams:["Napoli","Paris Saint-Germain","Real Betis"]}
+  {name:"Fabrice Abriel",teams:["FC Lorient","OGC Nice","Olympique de Marseille","Paris Saint-Germain"]}
+  {name:"Fabrice Ehret",teams:["FC Köln","RC Strasbourg","Évian TG"]}
+  {name:"Fabrice Fernandes",teams:["Bolton Wanderers","Olympique de Marseille","Southampton","Stade Rennais"]}
+  {name:"Fabrice Fiorèse",teams:["EA Guingamp","FC Lorient","Olympique de Marseille","Paris Saint-Germain"]}
+  {name:"Fabrice Jau",teams:["SC Bastia","Sedan","Toulouse FC"]}
+  {name:"Fabrice Muamba",teams:["Birmingham City","Bolton Wanderers"]}
+  {name:"Fabrice Pancrate",teams:["EA Guingamp","FC Nantes","FC Sochaux","Le Mans FC","Paris Saint-Germain","Real Betis"]}
+  {name:"Fabricio",teams:["Deportivo La Coruña","Fulham","Mallorca","Real Betis","Real Valladolid"]}
+  {name:"Fabricio Coloccini",teams:["AC Milan","Alavés","Atlético Madrid","Deportivo La Coruña","Newcastle United","Villarreal"]}
+  {name:"Fabricio Fuentes",teams:["EA Guingamp","Villarreal"]}
+  {name:"Fabrizio Cacciatore",teams:["Cagliari","Chievo Verona","Hellas Verona","Sampdoria"]}
+  {name:"Fabrizio Ferron",teams:["Como","Hellas Verona"]}
+  {name:"Fabrizio Ficini",teams:["Empoli"]}
+  {name:"Fabrizio Miccoli",teams:["Fiorentina","Juventus","Palermo","Perugia"]}
+  {name:"Fabrizio Ravanelli",teams:["Derby County","Lazio","Perugia"]}
+  {name:"Facundo Buonanotte",teams:["Brighton & Hove Albion","Chelsea","Leeds United","Leicester City"]}
+  {name:"Facundo Medina",teams:["Olympique de Marseille","RC Lens"]}
+  {name:"Facundo Pellistri",teams:["Alavés","Granada","Manchester United"]}
+  {name:"Facundo Quiroga",teams:["Napoli","VfL Wolfsburg"]}
+  {name:"Facundo Roncaglia",teams:["Celta Vigo","Espanyol","Fiorentina","Genoa","Osasuna","Valencia"]}
+  {name:"Fahid Ben Khalfallah",teams:["FC Valenciennes","Girondins de Bordeaux","SM Caen"]}
+  {name:"Faitout Maouassa",teams:["AS Nancy","Granada","Montpellier HSC","Nîmes","RC Lens","Stade Rennais"]}
+  {name:"Falaye Sacko",teams:["AS Saint-Étienne","Montpellier HSC"]}
+  {name:"Fali",teams:["Cádiz"]}
+  {name:"Fali Candé",teams:["FC Metz","Sassuolo","Venezia"]}
+  {name:"Fallou Diagne",teams:["FC Metz","SC Freiburg","Stade Rennais","Werder Bremen"]}
+  {name:"Faouzi Ghoulam",teams:["AS Saint-Étienne","Angers SCO","Napoli"]}
+  {name:"Fares Chaïbi",teams:["Eintracht Frankfurt","Toulouse FC"]}
+  {name:"Farid Boulaya",teams:["FC Metz","SC Bastia"]}
+  {name:"Farid El Melali",teams:["Angers SCO"]}
+  {name:"Faruk Hujdurović",teams:["Energie Cottbus"]}
+  {name:"Faryd Mondragón",teams:["FC Köln","FC Metz"]}
+  {name:"Fatmir Vata",teams:["Arminia Bielefeld"]}
+  {name:"Fausto Rossi",teams:["Córdoba","Real Valladolid"]}
+  {name:"Fausto Rossini",teams:["Atalanta","Bologna","Catania","Livorno","Sampdoria","Udinese"]}
+  {name:"Fayçal Fajr",teams:["Deportivo La Coruña","Elche","Getafe","SM Caen"]}
+  {name:"Fede San Emeterio",teams:["Cádiz","Real Valladolid"]}
+  {name:"Fede Vico",teams:["Córdoba","Granada"]}
+  {name:"Federico Agliardi",teams:["Bologna","Brescia","Cesena","Palermo"]}
+  {name:"Federico Balzaretti",teams:["AS Roma","Fiorentina","Juventus","Palermo","Torino"]}
+  {name:"Federico Barba",teams:["Benevento","Chievo Verona","Como","Empoli","Real Valladolid","VfB Stuttgart"]}
+  {name:"Federico Baschirotto",teams:["Cremonese","Lecce"]}
+  {name:"Federico Bernardeschi",teams:["Bologna","Fiorentina","Juventus"]}
+  {name:"Federico Bonazzoli",teams:["Cremonese","Hellas Verona","Inter Milan","SPAL","Salernitana","Sampdoria","Torino"]}
+  {name:"Federico Cartabia",teams:["Córdoba","Deportivo La Coruña","Valencia"]}
+  {name:"Federico Casarini",teams:["Bologna","Cagliari"]}
+  {name:"Federico Ceccherini",teams:["Cremonese","Crotone","Fiorentina","Hellas Verona","Livorno"]}
+  {name:"Federico Chiesa",teams:["Fiorentina","Juventus","Liverpool"]}
+  {name:"Federico Cossato",teams:["Chievo Verona"]}
+  {name:"Federico Di Francesco",teams:["Bologna","Empoli","Lecce","Pescara","SPAL","Sassuolo"]}
+  {name:"Federico Dimarco",teams:["Empoli","Hellas Verona","Inter Milan","Parma"]}
+  {name:"Federico Fazio",teams:["AS Roma","Salernitana","Sevilla","Tottenham Hotspur"]}
+  {name:"Federico Fernández",teams:["Elche","Getafe","Napoli","Newcastle United","Swansea City"]}
+  {name:"Federico Gatti",teams:["Juventus"]}
+  {name:"Federico Giunti",teams:["AC Milan","Bologna","Brescia","Chievo Verona"]}
+  {name:"Federico Insúa",teams:["Borussia Mönchengladbach","Málaga"]}
+  {name:"Federico Lussenhoff",teams:["Mallorca","Tenerife"]}
+  {name:"Federico Macheda",teams:["Manchester United","Queens Park Rangers","Sampdoria","VfB Stuttgart"]}
+  {name:"Federico Magallanes",teams:["Racing Santander","Sevilla","Torino","Venezia"]}
+  {name:"Federico Marchetti",teams:["Cagliari","Genoa","Lazio","Spezia"]}
+  {name:"Federico Mattiello",teams:["Bologna","Cagliari","Chievo Verona","Juventus","SPAL","Spezia"]}
+  {name:"Federico Peluso",teams:["Atalanta","Juventus","Sassuolo"]}
+  {name:"Federico Ricci",teams:["AS Roma","Crotone","Genoa","Sassuolo"]}
+  {name:"Federico Santander",teams:["Bologna","Toulouse FC"]}
+  {name:"Federico Valverde",teams:["Deportivo La Coruña","Real Madrid"]}
+  {name:"Federico Viviani",teams:["AS Roma","Bologna","Frosinone","Hellas Verona","SPAL"]}
+  {name:"Felipe",teams:["Atlético Madrid","Nottingham Forest"]}
+  {name:"Felipe Anderson",teams:["Lazio","West Ham United"]}
+  {name:"Felipe Caicedo",teams:["Espanyol","Genoa","Inter Milan","Lazio","Levante","Manchester City","Málaga"]}
+  {name:"Felipe Guréndez",teams:["Athletic Bilbao","Numancia"]}
+  {name:"Felipe Melo",teams:["Almería","Fiorentina","Inter Milan","Juventus","Mallorca","Racing Santander"]}
+  {name:"Felipe Santana",teams:["Borussia Dortmund","FC Schalke 04"]}
+  {name:"Felipe dal Belo",teams:["Cesena","Fiorentina","Inter Milan","Parma","SPAL","Siena","Udinese"]}
+  {name:"Felix Agu",teams:["Werder Bremen"]}
+  {name:"Felix Bastians",teams:["Hertha BSC","SC Freiburg"]}
+  {name:"Felix Klaus",teams:["Hannover 96","SC Freiburg","SpVgg Greuther Fürth","VfL Wolfsburg"]}
+  {name:"Felix Kroos",teams:["1. FC Union Berlin","Werder Bremen"]}
+  {name:"Felix Nmecha",teams:["Borussia Dortmund","VfL Wolfsburg"]}
+  {name:"Felix Passlack",teams:["Borussia Dortmund","TSG Hoffenheim","VfL Bochum"]}
+  {name:"Felix Wiedwald",teams:["Eintracht Frankfurt","Werder Bremen"]}
+  {name:"Ferdinand Coly",teams:["Birmingham City","Parma","Perugia","RC Lens"]}
+  {name:"Ferdinando Coppola",teams:["Ascoli","Atalanta","Hellas Verona","Napoli","Reggina","Torino"]}
+  {name:"Ferland Mendy",teams:["Olympique Lyonnais","Real Madrid"]}
+  {name:"Fermin López",teams:["Barcelona"]}
+  {name:"Fernandinho",teams:["Manchester City"]}
+  {name:"Fernando",teams:["Manchester City","Málaga","Real Betis","Real Valladolid","Sevilla"]}
+  {name:"Fernando Amorebieta",teams:["Athletic Bilbao","Fulham","Sporting Gijón"]}
+  {name:"Fernando Baiano",teams:["Celta Vigo","Málaga","Real Murcia","VfL Wolfsburg"]}
+  {name:"Fernando Calero",teams:["Espanyol","Real Valladolid"]}
+  {name:"Fernando Cavenaghi",teams:["Girondins de Bordeaux","Mallorca"]}
+  {name:"Fernando Correa",teams:["Atlético Madrid","Mallorca"]}
+  {name:"Fernando Couto",teams:["Lazio","Parma"]}
+  {name:"Fernando Cáceres",teams:["Celta Vigo"]}
+  {name:"Fernando D'Amico",teams:["LOSC Lille","Le Mans FC"]}
+  {name:"Fernando Forestieri",teams:["Málaga","Siena","Udinese"]}
+  {name:"Fernando Gago",teams:["AS Roma","Real Madrid","Valencia"]}
+  {name:"Fernando Hierro",teams:["Bolton Wanderers","Real Madrid"]}
+  {name:"Fernando Llorente",teams:["Athletic Bilbao","Juventus","Napoli","Sevilla","Swansea City","Tottenham Hotspur","Udinese"]}
+  {name:"Fernando Marqués",teams:["Atlético Madrid","Espanyol","Parma","Racing Santander","Rayo Vallecano"]}
+  {name:"Fernando Marçal",teams:["EA Guingamp","Olympique Lyonnais","Wolverhampton Wanderers"]}
+  {name:"Fernando Meira",teams:["Real Zaragoza","VfB Stuttgart"]}
+  {name:"Fernando Menegazzo",teams:["Girondins de Bordeaux","Siena"]}
+  {name:"Fernando Morientes",teams:["AS Monaco","Liverpool","Olympique de Marseille","Real Madrid","Valencia"]}
+  {name:"Fernando Morán",teams:["Cádiz","Racing Santander"]}
+  {name:"Fernando Muslera",teams:["Lazio"]}
+  {name:"Fernando Navarro",teams:["Albacete","Barcelona","Deportivo La Coruña","Mallorca","Sevilla"]}
+  {name:"Fernando Niño",teams:["Mallorca"]}
+  {name:"Fernando Pacheco",teams:["Alavés","Almería","Espanyol"]}
+  {name:"Fernando Sales",teams:["Real Valladolid","Sevilla"]}
+  {name:"Fernando Sanz",teams:["Málaga"]}
+  {name:"Fernando Soriano",teams:["Almería","Osasuna","Real Zaragoza"]}
+  {name:"Fernando Tissone",teams:["Atalanta","Mallorca","Málaga","Sampdoria","Udinese"]}
+  {name:"Fernando Torres",teams:["AC Milan","Atlético Madrid","Chelsea","Liverpool"]}
+  {name:"Fernando Varela",teams:["Mallorca","Real Betis"]}
+  {name:"Fernando Vega",teams:["Real Betis"]}
+  {name:"Fernandão",teams:["Olympique de Marseille","Toulouse FC"]}
+  {name:"Ferran Corominas",teams:["Elche","Espanyol","Osasuna"]}
+  {name:"Ferreira Pinto",teams:["Atalanta"]}
+  {name:"Ferrán Torres",teams:["Barcelona","Manchester City","Valencia"]}
+  {name:"Ferydoon Zandi",teams:["1. FC Kaiserslautern","SC Freiburg"]}
+  {name:"Fidel",teams:["Córdoba","Elche"]}
+  {name:"Fikayo Tomori",teams:["AC Milan","Chelsea"]}
+  {name:"Filip Daems",teams:["Borussia Mönchengladbach"]}
+  {name:"Filip Helander",teams:["Bologna","Hellas Verona"]}
+  {name:"Filip Kostić",teams:["Eintracht Frankfurt","Hamburger SV","Juventus","VfB Stuttgart"]}
+  {name:"Filip Tapalović",teams:["1860 Munich","VfL Bochum"]}
+  {name:"Filip Trojan",teams:["1. FSV Mainz 05","FC Schalke 04","VfL Bochum"]}
+  {name:"Filip Đorđević",teams:["Chievo Verona","FC Nantes","Lazio"]}
+  {name:"Filip Đuričić",teams:["1. FSV Mainz 05","Benevento","Sampdoria","Sassuolo","Southampton"]}
+  {name:"Filip Šebo",teams:["FC Valenciennes"]}
+  {name:"Filipe Luís",teams:["Atlético Madrid","Chelsea","Deportivo La Coruña"]}
+  {name:"Filippo Bandinelli",teams:["Empoli"]}
+  {name:"Filippo Cristante",teams:["Messina","Piacenza"]}
+  {name:"Filippo Inzaghi",teams:["AC Milan","Juventus"]}
+  {name:"Filippo Romagna",teams:["Cagliari","Sassuolo"]}
+  {name:"Filippo Terracciano",teams:["AC Milan","Cremonese","Hellas Verona"]}
+  {name:"Fin Bartels",teams:["FC St. Pauli","Hansa Rostock","Werder Bremen"]}
+  {name:"Finidi George",teams:["Ipswich Town","Mallorca"]}
+  {name:"Finn Dahmen",teams:["1. FSV Mainz 05","FC Augsburg"]}
+  {name:"Fitz Hall",teams:["Crystal Palace","Queens Park Rangers","Southampton","Wigan Athletic"]}
+  {name:"Flavien Tait",teams:["Angers SCO","Stade Rennais"]}
+  {name:"Flavio Roma",teams:["AC Milan","AS Monaco"]}
+  {name:"Flavius Daniliuc",teams:["Hellas Verona","OGC Nice","Salernitana"]}
+  {name:"Florent Balmont",teams:["Dijon FCO","LOSC Lille","OGC Nice","Olympique Lyonnais","Toulouse FC"]}
+  {name:"Florent Hadergjonaj",teams:["FC Ingolstadt 04","Huddersfield Town"]}
+  {name:"Florent Malouda",teams:["Chelsea","EA Guingamp","FC Metz","Olympique Lyonnais"]}
+  {name:"Florent Mollet",teams:["FC Metz","FC Nantes","FC Schalke 04","Montpellier HSC"]}
+  {name:"Florent Ogier",teams:["Clermont Foot"]}
+  {name:"Florent Sinama Pongolle",teams:["AS Saint-Étienne","Atlético Madrid","Blackburn Rovers","Le Havre AC","Liverpool","Real Zaragoza","Recreativo"]}
+  {name:"Florentin Pogba",teams:["AS Saint-Étienne"]}
+  {name:"Florentino Luís",teams:["AS Monaco","Burnley","Getafe"]}
+  {name:"Florian Bruns",teams:["FC St. Pauli","SC Freiburg"]}
+  {name:"Florian Dick",teams:["1. FC Kaiserslautern","Karlsruher SC"]}
+  {name:"Florian Fromlowitz",teams:["1. FC Kaiserslautern","Hannover 96"]}
+  {name:"Florian Grillitsch",teams:["Real Valladolid","TSG Hoffenheim","Werder Bremen"]}
+  {name:"Florian Jarjat",teams:["Estac Troyes","OGC Nice"]}
+  {name:"Florian Kainz",teams:["FC Köln","Werder Bremen"]}
+  {name:"Florian Klein",teams:["VfB Stuttgart"]}
+  {name:"Florian Kringe",teams:["Borussia Dortmund","FC Köln","Hertha BSC"]}
+  {name:"Florian Lejeune",teams:["Alavés","Eibar","Newcastle United","Rayo Vallecano","Stade Brestois 29","Villarreal"]}
+  {name:"Florian Marange",teams:["AS Nancy","FC Sochaux","Girondins de Bordeaux","Le Havre AC","SC Bastia"]}
+  {name:"Florian Maurice",teams:["Celta Vigo","Istres","Olympique de Marseille","SC Bastia"]}
+  {name:"Florian Miguel",teams:["Nîmes"]}
+  {name:"Florian Müller",teams:["1. FSV Mainz 05","SC Freiburg","VfB Stuttgart"]}
+  {name:"Florian Neuhaus",teams:["Borussia Mönchengladbach"]}
+  {name:"Florian Niederlechner",teams:["1. FSV Mainz 05","FC Augsburg","Hertha BSC","SC Freiburg"]}
+  {name:"Florian Raspentino",teams:["Olympique de Marseille","SC Bastia","SM Caen","Stade Brestois 29"]}
+  {name:"Florian Sotoca",teams:["Montpellier HSC","RC Lens"]}
+  {name:"Florian Tardieu",teams:["AS Saint-Étienne","Estac Troyes"]}
+  {name:"Florian Thauvin",teams:["Newcastle United","Olympique de Marseille","RC Lens","SC Bastia","Udinese"]}
+  {name:"Florian Wirtz",teams:["Bayer Leverkusen","Liverpool"]}
+  {name:"Florin Andone",teams:["Brighton & Hove Albion","Cádiz","Córdoba","Deportivo La Coruña"]}
+  {name:"Floyd Ayité",teams:["AS Nancy","Fulham","Girondins de Bordeaux","SC Bastia","Stade de Reims"]}
+  {name:"Flávio Conceição",teams:["Borussia Dortmund","Real Madrid"]}
+  {name:"Fodé Ballo-Touré",teams:["AC Milan","AS Monaco","FC Metz","Fulham","LOSC Lille","Le Havre AC"]}
+  {name:"Fodé Mansaré",teams:["Montpellier HSC","Toulouse FC"]}
+  {name:"Folarin Balogun",teams:["AS Monaco","Arsenal","Stade de Reims"]}
+  {name:"Fouad Chafik",teams:["Dijon FCO"]}
+  {name:"Foued Kadir",teams:["FC Valenciennes","Olympique de Marseille","Real Betis","Stade Rennais"]}
+  {name:"Fousseni Diawara",teams:["AS Saint-Étienne","FC Sochaux","GFC Ajaccio"]}
+  {name:"Fraizer Campbell",teams:["Cardiff City","Crystal Palace","Manchester United","Sunderland","Tottenham Hotspur"]}
+  {name:"Fran",teams:["Deportivo La Coruña"]}
+  {name:"Fran Beltrán",teams:["Celta Vigo","Girona"]}
+  {name:"Fran Garcia",teams:["Rayo Vallecano","Real Madrid"]}
+  {name:"Fran Mérida",teams:["Arsenal","Atlético Madrid","Espanyol","Osasuna"]}
+  {name:"Fran Rico",teams:["Eibar","Granada"]}
+  {name:"Francesc Arnau",teams:["Barcelona","Málaga"]}
+  {name:"Francesco Acerbi",teams:["AC Milan","Chievo Verona","Inter Milan","Lazio","Sassuolo"]}
+  {name:"Francesco Antonioli",teams:["AS Roma","Bologna","Cesena","Sampdoria"]}
+  {name:"Francesco Bardi",teams:["Bologna","Chievo Verona","Frosinone","Livorno"]}
+  {name:"Francesco Bega",teams:["Brescia","Cagliari","Genoa"]}
+  {name:"Francesco Benussi",teams:["Carpi","Hellas Verona","Lecce","Livorno","Palermo"]}
+  {name:"Francesco Bolzoni",teams:["Inter Milan","Palermo","Siena"]}
+  {name:"Francesco Caputo",teams:["Bari","Empoli","Sampdoria","Sassuolo"]}
+  {name:"Francesco Cassata",teams:["Frosinone","Genoa","Sassuolo"]}
+  {name:"Francesco Coco",teams:["AC Milan","Barcelona","Inter Milan","Livorno","Torino"]}
+  {name:"Francesco Cozza",teams:["Reggina","Siena"]}
+  {name:"Francesco Della Rocca",teams:["Bologna","Palermo","Siena"]}
+  {name:"Francesco Flachi",teams:["Sampdoria"]}
+  {name:"Francesco Lodi",teams:["Catania","Empoli","Genoa","Parma","Udinese"]}
+  {name:"Francesco Magnanelli",teams:["Sassuolo"]}
+  {name:"Francesco Marianini",teams:["Empoli","Lecce","Novara"]}
+  {name:"Francesco Modesto",teams:["Bologna","Genoa","Parma","Pescara","Reggina"]}
+  {name:"Francesco Parravicini",teams:["Atalanta","Parma","Siena","Treviso"]}
+  {name:"Francesco Pisano",teams:["Cagliari"]}
+  {name:"Francesco Pratali",teams:["Empoli","Siena","Torino"]}
+  {name:"Francesco Tavano",teams:["AS Roma","Empoli","Livorno","Valencia"]}
+  {name:"Francesco Toldo",teams:["Fiorentina","Inter Milan"]}
+  {name:"Francesco Totti",teams:["AS Roma"]}
+  {name:"Francesco Valiani",teams:["Bologna","Parma","Siena"]}
+  {name:"Francesco Vicari",teams:["SPAL"]}
+  {name:"Francesco Zampano",teams:["Frosinone","Pescara","Udinese","Venezia"]}
+  {name:"Francileudo Santos",teams:["FC Sochaux","Toulouse FC"]}
+  {name:"Francis",teams:["Racing Santander","Xerez"]}
+  {name:"Francis Coquelin",teams:["Arsenal","FC Lorient","FC Nantes","SC Freiburg","Valencia","Villarreal"]}
+  {name:"Francis Jeffers",teams:["Arsenal","Blackburn Rovers","Charlton Athletic","Everton"]}
+  {name:"Francis Kioyo",teams:["1860 Munich","Energie Cottbus"]}
+  {name:"Francisco Gallardo",teams:["Deportivo La Coruña","Getafe","Real Murcia","Sevilla"]}
+  {name:"Francisco Lima",teams:["AS Roma","Bologna"]}
+  {name:"Francisco Molinero",teams:["Atlético Madrid","Getafe","Mallorca","Real Betis"]}
+  {name:"Francisco Pavón",teams:["AC Arles-Avignon","Real Madrid","Real Zaragoza"]}
+  {name:"Francisco Perez",teams:["Rayo Vallecano","Valencia"]}
+  {name:"Francisco Portillo",teams:["Almería","Getafe","Málaga","Real Betis"]}
+  {name:"Francisco Puñal",teams:["Osasuna"]}
+  {name:"Francisco Rufete",teams:["Espanyol","Hércules","Málaga","Valencia"]}
+  {name:"Francisco Trincão",teams:["Barcelona","Wolverhampton Wanderers"]}
+  {name:"Francisco Yeste",teams:["Athletic Bilbao"]}
+  {name:"Franck Béria",teams:["FC Metz","LOSC Lille"]}
+  {name:"Franck Dja Djédjé",teams:["AC Arles-Avignon","Grenoble Foot","OGC Nice","Paris Saint-Germain"]}
+  {name:"Franck Honorat",teams:["AS Saint-Étienne","Borussia Mönchengladbach","OGC Nice","Stade Brestois 29"]}
+  {name:"Franck Jurietti",teams:["AS Monaco","Girondins de Bordeaux","Olympique de Marseille"]}
+  {name:"Franck Kessié",teams:["AC Milan","Atalanta","Barcelona"]}
+  {name:"Franck Queudrue",teams:["Birmingham City","Fulham","Middlesbrough","RC Lens"]}
+  {name:"Franck Ribéry",teams:["Bayern Munich","FC Metz","Fiorentina","Olympique de Marseille","Salernitana"]}
+  {name:"Franck Signorino",teams:["FC Metz","FC Nantes","Getafe","Stade de Reims"]}
+  {name:"Franck Silvestre",teams:["Montpellier HSC","SC Bastia"]}
+  {name:"Franck Tabanou",teams:["AS Saint-Étienne","EA Guingamp","Granada","Toulouse FC"]}
+  {name:"Franco Brienza",teams:["Atalanta","Bologna","Cesena","Palermo","Perugia","Reggina","Siena"]}
+  {name:"Franco Cervi",teams:["Celta Vigo"]}
+  {name:"Franco Di Santo",teams:["Blackburn Rovers","Chelsea","FC Schalke 04","Rayo Vallecano","Werder Bremen","Wigan Athletic"]}
+  {name:"Franco Semioli",teams:["Chievo Verona","Fiorentina","Sampdoria","Torino"]}
+  {name:"Franco Vázquez",teams:["Cremonese","Palermo","Rayo Vallecano","Sevilla"]}
+  {name:"Franco Zuculini",teams:["Bologna","Genoa","Hellas Verona","Real Zaragoza","TSG Hoffenheim"]}
+  {name:"Frank Baumann",teams:["Werder Bremen"]}
+  {name:"Frank Fahrenhorst",teams:["Hannover 96","VfL Bochum","Werder Bremen"]}
+  {name:"Frank Lampard",teams:["Chelsea","Manchester City","West Ham United"]}
+  {name:"Frank Leboeuf",teams:["Chelsea","Olympique de Marseille"]}
+  {name:"Frank Magri",teams:["Toulouse FC"]}
+  {name:"Frank Onyeka",teams:["Brentford","FC Augsburg"]}
+  {name:"Frank Rost",teams:["FC Schalke 04","Hamburger SV","Werder Bremen"]}
+  {name:"Frank Sinclair",teams:["Leicester City"]}
+  {name:"Frank Verlaat",teams:["Werder Bremen"]}
+  {name:"Frank de Boer",teams:["Barcelona"]}
+  {name:"França",teams:["Bayer Leverkusen"]}
+  {name:"François Bellugou",teams:["Estac Troyes","FC Lorient"]}
+  {name:"François Clerc",teams:["AS Saint-Étienne","OGC Nice","Olympique Lyonnais","Toulouse FC"]}
+  {name:"François Grenet",teams:["Derby County","Girondins de Bordeaux","OGC Nice","Stade Rennais"]}
+  {name:"François Kamano",teams:["Girondins de Bordeaux","SC Bastia"]}
+  {name:"François Modesto",teams:["AS Monaco","SC Bastia"]}
+  {name:"François Moubandje",teams:["Toulouse FC"]}
+  {name:"Fraser Forster",teams:["Southampton","Tottenham Hotspur"]}
+  {name:"Fred",teams:["Manchester United","Olympique Lyonnais"]}
+  {name:"Freddie Ljungberg",teams:["Arsenal","West Ham United"]}
+  {name:"Freddie Veseli",teams:["Empoli","Salernitana"]}
+  {name:"Frederic Guilbert",teams:["Aston Villa","Girondins de Bordeaux","Lecce","RC Strasbourg","SM Caen"]}
+  {name:"Frederik Rønnow",teams:["1. FC Union Berlin","Eintracht Frankfurt","FC Schalke 04"]}
+  {name:"Frederik Sørensen",teams:["Bologna","FC Köln","Hellas Verona","Juventus"]}
+  {name:"Fredi Bobic",teams:["Bolton Wanderers","Borussia Dortmund","Hannover 96","Hertha BSC"]}
+  {name:"Fredi Lobeiras",teams:["Real Murcia","Sevilla"]}
+  {name:"Fredrik Jensen",teams:["FC Augsburg"]}
+  {name:"Fredson",teams:["Espanyol"]}
+  {name:"Fredy Guarín",teams:["AS Saint-Étienne","Inter Milan"]}
+  {name:"Frenkie de Jong",teams:["Barcelona"]}
+  {name:"Frédéric Adam",teams:["Estac Troyes"]}
+  {name:"Frédéric Biancalani",teams:["AS Nancy"]}
+  {name:"Frédéric Bulot",teams:["AS Monaco","SM Caen","Stade de Reims"]}
+  {name:"Frédéric Da Rocha",teams:["Boulogne","FC Nantes"]}
+  {name:"Frédéric Danjou",teams:["Estac Troyes","GFC Ajaccio","Real Oviedo","SM Caen"]}
+  {name:"Frédéric Déhu",teams:["Levante","Olympique de Marseille","Paris Saint-Germain"]}
+  {name:"Frédéric Kanouté",teams:["Sevilla","Tottenham Hotspur","West Ham United"]}
+  {name:"Frédéric Mendy",teams:["SC Bastia"]}
+  {name:"Frédéric Meyrieu",teams:["FC Metz"]}
+  {name:"Frédéric Née",teams:["Olympique Lyonnais","SC Bastia"]}
+  {name:"Frédéric Piquionne",teams:["AS Monaco","AS Saint-Étienne","Olympique Lyonnais","Portsmouth","Stade Rennais","West Ham United"]}
+  {name:"Frédéric Sammaritano",teams:["AJ Auxerre","Dijon FCO","GFC Ajaccio"]}
+  {name:"Frédéric Thomas",teams:["AJ Auxerre","Le Mans FC"]}
+  {name:"Fábio",teams:["Cardiff City","FC Nantes","Manchester United","Middlesbrough","Queens Park Rangers"]}
+  {name:"Fábio Aurélio",teams:["Liverpool","Valencia"]}
+  {name:"Fábio Bilica",teams:["Ancona","Brescia","Venezia"]}
+  {name:"Fábio Coentrão",teams:["AS Monaco","Real Madrid"]}
+  {name:"Fábio Rochemback",teams:["Barcelona","Middlesbrough"]}
+  {name:"Fábio Silva",teams:["Borussia Dortmund","Las Palmas","Wolverhampton Wanderers"]}
+  {name:"Fábio Simplício",teams:["AS Roma","Palermo","Parma"]}
+  {name:"Félix Dja Ettien",teams:["Levante"]}
+  {name:"Félix Eboa Eboa",teams:["EA Guingamp"]}
+  {name:"Félix Lemaréchal",teams:["AS Monaco","RC Strasbourg","Stade Brestois 29"]}
+  {name:"Féthi Harek",teams:["Nîmes","SC Bastia"]}
+  {name:"Gabi",teams:["Atlético Madrid","Getafe","Real Zaragoza"]}
+  {name:"Gabri García",teams:["Barcelona"]}
+  {name:"Gabriel",teams:["Leganés"]}
+  {name:"Gabriel Agbonlahor",teams:["Aston Villa"]}
+  {name:"Gabriel Batistuta",teams:["AS Roma","Inter Milan"]}
+  {name:"Gabriel Boschilia",teams:["AS Monaco","FC Nantes"]}
+  {name:"Gabriel Gudmundsson",teams:["LOSC Lille","Leeds United"]}
+  {name:"Gabriel Heinze",teams:["AS Roma","Manchester United","Olympique de Marseille","Paris Saint-Germain","Real Madrid","Real Valladolid"]}
+  {name:"Gabriel Jesus",teams:["Arsenal","Manchester City"]}
+  {name:"Gabriel Magalhães",teams:["Arsenal","Estac Troyes","LOSC Lille"]}
+  {name:"Gabriel Martinelli",teams:["Arsenal"]}
+  {name:"Gabriel Mercado",teams:["Sevilla"]}
+  {name:"Gabriel Milito",teams:["Barcelona","Real Zaragoza"]}
+  {name:"Gabriel Obertan",teams:["FC Lorient","Girondins de Bordeaux","Manchester United","Newcastle United"]}
+  {name:"Gabriel Paletta",teams:["AC Milan","Atalanta","Liverpool","Parma"]}
+  {name:"Gabriel Paulista",teams:["Arsenal","Atlético Madrid","Valencia","Villarreal"]}
+  {name:"Gabriel Schürrer",teams:["Las Palmas","Real Sociedad"]}
+  {name:"Gabriel Silva",teams:["AS Saint-Étienne","Carpi","Genoa","Granada","Novara","Udinese"]}
+  {name:"Gabriel Strefezza",teams:["Como","Lecce","Parma","SPAL"]}
+  {name:"Gabriel Suazo",teams:["Sevilla","Toulouse FC"]}
+  {name:"Gabriel Tamaș",teams:["AJ Auxerre","Celta Vigo","West Bromwich Albion"]}
+  {name:"Gabriel Torje",teams:["Espanyol","Granada","Udinese"]}
+  {name:"Gabriel Veiga",teams:["Celta Vigo"]}
+  {name:"Gabriele Perico",teams:["Cagliari","Cesena"]}
+  {name:"Gabriele Zappa",teams:["Cagliari"]}
+  {name:"Gaby Mudingayi",teams:["Bologna","Cesena","Inter Milan","Lazio"]}
+  {name:"Gaetano Berardi",teams:["Brescia","Leeds United","Sampdoria"]}
+  {name:"Gaetano Castrovilli",teams:["Fiorentina","Lazio","Monza"]}
+  {name:"Gaetano D'Agostino",teams:["AS Roma","Fiorentina","Messina","Pescara","Siena","Udinese"]}
+  {name:"Gaetano De Rosa",teams:["Bari","Genoa","Reggina"]}
+  {name:"Gaetano Letizia",teams:["Benevento","Carpi"]}
+  {name:"Gaetano Oristanio",teams:["Cagliari","Parma","Venezia"]}
+  {name:"Gaizka Garitano",teams:["Real Sociedad"]}
+  {name:"Gaizka Mendieta",teams:["Barcelona","Lazio","Middlesbrough","Valencia"]}
+  {name:"Gaizka Toquero",teams:["Alavés","Athletic Bilbao"]}
+  {name:"Gareth Bale",teams:["Real Madrid","Tottenham Hotspur"]}
+  {name:"Gareth Barry",teams:["Aston Villa","Everton","Manchester City","West Bromwich Albion"]}
+  {name:"Gareth McAuley",teams:["West Bromwich Albion"]}
+  {name:"Gareth Southgate",teams:["Aston Villa","Middlesbrough"]}
+  {name:"Gari Uranga",teams:["Real Sociedad"]}
+  {name:"Garry Bocaly",teams:["Montpellier HSC","Olympique de Marseille"]}
+  {name:"Garry Flitcroft",teams:["Blackburn Rovers"]}
+  {name:"Gary Breen",teams:["Coventry City","Sunderland","West Ham United"]}
+  {name:"Gary Cahill",teams:["Aston Villa","Bolton Wanderers","Chelsea","Crystal Palace"]}
+  {name:"Gary Caldwell",teams:["Wigan Athletic"]}
+  {name:"Gary Doherty",teams:["Norwich City","Tottenham Hotspur"]}
+  {name:"Gary Kelly",teams:["Leeds United"]}
+  {name:"Gary McAllister",teams:["Liverpool"]}
+  {name:"Gary Medel",teams:["Bologna","Cardiff City","Inter Milan","Sevilla"]}
+  {name:"Gary Naysmith",teams:["Everton"]}
+  {name:"Gary Neville",teams:["Manchester United"]}
+  {name:"Gary O'Neil",teams:["Middlesbrough","Norwich City","Portsmouth","West Ham United"]}
+  {name:"Gary Rowett",teams:["Charlton Athletic","Leicester City"]}
+  {name:"Gary Speed",teams:["Bolton Wanderers","Newcastle United"]}
+  {name:"Gary Teale",teams:["Derby County","Wigan Athletic"]}
+  {name:"Gaspar",teams:["Alavés","Albacete","Atlético Madrid","Real Oviedo","Real Valladolid"]}
+  {name:"Gaston Curbelo",teams:["AS Nancy"]}
+  {name:"Gastón Brugman",teams:["Palermo","Parma","Pescara"]}
+  {name:"Gastón Pereiro",teams:["Cagliari","Genoa"]}
+  {name:"Gastón Ramírez",teams:["Bologna","Hull City","Middlesbrough","Sampdoria","Southampton"]}
+  {name:"Gastón Silva",teams:["Granada","Huesca","Torino"]}
+  {name:"Gastón Álvarez",teams:["Getafe"]}
+  {name:"Gauthier Gallon",teams:["Estac Troyes","Stade Rennais"]}
+  {name:"Gauthier Hein",teams:["AJ Auxerre","FC Metz"]}
+  {name:"Gautier Larsonneur",teams:["AS Saint-Étienne","Stade Brestois 29"]}
+  {name:"Gautier Lloris",teams:["Le Havre AC","OGC Nice"]}
+  {name:"Gavi",teams:["Barcelona"]}
+  {name:"Gavin McCann",teams:["Aston Villa","Bolton Wanderers","Sunderland"]}
+  {name:"Gaël Clichy",teams:["Arsenal","Manchester City"]}
+  {name:"Gaël Danic",teams:["EA Guingamp","Estac Troyes","FC Valenciennes","Olympique Lyonnais","SC Bastia","Stade Rennais"]}
+  {name:"Gaël Givet",teams:["AS Monaco","Blackburn Rovers","Olympique de Marseille","Évian TG"]}
+  {name:"Gaël Kakuta",teams:["Amiens SC","Bolton Wanderers","Chelsea","Deportivo La Coruña","Dijon FCO","Fulham","Lazio","RC Lens","Rayo Vallecano","Sevilla"]}
+  {name:"Gaëtan Bong",teams:["Brighton & Hove Albion","FC Metz","FC Valenciennes"]}
+  {name:"Gaëtan Bussmann",teams:["1. FSV Mainz 05","FC Metz"]}
+  {name:"Gaëtan Charbonnier",teams:["AJ Auxerre","Montpellier HSC","Stade Brestois 29","Stade de Reims"]}
+  {name:"Gaëtan Courtet",teams:["Stade de Reims"]}
+  {name:"Gaëtan Laborde",teams:["Girondins de Bordeaux","Montpellier HSC","OGC Nice","Stade Rennais"]}
+  {name:"Gaëtan Paquiez",teams:["Nîmes"]}
+  {name:"Gaëtan Perrin",teams:["AJ Auxerre","LOSC Lille","Olympique Lyonnais"]}
+  {name:"Gelson Fernandes",teams:["AS Saint-Étienne","Chievo Verona","Eintracht Frankfurt","Manchester City","SC Freiburg","Stade Rennais","Udinese"]}
+  {name:"Gelson Martins",teams:["AS Monaco","Atlético Madrid"]}
+  {name:"Generoso Rossi",teams:["Bari","Siena","Venezia"]}
+  {name:"Genki Haraguchi",teams:["1. FC Union Berlin","Hannover 96","Hertha BSC","VfB Stuttgart"]}
+  {name:"Gennaro Bracigliano",teams:["AS Nancy"]}
+  {name:"Gennaro Delvecchio",teams:["Catania","Lecce","Sampdoria"]}
+  {name:"Gennaro Gattuso",teams:["AC Milan"]}
+  {name:"Gennaro Iezzo",teams:["Cagliari","Napoli"]}
+  {name:"Gennaro Sardo",teams:["Catania","Chievo Verona"]}
+  {name:"Geoff Cameron",teams:["Stoke City"]}
+  {name:"Geoff Horsfield",teams:["Birmingham City","West Bromwich Albion"]}
+  {name:"Geoffray Toyes",teams:["FC Metz"]}
+  {name:"Geoffrey Dernis",teams:["AS Saint-Étienne","LOSC Lille","Montpellier HSC","Stade Brestois 29"]}
+  {name:"Geoffrey Doumeng",teams:["FC Valenciennes","Montpellier HSC"]}
+  {name:"Geoffrey Jourdren",teams:["Montpellier HSC"]}
+  {name:"Geoffrey Kondogbia",teams:["AS Monaco","Atlético Madrid","Inter Milan","Olympique de Marseille","RC Lens","Sevilla","Valencia"]}
+  {name:"Georg Koch",teams:["1. FC Kaiserslautern","MSV Duisburg"]}
+  {name:"Georg Niedermeier",teams:["SC Freiburg","VfB Stuttgart"]}
+  {name:"George Baldock",teams:["Sheffield United"]}
+  {name:"George Boateng",teams:["Aston Villa","Hull City","Middlesbrough"]}
+  {name:"George Boyd",teams:["Burnley","Hull City"]}
+  {name:"George Elokobi",teams:["Wolverhampton Wanderers"]}
+  {name:"George McCartney",teams:["Sunderland","West Ham United"]}
+  {name:"Georges Mandjeck",teams:["AJ Auxerre","FC Metz","Stade Rennais","VfB Stuttgart"]}
+  {name:"Georges Mikautadze",teams:["FC Metz","Olympique Lyonnais","Villarreal"]}
+  {name:"Georges-Kévin N'Koudou",teams:["AS Monaco","Burnley","FC Nantes","Olympique de Marseille","Tottenham Hotspur"]}
+  {name:"Georginio Rutter",teams:["Brighton & Hove Albion","Leeds United","Stade Rennais","TSG Hoffenheim"]}
+  {name:"Georginio Wijnaldum",teams:["AS Roma","Liverpool","Newcastle United","Paris Saint-Germain"]}
+  {name:"Georgios Samaras",teams:["Manchester City","West Bromwich Albion"]}
+  {name:"Geovanni",teams:["Barcelona","Hull City","Manchester City"]}
+  {name:"Gerald Asamoah",teams:["FC Schalke 04","FC St. Pauli","SpVgg Greuther Fürth"]}
+  {name:"Gerard Deulofeu",teams:["AC Milan","Barcelona","Everton","Sevilla","Udinese","Watford"]}
+  {name:"Gerard Gumbau",teams:["Barcelona","Elche","Granada","Leganés","Rayo Vallecano"]}
+  {name:"Gerard López",teams:["AS Monaco","Barcelona","Recreativo"]}
+  {name:"Gerard Moreno",teams:["Espanyol","Villarreal"]}
+  {name:"Gerard Piqué",teams:["Barcelona","Manchester United","Real Zaragoza"]}
+  {name:"Gerardo",teams:["Málaga","Osasuna","Real Sociedad"]}
+  {name:"Gerardo Rivero",teams:["Osasuna"]}
+  {name:"Gerardo Torrado",teams:["Racing Santander","Sevilla"]}
+  {name:"Gerd Wimmer",teams:["Eintracht Frankfurt","Hansa Rostock"]}
+  {name:"Geremi",teams:["Chelsea","Middlesbrough","Newcastle United","Real Madrid"]}
+  {name:"Gerhard Tremmel",teams:["Energie Cottbus","Hannover 96","Hertha BSC","SpVgg Unterhaching","Swansea City"]}
+  {name:"Germán Denis",teams:["Atalanta","Napoli","Udinese"]}
+  {name:"Germán Lux",teams:["Deportivo La Coruña","Mallorca"]}
+  {name:"Germán Pezzella",teams:["Fiorentina","Real Betis"]}
+  {name:"Germán Sánchez",teams:["Granada"]}
+  {name:"Gerrit Holtmann",teams:["1. FSV Mainz 05","SC Paderborn 07","SV Darmstadt 98","VfL Bochum"]}
+  {name:"Gerson",teams:["AS Roma","Fiorentina","Olympique de Marseille"]}
+  {name:"Gervinho",teams:["AS Roma","Arsenal","LOSC Lille","Le Mans FC","Parma"]}
+  {name:"Gerzino Nyamsi",teams:["RC Strasbourg","Stade Rennais"]}
+  {name:"Gerónimo Rulli",teams:["Montpellier HSC","Olympique de Marseille","Real Sociedad","Villarreal"]}
+  {name:"Gharib Amzine",teams:["Estac Troyes","RC Strasbourg"]}
+  {name:"Gheorghe Craioveanu",teams:["Getafe","Villarreal"]}
+  {name:"Ghislain Konan",teams:["Stade de Reims"]}
+  {name:"Giacomo Bonaventura",teams:["AC Milan","Atalanta","Fiorentina"]}
+  {name:"Giacomo Cipriani",teams:["Bologna","Sampdoria"]}
+  {name:"Giacomo Raspadori",teams:["Atalanta","Atlético Madrid","Napoli","Sassuolo"]}
+  {name:"Giacomo Tedesco",teams:["Bologna","Catania","Napoli","Reggina"]}
+  {name:"Giampaolo Pazzini",teams:["AC Milan","Atalanta","Fiorentina","Hellas Verona","Inter Milan","Levante","Sampdoria"]}
+  {name:"Giampiero Pinzi",teams:["Chievo Verona","Udinese"]}
+  {name:"Gian Marco Ferrari",teams:["Crotone","Sampdoria","Sassuolo"]}
+  {name:"Giancarlo González",teams:["Bologna","Palermo"]}
+  {name:"Giandomenico Mesto",teams:["Genoa","Napoli","Reggina","Udinese"]}
+  {name:"Gianfranco Zola",teams:["Cagliari","Chelsea"]}
+  {name:"Giangiacomo Magnani",teams:["Brescia","Hellas Verona","Sampdoria","Sassuolo"]}
+  {name:"Gianluca Berti",teams:["Empoli","Fiorentina","Parma","Sampdoria"]}
+  {name:"Gianluca Busio",teams:["Venezia"]}
+  {name:"Gianluca Caprari",teams:["AS Roma","Benevento","Hellas Verona","Monza","Parma","Pescara","Sampdoria"]}
+  {name:"Gianluca Comotto",teams:["Ascoli","Cesena","Fiorentina","Reggina","Torino","Vicenza"]}
+  {name:"Gianluca Curci",teams:["AS Roma","Bologna","Sampdoria","Siena"]}
+  {name:"Gianluca Falsini",teams:["Atalanta","Catania","Parma","Reggina","Siena"]}
+  {name:"Gianluca Gaetano",teams:["Cagliari","Napoli"]}
+  {name:"Gianluca Grava",teams:["Napoli"]}
+  {name:"Gianluca Lapadula",teams:["AC Milan","Benevento","Cagliari","Genoa","Lecce"]}
+  {name:"Gianluca Mancini",teams:["AS Roma","Atalanta"]}
+  {name:"Gianluca Pagliuca",teams:["Ascoli","Bologna"]}
+  {name:"Gianluca Pegolo",teams:["Hellas Verona","Sassuolo","Siena"]}
+  {name:"Gianluca Pessotto",teams:["Juventus"]}
+  {name:"Gianluca Sansone",teams:["Sampdoria","Torino"]}
+  {name:"Gianluca Scamacca",teams:["Atalanta","Genoa","Sassuolo","West Ham United"]}
+  {name:"Gianluca Zambrotta",teams:["AC Milan","Barcelona","Juventus"]}
+  {name:"Gianluigi Buffon",teams:["Juventus","Paris Saint-Germain","Parma"]}
+  {name:"Gianluigi Donnarumma",teams:["AC Milan","Manchester City","Paris Saint-Germain"]}
+  {name:"Giannelli Imbula",teams:["Lecce","Olympique de Marseille","Rayo Vallecano","Stoke City","Toulouse FC"]}
+  {name:"Gianni Bruno",teams:["FC Lorient","LOSC Lille","SC Bastia","Évian TG"]}
+  {name:"Gianni Comandini",teams:["AC Milan","Atalanta"]}
+  {name:"Gianni Guigou",teams:["AS Roma","Fiorentina","Siena","Treviso"]}
+  {name:"Gianni Munari",teams:["Cagliari","Fiorentina","Lecce","Parma","Sampdoria"]}
+  {name:"Gianpaolo Bellini",teams:["Atalanta"]}
+  {name:"Gideon Jung",teams:["Hamburger SV","SpVgg Greuther Fürth"]}
+  {name:"Gideon Mensah",teams:["AJ Auxerre","Girondins de Bordeaux"]}
+  {name:"Gift Orban",teams:["Hellas Verona","Olympique Lyonnais","TSG Hoffenheim"]}
+  {name:"Gil Bastião Dias",teams:["AS Monaco","Fiorentina","Granada","VfB Stuttgart"]}
+  {name:"Gilberto",teams:["Hertha BSC","Tottenham Hotspur"]}
+  {name:"Gilberto Martínez",teams:["Brescia","Sampdoria"]}
+  {name:"Gilberto Silva",teams:["Arsenal"]}
+  {name:"Gilles Cioni",teams:["SC Bastia"]}
+  {name:"Gilles Grimandi",teams:["Arsenal"]}
+  {name:"Gilles Sunu",teams:["Angers SCO","FC Lorient","Évian TG"]}
+  {name:"Gilles Yapi Yapo",teams:["FC Nantes"]}
+  {name:"Gio Reyna",teams:["Borussia Dortmund","Borussia Mönchengladbach","Nottingham Forest"]}
+  {name:"Gionatha Spinesi",teams:["Bari","Catania"]}
+  {name:"Giorgi Mamardashvili",teams:["Liverpool","Valencia"]}
+  {name:"Giorgio Chiellini",teams:["Fiorentina","Juventus"]}
+  {name:"Giorgio Scalvini",teams:["Atalanta"]}
+  {name:"Giorgos Karagounis",teams:["Fulham","Inter Milan"]}
+  {name:"Giorgos Kyriakopoulos",teams:["Bologna","Monza","Sassuolo"]}
+  {name:"Giourkas Seitaridis",teams:["Atlético Madrid"]}
+  {name:"Giovane Élber",teams:["Bayern Munich","Borussia Mönchengladbach","Olympique Lyonnais"]}
+  {name:"Giovani Lo Celso",teams:["Paris Saint-Germain","Real Betis","Tottenham Hotspur","Villarreal"]}
+  {name:"Giovani dos Santos",teams:["Barcelona","Mallorca","Racing Santander","Tottenham Hotspur","Villarreal"]}
+  {name:"Giovanni Di Lorenzo",teams:["Empoli","Napoli"]}
+  {name:"Giovanni Fabbian",teams:["Bologna","Fiorentina"]}
+  {name:"Giovanni Federico",teams:["Borussia Dortmund","FC Köln","Karlsruher SC"]}
+  {name:"Giovanni González",teams:["Mallorca"]}
+  {name:"Giovanni Marchese",teams:["Catania","Chievo Verona","Genoa"]}
+  {name:"Giovanni Morabito",teams:["Reggina"]}
+  {name:"Giovanni Pasquale",teams:["Inter Milan","Livorno","Parma","Torino","Udinese"]}
+  {name:"Giovanni Simeone",teams:["Cagliari","Fiorentina","Genoa","Hellas Verona","Napoli","Torino"]}
+  {name:"Giovanni Sio",teams:["FC Augsburg","FC Sochaux","Montpellier HSC","SC Bastia","Stade Rennais","VfL Wolfsburg"]}
+  {name:"Giovanni Tedesco",teams:["Palermo","Perugia"]}
+  {name:"Giovanni van Bronckhorst",teams:["Arsenal","Barcelona"]}
+  {name:"Giuliano Giannichedda",teams:["Juventus","Lazio","Livorno","Udinese"]}
+  {name:"Giuliano Simeone",teams:["Alavés","Atlético Madrid"]}
+  {name:"Giulio Donati",teams:["1. FSV Mainz 05","Bayer Leverkusen","Lecce","Monza"]}
+  {name:"Giulio Falcone",teams:["Bologna","Parma","Sampdoria"]}
+  {name:"Giulio Maggiore",teams:["Salernitana","Spezia"]}
+  {name:"Giulio Migliaccio",teams:["Atalanta","Fiorentina","Palermo"]}
+  {name:"Giuseppe Bellusci",teams:["Ascoli","Catania","Empoli"]}
+  {name:"Giuseppe Biava",teams:["Atalanta","Genoa","Lazio","Palermo"]}
+  {name:"Giuseppe Cardone",teams:["Parma","Piacenza","Vicenza"]}
+  {name:"Giuseppe Colucci",teams:["Brescia","Catania","Cesena","Chievo Verona","Hellas Verona","Livorno","Modena","Pescara","Reggina"]}
+  {name:"Giuseppe Favalli",teams:["AC Milan","Inter Milan","Lazio"]}
+  {name:"Giuseppe Gemiti",teams:["Chievo Verona","Eintracht Frankfurt","Livorno","Novara","Udinese"]}
+  {name:"Giuseppe Mascara",teams:["Catania","Napoli","Novara"]}
+  {name:"Giuseppe Pancaro",teams:["AC Milan","Fiorentina","Lazio","Torino"]}
+  {name:"Giuseppe Pezzella",teams:["Atalanta","Cremonese","Empoli","Genoa","Lecce","Palermo","Parma","Udinese"]}
+  {name:"Giuseppe Reina",teams:["Borussia Dortmund","Hertha BSC"]}
+  {name:"Giuseppe Rossi",teams:["Celta Vigo","Fiorentina","Genoa","Levante","Manchester United","Newcastle United","Parma","Villarreal"]}
+  {name:"Giuseppe Sculli",teams:["Brescia","Chievo Verona","Genoa","Lazio","Messina","Modena","Pescara"]}
+  {name:"Giuseppe Signori",teams:["Bologna"]}
+  {name:"Giuseppe Vives",teams:["Lecce","Torino"]}
+  {name:"Gleison Bremer",teams:["Juventus","Torino"]}
+  {name:"Glen Johnson",teams:["Chelsea","Liverpool","Portsmouth","Stoke City","West Ham United"]}
+  {name:"Glenn Murray",teams:["AFC Bournemouth","Brighton & Hove Albion","Crystal Palace"]}
+  {name:"Glenn Whelan",teams:["Stoke City"]}
+  {name:"Gláuber",teams:["1. FC Nürnberg","Manchester City"]}
+  {name:"Gláucio",teams:["Rayo Vallecano"]}
+  {name:"Godfred Donsah",teams:["Bologna","Cagliari","Hellas Verona"]}
+  {name:"Godfried Aduobe",teams:["Hansa Rostock","Karlsruher SC"]}
+  {name:"Gojko Kačar",teams:["FC Augsburg","Hamburger SV","Hertha BSC"]}
+  {name:"Gonzalo Bergessio",teams:["AS Saint-Étienne","Catania","Sampdoria"]}
+  {name:"Gonzalo Castro",teams:["Arminia Bielefeld","Bayer Leverkusen","Borussia Dortmund","VfB Stuttgart"]}
+  {name:"Gonzalo Colsa",teams:["Atlético Madrid","Mallorca","Racing Santander","Real Valladolid"]}
+  {name:"Gonzalo Escalante",teams:["Alavés","Cremonese","Cádiz","Eibar","Lazio"]}
+  {name:"Gonzalo Higuaín",teams:["AC Milan","Chelsea","Juventus","Napoli","Real Madrid"]}
+  {name:"Gonzalo Jara",teams:["1. FSV Mainz 05","West Bromwich Albion"]}
+  {name:"Gonzalo Melero",teams:["Almería","Huesca","Levante"]}
+  {name:"Gonzalo Montiel",teams:["Nottingham Forest","Sevilla"]}
+  {name:"Gonzalo Rodríguez",teams:["Fiorentina","Villarreal"]}
+  {name:"Gonzalo Verdú",teams:["Elche"]}
+  {name:"Gonzalo Villar",teams:["AS Roma","Elche","Getafe","Granada","Sampdoria"]}
+  {name:"Gonzalo de los Santos",teams:["Atlético Madrid","Mallorca","Málaga","Valencia"]}
+  {name:"Gonçalo Guedes",teams:["Paris Saint-Germain","Real Sociedad","Valencia","Villarreal","Wolverhampton Wanderers"]}
+  {name:"Gonçalo Paciência",teams:["Celta Vigo","Eintracht Frankfurt","FC Schalke 04","VfL Bochum"]}
+  {name:"Gonçalo Ramos",teams:["Paris Saint-Germain"]}
+  {name:"Goran Bunjevčević",teams:["Tottenham Hotspur"]}
+  {name:"Goran Pandev",teams:["Ancona","Genoa","Inter Milan","Lazio","Napoli"]}
+  {name:"Gorka Elustondo",teams:["Athletic Bilbao","Rayo Vallecano","Real Sociedad"]}
+  {name:"Gorka Guruzeta",teams:["Athletic Bilbao"]}
+  {name:"Gorka Iraizoz",teams:["Athletic Bilbao","Espanyol","Girona"]}
+  {name:"Grady Diangana",teams:["Elche","West Bromwich Albion","West Ham United"]}
+  {name:"Graeme Le Saux",teams:["Chelsea","Southampton"]}
+  {name:"Graeme Murty",teams:["Reading"]}
+  {name:"Grafite",teams:["Le Mans FC","VfL Wolfsburg"]}
+  {name:"Graham Dorrans",teams:["Norwich City","West Bromwich Albion"]}
+  {name:"Graham Stuart",teams:["Charlton Athletic","Norwich City"]}
+  {name:"Granddi Ngoyi",teams:["Estac Troyes","Palermo","Paris Saint-Germain","Stade Brestois 29"]}
+  {name:"Granit Xhaka",teams:["Arsenal","Bayer Leverkusen","Borussia Mönchengladbach","Sunderland"]}
+  {name:"Grant Hanley",teams:["Blackburn Rovers","Norwich City"]}
+  {name:"Grant Holt",teams:["Aston Villa","Norwich City"]}
+  {name:"Grant Leadbitter",teams:["Middlesbrough","Sunderland"]}
+  {name:"Graziano Pellè",teams:["Lecce","Parma","Southampton"]}
+  {name:"Greg Vanney",teams:["SC Bastia"]}
+  {name:"Gregor Kobel",teams:["Borussia Dortmund","FC Augsburg","TSG Hoffenheim","VfB Stuttgart"]}
+  {name:"Gregory van der Wiel",teams:["Cagliari","Paris Saint-Germain"]}
+  {name:"Grejohn Kyei",teams:["Clermont Foot","Stade de Reims"]}
+  {name:"Grigoris Kastanos",teams:["Hellas Verona","Juventus","Pescara","Salernitana"]}
+  {name:"Grischa Prömel",teams:["1. FC Union Berlin","TSG Hoffenheim"]}
+  {name:"Grzegorz Krychowiak",teams:["Girondins de Bordeaux","Paris Saint-Germain","Sevilla","Stade de Reims","West Bromwich Albion"]}
+  {name:"Grégoire Defrel",teams:["AS Roma","Cesena","Parma","Sampdoria","Sassuolo"]}
+  {name:"Grégoire Puel",teams:["OGC Nice"]}
+  {name:"Grégory Arnolin",teams:["Sporting Gijón"]}
+  {name:"Grégory Bourillon",teams:["Angers SCO","FC Lorient","Paris Saint-Germain","Stade Rennais","Stade de Reims"]}
+  {name:"Grégory Cerdan",teams:["EA Guingamp","Le Mans FC"]}
+  {name:"Grégory Coupet",teams:["Atlético Madrid","Olympique Lyonnais","Paris Saint-Germain"]}
+  {name:"Grégory Lacombe",teams:["AS Monaco","GFC Ajaccio","Montpellier HSC"]}
+  {name:"Grégory Leca",teams:["FC Metz","SM Caen"]}
+  {name:"Grégory Malicki",teams:["LOSC Lille"]}
+  {name:"Grégory Paisley",teams:["Estac Troyes","FC Metz","FC Sochaux","Le Havre AC","OGC Nice","Paris Saint-Germain","RC Strasbourg","Stade Rennais"]}
+  {name:"Grégory Proment",teams:["FC Metz","SM Caen"]}
+  {name:"Grégory Pujol",teams:["FC Nantes","FC Valenciennes","Gazélec Ajaccio","Sedan"]}
+  {name:"Grégory Sertic",teams:["Girondins de Bordeaux","Olympique de Marseille","RC Lens"]}
+  {name:"Grégory Tafforeau",teams:["LOSC Lille","SM Caen"]}
+  {name:"Grégory Vignal",teams:["Birmingham City","Espanyol","Liverpool","Portsmouth","RC Lens","SC Bastia","Stade Rennais"]}
+  {name:"Grégory Wimbée",teams:["FC Metz","FC Valenciennes","Grenoble Foot","LOSC Lille"]}
+  {name:"Grétar Steinsson",teams:["Bolton Wanderers"]}
+  {name:"Guela Doué",teams:["RC Strasbourg","Stade Rennais"]}
+  {name:"Gueïda Fofana",teams:["Olympique Lyonnais"]}
+  {name:"Guglielmo Stendardo",teams:["Atalanta","Juventus","Lazio","Lecce","Pescara"]}
+  {name:"Guglielmo Vicario",teams:["Cagliari","Empoli","Tottenham Hotspur"]}
+  {name:"Guido Burgstaller",teams:["FC Schalke 04"]}
+  {name:"Guido Carrillo",teams:["AS Monaco","Elche","Leganés","Southampton"]}
+  {name:"Guido Marilungo",teams:["Atalanta","Cesena","Empoli","Sampdoria"]}
+  {name:"Guido Rodríguez",teams:["Real Betis","Valencia","West Ham United"]}
+  {name:"Guilherme",teams:["Deportivo La Coruña","Udinese"]}
+  {name:"Guilherme Siqueira",teams:["Atlético Madrid","Granada","Udinese","Valencia"]}
+  {name:"Guillaume Gillet",teams:["FC Nantes","SC Bastia"]}
+  {name:"Guillaume Hoarau",teams:["Girondins de Bordeaux","Paris Saint-Germain"]}
+  {name:"Guillaume Lacour",teams:["RC Strasbourg","Évian TG"]}
+  {name:"Guillaume Loriot",teams:["FC Valenciennes","Le Mans FC"]}
+  {name:"Guillaume Moullec",teams:["FC Lorient","FC Nantes","Montpellier HSC"]}
+  {name:"Guillaume Restes",teams:["Toulouse FC"]}
+  {name:"Guillaume Rippert",teams:["FC Valenciennes","Évian TG"]}
+  {name:"Guillaume Warmuz",teams:["AS Monaco","Borussia Dortmund","RC Lens"]}
+  {name:"Guillermo Amor",teams:["Villarreal"]}
+  {name:"Guillermo Daniel Rodríguez",teams:["Cesena","Hellas Verona","RC Lens","Torino"]}
+  {name:"Guillermo Franco",teams:["Villarreal","West Ham United"]}
+  {name:"Guillermo Giacomazzi",teams:["Empoli","Lecce","Palermo"]}
+  {name:"Guillermo Maripán",teams:["AS Monaco","Alavés","Torino"]}
+  {name:"Guillermo Ochoa",teams:["GFC Ajaccio","Granada","Málaga","Salernitana"]}
+  {name:"Guillermo Pereyra",teams:["Mallorca"]}
+  {name:"Guirane N'Daw",teams:["AS Saint-Étienne","FC Metz","FC Nantes","FC Sochaux","Real Zaragoza"]}
+  {name:"Gus Poyet",teams:["Chelsea","Tottenham Hotspur"]}
+  {name:"Gustav Isaksen",teams:["Lazio"]}
+  {name:"Gustavo Cabral",teams:["Celta Vigo","Levante"]}
+  {name:"Gustavo López",teams:["Celta Vigo"]}
+  {name:"Gustavo Munúa",teams:["Deportivo La Coruña","Levante","Málaga"]}
+  {name:"Gustavo Varela",teams:["FC Schalke 04"]}
+  {name:"Guti",teams:["Real Madrid"]}
+  {name:"Guy Demel",teams:["Borussia Dortmund","Hamburger SV","West Ham United"]}
+  {name:"Guy N'dy Assembé",teams:["AS Nancy","EA Guingamp","FC Nantes","FC Valenciennes"]}
+  {name:"Guðni Bergsson",teams:["Bolton Wanderers"]}
+  {name:"Gvidas Gineitis",teams:["Torino"]}
+  {name:"Gylfi Sigurðsson",teams:["Everton","Swansea City","TSG Hoffenheim","Tottenham Hotspur"]}
+  {name:"György Garics",teams:["Atalanta","Bologna","Napoli","SV Darmstadt 98"]}
+  {name:"Gábor Király",teams:["Aston Villa","Crystal Palace","Hertha BSC"]}
+  {name:"Géder",teams:["Le Mans FC"]}
+  {name:"Gérald Baticle",teams:["Estac Troyes","FC Metz"]}
+  {name:"Gérald Cid",teams:["Bolton Wanderers","Girondins de Bordeaux","OGC Nice"]}
+  {name:"Gökhan Inler",teams:["Leicester City","Napoli","Udinese"]}
+  {name:"Gōtoku Sakai",teams:["Hamburger SV","VfB Stuttgart"]}
+  {name:"Habib Bamogo",teams:["Celta Vigo","FC Nantes","Montpellier HSC","OGC Nice","Olympique de Marseille"]}
+  {name:"Habib Bellaïd",teams:["Boulogne","Eintracht Frankfurt","RC Strasbourg"]}
+  {name:"Habib Beye",teams:["Aston Villa","Newcastle United","Olympique de Marseille","RC Strasbourg"]}
+  {name:"Habib Diallo",teams:["FC Metz","RC Strasbourg"]}
+  {name:"Habib Diarra",teams:["RC Strasbourg","Sunderland"]}
+  {name:"Habib Maïga",teams:["AS Saint-Étienne","FC Metz"]}
+  {name:"Haitam Aleesami",teams:["Amiens SC","Palermo"]}
+  {name:"Hajime Hosogai",teams:["Bayer Leverkusen","FC Augsburg","Hertha BSC"]}
+  {name:"Hakan Çalhanoğlu",teams:["AC Milan","Bayer Leverkusen","Hamburger SV","Inter Milan"]}
+  {name:"Hakim Saci",teams:["EA Guingamp","FC Metz"]}
+  {name:"Hakim Ziyech",teams:["Chelsea"]}
+  {name:"Hal Robson-Kanu",teams:["Reading","West Bromwich Albion"]}
+  {name:"Halil Altıntop",teams:["1. FC Kaiserslautern","Eintracht Frankfurt","FC Augsburg","FC Schalke 04"]}
+  {name:"Hamari Traoré",teams:["Paris FC","Real Sociedad","Stade Rennais","Stade de Reims"]}
+  {name:"Hamed Junior Traorè",teams:["AFC Bournemouth","AJ Auxerre","Empoli","Napoli","Olympique de Marseille","Sassuolo"]}
+  {name:"Hameur Bouazza",teams:["AC Arles-Avignon","Fulham","Watford"]}
+  {name:"Hamit Altıntop",teams:["Bayern Munich","FC Schalke 04","Real Madrid","SV Darmstadt 98"]}
+  {name:"Hamza Choudhury",teams:["Leicester City"]}
+  {name:"Han-Noah Massengo",teams:["AJ Auxerre","AS Monaco","Burnley","FC Augsburg"]}
+  {name:"Hannes Wolf",teams:["Borussia Mönchengladbach","RB Leipzig"]}
+  {name:"Hanno Balitsch",teams:["1. FC Nürnberg","1. FSV Mainz 05","Bayer Leverkusen","FC Köln","Hannover 96"]}
+  {name:"Hans Hateboer",teams:["Atalanta","Olympique Lyonnais","Stade Rennais"]}
+  {name:"Hans Nicolussi Caviglia",teams:["Fiorentina","Juventus","Parma","Salernitana","Venezia"]}
+  {name:"Hans Sarpei",teams:["Bayer Leverkusen","FC Schalke 04","VfL Wolfsburg"]}
+  {name:"Hans-Jörg Butt",teams:["Bayer Leverkusen","Bayern Munich","Hamburger SV"]}
+  {name:"Hany Ramzy",teams:["1. FC Kaiserslautern"]}
+  {name:"Harald Cerny",teams:["1860 Munich"]}
+  {name:"Haris Belkebla",teams:["Angers SCO","Stade Brestois 29"]}
+  {name:"Haris Medunjanin",teams:["Deportivo La Coruña","Real Valladolid"]}
+  {name:"Haris Seferović",teams:["Celta Vigo","Eintracht Frankfurt","Fiorentina","Lecce","Real Sociedad"]}
+  {name:"Harold Moukoudi",teams:["AS Saint-Étienne"]}
+  {name:"Harrison Reed",teams:["Fulham","Southampton"]}
+  {name:"Harry Arter",teams:["AFC Bournemouth","Cardiff City"]}
+  {name:"Harry Kane",teams:["Bayern Munich","Norwich City","Tottenham Hotspur"]}
+  {name:"Harry Kewell",teams:["Leeds United","Liverpool"]}
+  {name:"Harry Koch",teams:["1. FC Kaiserslautern"]}
+  {name:"Harry Maguire",teams:["Hull City","Leicester City","Manchester United"]}
+  {name:"Harry Wilson",teams:["AFC Bournemouth","Fulham"]}
+  {name:"Harry Winks",teams:["Leicester City","Sampdoria","Tottenham Hotspur"]}
+  {name:"Harvey Barnes",teams:["Leicester City","Newcastle United"]}
+  {name:"Harvey Elliott",teams:["Aston Villa","Fulham","Liverpool"]}
+  {name:"Hasan Salihamidžić",teams:["Bayern Munich","Juventus","VfL Wolfsburg"]}
+  {name:"Hassan Ahamada",teams:["FC Nantes","SC Bastia"]}
+  {name:"Hassan El Fakiri",teams:["AS Monaco","Borussia Mönchengladbach"]}
+  {name:"Hassan Kachloul",teams:["Aston Villa","Southampton","Wolverhampton Wanderers"]}
+  {name:"Hassan Yebda",teams:["Granada","Le Mans FC","Napoli","Portsmouth","Udinese"]}
+  {name:"Hassane Kamara",teams:["OGC Nice","Stade de Reims","Udinese","Watford"]}
+  {name:"Hatem Ben Arfa",teams:["Girondins de Bordeaux","Hull City","LOSC Lille","Newcastle United","OGC Nice","Olympique Lyonnais","Olympique de Marseille","Paris Saint-Germain","Real Valladolid","Stade Rennais"]}
+  {name:"Hauke Wahl",teams:["FC St. Pauli"]}
+  {name:"Hayden Mullins",teams:["Portsmouth","West Ham United"]}
+  {name:"Hedwiges Maduro",teams:["Sevilla","Valencia"]}
+  {name:"Heiko Butscher",teams:["Eintracht Frankfurt","SC Freiburg","VfL Bochum"]}
+  {name:"Heiko Gerber",teams:["VfB Stuttgart"]}
+  {name:"Heiko Westermann",teams:["Arminia Bielefeld","FC Schalke 04","Hamburger SV","Real Betis"]}
+  {name:"Heinz Müller",teams:["1. FSV Mainz 05"]}
+  {name:"Heiðar Helguson",teams:["Bolton Wanderers","Fulham","Queens Park Rangers"]}
+  {name:"Helibelton Palacios",teams:["Elche"]}
+  {name:"Hendry Thomas",teams:["Wigan Athletic"]}
+  {name:"Henning Berg",teams:["Blackburn Rovers","Manchester United"]}
+  {name:"Henok Goitom",teams:["Almería","Getafe","Real Murcia","Real Valladolid","Udinese"]}
+  {name:"Henri Bedimo",teams:["Montpellier HSC","Olympique Lyonnais","Olympique de Marseille","RC Lens","Toulouse FC"]}
+  {name:"Henri Camara",teams:["Sedan","Southampton","Stoke City","West Ham United","Wigan Athletic","Wolverhampton Wanderers"]}
+  {name:"Henri Saivet",teams:["AS Saint-Étienne","Girondins de Bordeaux","Newcastle United"]}
+  {name:"Henrik Pedersen",teams:["Bolton Wanderers"]}
+  {name:"Henrikh Mkhitaryan",teams:["AS Roma","Arsenal","Borussia Dortmund","Inter Milan","Manchester United"]}
+  {name:"Henrique",teams:["Bayer Leverkusen","Girondins de Bordeaux","Napoli","Racing Santander"]}
+  {name:"Henrique Sereno",teams:["FC Köln","Real Valladolid"]}
+  {name:"Henry Giménez",teams:["Bologna"]}
+  {name:"Hermann Hreiðarsson",teams:["Charlton Athletic","Ipswich Town","Portsmouth"]}
+  {name:"Hermes Desio",teams:["Alavés"]}
+  {name:"Hernanes",teams:["Inter Milan","Juventus","Lazio"]}
+  {name:"Hernani",teams:["AS Saint-Étienne","Genoa","Parma"]}
+  {name:"Hernán Bernardello",teams:["Almería"]}
+  {name:"Hernán Crespo",teams:["AC Milan","Chelsea","Genoa","Inter Milan","Lazio","Parma"]}
+  {name:"Hernán Pellerano",teams:["Almería"]}
+  {name:"Hernán Pérez",teams:["Alavés","Espanyol","Villarreal"]}
+  {name:"Hervé Bazile",teams:["SM Caen"]}
+  {name:"Hervé Tum",teams:["FC Metz"]}
+  {name:"Heurelho Gomes",teams:["TSG Hoffenheim","Tottenham Hotspur","Watford"]}
+  {name:"Hicham Boudaoui",teams:["OGC Nice"]}
+  {name:"Hidetoshi Nakata",teams:["AS Roma","Bologna","Bolton Wanderers","Fiorentina","Parma"]}
+  {name:"Himad Abdelli",teams:["Angers SCO","Olympique de Marseille"]}
+  {name:"Hiroki Ito",teams:["Bayern Munich","VfB Stuttgart"]}
+  {name:"Hiroki Sakai",teams:["Hannover 96","Olympique de Marseille"]}
+  {name:"Hiroshi Kiyotake",teams:["1. FC Nürnberg","Hannover 96","Sevilla"]}
+  {name:"Hirving Lozano",teams:["Napoli"]}
+  {name:"Hoalid Regragui",teams:["GFC Ajaccio","Grenoble Foot","Racing Santander","Toulouse FC"]}
+  {name:"Holger Badstuber",teams:["Bayern Munich","FC Schalke 04","VfB Stuttgart"]}
+  {name:"Hong Jeong-ho",teams:["FC Augsburg"]}
+  {name:"Horst Heldt",teams:["Eintracht Frankfurt","VfB Stuttgart"]}
+  {name:"Houboulang Mendes",teams:["Almería","FC Lorient"]}
+  {name:"Houssem Aouar",teams:["AS Roma","Olympique Lyonnais"]}
+  {name:"Houssine Kharja",teams:["AS Roma","Fiorentina","Genoa","Inter Milan","Siena"]}
+  {name:"Hubert Fournier",teams:["EA Guingamp"]}
+  {name:"Hugo Almeida",teams:["Cesena","Hannover 96","Werder Bremen"]}
+  {name:"Hugo Bueno",teams:["Wolverhampton Wanderers"]}
+  {name:"Hugo Campagnaro",teams:["Inter Milan","Napoli","Pescara","Piacenza","Sampdoria"]}
+  {name:"Hugo Duro",teams:["Getafe","Real Madrid","Valencia"]}
+  {name:"Hugo Ekitike",teams:["Eintracht Frankfurt","Liverpool","Paris Saint-Germain","Stade de Reims"]}
+  {name:"Hugo Guillamón",teams:["Valencia"]}
+  {name:"Hugo Ibarra",teams:["AS Monaco","Espanyol"]}
+  {name:"Hugo Larsson",teams:["Eintracht Frankfurt"]}
+  {name:"Hugo Leal",teams:["Paris Saint-Germain"]}
+  {name:"Hugo Lloris",teams:["OGC Nice","Olympique Lyonnais","Tottenham Hotspur"]}
+  {name:"Hugo Magnetti",teams:["Stade Brestois 29"]}
+  {name:"Hugo Mallo",teams:["Celta Vigo"]}
+  {name:"Hugo Rodallega",teams:["Fulham","Wigan Athletic"]}
+  {name:"Hugo Sotelo",teams:["Celta Vigo"]}
+  {name:"Hugo Viana",teams:["Newcastle United","Osasuna","Valencia"]}
+  {name:"Hugo Álvarez",teams:["Celta Vigo"]}
+  {name:"Hwang Hee-chan",teams:["RB Leipzig","Wolverhampton Wanderers"]}
+  {name:"Hwang Ui-jo",teams:["Girondins de Bordeaux"]}
+  {name:"Hákon Haraldsson",teams:["LOSC Lille"]}
+  {name:"Håvard Nordtveit",teams:["1. FC Nürnberg","Borussia Mönchengladbach","Fulham","TSG Hoffenheim","West Ham United"]}
+  {name:"Héctor Bellerín",teams:["Arsenal","Barcelona","Real Betis"]}
+  {name:"Héctor Berenguel",teams:["Deportivo La Coruña","Mallorca"]}
+  {name:"Héctor Font",teams:["Osasuna","Real Valladolid","Villarreal"]}
+  {name:"Héctor Herrera",teams:["Atlético Madrid"]}
+  {name:"Héctor Moreno",teams:["AS Roma","Espanyol","Real Sociedad"]}
+  {name:"Hélder Baptista",teams:["Rayo Vallecano"]}
+  {name:"Hélder Costa",teams:["AS Monaco","Deportivo La Coruña","Leeds United","Valencia","Wolverhampton Wanderers"]}
+  {name:"Hélder Postiga",teams:["AS Saint-Étienne","Deportivo La Coruña","Lazio","Real Zaragoza","Tottenham Hotspur","Valencia"]}
+  {name:"Hérita Ilunga",teams:["AS Saint-Étienne","Stade Rennais","Toulouse FC","West Ham United"]}
+  {name:"Iacopo Balestri",teams:["Modena","Reggina","Torino"]}
+  {name:"Iago",teams:["FC Augsburg"]}
+  {name:"Iago Aspas",teams:["Celta Vigo","Liverpool","Sevilla"]}
+  {name:"Iago Bouzón",teams:["Celta Vigo","Córdoba","Recreativo"]}
+  {name:"Iago Falque",teams:["AS Roma","Benevento","Genoa","Rayo Vallecano","Torino","Tottenham Hotspur"]}
+  {name:"Iago Herrerín",teams:["Athletic Bilbao","Leganés"]}
+  {name:"Ian Harte",teams:["Leeds United","Levante","Reading","Sunderland"]}
+  {name:"Ian Maatsen",teams:["Aston Villa","Borussia Dortmund","Chelsea"]}
+  {name:"Ian Pearce",teams:["Fulham","West Ham United"]}
+  {name:"Ian Taylor",teams:["Aston Villa"]}
+  {name:"Ian Walker",teams:["Leicester City","Tottenham Hotspur"]}
+  {name:"Ibai Gómez",teams:["Alavés","Athletic Bilbao"]}
+  {name:"Ibon Begoña",teams:["Alavés"]}
+  {name:"Ibrahim Afellay",teams:["Barcelona","FC Schalke 04","Stoke City"]}
+  {name:"Ibrahim Amadou",teams:["AS Nancy","Angers SCO","FC Metz","LOSC Lille","Leganés","Norwich City","Sevilla"]}
+  {name:"Ibrahim Salah",teams:["Stade Brestois 29","Stade Rennais"]}
+  {name:"Ibrahim Sangaré",teams:["Nottingham Forest","Toulouse FC"]}
+  {name:"Ibrahim Sulemana",teams:["Atalanta","Bologna","Cagliari","Hellas Verona"]}
+  {name:"Ibrahim Tall",teams:["FC Nantes","FC Sochaux"]}
+  {name:"Ibrahim Tanko",teams:["Borussia Dortmund","SC Freiburg"]}
+  {name:"Ibrahima Bakayoko",teams:["Istres","Livorno","Messina","Olympique de Marseille","Osasuna"]}
+  {name:"Ibrahima Bangoura",teams:["Estac Troyes"]}
+  {name:"Ibrahima Camara",teams:["Le Mans FC","Parma"]}
+  {name:"Ibrahima Diallo",teams:["Southampton","Stade Brestois 29"]}
+  {name:"Ibrahima Faye",teams:["Estac Troyes","SM Caen"]}
+  {name:"Ibrahima Konaté",teams:["Liverpool","RB Leipzig"]}
+  {name:"Ibrahima Koné",teams:["Almería","FC Lorient"]}
+  {name:"Ibrahima Mbaye",teams:["Bologna","Inter Milan","Livorno"]}
+  {name:"Ibrahima Niane",teams:["Angers SCO","FC Metz"]}
+  {name:"Ibrahima Sissoko",teams:["FC Nantes","RC Strasbourg","VfL Bochum"]}
+  {name:"Ibrahima Sonko",teams:["Hull City","Reading","Stoke City"]}
+  {name:"Ibrahima Traoré",teams:["Borussia Mönchengladbach","Hertha BSC","VfB Stuttgart"]}
+  {name:"Ibán Cuadrado",teams:["Málaga","Real Murcia"]}
+  {name:"Idan Tal",teams:["Bolton Wanderers","Everton","Rayo Vallecano"]}
+  {name:"Iddrisu Baba",teams:["Almería","Mallorca"]}
+  {name:"Idriss Saadi",teams:["AS Saint-Étienne","RC Strasbourg"]}
+  {name:"Idrissa Gana Gueye",teams:["Aston Villa","Everton","LOSC Lille","Paris Saint-Germain"]}
+  {name:"Ighli Vannucchi",teams:["Empoli","Venezia"]}
+  {name:"Iglesias",teams:["Getafe"]}
+  {name:"Igli Tare",teams:["1. FC Kaiserslautern","Bologna","Brescia","Lazio"]}
+  {name:"Ignacio Camacho",teams:["Atlético Madrid","Málaga","VfL Wolfsburg"]}
+  {name:"Ignacio Pussetto",teams:["Sampdoria","Udinese","Watford"]}
+  {name:"Ignasi Miquel",teams:["Arsenal","Getafe","Granada","Málaga"]}
+  {name:"Ignatius Ganago",teams:["FC Nantes","OGC Nice","RC Lens"]}
+  {name:"Ignazio Abate",teams:["AC Milan","Empoli","Torino"]}
+  {name:"Igor",teams:["Brighton & Hove Albion","Fiorentina","SPAL","West Ham United"]}
+  {name:"Igor Bišćan",teams:["Liverpool"]}
+  {name:"Igor Budan",teams:["Ascoli","Atalanta","Cesena","Palermo","Parma","Venezia"]}
+  {name:"Igor Carioca",teams:["FC Lorient"]}
+  {name:"Igor Demo",teams:["Borussia Mönchengladbach"]}
+  {name:"Igor Gabilondo",teams:["Athletic Bilbao","Real Sociedad"]}
+  {name:"Igor Jauregi",teams:["Real Sociedad"]}
+  {name:"Igor Mitreski",teams:["Energie Cottbus"]}
+  {name:"Igor Tudor",teams:["Juventus","Siena"]}
+  {name:"Igor Zubeldia",teams:["Real Sociedad"]}
+  {name:"Igor de Camargo",teams:["Borussia Mönchengladbach","TSG Hoffenheim"]}
+  {name:"Ihlas Bebou",teams:["Hannover 96","TSG Hoffenheim"]}
+  {name:"Ikechukwu Uche",teams:["Getafe","Granada","Málaga","Real Zaragoza","Recreativo","Villarreal"]}
+  {name:"Iker Casillas",teams:["Real Madrid"]}
+  {name:"Iker Muniain",teams:["Athletic Bilbao"]}
+  {name:"Iker Muñoz",teams:["Osasuna"]}
+  {name:"Ilaix Moriba",teams:["Barcelona","Celta Vigo","Getafe","RB Leipzig","Valencia"]}
+  {name:"Ilan",teams:["AS Saint-Étienne","FC Sochaux","GFC Ajaccio","SC Bastia","West Ham United"]}
+  {name:"Ilan Kebbal",teams:["Paris FC","Stade de Reims"]}
+  {name:"Ilia Gruev",teams:["Leeds United","Werder Bremen"]}
+  {name:"Ilias Akhomach",teams:["Barcelona","Rayo Vallecano","Villarreal"]}
+  {name:"Ilija Nestorovski",teams:["Palermo","Udinese"]}
+  {name:"Iliman Ndiaye",teams:["Everton","Olympique de Marseille","Sheffield United"]}
+  {name:"Illan Meslier",teams:["Leeds United"]}
+  {name:"Illia Zabarnyi",teams:["AFC Bournemouth","Paris Saint-Germain"]}
+  {name:"Imanol Agirretxe",teams:["Real Sociedad"]}
+  {name:"Imanol Etxeberria",teams:["Rayo Vallecano"]}
+  {name:"Immanuel Höhn",teams:["SC Freiburg","SV Darmstadt 98"]}
+  {name:"Imran Louza",teams:["FC Lorient","FC Nantes","Watford"]}
+  {name:"Imre Szabics",teams:["1. FSV Mainz 05","FC Köln","VfB Stuttgart"]}
+  {name:"Ingo Hertzsch",teams:["1. FC Kaiserslautern","Eintracht Frankfurt","Hamburger SV"]}
+  {name:"Innocent Emeghara",teams:["FC Lorient","Livorno","Siena"]}
+  {name:"Ioannis Amanatidis",teams:["1. FC Kaiserslautern","Eintracht Frankfurt","VfB Stuttgart"]}
+  {name:"Ion Ansotegi",teams:["Eibar","Real Sociedad"]}
+  {name:"Ionel Ganea",teams:["VfB Stuttgart","Wolverhampton Wanderers"]}
+  {name:"Ionuț Radu",teams:["AFC Bournemouth","AJ Auxerre","Celta Vigo","Cremonese","Genoa","Inter Milan","Venezia"]}
+  {name:"Ireneusz Jeleń",teams:["AJ Auxerre","LOSC Lille"]}
+  {name:"Iriney",teams:["Almería","Celta Vigo","Granada","Rayo Vallecano","Real Betis"]}
+  {name:"Irvin Cardona",teams:["AS Monaco","AS Saint-Étienne","Espanyol","FC Augsburg","Stade Brestois 29"]}
+  {name:"Isaac Boakye",teams:["1. FC Nürnberg","Arminia Bielefeld","VfL Wolfsburg"]}
+  {name:"Isaac Carcelen",teams:["Cádiz"]}
+  {name:"Isaac Cofie",teams:["Carpi","Chievo Verona","Genoa"]}
+  {name:"Isaac Cuenca",teams:["Barcelona","Deportivo La Coruña","Granada"]}
+  {name:"Isaac Hayden",teams:["Newcastle United"]}
+  {name:"Isaac Mbenza",teams:["Amiens SC","Huddersfield Town","Montpellier HSC"]}
+  {name:"Isaac Palazón Camacho",teams:["Rayo Vallecano"]}
+  {name:"Isaac Romero",teams:["Sevilla"]}
+  {name:"Isaac Success",teams:["Granada","Málaga","Udinese","Watford"]}
+  {name:"Isaac Vorsah",teams:["TSG Hoffenheim"]}
+  {name:"Isak Hien",teams:["Atalanta","Hellas Verona"]}
+  {name:"Isco",teams:["Málaga","Real Betis","Real Madrid","Sevilla","Valencia"]}
+  {name:"Ishak Belfodil",teams:["Bologna","Hertha BSC","Inter Milan","Livorno","Olympique Lyonnais","Parma","TSG Hoffenheim","Werder Bremen"]}
+  {name:"Islam Slimani",teams:["AS Monaco","Leicester City","Newcastle United","Olympique Lyonnais","Stade Brestois 29"]}
+  {name:"Isma López",teams:["Athletic Bilbao","Sporting Gijón"]}
+  {name:"Ismael Urzaiz",teams:["Athletic Bilbao"]}
+  {name:"Ismail Jakobs",teams:["AS Monaco","FC Köln"]}
+  {name:"Ismaila Sarr",teams:["Crystal Palace","FC Metz","Olympique de Marseille","Stade Rennais","Watford"]}
+  {name:"Ismaily",teams:["LOSC Lille"]}
+  {name:"Ismaël Bangoura",teams:["FC Nantes","Le Mans FC","Stade Rennais"]}
+  {name:"Ismaël Bennacer",teams:["AC Milan","Empoli","Olympique de Marseille"]}
+  {name:"Ismaël Diomandé",teams:["AS Saint-Étienne","SM Caen"]}
+  {name:"Ismaël Doukouré",teams:["RC Strasbourg"]}
+  {name:"Ismaël Traoré",teams:["Angers SCO","FC Metz","Stade Brestois 29"]}
+  {name:"Issa Cissokho",teams:["Amiens SC","Angers SCO","FC Nantes","Genoa"]}
+  {name:"Issa Diop",teams:["Fulham","Toulouse FC","West Ham United"]}
+  {name:"Issa Kaboré",teams:["Estac Troyes","Luton Town","Olympique de Marseille","Werder Bremen"]}
+  {name:"Issa Soumaré",teams:["Le Havre AC"]}
+  {name:"Issam Jemâa",teams:["AJ Auxerre","RC Lens","SM Caen","Stade Brestois 29"]}
+  {name:"Issiaga Sylla",teams:["Gazélec Ajaccio","Montpellier HSC","RC Lens","Toulouse FC"]}
+  {name:"Issiar Dia",teams:["AS Nancy","Gazélec Ajaccio"]}
+  {name:"Issoumaila Dao",teams:["Toulouse FC"]}
+  {name:"Itay Shechter",teams:["1. FC Kaiserslautern","FC Nantes","Swansea City"]}
+  {name:"Ito",teams:["Espanyol","Real Betis"]}
+  {name:"Iulian Filipescu",teams:["MSV Duisburg","Real Betis"]}
+  {name:"Ivan Cavaleiro",teams:["AS Monaco","Deportivo La Coruña","Fulham","LOSC Lille","Wolverhampton Wanderers"]}
+  {name:"Ivan Franceschini",teams:["Reggina","Torino"]}
+  {name:"Ivan Ilić",teams:["Hellas Verona","Torino"]}
+  {name:"Ivan Jurić",teams:["Genoa"]}
+  {name:"Ivan Klasnić",teams:["1. FSV Mainz 05","Bolton Wanderers","FC Nantes","Werder Bremen"]}
+  {name:"Ivan Leko",teams:["Málaga"]}
+  {name:"Ivan Ordets",teams:["VfL Bochum"]}
+  {name:"Ivan Pelizzoli",teams:["AS Roma","Atalanta","Cagliari","Pescara","Reggina"]}
+  {name:"Ivan Perišić",teams:["Bayern Munich","Borussia Dortmund","Inter Milan","Tottenham Hotspur","VfL Wolfsburg"]}
+  {name:"Ivan Provedel",teams:["Empoli","Lazio","Spezia"]}
+  {name:"Ivan Radovanović",teams:["Atalanta","Bologna","Chievo Verona","Genoa","Novara","Salernitana"]}
+  {name:"Ivan Rakitić",teams:["Barcelona","FC Schalke 04","Sevilla"]}
+  {name:"Ivan Saenko",teams:["1. FC Nürnberg"]}
+  {name:"Ivan Santini",teams:["SC Freiburg","SM Caen"]}
+  {name:"Ivan Toney",teams:["Brentford","Newcastle United"]}
+  {name:"Ivaylo Chochev",teams:["Palermo"]}
+  {name:"Ivica Banović",teams:["1. FC Nürnberg","SC Freiburg","Werder Bremen"]}
+  {name:"Ivica Dragutinović",teams:["Sevilla"]}
+  {name:"Ivica Iliev",teams:["Energie Cottbus","Messina"]}
+  {name:"Ivica Olić",teams:["Bayern Munich","Hamburger SV","VfL Wolfsburg"]}
+  {name:"Ivo Iličević",teams:["1. FC Kaiserslautern","1. FC Nürnberg","Hamburger SV","VfL Bochum"]}
+  {name:"Ivo Ulich",teams:["Borussia Mönchengladbach"]}
+  {name:"Iván Alejo",teams:["Cádiz","Eibar","Getafe"]}
+  {name:"Iván Alonso",teams:["Alavés","Espanyol","Real Murcia"]}
+  {name:"Iván Ania",teams:["Cádiz","Real Oviedo","Tenerife"]}
+  {name:"Iván Balliu",teams:["FC Metz","Rayo Vallecano"]}
+  {name:"Iván Campo",teams:["Bolton Wanderers","Real Madrid"]}
+  {name:"Iván Cuéllar",teams:["Atlético Madrid","Leganés","Mallorca","Sporting Gijón"]}
+  {name:"Iván Córdoba",teams:["Inter Milan"]}
+  {name:"Iván Helguera",teams:["Real Madrid","Valencia"]}
+  {name:"Iván Hernández",teams:["Sporting Gijón"]}
+  {name:"Iván Marcano",teams:["AS Roma","Getafe","Racing Santander","Villarreal"]}
+  {name:"Iván Marcone",teams:["Elche"]}
+  {name:"Iván Martín",teams:["Alavés","Girona"]}
+  {name:"Iván Piris",teams:["AS Roma","Udinese"]}
+  {name:"Iván Ramis",teams:["Eibar","Levante","Mallorca","Wigan Athletic"]}
+  {name:"Iván Rosado",teams:["Osasuna"]}
+  {name:"Iván Sánchez",teams:["Real Valladolid"]}
+  {name:"Iván Villar",teams:["Celta Vigo"]}
+  {name:"Iván de la Peña",teams:["Barcelona","Espanyol","Lazio"]}
+  {name:"Iñaki Descarga",teams:["Levante"]}
+  {name:"Iñaki Lafuente",teams:["Athletic Bilbao","Espanyol","Sporting Gijón"]}
+  {name:"Iñaki Muñoz",teams:["Athletic Bilbao","Osasuna"]}
+  {name:"Iñaki Williams",teams:["Athletic Bilbao"]}
+  {name:"Iñigo Córdoba",teams:["Alavés","Athletic Bilbao"]}
+  {name:"Iñigo Idiakez",teams:["Real Sociedad"]}
+  {name:"Iñigo Larrainzar",teams:["Athletic Bilbao"]}
+  {name:"Iñigo Lekue",teams:["Athletic Bilbao"]}
+  {name:"Iñigo Martínez",teams:["Athletic Bilbao","Barcelona","Real Sociedad"]}
+  {name:"Iñigo Pérez",teams:["Athletic Bilbao","Osasuna"]}
+  {name:"Iñigo Ruiz de Galarreta",teams:["Athletic Bilbao","Mallorca"]}
+  {name:"Jaap Stam",teams:["AC Milan","Lazio","Manchester United"]}
+  {name:"Jacek Bąk",teams:["Olympique Lyonnais","RC Lens"]}
+  {name:"Jacek Krzynówek",teams:["1. FC Nürnberg","Bayer Leverkusen","Hannover 96","VfL Wolfsburg"]}
+  {name:"Jack Butland",teams:["Crystal Palace","Stoke City"]}
+  {name:"Jack Colback",teams:["Newcastle United","Nottingham Forest","Sunderland"]}
+  {name:"Jack Collison",teams:["West Ham United"]}
+  {name:"Jack Cork",teams:["Burnley","Southampton","Swansea City"]}
+  {name:"Jack Grealish",teams:["Aston Villa","Everton","Manchester City"]}
+  {name:"Jack Harrison",teams:["Everton","Fiorentina","Leeds United"]}
+  {name:"Jack Hinshelwood",teams:["Brighton & Hove Albion"]}
+  {name:"Jack Robinson",teams:["Liverpool","Sheffield United"]}
+  {name:"Jack Rodwell",teams:["Everton","Manchester City","Sheffield United","Sunderland"]}
+  {name:"Jack Stephens",teams:["AFC Bournemouth","Southampton"]}
+  {name:"Jack Wilshere",teams:["AFC Bournemouth","Arsenal","Bolton Wanderers","West Ham United"]}
+  {name:"Jackson Tchatchoua",teams:["Hellas Verona","Wolverhampton Wanderers"]}
+  {name:"Jacob Bruun Larsen",teams:["Borussia Dortmund","Burnley","TSG Hoffenheim","VfB Stuttgart"]}
+  {name:"Jacob Murphy",teams:["Newcastle United"]}
+  {name:"Jacob Ramsey",teams:["Aston Villa","Newcastle United"]}
+  {name:"Jacopo Fazzini",teams:["Empoli","Fiorentina"]}
+  {name:"Jacopo Petriccione",teams:["Crotone","Lecce"]}
+  {name:"Jacopo Sala",teams:["Hamburger SV","Hellas Verona","SPAL","Sampdoria","Spezia"]}
+  {name:"Jacques Abardonado",teams:["1. FC Nürnberg","FC Lorient","FC Valenciennes","OGC Nice","Olympique de Marseille"]}
+  {name:"Jacques Faty",teams:["FC Sochaux","Olympique de Marseille","SC Bastia","Stade Rennais"]}
+  {name:"Jacques Zoua",teams:["Gazélec Ajaccio","Hamburger SV"]}
+  {name:"Jadon Sancho",teams:["Aston Villa","Borussia Dortmund","Chelsea","Manchester United"]}
+  {name:"Jaidon Anthony",teams:["AFC Bournemouth","Burnley"]}
+  {name:"Jaime",teams:["Albacete","Hannover 96","Racing Santander","Tenerife"]}
+  {name:"Jaime Gavilán",teams:["Getafe","Levante","Valencia"]}
+  {name:"Jaime Mata",teams:["Getafe","Las Palmas"]}
+  {name:"Jaime Romero",teams:["Bari","Granada","Osasuna","Udinese"]}
+  {name:"Jaime Valdés",teams:["Atalanta","Bari","Fiorentina","Lecce","Parma"]}
+  {name:"Jairo Samperio",teams:["1. FSV Mainz 05","Las Palmas","Racing Santander","Sevilla"]}
+  {name:"Jaka Bijol",teams:["Leeds United","Udinese"]}
+  {name:"Jake Livermore",teams:["Hull City","Tottenham Hotspur","West Bromwich Albion"]}
+  {name:"Jake O'Brien",teams:["Everton","Olympique Lyonnais"]}
+  {name:"Jakub Błaszczykowski",teams:["Borussia Dortmund","Fiorentina","VfL Wolfsburg"]}
+  {name:"Jakub Jankto",teams:["Cagliari","Getafe","Sampdoria","Udinese"]}
+  {name:"Jakub Kamiński",teams:["FC Köln","VfL Wolfsburg"]}
+  {name:"Jakub Kiwior",teams:["Arsenal","Spezia"]}
+  {name:"Jakub Moder",teams:["Brighton & Hove Albion"]}
+  {name:"Jamaal Lascelles",teams:["Newcastle United"]}
+  {name:"Jamal Lewis",teams:["Newcastle United","Norwich City"]}
+  {name:"Jamal Musiala",teams:["Bayern Munich"]}
+  {name:"Jamel Aït Ben Idir",teams:["AC Arles-Avignon","Le Havre AC"]}
+  {name:"Jamel Saihi",teams:["Angers SCO","Montpellier HSC"]}
+  {name:"James Beattie",teams:["Blackpool","Everton","Southampton","Stoke City"]}
+  {name:"James Chester",teams:["Hull City","West Bromwich Albion"]}
+  {name:"James Collins",teams:["Aston Villa","West Ham United"]}
+  {name:"James Fanchone",teams:["FC Lorient","Le Mans FC","RC Strasbourg"]}
+  {name:"James Garner",teams:["Everton","Manchester United"]}
+  {name:"James Harper",teams:["Reading"]}
+  {name:"James Justin",teams:["Leeds United","Leicester City"]}
+  {name:"James Lea Siliki",teams:["Stade Rennais"]}
+  {name:"James Maddison",teams:["Leicester City","Tottenham Hotspur"]}
+  {name:"James McArthur",teams:["Crystal Palace","Wigan Athletic"]}
+  {name:"James McCarthy",teams:["Crystal Palace","Everton","Wigan Athletic"]}
+  {name:"James McClean",teams:["Sunderland","West Bromwich Albion"]}
+  {name:"James McFadden",teams:["Birmingham City","Everton","Sunderland"]}
+  {name:"James Mcatee",teams:["Manchester City","Nottingham Forest","Sheffield United"]}
+  {name:"James Milner",teams:["Aston Villa","Brighton & Hove Albion","Leeds United","Liverpool","Manchester City","Newcastle United"]}
+  {name:"James Morrison",teams:["Middlesbrough","West Bromwich Albion"]}
+  {name:"James Perch",teams:["Newcastle United"]}
+  {name:"James Rodríguez",teams:["AS Monaco","Bayern Munich","Everton","Rayo Vallecano","Real Madrid"]}
+  {name:"James Scowcroft",teams:["Ipswich Town","Leicester City"]}
+  {name:"James Tarkowski",teams:["Burnley","Everton"]}
+  {name:"James Tomkins",teams:["Crystal Palace","West Ham United"]}
+  {name:"James Vaughan",teams:["Everton","Norwich City"]}
+  {name:"James Ward-Prowse",teams:["Burnley","Nottingham Forest","Southampton","West Ham United"]}
+  {name:"Jamie Carragher",teams:["Liverpool"]}
+  {name:"Jamie Clapham",teams:["Birmingham City","Ipswich Town"]}
+  {name:"Jamie Gittens",teams:["Borussia Dortmund","Chelsea"]}
+  {name:"Jamie Leweling",teams:["1. FC Union Berlin","SpVgg Greuther Fürth","VfB Stuttgart"]}
+  {name:"Jamie Mackie",teams:["Queens Park Rangers"]}
+  {name:"Jamie O'Hara",teams:["Portsmouth","Tottenham Hotspur","Wolverhampton Wanderers"]}
+  {name:"Jamie Redknapp",teams:["Liverpool","Southampton","Tottenham Hotspur"]}
+  {name:"Jamie Vardy",teams:["Cremonese","Leicester City"]}
+  {name:"Jan Bednarek",teams:["Aston Villa","Southampton"]}
+  {name:"Jan Kirchhoff",teams:["1. FSV Mainz 05","Bayern Munich","FC Schalke 04","Sunderland"]}
+  {name:"Jan Koller",teams:["1. FC Nürnberg","AS Monaco","Borussia Dortmund"]}
+  {name:"Jan Morávek",teams:["1. FC Kaiserslautern","FC Augsburg","FC Schalke 04"]}
+  {name:"Jan Oblak",teams:["Atlético Madrid"]}
+  {name:"Jan Paul van Hecke",teams:["Brighton & Hove Albion"]}
+  {name:"Jan Polák",teams:["1. FC Nürnberg","VfL Wolfsburg"]}
+  {name:"Jan Rosenthal",teams:["Eintracht Frankfurt","Hannover 96","SC Freiburg","SV Darmstadt 98"]}
+  {name:"Jan Schlaudraff",teams:["Alemannia Aachen","Bayern Munich","Borussia Mönchengladbach","Hannover 96"]}
+  {name:"Jan Schöppner",teams:["1. FC Heidenheim"]}
+  {name:"Jan Thielmann",teams:["FC Köln"]}
+  {name:"Jan Vertonghen",teams:["Tottenham Hotspur"]}
+  {name:"Jan Šimák",teams:["1. FSV Mainz 05","Bayer Leverkusen","Hannover 96","VfB Stuttgart"]}
+  {name:"Jan Šimůnek",teams:["1. FC Kaiserslautern","VfL Wolfsburg"]}
+  {name:"Jan-Ingwer Callsen-Bracker",teams:["Bayer Leverkusen","Borussia Mönchengladbach","FC Augsburg"]}
+  {name:"Jan-Niklas Beste",teams:["1. FC Heidenheim","SC Freiburg"]}
+  {name:"Janik Haberer",teams:["1. FC Union Berlin","SC Freiburg"]}
+  {name:"Janis Blaswich",teams:["Bayer Leverkusen","RB Leipzig"]}
+  {name:"Jannes Horn",teams:["FC Köln","VfL Bochum","VfL Wolfsburg"]}
+  {name:"Jannik Vestergaard",teams:["Borussia Mönchengladbach","Leicester City","Southampton","TSG Hoffenheim","Werder Bremen"]}
+  {name:"Jaouad Zairi",teams:["FC Nantes","FC Sochaux"]}
+  {name:"Jaroslav Drobný",teams:["Fortuna Düsseldorf","Hamburger SV","Hertha BSC","VfL Bochum","Werder Bremen"]}
+  {name:"Jaroslav Plašil",teams:["AS Monaco","Catania","Girondins de Bordeaux","Osasuna"]}
+  {name:"Jarrad Branthwaite",teams:["Everton"]}
+  {name:"Jarrod Bowen",teams:["Hull City","West Ham United"]}
+  {name:"Jasmin Kurtić",teams:["Atalanta","Fiorentina","Palermo","Parma","SPAL","Sassuolo","Torino"]}
+  {name:"Jason",teams:["Alavés","Getafe","Levante","Valencia"]}
+  {name:"Jason Denayer",teams:["Olympique Lyonnais","Sunderland"]}
+  {name:"Jason Dodd",teams:["Southampton"]}
+  {name:"Jason Euell",teams:["Blackpool","Charlton Athletic","Middlesbrough"]}
+  {name:"Jason Koumas",teams:["West Bromwich Albion","Wigan Athletic"]}
+  {name:"Jason Puncheon",teams:["Blackpool","Crystal Palace","Huddersfield Town","Queens Park Rangers","Southampton"]}
+  {name:"Jason Roberts",teams:["Blackburn Rovers","Portsmouth","Reading","West Bromwich Albion","Wigan Athletic"]}
+  {name:"Jason Wilcox",teams:["Leeds United"]}
+  {name:"Jasper Cillessen",teams:["Barcelona","Las Palmas","Valencia"]}
+  {name:"Jaume Costa",teams:["Mallorca","Valencia","Villarreal"]}
+  {name:"Jaume Doménech",teams:["Valencia"]}
+  {name:"Javad Nekounam",teams:["Osasuna"]}
+  {name:"Javairô Dilrosun",teams:["Girondins de Bordeaux","Hertha BSC"]}
+  {name:"Javi Fuego",teams:["Espanyol","Levante","Rayo Vallecano","Recreativo","Valencia","Villarreal"]}
+  {name:"Javi Galán",teams:["Atlético Madrid","Celta Vigo","Huesca","Osasuna","Real Sociedad"]}
+  {name:"Javi García",teams:["Manchester City","Osasuna","Real Betis","Real Madrid"]}
+  {name:"Javi González",teams:["Athletic Bilbao"]}
+  {name:"Javi Gracia",teams:["Villarreal"]}
+  {name:"Javi Guerra",teams:["Málaga","Rayo Vallecano","Real Valladolid","Valencia"]}
+  {name:"Javi Guerrero",teams:["Celta Vigo","Racing Santander","Recreativo"]}
+  {name:"Javi Hernández",teams:["Cádiz","Girona","Leganés"]}
+  {name:"Javi López",teams:["Alavés","Espanyol","Real Oviedo","Real Sociedad"]}
+  {name:"Javi Martínez",teams:["Athletic Bilbao","Bayern Munich"]}
+  {name:"Javi Moreno",teams:["AC Milan","Alavés","Atlético Madrid","Bolton Wanderers","Real Zaragoza"]}
+  {name:"Javi Moyano",teams:["Real Valladolid"]}
+  {name:"Javi Márquez",teams:["Elche","Espanyol","Granada","Mallorca"]}
+  {name:"Javi Navarro",teams:["Sevilla"]}
+  {name:"Javi Puado",teams:["Espanyol"]}
+  {name:"Javi Rodríguez",teams:["Celta Vigo"]}
+  {name:"Javi Sánchez",teams:["Real Madrid","Real Valladolid"]}
+  {name:"Javi Varas",teams:["Celta Vigo","Las Palmas","Sevilla"]}
+  {name:"Javi Venta",teams:["Levante","Tenerife","Villarreal"]}
+  {name:"Javier Aquino",teams:["Rayo Vallecano","Villarreal"]}
+  {name:"Javier Arizmendi",teams:["Atlético Madrid","Deportivo La Coruña","Getafe","Mallorca","Racing Santander","Real Zaragoza","Valencia"]}
+  {name:"Javier Baraja",teams:["Real Valladolid"]}
+  {name:"Javier Calleja",teams:["Málaga","Osasuna","Villarreal"]}
+  {name:"Javier Camuñas",teams:["Deportivo La Coruña","Osasuna","Rayo Vallecano","Recreativo","Villarreal"]}
+  {name:"Javier Casas",teams:["Athletic Bilbao"]}
+  {name:"Javier Casquero",teams:["Getafe","Racing Santander","Sevilla"]}
+  {name:"Javier Chevantón",teams:["AS Monaco","Atalanta","Lecce","Sevilla"]}
+  {name:"Javier Chica",teams:["Espanyol","Real Betis"]}
+  {name:"Javier Eraso",teams:["Athletic Bilbao","Leganés"]}
+  {name:"Javier Farinós",teams:["Hércules","Inter Milan","Levante","Mallorca","Villarreal"]}
+  {name:"Javier Flaño",teams:["Osasuna"]}
+  {name:"Javier Garrido",teams:["Las Palmas","Lazio","Manchester City","Norwich City","Real Sociedad"]}
+  {name:"Javier Guerra",teams:["Valencia"]}
+  {name:"Javier Hernández",teams:["Bayer Leverkusen","Manchester United","Real Madrid","Sevilla","West Ham United"]}
+  {name:"Javier López Vallejo",teams:["Real Zaragoza","Recreativo","Villarreal"]}
+  {name:"Javier Manquillo",teams:["Atlético Madrid","Celta Vigo","Liverpool","Newcastle United","Olympique de Marseille","Sunderland"]}
+  {name:"Javier Mascherano",teams:["Barcelona","Liverpool","West Ham United"]}
+  {name:"Javier Matilla",teams:["Real Betis","Villarreal"]}
+  {name:"Javier Muñoz",teams:["Alavés","Getafe","Las Palmas"]}
+  {name:"Javier Olaizola",teams:["Mallorca"]}
+  {name:"Javier Ontiveros",teams:["Huesca","Málaga","Osasuna","Villarreal"]}
+  {name:"Javier Paredes",teams:["Getafe","Real Zaragoza"]}
+  {name:"Javier Pastore",teams:["AS Roma","Elche","Palermo","Paris Saint-Germain"]}
+  {name:"Javier Pinola",teams:["1. FC Nürnberg","Atlético Madrid"]}
+  {name:"Javier Portillo",teams:["Fiorentina","Gimnàstic","Hércules","Osasuna","Real Madrid"]}
+  {name:"Javier Saviola",teams:["AS Monaco","Barcelona","Hellas Verona","Málaga","Real Madrid","Sevilla"]}
+  {name:"Javier Torres Gómez",teams:["Real Valladolid"]}
+  {name:"Javier Zanetti",teams:["Inter Milan"]}
+  {name:"Javier de Pedro",teams:["Blackburn Rovers","Real Sociedad"]}
+  {name:"Jawad El Yamiq",teams:["Genoa","Real Valladolid"]}
+  {name:"Jawhar Mnari",teams:["1. FC Nürnberg"]}
+  {name:"Jay Bothroyd",teams:["Blackburn Rovers","Charlton Athletic","Coventry City","Perugia","Queens Park Rangers"]}
+  {name:"Jay Idzes",teams:["Sassuolo","Venezia"]}
+  {name:"Jay Rodriguez",teams:["Burnley","Southampton","West Bromwich Albion"]}
+  {name:"Jay-Jay Okocha",teams:["Bolton Wanderers","Paris Saint-Germain"]}
+  {name:"Jayden Bogle",teams:["Leeds United","Sheffield United"]}
+  {name:"Jaïro Riedewald",teams:["Crystal Palace"]}
+  {name:"Jean Beausejour",teams:["Birmingham City","Wigan Athletic"]}
+  {name:"Jean Calvé",teams:["AS Nancy","FC Lorient","FC Sochaux","Grenoble Foot","Le Mans FC","SM Caen"]}
+  {name:"Jean Lucas",teams:["AS Monaco","Olympique Lyonnais","Stade Brestois 29"]}
+  {name:"Jean Makoun",teams:["Aston Villa","LOSC Lille","Olympique Lyonnais","Stade Rennais"]}
+  {name:"Jean Mattéo Bahoya",teams:["Angers SCO","Eintracht Frankfurt"]}
+  {name:"Jean Onana",teams:["Genoa","Girondins de Bordeaux","LOSC Lille","Olympique de Marseille","RC Lens"]}
+  {name:"Jean Seri",teams:["Fulham","Girondins de Bordeaux","OGC Nice"]}
+  {name:"Jean-Alain Boumsong",teams:["AJ Auxerre","Newcastle United","Olympique Lyonnais"]}
+  {name:"Jean-Armel Kana-Biyik",teams:["FC Metz","Le Havre AC","Stade Rennais","Toulouse FC"]}
+  {name:"Jean-Baptiste Pierazzi",teams:["GFC Ajaccio"]}
+  {name:"Jean-Charles Castelletto",teams:["FC Nantes","Stade Brestois 29"]}
+  {name:"Jean-Christophe Bahebeck",teams:["AS Saint-Étienne","Estac Troyes","FC Valenciennes","Paris Saint-Germain","Pescara"]}
+  {name:"Jean-Christophe Devaux",teams:["RC Strasbourg"]}
+  {name:"Jean-Christophe Rouvière",teams:["Montpellier HSC","Toulouse FC"]}
+  {name:"Jean-Clair Todibo",teams:["Barcelona","FC Schalke 04","OGC Nice","Toulouse FC","West Ham United"]}
+  {name:"Jean-Claude Darcheville",teams:["FC Lorient","FC Valenciennes","Girondins de Bordeaux"]}
+  {name:"Jean-Daniel Akpa-Akpro",teams:["Empoli","Hellas Verona","Lazio","Monza","Toulouse FC"]}
+  {name:"Jean-Eudes Aholou",teams:["AS Monaco","AS Saint-Étienne","Angers SCO","RC Strasbourg"]}
+  {name:"Jean-François Bédénik",teams:["Boulogne","Le Mans FC"]}
+  {name:"Jean-François Gillet",teams:["Bari","Bologna","Torino"]}
+  {name:"Jean-Guy Wallemme",teams:["AS Saint-Étienne","RC Lens"]}
+  {name:"Jean-Jacques Gosso",teams:["AS Monaco"]}
+  {name:"Jean-Jacques Pierre",teams:["FC Nantes","SM Caen"]}
+  {name:"Jean-Joël Perrier-Doumbé",teams:["AJ Auxerre","Stade Rennais","Toulouse FC"]}
+  {name:"Jean-Kevin Duverne",teams:["FC Nantes","Stade Brestois 29"]}
+  {name:"Jean-Kévin Augustin",teams:["AS Monaco","FC Nantes","Paris Saint-Germain","RB Leipzig"]}
+  {name:"Jean-Louis Leca",teams:["FC Valenciennes","RC Lens","SC Bastia"]}
+  {name:"Jean-Marc Chanelet",teams:["Olympique Lyonnais"]}
+  {name:"Jean-Michel Lesage",teams:["AJ Auxerre","Le Havre AC"]}
+  {name:"Jean-Pascal Mignot",teams:["AJ Auxerre","AS Saint-Étienne"]}
+  {name:"Jean-Paul Boëtius",teams:["1. FSV Mainz 05","Hertha BSC"]}
+  {name:"Jean-Philippe Gbamin",teams:["1. FSV Mainz 05","Everton","FC Metz","FC Nantes","RC Lens"]}
+  {name:"Jean-Philippe Mateta",teams:["1. FSV Mainz 05","Crystal Palace","Olympique Lyonnais"]}
+  {name:"Jean-Ricner Bellegarde",teams:["RC Strasbourg","Wolverhampton Wanderers"]}
+  {name:"Jean-Sylvain Babin",teams:["Granada","Sporting Gijón"]}
+  {name:"Jean-Sébastien Jaurès",teams:["AJ Auxerre","Borussia Mönchengladbach"]}
+  {name:"Jean-Victor Makengo",teams:["FC Lorient","OGC Nice","SM Caen","Toulouse FC","Udinese"]}
+  {name:"Jeda",teams:["Cagliari","Lecce","Novara","Vicenza"]}
+  {name:"Jeff Hendrick",teams:["Burnley","Newcastle United"]}
+  {name:"Jeff Kenna",teams:["Birmingham City"]}
+  {name:"Jeff Reine-Adélaïde",teams:["Angers SCO","Estac Troyes","OGC Nice","Olympique Lyonnais"]}
+  {name:"Jeff Strasser",teams:["1. FC Kaiserslautern","Borussia Mönchengladbach","FC Metz"]}
+  {name:"Jefferson Farfán",teams:["FC Schalke 04"]}
+  {name:"Jefferson Lerma",teams:["AFC Bournemouth","Crystal Palace","Levante"]}
+  {name:"Jefferson Montero",teams:["Getafe","Levante","Real Betis","Swansea City","Villarreal"]}
+  {name:"Jeffrey Bruma",teams:["1. FSV Mainz 05","Chelsea","FC Schalke 04","Hamburger SV","VfL Wolfsburg"]}
+  {name:"Jeffrey Gouweleeuw",teams:["FC Augsburg"]}
+  {name:"Jeffrey Schlupp",teams:["Crystal Palace","Leicester City"]}
+  {name:"Jeison Murillo",teams:["Barcelona","Celta Vigo","Granada","Inter Milan","Sampdoria","Valencia"]}
+  {name:"Jemerson",teams:["AS Monaco","FC Metz"]}
+  {name:"Jens Cajuste",teams:["Ipswich Town","Napoli","Stade de Reims"]}
+  {name:"Jens Hegeler",teams:["1. FC Nürnberg","Bayer Leverkusen","Hertha BSC"]}
+  {name:"Jens Jeremies",teams:["Bayern Munich"]}
+  {name:"Jens Jønsson",teams:["Cádiz"]}
+  {name:"Jens Keller",teams:["Eintracht Frankfurt","FC Köln"]}
+  {name:"Jens Lehmann",teams:["Arsenal","Borussia Dortmund","VfB Stuttgart"]}
+  {name:"Jens Nowotny",teams:["Bayer Leverkusen"]}
+  {name:"Jens Odgaard",teams:["Bologna","Sassuolo"]}
+  {name:"Jens Petter Hauge",teams:["AC Milan","Eintracht Frankfurt"]}
+  {name:"Jens Stage",teams:["Werder Bremen"]}
+  {name:"Jens Stryger Larsen",teams:["Udinese"]}
+  {name:"Jeong Woo-yeong",teams:["1. FC Union Berlin","Bayern Munich","SC Freiburg","VfB Stuttgart"]}
+  {name:"Jerdy Schouten",teams:["Bologna"]}
+  {name:"Jeremie Boga",teams:["Atalanta","Chelsea","Granada","Juventus","OGC Nice","Sassuolo","Stade Rennais"]}
+  {name:"Jeremie Frimpong",teams:["Bayer Leverkusen","Liverpool"]}
+  {name:"Jeremy Doku",teams:["Manchester City","Stade Rennais"]}
+  {name:"Jeremy Toljan",teams:["Borussia Dortmund","Levante","Sassuolo","TSG Hoffenheim"]}
+  {name:"Jeremías Ledesma",teams:["Cádiz"]}
+  {name:"Jerko Leko",teams:["AS Monaco"]}
+  {name:"Jermain Defoe",teams:["AFC Bournemouth","Portsmouth","Sunderland","Tottenham Hotspur","West Ham United"]}
+  {name:"Jermaine Jenas",teams:["Aston Villa","Newcastle United","Queens Park Rangers","Tottenham Hotspur"]}
+  {name:"Jermaine Jones",teams:["Bayer Leverkusen","Blackburn Rovers","Eintracht Frankfurt","FC Schalke 04"]}
+  {name:"Jermaine Pennant",teams:["Arsenal","Birmingham City","Leeds United","Liverpool","Portsmouth","Real Zaragoza","Stoke City"]}
+  {name:"Jermaine Wright",teams:["Ipswich Town"]}
+  {name:"Jerome Thomas",teams:["Charlton Athletic","Crystal Palace","Portsmouth","West Bromwich Albion"]}
+  {name:"Jerry St. Juste",teams:["1. FSV Mainz 05"]}
+  {name:"Jerzy Dudek",teams:["Liverpool","Real Madrid"]}
+  {name:"Jesper Grønkjær",teams:["Atlético Madrid","Birmingham City","Chelsea","VfB Stuttgart"]}
+  {name:"Jesper Karlström",teams:["Udinese"]}
+  {name:"Jesper Lindstrøm",teams:["Eintracht Frankfurt","Everton","Napoli","VfL Wolfsburg"]}
+  {name:"Jesse Lingard",teams:["Manchester United","Nottingham Forest","West Ham United"]}
+  {name:"Jessic Ngankam",teams:["1. FSV Mainz 05","Eintracht Frankfurt","Hertha BSC","SpVgg Greuther Fürth"]}
+  {name:"Jessy Deminguet",teams:["FC Metz","RC Strasbourg","SM Caen"]}
+  {name:"Jessy Moulin",teams:["AS Saint-Étienne","Estac Troyes"]}
+  {name:"Jessy Pi",teams:["AS Monaco","Estac Troyes","Toulouse FC"]}
+  {name:"Jesuli",teams:["Celta Vigo","Real Sociedad","Sevilla"]}
+  {name:"Jesus Vazquez",teams:["Valencia"]}
+  {name:"Jesé",teams:["Las Palmas","Paris Saint-Germain","Real Betis","Real Madrid","Sampdoria","Stoke City"]}
+  {name:"Jesús Areso",teams:["Athletic Bilbao","Osasuna"]}
+  {name:"Jesús Galván",teams:["Villarreal"]}
+  {name:"Jesús Gámez",teams:["Atlético Madrid","Málaga","Newcastle United"]}
+  {name:"Jesús María Lacruz",teams:["Athletic Bilbao","Espanyol"]}
+  {name:"Jesús Navas",teams:["Manchester City","Sevilla"]}
+  {name:"Jesús Rueda",teams:["Real Valladolid"]}
+  {name:"Jesús Sánchez",teams:["Real Valladolid"]}
+  {name:"Jesús Turiel",teams:["Alavés","Real Valladolid"]}
+  {name:"Jesús Vallejo",teams:["Eintracht Frankfurt","Granada","Real Madrid","Wolverhampton Wanderers"]}
+  {name:"Jesús Vázquez",teams:["Deportivo La Coruña","Recreativo"]}
+  {name:"Jetro Willems",teams:["Eintracht Frankfurt","Newcastle United","SpVgg Greuther Fürth"]}
+  {name:"Jhon Córdoba",teams:["1. FSV Mainz 05","Espanyol","FC Köln","Granada","Hertha BSC"]}
+  {name:"Jhon Lucumí",teams:["Bologna"]}
+  {name:"Jhon Solis",teams:["Girona"]}
+  {name:"Ji Dong-won",teams:["1. FSV Mainz 05","FC Augsburg","Sunderland"]}
+  {name:"Jim Allevinah",teams:["Angers SCO","Clermont Foot"]}
+  {name:"Jim Magilton",teams:["Ipswich Town"]}
+  {name:"Jimmy Briand",teams:["EA Guingamp","Girondins de Bordeaux","Hannover 96","Olympique Lyonnais","Stade Rennais"]}
+  {name:"Jimmy Bullard",teams:["Fulham","Hull City","Wigan Athletic"]}
+  {name:"Jimmy Cabot",teams:["Angers SCO","Estac Troyes","FC Lorient","RC Lens"]}
+  {name:"Jimmy Durmaz",teams:["Toulouse FC"]}
+  {name:"Jimmy Floyd Hasselbaink",teams:["Charlton Athletic","Chelsea","Middlesbrough"]}
+  {name:"Jirès Kembo Ekoko",teams:["Stade Rennais"]}
+  {name:"Jiří Jarošík",teams:["Birmingham City","Chelsea","Real Zaragoza"]}
+  {name:"Jiří Pavlenka",teams:["Werder Bremen"]}
+  {name:"Jiří Štajner",teams:["Hannover 96"]}
+  {name:"Jlloyd Samuel",teams:["Aston Villa","Bolton Wanderers"]}
+  {name:"Jo Tessem",teams:["Southampton"]}
+  {name:"Joachim Andersen",teams:["Crystal Palace","Fulham","Olympique Lyonnais","Sampdoria"]}
+  {name:"Joachim Björklund",teams:["Sunderland","Valencia","Venezia"]}
+  {name:"Joakim Mæhle",teams:["Atalanta","VfL Wolfsburg"]}
+  {name:"Joakim Nilsson",teams:["Arminia Bielefeld"]}
+  {name:"Joakim Persson",teams:["Hansa Rostock"]}
+  {name:"Joan Capdevila",teams:["Deportivo La Coruña","Espanyol","Villarreal"]}
+  {name:"Joan García",teams:["Barcelona","Espanyol"]}
+  {name:"Joan Gonzàlez",teams:["Lecce"]}
+  {name:"Joan Jordán",teams:["Alavés","Eibar","Espanyol","Sevilla"]}
+  {name:"Joan Verdú",teams:["Deportivo La Coruña","Espanyol","Fiorentina","Levante","Real Betis"]}
+  {name:"Joaquín",teams:["Fiorentina","Málaga","Real Betis","Valencia"]}
+  {name:"Joaquín Correa",teams:["Inter Milan","Lazio","Olympique de Marseille","Sampdoria","Sevilla"]}
+  {name:"Joaquín Fernández",teams:["Real Valladolid"]}
+  {name:"Joaquín Larrivey",teams:["Cagliari","Celta Vigo","Rayo Vallecano"]}
+  {name:"Jocelyn Blanchard",teams:["RC Lens"]}
+  {name:"Jocelyn Gourvennec",teams:["SC Bastia","Stade Rennais"]}
+  {name:"Jochen Kientz",teams:["FC St. Pauli","Hamburger SV","Hansa Rostock"]}
+  {name:"Jochen Seitz",teams:["1. FC Kaiserslautern","FC Schalke 04","VfB Stuttgart"]}
+  {name:"Jody Craddock",teams:["Sunderland","Wolverhampton Wanderers"]}
+  {name:"Jody Morris",teams:["Chelsea","Leeds United"]}
+  {name:"Jody Viviani",teams:["AS Saint-Étienne","Grenoble Foot","Montpellier HSC"]}
+  {name:"Joe Allen",teams:["Liverpool","Stoke City","Swansea City"]}
+  {name:"Joe Aribo",teams:["Southampton"]}
+  {name:"Joe Bennett",teams:["Aston Villa","Cardiff City","Middlesbrough"]}
+  {name:"Joe Bryan",teams:["Fulham","OGC Nice"]}
+  {name:"Joe Cole",teams:["Aston Villa","Chelsea","LOSC Lille","Liverpool","West Ham United"]}
+  {name:"Joe Gomez",teams:["Liverpool"]}
+  {name:"Joe Hart",teams:["Birmingham City","Burnley","Manchester City","Torino","West Ham United"]}
+  {name:"Joe Ledley",teams:["Crystal Palace"]}
+  {name:"Joe Rodon",teams:["Leeds United","Stade Rennais","Tottenham Hotspur"]}
+  {name:"Joe Scally",teams:["Borussia Mönchengladbach"]}
+  {name:"Joe Willock",teams:["Arsenal","Newcastle United"]}
+  {name:"Joel Campbell",teams:["Arsenal","FC Lorient","Frosinone","Real Betis","Villarreal"]}
+  {name:"Joel Obi",teams:["Chievo Verona","Inter Milan","Parma","Salernitana","Torino"]}
+  {name:"Joel Pohjanpalo",teams:["1. FC Union Berlin","Bayer Leverkusen","Venezia"]}
+  {name:"Joel Robles",teams:["Atlético Madrid","Everton","Leeds United","Rayo Vallecano","Real Betis","Wigan Athletic"]}
+  {name:"Joel Ward",teams:["Crystal Palace","Portsmouth"]}
+  {name:"Joelinton",teams:["Newcastle United","TSG Hoffenheim"]}
+  {name:"Joey Barton",teams:["Burnley","Manchester City","Newcastle United","Olympique de Marseille","Queens Park Rangers"]}
+  {name:"Joey O'Brien",teams:["Bolton Wanderers","West Ham United"]}
+  {name:"Jofre",teams:["Barcelona","Espanyol","Levante","Real Murcia"]}
+  {name:"Johan Audel",teams:["FC Nantes","FC Valenciennes","LOSC Lille","VfB Stuttgart"]}
+  {name:"Johan Cavalli",teams:["FC Lorient","GFC Ajaccio","Watford"]}
+  {name:"Johan Djourou",teams:["Arsenal","Birmingham City","Hamburger SV","Hannover 96","SPAL"]}
+  {name:"Johan Elmander",teams:["Bolton Wanderers","Norwich City","Toulouse FC"]}
+  {name:"Johan Gastien",teams:["Clermont Foot","Dijon FCO"]}
+  {name:"Johan Martial",teams:["Estac Troyes","Stade Brestois 29"]}
+  {name:"Johan Micoud",teams:["Girondins de Bordeaux","Parma","Werder Bremen"]}
+  {name:"Johan Mojica",teams:["Atalanta","Elche","Girona","Mallorca","Osasuna","Rayo Vallecano","Villarreal"]}
+  {name:"Johan Radet",teams:["AJ Auxerre"]}
+  {name:"Johan Vásquez",teams:["Cremonese","Genoa"]}
+  {name:"Johann Lepenant",teams:["FC Nantes","Olympique Lyonnais"]}
+  {name:"Johann Lonfat",teams:["FC Sochaux"]}
+  {name:"Johannes Eggestein",teams:["FC St. Pauli","Werder Bremen"]}
+  {name:"Johannes Flum",teams:["Eintracht Frankfurt","SC Freiburg"]}
+  {name:"Johannes Geis",teams:["1. FSV Mainz 05","FC Schalke 04","Sevilla","SpVgg Greuther Fürth"]}
+  {name:"Johannes van den Bergh",teams:["Borussia Mönchengladbach","Fortuna Düsseldorf","Hertha BSC"]}
+  {name:"John Aloisi",teams:["Alavés","Coventry City","Osasuna"]}
+  {name:"John Arne Riise",teams:["AS Monaco","AS Roma","Fulham","Liverpool"]}
+  {name:"John Boye",teams:["FC Metz","Stade Rennais"]}
+  {name:"John Brooks",teams:["Hertha BSC","TSG Hoffenheim","VfL Wolfsburg"]}
+  {name:"John Carew",teams:["AS Roma","Aston Villa","Olympique Lyonnais","Stoke City","Valencia"]}
+  {name:"John Egan",teams:["Sheffield United"]}
+  {name:"John Fleck",teams:["Sheffield United"]}
+  {name:"John Guidetti",teams:["Alavés","Celta Vigo","Stoke City"]}
+  {name:"John Heitinga",teams:["Atlético Madrid","Everton","Fulham","Hertha BSC"]}
+  {name:"John Lundstram",teams:["Sheffield United"]}
+  {name:"John McGinn",teams:["Aston Villa"]}
+  {name:"John McGreal",teams:["Ipswich Town"]}
+  {name:"John Mensah",teams:["Chievo Verona","Modena","Olympique Lyonnais","Stade Rennais","Sunderland"]}
+  {name:"John O'Shea",teams:["Manchester United","Sunderland"]}
+  {name:"John Obi Mikel",teams:["Chelsea"]}
+  {name:"John Oster",teams:["Reading","Sunderland"]}
+  {name:"John Paintsil",teams:["Fulham","West Ham United"]}
+  {name:"John Robinson",teams:["Charlton Athletic"]}
+  {name:"John Ruddy",teams:["Everton","Norwich City","Wolverhampton Wanderers"]}
+  {name:"John Stones",teams:["Everton","Manchester City"]}
+  {name:"John Terry",teams:["Chelsea"]}
+  {name:"John Utaka",teams:["Montpellier HSC","Portsmouth","RC Lens","Stade Rennais"]}
+  {name:"Johnny Cardoso",teams:["Atlético Madrid","Real Betis"]}
+  {name:"Johnny Ecker",teams:["LOSC Lille","Olympique de Marseille"]}
+  {name:"Johny Placide",teams:["Le Havre AC","Stade de Reims"]}
+  {name:"Joleon Lescott",teams:["Aston Villa","Everton","Manchester City","Sunderland","West Bromwich Albion"]}
+  {name:"Jon Aramburu",teams:["Real Sociedad"]}
+  {name:"Jon Aurtenetxe",teams:["Athletic Bilbao","Celta Vigo"]}
+  {name:"Jon Bautista",teams:["Real Sociedad"]}
+  {name:"Jon Dahl Tomasson",teams:["AC Milan","VfB Stuttgart","Villarreal"]}
+  {name:"Jon Guridi",teams:["Alavés","Real Sociedad"]}
+  {name:"Jon Moncayola",teams:["Osasuna"]}
+  {name:"Jon Pacheco",teams:["Alavés","Real Sociedad"]}
+  {name:"Jon Stead",teams:["Blackburn Rovers","Sheffield United","Sunderland"]}
+  {name:"Jonas",teams:["Valencia"]}
+  {name:"Jonas Föhrenbach",teams:["1. FC Heidenheim","SC Freiburg"]}
+  {name:"Jonas Hector",teams:["FC Köln"]}
+  {name:"Jonas Hofmann",teams:["1. FSV Mainz 05","Bayer Leverkusen","Borussia Dortmund","Borussia Mönchengladbach"]}
+  {name:"Jonas Kamper",teams:["Arminia Bielefeld"]}
+  {name:"Jonas Lössl",teams:["1. FSV Mainz 05","Brentford","EA Guingamp","Huddersfield Town"]}
+  {name:"Jonas Martin",teams:["LOSC Lille","Montpellier HSC","RC Strasbourg","Real Betis","Stade Brestois 29","Stade Rennais"]}
+  {name:"Jonas Olsson",teams:["West Bromwich Albion"]}
+  {name:"Jonas Omlin",teams:["Borussia Mönchengladbach","Montpellier HSC"]}
+  {name:"Jonas Wind",teams:["VfL Wolfsburg"]}
+  {name:"Jonatan Binotto",teams:["Bologna","Brescia","Como"]}
+  {name:"Jonatan Johansson",teams:["Charlton Athletic"]}
+  {name:"Jonatan Valle",teams:["Racing Santander"]}
+  {name:"Jonathan Bachini",teams:["Brescia","Parma","Siena"]}
+  {name:"Jonathan Bamba",teams:["AS Saint-Étienne","Angers SCO","Celta Vigo","LOSC Lille"]}
+  {name:"Jonathan Biabiany",teams:["Inter Milan","Parma","Sampdoria"]}
+  {name:"Jonathan Brison",teams:["AS Nancy","AS Saint-Étienne"]}
+  {name:"Jonathan Burkardt",teams:["1. FSV Mainz 05","Eintracht Frankfurt"]}
+  {name:"Jonathan Calleri",teams:["Alavés","Espanyol","Las Palmas","Osasuna","West Ham United"]}
+  {name:"Jonathan Clauss",teams:["OGC Nice","Olympique de Marseille","RC Lens"]}
+  {name:"Jonathan David",teams:["Juventus","LOSC Lille"]}
+  {name:"Jonathan Delaplace",teams:["FC Lorient","LOSC Lille","SM Caen"]}
+  {name:"Jonathan Fortune",teams:["Charlton Athletic"]}
+  {name:"Jonathan Gradit",teams:["RC Lens","SM Caen"]}
+  {name:"Jonathan Greening",teams:["Fulham","Manchester United","Middlesbrough","West Bromwich Albion"]}
+  {name:"Jonathan Hogg",teams:["Aston Villa","Huddersfield Town"]}
+  {name:"Jonathan Ikone",teams:["Como","Fiorentina","LOSC Lille","Montpellier HSC","Paris FC","Paris Saint-Germain"]}
+  {name:"Jonathan Jäger",teams:["FC Metz","SC Freiburg"]}
+  {name:"Jonathan Lacourt",teams:["Estac Troyes","FC Valenciennes","RC Lens"]}
+  {name:"Jonathan Martins Pereira",teams:["EA Guingamp","Estac Troyes"]}
+  {name:"Jonathan Moreira",teams:["Inter Milan","Parma"]}
+  {name:"Jonathan Pereira",teams:["Racing Santander","Rayo Vallecano","Real Betis","Villarreal"]}
+  {name:"Jonathan Pitroipa",teams:["Hamburger SV","SC Freiburg","Stade Rennais"]}
+  {name:"Jonathan Rivierez",teams:["FC Metz"]}
+  {name:"Jonathan Rowe",teams:["Bologna","Norwich City","Olympique de Marseille"]}
+  {name:"Jonathan Schmid",teams:["FC Augsburg","SC Freiburg","TSG Hoffenheim"]}
+  {name:"Jonathan Sesma",teams:["Cádiz","Real Valladolid"]}
+  {name:"Jonathan Silva",teams:["AS Roma","Getafe","Leganés"]}
+  {name:"Jonathan Spector",teams:["Charlton Athletic","Manchester United","West Ham United"]}
+  {name:"Jonathan Tah",teams:["Bayer Leverkusen","Bayern Munich","Hamburger SV"]}
+  {name:"Jonathan Viera",teams:["Almería","Las Palmas","Rayo Vallecano","Valencia"]}
+  {name:"Jonathan Walters",teams:["Bolton Wanderers","Burnley","Stoke City"]}
+  {name:"Jonathan Woodgate",teams:["Leeds United","Middlesbrough","Newcastle United","Real Madrid","Stoke City","Tottenham Hotspur"]}
+  {name:"Jonathan Zebina",teams:["AS Roma","Brescia","Juventus","Stade Brestois 29","Toulouse FC"]}
+  {name:"Jonathan de Guzmán",teams:["Carpi","Chievo Verona","Eintracht Frankfurt","Mallorca","Napoli","Swansea City","Villarreal"]}
+  {name:"Jonathan dos Santos",teams:["Barcelona","Villarreal"]}
+  {name:"Jonathas",teams:["Brescia","Elche","Hannover 96","Pescara","Real Sociedad","Torino"]}
+  {name:"Jonjo Shelvey",teams:["Liverpool","Newcastle United","Nottingham Forest","Swansea City"]}
+  {name:"Jonjoe Kenny",teams:["Everton","FC Schalke 04","Hertha BSC"]}
+  {name:"Jonny Castro",teams:["Alavés","Celta Vigo","Wolverhampton Wanderers"]}
+  {name:"Jonny Evans",teams:["Leicester City","Manchester United","Sunderland","West Bromwich Albion"]}
+  {name:"Jonny Howson",teams:["Norwich City"]}
+  {name:"Jony",teams:["Alavés","Lazio","Málaga","Osasuna","Sporting Gijón"]}
+  {name:"Jonás Gutiérrez",teams:["Deportivo La Coruña","Mallorca","Newcastle United","Norwich City"]}
+  {name:"Jonás Ramalho",teams:["Athletic Bilbao","Girona","Osasuna"]}
+  {name:"Joonas Kolkka",teams:["Borussia Mönchengladbach","Crystal Palace"]}
+  {name:"Jordan Adéoti",teams:["SM Caen"]}
+  {name:"Jordan Amavi",teams:["Aston Villa","Getafe","OGC Nice","Olympique de Marseille","Stade Brestois 29"]}
+  {name:"Jordan Ayew",teams:["Aston Villa","Crystal Palace","FC Lorient","FC Sochaux","Leicester City","Olympique de Marseille","Swansea City"]}
+  {name:"Jordan Ferri",teams:["Montpellier HSC","Nîmes","Olympique Lyonnais"]}
+  {name:"Jordan Henderson",teams:["Brentford","Liverpool","Sunderland"]}
+  {name:"Jordan Ikoko",teams:["EA Guingamp"]}
+  {name:"Jordan Lefort",teams:["Amiens SC","Angers SCO"]}
+  {name:"Jordan Lotiès",teams:["AS Nancy","Dijon FCO","Osasuna"]}
+  {name:"Jordan Lotomba",teams:["OGC Nice"]}
+  {name:"Jordan Lukaku",teams:["Lazio"]}
+  {name:"Jordan Marié",teams:["Dijon FCO"]}
+  {name:"Jordan Pefok",teams:["1. FC Union Berlin","Borussia Mönchengladbach","Stade Rennais","Stade de Reims"]}
+  {name:"Jordan Pickford",teams:["Everton","Sunderland"]}
+  {name:"Jordan Stewart",teams:["Leicester City","Watford"]}
+  {name:"Jordan Torunarigha",teams:["Hamburger SV","Hertha BSC"]}
+  {name:"Jordan Veretout",teams:["AS Roma","AS Saint-Étienne","Aston Villa","FC Nantes","Fiorentina","Olympique Lyonnais","Olympique de Marseille"]}
+  {name:"Jordan Zemura",teams:["AFC Bournemouth","Udinese"]}
+  {name:"Jordi",teams:["Rayo Vallecano","Real Betis"]}
+  {name:"Jordi Alba",teams:["Barcelona","Valencia"]}
+  {name:"Jordi Amat",teams:["Espanyol","Rayo Vallecano","Real Betis","Swansea City"]}
+  {name:"Jordi Codina",teams:["Getafe","Real Madrid"]}
+  {name:"Jordi Cruyff",teams:["Alavés","Espanyol"]}
+  {name:"Jordi Gómez",teams:["Espanyol","Sunderland","Wigan Athletic"]}
+  {name:"Jordi López",teams:["Mallorca","Racing Santander","Real Madrid","Sevilla"]}
+  {name:"Jordi Masip",teams:["Barcelona","Real Valladolid"]}
+  {name:"Jordi Xumetra",teams:["Levante"]}
+  {name:"Jordon Ibe",teams:["AFC Bournemouth","Liverpool"]}
+  {name:"Jordon Mutch",teams:["Birmingham City","Cardiff City","Crystal Palace","Queens Park Rangers"]}
+  {name:"Jordy Makengo",teams:["SC Freiburg"]}
+  {name:"Jorge Andrade",teams:["Deportivo La Coruña","Juventus"]}
+  {name:"Jorge Azkoitia",teams:["Alavés","Rayo Vallecano"]}
+  {name:"Jorge Bolaño",teams:["Lecce","Parma"]}
+  {name:"Jorge Cuenca",teams:["Fulham","Getafe","Villarreal"]}
+  {name:"Jorge Francisco Vargas",teams:["Empoli","Livorno","Reggina"]}
+  {name:"Jorge Herrando",teams:["Osasuna"]}
+  {name:"Jorge Larena",teams:["Atlético Madrid","Celta Vigo","Las Palmas"]}
+  {name:"Jorge López",teams:["Mallorca","Racing Santander","Real Zaragoza","Valencia","Villarreal"]}
+  {name:"Jorge Martínez",teams:["Catania","Cesena","Juventus"]}
+  {name:"Jorge Meré",teams:["Cádiz","FC Köln","Sporting Gijón"]}
+  {name:"Jorge Miramón",teams:["Huesca","Levante"]}
+  {name:"Jorge Molina",teams:["Getafe","Granada","Real Betis"]}
+  {name:"Jorge Pulido",teams:["Atlético Madrid","Huesca","Rayo Vallecano"]}
+  {name:"Jorge de Frutos",teams:["Levante","Rayo Vallecano","Real Valladolid"]}
+  {name:"Jorginho",teams:["Arsenal","Chelsea","Hellas Verona","Napoli"]}
+  {name:"Joris Chotard",teams:["Montpellier HSC","Stade Brestois 29"]}
+  {name:"Joris Gnagnon",teams:["Sevilla","Stade Rennais"]}
+  {name:"Joris Marveaux",teams:["Montpellier HSC"]}
+  {name:"Joris Mathijsen",teams:["Hamburger SV","Málaga"]}
+  {name:"Joris Van Hout",teams:["Borussia Mönchengladbach","VfL Bochum"]}
+  {name:"Josan",teams:["Elche"]}
+  {name:"Joseba Arriaga",teams:["Athletic Bilbao"]}
+  {name:"Joseba Etxeberria",teams:["Athletic Bilbao"]}
+  {name:"Joseba Llorente",teams:["Osasuna","Real Sociedad","Real Valladolid","Villarreal"]}
+  {name:"Joseba Zaldúa",teams:["Cádiz","Leganés","Real Sociedad"]}
+  {name:"Josef Martínez",teams:["Torino"]}
+  {name:"Joselu",teams:["Alavés","Deportivo La Coruña","Eintracht Frankfurt","Espanyol","Hannover 96","Newcastle United","Real Madrid","Stoke City","TSG Hoffenheim"]}
+  {name:"Josemi",teams:["Liverpool","Mallorca","Málaga","Villarreal"]}
+  {name:"Joseph Aidoo",teams:["Celta Vigo","Real Valladolid"]}
+  {name:"Joseph Yobo",teams:["Everton","Norwich City","Olympique de Marseille"]}
+  {name:"Joseph-Désiré Job",teams:["FC Metz","Middlesbrough","OGC Nice","Sedan"]}
+  {name:"Josetxo",teams:["Osasuna"]}
+  {name:"Josh Brownhill",teams:["Burnley"]}
+  {name:"Josh Doig",teams:["Hellas Verona","Sassuolo"]}
+  {name:"Josh Maja",teams:["Fulham","Girondins de Bordeaux"]}
+  {name:"Josh Sargent",teams:["Norwich City","Werder Bremen"]}
+  {name:"Josha Vagnoman",teams:["Hamburger SV","VfB Stuttgart"]}
+  {name:"Joshua Kennedy",teams:["1. FC Nürnberg","FC Köln","Karlsruher SC","VfL Wolfsburg"]}
+  {name:"Joshua Kimmich",teams:["Bayern Munich"]}
+  {name:"Joshua King",teams:["AFC Bournemouth","Borussia Mönchengladbach","Everton","Toulouse FC","Watford"]}
+  {name:"Joshua Zirkzee",teams:["Bayern Munich","Bologna","Manchester United","Parma"]}
+  {name:"Josico",teams:["Las Palmas","Villarreal"]}
+  {name:"Josip Brekalo",teams:["Fiorentina","Real Oviedo","Torino","VfB Stuttgart","VfL Wolfsburg"]}
+  {name:"Josip Drmić",teams:["1. FC Nürnberg","Bayer Leverkusen","Borussia Mönchengladbach","Hamburger SV","Norwich City"]}
+  {name:"Josip Iličić",teams:["Atalanta","Fiorentina","Palermo"]}
+  {name:"Josip Juranović",teams:["1. FC Union Berlin"]}
+  {name:"Josip Stanišić",teams:["Bayer Leverkusen","Bayern Munich"]}
+  {name:"Josip Šimunić",teams:["Hertha BSC","TSG Hoffenheim"]}
+  {name:"Josu Sarriegi",teams:["Alavés","Athletic Bilbao"]}
+  {name:"Josuha Guilavogui",teams:["1. FSV Mainz 05","AS Saint-Étienne","Atlético Madrid","Girondins de Bordeaux","VfL Wolfsburg"]}
+  {name:"Josué",teams:["VfL Wolfsburg"]}
+  {name:"Josué Casimir",teams:["AJ Auxerre","Le Havre AC"]}
+  {name:"JosÃ© Luis GayÃ",teams:["Valencia"]}
+  {name:"José Amavisca",teams:["Deportivo La Coruña","Espanyol","Racing Santander"]}
+  {name:"José Antonio Reyes",teams:["Arsenal","Atlético Madrid","Espanyol","Real Madrid","Sevilla"]}
+  {name:"José Arnaiz",teams:["Barcelona","Leganés","Osasuna"]}
+  {name:"José Barkero",teams:["Levante","Numancia","Real Sociedad","Toulouse FC"]}
+  {name:"José Bosingwa",teams:["Chelsea","Queens Park Rangers"]}
+  {name:"José Callejón",teams:["Espanyol","Fiorentina","Granada","Napoli","Real Madrid"]}
+  {name:"José Campaña",teams:["1. FC Nürnberg","Crystal Palace","Las Palmas","Levante","Sevilla"]}
+  {name:"José Carlos",teams:["Córdoba","Rayo Vallecano","Sevilla"]}
+  {name:"José Cañas",teams:["Espanyol","Real Betis","Swansea City"]}
+  {name:"José Cobos",teams:["OGC Nice"]}
+  {name:"José Dominguez",teams:["1. FC Kaiserslautern","Tottenham Hotspur"]}
+  {name:"José Enrique",teams:["Celta Vigo","Liverpool","Newcastle United","Villarreal"]}
+  {name:"José Fonte",teams:["LOSC Lille","Southampton","West Ham United"]}
+  {name:"José García Calvo",teams:["Atlético Madrid","Real Valladolid"]}
+  {name:"José Holebas",teams:["AS Roma","Watford"]}
+  {name:"José Ignacio",teams:["Celta Vigo","Real Zaragoza"]}
+  {name:"José Ignacio Castillo",teams:["Bari","Fiorentina","Lecce"]}
+  {name:"José Izquierdo",teams:["Osasuna"]}
+  {name:"José Jesús Perera",teams:["Celta Vigo","Mallorca"]}
+  {name:"José Luis Caminero",teams:["Real Valladolid"]}
+  {name:"José Luis García Vayá",teams:["Levante","Valencia"]}
+  {name:"José Luis Martí",teams:["Mallorca","Sevilla","Tenerife"]}
+  {name:"José Luis Morales",teams:["Levante","Villarreal"]}
+  {name:"José Luis Palomino",teams:["Atalanta","Cagliari","FC Metz"]}
+  {name:"José Luís Vidigal",teams:["Livorno","Napoli","Udinese"]}
+  {name:"José Mamede",teams:["Messina","Reggina"]}
+  {name:"José Manuel Casado",teams:["Almería","Málaga","Rayo Vallecano","Recreativo","Sevilla","Xerez"]}
+  {name:"José Manuel Jurado",teams:["Atlético Madrid","Espanyol","FC Schalke 04","Mallorca","Real Madrid","Watford"]}
+  {name:"José Manuel Mateo",teams:["Osasuna"]}
+  {name:"José Manuel Pinto",teams:["Barcelona","Celta Vigo"]}
+  {name:"José Manuel Yanguas",teams:["Getafe","Osasuna"]}
+  {name:"José Mari",teams:["AC Milan","Atlético Madrid","Cádiz","Levante","Real Betis","Real Zaragoza","Villarreal"]}
+  {name:"José María Giménez",teams:["Atlético Madrid"]}
+  {name:"José María Movilla",teams:["Atlético Madrid","Málaga","Rayo Vallecano","Real Murcia","Real Zaragoza"]}
+  {name:"José Mauri",teams:["AC Milan","Empoli","Parma"]}
+  {name:"José Molina",teams:["Deportivo La Coruña","Levante"]}
+  {name:"José Moratón",teams:["Racing Santander"]}
+  {name:"José Nunes",teams:["Mallorca"]}
+  {name:"José Ortiz Bernal",teams:["Almería"]}
+  {name:"José Saez",teams:["FC Valenciennes","SM Caen"]}
+  {name:"José Sosa",teams:["AC Milan","Atlético Madrid","Bayern Munich","Napoli"]}
+  {name:"José Sá",teams:["Wolverhampton Wanderers"]}
+  {name:"José Ángel",teams:["AS Roma","Eibar","Osasuna","Real Sociedad","Sporting Gijón","Villarreal"]}
+  {name:"José Ángel Crespo",teams:["Aston Villa","Bologna","Córdoba","Racing Santander","Rayo Vallecano","Sevilla"]}
+  {name:"José-Karl Pierre-Fanfan",teams:["AS Monaco","Paris Saint-Germain","RC Lens"]}
+  {name:"Jota",teams:["Alavés","Aston Villa","Eibar"]}
+  {name:"Jozabed",teams:["Celta Vigo","Rayo Vallecano"]}
+  {name:"Jozy Altidore",teams:["Hull City","Sunderland","Villarreal"]}
+  {name:"João Cancelo",teams:["Barcelona","Bayern Munich","Inter Milan","Juventus","Manchester City","Valencia"]}
+  {name:"João Félix",teams:["AC Milan","Atlético Madrid","Barcelona","Chelsea"]}
+  {name:"João Gomes",teams:["Wolverhampton Wanderers"]}
+  {name:"João Moutinho",teams:["AS Monaco","Wolverhampton Wanderers"]}
+  {name:"João Mário",teams:["Inter Milan","West Ham United"]}
+  {name:"João Palhinha",teams:["Bayern Munich","Fulham","Tottenham Hotspur"]}
+  {name:"João Pedro",teams:["Brighton & Hove Albion","Cagliari","Chelsea","Palermo","Watford"]}
+  {name:"João Pereira",teams:["Hannover 96","Valencia"]}
+  {name:"João Victor",teams:["Mallorca"]}
+  {name:"Joël Epalle",teams:["VfL Bochum"]}
+  {name:"Joël Matip",teams:["FC Schalke 04","Liverpool"]}
+  {name:"Joël Sami",teams:["AS Nancy"]}
+  {name:"Joël Veltman",teams:["Brighton & Hove Albion"]}
+  {name:"Joško Gvardiol",teams:["Manchester City","RB Leipzig"]}
+  {name:"Juan",teams:["AS Roma","Bayer Leverkusen"]}
+  {name:"Juan Arango",teams:["Borussia Mönchengladbach","Mallorca"]}
+  {name:"Juan Bernat",teams:["Bayern Munich","Getafe","Paris Saint-Germain","Valencia","Villarreal"]}
+  {name:"Juan Calatayud",teams:["Getafe","Hércules","Mallorca","Málaga","Racing Santander"]}
+  {name:"Juan Carlos",teams:["Córdoba","Girona","Rayo Vallecano"]}
+  {name:"Juan Carlos Menseguez",teams:["VfL Wolfsburg","West Bromwich Albion"]}
+  {name:"Juan Carlos Valerón",teams:["Deportivo La Coruña","Las Palmas"]}
+  {name:"Juan Cruz Armada",teams:["Osasuna"]}
+  {name:"Juan Cruz Ochoa",teams:["Alavés","Numancia","Real Murcia"]}
+  {name:"Juan Cuadrado",teams:["Atalanta","Chelsea","Fiorentina","Inter Milan","Juventus","Lecce","Pisa","Udinese"]}
+  {name:"Juan David Cabal",teams:["Hellas Verona","Juventus"]}
+  {name:"Juan Domínguez",teams:["Deportivo La Coruña"]}
+  {name:"Juan Eluchans",teams:["SM Caen"]}
+  {name:"Juan Ferney Otero",teams:["Amiens SC"]}
+  {name:"Juan Forlín",teams:["Espanyol"]}
+  {name:"Juan Foyth",teams:["Tottenham Hotspur","Villarreal"]}
+  {name:"Juan Iturbe",teams:["AFC Bournemouth","AS Roma","Hellas Verona","Torino"]}
+  {name:"Juan Jesus",teams:["AS Roma","Inter Milan","Napoli"]}
+  {name:"Juan José Cañas",teams:["Real Betis"]}
+  {name:"Juan Luis Mora",teams:["Espanyol","Levante","Valencia"]}
+  {name:"Juan Manuel Ortiz",teams:["Almería","Atlético Madrid","Granada","Osasuna"]}
+  {name:"Juan Manuel Peña",teams:["Real Valladolid","Villarreal"]}
+  {name:"Juan Manuel Vargas",teams:["Catania","Fiorentina","Genoa","Real Betis"]}
+  {name:"Juan Mata",teams:["Chelsea","Manchester United","Valencia"]}
+  {name:"Juan Merino",teams:["Real Betis","Recreativo"]}
+  {name:"Juan Miranda",teams:["Bologna","FC Schalke 04","Real Betis"]}
+  {name:"Juan Musso",teams:["Atalanta","Atlético Madrid","Udinese"]}
+  {name:"Juan Pablo Carrizo",teams:["Catania","Inter Milan","Lazio","Real Zaragoza"]}
+  {name:"Juan Pablo Colinas",teams:["Alavés","Numancia","Sporting Gijón"]}
+  {name:"Juan Pablo Francia",teams:["Girondins de Bordeaux"]}
+  {name:"Juan Pablo Pino",teams:["AS Monaco","SC Bastia"]}
+  {name:"Juan Pablo Sorín",teams:["Barcelona","Hamburger SV","Lazio","Paris Saint-Germain","Villarreal"]}
+  {name:"Juan Pablo Ángel",teams:["Aston Villa"]}
+  {name:"Juan Rafael Fuentes",teams:["Espanyol","Osasuna"]}
+  {name:"Juan Redondo",teams:["Sevilla","Xerez"]}
+  {name:"Juan Rodríguez",teams:["Deportivo La Coruña","Getafe","Málaga"]}
+  {name:"Juan Román Riquelme",teams:["Barcelona","Villarreal"]}
+  {name:"Juan Sebastián Verón",teams:["Chelsea","Inter Milan","Lazio","Manchester United"]}
+  {name:"Juan Sánchez",teams:["Celta Vigo","Valencia"]}
+  {name:"Juan Valera Espín",teams:["Atlético Madrid","Getafe","Racing Santander","Real Murcia"]}
+  {name:"Juan Velasco Damas",teams:["Atlético Madrid","Celta Vigo","Espanyol"]}
+  {name:"Juan Zúñiga",teams:["Bologna","Napoli","Siena","Watford"]}
+  {name:"Juan Ángel Albín",teams:["Espanyol","Getafe"]}
+  {name:"Juan-Luis Montero",teams:["EA Guingamp","Estac Troyes","Sedan"]}
+  {name:"Juanele",teams:["Real Zaragoza"]}
+  {name:"Juanfran",teams:["Atlético Madrid","Celta Vigo","Deportivo La Coruña","Espanyol","Getafe","Leganés","Levante","Osasuna","Real Betis","Real Madrid","Real Zaragoza"]}
+  {name:"Juanito",teams:["Alavés","Almería","Atlético Madrid","Hellas Verona","Málaga","Real Betis","Real Sociedad"]}
+  {name:"Juanjo Expósito",teams:["Racing Santander","Sevilla"]}
+  {name:"Juankar",teams:["Granada","Málaga","Real Betis","Real Madrid","Real Zaragoza"]}
+  {name:"Juanlu",teams:["Levante","Numancia","Osasuna","Real Betis"]}
+  {name:"Juanlu Sánchez",teams:["Sevilla"]}
+  {name:"Juanma",teams:["Deportivo La Coruña","Levante","Racing Santander","Real Betis","Recreativo"]}
+  {name:"Juanmi",teams:["Cádiz","Deportivo La Coruña","Getafe","Málaga","Real Betis","Real Murcia","Real Sociedad","Real Zaragoza","Southampton"]}
+  {name:"Juanmi Latasa",teams:["Getafe","Real Madrid","Real Valladolid"]}
+  {name:"Juanpe",teams:["Girona"]}
+  {name:"Juanpi",teams:["Huesca","Málaga"]}
+  {name:"Jubal",teams:["AJ Auxerre"]}
+  {name:"Jude Bellingham",teams:["Borussia Dortmund","Real Madrid"]}
+  {name:"Julen Guerrero",teams:["Athletic Bilbao"]}
+  {name:"Jules Iloki",teams:["FC Nantes"]}
+  {name:"Jules Koundé",teams:["Barcelona","Girondins de Bordeaux","Sevilla"]}
+  {name:"Julian Baumgartlinger",teams:["1. FSV Mainz 05","Bayer Leverkusen","FC Augsburg"]}
+  {name:"Julian Brandt",teams:["Bayer Leverkusen","Borussia Dortmund"]}
+  {name:"Julian Chabot",teams:["FC Köln","Sampdoria","Spezia","VfB Stuttgart"]}
+  {name:"Julian Draxler",teams:["FC Schalke 04","Paris Saint-Germain","VfL Wolfsburg"]}
+  {name:"Julian Gray",teams:["Birmingham City","Fulham"]}
+  {name:"Julian Korb",teams:["Borussia Mönchengladbach","Hannover 96"]}
+  {name:"Julian Palmieri",teams:["FC Metz","LOSC Lille","SC Bastia"]}
+  {name:"Julian Ryerson",teams:["1. FC Union Berlin","Borussia Dortmund"]}
+  {name:"Julian Schieber",teams:["1. FC Nürnberg","Borussia Dortmund","FC Augsburg","Hertha BSC","VfB Stuttgart"]}
+  {name:"Julian Schuster",teams:["SC Freiburg","VfB Stuttgart"]}
+  {name:"Julian Weigl",teams:["Borussia Dortmund","Borussia Mönchengladbach"]}
+  {name:"Julian de Guzmán",teams:["Deportivo La Coruña","Hannover 96"]}
+  {name:"Juliano Belletti",teams:["Barcelona","Chelsea","Villarreal"]}
+  {name:"Julien Cardy",teams:["EA Guingamp","FC Metz","Toulouse FC"]}
+  {name:"Julien Escudé",teams:["Sevilla","Stade Rennais"]}
+  {name:"Julien Faubert",teams:["Girondins de Bordeaux","Real Madrid","West Ham United"]}
+  {name:"Julien Faussurier",teams:["Estac Troyes","FC Sochaux","Stade Brestois 29"]}
+  {name:"Julien Féret",teams:["AS Nancy","SM Caen","Stade Rennais"]}
+  {name:"Julien Laporte",teams:["FC Lorient"]}
+  {name:"Julien Ponceau",teams:["FC Lorient"]}
+  {name:"Julien Quercia",teams:["AJ Auxerre","FC Lorient","FC Sochaux"]}
+  {name:"Julien Rodriguez",teams:["AS Monaco","Olympique de Marseille"]}
+  {name:"Julien Sablé",teams:["AS Saint-Étienne","OGC Nice","RC Lens","SC Bastia"]}
+  {name:"Julien Toudic",teams:["SM Caen","Stade de Reims"]}
+  {name:"Julio Arca",teams:["Middlesbrough","Sunderland"]}
+  {name:"Julio César de León",teams:["Genoa","Reggina"]}
+  {name:"Julio Dely Valdés",teams:["Málaga"]}
+  {name:"Julio Enciso",teams:["Brighton & Hove Albion","Ipswich Town","RC Strasbourg"]}
+  {name:"Julio Ricardo Cruz",teams:["Bologna","Inter Milan","Lazio"]}
+  {name:"Julio Álvarez",teams:["Almería","Mallorca","Racing Santander","Rayo Vallecano","Real Murcia"]}
+  {name:"Julián Speroni",teams:["Crystal Palace"]}
+  {name:"Julián Álvarez",teams:["Atlético Madrid","Manchester City"]}
+  {name:"Junichi Inamoto",teams:["Eintracht Frankfurt","Fulham","Stade Rennais","West Bromwich Albion"]}
+  {name:"Juninho Pernambucano",teams:["Olympique Lyonnais"]}
+  {name:"Junior Dina Ebimbe",teams:["Dijon FCO","Eintracht Frankfurt","Paris Saint-Germain","Stade Brestois 29"]}
+  {name:"Junior Firpo",teams:["Barcelona","Leeds United","Real Betis"]}
+  {name:"Junior Hoilett",teams:["Blackburn Rovers","Cardiff City","Queens Park Rangers"]}
+  {name:"Junior Messias",teams:["AC Milan","Crotone","Genoa"]}
+  {name:"Junior Mwanga",teams:["FC Nantes","Girondins de Bordeaux","Le Havre AC","RC Strasbourg"]}
+  {name:"Junior Sambia",teams:["Empoli","Montpellier HSC","Salernitana"]}
+  {name:"Junior Stanislas",teams:["AFC Bournemouth","West Ham United"]}
+  {name:"Junior Tallo",teams:["AS Roma","GFC Ajaccio","LOSC Lille","SC Bastia"]}
+  {name:"Junya Ito",teams:["Stade de Reims"]}
+  {name:"Juraj Kucka",teams:["AC Milan","Genoa","Parma","Watford"]}
+  {name:"Jurgen Ekkelenkamp",teams:["Hertha BSC","Udinese"]}
+  {name:"Jurica Vranješ",teams:["Bayer Leverkusen","VfB Stuttgart","Werder Bremen"]}
+  {name:"Jurriën Timber",teams:["Arsenal"]}
+  {name:"Jussi Jääskeläinen",teams:["Bolton Wanderers","West Ham United"]}
+  {name:"Jussiê",teams:["Girondins de Bordeaux","RC Lens"]}
+  {name:"Justin Hoyte",teams:["Arsenal","Middlesbrough","Sunderland"]}
+  {name:"Justin Kluivert",teams:["AFC Bournemouth","AS Roma","OGC Nice","RB Leipzig","Valencia"]}
+  {name:"Justin Njinmah",teams:["Borussia Dortmund","Werder Bremen"]}
+  {name:"Juárez",teams:["Bologna","Como","Lecce","Siena","Udinese"]}
+  {name:"Jáder Durán",teams:["Aston Villa"]}
+  {name:"Jérémie Aliadière",teams:["Arsenal","FC Lorient","Middlesbrough","West Ham United"]}
+  {name:"Jérémie Bréchet",teams:["Estac Troyes","FC Sochaux","Gazélec Ajaccio","Girondins de Bordeaux","Inter Milan","Olympique Lyonnais","Real Sociedad"]}
+  {name:"Jérémie Janot",teams:["AS Saint-Étienne","FC Lorient"]}
+  {name:"Jérémy Berthod",teams:["AJ Auxerre","AS Monaco","Olympique Lyonnais"]}
+  {name:"Jérémy Choplin",teams:["FC Metz","Le Mans FC","SC Bastia"]}
+  {name:"Jérémy Clément",teams:["AS Saint-Étienne","Olympique Lyonnais","Paris Saint-Germain"]}
+  {name:"Jérémy Gélin",teams:["Stade Rennais"]}
+  {name:"Jérémy Hénin",teams:["Le Havre AC","Sedan"]}
+  {name:"Jérémy Le Douaron",teams:["Stade Brestois 29"]}
+  {name:"Jérémy Mathieu",teams:["Barcelona","FC Sochaux","Toulouse FC","Valencia"]}
+  {name:"Jérémy Morel",teams:["FC Lorient","Olympique Lyonnais","Olympique de Marseille","Stade Rennais"]}
+  {name:"Jérémy Ménez",teams:["AC Milan","AS Monaco","AS Roma","FC Sochaux","Girondins de Bordeaux","Paris Saint-Germain"]}
+  {name:"Jérémy Pied",teams:["EA Guingamp","LOSC Lille","OGC Nice","Olympique Lyonnais","Southampton"]}
+  {name:"Jérémy Sorbon",teams:["EA Guingamp","SM Caen"]}
+  {name:"Jérémy Toulalan",teams:["AS Monaco","FC Nantes","Girondins de Bordeaux","Málaga","Olympique Lyonnais"]}
+  {name:"Jérôme Alonzo",teams:["AS Saint-Étienne","FC Nantes","Paris Saint-Germain"]}
+  {name:"Jérôme Boateng",teams:["Bayern Munich","Hamburger SV","Hertha BSC","Manchester City","Olympique Lyonnais","Salernitana"]}
+  {name:"Jérôme Bonnissel",teams:["Fulham","Girondins de Bordeaux","Olympique de Marseille"]}
+  {name:"Jérôme Gondorf",teams:["SC Freiburg","SV Darmstadt 98","Werder Bremen"]}
+  {name:"Jérôme Lemoigne",teams:["Gazélec Ajaccio","RC Lens","Sedan"]}
+  {name:"Jérôme Leroy",teams:["EA Guingamp","FC Sochaux","Olympique de Marseille","Paris Saint-Germain","RC Lens","Stade Rennais","Évian TG"]}
+  {name:"Jérôme Rothen",teams:["AS Monaco","Estac Troyes","Paris Saint-Germain","SC Bastia"]}
+  {name:"Jérôme Roussillon",teams:["1. FC Union Berlin","FC Sochaux","Montpellier HSC","VfL Wolfsburg"]}
+  {name:"Jóhann Berg Guðmundsson",teams:["Burnley"]}
+  {name:"Jörg Böhme",teams:["Arminia Bielefeld","Borussia Mönchengladbach","FC Schalke 04"]}
+  {name:"Jörg Heinrich",teams:["Borussia Dortmund","FC Köln"]}
+  {name:"Jörg Stiel",teams:["Borussia Mönchengladbach"]}
+  {name:"Jørgen Strand Larsen",teams:["Celta Vigo","Crystal Palace","Wolverhampton Wanderers"]}
+  {name:"Júlio Baptista",teams:["AS Roma","Arsenal","Málaga","Real Madrid","Sevilla"]}
+  {name:"Júlio César",teams:["AC Milan","Bolton Wanderers","Inter Milan","Queens Park Rangers","Real Sociedad","Real Valladolid"]}
+  {name:"Júlio Sérgio",teams:["AS Roma","Lecce"]}
+  {name:"Júlio Tavares",teams:["Dijon FCO"]}
+  {name:"Júnior",teams:["Parma","Siena"]}
+  {name:"Júnior Alonso",teams:["Celta Vigo","LOSC Lille"]}
+  {name:"Júnior Díaz",teams:["1. FSV Mainz 05","SV Darmstadt 98"]}
+  {name:"Jürgen Kohler",teams:["Borussia Dortmund"]}
+  {name:"Jürgen Locadia",teams:["Brighton & Hove Albion","TSG Hoffenheim","VfL Bochum"]}
+  {name:"Kaan Ayhan",teams:["Eintracht Frankfurt","FC Schalke 04","Fortuna Düsseldorf","Sassuolo"]}
+  {name:"Kaba Diawara",teams:["AC Arles-Avignon","GFC Ajaccio","OGC Nice","Paris Saint-Germain","West Ham United"]}
+  {name:"Kader Mangane",teams:["Gazélec Ajaccio","RC Lens","RC Strasbourg","Stade Rennais","Sunderland"]}
+  {name:"Kafoumba Coulibaly",teams:["OGC Nice"]}
+  {name:"Kahê",teams:["Borussia Mönchengladbach"]}
+  {name:"Kai Havertz",teams:["Arsenal","Bayer Leverkusen","Chelsea"]}
+  {name:"Kai Michalke",teams:["1. FC Nürnberg","Hertha BSC","MSV Duisburg"]}
+  {name:"Kaishu Sano",teams:["1. FSV Mainz 05"]}
+  {name:"Kakha Kaladze",teams:["AC Milan","Genoa"]}
+  {name:"Kaká",teams:["AC Milan","Real Madrid"]}
+  {name:"Kalidou Koulibaly",teams:["Chelsea","Napoli"]}
+  {name:"Kalifa Coulibaly",teams:["FC Nantes"]}
+  {name:"Kalu Uche",teams:["Almería","Espanyol","Girondins de Bordeaux","Levante"]}
+  {name:"Kalvin Phillips",teams:["Ipswich Town","Leeds United","Manchester City","West Ham United"]}
+  {name:"Kamaldeen Sulemana",teams:["Atalanta","Southampton","Stade Rennais"]}
+  {name:"Kamel Chafni",teams:["AJ Auxerre","GFC Ajaccio","Stade Brestois 29"]}
+  {name:"Kamel Ghilas",teams:["AC Arles-Avignon","Hull City","Stade de Reims"]}
+  {name:"Kamil Glik",teams:["AS Monaco","Bari","Benevento","Torino"]}
+  {name:"Kamil Grabara",teams:["VfL Wolfsburg"]}
+  {name:"Kamil Grosicki",teams:["Hull City","Stade Rennais","West Bromwich Albion"]}
+  {name:"Kamil Kosowski",teams:["1. FC Kaiserslautern","Chievo Verona"]}
+  {name:"Kamil Zayatte",teams:["Hull City","RC Lens"]}
+  {name:"Kamory Doumbia",teams:["Stade Brestois 29","Stade de Reims"]}
+  {name:"Kandia Traoré",teams:["FC Sochaux","SM Caen"]}
+  {name:"Kanga Akalé",teams:["AJ Auxerre","Olympique de Marseille","RC Lens","Recreativo"]}
+  {name:"Kaoru Mitoma",teams:["Brighton & Hove Albion"]}
+  {name:"Karim Adeyemi",teams:["Borussia Dortmund"]}
+  {name:"Karim Azamoum",teams:["Estac Troyes"]}
+  {name:"Karim Aït-Fana",teams:["Montpellier HSC"]}
+  {name:"Karim Bellarabi",teams:["Bayer Leverkusen","Eintracht Braunschweig"]}
+  {name:"Karim Benzema",teams:["Olympique Lyonnais","Real Madrid"]}
+  {name:"Karim El Ahmadi",teams:["Aston Villa"]}
+  {name:"Karim Guédé",teams:["SC Freiburg"]}
+  {name:"Karim Haggui",teams:["Bayer Leverkusen","Hannover 96","RC Strasbourg","VfB Stuttgart"]}
+  {name:"Karim Matmour",teams:["Borussia Mönchengladbach","Eintracht Frankfurt"]}
+  {name:"Karim Onisiwo",teams:["1. FSV Mainz 05"]}
+  {name:"Karim Rekik",teams:["Hertha BSC","Manchester City","Olympique de Marseille","Sevilla"]}
+  {name:"Karim Ziani",teams:["Estac Troyes","FC Sochaux","Olympique de Marseille","VfL Wolfsburg"]}
+  {name:"Karl Darlow",teams:["Leeds United","Newcastle United"]}
+  {name:"Karl Henry",teams:["Queens Park Rangers","Wolverhampton Wanderers"]}
+  {name:"Karl Toko Ekambi",teams:["Angers SCO","Olympique Lyonnais","Stade Rennais","Villarreal"]}
+  {name:"Karl-Johan Johnsson",teams:["EA Guingamp","RC Strasbourg"]}
+  {name:"Karol Linetty",teams:["Sampdoria","Torino"]}
+  {name:"Kasey Keller",teams:["Borussia Mönchengladbach","Fulham","Rayo Vallecano","Southampton","Tottenham Hotspur"]}
+  {name:"Kasper Dolberg",teams:["OGC Nice","Sevilla","TSG Hoffenheim"]}
+  {name:"Kasper Schmeichel",teams:["Leicester City","Manchester City","OGC Nice"]}
+  {name:"Kassim Abdallah",teams:["Olympique de Marseille","Évian TG"]}
+  {name:"Keagan Dolly",teams:["Montpellier HSC"]}
+  {name:"Keane Lewis-Potter",teams:["Brentford"]}
+  {name:"Keinan Davis",teams:["Aston Villa","Udinese"]}
+  {name:"Keisuke Honda",teams:["AC Milan"]}
+  {name:"Keita Baldé",teams:["AS Monaco","Cagliari","Inter Milan","Lazio","Monza","Sampdoria"]}
+  {name:"Keith Andrews",teams:["Blackburn Rovers","West Bromwich Albion","Wolverhampton Wanderers"]}
+  {name:"Keith Fahey",teams:["Birmingham City"]}
+  {name:"Keith Gillespie",teams:["Blackburn Rovers","Leicester City","Sheffield United"]}
+  {name:"Keito Nakamura",teams:["Stade de Reims"]}
+  {name:"Keko",teams:["Atlético Madrid","Catania","Eibar","Málaga","Real Valladolid"]}
+  {name:"Kelechi Iheanacho",teams:["Leicester City","Manchester City","Sevilla"]}
+  {name:"Kelvin Amian",teams:["FC Nantes","Spezia","Toulouse FC"]}
+  {name:"Kelvin Davis",teams:["Southampton","Sunderland"]}
+  {name:"Ken Sema",teams:["Udinese","Watford"]}
+  {name:"Kenan Karaman",teams:["FC Schalke 04","Fortuna Düsseldorf","Hannover 96","TSG Hoffenheim"]}
+  {name:"Kenan Kodro",teams:["1. FSV Mainz 05","Athletic Bilbao","Osasuna","Real Valladolid"]}
+  {name:"Kenan Yıldız",teams:["Juventus"]}
+  {name:"Kenedy",teams:["Chelsea","Getafe","Granada","Newcastle United","Real Valladolid","Watford"]}
+  {name:"Kenneth Omeruo",teams:["Leganés"]}
+  {name:"Kenny Cunningham",teams:["Birmingham City"]}
+  {name:"Kenny Lala",teams:["FC Valenciennes","RC Strasbourg","Stade Brestois 29"]}
+  {name:"Kenny McLean",teams:["Norwich City"]}
+  {name:"Kenny Miller",teams:["Derby County","Wolverhampton Wanderers"]}
+  {name:"Kenny Tete",teams:["Fulham","Olympique Lyonnais"]}
+  {name:"Kenwyne Jones",teams:["Cardiff City","Southampton","Stoke City","Sunderland"]}
+  {name:"Kepa Arrizabalaga",teams:["AFC Bournemouth","Athletic Bilbao","Chelsea","Real Madrid"]}
+  {name:"Kepa Blanco",teams:["Getafe","Sevilla","West Ham United"]}
+  {name:"Kerem Demirbay",teams:["Bayer Leverkusen","Hamburger SV","TSG Hoffenheim"]}
+  {name:"Keven Schlotterbeck",teams:["1. FC Union Berlin","FC Augsburg","SC Freiburg","VfL Bochum"]}
+  {name:"Kevin Agudelo",teams:["Fiorentina","Genoa","Spezia"]}
+  {name:"Kevin Akpoguma",teams:["Hannover 96","TSG Hoffenheim"]}
+  {name:"Kevin Behrens",teams:["1. FC Union Berlin","VfL Wolfsburg"]}
+  {name:"Kevin Bonifazi",teams:["Bologna","Frosinone","Lecce","SPAL","Torino","Udinese"]}
+  {name:"Kevin Campbell",teams:["Everton","West Bromwich Albion"]}
+  {name:"Kevin Danso",teams:["FC Augsburg","RC Lens","Southampton","Tottenham Hotspur"]}
+  {name:"Kevin Davies",teams:["Bolton Wanderers","Southampton"]}
+  {name:"Kevin De Bruyne",teams:["Chelsea","Manchester City","Napoli","VfL Wolfsburg","Werder Bremen"]}
+  {name:"Kevin Doyle",teams:["Crystal Palace","Reading","Wolverhampton Wanderers"]}
+  {name:"Kevin Foley",teams:["Wolverhampton Wanderers"]}
+  {name:"Kevin Großkreutz",teams:["Borussia Dortmund","VfB Stuttgart"]}
+  {name:"Kevin Hofland",teams:["VfL Wolfsburg"]}
+  {name:"Kevin Kampl",teams:["Bayer Leverkusen","Borussia Dortmund","RB Leipzig"]}
+  {name:"Kevin Kilbane",teams:["Everton","Hull City","Sunderland","Wigan Athletic"]}
+  {name:"Kevin Kurányi",teams:["FC Schalke 04","TSG Hoffenheim","VfB Stuttgart"]}
+  {name:"Kevin Lasagna",teams:["Carpi","Hellas Verona","Udinese"]}
+  {name:"Kevin Lejeune",teams:["AJ Auxerre","FC Metz"]}
+  {name:"Kevin Lisbie",teams:["Charlton Athletic"]}
+  {name:"Kevin Mbabu",teams:["FC Augsburg","Fulham","Newcastle United","VfL Wolfsburg"]}
+  {name:"Kevin McKenna",teams:["Energie Cottbus","FC Köln"]}
+  {name:"Kevin Mirallas",teams:["AS Saint-Étienne","Everton","Fiorentina","LOSC Lille"]}
+  {name:"Kevin Möhwald",teams:["1. FC Union Berlin","Werder Bremen"]}
+  {name:"Kevin Müller",teams:["1. FC Heidenheim"]}
+  {name:"Kevin Nolan",teams:["Bolton Wanderers","Newcastle United","West Ham United"]}
+  {name:"Kevin Paredes",teams:["VfL Wolfsburg"]}
+  {name:"Kevin Pezzoni",teams:["FC Köln"]}
+  {name:"Kevin Phillips",teams:["Aston Villa","Birmingham City","Crystal Palace","Southampton","Sunderland"]}
+  {name:"Kevin Schade",teams:["Brentford","SC Freiburg"]}
+  {name:"Kevin Strootman",teams:["AS Roma","Cagliari","Genoa","Olympique de Marseille"]}
+  {name:"Kevin Stöger",teams:["1. FSV Mainz 05","Borussia Mönchengladbach","Fortuna Düsseldorf","VfL Bochum"]}
+  {name:"Kevin Trapp",teams:["1. FC Kaiserslautern","Eintracht Frankfurt","Paris FC","Paris Saint-Germain"]}
+  {name:"Kevin Vogt",teams:["1. FC Union Berlin","FC Augsburg","FC Köln","TSG Hoffenheim","VfL Bochum","Werder Bremen"]}
+  {name:"Kevin Volland",teams:["1. FC Union Berlin","AS Monaco","Bayer Leverkusen","TSG Hoffenheim"]}
+  {name:"Kevin Vázquez",teams:["Celta Vigo"]}
+  {name:"Kevin Wimmer",teams:["FC Köln","Hannover 96","Stoke City","Tottenham Hotspur"]}
+  {name:"Kevin-Prince Boateng",teams:["AC Milan","Barcelona","Borussia Dortmund","Eintracht Frankfurt","FC Schalke 04","Fiorentina","Hertha BSC","Las Palmas","Portsmouth","Sassuolo","Tottenham Hotspur"]}
+  {name:"Keylor Navas",teams:["Levante","Nottingham Forest","Paris Saint-Germain","Real Madrid"]}
+  {name:"Khaled Adénon",teams:["Amiens SC","Le Mans FC"]}
+  {name:"Khalid Boulahrouz",teams:["Chelsea","Hamburger SV","Sevilla","VfB Stuttgart"]}
+  {name:"Khalil Fayad",teams:["Montpellier HSC"]}
+  {name:"Khalilou Fadiga",teams:["AJ Auxerre","Bolton Wanderers"]}
+  {name:"Khouma Babacar",teams:["Fiorentina","Lecce","Racing Santander","Sassuolo"]}
+  {name:"Khvicha Kvaratskhelia",teams:["Napoli","Paris Saint-Germain"]}
+  {name:"Khéphren Thuram",teams:["Juventus","OGC Nice"]}
+  {name:"Ki Sung-yueng",teams:["Mallorca","Newcastle United","Sunderland","Swansea City"]}
+  {name:"Ki-Jana Hoever",teams:["AJ Auxerre","Wolverhampton Wanderers"]}
+  {name:"Kieran Gibbs",teams:["Arsenal","West Bromwich Albion"]}
+  {name:"Kieran Richardson",teams:["Aston Villa","Fulham","Manchester United","Sunderland","West Bromwich Albion"]}
+  {name:"Kieran Tierney",teams:["Arsenal","Real Sociedad"]}
+  {name:"Kieran Trippier",teams:["Atlético Madrid","Burnley","Newcastle United","Tottenham Hotspur"]}
+  {name:"Kiernan Dewsbury-Hall",teams:["Chelsea","Everton","Leicester City"]}
+  {name:"Kieron Dyer",teams:["Newcastle United","Queens Park Rangers","West Ham United"]}
+  {name:"Kike Barja",teams:["Osasuna"]}
+  {name:"Kike Pérez",teams:["Elche","Rayo Vallecano","Real Valladolid","Venezia"]}
+  {name:"Kike Salas",teams:["Sevilla"]}
+  {name:"Kiki Musampa",teams:["Atlético Madrid","Manchester City","Málaga"]}
+  {name:"Kiko Casilla",teams:["Elche","Espanyol","Leeds United","Real Madrid"]}
+  {name:"Kiko Femenía",teams:["Alavés","Getafe","Hércules","Villarreal","Watford"]}
+  {name:"Kiko Olivas",teams:["Real Valladolid","Villarreal"]}
+  {name:"Kiké",teams:["Alavés","Eibar","Espanyol","Osasuna"]}
+  {name:"Kilian Fischer",teams:["VfL Wolfsburg"]}
+  {name:"Kiliann Sildillia",teams:["SC Freiburg"]}
+  {name:"Kily González",teams:["Inter Milan","Valencia"]}
+  {name:"Kim",teams:["AS Nancy"]}
+  {name:"Kim Källström",teams:["Arsenal","Olympique Lyonnais","Stade Rennais"]}
+  {name:"Kim Min-jae",teams:["Bayern Munich","Napoli"]}
+  {name:"Kingsley Coman",teams:["Bayern Munich","Juventus","Paris Saint-Germain"]}
+  {name:"Kingsley Ehizibue",teams:["FC Köln","Udinese"]}
+  {name:"Kingsley Schindler",teams:["FC Köln"]}
+  {name:"Kirian Rodríguez",teams:["Las Palmas"]}
+  {name:"Klaas-Jan Huntelaar",teams:["AC Milan","FC Schalke 04","Real Madrid"]}
+  {name:"Klaus Gjasula",teams:["SC Paderborn 07","SV Darmstadt 98"]}
+  {name:"Ko Itakura",teams:["Borussia Mönchengladbach"]}
+  {name:"Kobbie Mainoo",teams:["Manchester United"]}
+  {name:"Kodjo Afanou",teams:["Girondins de Bordeaux"]}
+  {name:"Koen Casteels",teams:["TSG Hoffenheim","VfL Wolfsburg","Werder Bremen"]}
+  {name:"Koffi Djidji",teams:["Crotone","FC Nantes","Torino"]}
+  {name:"Koikili Lertxundi",teams:["Athletic Bilbao"]}
+  {name:"Koke",teams:["Atlético Madrid","Málaga","Olympique de Marseille","Rayo Vallecano"]}
+  {name:"Kolo Touré",teams:["Arsenal","Liverpool","Manchester City"]}
+  {name:"Koni De Winter",teams:["AC Milan","Empoli","Genoa"]}
+  {name:"Konrad Laimer",teams:["Bayern Munich","RB Leipzig"]}
+  {name:"Konstantin Rausch",teams:["FC Köln","Hannover 96","SV Darmstadt 98","VfB Stuttgart"]}
+  {name:"Konstantinos Mavropanos",teams:["Arsenal","VfB Stuttgart","West Ham United"]}
+  {name:"Koo Ja-cheol",teams:["1. FSV Mainz 05","FC Augsburg","VfL Wolfsburg"]}
+  {name:"Koray Günter",teams:["Borussia Dortmund","Genoa","Hellas Verona","Sampdoria"]}
+  {name:"Kossi Agassa",teams:["FC Metz","Stade de Reims"]}
+  {name:"Kostas Konstantinidis",teams:["Bolton Wanderers","Hannover 96","Hertha BSC"]}
+  {name:"Kostas Manolas",teams:["AS Roma","Napoli","Salernitana"]}
+  {name:"Kostas Stafylidis",teams:["Bayer Leverkusen","FC Augsburg","Stoke City","TSG Hoffenheim","VfL Bochum"]}
+  {name:"Kostas Tsimikas",teams:["AS Roma","Liverpool"]}
+  {name:"Krasimir Balakov",teams:["VfB Stuttgart"]}
+  {name:"Kristian Thorstvedt",teams:["Sassuolo"]}
+  {name:"Kristijan Jakić",teams:["Eintracht Frankfurt","FC Augsburg"]}
+  {name:"Kristjan Asllani",teams:["Empoli","Inter Milan","Torino"]}
+  {name:"Kristoffer Ajer",teams:["Brentford"]}
+  {name:"Kristoffer Askildsen",teams:["Lecce","Sampdoria"]}
+  {name:"Krisztián Lisztes",teams:["Borussia Mönchengladbach","VfB Stuttgart","Werder Bremen"]}
+  {name:"Krisztián Vadócz",teams:["Osasuna"]}
+  {name:"Krzysztof Piątek",teams:["AC Milan","Fiorentina","Genoa","Hertha BSC","Salernitana"]}
+  {name:"Krépin Diatta",teams:["AS Monaco"]}
+  {name:"Kurt Zouma",teams:["AS Saint-Étienne","Chelsea","Everton","Stoke City","West Ham United"]}
+  {name:"Kwadwo Asamoah",teams:["Cagliari","Inter Milan","Juventus","Udinese"]}
+  {name:"Kwon Chang-hoon",teams:["Dijon FCO","SC Freiburg"]}
+  {name:"Kyle Bartley",teams:["Swansea City","West Bromwich Albion"]}
+  {name:"Kyle Naughton",teams:["Norwich City","Swansea City","Tottenham Hotspur"]}
+  {name:"Kyle Walker",teams:["AC Milan","Aston Villa","Burnley","Manchester City","Tottenham Hotspur"]}
+  {name:"Kyle Walker-Peters",teams:["Southampton","Tottenham Hotspur","West Ham United"]}
+  {name:"Kylian Mbappé",teams:["AS Monaco","Paris Saint-Germain","Real Madrid"]}
+  {name:"Kyriakos Papadopoulos",teams:["Bayer Leverkusen","FC Schalke 04","Hamburger SV","RB Leipzig"]}
+  {name:"Kévin Anin",teams:["FC Sochaux","Le Havre AC","OGC Nice"]}
+  {name:"Kévin Bérigaud",teams:["Angers SCO","Montpellier HSC","Évian TG"]}
+  {name:"Kévin Constant",teams:["AC Milan","Bologna","Chievo Verona","Genoa","Toulouse FC"]}
+  {name:"Kévin Gameiro",teams:["Atlético Madrid","FC Lorient","Paris Saint-Germain","RC Strasbourg","Sevilla","Valencia"]}
+  {name:"Kévin Gomis",teams:["OGC Nice"]}
+  {name:"Kévin Malcuit",teams:["AS Monaco","AS Saint-Étienne","Fiorentina","LOSC Lille","Napoli"]}
+  {name:"Kévin Monnet-Paquet",teams:["AS Saint-Étienne","FC Lorient","RC Lens"]}
+  {name:"Kévin N'Doram",teams:["AS Monaco","FC Metz"]}
+  {name:"Kévin Rodrigues",teams:["Eibar","Leganés","Rayo Vallecano","Real Sociedad","Toulouse FC"]}
+  {name:"Kévin Théophile-Catherine",teams:["AS Saint-Étienne","Cardiff City","Stade Rennais"]}
+  {name:"Kévin Zohi",teams:["RC Strasbourg"]}
+  {name:"Lacina Traoré",teams:["AS Monaco","Amiens SC","Everton","Sporting Gijón"]}
+  {name:"Ladislav Krejčí",teams:["Bologna","Girona","Wolverhampton Wanderers"]}
+  {name:"Lago Junior",teams:["Mallorca","Numancia"]}
+  {name:"Lamberto Zauli",teams:["Bologna","Palermo","Sampdoria","Vicenza"]}
+  {name:"Lameck Banda",teams:["Lecce"]}
+  {name:"Lamine Camara",teams:["AS Monaco","FC Metz"]}
+  {name:"Lamine Diatta",teams:["AS Saint-Étienne","Newcastle United","Olympique Lyonnais","Stade Rennais"]}
+  {name:"Lamine Fomba",teams:["AS Saint-Étienne","Nîmes"]}
+  {name:"Lamine Gassama",teams:["FC Lorient","Olympique Lyonnais"]}
+  {name:"Lamine Koné",teams:["FC Lorient","RC Strasbourg","Sunderland"]}
+  {name:"Lamine Sakho",teams:["AS Saint-Étienne","Leeds United","Olympique de Marseille","RC Lens"]}
+  {name:"Lamine Sané",teams:["Girondins de Bordeaux","Werder Bremen"]}
+  {name:"Lamine Yamal",teams:["Barcelona"]}
+  {name:"Landry N'Guémo",teams:["AS Nancy","AS Saint-Étienne","Girondins de Bordeaux"]}
+  {name:"Largie Ramazani",teams:["Almería","Valencia"]}
+  {name:"Lars Bender",teams:["Bayer Leverkusen"]}
+  {name:"Lars Hermel",teams:["SC Freiburg"]}
+  {name:"Lars Jacobsen",teams:["1. FC Nürnberg","Blackburn Rovers","EA Guingamp","Everton","Hamburger SV","West Ham United"]}
+  {name:"Lars Müller",teams:["1. FC Nürnberg"]}
+  {name:"Lars Ricken",teams:["Borussia Dortmund"]}
+  {name:"Lars Stindl",teams:["Borussia Mönchengladbach","Hannover 96","Karlsruher SC"]}
+  {name:"Larsen Touré",teams:["Grenoble Foot","LOSC Lille","Stade Brestois 29"]}
+  {name:"Lass Bangoura",teams:["Granada","Rayo Vallecano","Stade de Reims"]}
+  {name:"Lassad Nouioui",teams:["Deportivo La Coruña"]}
+  {name:"Lassana Coulibaly",teams:["Angers SCO","Lecce","SC Bastia","Salernitana"]}
+  {name:"Lassana Diarra",teams:["Arsenal","Chelsea","Olympique de Marseille","Paris Saint-Germain","Portsmouth","Real Madrid"]}
+  {name:"Lassina Diabaté",teams:["AJ Auxerre","GFC Ajaccio","Girondins de Bordeaux"]}
+  {name:"Lassine Sinayoko",teams:["AJ Auxerre"]}
+  {name:"Laure",teams:["Deportivo La Coruña"]}
+  {name:"Lauren",teams:["Arsenal","Portsmouth"]}
+  {name:"Laurent Abergel",teams:["FC Lorient","Olympique de Marseille"]}
+  {name:"Laurent Agouazi",teams:["Boulogne","FC Metz"]}
+  {name:"Laurent Batlles",teams:["AS Saint-Étienne","Girondins de Bordeaux","Grenoble Foot","Olympique de Marseille","SC Bastia","Stade Rennais","Toulouse FC"]}
+  {name:"Laurent Blanc",teams:["Inter Milan","Manchester United"]}
+  {name:"Laurent Bonnart",teams:["AS Monaco","GFC Ajaccio","LOSC Lille","Le Mans FC","Olympique de Marseille"]}
+  {name:"Laurent Courtois",teams:["Grenoble Foot","Istres","Levante","Toulouse FC","West Ham United"]}
+  {name:"Laurent Depoitre",teams:["Huddersfield Town"]}
+  {name:"Laurent Koscielny",teams:["Arsenal","FC Lorient","Girondins de Bordeaux"]}
+  {name:"Laurent Peyrelade",teams:["LOSC Lille","Le Mans FC","Sedan"]}
+  {name:"Laurent Pionnier",teams:["Montpellier HSC"]}
+  {name:"Laurent Robert",teams:["Derby County","Levante","Newcastle United","Paris Saint-Germain","Portsmouth"]}
+  {name:"Laurent Viaud",teams:["Albacete"]}
+  {name:"Laurențiu Reghecampf",teams:["Alemannia Aachen","Energie Cottbus"]}
+  {name:"Laurențiu Roșu",teams:["Numancia","Recreativo"]}
+  {name:"Lautaro Martínez",teams:["Inter Milan"]}
+  {name:"Lautaro Valenti",teams:["Parma"]}
+  {name:"Lawrence Aidoo",teams:["1. FC Nürnberg","Borussia Mönchengladbach","Energie Cottbus"]}
+  {name:"Layvin Kurzawa",teams:["AS Monaco","Fulham","Paris Saint-Germain"]}
+  {name:"Lazar Samardzic",teams:["Atalanta","Hertha BSC","RB Leipzig","Udinese"]}
+  {name:"Lazaros Christodoulopoulos",teams:["Bologna","Hellas Verona","Sampdoria"]}
+  {name:"Leander Dendoncker",teams:["Aston Villa","Napoli","Real Oviedo","Wolverhampton Wanderers"]}
+  {name:"Leandro Bacuna",teams:["Aston Villa","Cardiff City"]}
+  {name:"Leandro Barreiro Martins",teams:["1. FSV Mainz 05"]}
+  {name:"Leandro Cabrera",teams:["Atlético Madrid","Crotone","Espanyol","Getafe"]}
+  {name:"Leandro Castán",teams:["AS Roma","Cagliari","Torino"]}
+  {name:"Leandro Cufré",teams:["AS Monaco","AS Roma","Hertha BSC","Siena"]}
+  {name:"Leandro Greco",teams:["AS Roma","Genoa","Hellas Verona","Livorno"]}
+  {name:"Leandro Paredes",teams:["AS Roma","Chievo Verona","Empoli","Juventus","Paris Saint-Germain"]}
+  {name:"Leandro Rinaudo",teams:["Juventus","Livorno","Napoli","Novara","Palermo","Siena"]}
+  {name:"Leandro Trossard",teams:["Arsenal","Brighton & Hove Albion"]}
+  {name:"Lebo Mothiba",teams:["Estac Troyes","LOSC Lille","RC Strasbourg"]}
+  {name:"Ledian Memushaj",teams:["Benevento","Pescara"]}
+  {name:"Ledley King",teams:["Tottenham Hotspur"]}
+  {name:"Lee Bowyer",teams:["Birmingham City","Leeds United","Newcastle United","West Ham United"]}
+  {name:"Lee Carsley",teams:["Birmingham City","Coventry City","Everton"]}
+  {name:"Lee Cattermole",teams:["Middlesbrough","Sunderland","Wigan Athletic"]}
+  {name:"Lee Chung-yong",teams:["Bolton Wanderers","Crystal Palace"]}
+  {name:"Lee Clark",teams:["Fulham","Newcastle United"]}
+  {name:"Lee Hendrie",teams:["Aston Villa"]}
+  {name:"Lee Jae-sung",teams:["1. FSV Mainz 05"]}
+  {name:"Lee Kang-in",teams:["Mallorca","Paris Saint-Germain","Valencia"]}
+  {name:"Lee Marshall",teams:["Leicester City","West Bromwich Albion"]}
+  {name:"Lee McCulloch",teams:["Wigan Athletic"]}
+  {name:"Lee Young-pyo",teams:["Borussia Dortmund","Tottenham Hotspur"]}
+  {name:"Leighton Baines",teams:["Everton","Wigan Athletic"]}
+  {name:"Lennard Maloney",teams:["1. FC Heidenheim","1. FSV Mainz 05","Borussia Dortmund"]}
+  {name:"Lenny Nangis",teams:["LOSC Lille","SC Bastia","SM Caen"]}
+  {name:"Leny Yoro",teams:["LOSC Lille","Manchester United"]}
+  {name:"Leo Dubois",teams:["FC Nantes","Olympique Lyonnais"]}
+  {name:"Leo Franco",teams:["Atlético Madrid","Mallorca","Real Zaragoza"]}
+  {name:"Leo Skiri Østigård",teams:["Genoa","Napoli","Stade Rennais","TSG Hoffenheim"]}
+  {name:"Leon Andreasen",teams:["1. FSV Mainz 05","Fulham","Hannover 96","Werder Bremen"]}
+  {name:"Leon Bailey",teams:["AS Roma","Aston Villa","Bayer Leverkusen"]}
+  {name:"Leon Balogun",teams:["1. FSV Mainz 05","Brighton & Hove Albion","Fortuna Düsseldorf","Hannover 96","Werder Bremen"]}
+  {name:"Leon Britton",teams:["Swansea City"]}
+  {name:"Leon Goretzka",teams:["Bayern Munich","FC Schalke 04"]}
+  {name:"Leon Osman",teams:["Everton"]}
+  {name:"Leonardo Balerdi",teams:["Borussia Dortmund","Olympique de Marseille"]}
+  {name:"Leonardo Bittencourt",teams:["Borussia Dortmund","FC Köln","Hannover 96","TSG Hoffenheim","Werder Bremen"]}
+  {name:"Leonardo Bonucci",teams:["1. FC Union Berlin","AC Milan","Bari","Inter Milan","Juventus"]}
+  {name:"Leonardo Colucci",teams:["Bologna","Cagliari","Hellas Verona"]}
+  {name:"Leonardo Pavoletti",teams:["Cagliari","Genoa","Napoli","Sassuolo"]}
+  {name:"Leonardo Ponzio",teams:["Real Zaragoza"]}
+  {name:"Leonardo Spinazzola",teams:["AS Roma","Atalanta","Juventus","Napoli"]}
+  {name:"Leonardo Talamonti",teams:["Atalanta","Lazio"]}
+  {name:"Leonardo Ulloa",teams:["Almería","Brighton & Hove Albion","Leicester City"]}
+  {name:"Leonel Gancedo",teams:["Osasuna","Real Murcia"]}
+  {name:"Leopold Querfeld",teams:["1. FC Union Berlin"]}
+  {name:"Leroy Fer",teams:["Norwich City","Queens Park Rangers","Swansea City"]}
+  {name:"Leroy Lita",teams:["Reading","Swansea City"]}
+  {name:"Leroy Sané",teams:["Bayern Munich","FC Schalke 04","Manchester City"]}
+  {name:"Les Ferdinand",teams:["Bolton Wanderers","Leicester City","Tottenham Hotspur","West Ham United"]}
+  {name:"Lesley Ugochukwu",teams:["Burnley","Chelsea","Southampton","Stade Rennais"]}
+  {name:"Levan Kobiashvili",teams:["FC Schalke 04","Hertha BSC","SC Freiburg"]}
+  {name:"Levan Mchedlidze",teams:["Empoli","Palermo"]}
+  {name:"Levan Tskitishvili",teams:["SC Freiburg","VfL Wolfsburg"]}
+  {name:"Levi Colwill",teams:["Brighton & Hove Albion","Chelsea"]}
+  {name:"Levin Öztunalı",teams:["1. FC Union Berlin","1. FSV Mainz 05","Bayer Leverkusen","Werder Bremen"]}
+  {name:"Lewis Cook",teams:["AFC Bournemouth"]}
+  {name:"Lewis Dunk",teams:["Brighton & Hove Albion"]}
+  {name:"Lewis Ferguson",teams:["Bologna"]}
+  {name:"Lewis Hall",teams:["Chelsea","Newcastle United"]}
+  {name:"Lewis Holtby",teams:["1. FSV Mainz 05","FC Schalke 04","Fulham","Hamburger SV","Holstein Kiel","Tottenham Hotspur","VfL Bochum"]}
+  {name:"Lewis Miley",teams:["Newcastle United"]}
+  {name:"Liam Cooper",teams:["Hull City","Leeds United"]}
+  {name:"Liam Delap",teams:["Chelsea","Ipswich Town","Manchester City"]}
+  {name:"Liam Henderson",teams:["Empoli","Hellas Verona"]}
+  {name:"Liam Lawrence",teams:["Stoke City","Sunderland"]}
+  {name:"Liam Ridgewell",teams:["Aston Villa","Birmingham City","West Bromwich Albion"]}
+  {name:"Liam Rosenior",teams:["Brighton & Hove Albion","Fulham","Hull City","Reading"]}
+  {name:"Liberato Cacace",teams:["Empoli"]}
+  {name:"Libor Kozák",teams:["Aston Villa","Lazio"]}
+  {name:"Lilian Brassier",teams:["Olympique de Marseille","Stade Brestois 29","Stade Rennais"]}
+  {name:"Lilian Compan",teams:["AS Saint-Étienne","Montpellier HSC","SM Caen"]}
+  {name:"Lilian Laslandes",teams:["FC Köln","Girondins de Bordeaux","OGC Nice","SC Bastia","Sunderland"]}
+  {name:"Lilian Nalis",teams:["Chievo Verona","Leicester City","SC Bastia"]}
+  {name:"Lilian Raolisoa",teams:["Angers SCO"]}
+  {name:"Lilian Thuram",teams:["Barcelona","Juventus","Parma"]}
+  {name:"Lillo",teams:["Almería","Eibar","Osasuna","Sporting Gijón","Valencia"]}
+  {name:"Lincoln",teams:["1. FC Kaiserslautern","FC Schalke 04"]}
+  {name:"Lindsay Rose",teams:["FC Lorient","FC Valenciennes","Olympique Lyonnais","SC Bastia"]}
+  {name:"Lino Marzorati",teams:["AC Milan","Cagliari","Empoli","Sassuolo"]}
+  {name:"Linton Maina",teams:["FC Köln","Hannover 96"]}
+  {name:"Linvoy Primus",teams:["Portsmouth"]}
+  {name:"Lionel Carole",teams:["RC Strasbourg","Sevilla"]}
+  {name:"Lionel Letizi",teams:["OGC Nice","Paris Saint-Germain"]}
+  {name:"Lionel Mathis",teams:["AJ Auxerre","EA Guingamp","FC Sochaux"]}
+  {name:"Lionel Messi",teams:["Barcelona","Paris Saint-Germain"]}
+  {name:"Lionel Potillon",teams:["AS Saint-Étienne","FC Sochaux","Paris Saint-Germain","Real Sociedad"]}
+  {name:"Lionel Scaloni",teams:["Atalanta","Deportivo La Coruña","Lazio","Mallorca","Racing Santander","West Ham United"]}
+  {name:"Lisandro López",teams:["Olympique Lyonnais"]}
+  {name:"Lisandro Magallán",teams:["Alavés","Crotone","Elche"]}
+  {name:"Lisandro Martínez",teams:["Manchester United"]}
+  {name:"Litos",teams:["Málaga"]}
+  {name:"Lloyd Kelly",teams:["AFC Bournemouth","Juventus","Newcastle United"]}
+  {name:"Lloyd Palun",teams:["OGC Nice"]}
+  {name:"Logan Bailly",teams:["Borussia Mönchengladbach"]}
+  {name:"Logan Costa",teams:["Toulouse FC","Villarreal"]}
+  {name:"Lois Diony",teams:["AS Saint-Étienne","Angers SCO","Dijon FCO"]}
+  {name:"Lolo",teams:["Málaga","Osasuna","Sevilla"]}
+  {name:"Lomana LuaLua",teams:["Newcastle United","Portsmouth"]}
+  {name:"Loren Morón",teams:["Espanyol","Real Betis"]}
+  {name:"Lorenz Assignon",teams:["Burnley","Stade Rennais","VfB Stuttgart"]}
+  {name:"Lorenzo Ariaudo",teams:["Cagliari","Empoli","Frosinone","Juventus","Sassuolo"]}
+  {name:"Lorenzo Colombo",teams:["AC Milan","Empoli","Genoa","Lecce","Monza"]}
+  {name:"Lorenzo Crisetig",teams:["Bologna","Cagliari","Crotone","Frosinone"]}
+  {name:"Lorenzo D'Anna",teams:["Chievo Verona"]}
+  {name:"Lorenzo De Silvestri",teams:["Bologna","Fiorentina","Lazio","Sampdoria","Torino"]}
+  {name:"Lorenzo Insigne",teams:["Napoli"]}
+  {name:"Lorenzo Lucca",teams:["Napoli","Nottingham Forest","Udinese"]}
+  {name:"Lorenzo Montipò",teams:["Benevento","Hellas Verona"]}
+  {name:"Lorenzo Pellegrini",teams:["AS Roma","Sassuolo"]}
+  {name:"Lorenzo Pirola",teams:["Inter Milan","Salernitana"]}
+  {name:"Lorenzo Stovini",teams:["Catania","Lecce","Reggina"]}
+  {name:"Lorenzo Tonelli",teams:["Empoli","Napoli","Sampdoria"]}
+  {name:"Lorenzo Venuti",teams:["Benevento","Fiorentina","Lecce"]}
+  {name:"Lorik Cana",teams:["FC Nantes","Lazio","Olympique de Marseille","Paris Saint-Germain","Sunderland"]}
+  {name:"Loris Benito",teams:["Girondins de Bordeaux"]}
+  {name:"Loris Karius",teams:["1. FC Union Berlin","1. FSV Mainz 05","Liverpool","Newcastle United"]}
+  {name:"Loris Néry",teams:["AS Saint-Étienne","FC Valenciennes"]}
+  {name:"Lossémy Karaboué",teams:["AS Nancy","Estac Troyes"]}
+  {name:"Louis Saha",teams:["Everton","Fulham","Lazio","Manchester United","Sunderland","Tottenham Hotspur"]}
+  {name:"Loukas Vyntra",teams:["Levante"]}
+  {name:"Loum Tchaouna",teams:["Burnley","Lazio","Salernitana","Stade Rennais"]}
+  {name:"Lovro Majer",teams:["Stade Rennais","VfL Wolfsburg"]}
+  {name:"Loïc Bade",teams:["Bayer Leverkusen","RC Lens","Sevilla","Stade Rennais"]}
+  {name:"Loïc Guillon",teams:["FC Nantes"]}
+  {name:"Loïc Nego",teams:["Le Havre AC"]}
+  {name:"Loïc Perrin",teams:["AS Saint-Étienne"]}
+  {name:"Loïc Poujol",teams:["FC Sochaux"]}
+  {name:"Loïc Rémy",teams:["Chelsea","Crystal Palace","Getafe","LOSC Lille","Las Palmas","Newcastle United","OGC Nice","Olympique Lyonnais","Olympique de Marseille","Queens Park Rangers","RC Lens"]}
+  {name:"Loïck Landre",teams:["Nîmes","Paris Saint-Germain","RC Lens"]}
+  {name:"Loïs Openda",teams:["Juventus","RB Leipzig","RC Lens"]}
+  {name:"Luca Antei",teams:["Benevento","Sassuolo"]}
+  {name:"Luca Antonelli",teams:["AC Milan","Empoli","Genoa","Parma"]}
+  {name:"Luca Antonini",teams:["AC Milan","Empoli","Genoa","Sampdoria","Siena"]}
+  {name:"Luca Ariatti",teams:["Atalanta","Chievo Verona","Fiorentina","Lecce"]}
+  {name:"Luca Bucci",teams:["Empoli","Napoli","Parma","Torino"]}
+  {name:"Luca Caldirola",teams:["Benevento","Monza","SV Darmstadt 98","Werder Bremen"]}
+  {name:"Luca Castellazzi",teams:["Brescia","Inter Milan","Reggina","Sampdoria"]}
+  {name:"Luca Ceccarelli",teams:["Cesena"]}
+  {name:"Luca Ceppitelli",teams:["Cagliari"]}
+  {name:"Luca Cigarini",teams:["Atalanta","Cagliari","Crotone","Napoli","Parma","Sampdoria","Sevilla"]}
+  {name:"Luca Kilian",teams:["1. FSV Mainz 05","FC Köln","SC Paderborn 07"]}
+  {name:"Luca Marchegiani",teams:["Chievo Verona","Lazio"]}
+  {name:"Luca Marrone",teams:["Carpi","Crotone","Hellas Verona","Juventus","Monza","Sassuolo"]}
+  {name:"Luca Mazzitelli",teams:["AS Roma","Cagliari","Como","Frosinone","Genoa","Sassuolo"]}
+  {name:"Luca Netz",teams:["Borussia Mönchengladbach","Hertha BSC","Nottingham Forest"]}
+  {name:"Luca Pellegrini",teams:["AS Roma","Cagliari","Eintracht Frankfurt","Genoa","Juventus","Lazio"]}
+  {name:"Luca Ranieri",teams:["Fiorentina","Salernitana"]}
+  {name:"Luca Rigoni",teams:["Chievo Verona","Genoa","Palermo","Parma","Reggina"]}
+  {name:"Luca Rizzo",teams:["Bologna","SPAL","Sampdoria"]}
+  {name:"Luca Rossettini",teams:["Bologna","Cagliari","Chievo Verona","Genoa","Lecce","Siena","Torino"]}
+  {name:"Luca Saudati",teams:["Atalanta","Empoli","Lecce","Perugia"]}
+  {name:"Luca Siligardi",teams:["Bologna","Crotone","Hellas Verona","Livorno","Parma"]}
+  {name:"Luca Tognozzi",teams:["Reggina"]}
+  {name:"Luca Toni",teams:["AS Roma","Bayern Munich","Brescia","Fiorentina","Genoa","Hellas Verona","Juventus","Palermo","Vicenza"]}
+  {name:"Luca Vigiani",teams:["Bologna","Livorno","Reggina"]}
+  {name:"Luca Waldschmidt",teams:["Eintracht Frankfurt","FC Köln","Hamburger SV","SC Freiburg","VfL Wolfsburg"]}
+  {name:"Luca de la Torre",teams:["Celta Vigo"]}
+  {name:"Lucas Alario",teams:["Bayer Leverkusen","Eintracht Frankfurt"]}
+  {name:"Lucas Barrios",teams:["Borussia Dortmund","Montpellier HSC"]}
+  {name:"Lucas Beltrán",teams:["Fiorentina","Valencia"]}
+  {name:"Lucas Bernardi",teams:["AS Monaco","Olympique de Marseille"]}
+  {name:"Lucas Biglia",teams:["AC Milan","Lazio"]}
+  {name:"Lucas Boyé",teams:["Alavés","Celta Vigo","Elche","Granada","Torino"]}
+  {name:"Lucas Castro",teams:["Cagliari","Catania","Chievo Verona","SPAL"]}
+  {name:"Lucas Castromán",teams:["Lazio","Udinese"]}
+  {name:"Lucas Chevalier",teams:["LOSC Lille","Paris Saint-Germain"]}
+  {name:"Lucas Da Cunha",teams:["Clermont Foot","Como","OGC Nice","Stade Rennais"]}
+  {name:"Lucas Deaux",teams:["EA Guingamp","FC Nantes","Nîmes"]}
+  {name:"Lucas Digne",teams:["AS Roma","Aston Villa","Barcelona","Everton","LOSC Lille","Paris Saint-Germain"]}
+  {name:"Lucas Gourna-Douath",teams:["AS Roma","AS Saint-Étienne","Le Havre AC"]}
+  {name:"Lucas Hernández",teams:["Atlético Madrid","Bayern Munich","Paris Saint-Germain"]}
+  {name:"Lucas Höler",teams:["SC Freiburg"]}
+  {name:"Lucas Leiva",teams:["Lazio","Liverpool"]}
+  {name:"Lucas Licht",teams:["Getafe"]}
+  {name:"Lucas Lima",teams:["FC Nantes"]}
+  {name:"Lucas Martínez Quarta",teams:["Fiorentina"]}
+  {name:"Lucas Moura",teams:["Paris Saint-Germain","Tottenham Hotspur"]}
+  {name:"Lucas Neill",teams:["Blackburn Rovers","Everton","West Ham United"]}
+  {name:"Lucas Ocampos",teams:["AC Milan","AS Monaco","Genoa","Olympique de Marseille","Sevilla"]}
+  {name:"Lucas Olaza",teams:["Celta Vigo","Elche","Real Valladolid"]}
+  {name:"Lucas Orbán",teams:["Genoa","Girondins de Bordeaux","Levante","Valencia"]}
+  {name:"Lucas Paquetá",teams:["AC Milan","Olympique Lyonnais","West Ham United"]}
+  {name:"Lucas Perrin",teams:["Olympique de Marseille","RC Strasbourg"]}
+  {name:"Lucas Pérez",teams:["Alavés","Arsenal","Cádiz","Deportivo La Coruña","Elche","West Ham United"]}
+  {name:"Lucas Radebe",teams:["Leeds United"]}
+  {name:"Lucas Robertone",teams:["Almería"]}
+  {name:"Lucas Severino",teams:["Stade Rennais"]}
+  {name:"Lucas Torreira",teams:["Arsenal","Atlético Madrid","Fiorentina","Sampdoria"]}
+  {name:"Lucas Torró",teams:["Eintracht Frankfurt","Osasuna"]}
+  {name:"Lucas Tousart",teams:["1. FC Union Berlin","Hertha BSC","Olympique Lyonnais","Stade Brestois 29"]}
+  {name:"Lucas Vázquez",teams:["Bayer Leverkusen","Espanyol","Real Madrid"]}
+  {name:"Lucho González",teams:["Olympique de Marseille"]}
+  {name:"Luciano",teams:["Chievo Verona"]}
+  {name:"Luciano Figueroa",teams:["Birmingham City","Genoa","Villarreal"]}
+  {name:"Luciano Galletti",teams:["Atlético Madrid","Real Zaragoza"]}
+  {name:"Luciano Vietto",teams:["Atlético Madrid","Fulham","Sevilla","Valencia","Villarreal"]}
+  {name:"Luciano Zauri",teams:["Atalanta","Fiorentina","Lazio","Pescara","Sampdoria"]}
+  {name:"Luciano Zavagno",teams:["Ancona","Derby County","Estac Troyes"]}
+  {name:"Lucien Agoume",teams:["Estac Troyes","Inter Milan","Sevilla","Spezia","Stade Brestois 29"]}
+  {name:"Lucien Aubey",teams:["Portsmouth","RC Lens","Stade Rennais","Toulouse FC"]}
+  {name:"Lucien Mettomo",teams:["1. FC Kaiserslautern","AS Saint-Étienne","Manchester City"]}
+  {name:"Ludovic Ajorque",teams:["1. FSV Mainz 05","RC Strasbourg","Stade Brestois 29"]}
+  {name:"Ludovic Asuar",teams:["FC Metz","Sedan"]}
+  {name:"Ludovic Baal",teams:["Le Mans FC","RC Lens","Stade Brestois 29","Stade Rennais"]}
+  {name:"Ludovic Blas",teams:["EA Guingamp","FC Nantes","Stade Rennais"]}
+  {name:"Ludovic Butelle",teams:["Angers SCO","FC Metz","LOSC Lille","Real Valladolid","Valencia"]}
+  {name:"Ludovic Delporte",teams:["Albacete","Osasuna"]}
+  {name:"Ludovic Giuly",teams:["AS Monaco","AS Roma","Barcelona","FC Lorient","Paris Saint-Germain"]}
+  {name:"Ludovic Magnin",teams:["VfB Stuttgart","Werder Bremen"]}
+  {name:"Ludovic Obraniak",teams:["FC Metz","Girondins de Bordeaux","LOSC Lille","Werder Bremen"]}
+  {name:"Ludwig Augustinsson",teams:["Aston Villa","Mallorca","Sevilla","Werder Bremen"]}
+  {name:"Luigi Di Biagio",teams:["Ascoli","Brescia","Inter Milan"]}
+  {name:"Luigi Giorgi",teams:["Atalanta","Cesena","Novara","Palermo","Siena"]}
+  {name:"Luigi Piangerelli",teams:["Cesena","Fiorentina","Lecce"]}
+  {name:"Luigi Pieroni",teams:["AJ Auxerre","FC Nantes","FC Valenciennes","RC Lens"]}
+  {name:"Luigi Sala",teams:["AC Milan","Atalanta","Chievo Verona","Sampdoria","Udinese"]}
+  {name:"Luigi Sartor",teams:["AS Roma","Ancona","Parma"]}
+  {name:"Luigi Sepe",teams:["Empoli","Napoli","Parma","Salernitana"]}
+  {name:"Luigi Turci",teams:["Sampdoria","Udinese"]}
+  {name:"Luis Alberto",teams:["Deportivo La Coruña","Lazio","Liverpool","Málaga","Sevilla"]}
+  {name:"Luis Amaranto Perea",teams:["Atlético Madrid"]}
+  {name:"Luis Cuartero",teams:["Real Zaragoza"]}
+  {name:"Luis Diego López",teams:["Cagliari"]}
+  {name:"Luis Díaz",teams:["Bayern Munich","Liverpool"]}
+  {name:"Luis Enrique",teams:["Barcelona"]}
+  {name:"Luis Fernández",teams:["Racing Santander","Real Betis"]}
+  {name:"Luis García",teams:["Atlético Madrid","Barcelona","Espanyol","Getafe","Liverpool","Mallorca","Racing Santander","Real Murcia","Real Valladolid","Real Zaragoza"]}
+  {name:"Luis Helguera",teams:["Alavés","Ancona","Udinese"]}
+  {name:"Luis Henrique",teams:["Inter Milan","Olympique de Marseille"]}
+  {name:"Luis Hernández",teams:["Cádiz","Leicester City","Málaga","Sporting Gijón"]}
+  {name:"Luis Javier Suárez",teams:["Almería","Granada","Olympique de Marseille"]}
+  {name:"Luis Jiménez",teams:["Cesena","Fiorentina","Inter Milan","Lazio","Parma","West Ham United"]}
+  {name:"Luis Milla",teams:["Getafe","Granada"]}
+  {name:"Luis Morán",teams:["Sporting Gijón"]}
+  {name:"Luis Muriel",teams:["Atalanta","Fiorentina","Lecce","Sampdoria","Sevilla","Udinese"]}
+  {name:"Luis Pedro Cavanda",teams:["Lazio"]}
+  {name:"Luis Prieto Zalbidegoitia",teams:["Athletic Bilbao","Real Valladolid"]}
+  {name:"Luis Pérez",teams:["Real Valladolid"]}
+  {name:"Luis Rioja",teams:["Alavés","Valencia"]}
+  {name:"Luis Rubiales",teams:["Levante"]}
+  {name:"Luis Sinisterra",teams:["AFC Bournemouth","Leeds United"]}
+  {name:"Luis Suárez",teams:["Atlético Madrid","Barcelona","Liverpool"]}
+  {name:"Luis Tevenet",teams:["Las Palmas","Numancia"]}
+  {name:"Luisinho",teams:["Deportivo La Coruña","Huesca"]}
+  {name:"Luiz Alberto",teams:["AS Saint-Étienne","Real Sociedad"]}
+  {name:"Luiz Araújo",teams:["LOSC Lille"]}
+  {name:"Luiz Felipe",teams:["Lazio","Olympique de Marseille","Rayo Vallecano","Real Betis"]}
+  {name:"Luiz Gustavo",teams:["Bayern Munich","Olympique de Marseille","TSG Hoffenheim","VfL Wolfsburg"]}
+  {name:"Luka Jović",teams:["AC Milan","Eintracht Frankfurt","Fiorentina","Real Madrid"]}
+  {name:"Luka Milivojević",teams:["Crystal Palace"]}
+  {name:"Luka Modrić",teams:["AC Milan","Real Madrid","Tottenham Hotspur"]}
+  {name:"Lukas Hinterseer",teams:["FC Ingolstadt 04"]}
+  {name:"Lukas Klostermann",teams:["RB Leipzig"]}
+  {name:"Lukas Klünter",teams:["FC Köln","Hertha BSC"]}
+  {name:"Lukas Kübler",teams:["SC Freiburg"]}
+  {name:"Lukas Lerager",teams:["Genoa","Girondins de Bordeaux"]}
+  {name:"Lukas Nmecha",teams:["Leeds United","Manchester City","VfL Wolfsburg"]}
+  {name:"Lukas Podolski",teams:["Arsenal","Bayern Munich","FC Köln","Inter Milan"]}
+  {name:"Lukas Rupp",teams:["Borussia Mönchengladbach","Norwich City","SC Paderborn 07","TSG Hoffenheim","VfB Stuttgart"]}
+  {name:"Lukas Schmitz",teams:["FC Schalke 04","Werder Bremen"]}
+  {name:"Lukas Sinkiewicz",teams:["Bayer Leverkusen","FC Köln"]}
+  {name:"Luke Ayling",teams:["Leeds United"]}
+  {name:"Luke Moore",teams:["Aston Villa","Swansea City","West Bromwich Albion"]}
+  {name:"Luke Shaw",teams:["Manchester United","Southampton"]}
+  {name:"Luke Thomas",teams:["Leicester City","Sheffield United"]}
+  {name:"Luke Young",teams:["Aston Villa","Charlton Athletic","Middlesbrough","Queens Park Rangers","Tottenham Hotspur"]}
+  {name:"Lukáš Hrádecký",teams:["AS Monaco","Bayer Leverkusen","Eintracht Frankfurt"]}
+  {name:"Lukáš Jarolím",teams:["Sedan","Siena"]}
+  {name:"Luuk de Jong",teams:["Barcelona","Borussia Mönchengladbach","Newcastle United","Sevilla"]}
+  {name:"Luís Boa Morte",teams:["Fulham","West Ham United"]}
+  {name:"Luís Fabiano",teams:["Sevilla","Stade Rennais"]}
+  {name:"Luís Figo",teams:["Inter Milan","Real Madrid"]}
+  {name:"Luís Maximiano",teams:["Almería","Granada","Lazio"]}
+  {name:"Lyanco",teams:["Bologna","Southampton","Torino"]}
+  {name:"Lynel Kitambala",teams:["AJ Auxerre","AS Saint-Étienne","FC Lorient"]}
+  {name:"Lys Mousset",teams:["AFC Bournemouth","Salernitana","Sheffield United"]}
+  {name:"László Bénes",teams:["1. FC Union Berlin","Borussia Mönchengladbach","FC Augsburg"]}
+  {name:"Léo Baptistão",teams:["Almería","Atlético Madrid","Espanyol","Rayo Vallecano","Real Betis","Villarreal"]}
+  {name:"Léo Leroy",teams:["Montpellier HSC"]}
+  {name:"Léo Pétrot",teams:["AS Saint-Étienne","Elche","FC Lorient"]}
+  {name:"Líbero Parri",teams:["Albacete","Racing Santander","Valencia"]}
+  {name:"López Rekarte",teams:["Almería","Real Sociedad"]}
+  {name:"Lúcio",teams:["Bayer Leverkusen","Bayern Munich","Inter Milan","Juventus"]}
+  {name:"M'Bala Nzola",teams:["Fiorentina","Pisa","RC Lens","Sassuolo","Spezia"]}
+  {name:"M'Baye Niang",teams:["AC Milan","AJ Auxerre","Empoli","Genoa","Girondins de Bordeaux","Montpellier HSC","SM Caen","Stade Rennais","Torino","Watford"]}
+  {name:"Maarten Stekelenburg",teams:["AS Monaco","AS Roma","Everton","Fulham","Southampton"]}
+  {name:"Mads Pedersen",teams:["FC Augsburg"]}
+  {name:"Mads Roerslev",teams:["Brentford","VfL Wolfsburg"]}
+  {name:"Maduka Okoye",teams:["Udinese"]}
+  {name:"Maghnes Akliouche",teams:["AS Monaco"]}
+  {name:"Magno Mocelin",teams:["Alavés"]}
+  {name:"Magnus Arvidsson",teams:["Hansa Rostock"]}
+  {name:"Mahamadou Diarra",teams:["AS Monaco","Fulham","Olympique Lyonnais","Real Madrid"]}
+  {name:"Mahamane Traoré",teams:["OGC Nice"]}
+  {name:"Mahdi Camara",teams:["AS Saint-Étienne","Stade Brestois 29","Stade Rennais"]}
+  {name:"Mahmoud Dahoud",teams:["Borussia Dortmund","Borussia Mönchengladbach","Brighton & Hove Albion","Eintracht Frankfurt","VfB Stuttgart"]}
+  {name:"Maicon Sisenando",teams:["AS Monaco","AS Roma","Inter Milan","Manchester City"]}
+  {name:"Maicosuel",teams:["TSG Hoffenheim","Udinese"]}
+  {name:"Maik Franz",teams:["Eintracht Frankfurt","Hertha BSC","Karlsruher SC","VfL Wolfsburg"]}
+  {name:"Maik Taylor",teams:["Birmingham City","Fulham"]}
+  {name:"Makoto Hasebe",teams:["1. FC Nürnberg","Eintracht Frankfurt","VfL Wolfsburg"]}
+  {name:"Malang Sarr",teams:["AS Monaco","Chelsea","OGC Nice","RC Lens"]}
+  {name:"Malcolm Christie",teams:["Derby County","Middlesbrough"]}
+  {name:"Malcom",teams:["Barcelona","Girondins de Bordeaux"]}
+  {name:"Malick Fofana",teams:["Olympique Lyonnais"]}
+  {name:"Malick Thiaw",teams:["AC Milan","FC Schalke 04","Newcastle United"]}
+  {name:"Malik Fathi",teams:["1. FSV Mainz 05","Hertha BSC"]}
+  {name:"Malo Gusto",teams:["Chelsea","Olympique Lyonnais"]}
+  {name:"Mama Samba Baldé",teams:["Dijon FCO","Estac Troyes","Olympique Lyonnais","Stade Brestois 29"]}
+  {name:"Mamadou Bagayoko",teams:["FC Nantes","GFC Ajaccio","OGC Nice","RC Strasbourg"]}
+  {name:"Mamadou Diabang",teams:["Arminia Bielefeld","VfL Bochum"]}
+  {name:"Mamadou Diallo",teams:["FC Nantes","Le Havre AC"]}
+  {name:"Mamadou Niang",teams:["Estac Troyes","Olympique de Marseille","RC Strasbourg"]}
+  {name:"Mamadou Sakho",teams:["Crystal Palace","Liverpool","Montpellier HSC","Paris Saint-Germain"]}
+  {name:"Mamadou Samassa",teams:["Chievo Verona","EA Guingamp","Estac Troyes","FC Valenciennes","Le Mans FC","Olympique de Marseille"]}
+  {name:"Mamadou Seck",teams:["GFC Ajaccio"]}
+  {name:"Mamadou Sylla",teams:["Alavés","Espanyol","Rayo Vallecano","Real Valladolid"]}
+  {name:"Mame Biram Diouf",teams:["Blackburn Rovers","Hannover 96","Manchester United","Stoke City"]}
+  {name:"Mami Quevedo",teams:["Rayo Vallecano"]}
+  {name:"Manasseh Ishiaku",teams:["FC Köln","MSV Duisburg"]}
+  {name:"Mancini",teams:["AC Milan","AS Roma","Inter Milan"]}
+  {name:"Mandela Keita",teams:["Parma"]}
+  {name:"Manel",teams:["Numancia","Tenerife"]}
+  {name:"Maniche",teams:["Atlético Madrid","Chelsea","FC Köln","Inter Milan"]}
+  {name:"Manolo Gabbiadini",teams:["Atalanta","Bologna","Napoli","Sampdoria","Southampton"]}
+  {name:"Manolo Gaspar",teams:["Levante","Málaga"]}
+  {name:"Manolo Reina",teams:["Levante","Mallorca","Málaga"]}
+  {name:"Manu García",teams:["Alavés","Manchester City","Toulouse FC"]}
+  {name:"Manu Koné",teams:["AS Roma","Borussia Mönchengladbach","Toulouse FC"]}
+  {name:"Manu Morlanes",teams:["Espanyol","Mallorca","Villarreal"]}
+  {name:"Manu Sánchez",teams:["Alavés","Atlético Madrid","Celta Vigo","Levante","Málaga","Osasuna"]}
+  {name:"Manu Trigueros",teams:["Villarreal"]}
+  {name:"Manu Vallejo",teams:["Alavés","Girona","Valencia"]}
+  {name:"Manu del Moral",teams:["Atlético Madrid","Eibar","Elche","Getafe","Sevilla"]}
+  {name:"Manucho",teams:["Hull City","Manchester United","Rayo Vallecano","Real Valladolid"]}
+  {name:"Manuel Akanji",teams:["Borussia Dortmund","Inter Milan","Manchester City"]}
+  {name:"Manuel Almunia",teams:["Albacete","Arsenal","Recreativo"]}
+  {name:"Manuel Arana",teams:["Racing Santander","Rayo Vallecano"]}
+  {name:"Manuel Belleri",teams:["Atalanta","Bologna","Empoli","Lazio","Udinese"]}
+  {name:"Manuel Canabal",teams:["Málaga"]}
+  {name:"Manuel Coppola",teams:["Cesena","Genoa","Lecce","Parma","Siena"]}
+  {name:"Manuel Fernandes",teams:["Everton","Portsmouth","Valencia"]}
+  {name:"Manuel Friedrich",teams:["1. FSV Mainz 05","Bayer Leverkusen","Borussia Dortmund","Werder Bremen"]}
+  {name:"Manuel Gulde",teams:["SC Freiburg","TSG Hoffenheim"]}
+  {name:"Manuel Iturra",teams:["Granada","Málaga","Rayo Vallecano","Udinese","Villarreal"]}
+  {name:"Manuel Lanzini",teams:["West Ham United"]}
+  {name:"Manuel Lazzari",teams:["Lazio","SPAL"]}
+  {name:"Manuel Locatelli",teams:["AC Milan","Juventus","Sassuolo"]}
+  {name:"Manuel Neuer",teams:["Bayern Munich","FC Schalke 04"]}
+  {name:"Manuel Pablo",teams:["Deportivo La Coruña"]}
+  {name:"Manuel Pasqual",teams:["Empoli","Fiorentina"]}
+  {name:"Manuel Prietl",teams:["Arminia Bielefeld"]}
+  {name:"Manuel Pucciarelli",teams:["Chievo Verona","Empoli"]}
+  {name:"Manuel Riemann",teams:["VfL Bochum"]}
+  {name:"Manuel Schmiedebach",teams:["1. FC Union Berlin","Hannover 96"]}
+  {name:"Manuel Tena",teams:["Getafe","Real Valladolid"]}
+  {name:"Manuel Ugarte",teams:["Manchester United","Paris Saint-Germain"]}
+  {name:"Manuel dos Santos",teams:["AS Monaco","Olympique de Marseille","RC Strasbourg"]}
+  {name:"Manuele Blasi",teams:["Fiorentina","Juventus","Lecce","Napoli","Palermo","Parma","Perugia","Pescara"]}
+  {name:"Mané",teams:["Almería","Getafe"]}
+  {name:"Maor Melikson",teams:["FC Valenciennes"]}
+  {name:"Mapou Yanga-Mbiwa",teams:["AS Roma","Montpellier HSC","Newcastle United","Olympique Lyonnais"]}
+  {name:"Marama Vahirua",teams:["AS Nancy","FC Lorient","FC Nantes","OGC Nice"]}
+  {name:"Marash Kumbulla",teams:["AS Roma","Espanyol","Hellas Verona","Mallorca","Sassuolo"]}
+  {name:"Marc Albrighton",teams:["Aston Villa","Leicester City"]}
+  {name:"Marc Bartra",teams:["Barcelona","Borussia Dortmund","Real Betis"]}
+  {name:"Marc Bertrán",teams:["Cádiz","Espanyol","Osasuna","Tenerife"]}
+  {name:"Marc Cardona",teams:["Eibar","Las Palmas","Osasuna"]}
+  {name:"Marc Cucurella",teams:["Brighton & Hove Albion","Chelsea","Eibar","Getafe"]}
+  {name:"Marc Edworthy",teams:["Coventry City","Derby County","Norwich City"]}
+  {name:"Marc Guéhi",teams:["Crystal Palace","Manchester City"]}
+  {name:"Marc Muniesa",teams:["Barcelona","Girona","Stoke City"]}
+  {name:"Marc Overmars",teams:["Barcelona"]}
+  {name:"Marc Pfertzel",teams:["Livorno","VfL Bochum"]}
+  {name:"Marc Planus",teams:["Girondins de Bordeaux"]}
+  {name:"Marc Pugh",teams:["AFC Bournemouth"]}
+  {name:"Marc Roca",teams:["Bayern Munich","Espanyol","Leeds United","Real Betis"]}
+  {name:"Marc Stein",teams:["Hansa Rostock","Hertha BSC"]}
+  {name:"Marc Stendera",teams:["Eintracht Frankfurt"]}
+  {name:"Marc Torrejón",teams:["Espanyol","Racing Santander","SC Freiburg"]}
+  {name:"Marc Valiente",teams:["Real Valladolid","Sevilla"]}
+  {name:"Marc Wilmots",teams:["FC Schalke 04","Girondins de Bordeaux"]}
+  {name:"Marc Wilson",teams:["Portsmouth","Stoke City","West Bromwich Albion"]}
+  {name:"Marc Ziegler",teams:["Arminia Bielefeld","Borussia Dortmund","Hannover 96"]}
+  {name:"Marc-André Kruska",teams:["Borussia Dortmund"]}
+  {name:"Marc-André ter Stegen",teams:["Barcelona","Borussia Mönchengladbach","Girona"]}
+  {name:"Marc-Antoine Fortuné",teams:["AS Nancy","LOSC Lille","West Bromwich Albion"]}
+  {name:"Marc-Oliver Kempf",teams:["Como","Eintracht Frankfurt","Hertha BSC","SC Freiburg","VfB Stuttgart"]}
+  {name:"Marc-Vivien Foé",teams:["Manchester City","Olympique Lyonnais"]}
+  {name:"Marcel Büchel",teams:["Empoli","Hellas Verona"]}
+  {name:"Marcel Desailly",teams:["Chelsea"]}
+  {name:"Marcel Halstenberg",teams:["RB Leipzig"]}
+  {name:"Marcel Heller",teams:["Eintracht Frankfurt","FC Augsburg","SV Darmstadt 98"]}
+  {name:"Marcel Ketelaer",teams:["1. FC Nürnberg","Borussia Mönchengladbach","Hamburger SV"]}
+  {name:"Marcel Maltritz",teams:["Hamburger SV","VfL Bochum","VfL Wolfsburg"]}
+  {name:"Marcel Ndjeng",teams:["Arminia Bielefeld","Borussia Mönchengladbach","FC Augsburg","Hamburger SV","Hertha BSC"]}
+  {name:"Marcel Risse",teams:["1. FC Nürnberg","1. FSV Mainz 05","Bayer Leverkusen","FC Köln"]}
+  {name:"Marcel Sabitzer",teams:["Bayern Munich","Borussia Dortmund","Manchester United","RB Leipzig"]}
+  {name:"Marcel Schmelzer",teams:["Borussia Dortmund"]}
+  {name:"Marcel Schäfer",teams:["1860 Munich","VfL Wolfsburg"]}
+  {name:"Marcel Tisserand",teams:["AS Monaco","FC Ingolstadt 04","Toulouse FC","VfL Wolfsburg"]}
+  {name:"Marcelinho Paraíba",teams:["Hertha BSC","Olympique de Marseille","VfL Wolfsburg"]}
+  {name:"Marcell Jansen",teams:["Bayern Munich","Borussia Mönchengladbach","Hamburger SV"]}
+  {name:"Marcello Castellini",teams:["Bologna","Parma","Sampdoria"]}
+  {name:"Marcello Gazzola",teams:["Catania","Parma","Sassuolo"]}
+  {name:"Marcello Trotta",teams:["Crotone","Frosinone","Fulham","Sassuolo"]}
+  {name:"Marcelo",teams:["Girondins de Bordeaux","Hannover 96","Olympique Lyonnais","Real Madrid"]}
+  {name:"Marcelo Bordon",teams:["FC Schalke 04","VfB Stuttgart"]}
+  {name:"Marcelo Brozović",teams:["Inter Milan"]}
+  {name:"Marcelo Díaz",teams:["Celta Vigo","Hamburger SV"]}
+  {name:"Marcelo Estigarribia",teams:["Atalanta","Chievo Verona","Juventus","Le Mans FC","Sampdoria"]}
+  {name:"Marcelo Gallardo",teams:["AS Monaco","Paris Saint-Germain"]}
+  {name:"Marcelo Pletsch",teams:["1. FC Kaiserslautern","Borussia Mönchengladbach"]}
+  {name:"Marcelo Romero",teams:["Málaga"]}
+  {name:"Marcelo Trapasso",teams:["FC Sochaux"]}
+  {name:"Marcelo Zalayeta",teams:["Bologna","Juventus","Napoli","Perugia"]}
+  {name:"Marcin Bułka",teams:["OGC Nice","Paris Saint-Germain"]}
+  {name:"Marcin Kamiński",teams:["FC Schalke 04","Fortuna Düsseldorf","VfB Stuttgart"]}
+  {name:"Marcin Mięciel",teams:["Borussia Mönchengladbach","VfL Bochum"]}
+  {name:"Marco Amelia",teams:["AC Milan","Genoa","Lecce","Livorno","Palermo"]}
+  {name:"Marco Andreolli",teams:["AS Roma","Cagliari","Chievo Verona","Inter Milan","Sevilla"]}
+  {name:"Marco Asensio",teams:["Aston Villa","Espanyol","Paris Saint-Germain","Real Madrid"]}
+  {name:"Marco Ballotta",teams:["Inter Milan","Lazio","Modena"]}
+  {name:"Marco Benassi",teams:["Cremonese","Empoli","Fiorentina","Inter Milan","Livorno","Torino"]}
+  {name:"Marco Biagianti",teams:["Catania","Livorno"]}
+  {name:"Marco Bizot",teams:["Aston Villa","Stade Brestois 29"]}
+  {name:"Marco Bode",teams:["Werder Bremen"]}
+  {name:"Marco Borriello",teams:["AC Milan","AS Roma","Atalanta","Cagliari","Carpi","Empoli","Genoa","Juventus","Reggina","SPAL","Sampdoria","Treviso","West Ham United"]}
+  {name:"Marco Brescianini",teams:["AC Milan","Atalanta","Fiorentina","Frosinone"]}
+  {name:"Marco Caligiuri",teams:["1. FSV Mainz 05","Eintracht Braunschweig","MSV Duisburg"]}
+  {name:"Marco Caneira",teams:["Girondins de Bordeaux","Reggina","Valencia"]}
+  {name:"Marco Capuano",teams:["Cagliari","Crotone","Frosinone","Pescara"]}
+  {name:"Marco Carnesecchi",teams:["Atalanta","Cremonese"]}
+  {name:"Marco Cassetti",teams:["AS Roma","Hellas Verona","Lecce"]}
+  {name:"Marco D'Alessandro",teams:["AS Roma","Atalanta","Bari","Benevento","Monza","SPAL","Udinese"]}
+  {name:"Marco Delvecchio",teams:["AS Roma","Ascoli","Brescia","Parma"]}
+  {name:"Marco Di Loreto",teams:["Fiorentina","Perugia","Torino"]}
+  {name:"Marco Di Vaio",teams:["AS Monaco","Bologna","Genoa","Juventus","Parma","Valencia"]}
+  {name:"Marco Donadel",teams:["AC Milan","Fiorentina","Hellas Verona","Napoli","Parma"]}
+  {name:"Marco Engelhardt",teams:["1. FC Kaiserslautern","1. FC Nürnberg","Karlsruher SC"]}
+  {name:"Marco Estrada",teams:["Montpellier HSC"]}
+  {name:"Marco Ferrante",teams:["Ascoli","Bologna","Inter Milan","Torino"]}
+  {name:"Marco Fortin",teams:["Cagliari","Siena"]}
+  {name:"Marco Friedl",teams:["Bayern Munich","Werder Bremen"]}
+  {name:"Marco Grüll",teams:["Werder Bremen"]}
+  {name:"Marco Höger",teams:["FC Köln","FC Schalke 04"]}
+  {name:"Marco Kurz",teams:["1860 Munich"]}
+  {name:"Marco Küntzel",teams:["Arminia Bielefeld","Borussia Mönchengladbach","Energie Cottbus"]}
+  {name:"Marco Malagò",teams:["Chievo Verona","Siena"]}
+  {name:"Marco Mancosu",teams:["Cagliari","Lecce"]}
+  {name:"Marco Marchionni",teams:["Fiorentina","Juventus","Parma","Piacenza","Sampdoria"]}
+  {name:"Marco Materazzi",teams:["Inter Milan","Perugia"]}
+  {name:"Marco Motta",teams:["AS Roma","Atalanta","Bologna","Catania","Genoa","Juventus","Torino","Udinese"]}
+  {name:"Marco Padalino",teams:["Sampdoria"]}
+  {name:"Marco Parolo",teams:["Cesena","Lazio","Parma"]}
+  {name:"Marco Pisano",teams:["Bari","Brescia","Palermo","Parma","Sampdoria","Torino"]}
+  {name:"Marco Ramos",teams:["AS Monaco","RC Lens"]}
+  {name:"Marco Reich",teams:["1. FC Kaiserslautern","FC Köln","Werder Bremen"]}
+  {name:"Marco Reus",teams:["Borussia Dortmund","Borussia Mönchengladbach"]}
+  {name:"Marco Richter",teams:["1. FSV Mainz 05","FC Augsburg","Hertha BSC"]}
+  {name:"Marco Rigoni",teams:["Chievo Verona","Genoa","Novara"]}
+  {name:"Marco Rose",teams:["1. FSV Mainz 05"]}
+  {name:"Marco Rossi",teams:["Bari","Cesena","Como","Fiorentina","Genoa","Parma","Sampdoria"]}
+  {name:"Marco Ruben",teams:["Recreativo","Villarreal","Évian TG"]}
+  {name:"Marco Russ",teams:["Eintracht Frankfurt","VfL Wolfsburg"]}
+  {name:"Marco Sau",teams:["Benevento","Cagliari","Sampdoria"]}
+  {name:"Marco Silvestri",teams:["Cagliari","Cremonese","Empoli","Hellas Verona","Udinese"]}
+  {name:"Marco Simone",teams:["AC Milan","AS Monaco","OGC Nice"]}
+  {name:"Marco Sportiello",teams:["AC Milan","Atalanta","Fiorentina","Frosinone"]}
+  {name:"Marco Storari",teams:["AC Milan","Cagliari","Fiorentina","Juventus","Levante","Messina","Sampdoria"]}
+  {name:"Marco Streller",teams:["FC Köln","VfB Stuttgart"]}
+  {name:"Marco Terrazzino",teams:["SC Freiburg","TSG Hoffenheim"]}
+  {name:"Marco Verratti",teams:["Paris Saint-Germain"]}
+  {name:"Marco Zambelli",teams:["Brescia","Empoli"]}
+  {name:"Marco Zamboni",teams:["Modena","Reggina","Sampdoria","Udinese"]}
+  {name:"Marco Zanchi",teams:["Bologna","Hellas Verona","Juventus","Messina","Vicenza"]}
+  {name:"Marco Zoro",teams:["Messina"]}
+  {name:"Marco van Hoogdalem",teams:["FC Schalke 04"]}
+  {name:"Marcos",teams:["Mallorca"]}
+  {name:"Marcos Acuña",teams:["Sevilla"]}
+  {name:"Marcos Alonso",teams:["Barcelona","Bolton Wanderers","Celta Vigo","Chelsea","Fiorentina","Real Madrid","Sunderland"]}
+  {name:"Marcos André",teams:["Real Valladolid","Valencia"]}
+  {name:"Marcos Angeleri",teams:["Málaga","Sunderland"]}
+  {name:"Marcos Assunção",teams:["AS Roma","Real Betis"]}
+  {name:"Marcos Llorente",teams:["Alavés","Atlético Madrid","Real Madrid"]}
+  {name:"Marcos Rojo",teams:["Manchester United"]}
+  {name:"Marcos Senesi",teams:["AFC Bournemouth"]}
+  {name:"Marcos Senna",teams:["Villarreal"]}
+  {name:"Marcos Vales",teams:["Mallorca","Real Zaragoza","Sevilla"]}
+  {name:"Marcus Allbäck",teams:["Aston Villa","Hansa Rostock"]}
+  {name:"Marcus Bent",teams:["Blackburn Rovers","Charlton Athletic","Everton","Ipswich Town","Leicester City","Wigan Athletic","Wolverhampton Wanderers"]}
+  {name:"Marcus Berg",teams:["Hamburger SV"]}
+  {name:"Marcus Coco",teams:["EA Guingamp","FC Nantes"]}
+  {name:"Marcus Hahnemann",teams:["Reading","Wolverhampton Wanderers"]}
+  {name:"Marcus Ingvartsen",teams:["1. FC Union Berlin","1. FSV Mainz 05"]}
+  {name:"Marcus Lantz",teams:["Hansa Rostock"]}
+  {name:"Marcus Pedersen",teams:["Sassuolo","Torino"]}
+  {name:"Marcus Rashford",teams:["Aston Villa","Barcelona","Manchester United"]}
+  {name:"Marcus Rohdén",teams:["Crotone"]}
+  {name:"Marcus Stewart",teams:["Ipswich Town","Sunderland"]}
+  {name:"Marcus Tavernier",teams:["AFC Bournemouth"]}
+  {name:"Marcus Thuram",teams:["Borussia Mönchengladbach","EA Guingamp","Inter Milan"]}
+  {name:"Marek Hamšík",teams:["Brescia","Napoli"]}
+  {name:"Marek Heinz",teams:["AS Saint-Étienne","Arminia Bielefeld","Borussia Mönchengladbach","Hamburger SV"]}
+  {name:"Marek Jankulovski",teams:["AC Milan","Napoli","Udinese"]}
+  {name:"Marek Mintál",teams:["1. FC Nürnberg"]}
+  {name:"Marek Nikl",teams:["1. FC Nürnberg"]}
+  {name:"Marian Hristov",teams:["1. FC Kaiserslautern","VfL Wolfsburg"]}
+  {name:"Mariano",teams:["Alavés","Girondins de Bordeaux","Olympique Lyonnais","Real Madrid","Sevilla"]}
+  {name:"Mariano Andújar",teams:["Catania","Napoli","Palermo"]}
+  {name:"Mariano Bogliacino",teams:["Chievo Verona","Napoli"]}
+  {name:"Mariano González",teams:["Inter Milan","Palermo"]}
+  {name:"Mariano Julio Izco",teams:["Catania","Chievo Verona","Crotone"]}
+  {name:"Mariano Pernía",teams:["Atlético Madrid","Getafe","Recreativo"]}
+  {name:"Marians Pahars",teams:["Southampton"]}
+  {name:"Marin Pongračić",teams:["Borussia Dortmund","Fiorentina","Lecce","VfL Wolfsburg"]}
+  {name:"Marino Biliškov",teams:["MSV Duisburg","VfL Wolfsburg"]}
+  {name:"Mario",teams:["Barcelona","Getafe","Real Betis","Real Valladolid","Recreativo"]}
+  {name:"Mario Balotelli",teams:["AC Milan","Brescia","Genoa","Inter Milan","Liverpool","Manchester City","OGC Nice","Olympique de Marseille"]}
+  {name:"Mario Basler",teams:["1. FC Kaiserslautern"]}
+  {name:"Mario Bermejo",teams:["Celta Vigo","Recreativo","Xerez"]}
+  {name:"Mario Cantaluppi",teams:["1. FC Nürnberg"]}
+  {name:"Mario Cotelo",teams:["Getafe","Sevilla"]}
+  {name:"Mario Cvitanović",teams:["Energie Cottbus","Hellas Verona","Venezia"]}
+  {name:"Mario Eggimann",teams:["Hannover 96","Karlsruher SC"]}
+  {name:"Mario Frick",teams:["Hellas Verona","Siena"]}
+  {name:"Mario Gaspar",teams:["Villarreal"]}
+  {name:"Mario Gila",teams:["Lazio","Real Madrid"]}
+  {name:"Mario Gómez",teams:["Bayern Munich","Fiorentina","VfB Stuttgart","VfL Wolfsburg"]}
+  {name:"Mario Götze",teams:["Bayern Munich","Borussia Dortmund","Eintracht Frankfurt"]}
+  {name:"Mario Hermoso",teams:["AS Roma","Atlético Madrid","Bayer Leverkusen","Espanyol"]}
+  {name:"Mario Lemina",teams:["FC Lorient","Fulham","Juventus","OGC Nice","Olympique de Marseille","Southampton","Wolverhampton Wanderers"]}
+  {name:"Mario Lička",teams:["Livorno","Stade Brestois 29"]}
+  {name:"Mario Mandžukić",teams:["AC Milan","Atlético Madrid","Bayern Munich","Juventus","VfL Wolfsburg"]}
+  {name:"Mario Martín",teams:["Getafe","Real Madrid","Real Valladolid"]}
+  {name:"Mario Melchiot",teams:["Birmingham City","Chelsea","Stade Rennais","Wigan Athletic"]}
+  {name:"Mario Pašalić",teams:["AC Milan","AS Monaco","Atalanta","Elche"]}
+  {name:"Mario Regueiro",teams:["Racing Santander","Real Murcia","Valencia"]}
+  {name:"Mario Sampirisi",teams:["Chievo Verona","Crotone","Genoa"]}
+  {name:"Mario Santana",teams:["Cesena","Chievo Verona","Fiorentina","Genoa","Napoli","Palermo","Torino","Venezia"]}
+  {name:"Mario Stanić",teams:["Chelsea"]}
+  {name:"Mario Suárez",teams:["Atlético Madrid","Fiorentina","Mallorca","Rayo Vallecano","Valencia","Watford"]}
+  {name:"Mario Vrančić",teams:["1. FSV Mainz 05","Norwich City","SC Paderborn 07","SV Darmstadt 98"]}
+  {name:"Mario Yepes",teams:["AC Milan","Atalanta","Chievo Verona","FC Nantes","Paris Saint-Germain"]}
+  {name:"Marios Oikonomou",teams:["Bologna","Cagliari","SPAL","Sampdoria"]}
+  {name:"Marius Bülter",teams:["1. FC Union Berlin","FC Köln","FC Schalke 04","TSG Hoffenheim"]}
+  {name:"Marius Ebbers",teams:["Alemannia Aachen","FC Köln","FC St. Pauli"]}
+  {name:"Marius Stankevičius",teams:["Brescia","Hannover 96","Lazio","Sampdoria","Sevilla","Valencia"]}
+  {name:"Marius Wolf",teams:["Borussia Dortmund","Eintracht Frankfurt","FC Augsburg","FC Köln","Hannover 96","Hertha BSC"]}
+  {name:"Mariusz Kukiełka",teams:["Energie Cottbus"]}
+  {name:"Mariusz Stępiński",teams:["Chievo Verona","FC Nantes","Hellas Verona"]}
+  {name:"Mark Bresciano",teams:["Lazio","Palermo","Parma"]}
+  {name:"Mark Davies",teams:["Bolton Wanderers"]}
+  {name:"Mark Delaney",teams:["Aston Villa"]}
+  {name:"Mark Edusei",teams:["Catania","Sampdoria"]}
+  {name:"Mark Fish",teams:["Charlton Athletic"]}
+  {name:"Mark Flekken",teams:["Bayer Leverkusen","Brentford","SC Freiburg"]}
+  {name:"Mark González",teams:["Albacete","Liverpool","Real Betis","Real Sociedad"]}
+  {name:"Mark Iuliano",teams:["Juventus","Mallorca","Messina","Sampdoria"]}
+  {name:"Mark Kennedy",teams:["Manchester City","Wolverhampton Wanderers"]}
+  {name:"Mark Kinsella",teams:["Aston Villa","Charlton Athletic"]}
+  {name:"Mark McKenzie",teams:["Toulouse FC"]}
+  {name:"Mark Noble",teams:["West Ham United"]}
+  {name:"Mark Pembridge",teams:["Everton","Fulham"]}
+  {name:"Mark Schwarzer",teams:["Chelsea","Fulham","Leicester City","Middlesbrough"]}
+  {name:"Mark Uth",teams:["FC Köln","FC Schalke 04","TSG Hoffenheim"]}
+  {name:"Mark Venus",teams:["Ipswich Town"]}
+  {name:"Mark Viduka",teams:["Leeds United","Middlesbrough","Newcastle United"]}
+  {name:"Mark van Bommel",teams:["AC Milan","Barcelona","Bayern Munich"]}
+  {name:"Markel Bergara",teams:["Getafe","Real Sociedad"]}
+  {name:"Markel Susaeta",teams:["Athletic Bilbao"]}
+  {name:"Marko Arnautović",teams:["Bologna","Inter Milan","Stoke City","Werder Bremen","West Ham United"]}
+  {name:"Marko Babić",teams:["Bayer Leverkusen","Hertha BSC","Real Betis","Real Zaragoza"]}
+  {name:"Marko Baša",teams:["LOSC Lille","Le Mans FC"]}
+  {name:"Marko Dmitrović",teams:["Eibar","Espanyol","Leganés","Sevilla"]}
+  {name:"Marko Grujić",teams:["Hertha BSC","Liverpool"]}
+  {name:"Marko Livaja",teams:["Atalanta","Cesena","Empoli","Inter Milan","Las Palmas"]}
+  {name:"Marko Marin",teams:["Borussia Mönchengladbach","Chelsea","Sevilla","Werder Bremen"]}
+  {name:"Marko Pantelić",teams:["Hertha BSC"]}
+  {name:"Marko Pjaca",teams:["Empoli","FC Schalke 04","Fiorentina","Genoa","Juventus","Torino"]}
+  {name:"Marko Rehmer",teams:["Eintracht Frankfurt","Hertha BSC"]}
+  {name:"Marko Rog",teams:["Cagliari","Napoli","Sevilla"]}
+  {name:"Marko Topić",teams:["Energie Cottbus","VfL Wolfsburg"]}
+  {name:"Markus Babbel",teams:["Blackburn Rovers","Liverpool","VfB Stuttgart"]}
+  {name:"Markus Beierle",teams:["1860 Munich","Eintracht Frankfurt","Hansa Rostock"]}
+  {name:"Markus Bollmann",teams:["Arminia Bielefeld"]}
+  {name:"Markus Brzenska",teams:["Borussia Dortmund"]}
+  {name:"Markus Daun",teams:["1. FC Nürnberg","Bayer Leverkusen","MSV Duisburg","Werder Bremen"]}
+  {name:"Markus Feulner",teams:["1. FC Nürnberg","1. FSV Mainz 05","Bayern Munich","Borussia Dortmund","FC Augsburg","FC Köln"]}
+  {name:"Markus Hausweiler",teams:["Borussia Mönchengladbach","MSV Duisburg"]}
+  {name:"Markus Kreuz",teams:["Eintracht Frankfurt","FC Köln"]}
+  {name:"Markus Kurth",teams:["FC Köln","MSV Duisburg"]}
+  {name:"Markus Miller",teams:["Karlsruher SC"]}
+  {name:"Markus Pröll",teams:["Eintracht Frankfurt","FC Köln"]}
+  {name:"Markus Rosenberg",teams:["Racing Santander","Werder Bremen","West Bromwich Albion"]}
+  {name:"Markus Schopp",teams:["Brescia"]}
+  {name:"Markus Schroth",teams:["1. FC Nürnberg","1860 Munich"]}
+  {name:"Markus Schuler",teams:["Arminia Bielefeld","Hannover 96"]}
+  {name:"Markus Steinhöfer",teams:["Eintracht Frankfurt","Real Betis","SV Darmstadt 98"]}
+  {name:"Markus Suttner",teams:["Brighton & Hove Albion","FC Ingolstadt 04","Fortuna Düsseldorf"]}
+  {name:"Markus Weissenberger",teams:["1860 Munich","Eintracht Frankfurt"]}
+  {name:"Marlon",teams:["Barcelona","Monza","OGC Nice","Sassuolo"]}
+  {name:"Marlon Harewood",teams:["Aston Villa","Blackpool","West Ham United"]}
+  {name:"Marlon King",teams:["Hull City","Middlesbrough","Watford","Wigan Athletic"]}
+  {name:"Marnon Busch",teams:["1. FC Heidenheim","Werder Bremen"]}
+  {name:"Marouane Chamakh",teams:["Arsenal","Crystal Palace","Girondins de Bordeaux","West Ham United"]}
+  {name:"Marouane Fellaini",teams:["Everton","Manchester United"]}
+  {name:"Marquinho",teams:["AS Roma","Hellas Verona","Udinese"]}
+  {name:"Marquinhos",teams:["AS Roma","Paris Saint-Germain"]}
+  {name:"Marquitos",teams:["Real Valladolid","Recreativo","Villarreal"]}
+  {name:"Marshall Munetsi",teams:["Paris FC","Stade de Reims","Wolverhampton Wanderers"]}
+  {name:"Mart Poom",teams:["Arsenal","Derby County","Sunderland"]}
+  {name:"Marten de Roon",teams:["Atalanta","Middlesbrough"]}
+  {name:"Martial Robin",teams:["GFC Ajaccio","Grenoble Foot"]}
+  {name:"Martijn Reuser",teams:["Ipswich Town"]}
+  {name:"Martin Agirregabiria",teams:["Alavés"]}
+  {name:"Martin Albrechtsen",teams:["West Bromwich Albion"]}
+  {name:"Martin Amedick",teams:["1. FC Kaiserslautern","Borussia Dortmund"]}
+  {name:"Martin Braithwaite",teams:["Barcelona","Espanyol","Girondins de Bordeaux","Leganés","Toulouse FC"]}
+  {name:"Martin Djetou",teams:["AS Monaco","Bolton Wanderers","Fulham","OGC Nice","Parma"]}
+  {name:"Martin Dúbravka",teams:["Burnley","Newcastle United"]}
+  {name:"Martin Erlic",teams:["Bologna","Sassuolo","Spezia"]}
+  {name:"Martin Fenin",teams:["Eintracht Frankfurt"]}
+  {name:"Martin Harnik",teams:["Hannover 96","VfB Stuttgart","Werder Bremen"]}
+  {name:"Martin Hinteregger",teams:["Borussia Mönchengladbach","Eintracht Frankfurt","FC Augsburg"]}
+  {name:"Martin Hongla",teams:["Granada","Hellas Verona","Real Valladolid"]}
+  {name:"Martin Jiránek",teams:["Birmingham City","Reggina"]}
+  {name:"Martin Jørgensen",teams:["Fiorentina","Udinese"]}
+  {name:"Martin Kelly",teams:["Crystal Palace","Liverpool"]}
+  {name:"Martin Keown",teams:["Arsenal"]}
+  {name:"Martin Lanig",teams:["Eintracht Frankfurt","FC Köln","VfB Stuttgart"]}
+  {name:"Martin Laursen",teams:["AC Milan","Aston Villa","Hellas Verona"]}
+  {name:"Martin Max",teams:["1860 Munich","Hansa Rostock"]}
+  {name:"Martin Meichelbeck",teams:["VfL Bochum"]}
+  {name:"Martin Olsson",teams:["Blackburn Rovers","Norwich City","Swansea City"]}
+  {name:"Martin Petrov",teams:["Atlético Madrid","Bolton Wanderers","Espanyol","Manchester City","VfL Wolfsburg"]}
+  {name:"Martin Pieckenhagen",teams:["1. FSV Mainz 05","Hamburger SV","Hansa Rostock"]}
+  {name:"Martin Satriano",teams:["Empoli","Getafe","Inter Milan","Olympique Lyonnais","RC Lens","Stade Brestois 29"]}
+  {name:"Martin Stranzl",teams:["1860 Munich","Borussia Mönchengladbach","VfB Stuttgart"]}
+  {name:"Martin Taylor",teams:["Birmingham City","Blackburn Rovers"]}
+  {name:"Martin Terrier",teams:["Bayer Leverkusen","LOSC Lille","Olympique Lyonnais","RC Strasbourg","Stade Rennais"]}
+  {name:"Martin Valjent",teams:["Mallorca"]}
+  {name:"Martin Ødegaard",teams:["Arsenal","Real Madrid","Real Sociedad"]}
+  {name:"Martin Škrtel",teams:["Liverpool"]}
+  {name:"Martín Astudillo",teams:["Alavés","Osasuna"]}
+  {name:"Martín Cáceres",teams:["Barcelona","Cagliari","Fiorentina","Hellas Verona","Juventus","Lazio","Levante","Recreativo","Sevilla","Southampton"]}
+  {name:"Martín Demichelis",teams:["Bayern Munich","Espanyol","Manchester City","Málaga"]}
+  {name:"Martín Herrera",teams:["Alavés","Fulham"]}
+  {name:"Martín Mantovani",teams:["Huesca","Leganés"]}
+  {name:"Martín Montoya",teams:["Barcelona","Brighton & Hove Albion","Inter Milan","Real Betis","Valencia"]}
+  {name:"Martín Palermo",teams:["Real Betis","Villarreal"]}
+  {name:"Martín Payero",teams:["Cremonese","Udinese"]}
+  {name:"Martín Posse",teams:["Espanyol"]}
+  {name:"Martín Vellisca",teams:["Real Zaragoza"]}
+  {name:"Martín Zubimendi",teams:["Arsenal","Real Sociedad"]}
+  {name:"Marvelous Nakamba",teams:["Aston Villa","Luton Town"]}
+  {name:"Marvin",teams:["Las Palmas","Real Madrid"]}
+  {name:"Marvin Bakalorz",teams:["Eintracht Frankfurt","Hannover 96","SC Paderborn 07"]}
+  {name:"Marvin Compper",teams:["Borussia Mönchengladbach","Fiorentina","RB Leipzig","TSG Hoffenheim"]}
+  {name:"Marvin Ducksch",teams:["Borussia Dortmund","Fortuna Düsseldorf","SC Paderborn 07","Werder Bremen"]}
+  {name:"Marvin Friedrich",teams:["1. FC Union Berlin","Borussia Mönchengladbach","FC Schalke 04"]}
+  {name:"Marvin Martin",teams:["Dijon FCO","FC Sochaux","LOSC Lille","Stade de Reims"]}
+  {name:"Marvin Matip",teams:["FC Ingolstadt 04","FC Köln","VfL Bochum"]}
+  {name:"Marvin Pieringer",teams:["1. FC Heidenheim"]}
+  {name:"Marvin Plattenhardt",teams:["1. FC Nürnberg","Hertha BSC"]}
+  {name:"Marvin Schwäbe",teams:["FC Köln"]}
+  {name:"Marvin Senaya",teams:["AJ Auxerre","RC Strasbourg"]}
+  {name:"Marvin Zeegelaar",teams:["Udinese","Watford"]}
+  {name:"Marwin Hitz",teams:["Borussia Dortmund","FC Augsburg","VfL Wolfsburg"]}
+  {name:"Mason Greenwood",teams:["Getafe","Manchester United","Olympique de Marseille"]}
+  {name:"Mason Holgate",teams:["Everton","Sheffield United"]}
+  {name:"Mason Mount",teams:["Chelsea","Manchester United"]}
+  {name:"Masoud Shojaei",teams:["Osasuna"]}
+  {name:"Massadio Haïdara",teams:["AS Nancy","Newcastle United","RC Lens","Stade Brestois 29"]}
+  {name:"Massimilian Porcello",teams:["Arminia Bielefeld","Karlsruher SC"]}
+  {name:"Massimiliano Fusani",teams:["Chievo Verona","Perugia"]}
+  {name:"Massimo Ambrosini",teams:["AC Milan","Fiorentina"]}
+  {name:"Massimo Carrera",teams:["Atalanta"]}
+  {name:"Massimo Donati",teams:["AC Milan","Atalanta","Bari","Hellas Verona","Messina","Palermo","Sampdoria","Torino"]}
+  {name:"Massimo Gobbi",teams:["Cagliari","Chievo Verona","Fiorentina","Parma"]}
+  {name:"Massimo Loviso",teams:["Bologna","Livorno"]}
+  {name:"Massimo Maccarone",teams:["Empoli","Middlesbrough","Palermo","Sampdoria","Siena"]}
+  {name:"Massimo Marazzina",teams:["AS Roma","Bologna","Chievo Verona","Modena","Reggina","Siena"]}
+  {name:"Massimo Mutarelli",teams:["Atalanta","Bologna","Lazio","Palermo"]}
+  {name:"Massimo Oddo",teams:["AC Milan","Bayern Munich","Hellas Verona","Lazio","Lecce"]}
+  {name:"Massimo Paci",teams:["Ascoli","Lecce","Novara","Parma","Siena"]}
+  {name:"Massimo Taibi",teams:["Atalanta","Reggina","Torino"]}
+  {name:"Massimo Volta",teams:["Cesena","Sampdoria"]}
+  {name:"Mate Bilić",teams:["Real Zaragoza","Sporting Gijón"]}
+  {name:"Mateja Kežman",teams:["Atlético Madrid","Chelsea","Paris Saint-Germain"]}
+  {name:"Mateo Kovačić",teams:["Chelsea","Inter Milan","Manchester City","Real Madrid"]}
+  {name:"Mateo Musacchio",teams:["AC Milan","Lazio","Villarreal"]}
+  {name:"Mateo Pavlović",teams:["Angers SCO","Werder Bremen"]}
+  {name:"Mateo Retegui",teams:["Atalanta","Genoa"]}
+  {name:"Mateu Morey",teams:["Borussia Dortmund","Mallorca"]}
+  {name:"Mateus Fernandes",teams:["Southampton","West Ham United"]}
+  {name:"Mateusz Klich",teams:["Leeds United"]}
+  {name:"Mateusz Wieteska",teams:["Cagliari","Clermont Foot"]}
+  {name:"Matheus Cunha",teams:["Atlético Madrid","Hertha BSC","Manchester United","RB Leipzig","Wolverhampton Wanderers"]}
+  {name:"Matheus Henrique",teams:["Sassuolo"]}
+  {name:"Matheus Nunes",teams:["Manchester City","Wolverhampton Wanderers"]}
+  {name:"Matheus Pereira",teams:["1. FC Nürnberg","Empoli","West Bromwich Albion"]}
+  {name:"Mathew Leckie",teams:["Borussia Mönchengladbach","FC Ingolstadt 04","Hertha BSC"]}
+  {name:"Mathew Ryan",teams:["Arsenal","Brighton & Hove Albion","Levante","RC Lens","Real Sociedad","Valencia"]}
+  {name:"Mathias Abel",teams:["1. FC Kaiserslautern","1. FSV Mainz 05","Hamburger SV"]}
+  {name:"Mathias Autret",teams:["AJ Auxerre","FC Lorient","Stade Brestois 29"]}
+  {name:"Mathias Hain",teams:["Arminia Bielefeld","FC St. Pauli"]}
+  {name:"Mathias Honsak",teams:["1. FC Heidenheim","SV Darmstadt 98"]}
+  {name:"Mathias Jensen",teams:["Brentford","Celta Vigo"]}
+  {name:"Mathias Jørgensen",teams:["Brentford","Fortuna Düsseldorf","Huddersfield Town"]}
+  {name:"Mathias Pereira Lage",teams:["Angers SCO","FC St. Pauli","Stade Brestois 29"]}
+  {name:"Mathias Schober",teams:["FC Schalke 04","Hamburger SV","Hansa Rostock"]}
+  {name:"Mathias Svensson",teams:["Charlton Athletic","Norwich City"]}
+  {name:"Mathieu Berson",teams:["AJ Auxerre","Aston Villa","FC Nantes","Levante","Toulouse FC"]}
+  {name:"Mathieu Bodmer",teams:["AS Saint-Étienne","Amiens SC","EA Guingamp","LOSC Lille","OGC Nice","Olympique Lyonnais","Paris Saint-Germain"]}
+  {name:"Mathieu Cafaro",teams:["AS Saint-Étienne","Paris FC","Stade de Reims","Toulouse FC"]}
+  {name:"Mathieu Coutadeur",teams:["AS Monaco","FC Lorient","GFC Ajaccio","Le Mans FC"]}
+  {name:"Mathieu Debuchy",teams:["AS Saint-Étienne","Arsenal","Girondins de Bordeaux","LOSC Lille","Newcastle United"]}
+  {name:"Mathieu Deplagne",teams:["Estac Troyes","Montpellier HSC"]}
+  {name:"Mathieu Dossevi",teams:["FC Metz","FC Valenciennes","Le Mans FC","Toulouse FC"]}
+  {name:"Mathieu Flamini",teams:["AC Milan","Arsenal","Crystal Palace","Getafe","Olympique de Marseille"]}
+  {name:"Mathieu Peybernes",teams:["FC Lorient","FC Sochaux","SC Bastia"]}
+  {name:"Mathieu Valbuena",teams:["Olympique Lyonnais","Olympique de Marseille"]}
+  {name:"Mathieu Valverde",teams:["Boulogne","Girondins de Bordeaux","Toulouse FC"]}
+  {name:"Mathys Tel",teams:["Bayern Munich","Stade Rennais","Tottenham Hotspur"]}
+  {name:"Mathías Olivera",teams:["Getafe","Napoli"]}
+  {name:"Matias Concha",teams:["VfL Bochum"]}
+  {name:"Matija Nastasić",teams:["FC Schalke 04","Fiorentina","Leganés","Mallorca","Manchester City"]}
+  {name:"Mato Jajalo",teams:["FC Köln","Palermo","Siena","Udinese"]}
+  {name:"Mats Hummels",teams:["AS Roma","Bayern Munich","Borussia Dortmund"]}
+  {name:"Matt Derbyshire",teams:["Birmingham City","Blackburn Rovers"]}
+  {name:"Matt Doherty",teams:["Atlético Madrid","Tottenham Hotspur","Wolverhampton Wanderers"]}
+  {name:"Matt Elliott",teams:["Leicester City"]}
+  {name:"Matt Holland",teams:["Charlton Athletic","Ipswich Town"]}
+  {name:"Matt Jansen",teams:["Blackburn Rovers","Bolton Wanderers"]}
+  {name:"Matt Moussilou",teams:["AS Saint-Étienne","Boulogne","LOSC Lille","OGC Nice","Olympique de Marseille"]}
+  {name:"Matt Oakley",teams:["Derby County","Southampton"]}
+  {name:"Matt Phillips",teams:["Blackpool","Queens Park Rangers","West Bromwich Albion"]}
+  {name:"Matt Ritchie",teams:["AFC Bournemouth","Newcastle United","Portsmouth"]}
+  {name:"Matt Targett",teams:["Aston Villa","Newcastle United","Southampton"]}
+  {name:"Matt Upson",teams:["Arsenal","Birmingham City","Leicester City","Stoke City","West Ham United"]}
+  {name:"Matteo Bianchetti",teams:["Cremonese","Empoli","Hellas Verona"]}
+  {name:"Matteo Brighi",teams:["AS Roma","Atalanta","Bologna","Brescia","Chievo Verona","Empoli","Juventus","Parma","Sassuolo","Torino"]}
+  {name:"Matteo Cancellieri",teams:["Empoli","Hellas Verona","Lazio","Parma"]}
+  {name:"Matteo Contini",teams:["Atalanta","Napoli","Parma","Real Zaragoza","Siena"]}
+  {name:"Matteo Darmian",teams:["AC Milan","Inter Milan","Manchester United","Palermo","Parma","Torino"]}
+  {name:"Matteo Ferrari",teams:["AS Roma","Everton","Genoa","Inter Milan","Parma"]}
+  {name:"Matteo Gabbia",teams:["AC Milan","Villarreal"]}
+  {name:"Matteo Guardalben",teams:["Palermo","Parma","Piacenza"]}
+  {name:"Matteo Lovato",teams:["Atalanta","Cagliari","Hellas Verona","Salernitana","Torino"]}
+  {name:"Matteo Melara",teams:["Ascoli","Livorno"]}
+  {name:"Matteo Pessina",teams:["Atalanta","Hellas Verona","Monza"]}
+  {name:"Matteo Politano",teams:["Inter Milan","Napoli","Sassuolo"]}
+  {name:"Matteo Prati",teams:["Cagliari","Torino"]}
+  {name:"Matteo Rubin",teams:["Bologna","Chievo Verona","Parma","Siena","Torino"]}
+  {name:"Matteo Ruggeri",teams:["Atalanta","Atlético Madrid","Salernitana"]}
+  {name:"Matteo Sereni",teams:["Brescia","Ipswich Town","Lazio","Torino","Treviso"]}
+  {name:"Matthew Etherington",teams:["Stoke City","Tottenham Hotspur","West Ham United"]}
+  {name:"Matthew Jarvis",teams:["Norwich City","West Ham United","Wolverhampton Wanderers"]}
+  {name:"Matthew Lowton",teams:["Aston Villa","Burnley"]}
+  {name:"Matthew Taylor",teams:["Bolton Wanderers","Burnley","Portsmouth","West Ham United"]}
+  {name:"Matthias Ginter",teams:["Borussia Dortmund","Borussia Mönchengladbach","SC Freiburg"]}
+  {name:"Matthias Lehmann",teams:["1860 Munich","Alemannia Aachen","FC Köln","FC St. Pauli"]}
+  {name:"Matthias Ostrzolek",teams:["FC Augsburg","Hamburger SV","Hannover 96"]}
+  {name:"Matthias Scherz",teams:["FC Köln"]}
+  {name:"Matthias Zimmermann",teams:["Borussia Mönchengladbach","Fortuna Düsseldorf","SpVgg Greuther Fürth","VfB Stuttgart"]}
+  {name:"Matthieu Chalmé",teams:["GFC Ajaccio","Girondins de Bordeaux","LOSC Lille"]}
+  {name:"Matthieu Delpierre",teams:["LOSC Lille","TSG Hoffenheim","VfB Stuttgart"]}
+  {name:"Matthieu Dreyer",teams:["Estac Troyes","FC Lorient","FC Sochaux","SM Caen"]}
+  {name:"Matthieu Saunier",teams:["Estac Troyes","Granada"]}
+  {name:"Matthieu Udol",teams:["FC Metz","RC Lens"]}
+  {name:"Matthijs de Ligt",teams:["Bayern Munich","Juventus","Manchester United"]}
+  {name:"Matthis Abline",teams:["AJ Auxerre","FC Nantes","Stade Rennais"]}
+  {name:"Mattia Bani",teams:["Bologna","Chievo Verona","Genoa","Parma"]}
+  {name:"Mattia Caldara",teams:["AC Milan","Atalanta","Spezia","Venezia"]}
+  {name:"Mattia Cassani",teams:["Fiorentina","Genoa","Palermo","Parma","Sampdoria"]}
+  {name:"Mattia De Sciglio",teams:["AC Milan","Empoli","Juventus","Olympique Lyonnais"]}
+  {name:"Mattia Destro",teams:["AC Milan","AS Roma","Bologna","Empoli","Genoa","Siena"]}
+  {name:"Mattia Perin",teams:["Genoa","Juventus","Pescara"]}
+  {name:"Mattia Valoti",teams:["Hellas Verona","Monza","SPAL"]}
+  {name:"Mattia Viti",teams:["Empoli","Fiorentina","OGC Nice","Sassuolo"]}
+  {name:"Mattia Zaccagni",teams:["Hellas Verona","Lazio"]}
+  {name:"Mattias Svanberg",teams:["Bologna","VfL Wolfsburg"]}
+  {name:"Matty Cash",teams:["Aston Villa"]}
+  {name:"Mattéo Guendouzi",teams:["Arsenal","FC Lorient","Hertha BSC","Lazio","Olympique de Marseille"]}
+  {name:"Matuzalém",teams:["Brescia","Genoa","Hellas Verona","Lazio","Napoli","Piacenza","Real Zaragoza"]}
+  {name:"Matz Sels",teams:["Nottingham Forest","RC Strasbourg"]}
+  {name:"Matìas Soulé",teams:["AS Roma","Frosinone","Juventus"]}
+  {name:"Matías Almeyda",teams:["Brescia","Inter Milan","Parma"]}
+  {name:"Matías Fernández",teams:["AC Milan","Fiorentina","Villarreal"]}
+  {name:"Matías Lequi",teams:["Atlético Madrid","Celta Vigo","Lazio"]}
+  {name:"Matías Silvestre",teams:["AC Milan","Catania","Empoli","Inter Milan","Palermo","Sampdoria"]}
+  {name:"Matías Vecino",teams:["Cagliari","Celta Vigo","Empoli","Fiorentina","Inter Milan","Lazio"]}
+  {name:"Matías Viña",teams:["AFC Bournemouth","AS Roma","Sassuolo"]}
+  {name:"Matúš Bero",teams:["VfL Bochum"]}
+  {name:"Matěj Vydra",teams:["Burnley","Udinese","Watford","West Bromwich Albion"]}
+  {name:"Mauricio Isla",teams:["Cagliari","Juventus","Olympique de Marseille","Queens Park Rangers","Udinese"]}
+  {name:"Mauricio Lemos",teams:["Las Palmas","Sassuolo"]}
+  {name:"Mauricio Pellegrino",teams:["Alavés","Liverpool","Valencia"]}
+  {name:"Mauricio Pinilla",teams:["Atalanta","Cagliari","Celta Vigo","Chievo Verona","Genoa","Palermo","Racing Santander"]}
+  {name:"Mauricio Pochettino",teams:["Espanyol","Girondins de Bordeaux","Paris Saint-Germain"]}
+  {name:"Mauricio Taricco",teams:["Tottenham Hotspur"]}
+  {name:"Maurizio Domizzi",teams:["Ascoli","Brescia","Modena","Napoli","Udinese"]}
+  {name:"Maurizio Ganz",teams:["Ancona","Atalanta","Fiorentina"]}
+  {name:"Maurizio Lanzaro",teams:["Empoli","Hellas Verona","Real Zaragoza","Reggina"]}
+  {name:"Maurizio Lauro",teams:["Cesena"]}
+  {name:"Mauro Arambarri",teams:["Getafe","Girondins de Bordeaux"]}
+  {name:"Mauro Bressan",teams:["Fiorentina","Venezia"]}
+  {name:"Mauro Camoranesi",teams:["Hellas Verona","Juventus","VfB Stuttgart"]}
+  {name:"Mauro Cetto",teams:["FC Nantes","LOSC Lille","Palermo","Toulouse FC"]}
+  {name:"Mauro Esposito",teams:["AS Roma","Cagliari","Chievo Verona","Udinese"]}
+  {name:"Mauro Icardi",teams:["Inter Milan","Paris Saint-Germain","Sampdoria"]}
+  {name:"Mauro Milanese",teams:["Ancona","Perugia"]}
+  {name:"Mauro Navas",teams:["Espanyol"]}
+  {name:"Mauro Silva",teams:["Deportivo La Coruña"]}
+  {name:"Mauro Zárate",teams:["Birmingham City","Fiorentina","Inter Milan","Lazio","Queens Park Rangers","Watford","West Ham United"]}
+  {name:"Mauro dos Santos",teams:["Almería","Eibar","Leganés"]}
+  {name:"Max Aarons",teams:["AFC Bournemouth","Norwich City","Valencia"]}
+  {name:"Max Christiansen",teams:["FC Ingolstadt 04","SpVgg Greuther Fürth"]}
+  {name:"Max Eberl",teams:["Borussia Mönchengladbach"]}
+  {name:"Max Gradel",teams:["AFC Bournemouth","AS Saint-Étienne","Toulouse FC"]}
+  {name:"Max Kilman",teams:["West Ham United","Wolverhampton Wanderers"]}
+  {name:"Max Kruse",teams:["1. FC Union Berlin","Borussia Mönchengladbach","FC St. Pauli","SC Freiburg","VfL Wolfsburg","Werder Bremen"]}
+  {name:"Max Meyer",teams:["Crystal Palace","FC Köln","FC Schalke 04"]}
+  {name:"Max Tonetto",teams:["AS Roma","Bologna","Lecce","Sampdoria"]}
+  {name:"Maxence Caqueret",teams:["Como","Olympique Lyonnais"]}
+  {name:"Maxence Flachez",teams:["FC Sochaux","FC Valenciennes","Grenoble Foot"]}
+  {name:"Maxence Lacroix",teams:["Crystal Palace","VfL Wolfsburg"]}
+  {name:"Maxi Gómez",teams:["Celta Vigo","Cádiz","Valencia"]}
+  {name:"Maxi López",teams:["AC Milan","Barcelona","Catania","Chievo Verona","Mallorca","Sampdoria","Torino","Udinese"]}
+  {name:"Maxi Rodríguez",teams:["Atlético Madrid","Espanyol","Liverpool"]}
+  {name:"Maxim Leitsch",teams:["1. FSV Mainz 05","VfL Bochum"]}
+  {name:"Maxime Baca",teams:["EA Guingamp","FC Lorient","Le Havre AC"]}
+  {name:"Maxime Barthelmé",teams:["FC Lorient"]}
+  {name:"Maxime Busi",teams:["Parma","Stade de Reims"]}
+  {name:"Maxime Colin",teams:["Estac Troyes","FC Metz"]}
+  {name:"Maxime Dupé",teams:["FC Nantes","OGC Nice","Toulouse FC"]}
+  {name:"Maxime Estève",teams:["Burnley","Montpellier HSC"]}
+  {name:"Maxime Gonalons",teams:["AS Roma","Clermont Foot","Granada","Olympique Lyonnais","Sevilla"]}
+  {name:"Maxime Le Marchand",teams:["Fulham","OGC Nice","RC Strasbourg"]}
+  {name:"Maxime Lopez",teams:["Fiorentina","Olympique de Marseille","Paris FC","Sassuolo"]}
+  {name:"Maxime Poundjé",teams:["Girondins de Bordeaux"]}
+  {name:"Maximilian Arnold",teams:["VfL Wolfsburg"]}
+  {name:"Maximilian Bauer",teams:["FC Augsburg","SpVgg Greuther Fürth"]}
+  {name:"Maximilian Beier",teams:["Borussia Dortmund","TSG Hoffenheim"]}
+  {name:"Maximilian Eggestein",teams:["SC Freiburg","Werder Bremen"]}
+  {name:"Maximilian Mittelstädt",teams:["Hertha BSC","VfB Stuttgart"]}
+  {name:"Maximilian Nicu",teams:["Hertha BSC","SC Freiburg"]}
+  {name:"Maximilian Philipp",teams:["Borussia Dortmund","SC Freiburg","VfL Wolfsburg","Werder Bremen"]}
+  {name:"Maximilian Wittek",teams:["VfL Bochum"]}
+  {name:"Maximiliano Moralez",teams:["Atalanta"]}
+  {name:"Maximiliano Pellegrino",teams:["Atalanta","Cesena"]}
+  {name:"Maxwel Cornet",teams:["Burnley","Genoa","Olympique Lyonnais","Southampton","West Ham United"]}
+  {name:"Maxwell",teams:["Barcelona","Inter Milan","Paris Saint-Germain"]}
+  {name:"Maya Yoshida",teams:["FC Schalke 04","Sampdoria","Southampton"]}
+  {name:"Maynor Figueroa",teams:["Hull City","Wigan Athletic"]}
+  {name:"McDonald Mariga",teams:["Inter Milan","Parma","Real Sociedad"]}
+  {name:"Medhi Benatia",teams:["AS Roma","Bayern Munich","Juventus","Udinese"]}
+  {name:"Mehdi Abeid",teams:["Dijon FCO","FC Nantes","Newcastle United"]}
+  {name:"Mehdi Bourabia",teams:["Frosinone","Grenoble Foot","Sassuolo","Spezia"]}
+  {name:"Mehdi Lacen",teams:["Alavés","Getafe","Málaga","Racing Santander"]}
+  {name:"Mehdi Léris",teams:["Chievo Verona","Pisa","Sampdoria"]}
+  {name:"Mehdi Mahdavikia",teams:["Eintracht Frankfurt","Hamburger SV"]}
+  {name:"Mehdi Mostefa",teams:["FC Lorient","GFC Ajaccio","SC Bastia"]}
+  {name:"Mehdi Méniri",teams:["Estac Troyes","FC Metz"]}
+  {name:"Mehdi Nafti",teams:["Birmingham City","Racing Santander","Toulouse FC"]}
+  {name:"Mehdi Zeffane",teams:["Clermont Foot","Olympique Lyonnais","Stade Rennais"]}
+  {name:"Mehmet Ekici",teams:["1. FC Nürnberg","Werder Bremen"]}
+  {name:"Mehmet Scholl",teams:["Bayern Munich"]}
+  {name:"Melli",teams:["Real Betis"]}
+  {name:"Melvin Bard",teams:["OGC Nice","Olympique Lyonnais"]}
+  {name:"Memphis",teams:["Atlético Madrid","Barcelona","Manchester United","Olympique Lyonnais"]}
+  {name:"Mensur Mujdža",teams:["SC Freiburg"]}
+  {name:"Merih Demiral",teams:["Atalanta","Juventus","Sassuolo"]}
+  {name:"Merlin Röhl",teams:["Everton","SC Freiburg"]}
+  {name:"Mert Müldür",teams:["Sassuolo"]}
+  {name:"Mesut Özil",teams:["Arsenal","FC Schalke 04","Real Madrid","Werder Bremen"]}
+  {name:"Mevlüt Erdinç",teams:["AS Saint-Étienne","EA Guingamp","FC Metz","FC Sochaux","Hannover 96","Paris Saint-Germain","Stade Rennais"]}
+  {name:"Mexer",teams:["Girondins de Bordeaux","Stade Rennais"]}
+  {name:"Micah Richards",teams:["Aston Villa","Fiorentina","Manchester City"]}
+  {name:"Michael Agazzi",teams:["Cagliari","Chievo Verona"]}
+  {name:"Michael Amir Murillo",teams:["Olympique de Marseille"]}
+  {name:"Michael Ball",teams:["Everton","Manchester City"]}
+  {name:"Michael Ballack",teams:["Bayer Leverkusen","Bayern Munich","Chelsea"]}
+  {name:"Michael Bradley",teams:["AS Roma","Aston Villa","Borussia Mönchengladbach","Chievo Verona"]}
+  {name:"Michael Brown",teams:["Fulham","Portsmouth","Tottenham Hotspur","Wigan Athletic"]}
+  {name:"Michael Carrick",teams:["Manchester United","Tottenham Hotspur","West Ham United"]}
+  {name:"Michael Chopra",teams:["Newcastle United","Sunderland"]}
+  {name:"Michael Dawson",teams:["Hull City","Tottenham Hotspur"]}
+  {name:"Michael Delura",teams:["Borussia Mönchengladbach","FC Schalke 04","Hannover 96"]}
+  {name:"Michael Duberry",teams:["Leeds United","Reading"]}
+  {name:"Michael Esser",teams:["Hannover 96","SV Darmstadt 98","VfL Bochum"]}
+  {name:"Michael Essien",teams:["AC Milan","Chelsea","Olympique Lyonnais","Real Madrid","SC Bastia"]}
+  {name:"Michael Fink",teams:["Arminia Bielefeld","Borussia Mönchengladbach","Eintracht Frankfurt"]}
+  {name:"Michael Folorunsho",teams:["Cagliari","Fiorentina","Hellas Verona","Napoli"]}
+  {name:"Michael Gray",teams:["Blackburn Rovers","Sunderland"]}
+  {name:"Michael Gregoritsch",teams:["FC Augsburg","FC Schalke 04","Hamburger SV","SC Freiburg"]}
+  {name:"Michael Hartmann",teams:["Hansa Rostock","Hertha BSC"]}
+  {name:"Michael Kayode",teams:["Brentford","Fiorentina"]}
+  {name:"Michael Keane",teams:["Burnley","Everton","Manchester United"]}
+  {name:"Michael Kightly",teams:["Burnley","Stoke City","Wolverhampton Wanderers"]}
+  {name:"Michael Krohn-Dehli",teams:["Celta Vigo","Deportivo La Coruña","Sevilla"]}
+  {name:"Michael Mancienne",teams:["Chelsea","Hamburger SV","Wolverhampton Wanderers"]}
+  {name:"Michael Mutzel",teams:["Eintracht Frankfurt","Karlsruher SC","VfB Stuttgart"]}
+  {name:"Michael Olise",teams:["Bayern Munich","Crystal Palace"]}
+  {name:"Michael Owen",teams:["Liverpool","Manchester United","Newcastle United","Real Madrid","Stoke City"]}
+  {name:"Michael Pereira",teams:["Granada","Mallorca"]}
+  {name:"Michael Preetz",teams:["Hertha BSC"]}
+  {name:"Michael Reiziger",teams:["Barcelona","Middlesbrough"]}
+  {name:"Michael Rensing",teams:["Bayer Leverkusen","Bayern Munich","FC Köln","Fortuna Düsseldorf"]}
+  {name:"Michael Ricketts",teams:["Bolton Wanderers","Middlesbrough"]}
+  {name:"Michael Svensson",teams:["Estac Troyes","Southampton"]}
+  {name:"Michael Tarnat",teams:["Bayern Munich","Hannover 96","Manchester City"]}
+  {name:"Michael Thurk",teams:["1. FSV Mainz 05","Eintracht Frankfurt"]}
+  {name:"Michael Turner",teams:["Hull City","Norwich City","Sunderland"]}
+  {name:"Michael Zetterer",teams:["Eintracht Frankfurt","Werder Bremen"]}
+  {name:"Michail Antonio",teams:["West Ham United"]}
+  {name:"Michal Kadlec",teams:["Bayer Leverkusen"]}
+  {name:"Michaël Chrétien",teams:["AS Nancy"]}
+  {name:"Michaël Ciani",teams:["Espanyol","FC Lorient","Girondins de Bordeaux","Lazio"]}
+  {name:"Michaël Isabey",teams:["FC Sochaux"]}
+  {name:"Michał Bemben",teams:["VfL Bochum"]}
+  {name:"Michel",teams:["Almería","Las Palmas"]}
+  {name:"Michel Aebischer",teams:["Bologna","Pisa"]}
+  {name:"Michel Bastos",teams:["AS Roma","FC Schalke 04","LOSC Lille","Olympique Lyonnais"]}
+  {name:"Michel Morganella",teams:["Novara","Palermo"]}
+  {name:"Michel Ndary Adopo",teams:["Atalanta","Cagliari","Torino"]}
+  {name:"Michel Vorm",teams:["Swansea City","Tottenham Hotspur"]}
+  {name:"Michele Canini",teams:["Atalanta","Cagliari","Chievo Verona","Genoa"]}
+  {name:"Michele Di Gregorio",teams:["Juventus","Monza"]}
+  {name:"Michele Ferri",teams:["Atalanta","Cagliari","Palermo","Sampdoria"]}
+  {name:"Michele Fini",teams:["Ascoli","Cagliari","Siena"]}
+  {name:"Michele Marcolini",teams:["Atalanta","Bari","Chievo Verona"]}
+  {name:"Michele Paolucci",teams:["Ascoli","Atalanta","Catania","Juventus","Palermo","Siena","Udinese"]}
+  {name:"Michele Paramatti",teams:["Bologna","Juventus"]}
+  {name:"Michele Pazienza",teams:["Bologna","Fiorentina","Juventus","Napoli","Udinese"]}
+  {name:"Michu",teams:["Napoli","Rayo Vallecano","Swansea City"]}
+  {name:"Michy Batshuayi",teams:["Borussia Dortmund","Chelsea","Crystal Palace","Eintracht Frankfurt","Olympique de Marseille","Valencia"]}
+  {name:"Mickael Malsa",teams:["FC Sochaux","Levante","Real Valladolid"]}
+  {name:"Mickael Nade",teams:["AS Saint-Étienne"]}
+  {name:"Mickaël Alphonse",teams:["Dijon FCO","GFC Ajaccio"]}
+  {name:"Mickaël Cuisance",teams:["Bayern Munich","Borussia Mönchengladbach","Olympique de Marseille","Sampdoria","Venezia"]}
+  {name:"Mickaël Landreau",teams:["FC Nantes","LOSC Lille","Paris Saint-Germain","SC Bastia"]}
+  {name:"Mickaël Pagis",teams:["FC Sochaux","Olympique de Marseille","RC Strasbourg","Stade Rennais"]}
+  {name:"Mickaël Tacalfred",teams:["Stade de Reims"]}
+  {name:"Micky van de Ven",teams:["Tottenham Hotspur","VfL Wolfsburg"]}
+  {name:"Mido",teams:["AS Roma","Celta Vigo","Middlesbrough","Olympique de Marseille","Tottenham Hotspur","West Ham United","Wigan Athletic"]}
+  {name:"Migjen Basha",teams:["Torino"]}
+  {name:"Miguel",teams:["Alavés","Leganés","Real Valladolid"]}
+  {name:"Miguel Almirón",teams:["Newcastle United"]}
+  {name:"Miguel Britos",teams:["Bologna","Napoli","Watford"]}
+  {name:"Miguel Flaño",teams:["Osasuna"]}
+  {name:"Miguel Gutiérrez",teams:["Girona","Napoli","Real Madrid"]}
+  {name:"Miguel Monteiro",teams:["Valencia"]}
+  {name:"Miguel Pallardó",teams:["Getafe","Levante","Valencia"]}
+  {name:"Miguel Rebosio",teams:["Real Zaragoza"]}
+  {name:"Miguel Torres",teams:["Getafe","Málaga","Real Madrid"]}
+  {name:"Miguel Trauco",teams:["AS Saint-Étienne"]}
+  {name:"Miguel Veloso",teams:["Genoa","Hellas Verona"]}
+  {name:"Miguel de las Cuevas",teams:["Atlético Madrid","Osasuna","Sporting Gijón"]}
+  {name:"Miguel Ángel",teams:["Levante","Málaga","Real Betis"]}
+  {name:"Miguel Ángel Angulo",teams:["Valencia"]}
+  {name:"Miguel Ángel Guerrero",teams:["Leganés","Sporting Gijón"]}
+  {name:"Miguel Ángel Moyá",teams:["Atlético Madrid","Getafe","Mallorca","Real Sociedad","Valencia"]}
+  {name:"Miguel Ángel Nadal",teams:["Mallorca"]}
+  {name:"Miha Zajc",teams:["Empoli","Genoa","Toulouse FC"]}
+  {name:"Mihailo Ristić",teams:["Celta Vigo","Montpellier HSC"]}
+  {name:"Miiko Albornoz",teams:["Hannover 96"]}
+  {name:"Mijat Gaćinović",teams:["Eintracht Frankfurt","TSG Hoffenheim"]}
+  {name:"Mika Mármol",teams:["Barcelona","Las Palmas"]}
+  {name:"Mikael Antonsson",teams:["Bologna"]}
+  {name:"Mikael Ellertsson",teams:["Genoa","Spezia","Venezia"]}
+  {name:"Mikael Forssell",teams:["Birmingham City","Borussia Mönchengladbach","Chelsea","Hannover 96"]}
+  {name:"Mikaël Silvestre",teams:["Arsenal","Manchester United","Werder Bremen"]}
+  {name:"Mike Frantz",teams:["1. FC Nürnberg","SC Freiburg"]}
+  {name:"Mike Hanke",teams:["Borussia Mönchengladbach","FC Schalke 04","Hannover 96","SC Freiburg","VfL Wolfsburg"]}
+  {name:"Mike Maignan",teams:["AC Milan","LOSC Lille"]}
+  {name:"Mike Williamson",teams:["Newcastle United"]}
+  {name:"Mike van der Hoorn",teams:["Arminia Bielefeld","Swansea City"]}
+  {name:"Mikel Aguirregomezkorta Larrea",teams:["Albacete"]}
+  {name:"Mikel Alonso",teams:["Bolton Wanderers","Real Sociedad","Tenerife"]}
+  {name:"Mikel Aranburu",teams:["Real Sociedad"]}
+  {name:"Mikel Arteta",teams:["Arsenal","Everton","Paris Saint-Germain","Real Sociedad"]}
+  {name:"Mikel Balenziaga",teams:["Athletic Bilbao","Real Valladolid"]}
+  {name:"Mikel González",teams:["Real Sociedad"]}
+  {name:"Mikel Jauregizar",teams:["Athletic Bilbao"]}
+  {name:"Mikel Labaka",teams:["Rayo Vallecano","Real Sociedad"]}
+  {name:"Mikel Merino",teams:["Arsenal","Borussia Dortmund","Newcastle United","Real Sociedad"]}
+  {name:"Mikel Oyarzabal",teams:["Real Sociedad"]}
+  {name:"Mikel Rico",teams:["Athletic Bilbao","Granada","Huesca"]}
+  {name:"Mikel Roteta",teams:["Málaga","Real Murcia"]}
+  {name:"Mikel San José",teams:["Athletic Bilbao"]}
+  {name:"Mikel Vesga",teams:["Athletic Bilbao","Leganés","Sporting Gijón"]}
+  {name:"Mikele Leigertwood",teams:["Crystal Palace","Reading","Sheffield United"]}
+  {name:"Mikkel Damsgaard",teams:["Brentford","Sampdoria"]}
+  {name:"Mikkel Desler",teams:["Toulouse FC"]}
+  {name:"Miku",teams:["Getafe","Rayo Vallecano","Valencia"]}
+  {name:"Milan Badelj",teams:["Fiorentina","Genoa","Hamburger SV","Lazio"]}
+  {name:"Milan Baroš",teams:["Aston Villa","Liverpool","Olympique Lyonnais","Portsmouth"]}
+  {name:"Milan Biševac",teams:["FC Metz","FC Valenciennes","Lazio","Olympique Lyonnais","Paris Saint-Germain","RC Lens"]}
+  {name:"Milan Fukal",teams:["Borussia Mönchengladbach","Hamburger SV"]}
+  {name:"Milan Smiljanić",teams:["Espanyol","Sporting Gijón"]}
+  {name:"Milan Đurić",teams:["Cesena","Cremonese","Hellas Verona","Monza","Parma","Salernitana"]}
+  {name:"Milan Škriniar",teams:["Inter Milan","Paris Saint-Germain","Sampdoria"]}
+  {name:"Mile Jedinak",teams:["Crystal Palace"]}
+  {name:"Mile Sterjovski",teams:["Derby County","LOSC Lille"]}
+  {name:"Mile Svilar",teams:["AS Roma"]}
+  {name:"Milenko Ačimovič",teams:["LOSC Lille","Tottenham Hotspur"]}
+  {name:"Milivoje Novaković",teams:["FC Köln"]}
+  {name:"Milivoje Vitakić",teams:["Grenoble Foot","LOSC Lille"]}
+  {name:"Milorad Peković",teams:["1. FSV Mainz 05","SpVgg Greuther Fürth"]}
+  {name:"Milos Kerkez",teams:["AFC Bournemouth","Liverpool"]}
+  {name:"Milot Rashica",teams:["Norwich City","Werder Bremen"]}
+  {name:"Miloš Dimitrijević",teams:["Chievo Verona","FC Nantes","Grenoble Foot"]}
+  {name:"Miloš Jojić",teams:["Borussia Dortmund","FC Köln"]}
+  {name:"Miloš Krasić",teams:["Juventus","SC Bastia"]}
+  {name:"Miloš Veljković",teams:["Tottenham Hotspur","Werder Bremen"]}
+  {name:"Mimoun Azaouagh",teams:["1. FSV Mainz 05","FC Schalke 04","VfL Bochum"]}
+  {name:"Mingo",teams:["Albacete","Gimnàstic","Rayo Vallecano","Real Betis"]}
+  {name:"Miquel Buades Crespí",teams:["Albacete"]}
+  {name:"Miquel Soler",teams:["Mallorca"]}
+  {name:"Miralem Pjanić",teams:["AS Roma","Barcelona","FC Metz","Juventus","Olympique Lyonnais"]}
+  {name:"Miranda",teams:["Atlético Madrid","FC Sochaux","Inter Milan"]}
+  {name:"Mirco Antenucci",teams:["Catania","SPAL"]}
+  {name:"Mirko Pieri",teams:["Livorno","Perugia","Sampdoria","Udinese"]}
+  {name:"Mirko Savini",teams:["Fiorentina","Napoli","Palermo"]}
+  {name:"Mirko Valdifiori",teams:["Empoli","Napoli","SPAL","Torino"]}
+  {name:"Mirko Vučinić",teams:["AS Roma","Juventus","Lecce"]}
+  {name:"Miroslav Karhan",teams:["1. FSV Mainz 05","VfL Wolfsburg"]}
+  {name:"Miroslav Klose",teams:["1. FC Kaiserslautern","Bayern Munich","Lazio","Werder Bremen"]}
+  {name:"Miroslav Stević",teams:["Borussia Dortmund","VfL Bochum"]}
+  {name:"Miroslav Đukić",teams:["Valencia"]}
+  {name:"Mista",teams:["Atlético Madrid","Deportivo La Coruña","Valencia"]}
+  {name:"Mitchel Bakker",teams:["Atalanta","Bayer Leverkusen","LOSC Lille","Paris Saint-Germain"]}
+  {name:"Mitchell Dijks",teams:["Bologna"]}
+  {name:"Mitchell Weiser",teams:["Bayer Leverkusen","Bayern Munich","FC Köln","Hertha BSC","Werder Bremen"]}
+  {name:"Mišo Brečko",teams:["FC Köln","Hamburger SV"]}
+  {name:"Mladen Krstajić",teams:["FC Schalke 04","Werder Bremen"]}
+  {name:"Mladen Petrić",teams:["Borussia Dortmund","Fulham","Hamburger SV","West Ham United"]}
+  {name:"Moanes Dabbur",teams:["Sevilla","TSG Hoffenheim"]}
+  {name:"Modeste M'bami",teams:["Almería","Olympique de Marseille","Paris Saint-Germain","Sedan"]}
+  {name:"Modibo Diakité",teams:["Cagliari","Deportivo La Coruña","Fiorentina","Frosinone","Lazio","Sampdoria","Sunderland"]}
+  {name:"Modibo Maïga",teams:["FC Metz","FC Sochaux","Le Mans FC","West Ham United"]}
+  {name:"Modibo Sagnan",teams:["Montpellier HSC","Real Sociedad"]}
+  {name:"Modou Barrow",teams:["Swansea City"]}
+  {name:"Modou Sougou",teams:["Olympique de Marseille","Évian TG"]}
+  {name:"Mody Traoré",teams:["FC Valenciennes"]}
+  {name:"Moha",teams:["Espanyol","Osasuna"]}
+  {name:"Mohamed Ali Cho",teams:["Angers SCO","OGC Nice","Real Sociedad"]}
+  {name:"Mohamed Amoura",teams:["VfL Wolfsburg"]}
+  {name:"Mohamed Bradja",teams:["Estac Troyes"]}
+  {name:"Mohamed Camara",teams:["AS Monaco"]}
+  {name:"Mohamed Diamé",teams:["Hull City","Newcastle United","West Ham United","Wigan Athletic"]}
+  {name:"Mohamed Elneny",teams:["Arsenal"]}
+  {name:"Mohamed Elyounoussi",teams:["Southampton"]}
+  {name:"Mohamed Fares",teams:["Genoa","Hellas Verona","Lazio","SPAL"]}
+  {name:"Mohamed Fofana",teams:["Stade de Reims","Toulouse FC"]}
+  {name:"Mohamed Kaba",teams:["FC Nantes","Lecce"]}
+  {name:"Mohamed Kallon",teams:["AS Monaco","Inter Milan","Vicenza"]}
+  {name:"Mohamed Lamine Bayo",teams:["Clermont Foot","LOSC Lille","Le Havre AC"]}
+  {name:"Mohamed Salah",teams:["AS Roma","Chelsea","Fiorentina","Liverpool"]}
+  {name:"Mohamed Simakan",teams:["RB Leipzig","RC Strasbourg"]}
+  {name:"Mohamed Sissoko",teams:["Fiorentina","Juventus","Levante","Liverpool","Paris Saint-Germain","Valencia"]}
+  {name:"Mohamed Tchité",teams:["Racing Santander"]}
+  {name:"Mohamed Yattara",teams:["Angers SCO","Estac Troyes","Olympique Lyonnais"]}
+  {name:"Mohamed Zidan",teams:["1. FSV Mainz 05","Borussia Dortmund","Hamburger SV","Werder Bremen"]}
+  {name:"Mohammadou Idrissou",teams:["Borussia Mönchengladbach","Hannover 96","MSV Duisburg","SC Freiburg"]}
+  {name:"Mohammed Abdellaoue",teams:["Hannover 96","VfB Stuttgart"]}
+  {name:"Mohammed Kudus",teams:["Tottenham Hotspur","West Ham United"]}
+  {name:"Mohammed Rabiu",teams:["Évian TG"]}
+  {name:"Mohammed Salisu",teams:["AS Monaco","Real Valladolid","Southampton"]}
+  {name:"Moi Gómez",teams:["Getafe","Huesca","Osasuna","Sporting Gijón","Villarreal"]}
+  {name:"Moise Kean",teams:["Everton","Fiorentina","Hellas Verona","Juventus","Paris Saint-Germain"]}
+  {name:"Moisés",teams:["Sevilla","Villarreal"]}
+  {name:"Moisés Caicedo",teams:["Brighton & Hove Albion","Chelsea"]}
+  {name:"Moisés Hurtado",teams:["Espanyol","Granada"]}
+  {name:"Molla Wagué",teams:["FC Nantes","SM Caen","Udinese","Watford"]}
+  {name:"Momo",teams:["Albacete","Deportivo La Coruña","Las Palmas","Racing Santander","Real Betis","Xerez"]}
+  {name:"Monsef Zerka",teams:["AS Nancy"]}
+  {name:"Montassar Talbi",teams:["FC Lorient"]}
+  {name:"Moreno Torricelli",teams:["Espanyol","Fiorentina"]}
+  {name:"Moreto Cassamã",teams:["Stade de Reims"]}
+  {name:"Morgan Amalfitano",teams:["FC Lorient","LOSC Lille","Olympique de Marseille","Sedan","Stade Rennais","West Bromwich Albion","West Ham United"]}
+  {name:"Morgan De Sanctis",teams:["AS Monaco","AS Roma","Napoli","Sevilla","Udinese"]}
+  {name:"Morgan Gibbs-White",teams:["Nottingham Forest","Wolverhampton Wanderers"]}
+  {name:"Morgan Guilavogui",teams:["FC St. Pauli","RC Lens"]}
+  {name:"Morgan Rogers",teams:["Aston Villa"]}
+  {name:"Morgan Sanson",teams:["Aston Villa","Montpellier HSC","OGC Nice","Olympique de Marseille","RC Strasbourg"]}
+  {name:"Morgan Schneiderlin",teams:["Everton","Manchester United","OGC Nice","RC Strasbourg","Southampton"]}
+  {name:"Moris Carrozzieri",teams:["Atalanta","Lecce","Palermo","Sampdoria"]}
+  {name:"Moritz Broschinski",teams:["VfL Bochum"]}
+  {name:"Moritz Jenz",teams:["1. FSV Mainz 05","FC Lorient","FC Schalke 04","VfL Wolfsburg"]}
+  {name:"Moritz Leitner",teams:["Borussia Dortmund","FC Augsburg","Lazio","Norwich City","VfB Stuttgart"]}
+  {name:"Moritz Nicolas",teams:["1. FC Union Berlin","Borussia Mönchengladbach"]}
+  {name:"Moritz Stoppelkamp",teams:["Hannover 96","SC Paderborn 07"]}
+  {name:"Moritz Volz",teams:["FC St. Pauli","Fulham"]}
+  {name:"Morlaye Soumah",teams:["SC Bastia"]}
+  {name:"Morten Frendrup",teams:["Genoa"]}
+  {name:"Morten Gamst Pedersen",teams:["Blackburn Rovers"]}
+  {name:"Morten Skoubo",teams:["Borussia Mönchengladbach","Real Sociedad"]}
+  {name:"Morten Thorsby",teams:["1. FC Union Berlin","Cremonese","Genoa","Sampdoria"]}
+  {name:"Mory Diaw",teams:["Clermont Foot","Le Havre AC"]}
+  {name:"Moses Sichone",teams:["Alemannia Aachen","FC Köln"]}
+  {name:"Moses Simon",teams:["FC Nantes","Levante","Paris FC"]}
+  {name:"Mostafa Mohamed",teams:["FC Nantes"]}
+  {name:"Mouctar Diakhaby",teams:["Olympique Lyonnais","Valencia"]}
+  {name:"Mouhamadou Dabo",teams:["AS Saint-Étienne","Estac Troyes","Olympique Lyonnais","SM Caen","Sevilla"]}
+  {name:"Moumouni Dagano",teams:["EA Guingamp","FC Sochaux"]}
+  {name:"Mounir Obbadi",teams:["AS Monaco","Estac Troyes","Hellas Verona","LOSC Lille","OGC Nice"]}
+  {name:"Mourad Meghni",teams:["Bologna","FC Sochaux","Lazio"]}
+  {name:"Mousa Dembélé",teams:["Fulham","Tottenham Hotspur"]}
+  {name:"Moussa Dembélé",teams:["Atlético Madrid","Fulham","Olympique Lyonnais"]}
+  {name:"Moussa Diaby",teams:["Aston Villa","Bayer Leverkusen","Crotone","Paris Saint-Germain"]}
+  {name:"Moussa Diarra",teams:["Alavés","Toulouse FC"]}
+  {name:"Moussa Djenepo",teams:["Southampton"]}
+  {name:"Moussa Doumbia",teams:["Stade de Reims"]}
+  {name:"Moussa Konaté",teams:["Amiens SC","Dijon FCO","Genoa"]}
+  {name:"Moussa Latoundji",teams:["Energie Cottbus"]}
+  {name:"Moussa N'Diaye",teams:["AJ Auxerre","GFC Ajaccio","Istres","Sedan"]}
+  {name:"Moussa Niakhate",teams:["1. FSV Mainz 05","FC Metz","Nottingham Forest","Olympique Lyonnais"]}
+  {name:"Moussa Sissoko",teams:["FC Nantes","Newcastle United","Tottenham Hotspur","Toulouse FC","Watford"]}
+  {name:"Moussa Sow",teams:["LOSC Lille","Stade Rennais"]}
+  {name:"Moustapha Bayal Sall",teams:["AS Nancy","AS Saint-Étienne"]}
+  {name:"Mozart",teams:["Livorno","Reggina"]}
+  {name:"Muhammed Cham",teams:["Clermont Foot"]}
+  {name:"Munir El Haddadi",teams:["Alavés","Barcelona","Getafe","Las Palmas","Leganés","Sevilla","Valencia"]}
+  {name:"Murillo",teams:["Nottingham Forest"]}
+  {name:"Musa Al-Taamari",teams:["Montpellier HSC","Stade Rennais"]}
+  {name:"Musa Barrow",teams:["Atalanta","Bologna"]}
+  {name:"Mustapha Diallo",teams:["EA Guingamp","Nîmes"]}
+  {name:"Mustapha Hadji",teams:["Aston Villa","Coventry City","Espanyol"]}
+  {name:"Mustapha Yatabaré",teams:["Boulogne","EA Guingamp","Montpellier HSC"]}
+  {name:"Muzzy Izzet",teams:["Birmingham City","Leicester City"]}
+  {name:"Mykhailo Mudryk",teams:["Chelsea"]}
+  {name:"Myron Boadu",teams:["AS Monaco","VfL Bochum"]}
+  {name:"Myrto Uzuni",teams:["Granada"]}
+  {name:"Myziane Maolida",teams:["Hertha BSC","OGC Nice","Olympique Lyonnais","Stade de Reims"]}
+  {name:"Márcio Amoroso",teams:["AC Milan","Borussia Dortmund","Málaga","Parma"]}
+  {name:"Márcio Borges",teams:["Arminia Bielefeld"]}
+  {name:"Mário Rui",teams:["AS Roma","Empoli","Napoli"]}
+  {name:"Máximo Perrone",teams:["Como","Las Palmas","Manchester City"]}
+  {name:"Mërgim Mavraj",teams:["FC Köln","Hamburger SV","SpVgg Greuther Fürth","VfL Bochum"]}
+  {name:"Mërgim Vojvoda",teams:["Como","Torino"]}
+  {name:"Míchel",teams:["Birmingham City","Deportivo La Coruña","Getafe","Levante","Málaga","Rayo Vallecano","Real Murcia","Real Valladolid","Sporting Gijón","Valencia"]}
+  {name:"Míchel Salgado",teams:["Blackburn Rovers","Real Madrid"]}
+  {name:"N'Golo Kanté",teams:["Chelsea","Leicester City","SM Caen"]}
+  {name:"Nabil Baha",teams:["Málaga"]}
+  {name:"Nabil Bentaleb",teams:["Angers SCO","FC Schalke 04","LOSC Lille","Newcastle United","Tottenham Hotspur"]}
+  {name:"Nabil Dirar",teams:["AS Monaco"]}
+  {name:"Nabil El Zhar",teams:["Las Palmas","Leganés","Levante","Liverpool"]}
+  {name:"Nabil Fekir",teams:["Olympique Lyonnais","Real Betis"]}
+  {name:"Nabil Taïder",teams:["FC Lorient","Toulouse FC"]}
+  {name:"Naby Keïta",teams:["Liverpool","RB Leipzig","Werder Bremen"]}
+  {name:"Nacer Chadli",teams:["AS Monaco","Tottenham Hotspur","West Bromwich Albion"]}
+  {name:"Nacho",teams:["Getafe","Levante","Málaga","Rayo Vallecano","Real Betis","Real Madrid","Real Valladolid"]}
+  {name:"Nacho Cases",teams:["Sporting Gijón"]}
+  {name:"Nacho González",teams:["Las Palmas"]}
+  {name:"Nacho Monreal",teams:["Arsenal","Málaga","Osasuna","Real Sociedad"]}
+  {name:"Nacho Vidal",teams:["Mallorca","Osasuna","Real Oviedo","Valencia"]}
+  {name:"Nadiem Amiri",teams:["1. FSV Mainz 05","Bayer Leverkusen","Genoa","TSG Hoffenheim"]}
+  {name:"Nadir Belhadj",teams:["Olympique Lyonnais","Portsmouth","RC Lens","Sedan"]}
+  {name:"Nadir Zortea",teams:["Atalanta","Bologna","Cagliari","Frosinone","Salernitana","Sassuolo"]}
+  {name:"Nahitan Nández",teams:["Cagliari"]}
+  {name:"Nahuel Estévez",teams:["Parma","Spezia"]}
+  {name:"Nahuel Molina",teams:["Atlético Madrid","Udinese"]}
+  {name:"Nahuel Tenaglia",teams:["Alavés"]}
+  {name:"Naldo",teams:["AS Monaco","Bologna","Espanyol","FC Schalke 04","Getafe","Udinese","VfL Wolfsburg","Werder Bremen"]}
+  {name:"Nampalys Mendy",teams:["AS Monaco","Leicester City","OGC Nice","RC Lens"]}
+  {name:"Nando Rafael",teams:["Borussia Mönchengladbach","FC Augsburg","Fortuna Düsseldorf","Hertha BSC"]}
+  {name:"Nani",teams:["Lazio","Manchester United","Valencia","Venezia"]}
+  {name:"Nano",teams:["Atlético Madrid","Barcelona","Getafe","Levante","Osasuna","Real Betis","Real Valladolid"]}
+  {name:"Naohiro Takahara",teams:["Eintracht Frankfurt","Hamburger SV"]}
+  {name:"Naouirou Ahamada",teams:["AJ Auxerre","Crystal Palace","Stade Rennais","VfB Stuttgart"]}
+  {name:"Nasief Morris",teams:["Racing Santander","Recreativo"]}
+  {name:"Nassim Akrour",teams:["Estac Troyes","Grenoble Foot"]}
+  {name:"Natale Gonnella",teams:["Atalanta","Hellas Verona"]}
+  {name:"Natan",teams:["Napoli","Real Betis"]}
+  {name:"Nathan Aké",teams:["AFC Bournemouth","Chelsea","Manchester City","Watford"]}
+  {name:"Nathan Baker",teams:["Aston Villa"]}
+  {name:"Nathan Collins",teams:["Brentford","Burnley","Wolverhampton Wanderers"]}
+  {name:"Nathan Dyer",teams:["Leicester City","Swansea City"]}
+  {name:"Nathan N'Goumou",teams:["Borussia Mönchengladbach","Toulouse FC"]}
+  {name:"Nathan Patterson",teams:["Everton"]}
+  {name:"Nathan Redmond",teams:["Burnley","Norwich City","Southampton"]}
+  {name:"Nathan Tella",teams:["Bayer Leverkusen","Southampton"]}
+  {name:"Nathanael Mbuku",teams:["FC Augsburg","Stade de Reims"]}
+  {name:"Nathaniel Chalobah",teams:["Burnley","Chelsea","Fulham","Napoli","Watford"]}
+  {name:"Nathaniel Clyne",teams:["AFC Bournemouth","Crystal Palace","Liverpool","Southampton"]}
+  {name:"Nayef Aguerd",teams:["Dijon FCO","Olympique de Marseille","Real Sociedad","Stade Rennais","West Ham United"]}
+  {name:"Naïm Sliti",teams:["Dijon FCO","LOSC Lille"]}
+  {name:"Ndombe Mubele",teams:["Stade Rennais","Toulouse FC"]}
+  {name:"Neal Maupay",teams:["AS Saint-Étienne","Brentford","Brighton & Hove Albion","Everton","OGC Nice","Olympique de Marseille","Sevilla"]}
+  {name:"Nebojša Krupniković",teams:["Arminia Bielefeld","Hannover 96"]}
+  {name:"Neco Williams",teams:["Liverpool","Nottingham Forest"]}
+  {name:"Nedim Bajrami",teams:["Empoli","Sassuolo"]}
+  {name:"Nedum Onuoha",teams:["Manchester City","Queens Park Rangers","Sunderland"]}
+  {name:"Nehuén Pérez",teams:["Granada","Udinese"]}
+  {name:"Neil Clement",teams:["West Bromwich Albion"]}
+  {name:"Neil El Aynaoui",teams:["AS Roma","RC Lens"]}
+  {name:"Neil Sullivan",teams:["Chelsea","Tottenham Hotspur"]}
+  {name:"Neil Taylor",teams:["Aston Villa","Swansea City"]}
+  {name:"Nelson Abeijón",teams:["Atalanta","Cagliari"]}
+  {name:"Nelson Valdez",teams:["Borussia Dortmund","Eintracht Frankfurt","Hércules","Valencia","Werder Bremen"]}
+  {name:"Nelson Weiper",teams:["1. FSV Mainz 05"]}
+  {name:"Nemanja Gudelj",teams:["Sevilla"]}
+  {name:"Nemanja Maksimović",teams:["Getafe","Valencia"]}
+  {name:"Nemanja Matić",teams:["AS Roma","Chelsea","Manchester United","Olympique Lyonnais","Sassuolo","Stade Rennais"]}
+  {name:"Nemanja Pejčinović",teams:["Hertha BSC","OGC Nice"]}
+  {name:"Nemanja Radoja",teams:["Celta Vigo","Levante"]}
+  {name:"Nemanja Radonjić",teams:["Hertha BSC","Mallorca","Olympique de Marseille","Torino"]}
+  {name:"Nemanja Vidić",teams:["Inter Milan","Manchester United"]}
+  {name:"Nenad Bjelica",teams:["1. FC Kaiserslautern"]}
+  {name:"Nenad Džodić",teams:["GFC Ajaccio","Montpellier HSC"]}
+  {name:"Nenad Kovačević",teams:["RC Lens"]}
+  {name:"Nenad Krstičić",teams:["Alavés","Sampdoria"]}
+  {name:"Nenad Milijaš",teams:["Wolverhampton Wanderers"]}
+  {name:"Nenad Tomović",teams:["Chievo Verona","Fiorentina","Genoa","Lecce","SPAL"]}
+  {name:"Nenê",teams:["AS Monaco","Alavés","Cagliari","Celta Vigo","Espanyol","Hellas Verona","Mallorca","Paris Saint-Germain","West Ham United"]}
+  {name:"Neru",teams:["Racing Santander","Sporting Gijón"]}
+  {name:"Neto",teams:["AFC Bournemouth","Barcelona","Fiorentina","Juventus","Valencia"]}
+  {name:"Neto Borges",teams:["Clermont Foot"]}
+  {name:"Neven Subotić",teams:["1. FC Union Berlin","1. FSV Mainz 05","AS Saint-Étienne","Borussia Dortmund","FC Köln"]}
+  {name:"Neymar",teams:["Barcelona","Paris Saint-Germain"]}
+  {name:"Niall Quinn",teams:["Sunderland"]}
+  {name:"Nick Barmby",teams:["Hull City","Leeds United","Liverpool"]}
+  {name:"Nick Pope",teams:["Burnley","Newcastle United"]}
+  {name:"Nick Woltemade",teams:["Newcastle United","VfB Stuttgart","Werder Bremen"]}
+  {name:"Nicklas Bendtner",teams:["Arsenal","Juventus","Sunderland","VfL Wolfsburg"]}
+  {name:"Nicky Butt",teams:["Birmingham City","Manchester United","Newcastle United"]}
+  {name:"Nicky Hunt",teams:["Bolton Wanderers"]}
+  {name:"Nicky Shorey",teams:["Aston Villa","Fulham","Reading","West Bromwich Albion"]}
+  {name:"Nicky Weaver",teams:["Manchester City"]}
+  {name:"Niclas Alexandersson",teams:["Everton"]}
+  {name:"Niclas Füllkrug",teams:["AC Milan","Borussia Dortmund","Hannover 96","Werder Bremen","West Ham United"]}
+  {name:"Niclas Jensen",teams:["Borussia Dortmund","Fulham","Manchester City"]}
+  {name:"Nico Elvedi",teams:["Borussia Mönchengladbach"]}
+  {name:"Nico Pulzetti",teams:["Bari","Bologna","Cesena","Chievo Verona","Livorno"]}
+  {name:"Nico Ribaudo",teams:["Espanyol"]}
+  {name:"Nico Schlotterbeck",teams:["1. FC Union Berlin","Borussia Dortmund","SC Freiburg"]}
+  {name:"Nico Schulz",teams:["Borussia Dortmund","Borussia Mönchengladbach","Hertha BSC","TSG Hoffenheim"]}
+  {name:"Nico Van Kerckhoven",teams:["Borussia Mönchengladbach","FC Schalke 04"]}
+  {name:"Nico Williams",teams:["Athletic Bilbao"]}
+  {name:"Nico-Jan Hoogma",teams:["Hamburger SV"]}
+  {name:"Nicola Amoruso",teams:["Atalanta","Como","Juventus","Messina","Modena","Napoli","Parma","Perugia","Reggina","Siena","Torino"]}
+  {name:"Nicola Belmonte",teams:["Bari","Siena","Udinese"]}
+  {name:"Nicola Caccia",teams:["Como","Piacenza"]}
+  {name:"Nicola Leali",teams:["Brescia","Cesena","Frosinone","Genoa"]}
+  {name:"Nicola Legrottaglie",teams:["AC Milan","Bologna","Catania","Chievo Verona","Juventus","Siena"]}
+  {name:"Nicola Mingazzini",teams:["Atalanta","Bologna"]}
+  {name:"Nicola Murru",teams:["Cagliari","Sampdoria","Torino"]}
+  {name:"Nicola Pavarini",teams:["Parma","Reggina"]}
+  {name:"Nicola Pozzi",teams:["Empoli","Parma","Sampdoria","Siena"]}
+  {name:"Nicola Rigoni",teams:["Chievo Verona","Palermo"]}
+  {name:"Nicola Sansone",teams:["Bologna","Lecce","Parma","Sassuolo","Villarreal"]}
+  {name:"Nicola Ventola",teams:["Atalanta","Crystal Palace","Inter Milan","Siena","Torino"]}
+  {name:"Nicola Zalewski",teams:["AS Roma","Atalanta","Inter Milan"]}
+  {name:"Nicolai Müller",teams:["1. FSV Mainz 05","Eintracht Frankfurt","Hamburger SV","Hannover 96"]}
+  {name:"Nicolai Remberg",teams:["Hamburger SV","Holstein Kiel"]}
+  {name:"Nicolas Anelka",teams:["Bolton Wanderers","Chelsea","Juventus","Liverpool","Manchester City","Paris Saint-Germain","West Bromwich Albion"]}
+  {name:"Nicolas Benezet",teams:["EA Guingamp","SM Caen","Évian TG"]}
+  {name:"Nicolas Bonnal",teams:["AS Monaco","GFC Ajaccio","LOSC Lille"]}
+  {name:"Nicolas Cozza",teams:["FC Nantes","Montpellier HSC","VfL Wolfsburg"]}
+  {name:"Nicolas Dieuze",teams:["Grenoble Foot","Le Havre AC","SC Bastia","Toulouse FC"]}
+  {name:"Nicolas Douchez",teams:["Paris Saint-Germain","Stade Rennais","Toulouse FC"]}
+  {name:"Nicolas Fauvergue",teams:["LOSC Lille","Stade de Reims"]}
+  {name:"Nicolas Florentin",teams:["Estac Troyes","SM Caen"]}
+  {name:"Nicolas Frey",teams:["Chievo Verona"]}
+  {name:"Nicolas Gillet",teams:["FC Nantes","Le Havre AC","RC Lens"]}
+  {name:"Nicolas Goussé",teams:["EA Guingamp","Estac Troyes","FC Nantes"]}
+  {name:"Nicolas Haas",teams:["Atalanta","Empoli"]}
+  {name:"Nicolas Höfler",teams:["SC Freiburg"]}
+  {name:"Nicolas Isimat-Mirin",teams:["AS Monaco","FC Valenciennes","Toulouse FC"]}
+  {name:"Nicolas Jackson",teams:["Bayern Munich","Chelsea","Villarreal"]}
+  {name:"Nicolas Laspalles",teams:["EA Guingamp","FC Nantes"]}
+  {name:"Nicolas Marin",teams:["AJ Auxerre","AS Saint-Étienne","FC Lorient","Sedan"]}
+  {name:"Nicolas Maurice-Belay",teams:["AS Monaco","FC Sochaux","Girondins de Bordeaux","Sedan"]}
+  {name:"Nicolas Nkoulou",teams:["AS Monaco","Olympique Lyonnais","Olympique de Marseille","Torino","Watford"]}
+  {name:"Nicolas Pallois",teams:["FC Nantes","FC Valenciennes","Girondins de Bordeaux"]}
+  {name:"Nicolas Penneteau",teams:["FC Valenciennes","SC Bastia"]}
+  {name:"Nicolas Plestan",teams:["FC Schalke 04","LOSC Lille"]}
+  {name:"Nicolas Pépé",teams:["Angers SCO","Arsenal","LOSC Lille","OGC Nice","Villarreal"]}
+  {name:"Nicolas Savinaud",teams:["FC Nantes"]}
+  {name:"Nicolas Seiwald",teams:["RB Leipzig"]}
+  {name:"Nicolas Seube",teams:["SM Caen"]}
+  {name:"Nicolas Viola",teams:["Benevento","Bologna","Cagliari","Palermo","Reggina"]}
+  {name:"Nicolas de Préville",teams:["FC Metz","Girondins de Bordeaux","LOSC Lille","Stade de Reims"]}
+  {name:"Nicolás Bertolo",teams:["Palermo","Real Zaragoza"]}
+  {name:"Nicolás Burdisso",teams:["AS Roma","Genoa","Inter Milan","Torino"]}
+  {name:"Nicolás Córdova",teams:["Ascoli","Brescia","Livorno","Messina","Perugia"]}
+  {name:"Nicolás Domínguez",teams:["Bologna","Nottingham Forest"]}
+  {name:"Nicolás González",teams:["Atlético Madrid","Barcelona","Fiorentina","Juventus","Manchester City","Valencia","VfB Stuttgart"]}
+  {name:"Nicolás López",teams:["AS Roma","Granada","Hellas Verona","Udinese"]}
+  {name:"Nicolás Olivera",teams:["Albacete","Real Valladolid","Sevilla"]}
+  {name:"Nicolás Otamendi",teams:["Manchester City","Valencia"]}
+  {name:"Nicolás Pareja",teams:["Espanyol","Sevilla"]}
+  {name:"Nicolás Paz",teams:["Como","Real Madrid"]}
+  {name:"Nicolás Spolli",teams:["AS Roma","Carpi","Catania","Chievo Verona","Genoa"]}
+  {name:"Nicolás Tagliafico",teams:["Olympique Lyonnais"]}
+  {name:"Nicolò Barella",teams:["Cagliari","Inter Milan"]}
+  {name:"Nicolò Cambiaghi",teams:["Bologna","Empoli"]}
+  {name:"Nicolò Casale",teams:["Bologna","Hellas Verona","Lazio"]}
+  {name:"Nicolò Cherubin",teams:["Atalanta","Bologna","Reggina"]}
+  {name:"Nicolò Fagioli",teams:["Fiorentina","Juventus"]}
+  {name:"Nicolò Rovella",teams:["Genoa","Juventus","Lazio","Monza"]}
+  {name:"Nicolò Zaniolo",teams:["AS Roma","Aston Villa","Atalanta","Fiorentina","Udinese"]}
+  {name:"Niels Nkounkou",teams:["Eintracht Frankfurt","Everton","Torino"]}
+  {name:"Niels Oude Kamphuis",teams:["Borussia Mönchengladbach","FC Schalke 04"]}
+  {name:"Nigel Martyn",teams:["Everton","Leeds United"]}
+  {name:"Nigel Quashie",teams:["Portsmouth","Southampton","West Bromwich Albion","West Ham United"]}
+  {name:"Nigel Reo-Coker",teams:["Aston Villa","Bolton Wanderers","West Ham United"]}
+  {name:"Nigel Winterburn",teams:["West Ham United"]}
+  {name:"Nigel de Jong",teams:["1. FSV Mainz 05","AC Milan","Hamburger SV","Manchester City"]}
+  {name:"Nihat Kahveci",teams:["Real Sociedad","Villarreal"]}
+  {name:"Nikica Jelavić",teams:["Everton","Hull City","West Ham United"]}
+  {name:"Niklas Dorsch",teams:["1. FC Heidenheim","Bayern Munich","FC Augsburg"]}
+  {name:"Niklas Moisander",teams:["Sampdoria","Werder Bremen"]}
+  {name:"Niklas Schmidt",teams:["Toulouse FC","Werder Bremen"]}
+  {name:"Niklas Stark",teams:["1. FC Nürnberg","Hertha BSC","Werder Bremen"]}
+  {name:"Niklas Süle",teams:["Bayern Munich","Borussia Dortmund","TSG Hoffenheim"]}
+  {name:"Niko Bungert",teams:["1. FSV Mainz 05"]}
+  {name:"Niko Gießelmann",teams:["1. FC Union Berlin","Fortuna Düsseldorf"]}
+  {name:"Niko Kovač",teams:["Bayern Munich","Hamburger SV","Hertha BSC"]}
+  {name:"Niko Kranjčar",teams:["Portsmouth","Queens Park Rangers","Tottenham Hotspur"]}
+  {name:"Nikola Kalinić",teams:["AC Milan","AS Roma","Atlético Madrid","Blackburn Rovers","Fiorentina","Hellas Verona"]}
+  {name:"Nikola Krstović",teams:["Atalanta","Lecce"]}
+  {name:"Nikola Lazetić",teams:["Lazio","Livorno","Siena","Torino"]}
+  {name:"Nikola Maksimović",teams:["Genoa","Montpellier HSC","Napoli","Torino"]}
+  {name:"Nikola Milenković",teams:["Fiorentina","Nottingham Forest"]}
+  {name:"Nikola Moro",teams:["Bologna"]}
+  {name:"Nikola Vasilj",teams:["FC St. Pauli"]}
+  {name:"Nikola Vlašić",teams:["Everton","Torino","West Ham United"]}
+  {name:"Nikola Vukčević",teams:["Levante"]}
+  {name:"Nikola Žigić",teams:["Birmingham City","Racing Santander","Valencia"]}
+  {name:"Nikolče Noveski",teams:["1. FSV Mainz 05"]}
+  {name:"Nikos Dabizas",teams:["Leicester City","Newcastle United"]}
+  {name:"Nikos Liberopoulos",teams:["Eintracht Frankfurt"]}
+  {name:"Nilmar",teams:["Olympique Lyonnais","Villarreal"]}
+  {name:"Nils Petersen",teams:["Bayern Munich","Energie Cottbus","SC Freiburg","Werder Bremen"]}
+  {name:"Nils-Eric Johansson",teams:["1. FC Nürnberg","Blackburn Rovers"]}
+  {name:"Nino",teams:["Elche","Levante","Osasuna","Tenerife"]}
+  {name:"Niša Saveljić",teams:["EA Guingamp","FC Sochaux","Girondins de Bordeaux","Istres","SC Bastia"]}
+  {name:"Noah Atubolu",teams:["SC Freiburg"]}
+  {name:"Noah Okafor",teams:["AC Milan","Leeds United","Napoli"]}
+  {name:"Noah Weißhaupt",teams:["FC St. Pauli","SC Freiburg"]}
+  {name:"Noel Whelan",teams:["Middlesbrough"]}
+  {name:"Nolan Roux",teams:["AS Saint-Étienne","EA Guingamp","FC Metz","LOSC Lille","Nîmes","Stade Brestois 29"]}
+  {name:"Nolberto Solano",teams:["Aston Villa","Newcastle United","West Ham United"]}
+  {name:"Nolito",teams:["Barcelona","Celta Vigo","Granada","Manchester City","Sevilla"]}
+  {name:"Noni Madueke",teams:["Arsenal","Chelsea"]}
+  {name:"Norbert Gyömbér",teams:["AS Roma","Catania","Pescara","Salernitana"]}
+  {name:"Nordi Mukiele",teams:["Bayer Leverkusen","Montpellier HSC","Paris Saint-Germain","RB Leipzig","Sunderland"]}
+  {name:"Nordin Amrabat",teams:["Leganés","Málaga","Watford"]}
+  {name:"Norman Theuerkauf",teams:["1. FC Heidenheim","Eintracht Braunschweig"]}
+  {name:"Noureddine Naybet",teams:["Deportivo La Coruña","Tottenham Hotspur"]}
+  {name:"Noussair Mazraoui",teams:["Bayern Munich","Manchester United"]}
+  {name:"Noé Pamarot",teams:["Granada","Hércules","OGC Nice","Portsmouth","Tottenham Hotspur"]}
+  {name:"Nuno Gomes",teams:["Fiorentina"]}
+  {name:"Nuno Mendes",teams:["Paris Saint-Germain"]}
+  {name:"Nuno Tavares",teams:["Arsenal","Lazio","Nottingham Forest","Olympique de Marseille"]}
+  {name:"Nuno da Costa",teams:["AJ Auxerre","RC Strasbourg"]}
+  {name:"Nuri Şahin",teams:["Borussia Dortmund","Liverpool","Real Madrid","Werder Bremen"]}
+  {name:"Nwankwo Kanu",teams:["Arsenal","Portsmouth","West Bromwich Albion"]}
+  {name:"Nyron Nosworthy",teams:["Sunderland"]}
+  {name:"Nzelo Hervé Lembi",teams:["1. FC Kaiserslautern"]}
+  {name:"Nélson Marcos",teams:["Almería","Osasuna","Palermo","Real Betis"]}
+  {name:"Nélson Oliveira",teams:["Deportivo La Coruña","Stade Rennais","Swansea City"]}
+  {name:"Nélson Semedo",teams:["Barcelona","Wolverhampton Wanderers"]}
+  {name:"Néstor Araujo",teams:["Celta Vigo"]}
+  {name:"Néstor Fabbri",teams:["EA Guingamp","FC Nantes"]}
+  {name:"Obafemi Martins",teams:["Birmingham City","Inter Milan","Levante","Newcastle United","VfL Wolfsburg"]}
+  {name:"Obite N'Dicka",teams:["AS Roma","Eintracht Frankfurt"]}
+  {name:"Odaïr Fortes",teams:["Stade de Reims"]}
+  {name:"Odilon Kossounou",teams:["Atalanta","Bayer Leverkusen"]}
+  {name:"Odion Ighalo",teams:["Cesena","Granada","Manchester United","Udinese","Watford"]}
+  {name:"Odsonne Édouard",teams:["Crystal Palace","Leicester City","RC Lens","Toulouse FC"]}
+  {name:"Ogenyi Onazi",teams:["Lazio"]}
+  {name:"Ohis Felix Uduokhai",teams:["FC Augsburg","VfL Wolfsburg"]}
+  {name:"Oier Olazábal",teams:["Barcelona","Espanyol","Granada","Levante","Real Sociedad"]}
+  {name:"Oier Sanjurjo",teams:["Osasuna"]}
+  {name:"Oier Zarraga",teams:["Athletic Bilbao","Udinese"]}
+  {name:"Oihan Sancet",teams:["Athletic Bilbao"]}
+  {name:"Oka Nikolov",teams:["Eintracht Frankfurt"]}
+  {name:"Okay Yokuşlu",teams:["Celta Vigo","Getafe","West Bromwich Albion"]}
+  {name:"Ola Aina",teams:["Chelsea","Fulham","Nottingham Forest","Torino"]}
+  {name:"Ola Toivonen",teams:["Stade Rennais","Sunderland","Toulouse FC"]}
+  {name:"Olasagasti",teams:["Levante","Real Sociedad"]}
+  {name:"Ole Gunnar Solskjær",teams:["Manchester United"]}
+  {name:"Ole Selnæs",teams:["AS Saint-Étienne"]}
+  {name:"Oleguer Presas",teams:["Barcelona"]}
+  {name:"Oleh Luzhny",teams:["Arsenal","Wolverhampton Wanderers"]}
+  {name:"Oleksandr Zinchenko",teams:["Arsenal","Manchester City","Nottingham Forest"]}
+  {name:"Oli",teams:["Cádiz","Real Oviedo"]}
+  {name:"Oliver Barth",teams:["SC Freiburg"]}
+  {name:"Oliver Baumann",teams:["SC Freiburg","TSG Hoffenheim"]}
+  {name:"Oliver Bierhoff",teams:["AC Milan","AS Monaco","Chievo Verona"]}
+  {name:"Oliver Burke",teams:["1. FC Union Berlin","Alavés","RB Leipzig","Sheffield United","Werder Bremen","West Bromwich Albion"]}
+  {name:"Oliver Fink",teams:["Fortuna Düsseldorf"]}
+  {name:"Oliver Kahn",teams:["Bayern Munich"]}
+  {name:"Oliver Kirch",teams:["1. FC Kaiserslautern","Arminia Bielefeld","Borussia Dortmund","Borussia Mönchengladbach"]}
+  {name:"Oliver McBurnie",teams:["Las Palmas","Sheffield United","Swansea City"]}
+  {name:"Oliver Neuville",teams:["Bayer Leverkusen","Borussia Mönchengladbach"]}
+  {name:"Oliver Norwood",teams:["Sheffield United"]}
+  {name:"Oliver Reck",teams:["FC Schalke 04"]}
+  {name:"Oliver Schröder",teams:["FC Köln","Hertha BSC","VfL Bochum"]}
+  {name:"Oliver Skipp",teams:["Leicester City","Tottenham Hotspur"]}
+  {name:"Oliver Sorg",teams:["Hannover 96","SC Freiburg"]}
+  {name:"Olivier Bernard",teams:["Newcastle United","Southampton"]}
+  {name:"Olivier Dacourt",teams:["AS Roma","Fulham","Inter Milan","Leeds United"]}
+  {name:"Olivier Echouafni",teams:["OGC Nice","Stade Rennais"]}
+  {name:"Olivier Giroud",teams:["AC Milan","Arsenal","Chelsea","LOSC Lille","Montpellier HSC"]}
+  {name:"Olivier Kapo",teams:["AJ Auxerre","AS Monaco","Birmingham City","Boulogne","Juventus","Levante","Wigan Athletic"]}
+  {name:"Olivier Monterrubio",teams:["FC Lorient","FC Nantes","RC Lens","Stade Rennais"]}
+  {name:"Olivier Quint",teams:["FC Nantes","Sedan"]}
+  {name:"Olivier Sorin",teams:["AJ Auxerre","AS Nancy"]}
+  {name:"Olivier Sorlin",teams:["AS Monaco","Montpellier HSC","Stade Rennais","Évian TG"]}
+  {name:"Olivier Thomas",teams:["Estac Troyes","FC Sochaux","Le Mans FC"]}
+  {name:"Olivier Thomert",teams:["Hércules","Le Mans FC","RC Lens","Stade Rennais"]}
+  {name:"Olivier Tébily",teams:["Birmingham City"]}
+  {name:"Olivier Veigneau",teams:["AS Monaco","FC Nantes","MSV Duisburg","OGC Nice"]}
+  {name:"Ollie Watkins",teams:["Aston Villa"]}
+  {name:"Olof Mellberg",teams:["Aston Villa","Juventus","Racing Santander"]}
+  {name:"Omar Alderete",teams:["Getafe","Hertha BSC","Sunderland","Valencia"]}
+  {name:"Omar Colley",teams:["Sampdoria"]}
+  {name:"Omar Daf",teams:["FC Sochaux","Stade Brestois 29"]}
+  {name:"Omar El Hilali",teams:["Espanyol"]}
+  {name:"Omar El Kaddouri",teams:["Empoli","Napoli","Torino"]}
+  {name:"Omar Marmoush",teams:["Eintracht Frankfurt","Manchester City","VfB Stuttgart","VfL Wolfsburg"]}
+  {name:"Omar Mascarell",teams:["Eintracht Frankfurt","Elche","FC Schalke 04","Mallorca","Real Madrid","Sporting Gijón"]}
+  {name:"Omar Milanetto",teams:["Brescia","Genoa","Modena"]}
+  {name:"Omar Ramos",teams:["Leganés","Real Valladolid","Tenerife"]}
+  {name:"Omar Traoré",teams:["1. FC Heidenheim"]}
+  {name:"Omari Hutchinson",teams:["Chelsea","Ipswich Town","Nottingham Forest"]}
+  {name:"Ondrej Duda",teams:["FC Köln","Hellas Verona","Hertha BSC","Norwich City"]}
+  {name:"Onyekachi Apam",teams:["OGC Nice","Stade Rennais"]}
+  {name:"Opa Nguette",teams:["FC Metz","FC Valenciennes"]}
+  {name:"Orel Mangala",teams:["Everton","Nottingham Forest","Olympique Lyonnais","VfB Stuttgart"]}
+  {name:"Orestis Karnezis",teams:["Granada","Napoli","Udinese","Watford"]}
+  {name:"Oriol Lozano",teams:["Racing Santander"]}
+  {name:"Oriol Riera",teams:["Deportivo La Coruña","Osasuna"]}
+  {name:"Oriol Romeu",teams:["Barcelona","Chelsea","Girona","Southampton","Valencia","VfB Stuttgart"]}
+  {name:"Orlando Suárez",teams:["Las Palmas"]}
+  {name:"Oscar",teams:["Chelsea"]}
+  {name:"Oscar Ewolo",teams:["FC Lorient","Stade Brestois 29"]}
+  {name:"Oscar Hiljemark",teams:["Genoa","Palermo"]}
+  {name:"Oscar Wendt",teams:["Borussia Mönchengladbach"]}
+  {name:"Oswaldo Vizcarrondo",teams:["Estac Troyes","FC Nantes"]}
+  {name:"Otto Addo",teams:["1. FSV Mainz 05","Borussia Dortmund","Hamburger SV"]}
+  {name:"Otávio",teams:["Girondins de Bordeaux"]}
+  {name:"Oualid El Hajjam",teams:["Amiens SC","Estac Troyes","Le Havre AC"]}
+  {name:"Oumar Diakité",teams:["Stade de Reims"]}
+  {name:"Oumar Kondé",teams:["SC Freiburg"]}
+  {name:"Oumar Niasse",teams:["Cardiff City","Everton","Hull City"]}
+  {name:"Ousmane Dabo",teams:["AS Monaco","Atalanta","Lazio","Manchester City","Vicenza"]}
+  {name:"Ousmane Dembélé",teams:["Barcelona","Borussia Dortmund","Paris Saint-Germain","Stade Rennais"]}
+  {name:"Oussama Haddadi",teams:["Dijon FCO"]}
+  {name:"Owen Hargreaves",teams:["Bayern Munich","Manchester City","Manchester United"]}
+  {name:"Ozan Kabak",teams:["FC Schalke 04","Liverpool","Norwich City","TSG Hoffenheim","VfB Stuttgart"]}
+  {name:"Pablo",teams:["Girondins de Bordeaux"]}
+  {name:"Pablo Aimar",teams:["Real Zaragoza","Valencia"]}
+  {name:"Pablo Alfaro",teams:["Racing Santander","Sevilla"]}
+  {name:"Pablo Amo",teams:["Deportivo La Coruña","Real Zaragoza","Recreativo"]}
+  {name:"Pablo Armero",teams:["AC Milan","Napoli","Udinese","West Ham United"]}
+  {name:"Pablo Barrientos",teams:["Catania"]}
+  {name:"Pablo Barrios",teams:["Atlético Madrid"]}
+  {name:"Pablo Casar",teams:["Racing Santander"]}
+  {name:"Pablo Cavallero",teams:["Celta Vigo","Levante"]}
+  {name:"Pablo Chavarría",teams:["Mallorca","RC Lens","Stade de Reims"]}
+  {name:"Pablo Contreras",teams:["AS Monaco","Celta Vigo","Osasuna"]}
+  {name:"Pablo Durán",teams:["Celta Vigo"]}
+  {name:"Pablo Díaz Stalla",teams:["Real Zaragoza"]}
+  {name:"Pablo Fornals",teams:["Málaga","Real Betis","Villarreal","West Ham United"]}
+  {name:"Pablo García",teams:["AC Milan","Celta Vigo","Osasuna","Real Madrid","Real Murcia","Venezia"]}
+  {name:"Pablo Granoche",teams:["Chievo Verona","Novara"]}
+  {name:"Pablo Gómez",teams:["Alavés"]}
+  {name:"Pablo Hernández",teams:["Celta Vigo","Getafe","Leeds United","Rayo Vallecano","Swansea City","Valencia"]}
+  {name:"Pablo Hervías",teams:["Eibar","Real Sociedad","Real Valladolid"]}
+  {name:"Pablo Ibáñez",teams:["Alavés","Albacete","Atlético Madrid","Osasuna","West Bromwich Albion"]}
+  {name:"Pablo Insua",teams:["Deportivo La Coruña","FC Schalke 04","Huesca","Leganés"]}
+  {name:"Pablo Lago",teams:["Las Palmas","Racing Santander"]}
+  {name:"Pablo Ledesma",teams:["Catania"]}
+  {name:"Pablo Maffeo",teams:["Girona","Huesca","Mallorca","VfB Stuttgart"]}
+  {name:"Pablo Martinez",teams:["Angers SCO","Gazélec Ajaccio","Nîmes","RC Strasbourg"]}
+  {name:"Pablo Marí",teams:["Arsenal","Fiorentina","Mallorca","Monza","Udinese"]}
+  {name:"Pablo Marín",teams:["Real Sociedad"]}
+  {name:"Pablo Orbaiz",teams:["Athletic Bilbao"]}
+  {name:"Pablo Piatti",teams:["Almería","Elche","Espanyol","Valencia"]}
+  {name:"Pablo Pinillos Caro",teams:["Levante","Racing Santander"]}
+  {name:"Pablo Redondo",teams:["Albacete","Getafe","Valencia"]}
+  {name:"Pablo Ricchetti",teams:["Real Valladolid"]}
+  {name:"Pablo Rosario",teams:["OGC Nice"]}
+  {name:"Pablo Sanz Iniesta",teams:["Numancia","Rayo Vallecano"]}
+  {name:"Pablo Sarabia",teams:["Getafe","Paris Saint-Germain","Sevilla","Wolverhampton Wanderers"]}
+  {name:"Pablo Thiam",teams:["Bayern Munich","VfB Stuttgart","VfL Wolfsburg"]}
+  {name:"Pablo Torre",teams:["Barcelona","Girona","Mallorca"]}
+  {name:"Pablo Zabaleta",teams:["Espanyol","Manchester City","West Ham United"]}
+  {name:"Pablo de Blasis",teams:["1. FSV Mainz 05","Eibar"]}
+  {name:"Pablo Álvarez",teams:["Catania","Deportivo La Coruña","Racing Santander","Real Zaragoza"]}
+  {name:"Paco",teams:["Real Zaragoza"]}
+  {name:"Paco Alcácer",teams:["Barcelona","Borussia Dortmund","Getafe","Valencia","Villarreal"]}
+  {name:"Paco Montañés",teams:["Barcelona","Espanyol","Real Zaragoza"]}
+  {name:"Paco Peña",teams:["Albacete","Hércules","Real Murcia"]}
+  {name:"Paddy Kenny",teams:["Queens Park Rangers","Sheffield United"]}
+  {name:"Pajtim Kasami",teams:["Fulham","Palermo"]}
+  {name:"Panagiotis Kone",teams:["Bologna","Brescia","Fiorentina","Granada","Udinese"]}
+  {name:"Panagiotis Tachtsidis",teams:["AS Roma","Cagliari","Catania","Genoa","Hellas Verona","Lecce","Torino"]}
+  {name:"Pantxi Sirieix",teams:["AJ Auxerre","Toulouse FC"]}
+  {name:"Paolo Bianco",teams:["Atalanta","Cagliari","Sassuolo"]}
+  {name:"Paolo Cannavaro",teams:["Hellas Verona","Napoli","Parma","Sassuolo"]}
+  {name:"Paolo Castellini",teams:["AS Roma","Brescia","Livorno","Parma","Real Betis","Sampdoria","Torino"]}
+  {name:"Paolo De Ceglie",teams:["Genoa","Juventus","Olympique de Marseille","Parma","Siena"]}
+  {name:"Paolo Dellafiore",teams:["Cesena","Novara","Palermo","Parma","Siena","Torino","Treviso"]}
+  {name:"Paolo Di Canio",teams:["Charlton Athletic","Lazio","West Ham United"]}
+  {name:"Paolo Faragò",teams:["Bologna","Cagliari"]}
+  {name:"Paolo Foglio",teams:["Ascoli","Atalanta","Chievo Verona","Siena"]}
+  {name:"Paolo Ghiglione",teams:["Cremonese","Frosinone","Genoa"]}
+  {name:"Paolo Guerrero",teams:["Bayern Munich","Hamburger SV"]}
+  {name:"Paolo Maldini",teams:["AC Milan"]}
+  {name:"Paolo Montero",teams:["Juventus"]}
+  {name:"Paolo Negro",teams:["Lazio","Siena"]}
+  {name:"Paolo Poggi",teams:["Ancona","Bari","Piacenza"]}
+  {name:"Paolo Sammarco",teams:["Cesena","Chievo Verona","Frosinone","Sampdoria","Udinese"]}
+  {name:"Paolo Vanoli",teams:["Bologna","Fiorentina"]}
+  {name:"Paolo Zanetti",teams:["Ascoli","Atalanta","Empoli","Torino","Vicenza"]}
+  {name:"Papa Bouba Diop",teams:["Fulham","Portsmouth","RC Lens"]}
+  {name:"Papa Ndiaga Yade",teams:["Estac Troyes","FC Metz"]}
+  {name:"Papakouli Diop",teams:["Eibar","Espanyol","Levante","Racing Santander","Stade Rennais"]}
+  {name:"Pape Cheikh Diop",teams:["Celta Vigo","Dijon FCO","Elche","Olympique Lyonnais"]}
+  {name:"Pape Diakhaté",teams:["AS Nancy","AS Saint-Étienne","Granada","Olympique Lyonnais"]}
+  {name:"Pape Gueye",teams:["Olympique de Marseille","Sevilla","Villarreal"]}
+  {name:"Pape Matar Sarr",teams:["FC Metz","Tottenham Hotspur"]}
+  {name:"Pape Sarr",teams:["AS Saint-Étienne","RC Lens"]}
+  {name:"Pape Souaré",teams:["Crystal Palace","LOSC Lille","Stade de Reims"]}
+  {name:"Papiss Cissé",teams:["FC Metz","Newcastle United","SC Freiburg"]}
+  {name:"Papu Gómez",teams:["Atalanta","Catania","Monza","Sevilla"]}
+  {name:"Papy Djilobodji",teams:["Dijon FCO","EA Guingamp","FC Nantes","Sunderland","Werder Bremen"]}
+  {name:"Paqui",teams:["Las Palmas","Osasuna"]}
+  {name:"Park Chu-young",teams:["AS Monaco","Arsenal","Celta Vigo"]}
+  {name:"Park Ji-sung",teams:["Manchester United","Queens Park Rangers"]}
+  {name:"Park Joo-ho",teams:["1. FSV Mainz 05","Borussia Dortmund"]}
+  {name:"Pascal Berenguer",teams:["AS Nancy"]}
+  {name:"Pascal Camadini",teams:["RC Strasbourg"]}
+  {name:"Pascal Chimbonda",teams:["Blackburn Rovers","Le Havre AC","SC Bastia","Sunderland","Tottenham Hotspur","Wigan Athletic"]}
+  {name:"Pascal Cygan",teams:["Arsenal","LOSC Lille","Villarreal"]}
+  {name:"Pascal Delhommeau",teams:["FC Lorient","FC Metz","FC Nantes"]}
+  {name:"Pascal Feindouno",teams:["AS Monaco","AS Saint-Étienne","FC Lorient","Girondins de Bordeaux"]}
+  {name:"Pascal Groß",teams:["Borussia Dortmund","Brighton & Hove Albion","FC Ingolstadt 04","TSG Hoffenheim"]}
+  {name:"Pascal Johansen",teams:["Olympique de Marseille","RC Strasbourg"]}
+  {name:"Pascal Stenzel",teams:["SC Freiburg","VfB Stuttgart"]}
+  {name:"Pascal Struijk",teams:["Leeds United"]}
+  {name:"Pasquale Foggia",teams:["Ascoli","Cagliari","Empoli","Lazio","Reggina"]}
+  {name:"Pasquale Mazzocchi",teams:["Napoli","Salernitana","Venezia"]}
+  {name:"Pasquale Schiattarella",teams:["Benevento","Livorno","SPAL"]}
+  {name:"Pathé Ciss",teams:["Rayo Vallecano"]}
+  {name:"Pato Abbondanzieri",teams:["Getafe"]}
+  {name:"Patric",teams:["Lazio"]}
+  {name:"Patrice Evra",teams:["AS Monaco","Juventus","Manchester United","Olympique de Marseille","West Ham United"]}
+  {name:"Patricio Graff",teams:["Numancia","Rayo Vallecano"]}
+  {name:"Patrick Bamford",teams:["Burnley","Crystal Palace","Leeds United","Middlesbrough","Norwich City"]}
+  {name:"Patrick Barul",teams:["OGC Nice","RC Lens"]}
+  {name:"Patrick Burner",teams:["Nîmes","OGC Nice"]}
+  {name:"Patrick Ciurria",teams:["Monza"]}
+  {name:"Patrick Cutrone",teams:["AC Milan","Como","Empoli","Fiorentina","Parma","Valencia","Wolverhampton Wanderers"]}
+  {name:"Patrick Dorgu",teams:["Lecce","Manchester United"]}
+  {name:"Patrick Ebert",teams:["Hertha BSC","Rayo Vallecano","Real Valladolid"]}
+  {name:"Patrick Helmes",teams:["Bayer Leverkusen","FC Köln","VfL Wolfsburg"]}
+  {name:"Patrick Herrmann",teams:["Borussia Mönchengladbach"]}
+  {name:"Patrick Kluivert",teams:["Barcelona","LOSC Lille","Newcastle United","Valencia"]}
+  {name:"Patrick Mainka",teams:["1. FC Heidenheim"]}
+  {name:"Patrick Müller",teams:["AS Monaco","Mallorca","Olympique Lyonnais"]}
+  {name:"Patrick Ochs",teams:["Eintracht Frankfurt","TSG Hoffenheim","VfL Wolfsburg"]}
+  {name:"Patrick Osterhage",teams:["SC Freiburg","VfL Bochum"]}
+  {name:"Patrick Owomoyela",teams:["Arminia Bielefeld","Borussia Dortmund","Werder Bremen"]}
+  {name:"Patrick Paauwe",teams:["Borussia Mönchengladbach","FC Valenciennes"]}
+  {name:"Patrick Regnault",teams:["Sedan"]}
+  {name:"Patrick Vieira",teams:["Arsenal","Inter Milan","Juventus","Manchester City"]}
+  {name:"Patrick Weiser",teams:["FC Köln","VfL Wolfsburg"]}
+  {name:"Patrick Wimmer",teams:["Arminia Bielefeld","VfL Wolfsburg"]}
+  {name:"Patrick van Aanholt",teams:["Chelsea","Crystal Palace","Sunderland","Wigan Athletic"]}
+  {name:"Patrik Berger",teams:["Aston Villa","Liverpool","Portsmouth"]}
+  {name:"Patrik Schick",teams:["AS Roma","Bayer Leverkusen","RB Leipzig","Sampdoria"]}
+  {name:"Patson Daka",teams:["Leicester City"]}
+  {name:"Pau Cendrós",teams:["Mallorca"]}
+  {name:"Pau Cubarsí",teams:["Barcelona"]}
+  {name:"Pau López",teams:["AS Roma","Espanyol","Girona","Olympique de Marseille","Real Betis"]}
+  {name:"Pau Torres",teams:["Aston Villa","Villarreal"]}
+  {name:"Paul Agostino",teams:["1860 Munich"]}
+  {name:"Paul Alo'o",teams:["AS Nancy"]}
+  {name:"Paul Baysse",teams:["AS Saint-Étienne","Girondins de Bordeaux","Málaga","OGC Nice","SM Caen","Stade Brestois 29"]}
+  {name:"Paul Bernardoni",teams:["AS Saint-Étienne","Angers SCO","Estac Troyes","Girondins de Bordeaux","Nîmes"]}
+  {name:"Paul Bosvelt",teams:["Manchester City"]}
+  {name:"Paul Codrea",teams:["Bari","Palermo","Perugia","Siena"]}
+  {name:"Paul Dickov",teams:["Blackburn Rovers","Leicester City","Manchester City"]}
+  {name:"Paul Dummett",teams:["Newcastle United"]}
+  {name:"Paul Freier",teams:["Bayer Leverkusen","VfL Bochum"]}
+  {name:"Paul Gallagher",teams:["Blackburn Rovers"]}
+  {name:"Paul Ince",teams:["Middlesbrough","Wolverhampton Wanderers"]}
+  {name:"Paul Jones",teams:["Liverpool","Southampton","Wolverhampton Wanderers"]}
+  {name:"Paul Konchesky",teams:["Charlton Athletic","Fulham","Leicester City","Liverpool","Tottenham Hotspur","West Ham United"]}
+  {name:"Paul Lasne",teams:["GFC Ajaccio","Montpellier HSC","Stade Brestois 29"]}
+  {name:"Paul McShane",teams:["Hull City","Sunderland"]}
+  {name:"Paul Merson",teams:["Aston Villa"]}
+  {name:"Paul Nebel",teams:["1. FSV Mainz 05"]}
+  {name:"Paul Pogba",teams:["AS Monaco","Juventus","Manchester United"]}
+  {name:"Paul Robinson",teams:["Blackburn Rovers","Bolton Wanderers","Burnley","Leeds United","Tottenham Hotspur","West Bromwich Albion"]}
+  {name:"Paul Scharner",teams:["Hamburger SV","West Bromwich Albion","Wigan Athletic"]}
+  {name:"Paul Scholes",teams:["Manchester United"]}
+  {name:"Paul Seguin",teams:["1. FC Union Berlin","SpVgg Greuther Fürth","VfL Wolfsburg"]}
+  {name:"Paul Stalteri",teams:["Borussia Mönchengladbach","Fulham","Tottenham Hotspur","Werder Bremen"]}
+  {name:"Paul Telfer",teams:["Coventry City","Southampton"]}
+  {name:"Paul Verhaegh",teams:["FC Augsburg","VfL Wolfsburg"]}
+  {name:"Paul Williams",teams:["Coventry City","Southampton"]}
+  {name:"Paul-Georges Ntep",teams:["AS Saint-Étienne","Stade Rennais","VfL Wolfsburg"]}
+  {name:"Pauleta",teams:["Girondins de Bordeaux","Paris Saint-Germain"]}
+  {name:"Paulinho",teams:["Barcelona","Bayer Leverkusen","Livorno","Tottenham Hotspur"]}
+  {name:"Paulo Assunção",teams:["Atlético Madrid","Deportivo La Coruña"]}
+  {name:"Paulo César",teams:["Paris Saint-Germain","Toulouse FC"]}
+  {name:"Paulo Dybala",teams:["AS Roma","Juventus","Palermo"]}
+  {name:"Paulo Ferreira",teams:["Chelsea"]}
+  {name:"Paulo Gazzaniga",teams:["Elche","Girona","Southampton","Tottenham Hotspur"]}
+  {name:"Paulo Machado",teams:["AS Saint-Étienne","Toulouse FC"]}
+  {name:"Paulo Oliveira",teams:["Eibar"]}
+  {name:"Paulo Otávio",teams:["VfL Wolfsburg"]}
+  {name:"Paulo Rink",teams:["1. FC Nürnberg","Bayer Leverkusen","Energie Cottbus"]}
+  {name:"Paulo Vitor Barreto",teams:["Bari","Torino","Udinese"]}
+  {name:"Paulo Wanchope",teams:["Manchester City","Málaga"]}
+  {name:"Paulo da Silva",teams:["Real Zaragoza","Sunderland"]}
+  {name:"Paulão",teams:["AS Saint-Étienne","Real Betis"]}
+  {name:"Pavel Kadeřábek",teams:["TSG Hoffenheim"]}
+  {name:"Pavel Krmaš",teams:["SC Freiburg"]}
+  {name:"Pavel Nedvěd",teams:["Juventus","Lazio"]}
+  {name:"Pavel Pogrebnyak",teams:["Fulham","Reading","VfB Stuttgart"]}
+  {name:"Pavle Ninkov",teams:["Toulouse FC"]}
+  {name:"Paweł Dawidowicz",teams:["Hellas Verona"]}
+  {name:"Paweł Olkowski",teams:["FC Köln"]}
+  {name:"Paweł Wszołek",teams:["Hellas Verona","Sampdoria"]}
+  {name:"Pedri",teams:["Barcelona"]}
+  {name:"Pedro",teams:["AS Roma","Barcelona","Chelsea","Lazio"]}
+  {name:"Pedro Bigas",teams:["Eibar","Elche","Las Palmas","Mallorca"]}
+  {name:"Pedro Chirivella",teams:["FC Nantes","Liverpool"]}
+  {name:"Pedro Contreras",teams:["Málaga","Real Betis"]}
+  {name:"Pedro Geromel",teams:["FC Köln","Mallorca"]}
+  {name:"Pedro Henrique",teams:["Stade Rennais"]}
+  {name:"Pedro León",teams:["Eibar","Getafe","Levante","Real Madrid","Real Valladolid"]}
+  {name:"Pedro López Muñoz",teams:["Huesca","Levante","Racing Santander","Real Valladolid"]}
+  {name:"Pedro Mendes",teams:["Montpellier HSC","Parma","Portsmouth","Sassuolo","Stade Rennais","Tottenham Hotspur"]}
+  {name:"Pedro Mosquera",teams:["Deportivo La Coruña","Elche","Getafe","Huesca","Real Madrid"]}
+  {name:"Pedro Munitis",teams:["Deportivo La Coruña","Racing Santander","Real Madrid"]}
+  {name:"Pedro Neto",teams:["Chelsea","Lazio","Wolverhampton Wanderers"]}
+  {name:"Pedro Obiang",teams:["Sampdoria","Sassuolo","West Ham United"]}
+  {name:"Pedro Pereira",teams:["Crotone","Genoa","Monza"]}
+  {name:"Pedro Porro",teams:["Girona","Real Valladolid","Tottenham Hotspur"]}
+  {name:"Pedro Rebocho",teams:["EA Guingamp"]}
+  {name:"Pedro Ríos",teams:["Getafe","Levante"]}
+  {name:"Peer Kluge",teams:["1. FC Nürnberg","Borussia Mönchengladbach","FC Schalke 04","Hertha BSC"]}
+  {name:"Peniel Mlapa",teams:["Borussia Mönchengladbach","TSG Hoffenheim"]}
+  {name:"Pep Chavarría",teams:["Rayo Vallecano"]}
+  {name:"Pep Guardiola",teams:["Barcelona","Brescia"]}
+  {name:"Pepe",teams:["Real Madrid"]}
+  {name:"Pepe Reina",teams:["AC Milan","Aston Villa","Barcelona","Bayern Munich","Como","Lazio","Liverpool","Napoli","Villarreal"]}
+  {name:"Per Ciljan Skjelbred",teams:["Hamburger SV","Hertha BSC"]}
+  {name:"Per Frandsen",teams:["Bolton Wanderers"]}
+  {name:"Per Krøldrup",teams:["Everton","Fiorentina","Pescara","Udinese"]}
+  {name:"Per Mertesacker",teams:["Arsenal","Hannover 96","Werder Bremen"]}
+  {name:"Per Nilsson",teams:["1. FC Nürnberg","TSG Hoffenheim"]}
+  {name:"Pere Milla",teams:["Eibar","Elche","Espanyol"]}
+  {name:"Pere Pons",teams:["Alavés","Girona"]}
+  {name:"Pervis Estupiñán",teams:["AC Milan","Brighton & Hove Albion","Granada","Osasuna","Villarreal"]}
+  {name:"Petar Stojanović",teams:["Empoli"]}
+  {name:"Petar Škuletić",teams:["Montpellier HSC"]}
+  {name:"Peter Crouch",teams:["Aston Villa","Burnley","Liverpool","Portsmouth","Southampton","Stoke City","Tottenham Hotspur"]}
+  {name:"Peter Luccin",teams:["Atlético Madrid","Celta Vigo","Paris Saint-Germain","Racing Santander","Real Zaragoza"]}
+  {name:"Peter Løvenkrands",teams:["FC Schalke 04","Newcastle United"]}
+  {name:"Peter Madsen",teams:["FC Köln","VfL Bochum","VfL Wolfsburg"]}
+  {name:"Peter Niemeyer",teams:["Hertha BSC","SV Darmstadt 98","Werder Bremen"]}
+  {name:"Peter Odemwingie",teams:["Cardiff City","LOSC Lille","Stoke City","West Bromwich Albion"]}
+  {name:"Peter Pekarík",teams:["Hertha BSC","VfL Wolfsburg"]}
+  {name:"Peter Ramage",teams:["Newcastle United"]}
+  {name:"Peter Schmeichel",teams:["Aston Villa","Manchester City"]}
+  {name:"Peter Van Houdt",teams:["Borussia Mönchengladbach","MSV Duisburg"]}
+  {name:"Peter Van der Heyden",teams:["1. FSV Mainz 05","VfL Wolfsburg"]}
+  {name:"Peter Whittingham",teams:["Aston Villa","Cardiff City"]}
+  {name:"Peter Wibrån",teams:["Hansa Rostock"]}
+  {name:"Petit",teams:["FC Köln"]}
+  {name:"Petr Gabriel",teams:["1. FC Kaiserslautern","Arminia Bielefeld"]}
+  {name:"Petr Jiráček",teams:["Hamburger SV","VfL Wolfsburg"]}
+  {name:"Petr Čech",teams:["Arsenal","Chelsea","Stade Rennais"]}
+  {name:"Petri Pasanen",teams:["Portsmouth","Werder Bremen"]}
+  {name:"Petros",teams:["Real Betis"]}
+  {name:"Petter Hansson",teams:["AS Monaco","Stade Rennais"]}
+  {name:"Phil Bardsley",teams:["Aston Villa","Burnley","Manchester United","Stoke City","Sunderland"]}
+  {name:"Phil Foden",teams:["Manchester City"]}
+  {name:"Phil Jagielka",teams:["Everton","Sheffield United"]}
+  {name:"Phil Jones",teams:["Blackburn Rovers","Manchester United"]}
+  {name:"Phil Neville",teams:["Everton","Manchester United"]}
+  {name:"Philip Billing",teams:["AFC Bournemouth","Huddersfield Town","Napoli"]}
+  {name:"Philipp Bargfrede",teams:["Werder Bremen"]}
+  {name:"Philipp Bönig",teams:["VfL Bochum"]}
+  {name:"Philipp Degen",teams:["Borussia Dortmund","Liverpool","VfB Stuttgart"]}
+  {name:"Philipp Förster",teams:["VfB Stuttgart","VfL Bochum"]}
+  {name:"Philipp Hofmann",teams:["VfL Bochum"]}
+  {name:"Philipp Köhn",teams:["AS Monaco"]}
+  {name:"Philipp Lahm",teams:["Bayern Munich","VfB Stuttgart"]}
+  {name:"Philipp Lienhart",teams:["SC Freiburg"]}
+  {name:"Philipp Max",teams:["Eintracht Frankfurt","FC Augsburg","FC Schalke 04"]}
+  {name:"Philipp Treu",teams:["FC St. Pauli","SC Freiburg"]}
+  {name:"Philipp Wollscheid",teams:["1. FC Nürnberg","1. FSV Mainz 05","Bayer Leverkusen","Stoke City","VfL Wolfsburg"]}
+  {name:"Philippe Brunel",teams:["FC Sochaux","LOSC Lille","Olympique de Marseille","RC Lens"]}
+  {name:"Philippe Celdran",teams:["Le Mans FC","Sedan"]}
+  {name:"Philippe Christanval",teams:["AS Monaco","Barcelona","Fulham","Olympique de Marseille"]}
+  {name:"Philippe Coutinho",teams:["Aston Villa","Barcelona","Bayern Munich","Espanyol","Inter Milan","Liverpool"]}
+  {name:"Philippe Delaye",teams:["Istres","Montpellier HSC","SC Bastia","Stade Rennais"]}
+  {name:"Philippe Mexès",teams:["AC Milan","AJ Auxerre","AS Roma"]}
+  {name:"Philippe Raschke",teams:["FC Sochaux"]}
+  {name:"Philippe Senderos",teams:["AC Milan","Arsenal","Aston Villa","Everton","Fulham","Valencia"]}
+  {name:"Philippe Violeau",teams:["AJ Auxerre","Olympique Lyonnais"]}
+  {name:"Phillip Cocu",teams:["Barcelona"]}
+  {name:"Phillip Tietz",teams:["1. FSV Mainz 05","FC Augsburg"]}
+  {name:"Phillipp Mwene",teams:["1. FSV Mainz 05"]}
+  {name:"Pierluigi Gollini",teams:["Atalanta","Fiorentina","Genoa","Hellas Verona","Napoli"]}
+  {name:"Piero Hincapié",teams:["Arsenal","Bayer Leverkusen"]}
+  {name:"Pierre Bengtsson",teams:["1. FSV Mainz 05","SC Bastia"]}
+  {name:"Pierre Ducasse",teams:["FC Lorient","Girondins de Bordeaux"]}
+  {name:"Pierre Ducrocq",teams:["Derby County","Le Havre AC","Paris Saint-Germain","RC Strasbourg"]}
+  {name:"Pierre Højbjerg",teams:["Bayern Munich","FC Augsburg","FC Schalke 04","Olympique de Marseille","Southampton","Tottenham Hotspur"]}
+  {name:"Pierre Kalulu",teams:["AC Milan","Juventus"]}
+  {name:"Pierre Kunde",teams:["1. FSV Mainz 05","VfL Bochum"]}
+  {name:"Pierre Laigle",teams:["Montpellier HSC","Olympique Lyonnais"]}
+  {name:"Pierre Lees-Melou",teams:["Dijon FCO","Norwich City","OGC Nice","Paris FC","Stade Brestois 29"]}
+  {name:"Pierre Webó",teams:["Mallorca","Osasuna"]}
+  {name:"Pierre Womé",teams:["Bologna","Brescia","Espanyol","FC Köln","Fulham","Inter Milan","Werder Bremen"]}
+  {name:"Pierre-Alain Frau",teams:["FC Sochaux","LOSC Lille","Olympique Lyonnais","Paris Saint-Germain","RC Lens","SM Caen"]}
+  {name:"Pierre-Emerick Aubameyang",teams:["AS Monaco","AS Saint-Étienne","Arsenal","Barcelona","Borussia Dortmund","Chelsea","LOSC Lille","Olympique de Marseille"]}
+  {name:"Pierre-Emmanuel Bourdeau",teams:["EA Guingamp"]}
+  {name:"Pierre-Michel Lasogga",teams:["Hamburger SV","Hertha BSC"]}
+  {name:"Pierre-Yves André",teams:["Bolton Wanderers","EA Guingamp","FC Nantes","SC Bastia"]}
+  {name:"Pierrick Capelle",teams:["Angers SCO"]}
+  {name:"Pietro Accardi",teams:["Brescia","Palermo","Sampdoria"]}
+  {name:"Pietro Comuzzo",teams:["Fiorentina"]}
+  {name:"Pietro Pellegri",teams:["AC Milan","AS Monaco","Empoli","Genoa","Torino"]}
+  {name:"Pietro Terracciano",teams:["AC Milan","Catania","Empoli","Fiorentina"]}
+  {name:"Pione Sisto",teams:["Celta Vigo"]}
+  {name:"Piotr Trochowski",teams:["Bayern Munich","FC Augsburg","Hamburger SV","Sevilla"]}
+  {name:"Piotr Zieliński",teams:["Empoli","Inter Milan","Napoli","Udinese"]}
+  {name:"Piotr Świerczewski",teams:["Birmingham City","Olympique de Marseille","SC Bastia"]}
+  {name:"Pirmin Schwegler",teams:["Bayer Leverkusen","Eintracht Frankfurt","Hannover 96","TSG Hoffenheim"]}
+  {name:"Piti",teams:["Granada","Rayo Vallecano","Real Zaragoza"]}
+  {name:"Pius Ndiefi",teams:["Sedan"]}
+  {name:"Pizzi",teams:["Atlético Madrid","Deportivo La Coruña","Espanyol"]}
+  {name:"Piá",teams:["Atalanta","Catania","Napoli"]}
+  {name:"Pol Lirola",teams:["Elche","Fiorentina","Frosinone","Hellas Verona","Olympique de Marseille","Sassuolo"]}
+  {name:"Pol Lozano",teams:["Espanyol"]}
+  {name:"Poli",teams:["Alavés","Mallorca","Recreativo"]}
+  {name:"Pontus Almqvist",teams:["Lecce","Parma"]}
+  {name:"Pontus Farnerud",teams:["AS Monaco","RC Strasbourg"]}
+  {name:"Pontus Jansson",teams:["Brentford","Torino"]}
+  {name:"Portu",teams:["Getafe","Girona","Real Sociedad","Valencia"]}
+  {name:"Predrag Rajković",teams:["Mallorca","Stade de Reims"]}
+  {name:"Presnel Kimpembe",teams:["Paris Saint-Germain"]}
+  {name:"Prince Oniangué",teams:["Angers SCO","SC Bastia","SM Caen","Stade Rennais","Stade de Reims"]}
+  {name:"Prince-Désir Gouano",teams:["Amiens SC"]}
+  {name:"Przemysław Frankowski",teams:["RC Lens","Stade Rennais"]}
+  {name:"Przemysław Tytoń",teams:["Deportivo La Coruña","Elche","VfB Stuttgart"]}
+  {name:"Pál Dárdai",teams:["Hertha BSC"]}
+  {name:"Pável Pardo",teams:["VfB Stuttgart"]}
+  {name:"Péguy Luyindula",teams:["AJ Auxerre","Levante","Olympique Lyonnais","Olympique de Marseille","Paris Saint-Germain","RC Strasbourg"]}
+  {name:"Péter Gulácsi",teams:["RB Leipzig"]}
+  {name:"Përparim Hetemaj",teams:["Benevento","Brescia","Chievo Verona"]}
+  {name:"Quentin Boisgard",teams:["FC Lorient","Toulouse FC"]}
+  {name:"Quentin Merlin",teams:["FC Nantes","Olympique de Marseille","Stade Rennais"]}
+  {name:"Quini",teams:["Granada","Rayo Vallecano"]}
+  {name:"Quinton Fortune",teams:["Bolton Wanderers","Manchester United"]}
+  {name:"Quique Álvarez",teams:["Recreativo","Villarreal"]}
+  {name:"Rabiu Afolabi",teams:["FC Sochaux"]}
+  {name:"Rachid Alioui",teams:["Angers SCO","EA Guingamp","Nîmes"]}
+  {name:"Rachid Ghezzal",teams:["AS Monaco","Fiorentina","Leicester City","Olympique Lyonnais"]}
+  {name:"Radamel Falcao",teams:["AS Monaco","Atlético Madrid","Chelsea","Manchester United","Rayo Vallecano"]}
+  {name:"Rade Krunić",teams:["AC Milan","Empoli"]}
+  {name:"Rade Prica",teams:["Hansa Rostock","Sunderland"]}
+  {name:"Radhi Jaïdi",teams:["Birmingham City","Bolton Wanderers"]}
+  {name:"Radim Kučera",teams:["Arminia Bielefeld"]}
+  {name:"Radja Nainggolan",teams:["AS Roma","Cagliari","Inter Milan"]}
+  {name:"Radoslav Kováč",teams:["West Ham United"]}
+  {name:"Radoslav Zabavník",teams:["1. FSV Mainz 05"]}
+  {name:"Radostin Kishishev",teams:["Charlton Athletic"]}
+  {name:"Radosław Kałużny",teams:["Bayer Leverkusen","Energie Cottbus"]}
+  {name:"Radu Drăgușin",teams:["Genoa","Juventus","Salernitana","Sampdoria","Tottenham Hotspur"]}
+  {name:"Rafa",teams:["Getafe","Real Valladolid","SC Paderborn 07"]}
+  {name:"Rafa Marín",teams:["Alavés","Napoli","Villarreal"]}
+  {name:"Rafa Mir",teams:["Elche","Huesca","Sevilla","Valencia"]}
+  {name:"Rafael",teams:["Cagliari","Hellas Verona","Manchester United","Olympique Lyonnais","Spezia"]}
+  {name:"Rafael Barber",teams:["Recreativo"]}
+  {name:"Rafael Borré",teams:["Eintracht Frankfurt","Villarreal","Werder Bremen"]}
+  {name:"Rafael Clavero",teams:["Numancia","Osasuna","Real Murcia"]}
+  {name:"Rafael Czichos",teams:["FC Köln"]}
+  {name:"Rafael Leão",teams:["AC Milan","LOSC Lille"]}
+  {name:"Rafael Márquez",teams:["AS Monaco","Barcelona","Hellas Verona"]}
+  {name:"Rafael Schmitz",teams:["Birmingham City","FC Valenciennes","LOSC Lille"]}
+  {name:"Rafael Sóbis",teams:["Real Betis"]}
+  {name:"Rafael Tolói",teams:["AS Roma","Atalanta"]}
+  {name:"Rafael van der Vaart",teams:["Hamburger SV","Real Betis","Real Madrid","Tottenham Hotspur"]}
+  {name:"Rafał Gikiewicz",teams:["1. FC Union Berlin","FC Augsburg","SC Freiburg"]}
+  {name:"Rafel Sastre",teams:["Sporting Gijón"]}
+  {name:"Raffael",teams:["Borussia Mönchengladbach","FC Schalke 04","Hertha BSC"]}
+  {name:"Raffaele Palladino",teams:["Crotone","Genoa","Juventus","Livorno","Parma"]}
+  {name:"Rafidine Abdullah",teams:["FC Lorient","Olympique de Marseille"]}
+  {name:"Rafik Saïfi",teams:["Estac Troyes","FC Lorient","GFC Ajaccio","Istres"]}
+  {name:"Rafinha",teams:["Barcelona","Bayern Munich","Celta Vigo","FC Schalke 04","Genoa","Inter Milan","Paris Saint-Germain","Real Sociedad"]}
+  {name:"Ragnar Klavan",teams:["Cagliari","FC Augsburg","Liverpool"]}
+  {name:"Raheem Sterling",teams:["Arsenal","Chelsea","Liverpool","Manchester City"]}
+  {name:"Rahman Rezaei",teams:["Livorno","Messina","Perugia"]}
+  {name:"Ralf Fährmann",teams:["Eintracht Frankfurt","FC Schalke 04","Norwich City"]}
+  {name:"Raman Chibsah",teams:["Benevento","Frosinone","Sassuolo"]}
+  {name:"Ramires",teams:["Chelsea"]}
+  {name:"Ramiro Funes Mori",teams:["Everton","Villarreal"]}
+  {name:"Ramon Azeez",teams:["Almería","Granada"]}
+  {name:"Ramy Bensebaini",teams:["Borussia Dortmund","Borussia Mönchengladbach","Montpellier HSC","Stade Rennais"]}
+  {name:"Ramón Terrats",teams:["Espanyol","Getafe","Girona","Villarreal"]}
+  {name:"Ramón de Quintana",teams:["Cádiz","Rayo Vallecano"]}
+  {name:"Randal Kolo Muani",teams:["Eintracht Frankfurt","FC Nantes","Juventus","Paris Saint-Germain","Tottenham Hotspur"]}
+  {name:"Randy Nteka",teams:["Elche","Rayo Vallecano"]}
+  {name:"Rani Khedira",teams:["1. FC Union Berlin","FC Augsburg","RB Leipzig","VfB Stuttgart"]}
+  {name:"Raoul Bellanova",teams:["Atalanta","Cagliari","Girondins de Bordeaux","Inter Milan","Torino"]}
+  {name:"Raoul Loé",teams:["Osasuna"]}
+  {name:"Raphael Framberger",teams:["FC Augsburg"]}
+  {name:"Raphael Martinho",teams:["Carpi","Catania","Cesena","Hellas Verona"]}
+  {name:"Raphael Schäfer",teams:["1. FC Nürnberg","VfB Stuttgart"]}
+  {name:"Raphaël Guerreiro",teams:["Bayern Munich","Borussia Dortmund","FC Lorient"]}
+  {name:"Raphaël Varane",teams:["Manchester United","RC Lens","Real Madrid"]}
+  {name:"Raphaël Wicky",teams:["Hamburger SV","Werder Bremen"]}
+  {name:"Raphinha",teams:["Barcelona","Leeds United","Stade Rennais"]}
+  {name:"Rasmus Højlund",teams:["Atalanta","Manchester United","Napoli"]}
+  {name:"Rasmus Kristensen",teams:["AS Roma","Eintracht Frankfurt","Leeds United"]}
+  {name:"Rasmus Nicolaisen",teams:["Toulouse FC"]}
+  {name:"Rassoul Ndiaye",teams:["Le Havre AC"]}
+  {name:"Raul Meireles",teams:["Chelsea","Liverpool"]}
+  {name:"Ray Parlour",teams:["Arsenal","Middlesbrough"]}
+  {name:"Rayan Aït-Nouri",teams:["Angers SCO","Manchester City","Wolverhampton Wanderers"]}
+  {name:"Rayan Cherki",teams:["Manchester City","Olympique Lyonnais"]}
+  {name:"Raymond Kalla",teams:["VfL Bochum"]}
+  {name:"Razak Boukari",teams:["FC Sochaux","RC Lens","Stade Rennais"]}
+  {name:"Razundara Tjikuzu",teams:["Hansa Rostock","MSV Duisburg","Werder Bremen"]}
+  {name:"Raúl",teams:["FC Schalke 04","Osasuna","Real Betis","Real Madrid"]}
+  {name:"Raúl Albentosa",teams:["Deportivo La Coruña","Eibar","Málaga"]}
+  {name:"Raúl Albiol",teams:["Getafe","Napoli","Pisa","Real Madrid","Valencia","Villarreal"]}
+  {name:"Raúl Baena",teams:["Espanyol","Rayo Vallecano"]}
+  {name:"Raúl Bobadilla",teams:["Borussia Mönchengladbach","FC Augsburg"]}
+  {name:"Raúl Bravo",teams:["Leeds United","Numancia","Rayo Vallecano","Real Madrid"]}
+  {name:"Raúl García",teams:["Alavés","Almería","Athletic Bilbao","Atlético Madrid","Deportivo La Coruña","Getafe","Girona","Leganés","Osasuna","Real Valladolid"]}
+  {name:"Raúl Guti",teams:["Elche"]}
+  {name:"Raúl Jiménez",teams:["Atlético Madrid","Fulham","Wolverhampton Wanderers"]}
+  {name:"Raúl Moro",teams:["Lazio","Osasuna","Real Valladolid"]}
+  {name:"Raúl Navas",teams:["Eibar","Osasuna","Real Sociedad","Real Valladolid"]}
+  {name:"Raúl Rodríguez",teams:["Espanyol"]}
+  {name:"Raúl Tamudo",teams:["Espanyol","Rayo Vallecano","Real Sociedad"]}
+  {name:"Raúl de Tomás",teams:["Espanyol","Rayo Vallecano"]}
+  {name:"Recio",teams:["Eibar","Granada","Leganés","Málaga"]}
+  {name:"Reece James",teams:["Chelsea"]}
+  {name:"Reece Oxford",teams:["Borussia Mönchengladbach","FC Augsburg","West Ham United"]}
+  {name:"Reginaldo",teams:["Fiorentina","Parma","Siena","Treviso"]}
+  {name:"Rein van Duijnhoven",teams:["VfL Bochum"]}
+  {name:"Reinaldo",teams:["Paris Saint-Germain"]}
+  {name:"Reinier",teams:["Borussia Dortmund","Frosinone","Girona"]}
+  {name:"Reinildo Mandava",teams:["Atlético Madrid","LOSC Lille","Sunderland"]}
+  {name:"Reiss Nelson",teams:["Arsenal","Brentford","Fulham","TSG Hoffenheim"]}
+  {name:"Remi Oudin",teams:["Girondins de Bordeaux","Lecce","Stade de Reims"]}
+  {name:"Remo Freuler",teams:["Atalanta","Bologna","Nottingham Forest"]}
+  {name:"Renan Brito Soares",teams:["Valencia","Xerez"]}
+  {name:"Renan Lodi",teams:["Atlético Madrid","Nottingham Forest","Olympique de Marseille"]}
+  {name:"Renato",teams:["Sevilla"]}
+  {name:"Renato Augusto",teams:["Bayer Leverkusen"]}
+  {name:"Renato Civelli",teams:["LOSC Lille","OGC Nice","Olympique de Marseille"]}
+  {name:"Renato Olive",teams:["Bologna","Parma"]}
+  {name:"Renato Sanches",teams:["AS Roma","Bayern Munich","LOSC Lille","Paris Saint-Germain","Swansea City"]}
+  {name:"Renato Steffen",teams:["VfL Wolfsburg"]}
+  {name:"Renato Tapia",teams:["Celta Vigo","Leganés"]}
+  {name:"Renato Veiga",teams:["Chelsea","FC Augsburg","Juventus","Villarreal"]}
+  {name:"Renaud Cohade",teams:["AS Saint-Étienne","FC Metz","FC Valenciennes","Girondins de Bordeaux","RC Strasbourg"]}
+  {name:"Renaud Connen",teams:["GFC Ajaccio"]}
+  {name:"Renaud Ripart",teams:["Estac Troyes","Nîmes"]}
+  {name:"Rene Krhin",teams:["Bologna","Córdoba","FC Nantes","Granada","Inter Milan"]}
+  {name:"René Adler",teams:["1. FSV Mainz 05","Bayer Leverkusen","Hamburger SV"]}
+  {name:"René Klingbeil",teams:["Hamburger SV"]}
+  {name:"René Rydlewicz",teams:["Hansa Rostock"]}
+  {name:"René Tretschok",teams:["Hertha BSC"]}
+  {name:"Reto Ziegler",teams:["Hamburger SV","Sampdoria","Sassuolo","Tottenham Hotspur","Wigan Athletic"]}
+  {name:"Reynald Lemaître",teams:["AS Nancy","EA Guingamp","SM Caen"]}
+  {name:"Ricardo",teams:["Manchester United","Osasuna","Racing Santander","Real Valladolid"]}
+  {name:"Ricardo Carvalho",teams:["AS Monaco","Chelsea","Real Madrid"]}
+  {name:"Ricardo Costa",teams:["Granada","LOSC Lille","Valencia","VfL Wolfsburg"]}
+  {name:"Ricardo Faty",teams:["AS Roma","Bayer Leverkusen","FC Nantes","GFC Ajaccio","RC Strasbourg"]}
+  {name:"Ricardo Fuller",teams:["Portsmouth","Stoke City"]}
+  {name:"Ricardo Gardner",teams:["Bolton Wanderers"]}
+  {name:"Ricardo Oliveira",teams:["AC Milan","Real Betis","Real Zaragoza","Valencia"]}
+  {name:"Ricardo Osorio",teams:["VfB Stuttgart"]}
+  {name:"Ricardo Pereira",teams:["Leicester City","OGC Nice"]}
+  {name:"Ricardo Quaresma",teams:["Barcelona","Chelsea","Inter Milan"]}
+  {name:"Ricardo Rodríguez",teams:["AC Milan","Real Betis","Torino","VfL Wolfsburg"]}
+  {name:"Ricardo Sanzol",teams:["Osasuna"]}
+  {name:"Ricardo Vaz Tê",teams:["Bolton Wanderers","West Ham United"]}
+  {name:"Riccardo Allegretti",teams:["Bari","Chievo Verona","Como","Modena"]}
+  {name:"Riccardo Calafiori",teams:["AS Roma","Arsenal","Bologna","Genoa"]}
+  {name:"Riccardo Gagliolo",teams:["Carpi","Parma","Salernitana"]}
+  {name:"Riccardo Marchizza",teams:["Empoli","Frosinone","Sassuolo","Spezia"]}
+  {name:"Riccardo Meggiorini",teams:["Bari","Bologna","Chievo Verona","Inter Milan","Novara","Torino"]}
+  {name:"Riccardo Montolivo",teams:["AC Milan","Atalanta","Fiorentina"]}
+  {name:"Riccardo Orsolini",teams:["Atalanta","Bologna"]}
+  {name:"Riccardo Saponara",teams:["AC Milan","Empoli","Fiorentina","Genoa","Hellas Verona","Lecce","Sampdoria","Spezia"]}
+  {name:"Riccardo Scimeca",teams:["Leicester City","West Bromwich Albion"]}
+  {name:"Riccardo Sottil",teams:["AC Milan","Cagliari","Fiorentina","Lecce"]}
+  {name:"Riccardo Zampagna",teams:["Atalanta","Messina"]}
+  {name:"Richard Dunne",teams:["Aston Villa","Everton","Manchester City","Queens Park Rangers"]}
+  {name:"Richard Dutruel",teams:["Alavés","Barcelona","RC Strasbourg"]}
+  {name:"Richard Golz",teams:["SC Freiburg"]}
+  {name:"Richard Hughes",teams:["Portsmouth"]}
+  {name:"Richard Jézierski",teams:["Estac Troyes","Sedan"]}
+  {name:"Richard Morales",teams:["Málaga","Osasuna"]}
+  {name:"Richard Rufus",teams:["Charlton Athletic"]}
+  {name:"Richard Stearman",teams:["Wolverhampton Wanderers"]}
+  {name:"Richard Vanigli",teams:["Empoli"]}
+  {name:"Richard Wright",teams:["Arsenal","Everton","Ipswich Town"]}
+  {name:"Richarlison",teams:["Everton","Tottenham Hotspur","Watford"]}
+  {name:"Richi",teams:["Real Murcia","Tenerife"]}
+  {name:"Richmond Boakye",teams:["Atalanta","Elche","Genoa"]}
+  {name:"Rick Karsdorp",teams:["AS Roma"]}
+  {name:"Rickie Lambert",teams:["Liverpool","Southampton","West Bromwich Albion"]}
+  {name:"Ricky van Wolfswinkel",teams:["AS Saint-Étienne","Norwich City","Real Betis"]}
+  {name:"Ricky Álvarez",teams:["Inter Milan","Sampdoria","Sunderland"]}
+  {name:"Rico Henry",teams:["Brentford"]}
+  {name:"Rico Lewis",teams:["Manchester City"]}
+  {name:"Ridgeciano Haps",teams:["Genoa","Venezia"]}
+  {name:"Ridle Baku",teams:["1. FSV Mainz 05","RB Leipzig","VfL Wolfsburg"]}
+  {name:"Riga Mustapha",teams:["Bolton Wanderers","Levante"]}
+  {name:"Rigobert Song",teams:["FC Köln","Liverpool","RC Lens","West Ham United"]}
+  {name:"Riki",teams:["Deportivo La Coruña","Getafe","Granada"]}
+  {name:"Rio Ferdinand",teams:["Leeds United","Manchester United","Queens Park Rangers","West Ham United"]}
+  {name:"Rio Mavuba",teams:["Girondins de Bordeaux","LOSC Lille","Villarreal"]}
+  {name:"Ritsu Doan",teams:["Arminia Bielefeld","Eintracht Frankfurt","SC Freiburg"]}
+  {name:"Rivaldo",teams:["AC Milan","Barcelona"]}
+  {name:"Riyad Mahrez",teams:["Leicester City","Manchester City"]}
+  {name:"Riza Durmisi",teams:["Lazio","OGC Nice","Real Betis"]}
+  {name:"Rob Elliot",teams:["Newcastle United"]}
+  {name:"Rob Friend",teams:["Borussia Mönchengladbach"]}
+  {name:"Rob Holding",teams:["Arsenal"]}
+  {name:"Rob Lee",teams:["Derby County","Newcastle United"]}
+  {name:"Robbie Blake",teams:["Birmingham City","Bolton Wanderers","Bradford City","Burnley"]}
+  {name:"Robbie Brady",teams:["Burnley","Hull City","Norwich City"]}
+  {name:"Robbie Elliott",teams:["Newcastle United"]}
+  {name:"Robbie Fowler",teams:["Blackburn Rovers","Leeds United","Liverpool","Manchester City"]}
+  {name:"Robbie Keane",teams:["Aston Villa","Inter Milan","Leeds United","Liverpool","Tottenham Hotspur","West Ham United"]}
+  {name:"Robbie Kruse",teams:["Bayer Leverkusen","Fortuna Düsseldorf","VfB Stuttgart"]}
+  {name:"Robbie Mustoe",teams:["Charlton Athletic","Middlesbrough"]}
+  {name:"Robbie Savage",teams:["Birmingham City","Blackburn Rovers","Derby County","Leicester City"]}
+  {name:"Rober",teams:["Deportivo La Coruña","Levante"]}
+  {name:"Robert Acquafresca",teams:["Atalanta","Bologna","Cagliari","Genoa","Levante","Treviso"]}
+  {name:"Robert Andrich",teams:["1. FC Union Berlin","Bayer Leverkusen"]}
+  {name:"Robert Bauer",teams:["1. FC Nürnberg","FC Ingolstadt 04","Werder Bremen"]}
+  {name:"Robert Berić",teams:["AS Saint-Étienne"]}
+  {name:"Robert Earnshaw",teams:["Derby County","West Bromwich Albion"]}
+  {name:"Robert Enke",teams:["Barcelona","Hannover 96"]}
+  {name:"Robert Green",teams:["Norwich City","Queens Park Rangers","West Ham United"]}
+  {name:"Robert Gumny",teams:["FC Augsburg"]}
+  {name:"Robert Huth",teams:["Chelsea","Leicester City","Middlesbrough","Stoke City"]}
+  {name:"Robert Ibáñez",teams:["Getafe","Granada","Leganés","Osasuna","Valencia"]}
+  {name:"Robert Koren",teams:["Hull City","West Bromwich Albion"]}
+  {name:"Robert Kovač",teams:["Bayer Leverkusen","Bayern Munich","Borussia Dortmund","Juventus"]}
+  {name:"Robert Lewandowski",teams:["Barcelona","Bayern Munich","Borussia Dortmund"]}
+  {name:"Robert Pirès",teams:["Arsenal","Aston Villa","Villarreal"]}
+  {name:"Robert Skov",teams:["1. FC Union Berlin","TSG Hoffenheim"]}
+  {name:"Robert Snodgrass",teams:["Hull City","Norwich City","West Bromwich Albion","West Ham United"]}
+  {name:"Robert Sánchez",teams:["Brighton & Hove Albion","Chelsea"]}
+  {name:"Robert Tesche",teams:["Arminia Bielefeld","Fortuna Düsseldorf","Hamburger SV","VfL Bochum"]}
+  {name:"Roberto",teams:["Alavés","Atlético Madrid","Espanyol","Granada","Málaga","Osasuna","Real Valladolid","Real Zaragoza","West Ham United"]}
+  {name:"Roberto Acuña",teams:["Deportivo La Coruña","Real Zaragoza"]}
+  {name:"Roberto Ayala",teams:["Real Zaragoza","Valencia"]}
+  {name:"Roberto Baggio",teams:["Brescia"]}
+  {name:"Roberto Baronio",teams:["Chievo Verona","Fiorentina","Lazio","Perugia","Udinese"]}
+  {name:"Roberto Bonano",teams:["Alavés","Barcelona","Real Murcia"]}
+  {name:"Roberto Canella",teams:["Deportivo La Coruña","Sporting Gijón"]}
+  {name:"Roberto Carlos",teams:["Real Madrid"]}
+  {name:"Roberto Cevoli",teams:["Modena"]}
+  {name:"Roberto D'Aversa",teams:["Messina","Siena"]}
+  {name:"Roberto Firmino",teams:["Liverpool","TSG Hoffenheim"]}
+  {name:"Roberto Gagliardini",teams:["Atalanta","Hellas Verona","Inter Milan","Monza"]}
+  {name:"Roberto Guana",teams:["Ascoli","Bologna","Brescia","Cesena","Chievo Verona","Palermo"]}
+  {name:"Roberto Hilbert",teams:["Bayer Leverkusen","VfB Stuttgart"]}
+  {name:"Roberto Inglese",teams:["Chievo Verona","Parma"]}
+  {name:"Roberto Lago",teams:["Celta Vigo","Getafe"]}
+  {name:"Roberto Losada",teams:["Mallorca","Real Oviedo","Real Valladolid"]}
+  {name:"Roberto Muzzi",teams:["Lazio","Torino","Udinese"]}
+  {name:"Roberto Navarro",teams:["Athletic Bilbao","Cádiz","Mallorca","Real Sociedad"]}
+  {name:"Roberto Peragón",teams:["Rayo Vallecano"]}
+  {name:"Roberto Pereyra",teams:["Juventus","Udinese","Watford"]}
+  {name:"Roberto Piccoli",teams:["Atalanta","Cagliari","Empoli","Fiorentina","Genoa","Hellas Verona","Lecce","Spezia"]}
+  {name:"Roberto Pinto",teams:["Arminia Bielefeld","Hertha BSC","VfB Stuttgart"]}
+  {name:"Roberto Rojas",teams:["Málaga"]}
+  {name:"Roberto Rosales",teams:["Espanyol","Leganés","Málaga"]}
+  {name:"Roberto Sensini",teams:["Lazio","Parma","Udinese"]}
+  {name:"Roberto Soldado",teams:["Getafe","Granada","Levante","Osasuna","Real Madrid","Tottenham Hotspur","Valencia","Villarreal"]}
+  {name:"Roberto Soriano",teams:["Bologna","Sampdoria","Torino","Villarreal"]}
+  {name:"Roberto Sosa",teams:["Napoli","Udinese"]}
+  {name:"Roberto Stellone",teams:["Napoli","Reggina","Torino"]}
+  {name:"Roberto Torres",teams:["Osasuna"]}
+  {name:"Roberto Trashorras",teams:["Barcelona","Rayo Vallecano"]}
+  {name:"Roberto Vitiello",teams:["Palermo","Siena"]}
+  {name:"Robin Gosens",teams:["1. FC Union Berlin","Atalanta","Fiorentina","Inter Milan"]}
+  {name:"Robin Hack",teams:["Arminia Bielefeld","Borussia Mönchengladbach","TSG Hoffenheim"]}
+  {name:"Robin Knoche",teams:["1. FC Union Berlin","VfL Wolfsburg"]}
+  {name:"Robin Koch",teams:["Eintracht Frankfurt","Leeds United","SC Freiburg"]}
+  {name:"Robin Le Normand",teams:["Atlético Madrid","Real Sociedad"]}
+  {name:"Robin Olsen",teams:["AS Roma","Aston Villa","Cagliari","Everton"]}
+  {name:"Robin Quaison",teams:["1. FSV Mainz 05","Palermo"]}
+  {name:"Robin Zentner",teams:["1. FSV Mainz 05"]}
+  {name:"Robin van Persie",teams:["Arsenal","Manchester United"]}
+  {name:"Robinho",teams:["AC Milan","Manchester City","Real Madrid"]}
+  {name:"Robson Ponte",teams:["Bayer Leverkusen","VfL Wolfsburg"]}
+  {name:"Rocco Reitz",teams:["Borussia Mönchengladbach"]}
+  {name:"Rod Fanni",teams:["OGC Nice","Olympique de Marseille","RC Lens","Stade Rennais"]}
+  {name:"Roda Antar",teams:["FC Köln","Hamburger SV","SC Freiburg"]}
+  {name:"Rodnei",teams:["1. FC Kaiserslautern","Hertha BSC"]}
+  {name:"Rodolfo Arruabarrena",teams:["Villarreal"]}
+  {name:"Rodolfo Bodipo",teams:["Alavés","Deportivo La Coruña","Racing Santander"]}
+  {name:"Rodolfo Giorgetti",teams:["Bari","Lecce"]}
+  {name:"Rodri",teams:["Atlético Madrid","Manchester City","Real Betis","Villarreal"]}
+  {name:"Rodrigo",teams:["Bolton Wanderers","GFC Ajaccio","Leeds United","RC Strasbourg","Valencia"]}
+  {name:"Rodrigo Battaglia",teams:["Alavés","Mallorca"]}
+  {name:"Rodrigo Becão",teams:["Udinese"]}
+  {name:"Rodrigo Bentancur",teams:["Juventus","Tottenham Hotspur"]}
+  {name:"Rodrigo Costa",teams:["1860 Munich"]}
+  {name:"Rodrigo De Paul",teams:["Atlético Madrid","Udinese","Valencia"]}
+  {name:"Rodrigo Ely",teams:["AC Milan","Alavés","Almería"]}
+  {name:"Rodrigo Muniz",teams:["Fulham"]}
+  {name:"Rodrigo Palacio",teams:["Bologna","Genoa","Inter Milan"]}
+  {name:"Rodrigo Riquelme",teams:["Atlético Madrid","Girona","Real Betis"]}
+  {name:"Rodrigo Taddei",teams:["AS Roma","Siena"]}
+  {name:"Rodrygo",teams:["Real Madrid"]}
+  {name:"Roel Brouwers",teams:["Borussia Mönchengladbach"]}
+  {name:"Roger",teams:["Espanyol","FC Ingolstadt 04","Villarreal"]}
+  {name:"Roger Ibanez",teams:["AS Roma","Atalanta"]}
+  {name:"Roger Johnson",teams:["Birmingham City","West Ham United","Wolverhampton Wanderers"]}
+  {name:"Roger Martí",teams:["Cádiz","Elche","Levante"]}
+  {name:"Rogério",teams:["Sassuolo","VfL Wolfsburg"]}
+  {name:"Roland Lamah",teams:["Le Mans FC","Osasuna","Swansea City"]}
+  {name:"Roland Sallai",teams:["Palermo","SC Freiburg"]}
+  {name:"Rolando",teams:["Inter Milan","Napoli","Olympique de Marseille"]}
+  {name:"Rolando Bianchi",teams:["Atalanta","Bologna","Cagliari","Lazio","Manchester City","Reggina","Torino"]}
+  {name:"Rolando Mandragora",teams:["Crotone","Fiorentina","Genoa","Juventus","Torino","Udinese"]}
+  {name:"Romain Alessandrini",teams:["Olympique de Marseille","Stade Rennais"]}
+  {name:"Romain Amalfitano",teams:["Dijon FCO"]}
+  {name:"Romain Danzé",teams:["Stade Rennais"]}
+  {name:"Romain Del Castillo",teams:["Olympique Lyonnais","Stade Brestois 29","Stade Rennais"]}
+  {name:"Romain Faivre",teams:["AFC Bournemouth","AJ Auxerre","AS Monaco","FC Lorient","Olympique Lyonnais","Stade Brestois 29"]}
+  {name:"Romain Ferrier",teams:["EA Guingamp"]}
+  {name:"Romain Genevois",teams:["OGC Nice","SM Caen"]}
+  {name:"Romain Hamouma",teams:["AS Saint-Étienne","GFC Ajaccio","SM Caen"]}
+  {name:"Romain Perraud",teams:["LOSC Lille","OGC Nice","Real Betis","Southampton","Stade Brestois 29"]}
+  {name:"Romain Philippoteaux",teams:["FC Lorient","Nîmes","Stade Brestois 29"]}
+  {name:"Romain Pitau",teams:["FC Sochaux","Montpellier HSC","OGC Nice"]}
+  {name:"Romain Poyet",teams:["AJ Auxerre","Stade Brestois 29"]}
+  {name:"Romain Rocchi",teams:["AC Arles-Avignon","FC Metz","GFC Ajaccio","Paris Saint-Germain","SC Bastia"]}
+  {name:"Romain Saïss",teams:["Angers SCO","Wolverhampton Wanderers"]}
+  {name:"Romain Thomas",teams:["Angers SCO"]}
+  {name:"Roman Bürki",teams:["Borussia Dortmund","SC Freiburg"]}
+  {name:"Roman Neustädter",teams:["Borussia Mönchengladbach","FC Schalke 04"]}
+  {name:"Roman Pavlyuchenko",teams:["Tottenham Hotspur"]}
+  {name:"Roman Týce",teams:["1860 Munich"]}
+  {name:"Roman Weidenfeller",teams:["1. FC Kaiserslautern","Borussia Dortmund"]}
+  {name:"Romano Schmid",teams:["Werder Bremen"]}
+  {name:"Romaric",teams:["Espanyol","Le Mans FC","Real Zaragoza","SC Bastia","Sevilla"]}
+  {name:"Romelu Lukaku",teams:["AS Roma","Chelsea","Everton","Inter Milan","Manchester United","Napoli","West Bromwich Albion"]}
+  {name:"Rominigue Kouamé",teams:["Cádiz","Estac Troyes","LOSC Lille"]}
+  {name:"Román Martínez",teams:["Espanyol","Tenerife"]}
+  {name:"Roméo Lavia",teams:["Chelsea","Southampton"]}
+  {name:"Ron Vlaar",teams:["Aston Villa"]}
+  {name:"Ron-Robert Zieler",teams:["FC Köln","Hannover 96","Leicester City","VfB Stuttgart"]}
+  {name:"Ronald Araújo",teams:["Barcelona"]}
+  {name:"Ronald Maul",teams:["Hamburger SV","Hansa Rostock"]}
+  {name:"Ronald Zubar",teams:["GFC Ajaccio","Olympique de Marseille","SM Caen","Wolverhampton Wanderers"]}
+  {name:"Ronaldinho",teams:["AC Milan","Barcelona","Paris Saint-Germain"]}
+  {name:"Ronaldo",teams:["AC Milan","Inter Milan","Real Madrid"]}
+  {name:"Ronaldo Vieira",teams:["Hellas Verona","Sampdoria","Torino"]}
+  {name:"Ronan Le Crom",teams:["AJ Auxerre","EA Guingamp","Estac Troyes","Grenoble Foot","Paris Saint-Germain"]}
+  {name:"Ronaël Pierre-Gabriel",teams:["1. FSV Mainz 05","AS Monaco","AS Saint-Étienne","Espanyol","FC Nantes","RC Strasbourg","Stade Brestois 29"]}
+  {name:"Ronnie Stam",teams:["Wigan Athletic"]}
+  {name:"Ronnie Wallwork",teams:["Manchester United","West Bromwich Albion"]}
+  {name:"Ronny",teams:["Hertha BSC"]}
+  {name:"Ronny Johnsen",teams:["Aston Villa","Manchester United","Newcastle United"]}
+  {name:"Ronny Rodelin",teams:["EA Guingamp","FC Nantes","LOSC Lille","SM Caen"]}
+  {name:"Rony Lopes",teams:["AS Monaco","Estac Troyes","LOSC Lille","OGC Nice","Sevilla"]}
+  {name:"Roque Júnior",teams:["AC Milan","Bayer Leverkusen","Leeds United","MSV Duisburg","Siena"]}
+  {name:"Roque Mesa",teams:["Las Palmas","Leganés","Real Valladolid","Sevilla","Swansea City"]}
+  {name:"Roque Santa Cruz",teams:["Bayern Munich","Blackburn Rovers","Manchester City","Málaga","Real Betis"]}
+  {name:"Rory Delap",teams:["Derby County","Southampton","Stoke City","Sunderland"]}
+  {name:"Ross Barkley",teams:["Aston Villa","Chelsea","Everton","Luton Town","OGC Nice"]}
+  {name:"Rouwen Hennings",teams:["FC St. Pauli","Fortuna Düsseldorf"]}
+  {name:"Roy Carroll",teams:["Derby County","Manchester United","West Ham United"]}
+  {name:"Roy Contout",teams:["AJ Auxerre","FC Metz","FC Sochaux"]}
+  {name:"Roy Keane",teams:["Manchester United"]}
+  {name:"Roy Makaay",teams:["Bayern Munich","Deportivo La Coruña"]}
+  {name:"Roy Präger",teams:["Hamburger SV","VfL Wolfsburg"]}
+  {name:"Royston Drenthe",teams:["Everton","Hércules","Real Madrid"]}
+  {name:"Ruan",teams:["Sassuolo"]}
+  {name:"Ruben Aguilar",teams:["AS Monaco","Montpellier HSC","RC Lens"]}
+  {name:"Ruben Loftus-Cheek",teams:["AC Milan","Chelsea","Crystal Palace","Fulham"]}
+  {name:"Ruben Vargas",teams:["FC Augsburg","Sevilla"]}
+  {name:"Rubinho",teams:["Genoa","Juventus","Livorno","Palermo"]}
+  {name:"Rubén",teams:["Albacete","Almería","Barcelona","Borussia Mönchengladbach","Deportivo La Coruña","Levante","Mallorca","Málaga","Osasuna","Racing Santander","Rayo Vallecano","Real Madrid"]}
+  {name:"Rubén Alcaraz",teams:["Cádiz","Real Valladolid"]}
+  {name:"Rubén Baraja",teams:["Valencia"]}
+  {name:"Rubén Blanco",teams:["Celta Vigo","Olympique de Marseille"]}
+  {name:"Rubén Castro",teams:["Albacete","Deportivo La Coruña","Gimnàstic","Las Palmas","Real Betis"]}
+  {name:"Rubén Duarte",teams:["Alavés","Espanyol"]}
+  {name:"Rubén García",teams:["Levante","Osasuna"]}
+  {name:"Rubén Navarro",teams:["Alavés","Numancia"]}
+  {name:"Rubén Olivera",teams:["Atlético Madrid","Fiorentina","Genoa","Juventus","Lecce","Sampdoria"]}
+  {name:"Rubén Pardo",teams:["Girondins de Bordeaux","Real Betis","Real Sociedad"]}
+  {name:"Rubén Peña",teams:["Eibar","Osasuna","Real Valladolid","Villarreal"]}
+  {name:"Rubén Pulido",teams:["Almería","Getafe","Real Zaragoza"]}
+  {name:"Rubén Pérez",teams:["Atlético Madrid","Deportivo La Coruña","Elche","Getafe","Granada","Leganés","Real Betis","Torino"]}
+  {name:"Rubén Rochina",teams:["Blackburn Rovers","Granada","Levante","Rayo Vallecano","Real Zaragoza"]}
+  {name:"Rubén Sobrino",teams:["Alavés","Cádiz","Valencia"]}
+  {name:"Rubén Suárez",teams:["Almería","Levante"]}
+  {name:"Rudy Gestede",teams:["Aston Villa","Cardiff City","FC Metz","Middlesbrough"]}
+  {name:"Rudy Mater",teams:["FC Valenciennes"]}
+  {name:"Rudy Riou",teams:["Istres","Montpellier HSC","Olympique de Marseille","RC Lens","Toulouse FC"]}
+  {name:"Rufus Brevett",teams:["Fulham","West Ham United"]}
+  {name:"Rui Costa",teams:["AC Milan","Fiorentina"]}
+  {name:"Rui Fonte",teams:["Espanyol","LOSC Lille"]}
+  {name:"Rui Patrício",teams:["AS Roma","Atalanta","Wolverhampton Wanderers"]}
+  {name:"Rui Silva",teams:["Granada","Real Betis"]}
+  {name:"Rune Jarstein",teams:["Hertha BSC"]}
+  {name:"Ruslan Malinovskyi",teams:["Atalanta","Genoa","Olympique de Marseille"]}
+  {name:"Russell Hoult",teams:["West Bromwich Albion"]}
+  {name:"Russell Martin",teams:["Norwich City"]}
+  {name:"Ruud van Nistelrooy",teams:["Hamburger SV","Manchester United","Málaga","Real Madrid"]}
+  {name:"Ryad Boudebouz",teams:["AS Saint-Étienne","Celta Vigo","FC Sochaux","Montpellier HSC","Real Betis","SC Bastia"]}
+  {name:"Ryan Babel",teams:["Deportivo La Coruña","Fulham","Liverpool","TSG Hoffenheim"]}
+  {name:"Ryan Bennett",teams:["Leicester City","Norwich City","Wolverhampton Wanderers"]}
+  {name:"Ryan Bertrand",teams:["Aston Villa","Chelsea","Leicester City","Southampton"]}
+  {name:"Ryan Christie",teams:["AFC Bournemouth"]}
+  {name:"Ryan Fraser",teams:["AFC Bournemouth","Newcastle United","Southampton"]}
+  {name:"Ryan Fredericks",teams:["AFC Bournemouth","West Ham United"]}
+  {name:"Ryan Giggs",teams:["Manchester United"]}
+  {name:"Ryan Gravenberch",teams:["Bayern Munich","Liverpool"]}
+  {name:"Ryan Mason",teams:["Hull City","Tottenham Hotspur"]}
+  {name:"Ryan Mendes",teams:["LOSC Lille","Le Havre AC"]}
+  {name:"Ryan Nelsen",teams:["Blackburn Rovers","Queens Park Rangers","Tottenham Hotspur"]}
+  {name:"Ryan Sessegnon",teams:["Fulham","TSG Hoffenheim","Tottenham Hotspur"]}
+  {name:"Ryan Shawcross",teams:["Stoke City"]}
+  {name:"Ryan Taylor",teams:["Newcastle United","Wigan Athletic"]}
+  {name:"Ryan Yates",teams:["Nottingham Forest"]}
+  {name:"Ryder Matos",teams:["Carpi","Córdoba","Fiorentina","Hellas Verona","Udinese"]}
+  {name:"Régis Dorn",teams:["Hansa Rostock","SC Freiburg"]}
+  {name:"Régis Gurtner",teams:["Amiens SC"]}
+  {name:"Rémi Gomis",teams:["FC Nantes","FC Valenciennes","SM Caen"]}
+  {name:"Rémi Walter",teams:["Estac Troyes","OGC Nice"]}
+  {name:"Rémy Cabella",teams:["AC Arles-Avignon","AS Saint-Étienne","FC Nantes","LOSC Lille","Montpellier HSC","Newcastle United","Olympique de Marseille"]}
+  {name:"Rémy Riou",teams:["AJ Auxerre","FC Lorient","FC Nantes","Olympique Lyonnais"]}
+  {name:"Rémy Vercoutre",teams:["Montpellier HSC","Olympique Lyonnais","RC Strasbourg","SM Caen"]}
+  {name:"Róbert Mak",teams:["1. FC Nürnberg"]}
+  {name:"Róbert Vittek",teams:["1. FC Nürnberg","LOSC Lille"]}
+  {name:"Rômulo",teams:["Brescia","Fiorentina","Genoa","Hellas Verona","Juventus","Lazio"]}
+  {name:"Rúben Dias",teams:["Manchester City"]}
+  {name:"Rúben Neves",teams:["Wolverhampton Wanderers"]}
+  {name:"Rúben Vezo",teams:["Granada","Levante","Valencia"]}
+  {name:"Rüdiger Kauf",teams:["Arminia Bielefeld","VfB Stuttgart"]}
+  {name:"Răzvan Marin",teams:["Cagliari","Empoli"]}
+  {name:"Saber Khalifa",teams:["Olympique de Marseille","Évian TG"]}
+  {name:"Sabin Merino",teams:["Athletic Bilbao","Leganés"]}
+  {name:"Sabri Lamouchi",teams:["Inter Milan","Olympique de Marseille","Parma"]}
+  {name:"Sacha Boey",teams:["Bayern Munich","Dijon FCO","Stade Rennais"]}
+  {name:"Sada Thioub",teams:["AS Saint-Étienne","Angers SCO","Nîmes","OGC Nice"]}
+  {name:"Sadio Diallo",teams:["FC Lorient","SC Bastia","Stade Rennais"]}
+  {name:"Sadio Mané",teams:["Bayern Munich","Liverpool","Southampton"]}
+  {name:"Sael Kumbedi",teams:["Olympique Lyonnais","VfL Wolfsburg"]}
+  {name:"Saido Berahino",teams:["Stoke City","West Bromwich Albion"]}
+  {name:"Saidou Sow",teams:["AS Saint-Étienne","FC Nantes","RC Strasbourg"]}
+  {name:"Saidy Janko",teams:["AS Saint-Étienne","Real Valladolid","VfL Bochum"]}
+  {name:"Salif Diao",teams:["Birmingham City","Liverpool","Portsmouth","Sedan","Stoke City"]}
+  {name:"Salif Sané",teams:["AS Nancy","FC Schalke 04","Girondins de Bordeaux","Hannover 96"]}
+  {name:"Salih Özcan",teams:["Borussia Dortmund","FC Köln","VfL Wolfsburg"]}
+  {name:"Salim Arrache",teams:["GFC Ajaccio","Olympique de Marseille","RC Strasbourg","Toulouse FC"]}
+  {name:"Salis Abdul Samed",teams:["Clermont Foot","OGC Nice","RC Lens"]}
+  {name:"Salomon Kalou",teams:["Chelsea","Hertha BSC","LOSC Lille"]}
+  {name:"Salomon Olembé",teams:["FC Nantes","Leeds United","Olympique de Marseille","Wigan Athletic"]}
+  {name:"Salomón Rondón",teams:["Everton","Málaga","Newcastle United","Real Oviedo","West Bromwich Albion"]}
+  {name:"Salva Ballesta",teams:["Atlético Madrid","Bolton Wanderers","Levante","Málaga","Valencia"]}
+  {name:"Salva Sevilla",teams:["Espanyol","Mallorca","Real Betis"]}
+  {name:"Salvador Ferrer",teams:["Spezia"]}
+  {name:"Salvatore Aronica",teams:["Messina","Napoli","Palermo","Reggina"]}
+  {name:"Salvatore Bocchetti",teams:["AC Milan","Ascoli","Genoa","Hellas Verona"]}
+  {name:"Salvatore Fresi",teams:["Bologna","Juventus","Napoli","Perugia"]}
+  {name:"Salvatore Lanna",teams:["Bologna","Chievo Verona","Torino"]}
+  {name:"Salvatore Masiello",teams:["Bari","Messina","Torino"]}
+  {name:"Salvatore Sirigu",teams:["Fiorentina","Genoa","Osasuna","Palermo","Paris Saint-Germain","Sevilla","Torino"]}
+  {name:"Salvi",teams:["Cádiz","Rayo Vallecano"]}
+  {name:"Sam Beukema",teams:["Bologna","Napoli"]}
+  {name:"Sam Byram",teams:["Leeds United","Norwich City","West Ham United"]}
+  {name:"Sam Clucas",teams:["Hull City","Swansea City"]}
+  {name:"Sam Johnstone",teams:["Crystal Palace","West Bromwich Albion","Wolverhampton Wanderers"]}
+  {name:"Sam Lammers",teams:["Atalanta","Eintracht Frankfurt","Empoli","Sampdoria"]}
+  {name:"Sam Ricketts",teams:["Bolton Wanderers","Hull City"]}
+  {name:"Sam Vokes",teams:["Burnley","Wolverhampton Wanderers"]}
+  {name:"Saman Ghoddos",teams:["Amiens SC","Brentford"]}
+  {name:"Samba Diakité",teams:["AS Nancy","Queens Park Rangers"]}
+  {name:"Sambou Yatabaré",teams:["EA Guingamp","SC Bastia","SM Caen","Werder Bremen"]}
+  {name:"Sami Allagui",teams:["1. FSV Mainz 05","Hertha BSC"]}
+  {name:"Sami Hyypiä",teams:["Bayer Leverkusen","Liverpool"]}
+  {name:"Sami Khedira",teams:["Hertha BSC","Juventus","Real Madrid","VfB Stuttgart"]}
+  {name:"Samir Handanović",teams:["Inter Milan","Lazio","Treviso","Udinese"]}
+  {name:"Samir Nasri",teams:["Arsenal","Manchester City","Olympique de Marseille","Sevilla","West Ham United"]}
+  {name:"Samir Santos",teams:["Hellas Verona","Udinese","Watford"]}
+  {name:"Samir Ujkani",teams:["Empoli","Novara","Palermo","Torino"]}
+  {name:"Sammy Ameobi",teams:["Newcastle United"]}
+  {name:"Sammy Traoré",teams:["AJ Auxerre","OGC Nice","Paris Saint-Germain"]}
+  {name:"Samu Castillejo",teams:["AC Milan","Málaga","Sassuolo","Valencia","Villarreal"]}
+  {name:"Samu Costa",teams:["Almería","Mallorca"]}
+  {name:"Samu García",teams:["Leganés","Levante","Málaga","Villarreal"]}
+  {name:"Samuel Bouhours",teams:["GFC Ajaccio","Le Mans FC"]}
+  {name:"Samuel Boutal",teams:["Estac Troyes"]}
+  {name:"Samuel Chukwueze",teams:["AC Milan","Fulham","Villarreal"]}
+  {name:"Samuel Eto'o",teams:["Barcelona","Chelsea","Everton","Inter Milan","Mallorca","Sampdoria"]}
+  {name:"Samuel Gigot",teams:["Lazio","Olympique de Marseille"]}
+  {name:"Samuel Grandsir",teams:["AS Monaco","Estac Troyes","Le Havre AC","RC Strasbourg","Stade Brestois 29"]}
+  {name:"Samuel Kalu",teams:["Girondins de Bordeaux","Watford"]}
+  {name:"Samuel Kuffour",teams:["AS Roma","Bayern Munich","Livorno"]}
+  {name:"Samuel Lino",teams:["Atlético Madrid","Valencia"]}
+  {name:"Samuel Moutoussamy",teams:["FC Nantes"]}
+  {name:"Samuel Souprayen",teams:["Dijon FCO","Hellas Verona","Stade Rennais"]}
+  {name:"Samuel Umtiti",teams:["Barcelona","LOSC Lille","Lecce","Olympique Lyonnais"]}
+  {name:"Samuele Birindelli",teams:["Monza"]}
+  {name:"Samuele Dalla Bona",teams:["AC Milan","Bologna","Chelsea","Lecce","Napoli","Sampdoria"]}
+  {name:"Samuele Longo",teams:["Cagliari","Espanyol","Frosinone","Hellas Verona","Huesca","Inter Milan","Rayo Vallecano"]}
+  {name:"Samuele Ricci",teams:["AC Milan","Empoli","Torino"]}
+  {name:"Sander Berge",teams:["Burnley","Fulham","Sheffield United"]}
+  {name:"Sander Westerveld",teams:["Everton","Liverpool","Mallorca","Portsmouth","Real Sociedad"]}
+  {name:"Sandi Lovrić",teams:["Hellas Verona","Udinese"]}
+  {name:"Sandro",teams:["Benevento","Genoa","Levante","Málaga","Queens Park Rangers","Tottenham Hotspur","Udinese","West Bromwich Albion"]}
+  {name:"Sandro Ramírez",teams:["Barcelona","Everton","Getafe","Huesca","Las Palmas","Málaga","Real Sociedad","Real Valladolid","Sevilla"]}
+  {name:"Sandro Tonali",teams:["AC Milan","Brescia","Newcastle United"]}
+  {name:"Sandro Wagner",teams:["1. FC Kaiserslautern","Bayern Munich","Hertha BSC","SV Darmstadt 98","TSG Hoffenheim","Werder Bremen"]}
+  {name:"Sanjin Prcić",teams:["FC Sochaux","Levante","RC Strasbourg","Stade Rennais","Torino"]}
+  {name:"Santi Cazorla",teams:["Arsenal","Málaga","Real Oviedo","Recreativo","Villarreal"]}
+  {name:"Santi Comesaña",teams:["Rayo Vallecano","Villarreal"]}
+  {name:"Santi Mina",teams:["Celta Vigo","Valencia"]}
+  {name:"Santiago Acasiete",teams:["Almería"]}
+  {name:"Santiago Arias",teams:["Atlético Madrid","Bayer Leverkusen","Granada"]}
+  {name:"Santiago Ascacíbar",teams:["Cremonese","Hertha BSC","VfB Stuttgart"]}
+  {name:"Santiago Bueno",teams:["Girona","Wolverhampton Wanderers"]}
+  {name:"Santiago Castro",teams:["Bologna"]}
+  {name:"Santiago Cañizares",teams:["Valencia"]}
+  {name:"Santiago Ezquerro",teams:["Athletic Bilbao","Barcelona","Osasuna"]}
+  {name:"Santiago García",teams:["Novara","Palermo","Werder Bremen"]}
+  {name:"Santiago Gentiletti",teams:["Genoa","Lazio","Stade Brestois 29"]}
+  {name:"Santiago Morero",teams:["Chievo Verona"]}
+  {name:"Santiago Pierotti",teams:["Lecce"]}
+  {name:"Santiago Solari",teams:["Inter Milan","Real Madrid"]}
+  {name:"Santiago Vergini",teams:["Getafe","Sunderland"]}
+  {name:"Saphir Taïder",teams:["Bologna","Grenoble Foot","Inter Milan","Sassuolo"]}
+  {name:"Sardar Azmoun",teams:["AS Roma","Bayer Leverkusen"]}
+  {name:"Sargis Adamyan",teams:["FC Köln","TSG Hoffenheim"]}
+  {name:"Sasa Kalajdzic",teams:["Eintracht Frankfurt","VfB Stuttgart","Wolverhampton Wanderers"]}
+  {name:"Sascha Dum",teams:["Alemannia Aachen","Bayer Leverkusen"]}
+  {name:"Sascha Mölders",teams:["FC Augsburg","MSV Duisburg"]}
+  {name:"Sascha Riether",teams:["FC Köln","FC Schalke 04","Fulham","SC Freiburg","VfL Wolfsburg"]}
+  {name:"Savo Milošević",teams:["Celta Vigo","Espanyol","Osasuna","Parma","Real Zaragoza"]}
+  {name:"Saîf-Eddine Khaoui",teams:["Clermont Foot","Estac Troyes","Olympique de Marseille","SM Caen"]}
+  {name:"Saïd Benrahma",teams:["Angers SCO","OGC Nice","Olympique Lyonnais","West Ham United"]}
+  {name:"Saúl Berjón",teams:["Eibar"]}
+  {name:"Saúl Coco",teams:["Las Palmas","Torino"]}
+  {name:"Saúl Ñíguez",teams:["Atlético Madrid","Chelsea","Rayo Vallecano","Sevilla"]}
+  {name:"Saša Bjelanović",teams:["Ascoli","Chievo Verona","Como","Lecce","Torino"]}
+  {name:"Saša Lukić",teams:["Fulham","Levante","Torino"]}
+  {name:"Scot Gemmill",teams:["Everton"]}
+  {name:"Scott Arfield",teams:["Burnley"]}
+  {name:"Scott Carson",teams:["Aston Villa","Charlton Athletic","Leeds United","Liverpool","Manchester City","West Bromwich Albion"]}
+  {name:"Scott Dann",teams:["Birmingham City","Blackburn Rovers","Crystal Palace"]}
+  {name:"Scott McKenna",teams:["Las Palmas","Nottingham Forest"]}
+  {name:"Scott McTominay",teams:["Manchester United","Napoli"]}
+  {name:"Scott Parker",teams:["Charlton Athletic","Chelsea","Fulham","Newcastle United","Tottenham Hotspur","West Ham United"]}
+  {name:"Scott Sinclair",teams:["Aston Villa","Chelsea","Manchester City","Swansea City","West Bromwich Albion","Wigan Athletic"]}
+  {name:"Sead Kolašinac",teams:["Arsenal","Atalanta","FC Schalke 04","Olympique de Marseille"]}
+  {name:"Sean Davis",teams:["Bolton Wanderers","Fulham","Portsmouth","Tottenham Hotspur"]}
+  {name:"Sean Longstaff",teams:["Leeds United","Newcastle United"]}
+  {name:"Sean Morrison",teams:["Cardiff City","Reading"]}
+  {name:"Sean Sogliano",teams:["Ancona","Perugia"]}
+  {name:"Seba Fernández",teams:["Málaga","Rayo Vallecano"]}
+  {name:"Sebastiaan Bornauw",teams:["FC Köln","Leeds United","VfL Wolfsburg"]}
+  {name:"Sebastian Andersson",teams:["1. FC Union Berlin","FC Köln"]}
+  {name:"Sebastian Boenisch",teams:["Bayer Leverkusen","FC Schalke 04","Werder Bremen"]}
+  {name:"Sebastian Deisler",teams:["Bayern Munich","Hertha BSC"]}
+  {name:"Sebastian Freis",teams:["FC Köln","Karlsruher SC","SC Freiburg"]}
+  {name:"Sebastian Giovinco",teams:["Empoli","Juventus","Parma","Sampdoria"]}
+  {name:"Sebastian Griesbeck",teams:["1. FC Union Berlin","SpVgg Greuther Fürth"]}
+  {name:"Sebastian Helbig",teams:["Energie Cottbus","FC Köln"]}
+  {name:"Sebastian Jung",teams:["Eintracht Frankfurt","VfL Wolfsburg"]}
+  {name:"Sebastian Kehl",teams:["Borussia Dortmund","SC Freiburg"]}
+  {name:"Sebastian Kerk",teams:["1. FC Nürnberg","SC Freiburg"]}
+  {name:"Sebastian Langkamp",teams:["FC Augsburg","Hertha BSC","Karlsruher SC","Werder Bremen"]}
+  {name:"Sebastian Larsson",teams:["Arsenal","Birmingham City","Sunderland"]}
+  {name:"Sebastian Mielitz",teams:["Werder Bremen"]}
+  {name:"Sebastian Polter",teams:["1. FC Nürnberg","1. FC Union Berlin","1. FSV Mainz 05","FC Schalke 04","SV Darmstadt 98","VfL Bochum","VfL Wolfsburg"]}
+  {name:"Sebastian Prödl",teams:["Watford","Werder Bremen"]}
+  {name:"Sebastian Rode",teams:["Bayern Munich","Borussia Dortmund","Eintracht Frankfurt"]}
+  {name:"Sebastian Rudy",teams:["Bayern Munich","FC Schalke 04","TSG Hoffenheim","VfB Stuttgart"]}
+  {name:"Sebastian Schindzielorz",teams:["FC Köln","VfL Bochum","VfL Wolfsburg"]}
+  {name:"Sebastian Vasiliadis",teams:["Arminia Bielefeld","SC Paderborn 07"]}
+  {name:"Sebastian Walukiewicz",teams:["Cagliari","Empoli","Sassuolo","Torino"]}
+  {name:"Sebastiano Esposito",teams:["Cagliari","Empoli","Inter Milan"]}
+  {name:"Sebastiano Luperto",teams:["Cagliari","Cremonese","Crotone","Empoli","Napoli"]}
+  {name:"Sebastiano Siviglia",teams:["AS Roma","Atalanta","Lazio","Lecce"]}
+  {name:"Sebastien De Maio",teams:["Bologna","Brescia","Fiorentina","Genoa","Udinese"]}
+  {name:"Sebastián Cristóforo",teams:["Eibar","Fiorentina","Getafe","Sevilla"]}
+  {name:"Sebastián Dubarbier",teams:["Almería","FC Lorient"]}
+  {name:"Sebastián Eguren",teams:["Sporting Gijón","Villarreal"]}
+  {name:"Sebastián Viera",teams:["Villarreal"]}
+  {name:"Sejad Salihović",teams:["Hamburger SV","Hertha BSC","TSG Hoffenheim"]}
+  {name:"Seko Fofana",teams:["RC Lens","SC Bastia","Stade Rennais","Udinese"]}
+  {name:"Sekou Mara",teams:["AJ Auxerre","Girondins de Bordeaux","RC Strasbourg","Southampton"]}
+  {name:"Selim Amallah",teams:["Real Valladolid","Valencia"]}
+  {name:"Selim Benachour",teams:["Estac Troyes","Málaga","Paris Saint-Germain"]}
+  {name:"Selim Teber",teams:["1. FC Kaiserslautern","Eintracht Frankfurt","TSG Hoffenheim"]}
+  {name:"Senad Lulić",teams:["Lazio"]}
+  {name:"Senne Lynen",teams:["Werder Bremen"]}
+  {name:"Sepp van den Berg",teams:["1. FSV Mainz 05","Brentford","FC Schalke 04"]}
+  {name:"Serdar Tasci",teams:["Bayern Munich","VfB Stuttgart"]}
+  {name:"Serge Aurier",teams:["Nottingham Forest","Paris Saint-Germain","RC Lens","Tottenham Hotspur","Toulouse FC","Villarreal"]}
+  {name:"Serge Blanc",teams:["Montpellier HSC","Olympique Lyonnais"]}
+  {name:"Serge Dié",teams:["FC Metz","OGC Nice"]}
+  {name:"Serge Gakpé",teams:["AS Monaco","Amiens SC","Atalanta","Chievo Verona","FC Nantes","Genoa"]}
+  {name:"Serge Gnabry",teams:["Arsenal","Bayern Munich","TSG Hoffenheim","Werder Bremen","West Bromwich Albion"]}
+  {name:"Sergej Barbarez",teams:["Bayer Leverkusen","Hamburger SV"]}
+  {name:"Sergej Milinković-Savić",teams:["Lazio"]}
+  {name:"Sergi Altimira",teams:["Real Betis"]}
+  {name:"Sergi Barjuán",teams:["Atlético Madrid","Barcelona"]}
+  {name:"Sergi Canós",teams:["Brentford","Liverpool","Valencia"]}
+  {name:"Sergi Cardona",teams:["Las Palmas","Villarreal"]}
+  {name:"Sergi Darder",teams:["Espanyol","Mallorca","Málaga","Olympique Lyonnais"]}
+  {name:"Sergi Enrich",teams:["Eibar","Mallorca"]}
+  {name:"Sergi Guardiola",teams:["Cádiz","Getafe","Rayo Vallecano","Real Valladolid"]}
+  {name:"Sergi Gómez",teams:["Celta Vigo","Espanyol","Sevilla"]}
+  {name:"Sergi Roberto",teams:["Barcelona","Como"]}
+  {name:"Serginho",teams:["AC Milan"]}
+  {name:"Sergio",teams:["Celta Vigo","Deportivo La Coruña","Espanyol","Levante","Osasuna","Real Zaragoza"]}
+  {name:"Sergio Agüero",teams:["Atlético Madrid","Barcelona","Manchester City"]}
+  {name:"Sergio Akieme",teams:["Almería","Rayo Vallecano","Stade de Reims"]}
+  {name:"Sergio Almirón",teams:["AS Monaco","Bari","Catania","Empoli","Fiorentina","Juventus","Udinese"]}
+  {name:"Sergio Aragoneses",teams:["Atlético Madrid","Getafe","Tenerife"]}
+  {name:"Sergio Asenjo",teams:["Atlético Madrid","Málaga","Real Valladolid","Villarreal"]}
+  {name:"Sergio Ballesteros",teams:["Levante","Mallorca","Rayo Vallecano","Villarreal"]}
+  {name:"Sergio Busquets",teams:["Barcelona"]}
+  {name:"Sergio Camello",teams:["Atlético Madrid","Rayo Vallecano"]}
+  {name:"Sergio Canales",teams:["Racing Santander","Real Betis","Real Madrid","Real Sociedad","Valencia"]}
+  {name:"Sergio Corino",teams:["Rayo Vallecano","Real Sociedad"]}
+  {name:"Sergio Córdova",teams:["Arminia Bielefeld","FC Augsburg"]}
+  {name:"Sergio Escudero",teams:["FC Schalke 04","Getafe","Granada","Real Valladolid","Sevilla"]}
+  {name:"Sergio Floccari",teams:["Atalanta","Bologna","Genoa","Lazio","Messina","Parma","SPAL","Sassuolo"]}
+  {name:"Sergio García",teams:["Barcelona","Espanyol","Levante","Real Betis","Real Zaragoza"]}
+  {name:"Sergio Gómez",teams:["Borussia Dortmund","Huesca","Manchester City","Real Sociedad"]}
+  {name:"Sergio Herrera",teams:["Osasuna"]}
+  {name:"Sergio León",teams:["Levante","Osasuna","Real Betis","Real Valladolid"]}
+  {name:"Sergio Matabuena",teams:["Racing Santander","Sporting Gijón"]}
+  {name:"Sergio Pachón",teams:["Getafe","Real Valladolid"]}
+  {name:"Sergio Pellissier",teams:["Chievo Verona"]}
+  {name:"Sergio Postigo",teams:["Levante"]}
+  {name:"Sergio Ramos",teams:["Paris Saint-Germain","Real Madrid","Sevilla"]}
+  {name:"Sergio Reguilón",teams:["Atlético Madrid","Brentford","Manchester United","Real Madrid","Sevilla","Tottenham Hotspur"]}
+  {name:"Sergio Rico",teams:["Fulham","Mallorca","Paris Saint-Germain","Sevilla"]}
+  {name:"Sergio Romero",teams:["AS Monaco","Manchester United","Sampdoria","Venezia"]}
+  {name:"Sergio Sánchez",teams:["Espanyol","Málaga","Racing Santander","Sevilla"]}
+  {name:"Sergio Volpi",teams:["Atalanta","Bologna","Piacenza","Sampdoria"]}
+  {name:"Sergio Álvarez",teams:["Celta Vigo","Eibar","Sporting Gijón"]}
+  {name:"Sergiu Radu",teams:["Energie Cottbus","FC Köln","Le Mans FC","VfB Stuttgart","VfL Wolfsburg"]}
+  {name:"Sergiño Dest",teams:["AC Milan","Barcelona"]}
+  {name:"Serhiy Rebrov",teams:["Tottenham Hotspur"]}
+  {name:"Serhou Guirassy",teams:["Amiens SC","Borussia Dortmund","FC Köln","LOSC Lille","Stade Rennais","VfB Stuttgart"]}
+  {name:"Seth Johnson",teams:["Derby County","Leeds United"]}
+  {name:"Seydou Keita",teams:["AS Roma","Barcelona","FC Lorient","RC Lens","Sevilla","Valencia"]}
+  {name:"Shabani Nonda",teams:["AS Monaco","AS Roma","Blackburn Rovers"]}
+  {name:"Shaka Hislop",teams:["Portsmouth","West Ham United"]}
+  {name:"Shandon Baptiste",teams:["Brentford"]}
+  {name:"Shane Duffy",teams:["Brighton & Hove Albion","Everton","Fulham"]}
+  {name:"Shane Long",teams:["Hull City","Reading","Southampton","West Bromwich Albion"]}
+  {name:"Shao Jiayi",teams:["1860 Munich","Energie Cottbus"]}
+  {name:"Shaun Bartlett",teams:["Charlton Athletic"]}
+  {name:"Shaun Derry",teams:["Crystal Palace","Queens Park Rangers"]}
+  {name:"Shaun Goater",teams:["Manchester City"]}
+  {name:"Shaun Maloney",teams:["Aston Villa","Hull City","Wigan Athletic"]}
+  {name:"Shaun Newton",teams:["Charlton Athletic","West Ham United","Wolverhampton Wanderers"]}
+  {name:"Shaun Wright-Phillips",teams:["Chelsea","Manchester City","Queens Park Rangers"]}
+  {name:"Shay Given",teams:["Aston Villa","Manchester City","Newcastle United","Stoke City"]}
+  {name:"Shefki Kuqi",teams:["Blackburn Rovers","Fulham","Newcastle United"]}
+  {name:"Sheraldo Becker",teams:["1. FC Union Berlin","1. FSV Mainz 05","Osasuna","Real Sociedad"]}
+  {name:"Shinji Kagawa",teams:["Borussia Dortmund","Manchester United"]}
+  {name:"Shinji Okazaki",teams:["1. FSV Mainz 05","Huesca","Leicester City","VfB Stuttgart"]}
+  {name:"Shkodran Mustafi",teams:["Arsenal","FC Schalke 04","Levante","Sampdoria","Valencia"]}
+  {name:"Shola Ameobi",teams:["Crystal Palace","Newcastle United"]}
+  {name:"Shon Weissman",teams:["Granada","Real Valladolid","Salernitana"]}
+  {name:"Shunsuke Nakamura",teams:["Espanyol","Reggina"]}
+  {name:"Shuto Machino",teams:["Borussia Mönchengladbach","Holstein Kiel"]}
+  {name:"Siaka Tiéné",teams:["AS Saint-Étienne","FC Valenciennes","Montpellier HSC","Paris Saint-Germain"]}
+  {name:"Sibusiso Zuma",teams:["Arminia Bielefeld"]}
+  {name:"Sidi Yaya Keita",teams:["RC Lens","RC Strasbourg","Xerez"]}
+  {name:"Sidnei",teams:["Deportivo La Coruña","Espanyol","Real Betis"]}
+  {name:"Sidney Govou",teams:["Olympique Lyonnais","Évian TG"]}
+  {name:"Sidney Sam",teams:["Bayer Leverkusen","FC Schalke 04","Hamburger SV","SV Darmstadt 98"]}
+  {name:"Sigamary Diarra",teams:["FC Lorient","FC Sochaux","GFC Ajaccio"]}
+  {name:"Silas Katompa",teams:["1. FSV Mainz 05","VfB Stuttgart"]}
+  {name:"Silvan Widmer",teams:["1. FSV Mainz 05","Udinese"]}
+  {name:"Silvio Meißner",teams:["VfB Stuttgart"]}
+  {name:"Silvio Schröter",teams:["Energie Cottbus","Hannover 96","MSV Duisburg"]}
+  {name:"Simeon Nwankwo",teams:["Crotone","Salernitana"]}
+  {name:"Simon Adingra",teams:["AS Monaco","Brighton & Hove Albion","Sunderland"]}
+  {name:"Simon Charlton",teams:["Bolton Wanderers","Norwich City"]}
+  {name:"Simon Davies",teams:["Everton","Fulham","Tottenham Hotspur"]}
+  {name:"Simon Falette",teams:["Eintracht Frankfurt","FC Lorient","FC Metz"]}
+  {name:"Simon Francis",teams:["AFC Bournemouth"]}
+  {name:"Simon Jentzsch",teams:["1860 Munich","FC Augsburg","VfL Wolfsburg"]}
+  {name:"Simon Kjær",teams:["AC Milan","AS Roma","Atalanta","LOSC Lille","Palermo","Sevilla","VfL Wolfsburg"]}
+  {name:"Simon Mignolet",teams:["Liverpool","Sunderland"]}
+  {name:"Simon Pouplin",teams:["FC Sochaux","OGC Nice","SC Freiburg","Stade Rennais"]}
+  {name:"Simon Rolfes",teams:["Bayer Leverkusen"]}
+  {name:"Simon Sohm",teams:["Bologna","Fiorentina","Parma"]}
+  {name:"Simon Terodde",teams:["FC Köln","FC Schalke 04","VfB Stuttgart"]}
+  {name:"Simon Zoller",teams:["FC Köln","VfL Bochum"]}
+  {name:"Simone Barone",teams:["Cagliari","Chievo Verona","Palermo","Parma","Torino"]}
+  {name:"Simone Bastoni",teams:["Empoli","Spezia"]}
+  {name:"Simone Bentivoglio",teams:["Bari","Chievo Verona"]}
+  {name:"Simone Del Nero",teams:["Brescia","Cesena","Lazio"]}
+  {name:"Simone Iacoponi",teams:["Empoli","Parma"]}
+  {name:"Simone Inzaghi",teams:["Atalanta","Lazio","Sampdoria"]}
+  {name:"Simone Loria",teams:["AS Roma","Atalanta","Bologna","Cagliari","Siena"]}
+  {name:"Simone Missiroli",teams:["Cagliari","Reggina","SPAL","Sassuolo"]}
+  {name:"Simone Padoin",teams:["Atalanta","Cagliari","Juventus"]}
+  {name:"Simone Pavan",teams:["Livorno","Modena","Sampdoria","Venezia"]}
+  {name:"Simone Pepe",teams:["Cagliari","Chievo Verona","Juventus","Pescara","Udinese"]}
+  {name:"Simone Perrotta",teams:["AS Roma","Bari","Chievo Verona"]}
+  {name:"Simone Pesce",teams:["Ascoli","Catania","Novara"]}
+  {name:"Simone Romagnoli",teams:["Bologna","Carpi","Empoli","Frosinone","Lecce","Pescara"]}
+  {name:"Simone Scuffet",teams:["Cagliari","Napoli","Pisa","Udinese"]}
+  {name:"Simone Tiribocchi",teams:["Atalanta","Chievo Verona","Lecce","Torino"]}
+  {name:"Simone Verdi",teams:["Bologna","Carpi","Como","Eibar","Empoli","Hellas Verona","Napoli","Salernitana","Torino"]}
+  {name:"Simone Vergassola",teams:["Siena","Torino"]}
+  {name:"Simone Zaza",teams:["Atalanta","Juventus","Sampdoria","Sassuolo","Torino","Valencia","West Ham United"]}
+  {name:"Simão Mate Junior",teams:["Levante"]}
+  {name:"Simão Sabrosa",teams:["Atlético Madrid","Barcelona","Espanyol"]}
+  {name:"Sinaly Diomande",teams:["AJ Auxerre","Olympique Lyonnais"]}
+  {name:"Siniša Anđelković",teams:["Palermo"]}
+  {name:"Siniša Mihajlović",teams:["Inter Milan","Lazio"]}
+  {name:"Sisi",teams:["Osasuna","Real Valladolid","Recreativo"]}
+  {name:"Slađan Ašanin",teams:["Borussia Mönchengladbach"]}
+  {name:"Sloan Privat",teams:["EA Guingamp","FC Sochaux","SM Caen"]}
+  {name:"Slobodan Medojević",teams:["Eintracht Frankfurt","VfL Wolfsburg"]}
+  {name:"Slobodan Rajković",teams:["Hamburger SV","Palermo","SV Darmstadt 98"]}
+  {name:"Sofian Chahed",teams:["Hannover 96","Hertha BSC"]}
+  {name:"Sofian Kiyine",teams:["Chievo Verona","Venezia"]}
+  {name:"Sofiane Alakouch",teams:["FC Metz","Nîmes"]}
+  {name:"Sofiane Boufal",teams:["Angers SCO","Celta Vigo","LOSC Lille","Le Havre AC","Southampton"]}
+  {name:"Sofiane Diop",teams:["AS Monaco","OGC Nice"]}
+  {name:"Sofiane Feghouli",teams:["Almería","Grenoble Foot","Valencia","West Ham United"]}
+  {name:"Sofyan Amrabat",teams:["Fiorentina","Hellas Verona","Manchester United","Real Betis"]}
+  {name:"Sokratis Papastathopoulos",teams:["AC Milan","Arsenal","Borussia Dortmund","Genoa","Real Betis","Werder Bremen"]}
+  {name:"Sol Campbell",teams:["Arsenal","Newcastle United","Portsmouth","Tottenham Hotspur"]}
+  {name:"Solly March",teams:["Brighton & Hove Albion"]}
+  {name:"Somália",teams:["Toulouse FC"]}
+  {name:"Son",teams:["Levante"]}
+  {name:"Son Heung-min",teams:["Bayer Leverkusen","Hamburger SV","Tottenham Hotspur"]}
+  {name:"Sonny Anderson",teams:["Olympique Lyonnais","Villarreal"]}
+  {name:"Sonny Kittel",teams:["Eintracht Frankfurt","FC Ingolstadt 04"]}
+  {name:"Sotirios Kyrgiakos",teams:["Eintracht Frankfurt","Liverpool","Sunderland","VfL Wolfsburg"]}
+  {name:"Soualiho Meïté",teams:["AC Milan","AJ Auxerre","AS Monaco","Cremonese","Girondins de Bordeaux","LOSC Lille","Torino"]}
+  {name:"Souleyman Doumbia",teams:["Angers SCO","Stade Rennais"]}
+  {name:"Souleymane Camara",teams:["AS Monaco","EA Guingamp","Montpellier HSC","OGC Nice"]}
+  {name:"Souleymane Diamoutene",teams:["AS Roma","Bari","Lecce","Perugia"]}
+  {name:"Souleymane Diawara",teams:["Charlton Athletic","FC Sochaux","Girondins de Bordeaux","Le Havre AC","OGC Nice","Olympique de Marseille"]}
+  {name:"Souleymane Touré",teams:["AJ Auxerre","FC Lorient","Olympique de Marseille","Udinese"]}
+  {name:"Soumaila Coulibaly",teams:["Borussia Mönchengladbach","SC Freiburg"]}
+  {name:"Soungoutou Magassa",teams:["AS Monaco","West Ham United"]}
+  {name:"Srđan Lakić",teams:["1. FC Kaiserslautern","Eintracht Frankfurt","Hertha BSC","SC Paderborn 07","TSG Hoffenheim","VfL Wolfsburg"]}
+  {name:"Stan Lazaridis",teams:["Birmingham City"]}
+  {name:"Stanislav Angelov",teams:["Energie Cottbus"]}
+  {name:"Stanislav Lobotka",teams:["Celta Vigo","Napoli"]}
+  {name:"Stanislav Šesták",teams:["VfL Bochum"]}
+  {name:"Stanley N'Soki",teams:["1. FC Union Berlin","OGC Nice","Paris Saint-Germain","TSG Hoffenheim"]}
+  {name:"Stathis Tavlaridis",teams:["AS Saint-Étienne","Arsenal","LOSC Lille"]}
+  {name:"Steed Malbranque",teams:["AS Saint-Étienne","Fulham","Olympique Lyonnais","SM Caen","Sunderland","Tottenham Hotspur"]}
+  {name:"Steeve Elana",teams:["LOSC Lille","SM Caen","Stade Brestois 29"]}
+  {name:"Steeve Yago",teams:["Toulouse FC"]}
+  {name:"Steeven Langil",teams:["AJ Auxerre","EA Guingamp","FC Valenciennes"]}
+  {name:"Stefan Aigner",teams:["Arminia Bielefeld","Eintracht Frankfurt"]}
+  {name:"Stefan Beinlich",teams:["Hamburger SV","Hansa Rostock","Hertha BSC"]}
+  {name:"Stefan Bell",teams:["1. FSV Mainz 05"]}
+  {name:"Stefan Effenberg",teams:["Bayern Munich","VfL Wolfsburg"]}
+  {name:"Stefan Ilsanker",teams:["Eintracht Frankfurt","RB Leipzig"]}
+  {name:"Stefan Kießling",teams:["1. FC Nürnberg","Bayer Leverkusen"]}
+  {name:"Stefan Lainer",teams:["Borussia Mönchengladbach"]}
+  {name:"Stefan Mitrović",teams:["Getafe","RC Strasbourg","Real Valladolid","SC Freiburg"]}
+  {name:"Stefan Müller",teams:["SC Freiburg"]}
+  {name:"Stefan Ortega",teams:["Arminia Bielefeld","Manchester City","Nottingham Forest"]}
+  {name:"Stefan Posch",teams:["1. FSV Mainz 05","Atalanta","Bologna","Como","TSG Hoffenheim"]}
+  {name:"Stefan Reinartz",teams:["Bayer Leverkusen","Eintracht Frankfurt"]}
+  {name:"Stefan Reisinger",teams:["Fortuna Düsseldorf","SC Freiburg"]}
+  {name:"Stefan Reuter",teams:["Borussia Dortmund"]}
+  {name:"Stefan Savić",teams:["Atlético Madrid","Fiorentina","Manchester City"]}
+  {name:"Stefan Schnoor",teams:["Derby County","VfL Wolfsburg"]}
+  {name:"Stefan Wessels",teams:["Bayern Munich","Everton","FC Köln"]}
+  {name:"Stefan Wächter",teams:["Hamburger SV","Hansa Rostock"]}
+  {name:"Stefan de Vrij",teams:["Inter Milan","Lazio"]}
+  {name:"Stefano Bettarini",teams:["Parma","Sampdoria","Venezia"]}
+  {name:"Stefano Celozzi",teams:["Eintracht Frankfurt","Karlsruher SC","VfB Stuttgart"]}
+  {name:"Stefano Fattori",teams:["Torino","Vicenza"]}
+  {name:"Stefano Fiore",teams:["Fiorentina","Lazio","Torino","Udinese","Valencia"]}
+  {name:"Stefano Guberti",teams:["AS Roma","Ascoli","Sampdoria"]}
+  {name:"Stefano Lucchini",teams:["Atalanta","Cesena","Empoli","Sampdoria"]}
+  {name:"Stefano Mauri",teams:["Brescia","Lazio","Modena","Udinese"]}
+  {name:"Stefano Morrone",teams:["Chievo Verona","Livorno","Palermo","Parma","Venezia"]}
+  {name:"Stefano Okaka",teams:["AS Roma","Bari","Fulham","Parma","Sampdoria","Udinese","Watford"]}
+  {name:"Stefano Sabelli",teams:["Brescia","Carpi","Genoa"]}
+  {name:"Stefano Sensi",teams:["Inter Milan","Monza","Sampdoria","Sassuolo"]}
+  {name:"Stefano Sorrentino",teams:["Chievo Verona","Palermo","Recreativo","Torino"]}
+  {name:"Stefano Sturaro",teams:["Genoa","Hellas Verona","Juventus"]}
+  {name:"Stefano Torrisi",teams:["Bologna","Olympique de Marseille","Parma","Reggina"]}
+  {name:"Stefano Turati",teams:["Frosinone","Monza","Sassuolo"]}
+  {name:"Steffen Baumgart",teams:["Energie Cottbus","Hansa Rostock"]}
+  {name:"Steffen Freund",teams:["1. FC Kaiserslautern","Leicester City","Tottenham Hotspur"]}
+  {name:"Steffen Iversen",teams:["Tottenham Hotspur","Wolverhampton Wanderers"]}
+  {name:"Steffen Korell",teams:["Borussia Mönchengladbach"]}
+  {name:"Steffen Tigges",teams:["Borussia Dortmund","FC Köln"]}
+  {name:"Stelios Giannakopoulos",teams:["Bolton Wanderers","Hull City"]}
+  {name:"Stephan Andersen",teams:["Charlton Athletic","Real Betis","Évian TG"]}
+  {name:"Stephan El Shaarawy",teams:["AC Milan","AS Monaco","AS Roma","Genoa"]}
+  {name:"Stephan Lichtsteiner",teams:["Arsenal","FC Augsburg","Juventus","LOSC Lille","Lazio"]}
+  {name:"Stephen Appiah",teams:["Bologna","Brescia","Cesena","Juventus","Parma"]}
+  {name:"Stephen Carr",teams:["Birmingham City","Newcastle United","Tottenham Hotspur"]}
+  {name:"Stephen Clemence",teams:["Birmingham City","Tottenham Hotspur"]}
+  {name:"Stephen Hunt",teams:["Hull City","Reading","Wolverhampton Wanderers"]}
+  {name:"Stephen Ireland",teams:["Aston Villa","Manchester City","Newcastle United","Stoke City"]}
+  {name:"Stephen Jordan",teams:["Burnley","Manchester City"]}
+  {name:"Stephen Kelly",teams:["Birmingham City","Fulham","Reading","Stoke City","Tottenham Hotspur"]}
+  {name:"Stephen Makinwa",teams:["Atalanta","Chievo Verona","Lazio","Modena","Palermo","Reggina"]}
+  {name:"Stephen Quinn",teams:["Hull City","Sheffield United"]}
+  {name:"Stephen Ward",teams:["Burnley","Wolverhampton Wanderers"]}
+  {name:"Stephen Warnock",teams:["Aston Villa","Blackburn Rovers","Liverpool"]}
+  {name:"Stephy Mavididi",teams:["Dijon FCO","Juventus","Leicester City","Montpellier HSC"]}
+  {name:"Stern John",teams:["Birmingham City","Sunderland"]}
+  {name:"Stevan Jovetić",teams:["AS Monaco","Fiorentina","Hertha BSC","Inter Milan","Manchester City","Sevilla"]}
+  {name:"Steve Cherundolo",teams:["Hannover 96"]}
+  {name:"Steve Cook",teams:["AFC Bournemouth","Nottingham Forest"]}
+  {name:"Steve Finnan",teams:["Espanyol","Fulham","Liverpool","Portsmouth"]}
+  {name:"Steve Gohouri",teams:["Borussia Mönchengladbach","Wigan Athletic"]}
+  {name:"Steve Harper",teams:["Hull City","Newcastle United"]}
+  {name:"Steve Howey",teams:["Bolton Wanderers","Leicester City","Manchester City"]}
+  {name:"Steve Lomas",teams:["West Ham United"]}
+  {name:"Steve Mandanda",teams:["Crystal Palace","Olympique de Marseille","Stade Rennais"]}
+  {name:"Steve Marlet",teams:["FC Lorient","Fulham","Olympique Lyonnais","Olympique de Marseille","VfL Wolfsburg"]}
+  {name:"Steve McManaman",teams:["Manchester City","Real Madrid"]}
+  {name:"Steve Morison",teams:["Norwich City"]}
+  {name:"Steve Mounié",teams:["FC Augsburg","Huddersfield Town","Montpellier HSC","Stade Brestois 29"]}
+  {name:"Steve Savidan",teams:["FC Valenciennes","SM Caen"]}
+  {name:"Steve Sidwell",teams:["Aston Villa","Chelsea","Fulham","Reading","Stoke City"]}
+  {name:"Steve Staunton",teams:["Aston Villa","Liverpool"]}
+  {name:"Steve Stone",teams:["Aston Villa","Portsmouth"]}
+  {name:"Steve Watson",teams:["Everton","West Bromwich Albion"]}
+  {name:"Steve von Bergen",teams:["Cesena","Hertha BSC","Palermo"]}
+  {name:"Steven Bergwijn",teams:["Tottenham Hotspur"]}
+  {name:"Steven Caldwell",teams:["Burnley","Leeds United","Newcastle United","Sunderland","Wigan Athletic"]}
+  {name:"Steven Caulker",teams:["Cardiff City","Liverpool","Queens Park Rangers","Southampton","Swansea City","Tottenham Hotspur"]}
+  {name:"Steven Davis",teams:["Aston Villa","Fulham","Southampton"]}
+  {name:"Steven Defour",teams:["Burnley"]}
+  {name:"Steven Fletcher",teams:["Burnley","Olympique de Marseille","Sunderland","Wolverhampton Wanderers"]}
+  {name:"Steven Gerrard",teams:["Liverpool"]}
+  {name:"Steven Moreira",teams:["FC Lorient","Stade Rennais","Toulouse FC"]}
+  {name:"Steven Naismith",teams:["Everton","Norwich City"]}
+  {name:"Steven Nzonzi",teams:["AS Roma","Blackburn Rovers","Sevilla","Stade Rennais","Stoke City"]}
+  {name:"Steven Pienaar",teams:["Borussia Dortmund","Everton","Sunderland","Tottenham Hotspur"]}
+  {name:"Steven Reid",teams:["Blackburn Rovers","Burnley","West Bromwich Albion"]}
+  {name:"Steven Skrzybski",teams:["FC Schalke 04","Fortuna Düsseldorf","Holstein Kiel"]}
+  {name:"Steven Taylor",teams:["Newcastle United"]}
+  {name:"Steven Zuber",teams:["Eintracht Frankfurt","TSG Hoffenheim","VfB Stuttgart"]}
+  {name:"Stewart Downing",teams:["Aston Villa","Liverpool","Middlesbrough","West Ham United"]}
+  {name:"Stig Tøfting",teams:["Bolton Wanderers","Hamburger SV"]}
+  {name:"Stijn Spierings",teams:["RC Lens","Toulouse FC"]}
+  {name:"Stiliyan Petrov",teams:["Aston Villa"]}
+  {name:"Stipe Perica",teams:["Frosinone","Udinese"]}
+  {name:"Stiven Mendoza",teams:["Amiens SC"]}
+  {name:"Stiven Rivić",teams:["1. FC Kaiserslautern","Energie Cottbus"]}
+  {name:"Stjepan Tomas",teams:["Como","Vicenza"]}
+  {name:"Stole Dimitrievski",teams:["Granada","Rayo Vallecano","Valencia"]}
+  {name:"Stoppila Sunzu",teams:["FC Metz","FC Sochaux","LOSC Lille"]}
+  {name:"Strahinja Pavlović",teams:["AC Milan","AS Monaco"]}
+  {name:"Stuart Armstrong",teams:["Southampton"]}
+  {name:"Stuart Dallas",teams:["Leeds United"]}
+  {name:"Stuart Parnaby",teams:["Birmingham City","Middlesbrough"]}
+  {name:"Stéphane Bahoken",teams:["Angers SCO","OGC Nice","RC Strasbourg"]}
+  {name:"Stéphane Borbiconi",teams:["FC Metz"]}
+  {name:"Stéphane Carnot",teams:["EA Guingamp"]}
+  {name:"Stéphane Cassard",teams:["Estac Troyes","RC Strasbourg"]}
+  {name:"Stéphane Dalmat",teams:["FC Sochaux","Girondins de Bordeaux","Inter Milan","Paris Saint-Germain","Racing Santander","Stade Rennais","Tottenham Hotspur","Toulouse FC"]}
+  {name:"Stéphane Darbion",teams:["Estac Troyes","Montpellier HSC"]}
+  {name:"Stéphane Diarra",teams:["FC Lorient"]}
+  {name:"Stéphane Dumont",teams:["LOSC Lille"]}
+  {name:"Stéphane Grichting",teams:["AJ Auxerre"]}
+  {name:"Stéphane Grégoire",teams:["GFC Ajaccio","Stade Rennais"]}
+  {name:"Stéphane Henchoz",teams:["Blackburn Rovers","Liverpool","Wigan Athletic"]}
+  {name:"Stéphane Lièvre",teams:["Toulouse FC"]}
+  {name:"Stéphane Mbia",teams:["Olympique de Marseille","Queens Park Rangers","Sevilla","Stade Rennais","Toulouse FC"]}
+  {name:"Stéphane Morisot",teams:["FC Metz"]}
+  {name:"Stéphane Noro",teams:["FC Metz","Le Havre AC","Sedan"]}
+  {name:"Stéphane Pichot",teams:["FC Sochaux","LOSC Lille","Paris Saint-Germain"]}
+  {name:"Stéphane Pignol",teams:["Numancia","Real Murcia"]}
+  {name:"Stéphane Porato",teams:["AS Monaco","GFC Ajaccio"]}
+  {name:"Stéphane Pédron",teams:["AS Saint-Étienne","FC Lorient","Paris Saint-Germain","RC Lens"]}
+  {name:"Stéphane Ruffier",teams:["AS Monaco","AS Saint-Étienne"]}
+  {name:"Stéphane Sessègnon",teams:["Le Mans FC","Montpellier HSC","Paris Saint-Germain","Sunderland","West Bromwich Albion"]}
+  {name:"Stéphane Trévisan",teams:["GFC Ajaccio","Olympique de Marseille","Sedan"]}
+  {name:"Stéphane Ziani",teams:["FC Nantes","GFC Ajaccio","SC Bastia"]}
+  {name:"Suat Serdar",teams:["1. FSV Mainz 05","FC Schalke 04","Hellas Verona","Hertha BSC"]}
+  {name:"Suk Hyun-jun",teams:["Estac Troyes","Stade de Reims"]}
+  {name:"Sulley Muntari",teams:["AC Milan","Deportivo La Coruña","Inter Milan","Pescara","Portsmouth","Sunderland","Udinese"]}
+  {name:"Sun Jihai",teams:["Manchester City"]}
+  {name:"Sunday Oliseh",teams:["Borussia Dortmund","VfL Bochum"]}
+  {name:"Suso",teams:["AC Milan","Almería","Genoa","Liverpool","Sevilla"]}
+  {name:"Sven Bender",teams:["Bayer Leverkusen","Borussia Dortmund"]}
+  {name:"Sven Botman",teams:["LOSC Lille","Newcastle United"]}
+  {name:"Sven Michel",teams:["1. FC Union Berlin","FC Augsburg","SC Paderborn 07"]}
+  {name:"Sven Müller",teams:["1. FC Nürnberg","VfL Wolfsburg"]}
+  {name:"Sven Schipplock",teams:["Arminia Bielefeld","Hamburger SV","SV Darmstadt 98","TSG Hoffenheim","VfB Stuttgart"]}
+  {name:"Sven Ulreich",teams:["Bayern Munich","VfB Stuttgart"]}
+  {name:"Sven Vermant",teams:["FC Schalke 04"]}
+  {name:"Sylvain Armand",teams:["FC Nantes","Paris Saint-Germain","Stade Rennais"]}
+  {name:"Sylvain Distin",teams:["AFC Bournemouth","Everton","Manchester City","Newcastle United","Paris Saint-Germain","Portsmouth"]}
+  {name:"Sylvain Legwinski",teams:["Fulham","Girondins de Bordeaux"]}
+  {name:"Sylvain Marchal",teams:["AS Saint-Étienne","FC Lorient","FC Metz","SC Bastia"]}
+  {name:"Sylvain Marveaux",teams:["EA Guingamp","FC Lorient","Newcastle United","Stade Rennais"]}
+  {name:"Sylvain Monsoreau",teams:["AS Monaco","AS Saint-Étienne","FC Sochaux","Olympique Lyonnais"]}
+  {name:"Sylvain N'Diaye",teams:["LOSC Lille","Levante","Olympique de Marseille"]}
+  {name:"Sylvain Wiltord",teams:["Arsenal","Olympique Lyonnais","Olympique de Marseille","Stade Rennais"]}
+  {name:"Sylvan Ebanks-Blake",teams:["Wolverhampton Wanderers"]}
+  {name:"Sylvinho",teams:["Arsenal","Barcelona","Celta Vigo","Manchester City"]}
+  {name:"Szabolcs Huszti",teams:["Eintracht Frankfurt","FC Metz","Hannover 96"]}
+  {name:"Szilárd Németh",teams:["Alemannia Aachen","Middlesbrough","RC Strasbourg"]}
+  {name:"Szymon Żurkowski",teams:["Empoli","Fiorentina","Spezia"]}
+  {name:"Sávio",teams:["Girona","Girondins de Bordeaux","Levante","Manchester City","Real Madrid","Real Sociedad","Real Zaragoza"]}
+  {name:"Séamus Coleman",teams:["Everton"]}
+  {name:"Sébastien Bassong",teams:["FC Metz","Newcastle United","Norwich City","Tottenham Hotspur","Wolverhampton Wanderers"]}
+  {name:"Sébastien Corchia",teams:["Espanyol","FC Nantes","FC Sochaux","LOSC Lille","Le Mans FC","Sevilla"]}
+  {name:"Sébastien Frey",teams:["Fiorentina","Genoa","Inter Milan","Parma"]}
+  {name:"Sébastien Grax",teams:["AS Monaco","AS Saint-Étienne","Estac Troyes","FC Sochaux"]}
+  {name:"Sébastien Haller",teams:["Borussia Dortmund","Eintracht Frankfurt","Leganés","West Ham United"]}
+  {name:"Sébastien Mazure",teams:["AS Saint-Étienne","SM Caen"]}
+  {name:"Sébastien Michalowski",teams:["LOSC Lille","Montpellier HSC"]}
+  {name:"Sébastien Piocelle",teams:["AC Arles-Avignon","SC Bastia"]}
+  {name:"Sébastien Puygrenier",teams:["AS Monaco","AS Nancy","Bolton Wanderers","Stade Rennais"]}
+  {name:"Sébastien Pérez",teams:["Istres","Olympique de Marseille"]}
+  {name:"Sébastien Renouard",teams:["FC Metz"]}
+  {name:"Sébastien Roudet",teams:["FC Sochaux","FC Valenciennes","OGC Nice","RC Lens"]}
+  {name:"Sébastien Schemmel",teams:["FC Metz","Portsmouth","West Ham United"]}
+  {name:"Sébastien Squillaci",teams:["AS Monaco","Arsenal","Olympique Lyonnais","SC Bastia","Sevilla"]}
+  {name:"Sérgio Conceição",teams:["Inter Milan","Lazio","Parma"]}
+  {name:"Sérgio Pinto",teams:["Alemannia Aachen","FC Schalke 04","Hannover 96","Levante"]}
+  {name:"Søren Colding",teams:["VfL Bochum"]}
+  {name:"Søren Larsen",teams:["FC Schalke 04","Toulouse FC"]}
+  {name:"Sławomir Peszko",teams:["FC Köln"]}
+  {name:"Tahar El Khalej",teams:["Charlton Athletic","Southampton"]}
+  {name:"Tahith Chong",teams:["Luton Town","Manchester United","Werder Bremen"]}
+  {name:"Taiwo Awoniyi",teams:["1. FC Union Berlin","1. FSV Mainz 05","Nottingham Forest"]}
+  {name:"Tajon Buchanan",teams:["Inter Milan","Villarreal"]}
+  {name:"Takashi Inui",teams:["Alavés","Eibar","Eintracht Frankfurt","Real Betis"]}
+  {name:"Takashi Usami",teams:["Bayern Munich","FC Augsburg","Fortuna Düsseldorf","TSG Hoffenheim"]}
+  {name:"Takayuki Morimoto",teams:["Catania","Novara"]}
+  {name:"Takefusa Kubo",teams:["Getafe","Mallorca","Real Sociedad","Villarreal"]}
+  {name:"Takehiro Tomiyasu",teams:["Arsenal","Bologna"]}
+  {name:"Takuma Asano",teams:["Hannover 96","Mallorca","VfB Stuttgart","VfL Bochum"]}
+  {name:"Takumi Minamino",teams:["AS Monaco","Liverpool","Southampton"]}
+  {name:"Tal Ben Haim",teams:["Bolton Wanderers","Chelsea","Manchester City","Portsmouth","Queens Park Rangers","Sunderland","West Ham United"]}
+  {name:"Talal El Karkouri",teams:["Charlton Athletic","Paris Saint-Germain","Sunderland"]}
+  {name:"Tammy Abraham",teams:["AC Milan","AS Roma","Aston Villa","Chelsea","Swansea City"]}
+  {name:"Tamás Hajnal",teams:["Borussia Dortmund","Karlsruher SC","VfB Stuttgart"]}
+  {name:"Tana",teams:["Las Palmas"]}
+  {name:"Tanguy Coulibaly",teams:["Montpellier HSC","VfB Stuttgart"]}
+  {name:"Tanguy Ndombele",teams:["Amiens SC","Napoli","OGC Nice","Olympique Lyonnais","Tottenham Hotspur"]}
+  {name:"Tanguy Nianzou",teams:["Bayern Munich","Paris Saint-Germain","Sevilla"]}
+  {name:"Tanner Tessmann",teams:["Olympique Lyonnais","Venezia"]}
+  {name:"Tarik Elyounoussi",teams:["TSG Hoffenheim"]}
+  {name:"Tariq Lamptey",teams:["Brighton & Hove Albion","Chelsea","Fiorentina"]}
+  {name:"Tati Maldonado",teams:["Real Betis","Sporting Gijón"]}
+  {name:"Taye Taiwo",teams:["AC Milan","Olympique de Marseille","Queens Park Rangers"]}
+  {name:"Tayfun Korkut",teams:["Espanyol","Real Sociedad"]}
+  {name:"Tchiressoua Guel",teams:["AS Saint-Étienne","FC Lorient"]}
+  {name:"Teddy Richert",teams:["FC Sochaux","LOSC Lille"]}
+  {name:"Teddy Sheringham",teams:["Manchester United","Portsmouth","Tottenham Hotspur","West Ham United"]}
+  {name:"Teemu Pukki",teams:["FC Schalke 04","Norwich City","Sevilla"]}
+  {name:"Teemu Tainio",teams:["AJ Auxerre","Birmingham City","Sunderland","Tottenham Hotspur"]}
+  {name:"Terem Moffi",teams:["FC Lorient","OGC Nice"]}
+  {name:"Terence Kongolo",teams:["AS Monaco","Fulham","Huddersfield Town"]}
+  {name:"Tete Morente",teams:["Elche","Lecce"]}
+  {name:"Teun Koopmeiners",teams:["Atalanta","Juventus"]}
+  {name:"Thanos Petsos",teams:["1. FC Kaiserslautern","Bayer Leverkusen","SpVgg Greuther Fürth","Werder Bremen"]}
+  {name:"Theo Bongonda",teams:["Celta Vigo","Cádiz"]}
+  {name:"Theo Hernández",teams:["AC Milan","Alavés","Real Madrid","Real Sociedad"]}
+  {name:"Theo Valls",teams:["Nîmes"]}
+  {name:"Theo Walcott",teams:["Arsenal","Everton","Southampton"]}
+  {name:"Theodor Gebre Selassie",teams:["Werder Bremen"]}
+  {name:"Theofanis Gekas",teams:["Bayer Leverkusen","Eintracht Frankfurt","Hertha BSC","Levante","Portsmouth","VfL Bochum"]}
+  {name:"Thiago Alcántara",teams:["Barcelona","Bayern Munich","Liverpool"]}
+  {name:"Thiago Cionek",teams:["Palermo","SPAL"]}
+  {name:"Thiago Maia",teams:["LOSC Lille"]}
+  {name:"Thiago Mendes",teams:["LOSC Lille","Olympique Lyonnais"]}
+  {name:"Thiago Motta",teams:["Atlético Madrid","Barcelona","Genoa","Inter Milan","Paris Saint-Germain"]}
+  {name:"Thiago Ribeiro",teams:["Cagliari","Girondins de Bordeaux"]}
+  {name:"Thiago Silva",teams:["AC Milan","Chelsea","Paris Saint-Germain"]}
+  {name:"Thibault De Smet",teams:["Paris FC","Stade de Reims"]}
+  {name:"Thibault Giresse",teams:["EA Guingamp","Toulouse FC"]}
+  {name:"Thibault Scotto",teams:["OGC Nice"]}
+  {name:"Thibaut Courtois",teams:["Atlético Madrid","Chelsea","Real Madrid"]}
+  {name:"Thierno Barry",teams:["Everton","Villarreal"]}
+  {name:"Thierry Correia",teams:["Valencia"]}
+  {name:"Thierry Henry",teams:["Arsenal","Barcelona"]}
+  {name:"Thievy Bifouma",teams:["Almería","Espanyol","Granada","SC Bastia","Stade de Reims","West Bromwich Albion"]}
+  {name:"Thijs Dallinga",teams:["Bologna","Toulouse FC"]}
+  {name:"Thilo Kehrer",teams:["AS Monaco","FC Schalke 04","Paris Saint-Germain","West Ham United"]}
+  {name:"Thomas Ayasse",teams:["AC Arles-Avignon","AS Nancy","Estac Troyes"]}
+  {name:"Thomas Brdarić",teams:["Bayer Leverkusen","Hannover 96","VfL Wolfsburg"]}
+  {name:"Thomas Broich",teams:["1. FC Nürnberg","Borussia Mönchengladbach","FC Köln"]}
+  {name:"Thomas Christiansen",teams:["Hannover 96","VfL Bochum"]}
+  {name:"Thomas Cichon",teams:["FC Köln"]}
+  {name:"Thomas Delaine",teams:["FC Metz","Le Havre AC","RC Strasbourg"]}
+  {name:"Thomas Delaney",teams:["Borussia Dortmund","Sevilla","TSG Hoffenheim","Werder Bremen"]}
+  {name:"Thomas Ernst",teams:["1. FC Kaiserslautern","VfB Stuttgart","VfL Bochum"]}
+  {name:"Thomas Foket",teams:["Stade de Reims"]}
+  {name:"Thomas Gravesen",teams:["Everton","Real Madrid"]}
+  {name:"Thomas Helveg",teams:["AC Milan","Borussia Mönchengladbach","Inter Milan","Norwich City"]}
+  {name:"Thomas Hengen",teams:["1. FC Kaiserslautern","VfL Wolfsburg"]}
+  {name:"Thomas Henry",teams:["FC Nantes","Hellas Verona","Venezia"]}
+  {name:"Thomas Heurtaux",teams:["Hellas Verona","SM Caen","Udinese"]}
+  {name:"Thomas Hitzlsperger",teams:["Aston Villa","Everton","Lazio","VfB Stuttgart","VfL Wolfsburg","West Ham United"]}
+  {name:"Thomas Häßler",teams:["1860 Munich"]}
+  {name:"Thomas Kahlenberg",teams:["AJ Auxerre","VfL Wolfsburg","Évian TG"]}
+  {name:"Thomas Kleine",teams:["Bayer Leverkusen","Borussia Mönchengladbach","Hannover 96","SpVgg Greuther Fürth"]}
+  {name:"Thomas Kraft",teams:["Bayern Munich","Hertha BSC"]}
+  {name:"Thomas Kristensen",teams:["Udinese"]}
+  {name:"Thomas Lemar",teams:["AS Monaco","Atlético Madrid","Girona","SM Caen"]}
+  {name:"Thomas Linke",teams:["Bayern Munich"]}
+  {name:"Thomas Manfredini",teams:["Atalanta","Genoa","Sassuolo","Udinese"]}
+  {name:"Thomas Mangani",teams:["AS Monaco","AS Nancy","Angers SCO","Chievo Verona","GFC Ajaccio"]}
+  {name:"Thomas Meggle",teams:["FC St. Pauli","Hansa Rostock"]}
+  {name:"Thomas Meunier",teams:["Borussia Dortmund","LOSC Lille","Paris Saint-Germain"]}
+  {name:"Thomas Monconduit",teams:["Amiens SC","FC Lorient"]}
+  {name:"Thomas Müller",teams:["Bayern Munich"]}
+  {name:"Thomas Partey",teams:["Almería","Arsenal","Atlético Madrid","Villarreal"]}
+  {name:"Thomas Rasmussen",teams:["Hansa Rostock"]}
+  {name:"Thomas Riedl",teams:["1. FC Kaiserslautern","1860 Munich"]}
+  {name:"Thomas Rytter",teams:["VfL Wolfsburg"]}
+  {name:"Thomas Strakosha",teams:["Brentford","Lazio"]}
+  {name:"Thomas Sørensen",teams:["Aston Villa","Stoke City","Sunderland"]}
+  {name:"Thomas Touré",teams:["Angers SCO","Girondins de Bordeaux"]}
+  {name:"Thomas Vermaelen",teams:["AS Roma","Arsenal","Barcelona"]}
+  {name:"Thorben Marx",teams:["Arminia Bielefeld","Borussia Mönchengladbach","Hertha BSC"]}
+  {name:"Thorgan Hazard",teams:["Borussia Dortmund","Borussia Mönchengladbach"]}
+  {name:"Thorstein Helstad",teams:["Le Mans FC"]}
+  {name:"Thorsten Fink",teams:["Bayern Munich"]}
+  {name:"Théo Le Bris",teams:["FC Lorient"]}
+  {name:"Tiago Djaló",teams:["Juventus","LOSC Lille"]}
+  {name:"Tiago Mendes",teams:["Atlético Madrid","Chelsea","Juventus","Olympique Lyonnais"]}
+  {name:"Tiago Tomás",teams:["VfB Stuttgart","VfL Wolfsburg"]}
+  {name:"Tiberio Guarente",teams:["Atalanta","Bologna","Catania","Chievo Verona","Empoli","Sevilla"]}
+  {name:"Tiemoué Bakayoko",teams:["AC Milan","AS Monaco","Chelsea","FC Lorient","Napoli","Stade Rennais"]}
+  {name:"Tijjani Noslin",teams:["Hellas Verona","Lazio"]}
+  {name:"Tijjani Reijnders",teams:["AC Milan","Manchester City"]}
+  {name:"Tiko",teams:["Athletic Bilbao"]}
+  {name:"Tim Borowski",teams:["Bayern Munich","Werder Bremen"]}
+  {name:"Tim Cahill",teams:["Everton"]}
+  {name:"Tim Hoogland",teams:["1. FSV Mainz 05","FC Schalke 04","VfB Stuttgart"]}
+  {name:"Tim Howard",teams:["Everton","Manchester United"]}
+  {name:"Tim Iroegbunam",teams:["Aston Villa","Everton"]}
+  {name:"Tim Kleindienst",teams:["1. FC Heidenheim","Borussia Mönchengladbach","SC Freiburg"]}
+  {name:"Tim Krul",teams:["Newcastle United","Norwich City"]}
+  {name:"Tim Ream",teams:["Bolton Wanderers","Fulham"]}
+  {name:"Tim Sebastian",teams:["Hansa Rostock","Karlsruher SC"]}
+  {name:"Tim Sherwood",teams:["Portsmouth","Tottenham Hotspur"]}
+  {name:"Tim Skarke",teams:["1. FC Union Berlin","FC Schalke 04","SV Darmstadt 98"]}
+  {name:"Tim Wiese",teams:["1. FC Kaiserslautern","TSG Hoffenheim","Werder Bremen"]}
+  {name:"Timm Klose",teams:["1. FC Nürnberg","Norwich City","VfL Wolfsburg"]}
+  {name:"Timmy Simons",teams:["1. FC Nürnberg"]}
+  {name:"Timo Baumgartl",teams:["1. FC Union Berlin","VfB Stuttgart"]}
+  {name:"Timo Becker",teams:["FC Schalke 04","Holstein Kiel"]}
+  {name:"Timo Gebhart",teams:["1. FC Nürnberg","VfB Stuttgart"]}
+  {name:"Timo Hildebrand",teams:["Eintracht Frankfurt","FC Schalke 04","TSG Hoffenheim","Valencia","VfB Stuttgart"]}
+  {name:"Timo Horn",teams:["FC Köln","VfL Bochum"]}
+  {name:"Timo Hübers",teams:["FC Köln","Hannover 96"]}
+  {name:"Timo Rost",teams:["Energie Cottbus"]}
+  {name:"Timo Wenzel",teams:["1. FC Kaiserslautern","VfB Stuttgart"]}
+  {name:"Timo Werner",teams:["Chelsea","RB Leipzig","Tottenham Hotspur","VfB Stuttgart"]}
+  {name:"Timothee Pembele",teams:["Girondins de Bordeaux","Le Havre AC","Paris Saint-Germain"]}
+  {name:"Timothy Castagne",teams:["Atalanta","Fulham","Leicester City"]}
+  {name:"Timothy Chandler",teams:["1. FC Nürnberg","Eintracht Frankfurt"]}
+  {name:"Timothy Fosu-Mensah",teams:["Bayer Leverkusen","Crystal Palace","Fulham","Manchester United"]}
+  {name:"Timothy Weah",teams:["Juventus","LOSC Lille","Olympique de Marseille","Paris Saint-Germain"]}
+  {name:"Timothée Atouba",teams:["Hamburger SV","Tottenham Hotspur"]}
+  {name:"Timothée Kolodziejczak",teams:["AS Saint-Étienne","Borussia Mönchengladbach","FC Schalke 04","OGC Nice","Olympique Lyonnais","Paris FC","Sevilla"]}
+  {name:"Tin Jedvaj",teams:["AS Roma","Bayer Leverkusen","FC Augsburg"]}
+  {name:"Tinga",teams:["Borussia Dortmund"]}
+  {name:"Tino Costa",teams:["Fiorentina","Genoa","Montpellier HSC","Valencia"]}
+  {name:"Tino Kadewere",teams:["FC Nantes","Mallorca","Olympique Lyonnais"]}
+  {name:"Tito",teams:["Granada","Leganés","Rayo Vallecano"]}
+  {name:"Titus Bramble",teams:["Ipswich Town","Newcastle United","Sunderland","Wigan Athletic"]}
+  {name:"Tobias Kempe",teams:["SV Darmstadt 98"]}
+  {name:"Tobias Levels",teams:["Borussia Mönchengladbach","FC Ingolstadt 04","Fortuna Düsseldorf"]}
+  {name:"Tobias Rau",teams:["Arminia Bielefeld","Bayern Munich","VfL Wolfsburg"]}
+  {name:"Tobias Sippel",teams:["1. FC Kaiserslautern","Borussia Mönchengladbach"]}
+  {name:"Tobias Strobl",teams:["Borussia Mönchengladbach","FC Augsburg","TSG Hoffenheim"]}
+  {name:"Tobias Weis",teams:["Eintracht Frankfurt","TSG Hoffenheim"]}
+  {name:"Tobias Werner",teams:["FC Augsburg"]}
+  {name:"Tobias Willi",teams:["MSV Duisburg","SC Freiburg"]}
+  {name:"Toby Alderweireld",teams:["Atlético Madrid","Southampton","Tottenham Hotspur"]}
+  {name:"Toifilou Maoulida",teams:["AJ Auxerre","AS Monaco","FC Metz","Montpellier HSC","Olympique de Marseille","RC Lens","SC Bastia","Stade Rennais"]}
+  {name:"Tolga Ciğerci",teams:["Borussia Mönchengladbach","Hertha BSC","VfL Wolfsburg"]}
+  {name:"Tolgay Arslan",teams:["Hamburger SV","Udinese"]}
+  {name:"Tom Bischof",teams:["Bayern Munich","TSG Hoffenheim"]}
+  {name:"Tom Cairney",teams:["Fulham","Hull City"]}
+  {name:"Tom Carroll",teams:["Swansea City","Tottenham Hotspur"]}
+  {name:"Tom Cleverley",teams:["Aston Villa","Everton","Manchester United","Watford","Wigan Athletic"]}
+  {name:"Tom Davies",teams:["Everton","Sheffield United"]}
+  {name:"Tom Heaton",teams:["Aston Villa","Burnley"]}
+  {name:"Tom Huddlestone",teams:["Hull City","Tottenham Hotspur"]}
+  {name:"Tom Krauß",teams:["1. FSV Mainz 05","FC Köln","FC Schalke 04","RB Leipzig","VfL Bochum"]}
+  {name:"Tom Louchet",teams:["OGC Nice"]}
+  {name:"Tom Starke",teams:["Bayern Munich","Hamburger SV","MSV Duisburg","TSG Hoffenheim"]}
+  {name:"Toma Bašić",teams:["Girondins de Bordeaux","Lazio","Salernitana"]}
+  {name:"Tomas Danilevičius",teams:["Arsenal","Livorno"]}
+  {name:"Tomas Locatelli",teams:["Bologna","Siena"]}
+  {name:"Tomasz Hajto",teams:["1. FC Nürnberg","FC Schalke 04"]}
+  {name:"Tomasz Kos",teams:["1. FC Nürnberg"]}
+  {name:"Tomasz Kuszczak",teams:["Manchester United","West Bromwich Albion"]}
+  {name:"Tomasz Kłos",teams:["1. FC Kaiserslautern","AJ Auxerre","FC Köln"]}
+  {name:"Tomasz Radzinski",teams:["Everton","Fulham"]}
+  {name:"Tomasz Wałdoch",teams:["FC Schalke 04"]}
+  {name:"Tomasz Zdebel",teams:["Bayer Leverkusen","VfL Bochum"]}
+  {name:"Tomer Hemed",teams:["Almería","Brighton & Hove Albion","Mallorca"]}
+  {name:"Tomislav Marić",teams:["Borussia Mönchengladbach","VfL Wolfsburg"]}
+  {name:"Tomislav Piplica",teams:["Energie Cottbus"]}
+  {name:"Tommaso Augello",teams:["Cagliari","Sampdoria"]}
+  {name:"Tommaso Baldanzi",teams:["AS Roma","Empoli","Genoa"]}
+  {name:"Tommaso Pobega",teams:["AC Milan","Bologna","Spezia","Torino"]}
+  {name:"Tommaso Rocchi",teams:["Empoli","Inter Milan","Lazio"]}
+  {name:"Tommy Bechmann",teams:["SC Freiburg","VfL Bochum"]}
+  {name:"Tommy Doyle",teams:["Manchester City","Wolverhampton Wanderers"]}
+  {name:"Tommy Larsen",teams:["1. FC Nürnberg"]}
+  {name:"Tommy Smith",teams:["Portsmouth","Queens Park Rangers","Watford"]}
+  {name:"Tomás Pina Isla",teams:["Alavés","Mallorca","Villarreal"]}
+  {name:"Tomás Rincón",teams:["Genoa","Hamburger SV","Juventus","Sampdoria","Torino"]}
+  {name:"Tomáš Galásek",teams:["1. FC Nürnberg","Borussia Mönchengladbach"]}
+  {name:"Tomáš Koubek",teams:["FC Augsburg","Stade Rennais"]}
+  {name:"Tomáš Pekhart",teams:["1. FC Nürnberg","FC Ingolstadt 04"]}
+  {name:"Tomáš Rosický",teams:["Arsenal","Borussia Dortmund"]}
+  {name:"Tomáš Souček",teams:["West Ham United"]}
+  {name:"Tomáš Suslov",teams:["Hellas Verona"]}
+  {name:"Tomáš Ujfaluši",teams:["Atlético Madrid","Fiorentina","Hamburger SV"]}
+  {name:"Tomáš Vaclík",teams:["Sevilla"]}
+  {name:"Tomáš Čvančara",teams:["Borussia Mönchengladbach"]}
+  {name:"Tomáš Řepka",teams:["Fiorentina","West Ham United"]}
+  {name:"Tongo Doumbia",teams:["FC Valenciennes","Stade Rennais","Toulouse FC"]}
+  {name:"Toni Doblas",teams:["Napoli","Real Betis","Real Zaragoza"]}
+  {name:"Toni Kroos",teams:["Bayer Leverkusen","Bayern Munich","Real Madrid"]}
+  {name:"Toni Lato",teams:["Mallorca","Osasuna","Valencia"]}
+  {name:"Toni Martínez",teams:["Alavés"]}
+  {name:"Toni Prats",teams:["Mallorca","Real Betis"]}
+  {name:"Toni Velamazán",teams:["Espanyol"]}
+  {name:"Toni Villa",teams:["Girona","Real Valladolid"]}
+  {name:"Tonny Vilhena",teams:["Espanyol","Salernitana"]}
+  {name:"Tony Heurtebis",teams:["Estac Troyes","FC Nantes"]}
+  {name:"Tony Hibbert",teams:["Everton"]}
+  {name:"Tony Jantschke",teams:["Borussia Mönchengladbach"]}
+  {name:"Tony Sanneh",teams:["1. FC Nürnberg","Hertha BSC"]}
+  {name:"Tony Sylva",teams:["AS Monaco","LOSC Lille"]}
+  {name:"Tony Vairelles",teams:["Girondins de Bordeaux","Olympique Lyonnais","RC Lens","SC Bastia","Stade Rennais"]}
+  {name:"Torben Hoffmann",teams:["1860 Munich"]}
+  {name:"Tore André Flo",teams:["Chelsea","Siena","Sunderland"]}
+  {name:"Torsten Frings",teams:["Bayern Munich","Borussia Dortmund","Werder Bremen"]}
+  {name:"Torsten Oehrl",teams:["Eintracht Braunschweig","FC Augsburg","Werder Bremen"]}
+  {name:"Tosin Adarabioyo",teams:["Chelsea","Fulham"]}
+  {name:"Tote",teams:["Hércules","Málaga","Real Betis","Real Madrid","Real Valladolid"]}
+  {name:"Toti Gomes",teams:["Wolverhampton Wanderers"]}
+  {name:"Toño",teams:["Elche","Granada","Levante","Racing Santander","Rayo Vallecano"]}
+  {name:"Traianos Dellas",teams:["AS Roma","Perugia"]}
+  {name:"Tranquillo Barnetta",teams:["Bayer Leverkusen","Eintracht Frankfurt","FC Schalke 04","Hannover 96"]}
+  {name:"Trent Alexander-Arnold",teams:["Liverpool","Real Madrid"]}
+  {name:"Trevoh Chalobah",teams:["Chelsea","Crystal Palace","FC Lorient"]}
+  {name:"Trevor Sinclair",teams:["Manchester City","West Ham United"]}
+  {name:"Tristan Dingomé",teams:["Estac Troyes","Stade de Reims"]}
+  {name:"Troy Deeney",teams:["Watford"]}
+  {name:"Trézéguet",teams:["Aston Villa"]}
+  {name:"Tugay Kerimoğlu",teams:["Blackburn Rovers"]}
+  {name:"Tunay Torun",teams:["Hamburger SV","Hertha BSC","VfB Stuttgart"]}
+  {name:"Tuncay Şanlı",teams:["Bolton Wanderers","Middlesbrough","Stoke City","VfL Wolfsburg"]}
+  {name:"Tuni",teams:["Mallorca"]}
+  {name:"Tuta",teams:["Eintracht Frankfurt"]}
+  {name:"Txomin Nagore",teams:["Atlético Madrid","Mallorca","Numancia"]}
+  {name:"Tyler Adams",teams:["AFC Bournemouth","Leeds United","RB Leipzig"]}
+  {name:"Tyler Roberts",teams:["Leeds United","West Bromwich Albion"]}
+  {name:"Tyrick Mitchell",teams:["Crystal Palace"]}
+  {name:"Tyrone Mears",teams:["Bolton Wanderers","Burnley","Derby County","Olympique de Marseille","West Ham United"]}
+  {name:"Tyrone Mings",teams:["AFC Bournemouth","Aston Villa"]}
+  {name:"Tyronne Ebuehi",teams:["Empoli","Venezia"]}
+  {name:"Téji Savanier",teams:["Montpellier HSC","Nîmes"]}
+  {name:"Túlio de Melo",teams:["LOSC Lille","Le Mans FC","Évian TG"]}
+  {name:"Ugo Ehiogu",teams:["Aston Villa","Middlesbrough"]}
+  {name:"Ulf Kirsten",teams:["Bayer Leverkusen"]}
+  {name:"Ulises de la Cruz",teams:["Aston Villa","Reading"]}
+  {name:"Ulisses Garcia",teams:["Olympique de Marseille","Sassuolo","Werder Bremen"]}
+  {name:"Ulrich Le Pen",teams:["FC Lorient","Ipswich Town","RC Strasbourg"]}
+  {name:"Ulrich Ramé",teams:["Girondins de Bordeaux"]}
+  {name:"Umar Sadiq",teams:["AS Roma","Almería","Bologna","Real Sociedad","Torino","Valencia"]}
+  {name:"Unai Bustinza",teams:["Athletic Bilbao","Leganés"]}
+  {name:"Unai Expósito",teams:["Athletic Bilbao","Osasuna"]}
+  {name:"Unai García",teams:["Osasuna"]}
+  {name:"Unai Gómez",teams:["Athletic Bilbao"]}
+  {name:"Unai López",teams:["Athletic Bilbao","Leganés","Rayo Vallecano"]}
+  {name:"Unai Núñez",teams:["Athletic Bilbao","Celta Vigo","Hellas Verona","Valencia"]}
+  {name:"Unai Simón",teams:["Athletic Bilbao"]}
+  {name:"Unai Vencedor Paris",teams:["Athletic Bilbao","Levante"]}
+  {name:"Unai Vergara",teams:["Albacete","Villarreal"]}
+  {name:"Urby Emanuelson",teams:["AC Milan","AS Roma","Atalanta","Fulham","Hellas Verona"]}
+  {name:"Uroš Račić",teams:["Sassuolo","Valencia"]}
+  {name:"Uroš Spajić",teams:["Toulouse FC"]}
+  {name:"Ustaritz",teams:["Athletic Bilbao","Real Betis"]}
+  {name:"Uwe Hünemeier",teams:["Borussia Dortmund","Brighton & Hove Albion","SC Paderborn 07"]}
+  {name:"Uwe Möhrle",teams:["FC Augsburg","Hansa Rostock","MSV Duisburg","VfL Wolfsburg"]}
+  {name:"Vadim Demidov",teams:["Celta Vigo","Eintracht Frankfurt","Real Sociedad"]}
+  {name:"Vahid Hashemian",teams:["Bayern Munich","Hamburger SV","Hannover 96","VfL Bochum"]}
+  {name:"Valdo",teams:["Espanyol","Levante","Málaga","Osasuna","Real Madrid"]}
+  {name:"Valentin Atangana Edoa",teams:["Stade de Reims"]}
+  {name:"Valentin Carboni",teams:["Genoa","Inter Milan","Monza","Olympique de Marseille"]}
+  {name:"Valentin Eysseric",teams:["AS Saint-Étienne","FC Nantes","Fiorentina","Hellas Verona","OGC Nice"]}
+  {name:"Valentin Gendrey",teams:["Lecce","TSG Hoffenheim"]}
+  {name:"Valentin Rongier",teams:["FC Nantes","Olympique de Marseille","Stade Rennais"]}
+  {name:"Valentin Rosier",teams:["Dijon FCO","Leganés","OGC Nice","Osasuna"]}
+  {name:"Valentin Stocker",teams:["Hertha BSC"]}
+  {name:"Valentino Lazaro",teams:["Borussia Mönchengladbach","Hertha BSC","Inter Milan","Newcastle United","Torino"]}
+  {name:"Valentino Livramento",teams:["Newcastle United","Southampton"]}
+  {name:"Valentín Castellanos",teams:["Girona","Lazio","West Ham United"]}
+  {name:"Valentín Vada",teams:["AS Saint-Étienne","Girondins de Bordeaux"]}
+  {name:"Valeri Bojinov",teams:["Fiorentina","Lecce","Manchester City","Parma"]}
+  {name:"Valeri Karpin",teams:["Celta Vigo","Real Sociedad"]}
+  {name:"Valerio Bertotto",teams:["Siena","Udinese"]}
+  {name:"Valerio Verre",teams:["Empoli","Hellas Verona","Pescara","Sampdoria","Siena"]}
+  {name:"Valery Fernández",teams:["Girona","Mallorca"]}
+  {name:"Valon Behrami",teams:["Fiorentina","Genoa","Hamburger SV","Lazio","Napoli","Udinese","Watford","West Ham United"]}
+  {name:"Valon Berisha",teams:["Fortuna Düsseldorf","Lazio","Stade de Reims"]}
+  {name:"Valter Birsa",teams:["AC Milan","AJ Auxerre","Cagliari","Chievo Verona","FC Sochaux","Genoa","Torino"]}
+  {name:"Valère Germain",teams:["AS Monaco","Montpellier HSC","OGC Nice","Olympique de Marseille"]}
+  {name:"Valérien Ismaël",teams:["Bayern Munich","Hannover 96","RC Lens","RC Strasbourg","Werder Bremen"]}
+  {name:"Valéry Mézague",teams:["FC Sochaux","Montpellier HSC","Portsmouth"]}
+  {name:"Vanderson",teams:["AS Monaco"]}
+  {name:"Vangelis Moras",teams:["Bologna","Cesena","Hellas Verona","Swansea City"]}
+  {name:"Vanja Milinković-Savić",teams:["Napoli","SPAL","Torino"]}
+  {name:"Vasco Regini",teams:["Napoli","Parma","SPAL","Sampdoria"]}
+  {name:"Vasile Miriuță",teams:["Energie Cottbus"]}
+  {name:"Vasilis Torosidis",teams:["AS Roma","Bologna"]}
+  {name:"Vedad Ibišević",teams:["Alemannia Aachen","FC Schalke 04","Hertha BSC","Paris Saint-Germain","TSG Hoffenheim","VfB Stuttgart"]}
+  {name:"Vedat Muriqi",teams:["Lazio","Mallorca"]}
+  {name:"Vedran Runje",teams:["Olympique de Marseille","RC Lens"]}
+  {name:"Vedran Ćorluka",teams:["Bayer Leverkusen","Manchester City","Tottenham Hotspur"]}
+  {name:"Veljko Paunović",teams:["Almería","Atlético Madrid","Getafe","Hannover 96","Mallorca","Real Oviedo"]}
+  {name:"Verza",teams:["Almería","Levante","Villarreal"]}
+  {name:"Vicente Engonga",teams:["Mallorca"]}
+  {name:"Vicente Guaita",teams:["Celta Vigo","Crystal Palace","Getafe","Valencia"]}
+  {name:"Vicente Gómez",teams:["Las Palmas"]}
+  {name:"Vicente Iborra",teams:["Leicester City","Levante","Sevilla","Villarreal"]}
+  {name:"Vicente Rodríguez",teams:["Valencia"]}
+  {name:"Vicente Sánchez",teams:["FC Schalke 04"]}
+  {name:"Vicente Valcarce",teams:["Málaga"]}
+  {name:"Victor Agali",teams:["FC Schalke 04","Hansa Rostock","OGC Nice"]}
+  {name:"Victor Anichebe",teams:["Everton","Sunderland","West Bromwich Albion"]}
+  {name:"Victor Bernth Kristiansen",teams:["Bologna","Leicester City"]}
+  {name:"Victor Boniface",teams:["Bayer Leverkusen","Werder Bremen"]}
+  {name:"Victor Lindelöf",teams:["Aston Villa","Manchester United"]}
+  {name:"Victor Moses",teams:["Chelsea","Inter Milan","Liverpool","Stoke City","West Ham United","Wigan Athletic"]}
+  {name:"Victor Obinna",teams:["Chievo Verona","Inter Milan","Málaga","SV Darmstadt 98","West Ham United"]}
+  {name:"Victor Osimhen",teams:["LOSC Lille","Napoli","VfL Wolfsburg"]}
+  {name:"Victor Sá",teams:["VfL Wolfsburg"]}
+  {name:"Victor Wanyama",teams:["Southampton","Tottenham Hotspur"]}
+  {name:"Victorien Angban",teams:["FC Metz","Granada"]}
+  {name:"Vid Belec",teams:["Benevento","Carpi","Salernitana","Sampdoria"]}
+  {name:"Vieirinha",teams:["VfL Wolfsburg"]}
+  {name:"Vikash Dhorasoo",teams:["AC Milan","Girondins de Bordeaux","Olympique Lyonnais","Paris Saint-Germain"]}
+  {name:"Viktor Kovalenko",teams:["Atalanta","Empoli","Spezia"]}
+  {name:"Viktor Onopko",teams:["Rayo Vallecano","Real Oviedo"]}
+  {name:"Viktor Skrypnyk",teams:["Werder Bremen"]}
+  {name:"Viktor Tsyhankov",teams:["Girona"]}
+  {name:"Vince Grella",teams:["Blackburn Rovers","Empoli","Parma","Torino"]}
+  {name:"Vincent Aboubakar",teams:["FC Lorient","FC Valenciennes"]}
+  {name:"Vincent Bessat",teams:["FC Metz","FC Nantes","SM Caen"]}
+  {name:"Vincent Candela",teams:["AS Roma","Bolton Wanderers","Messina","Udinese"]}
+  {name:"Vincent Enyeama",teams:["LOSC Lille"]}
+  {name:"Vincent Fernandez",teams:["FC Sochaux","RC Strasbourg"]}
+  {name:"Vincent Hognon",teams:["AS Saint-Étienne","OGC Nice"]}
+  {name:"Vincent Kompany",teams:["Hamburger SV","Manchester City"]}
+  {name:"Vincent Koziello",teams:["FC Köln","OGC Nice"]}
+  {name:"Vincent Laurini",teams:["Empoli","Fiorentina","Parma"]}
+  {name:"Vincent Le Goff",teams:["FC Lorient"]}
+  {name:"Vincent Manceau",teams:["Angers SCO"]}
+  {name:"Vincent Marchetti",teams:["AS Nancy","GFC Ajaccio","Paris FC"]}
+  {name:"Vincent Muratori",teams:["AS Monaco","AS Nancy"]}
+  {name:"Vincent Nogueira",teams:["FC Sochaux","RC Strasbourg"]}
+  {name:"Vincent Pajot",teams:["AS Saint-Étienne","Angers SCO","FC Metz","Stade Rennais"]}
+  {name:"Vincent Planté",teams:["AC Arles-Avignon","SM Caen"]}
+  {name:"Vincent Sierro",teams:["SC Freiburg","Toulouse FC"]}
+  {name:"Vincenzo Grifo",teams:["Borussia Mönchengladbach","SC Freiburg","TSG Hoffenheim"]}
+  {name:"Vincenzo Iaquinta",teams:["Cesena","Juventus","Udinese"]}
+  {name:"Vincenzo Italiano",teams:["Chievo Verona","Hellas Verona"]}
+  {name:"Vincenzo Montella",teams:["AS Roma","Fulham","Sampdoria"]}
+  {name:"Vincenzo Sicignano",teams:["Chievo Verona","Lecce","Parma"]}
+  {name:"Vincenzo Sommese",teams:["Ancona","Piacenza","Torino","Vicenza"]}
+  {name:"Vinicius Júnior",teams:["Real Madrid"]}
+  {name:"Vinicius Souza",teams:["Espanyol","Sheffield United","VfL Wolfsburg"]}
+  {name:"Vinny Samways",teams:["Las Palmas","Sevilla"]}
+  {name:"Vinícius Bergantin",teams:["Hannover 96"]}
+  {name:"Viorel Moldovan",teams:["FC Nantes"]}
+  {name:"Virgil van Dijk",teams:["Liverpool","Southampton"]}
+  {name:"Vitali Kutuzov",teams:["AC Milan","Bari","Parma","Sampdoria"]}
+  {name:"Vitaliy Mykolenko",teams:["Everton"]}
+  {name:"Vitaly Janelt",teams:["Brentford"]}
+  {name:"Vitinha",teams:["Genoa","Olympique de Marseille","Paris Saint-Germain","Wolverhampton Wanderers"]}
+  {name:"Vito Mannone",teams:["AS Monaco","Arsenal","FC Lorient","LOSC Lille","Sunderland"]}
+  {name:"Vitolo",teams:["Atlético Madrid","Getafe","Las Palmas","Racing Santander","Sevilla","Tenerife"]}
+  {name:"Vitorino Antunes",teams:["AS Roma","Getafe","Lecce","Málaga"]}
+  {name:"Vitorino Hilton",teams:["Montpellier HSC","Olympique de Marseille","RC Lens","SC Bastia"]}
+  {name:"Vittorio Tosto",teams:["Empoli","Piacenza"]}
+  {name:"Vlad Chiricheș",teams:["Cremonese","Napoli","Sassuolo","Tottenham Hotspur"]}
+  {name:"Vlad Munteanu",teams:["AJ Auxerre","Arminia Bielefeld","Energie Cottbus","VfL Wolfsburg"]}
+  {name:"Vladimir But",teams:["Hannover 96","SC Freiburg"]}
+  {name:"Vladimir Manchev",teams:["LOSC Lille","Levante","Real Valladolid"]}
+  {name:"Vladimír Coufal",teams:["TSG Hoffenheim","West Ham United"]}
+  {name:"Vladimír Darida",teams:["Hertha BSC","SC Freiburg"]}
+  {name:"Vladimír Weiss",teams:["Bolton Wanderers","Espanyol","Manchester City","Pescara"]}
+  {name:"Vladimír Šmicer",teams:["Girondins de Bordeaux","Liverpool"]}
+  {name:"Vragel da Silva",teams:["Energie Cottbus"]}
+  {name:"Vratislav Greško",teams:["1. FC Nürnberg","Bayer Leverkusen","Blackburn Rovers","Inter Milan","Parma"]}
+  {name:"Vratislav Lokvenc",teams:["1. FC Kaiserslautern","VfL Bochum"]}
+  {name:"Vukašin Jovanović",teams:["Girondins de Bordeaux"]}
+  {name:"Vurnon Anita",teams:["Newcastle United"]}
+  {name:"Václav Svěrkoš",teams:["Borussia Mönchengladbach","FC Sochaux","Hertha BSC"]}
+  {name:"Vágner",teams:["Celta Vigo"]}
+  {name:"Víctor",teams:["Real Valladolid","Villarreal"]}
+  {name:"Víctor Bonilla",teams:["FC Nantes","Montpellier HSC","Toulouse FC"]}
+  {name:"Víctor Camarasa",teams:["Alavés","Cardiff City","Crystal Palace","Levante","Real Betis"]}
+  {name:"Víctor Casadesús",teams:["Levante","Mallorca"]}
+  {name:"Víctor Chust",teams:["Cádiz","Elche","Real Madrid"]}
+  {name:"Víctor Díaz",teams:["Granada","Leganés"]}
+  {name:"Víctor Hugo Mareco",teams:["Brescia"]}
+  {name:"Víctor Ibarbo",teams:["AS Roma","Cagliari","Watford"]}
+  {name:"Víctor Laguardia",teams:["Alavés","Real Zaragoza"]}
+  {name:"Víctor Montaño",teams:["Istres","Montpellier HSC","Stade Rennais"]}
+  {name:"Víctor Rodríguez",teams:["Elche","Getafe","Real Zaragoza","Sporting Gijón"]}
+  {name:"Víctor Ruiz",teams:["Espanyol","Napoli","Real Betis","Valencia","Villarreal"]}
+  {name:"Víctor Salas",teams:["Sevilla"]}
+  {name:"Víctor Sánchez",teams:["Barcelona","Deportivo La Coruña","Espanyol","Getafe","Xerez"]}
+  {name:"Víctor Valdés",teams:["Barcelona","Manchester United","Middlesbrough"]}
+  {name:"Víctor Álvarez",teams:["Espanyol"]}
+  {name:"Wahbi Khazri",teams:["AS Saint-Étienne","Girondins de Bordeaux","Montpellier HSC","SC Bastia","Stade Rennais","Sunderland"]}
+  {name:"Wakaso",teams:["Alavés","Espanyol","Granada","Las Palmas","Villarreal"]}
+  {name:"Walace",teams:["Hamburger SV","Hannover 96","Udinese"]}
+  {name:"Waldemar Anton",teams:["Borussia Dortmund","Hannover 96","VfB Stuttgart"]}
+  {name:"Waldir Lucas Pereira",teams:["GFC Ajaccio"]}
+  {name:"Walid Cheddira",teams:["Espanyol","Frosinone","Lecce","Napoli","Sassuolo"]}
+  {name:"Walid Mesloub",teams:["FC Lorient"]}
+  {name:"Wallace",teams:["AS Monaco","Lazio"]}
+  {name:"Walter Benítez",teams:["OGC Nice"]}
+  {name:"Walter Gargano",teams:["Inter Milan","Napoli","Parma"]}
+  {name:"Walter Pandiani",teams:["Birmingham City","Deportivo La Coruña","Espanyol","Mallorca","Osasuna"]}
+  {name:"Walter Samuel",teams:["AS Roma","Inter Milan","Real Madrid"]}
+  {name:"Warmed Omari",teams:["Hamburger SV","Olympique Lyonnais","Stade Rennais"]}
+  {name:"Warren Bondo",teams:["AC Milan","Cremonese","Monza"]}
+  {name:"Warren Kamanzi",teams:["Toulouse FC"]}
+  {name:"Warren Zaïre-Emery",teams:["Paris Saint-Germain"]}
+  {name:"Washington Tais",teams:["Racing Santander","Real Betis"]}
+  {name:"Wataru Endo",teams:["Liverpool","VfB Stuttgart"]}
+  {name:"Wayne Bridge",teams:["Chelsea","Fulham","Manchester City","Southampton","Sunderland","West Ham United"]}
+  {name:"Wayne Hennessey",teams:["Burnley","Crystal Palace","Nottingham Forest","Wolverhampton Wanderers"]}
+  {name:"Wayne Rooney",teams:["Everton","Manchester United"]}
+  {name:"Wayne Routledge",teams:["Aston Villa","Crystal Palace","Fulham","Newcastle United","Portsmouth","Swansea City","Tottenham Hotspur"]}
+  {name:"Weligton Oliveira",teams:["Málaga"]}
+  {name:"Wendel Geraldo",teams:["Girondins de Bordeaux"]}
+  {name:"Wendell",teams:["Bayer Leverkusen"]}
+  {name:"Wes Brown",teams:["Manchester United","Sunderland"]}
+  {name:"Wes Hoolahan",teams:["Norwich City"]}
+  {name:"Wes Morgan",teams:["Leicester City"]}
+  {name:"Wesley Fofana",teams:["AS Saint-Étienne","Chelsea","Leicester City"]}
+  {name:"Wesley Hoedt",teams:["Celta Vigo","Lazio","Southampton"]}
+  {name:"Wesley Lautoa",teams:["Dijon FCO","FC Lorient"]}
+  {name:"Wesley Saïd",teams:["Dijon FCO","RC Lens","Stade Rennais","Toulouse FC"]}
+  {name:"Wesley Sneijder",teams:["Inter Milan","OGC Nice","Real Madrid"]}
+  {name:"Weston McKennie",teams:["FC Schalke 04","Juventus","Leeds United"]}
+  {name:"Wilfred Bouma",teams:["Aston Villa"]}
+  {name:"Wilfred Ndidi",teams:["Leicester City"]}
+  {name:"Wilfried Bony",teams:["Manchester City","Stoke City","Swansea City"]}
+  {name:"Wilfried Dalmat",teams:["FC Nantes","Lecce","Olympique de Marseille","Racing Santander"]}
+  {name:"Wilfried Kanga",teams:["Angers SCO","Hertha BSC"]}
+  {name:"Wilfried Sanou",teams:["FC Köln","SC Freiburg"]}
+  {name:"Wilfried Singo",teams:["AS Monaco","Torino"]}
+  {name:"Wilfried Zaha",teams:["Cardiff City","Crystal Palace","Manchester United","Olympique Lyonnais"]}
+  {name:"Will Hughes",teams:["Crystal Palace","Watford"]}
+  {name:"Willem Geubbels",teams:["AS Monaco","FC Nantes","Olympique Lyonnais","Paris FC"]}
+  {name:"Willi Orban",teams:["1. FC Kaiserslautern","RB Leipzig"]}
+  {name:"William",teams:["FC Schalke 04","VfL Wolfsburg"]}
+  {name:"William Carvalho",teams:["Real Betis"]}
+  {name:"William Gallas",teams:["Arsenal","Chelsea","Olympique de Marseille","Tottenham Hotspur"]}
+  {name:"William Kvist",teams:["Fulham","VfB Stuttgart"]}
+  {name:"William Saliba",teams:["AS Saint-Étienne","Arsenal","OGC Nice","Olympique de Marseille"]}
+  {name:"William Troost-Ekong",teams:["Salernitana","Udinese","Watford"]}
+  {name:"William Vainqueur",teams:["AS Monaco","AS Roma","FC Nantes","Olympique de Marseille","Toulouse FC"]}
+  {name:"William Viali",teams:["Ancona","Fiorentina","Lecce","Perugia","Treviso","Venezia"]}
+  {name:"Willian",teams:["Arsenal","Chelsea","Fulham"]}
+  {name:"Willian José",teams:["Las Palmas","Real Betis","Real Madrid","Real Sociedad","Wolverhampton Wanderers"]}
+  {name:"Willian Pacho",teams:["Eintracht Frankfurt","Paris Saint-Germain"]}
+  {name:"Williot Swedberg",teams:["Celta Vigo"]}
+  {name:"Willy Boly",teams:["AJ Auxerre","Nottingham Forest","Wolverhampton Wanderers"]}
+  {name:"Willy Caballero",teams:["Chelsea","Manchester City","Málaga","Southampton"]}
+  {name:"Willy Sagnol",teams:["Bayern Munich"]}
+  {name:"Wilson Odobert",teams:["Burnley","Estac Troyes","Tottenham Hotspur"]}
+  {name:"Wilson Oruma",teams:["FC Sochaux","Olympique de Marseille"]}
+  {name:"Wilson Palacios",teams:["Birmingham City","Stoke City","Tottenham Hotspur","Wigan Athletic"]}
+  {name:"Winston Reid",teams:["West Ham United"]}
+  {name:"Wissam Ben Yedder",teams:["AS Monaco","Sevilla","Toulouse FC"]}
+  {name:"Wladimiro Falcone",teams:["Lecce","Sampdoria"]}
+  {name:"Wojciech Szczęsny",teams:["AS Roma","Arsenal","Barcelona","Juventus"]}
+  {name:"Wout Faes",teams:["AS Monaco","Leicester City","Stade de Reims"]}
+  {name:"Wout Weghorst",teams:["Burnley","Manchester United","TSG Hoffenheim","VfL Wolfsburg"]}
+  {name:"Wu Lei",teams:["Espanyol"]}
+  {name:"Wylan Cyprien",teams:["FC Nantes","OGC Nice","Parma","RC Lens"]}
+  {name:"Xabi Alonso",teams:["Bayern Munich","Liverpool","Real Madrid","Real Sociedad"]}
+  {name:"Xabi Prieto",teams:["Real Sociedad"]}
+  {name:"Xabier Etxeita",teams:["Athletic Bilbao","Getafe","Huesca"]}
+  {name:"Xaver Schlager",teams:["RB Leipzig","VfL Wolfsburg"]}
+  {name:"Xavi",teams:["Barcelona"]}
+  {name:"Xavi Simons",teams:["Paris Saint-Germain","RB Leipzig","Tottenham Hotspur"]}
+  {name:"Xavi Torres",teams:["Barcelona","Getafe","Levante","Málaga","Real Betis","Sporting Gijón"]}
+  {name:"Xavier Chavalerin",teams:["Estac Troyes","Stade de Reims"]}
+  {name:"Xavier Collin",teams:["GFC Ajaccio","Montpellier HSC"]}
+  {name:"Xavier Roca",teams:["Espanyol","Villarreal"]}
+  {name:"Xeka",teams:["Dijon FCO","LOSC Lille","Stade Rennais"]}
+  {name:"Xherdan Shaqiri",teams:["Bayern Munich","Inter Milan","Liverpool","Olympique Lyonnais","Stoke City"]}
+  {name:"Ximo Navarro",teams:["Alavés","Almería","Las Palmas","Mallorca"]}
+  {name:"Xisco",teams:["Córdoba","Deportivo La Coruña","Levante","Newcastle United","Racing Santander","Real Betis","Recreativo","Tenerife","Valencia"]}
+  {name:"Yacine Abdessadki",teams:["RC Strasbourg","SC Freiburg","Toulouse FC"]}
+  {name:"Yacine Adli",teams:["AC Milan","Fiorentina","Girondins de Bordeaux","Paris Saint-Germain"]}
+  {name:"Yacine Bammou",teams:["FC Nantes","SM Caen"]}
+  {name:"Yacine Bezzaz",teams:["FC Valenciennes","GFC Ajaccio"]}
+  {name:"Yacine Brahimi",teams:["Granada","Stade Rennais"]}
+  {name:"Yacouba Sylla",teams:["Aston Villa","Montpellier HSC","Stade Rennais"]}
+  {name:"Yakubu Aiyegbeni",teams:["Blackburn Rovers","Everton","Middlesbrough","Portsmouth"]}
+  {name:"Yan Brice Eteki",teams:["Granada"]}
+  {name:"Yan Couto",teams:["Borussia Dortmund","Girona"]}
+  {name:"Yan Valery",teams:["Angers SCO","Southampton"]}
+  {name:"Yangel Herrera",teams:["Espanyol","Girona","Granada","Huesca","Real Sociedad"]}
+  {name:"Yankuba Minteh",teams:["Brighton & Hove Albion"]}
+  {name:"Yann Aurel Bisseck",teams:["FC Köln","Inter Milan"]}
+  {name:"Yann Bodiger",teams:["Cádiz","Toulouse FC"]}
+  {name:"Yann Gboho",teams:["Stade Rennais","Toulouse FC"]}
+  {name:"Yann Jouffre",teams:["EA Guingamp","FC Lorient","FC Metz"]}
+  {name:"Yann Karamoh",teams:["Girondins de Bordeaux","Inter Milan","Montpellier HSC","Parma","SM Caen","Torino"]}
+  {name:"Yann Lachuer",teams:["AJ Auxerre","Estac Troyes","SC Bastia"]}
+  {name:"Yann M'Vila",teams:["AS Saint-Étienne","Inter Milan","Stade Rennais","Sunderland"]}
+  {name:"Yann Sommer",teams:["Bayern Munich","Borussia Mönchengladbach","Inter Milan"]}
+  {name:"Yannick Baret",teams:["EA Guingamp"]}
+  {name:"Yannick Bolasie",teams:["Crystal Palace","Everton"]}
+  {name:"Yannick Cahuzac",teams:["RC Lens","SC Bastia","Toulouse FC"]}
+  {name:"Yannick Carrasco",teams:["AS Monaco","Atlético Madrid"]}
+  {name:"Yannick Fischer",teams:["Le Mans FC","RC Strasbourg"]}
+  {name:"Yannick Gerhardt",teams:["FC Köln","VfL Wolfsburg"]}
+  {name:"Yannick Sagbo",teams:["AS Monaco","Hull City","Évian TG"]}
+  {name:"Yannik Keitel",teams:["FC Augsburg","SC Freiburg","VfB Stuttgart"]}
+  {name:"Yannis Salibur",teams:["AS Saint-Étienne","EA Guingamp","Mallorca"]}
+  {name:"Yasin Ayari",teams:["Brighton & Hove Albion"]}
+  {name:"Yasser Larouci",teams:["Estac Troyes","Sheffield United"]}
+  {name:"Yassin Belkhdim",teams:["Angers SCO"]}
+  {name:"Yassin Mikari",teams:["FC Sochaux"]}
+  {name:"Yassine Benzia",teams:["Dijon FCO","LOSC Lille","Olympique Lyonnais"]}
+  {name:"Yassine Bounou",teams:["Girona","Sevilla"]}
+  {name:"Yassine Kechta",teams:["Le Havre AC"]}
+  {name:"Yaya Sanogo",teams:["AJ Auxerre","Arsenal","Crystal Palace","Toulouse FC"]}
+  {name:"Yaya Touré",teams:["AS Monaco","Barcelona","Manchester City"]}
+  {name:"Yazid Mansouri",teams:["FC Lorient","Le Havre AC"]}
+  {name:"Yehor Yarmoliuk",teams:["Brentford"]}
+  {name:"Yehvann Diouf",teams:["OGC Nice","Stade de Reims"]}
+  {name:"Yeni Ngbakoto",teams:["EA Guingamp","FC Metz"]}
+  {name:"Yeray Álvarez",teams:["Athletic Bilbao"]}
+  {name:"Yeremi Pino",teams:["Crystal Palace","Villarreal"]}
+  {name:"Yerry Mina",teams:["Barcelona","Cagliari","Everton","Fiorentina"]}
+  {name:"Yevhen Konoplyanka",teams:["FC Schalke 04","Sevilla"]}
+  {name:"Yksel Osmanovski",teams:["Bari","Girondins de Bordeaux","Torino"]}
+  {name:"Ylber Ramadani",teams:["Lecce"]}
+  {name:"Yoan Cardinale",teams:["OGC Nice"]}
+  {name:"Yoan Gouffran",teams:["Girondins de Bordeaux","Newcastle United","SM Caen"]}
+  {name:"Yoane Wissa",teams:["Angers SCO","Brentford","FC Lorient","Newcastle United"]}
+  {name:"Yoann Andreu",teams:["AS Saint-Étienne","Angers SCO"]}
+  {name:"Yoann Bigné",teams:["OGC Nice","Stade Brestois 29","Stade Rennais"]}
+  {name:"Yoann Gourcuff",teams:["AC Milan","Dijon FCO","Girondins de Bordeaux","Olympique Lyonnais","Stade Rennais"]}
+  {name:"Yoann Poulard",teams:["FC Nantes","GFC Ajaccio","Le Mans FC"]}
+  {name:"Yoann Salmier",teams:["Estac Troyes","Le Havre AC","RC Strasbourg"]}
+  {name:"Yoann Touzghar",teams:["Estac Troyes","GFC Ajaccio","RC Lens"]}
+  {name:"Yoel",teams:["Celta Vigo","Eibar","Rayo Vallecano","Real Valladolid","Valencia"]}
+  {name:"Yohan Benalouane",teams:["AS Saint-Étienne","Atalanta","Cesena","Leicester City","Parma"]}
+  {name:"Yohan Cabaye",teams:["AS Saint-Étienne","Crystal Palace","LOSC Lille","Newcastle United","Paris Saint-Germain"]}
+  {name:"Yohan Demont",teams:["GFC Ajaccio","RC Lens"]}
+  {name:"Yohan Hautcœur",teams:["AS Saint-Étienne","FC Lorient","Le Mans FC"]}
+  {name:"Yohan Lachor",teams:["Boulogne","RC Lens","Sedan"]}
+  {name:"Yohan Mollo",teams:["AS Monaco","AS Nancy","AS Saint-Étienne","Granada","SM Caen"]}
+  {name:"Yohann Magnin",teams:["Clermont Foot"]}
+  {name:"Yohann Pelé",teams:["FC Sochaux","Le Mans FC","Olympique de Marseille","Toulouse FC"]}
+  {name:"Yordi",teams:["Blackburn Rovers","Getafe","Mallorca","Real Zaragoza"]}
+  {name:"Yoshinori Mutō",teams:["1. FSV Mainz 05","Eibar","Newcastle United"]}
+  {name:"Yossi Benayoun",teams:["Arsenal","Chelsea","Liverpool","Racing Santander","West Ham United"]}
+  {name:"Youcef Atal",teams:["OGC Nice"]}
+  {name:"Younousse Sankharé",teams:["Dijon FCO","EA Guingamp","FC Valenciennes","Girondins de Bordeaux","LOSC Lille","Paris Saint-Germain"]}
+  {name:"Younès Belhanda",teams:["FC Schalke 04","Montpellier HSC","OGC Nice"]}
+  {name:"Younès Kaboul",teams:["AJ Auxerre","Portsmouth","Sunderland","Tottenham Hotspur","Watford"]}
+  {name:"Youri Djorkaeff",teams:["1. FC Kaiserslautern","Blackburn Rovers","Bolton Wanderers"]}
+  {name:"Youri Tielemans",teams:["AS Monaco","Aston Villa","Leicester City"]}
+  {name:"Youssef Aït Bennasser",teams:["AS Monaco","AS Nancy","AS Saint-Étienne","Girondins de Bordeaux","SM Caen"]}
+  {name:"Youssef El-Arabi",teams:["FC Nantes","Granada","SM Caen"]}
+  {name:"Youssef En-Nesyri",teams:["Leganés","Málaga","Sevilla"]}
+  {name:"Youssef Maleh",teams:["Cremonese","Empoli","Fiorentina","Lecce"]}
+  {name:"Youssef Mohamad",teams:["FC Köln","SC Freiburg"]}
+  {name:"Youssouf Fofana",teams:["AC Milan","AS Monaco","RC Strasbourg"]}
+  {name:"Youssouf Hadji",teams:["AS Nancy","SC Bastia","Stade Rennais"]}
+  {name:"Youssouf Koné",teams:["Elche","Estac Troyes","GFC Ajaccio","LOSC Lille","Olympique Lyonnais"]}
+  {name:"Youssouf Mulumbu",teams:["Norwich City","Paris Saint-Germain","West Bromwich Albion"]}
+  {name:"Youssouf Ndayishimiye",teams:["OGC Nice"]}
+  {name:"Youssouf Sabaly",teams:["FC Nantes","Girondins de Bordeaux","Real Betis","Évian TG"]}
+  {name:"Youssoufa Moukoko",teams:["Borussia Dortmund","OGC Nice"]}
+  {name:"Yukinari Sugawara",teams:["Southampton","Werder Bremen"]}
+  {name:"Yunis Abdelhamid",teams:["AS Saint-Étienne","Dijon FCO","Stade de Reims"]}
+  {name:"Yunus Mallı",teams:["1. FC Union Berlin","1. FSV Mainz 05","VfL Wolfsburg"]}
+  {name:"Yunus Musah",teams:["AC Milan","Atalanta","Valencia"]}
+  {name:"Yuri Berchiche",teams:["Athletic Bilbao","Paris Saint-Germain","Real Sociedad","Real Valladolid"]}
+  {name:"Yussuf Poulsen",teams:["Hamburger SV","RB Leipzig"]}
+  {name:"Yusuf Yazıcı",teams:["LOSC Lille"]}
+  {name:"Yuto Nagatomo",teams:["Cesena","Inter Milan","Olympique de Marseille"]}
+  {name:"Yuya Osako",teams:["FC Köln","Werder Bremen"]}
+  {name:"Yvan Neyou",teams:["AS Saint-Étienne","Getafe","Leganés"]}
+  {name:"Yves Bissouma",teams:["Brighton & Hove Albion","LOSC Lille","Tottenham Hotspur"]}
+  {name:"Yves Deroff",teams:["FC Nantes","RC Strasbourg"]}
+  {name:"Yvon Mvogo",teams:["FC Lorient","RB Leipzig"]}
+  {name:"Yıldıray Baştürk",teams:["Bayer Leverkusen","Blackburn Rovers","Hertha BSC","VfB Stuttgart","VfL Bochum"]}
+  {name:"Zakaria Aboukhlal",teams:["Torino","Toulouse FC"]}
+  {name:"Zakaria Bakkali",teams:["Deportivo La Coruña","Valencia"]}
+  {name:"Zargo Touré",teams:["Boulogne","FC Lorient"]}
+  {name:"Zat Knight",teams:["Aston Villa","Bolton Wanderers","Fulham"]}
+  {name:"Zaydou Youssouf",teams:["AS Saint-Étienne","Girondins de Bordeaux"]}
+  {name:"Zdeněk Grygera",teams:["Fulham","Juventus"]}
+  {name:"Zdeněk Pospěch",teams:["1. FSV Mainz 05"]}
+  {name:"Zdravko Kuzmanović",teams:["Fiorentina","Inter Milan","Málaga","Udinese","VfB Stuttgart"]}
+  {name:"Zeki Çelik",teams:["AS Roma","LOSC Lille"]}
+  {name:"Zeljko Kalac",teams:["AC Milan","Perugia"]}
+  {name:"Zinedine Ferhat",teams:["Angers SCO","Nîmes"]}
+  {name:"Zinédine Zidane",teams:["Juventus","Real Madrid"]}
+  {name:"Zisis Vryzas",teams:["Perugia"]}
+  {name:"Zito Luvumbo",teams:["Cagliari","Mallorca"]}
+  {name:"Zlatan Bajramović",teams:["Eintracht Frankfurt","FC Schalke 04","FC St. Pauli","SC Freiburg"]}
+  {name:"Zlatan Ibrahimović",teams:["AC Milan","Barcelona","Inter Milan","Juventus","Manchester United","Paris Saint-Germain"]}
+  {name:"Zlatan Muslimović",teams:["Atalanta","Messina","Parma","Udinese"]}
+  {name:"Zlatko Junuzović",teams:["Werder Bremen"]}
+  {name:"Zoltán Gera",teams:["Fulham","West Bromwich Albion"]}
+  {name:"Zoltán Sebescen",teams:["Bayer Leverkusen","VfL Wolfsburg"]}
+  {name:"Zoltán Stieber",teams:["1. FSV Mainz 05","Hamburger SV","SpVgg Greuther Fürth"]}
+  {name:"Zoran Njeguš",teams:["Sevilla"]}
+  {name:"Zouhair Feddal",teams:["Alavés","Levante","Palermo","Parma","Real Betis","Real Valladolid"]}
+  {name:"Zoumana Camara",teams:["AS Saint-Étienne","Leeds United","Olympique de Marseille","Paris Saint-Germain","RC Lens"]}
+  {name:"Zurab Khizanishvili",teams:["Blackburn Rovers"]}
+  {name:"Zvjezdan Misimović",teams:["1. FC Nürnberg","Bayern Munich","VfL Bochum","VfL Wolfsburg"]}
+  {name:"Zvonimir Soldo",teams:["VfB Stuttgart"]}
+  {name:"Zé António",teams:["Borussia Mönchengladbach"]}
+  {name:"Zé Castro",teams:["Atlético Madrid","Deportivo La Coruña","Rayo Vallecano"]}
+  {name:"Zé Maria",teams:["Inter Milan","Levante","Perugia"]}
+  {name:"Zé Roberto",teams:["Bayer Leverkusen","Bayern Munich","Hamburger SV"]}
+  {name:"Àngel Rangel",teams:["Swansea City"]}
+  {name:"Ádám Nagy",teams:["Bologna"]}
+  {name:"Ádám Szalai",teams:["1. FSV Mainz 05","FC Schalke 04","Hannover 96","TSG Hoffenheim"]}
+  {name:"Álex Alegría",teams:["Levante","Mallorca","Rayo Vallecano","Real Betis"]}
+  {name:"Álex Berenguer",teams:["Athletic Bilbao","Osasuna","Torino"]}
+  {name:"Álex Bergantiños",teams:["Deportivo La Coruña","Xerez"]}
+  {name:"Álex Fernández",teams:["Cádiz","Espanyol","Real Madrid"]}
+  {name:"Álex Granell",teams:["Girona"]}
+  {name:"Álex Grimaldo",teams:["Bayer Leverkusen"]}
+  {name:"Álex Gálvez",teams:["Eibar","Las Palmas","Rayo Vallecano","Sporting Gijón","Werder Bremen"]}
+  {name:"Álex López",teams:["Celta Vigo"]}
+  {name:"Álex Moreno",teams:["Aston Villa","Girona","Nottingham Forest","Rayo Vallecano","Real Betis"]}
+  {name:"Álex Remiro",teams:["Real Sociedad"]}
+  {name:"Álex Suárez",teams:["Las Palmas"]}
+  {name:"Álvaro",teams:["Las Palmas","Levante","Real Zaragoza"]}
+  {name:"Álvaro Aguado",teams:["Espanyol","Real Valladolid"]}
+  {name:"Álvaro Arbeloa",teams:["Deportivo La Coruña","Liverpool","Real Madrid","West Ham United"]}
+  {name:"Álvaro Cejudo",teams:["Osasuna","Real Betis"]}
+  {name:"Álvaro Domínguez",teams:["Atlético Madrid","Borussia Mönchengladbach"]}
+  {name:"Álvaro Fernández",teams:["Brentford","Espanyol","Huesca","Osasuna","Sevilla"]}
+  {name:"Álvaro García",teams:["Granada","Rayo Vallecano"]}
+  {name:"Álvaro González",teams:["Espanyol","Lazio","Olympique de Marseille","Racing Santander","Real Zaragoza","Torino","Villarreal"]}
+  {name:"Álvaro Medrán",teams:["Alavés","Getafe","Rayo Vallecano","Real Madrid","Valencia"]}
+  {name:"Álvaro Mejía",teams:["AC Arles-Avignon","Real Madrid","Real Murcia"]}
+  {name:"Álvaro Morata",teams:["AC Milan","Atlético Madrid","Chelsea","Como","Juventus","Real Madrid"]}
+  {name:"Álvaro Negredo",teams:["Almería","Cádiz","Manchester City","Middlesbrough","Sevilla","Valencia"]}
+  {name:"Álvaro Novo",teams:["Atlético Madrid","Mallorca","Real Sociedad"]}
+  {name:"Álvaro Odriozola",teams:["Bayern Munich","Fiorentina","Real Madrid","Real Sociedad"]}
+  {name:"Álvaro Recoba",teams:["Inter Milan","Torino"]}
+  {name:"Álvaro Rodríguez",teams:["Elche","Getafe","Real Madrid"]}
+  {name:"Álvaro Rubio",teams:["Albacete","Real Valladolid"]}
+  {name:"Álvaro Santos",teams:["FC Sochaux","RC Strasbourg"]}
+  {name:"Álvaro Vadillo",teams:["Espanyol","Granada","Real Betis"]}
+  {name:"Álvaro Vallés",teams:["Las Palmas","Real Betis"]}
+  {name:"Álvaro Vázquez",teams:["Espanyol","Getafe","Swansea City"]}
+  {name:"Ángel Correa",teams:["Atlético Madrid"]}
+  {name:"Ángel Di María",teams:["Juventus","Manchester United","Paris Saint-Germain","Real Madrid"]}
+  {name:"Ángel Lafita",teams:["Deportivo La Coruña","Getafe","Real Zaragoza"]}
+  {name:"Ángel Lekumberri",teams:["Osasuna"]}
+  {name:"Ángel López",teams:["Celta Vigo","Las Palmas","Real Betis","Villarreal"]}
+  {name:"Ángel Montoro",teams:["Granada","Las Palmas","Valencia"]}
+  {name:"Ángel Morales",teams:["Espanyol","Gimnàstic"]}
+  {name:"Ángel Rodríguez",teams:["Eibar","Getafe","Levante","Mallorca","Tenerife"]}
+  {name:"Ángel Trujillo",teams:["Almería","Levante"]}
+  {name:"Ángel Vivar Dorado",teams:["Getafe","Racing Santander","Rayo Vallecano","Real Valladolid"]}
+  {name:"Ângelo",teams:["Lecce","Parma","Siena"]}
+  {name:"Änis Ben-Hatira",teams:["Eintracht Frankfurt","Hamburger SV","Hertha BSC","SV Darmstadt 98"]}
+  {name:"Çağlar Söyüncü",teams:["Atlético Madrid","Leicester City","SC Freiburg"]}
+  {name:"Éder",teams:["Brescia","Cesena","Empoli","Inter Milan","LOSC Lille","Sampdoria","Swansea City"]}
+  {name:"Éder Militão",teams:["Real Madrid"]}
+  {name:"Éderson",teams:["Atalanta","Salernitana"]}
+  {name:"Édgar Badía",teams:["Elche"]}
+  {name:"Édgar Barreto",teams:["Atalanta","Palermo","Reggina","Sampdoria"]}
+  {name:"Édgar González",teams:["Almería","Real Betis"]}
+  {name:"Édgar Méndez",teams:["Alavés","Granada"]}
+  {name:"Édgar Álvarez",teams:["AS Roma","Bari","Cagliari","Livorno","Messina","Palermo"]}
+  {name:"Édouard Butin",teams:["FC Sochaux"]}
+  {name:"Édouard Cissé",teams:["AJ Auxerre","AS Monaco","Olympique de Marseille","Paris Saint-Germain","West Ham United"]}
+  {name:"Émile Mpenza",teams:["FC Schalke 04","Hamburger SV","Manchester City"]}
+  {name:"Éric Abidal",teams:["AS Monaco","Barcelona","LOSC Lille","Olympique Lyonnais"]}
+  {name:"Éric Bauthéac",teams:["Dijon FCO","LOSC Lille","OGC Nice"]}
+  {name:"Éric Carrière",teams:["FC Nantes","Olympique Lyonnais","RC Lens"]}
+  {name:"Éric Chelle",teams:["FC Valenciennes","RC Lens"]}
+  {name:"Éric Cubilier",teams:["AS Monaco","FC Metz","FC Nantes","Paris Saint-Germain","RC Lens"]}
+  {name:"Éric Deflandre",teams:["Olympique Lyonnais"]}
+  {name:"Éric Durand",teams:["SC Bastia","Stade Rennais"]}
+  {name:"Éric Loussouarn",teams:["EA Guingamp"]}
+  {name:"Éric Mouloungui",teams:["OGC Nice","RC Strasbourg"]}
+  {name:"Éric Roy",teams:["Estac Troyes","OGC Nice","Rayo Vallecano","Sunderland"]}
+  {name:"Éric Sikora",teams:["RC Lens"]}
+  {name:"Éric Tié Bi",teams:["Évian TG"]}
+  {name:"Érik Lamela",teams:["AS Roma","Sevilla","Tottenham Hotspur"]}
+  {name:"Étienne Capoue",teams:["Tottenham Hotspur","Toulouse FC","Villarreal","Watford"]}
+  {name:"Étienne Didot",teams:["EA Guingamp","Stade Rennais","Toulouse FC"]}
+  {name:"Éver Banega",teams:["Atlético Madrid","Inter Milan","Sevilla","Valencia"]}
+  {name:"Ívar Ingimarsson",teams:["Reading"]}
+  {name:"Íñigo López",teams:["Celta Vigo","Córdoba","Granada"]}
+  {name:"Òscar",teams:["Espanyol"]}
+  {name:"Óliver Torres",teams:["Atlético Madrid","Sevilla","Villarreal"]}
+  {name:"Óscar",teams:["Real Valladolid","Real Zaragoza"]}
+  {name:"Óscar Arpón",teams:["Osasuna","Recreativo"]}
+  {name:"Óscar Duarte",teams:["Espanyol","Levante"]}
+  {name:"Óscar Gil",teams:["Espanyol"]}
+  {name:"Óscar Melendo",teams:["Espanyol","Granada"]}
+  {name:"Óscar Mingueza",teams:["Barcelona","Celta Vigo"]}
+  {name:"Óscar Montiel",teams:["Albacete"]}
+  {name:"Óscar Plano",teams:["Real Valladolid"]}
+  {name:"Óscar Rodríguez Arnaiz",teams:["Celta Vigo","Getafe","Leganés","Sevilla"]}
+  {name:"Óscar Serrano",teams:["Espanyol","Levante","Racing Santander"]}
+  {name:"Óscar Sánchez",teams:["Real Valladolid"]}
+  {name:"Óscar Trejo",teams:["Mallorca","Rayo Vallecano","Sporting Gijón","Toulouse FC"]}
+  {name:"Óscar Téllez",teams:["Alavés"]}
+  {name:"Óscar Valentín",teams:["Rayo Vallecano"]}
+  {name:"Óscar Vales",teams:["Athletic Bilbao"]}
+  {name:"Óscar de Marcos",teams:["Athletic Bilbao"]}
+  {name:"Óscar de Paula",teams:["Real Sociedad"]}
+  {name:"Ömer Toprak",teams:["Bayer Leverkusen","Borussia Dortmund","SC Freiburg","Werder Bremen"]}
+  {name:"Ørjan Nyland",teams:["Aston Villa","FC Ingolstadt 04","RB Leipzig","Sevilla"]}
+  {name:"Øyvind Leonhardsen",teams:["Aston Villa","Tottenham Hotspur"]}
+  {name:"Þórður Guðjónsson",teams:["Derby County","Las Palmas","VfL Bochum"]}
+  {name:"Đorđe Petrović",teams:["AFC Bournemouth","Chelsea","RC Strasbourg"]}
+  {name:"İlkay Gündoğan",teams:["1. FC Nürnberg","Barcelona","Borussia Dortmund","Manchester City"]}
+  {name:"Łukasz Fabiański",teams:["Arsenal","Swansea City","West Ham United"]}
+  {name:"Łukasz Piszczek",teams:["Borussia Dortmund","Hertha BSC"]}
+  {name:"Łukasz Skorupski",teams:["AS Roma","Bologna","Empoli"]}
+  {name:"Šime Vrsaljko",teams:["Atlético Madrid","Genoa","Inter Milan","Sassuolo"]}
+  {name:"Željko Brkić",teams:["Cagliari","Carpi","Siena","Udinese"]}
+  {name:"Ștefan Radu",teams:["Lazio"]}
+];
