@@ -226,6 +226,17 @@ const GAMES = [
     dateAdded: 18,
     plays: 0,
   },
+  {
+    id: "goal-scorer-quiz",
+    path: "/games/goal-scorer-quiz",
+    title: "Goal Scorer Quiz",
+    sport: "SOCCER",
+    description: "Guess the top goal scorer from progressive clues. Season, goals, nationality, team — how few clues do you need?",
+    tag: "GUESS THE PLAYER",
+    available: true,
+    dateAdded: 19,
+    plays: 0,
+  },
 ]
 
 function GameCard({ game, index, playCount }) {
