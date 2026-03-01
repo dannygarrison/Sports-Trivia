@@ -257,17 +257,16 @@ for (const team of ALL_TEAMS) {
 // ── HELPERS ──────────────────────────────────────────────────────────────────
 
 function normalize(s) {
-  return s.toLowerCase().trim()
+  return s.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase().trim()
     .replace(/[-–—]/g, " ")
     .replace(/['']/g, "'")
-    .replace(/[^a-z0-9 'éèêëàâäùûüôöîïçñ]/g, "")
+    .replace(/[^a-z0-9 ']/g, "")
     .replace(/\s+/g, " ");
 }
 
 function phoneticNorm(s) {
-  return s.toLowerCase()
-    .replace(/é|è|ê|ë/g,"e").replace(/à|â|ä/g,"a").replace(/ù|û|ü/g,"u")
-    .replace(/ô|ö/g,"o").replace(/î|ï/g,"i").replace(/ç/g,"c").replace(/ñ/g,"n")
+  return s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
     .replace(/ph/g,"f").replace(/ou/g,"u").replace(/ck/g,"k")
     .replace(/ae/g,"e").replace(/oo/g,"u").replace(/[aeiou]+/g,"a")
     .replace(/(.)\1+/g,"$1").trim();
