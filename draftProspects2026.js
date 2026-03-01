@@ -2,7 +2,7 @@
 // Sources: Tankathon, Drafttek, ESPN (Kiper/Yates/Reid), CBS Sports (Renner), PFF, Bleacher Report
 // Note: Dante Moore returned to Oregon — NOT in 2026 draft class
 
-const ALL_PROSPECTS = [
+export const ALL_PROSPECTS = [
   { name: "Fernando Mendoza", position: "QB", school: "Indiana" },
   { name: "Arvell Reese", position: "LB", school: "Ohio State" },
   { name: "Caleb Downs", position: "S", school: "Ohio State" },
@@ -69,7 +69,7 @@ const ALL_PROSPECTS = [
 // 11-MIA, 12-DAL, 13-LAR(fromATL), 14-BAL, 15-TB, 16-NYJ(fromIND), 17-DET, 18-MIN,
 // 19-CAR, 20-DAL(fromGB), 21-PIT, 22-LAC, 23-PHI, 24-CLE(fromJAX), 25-CHI, 26-BUF,
 // 27-SF, 28-HOU, 29-LAR, 30-DEN, 31-NE, 32-SEA
-const PICK_SUGGESTIONS = {
+export const PICK_SUGGESTIONS = {
   "1": [{ name: "Fernando Mendoza", position: "QB", school: "Indiana" }, { name: "Ty Simpson", position: "QB", school: "Alabama" }, { name: "Caleb Downs", position: "S", school: "Ohio State" }],
   "2": [{ name: "Rueben Bain Jr.", position: "EDGE", school: "Miami" }, { name: "Caleb Downs", position: "S", school: "Ohio State" }, { name: "Arvell Reese", position: "LB", school: "Ohio State" }],
   "3": [{ name: "Francis Mauigoa", position: "OT", school: "Miami" }, { name: "Caleb Downs", position: "S", school: "Ohio State" }, { name: "Ty Simpson", position: "QB", school: "Alabama" }],
