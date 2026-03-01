@@ -671,6 +671,8 @@ export default function NFLChain() {
   const [started, setStarted] = useState(false);
   const [hardMode, setHardMode] = useState(false);
   const [history, setHistory] = useState([]); // stack of snapshots for undo
+  const [chainCount, setChainCount] = useState(0); // completed laps (0 = first attempt)
+  const [showMilestone, setShowMilestone] = useState(false); // celebration overlay
   const inputRef = useRef(null);
   const chainContainerRef = useRef(null);
   const trackPlay = usePlayCount("nfl-chain");
@@ -697,6 +699,8 @@ export default function NFLChain() {
       setWon(false);
       setStarted(false);
       setHistory([]);
+      setChainCount(0);
+      setShowMilestone(false);
       return newMode;
     });
   }, []);
@@ -715,6 +719,7 @@ export default function NFLChain() {
         usedPlayers: [...state.usedPlayers],
         hardMode: state.hardMode,
         won: state.won,
+        chainCount: state.chainCount || 0,
         history: state.history.map(h => ({
           ...h,
           usedTeams: [...h.usedTeams],
@@ -744,6 +749,7 @@ export default function NFLChain() {
           setUsedPlayers(new Set(s.usedPlayers));
           setHardMode(s.hardMode || false);
           setWon(s.won || false);
+          setChainCount(s.chainCount || 0);
           setHistory((s.history || []).map(h => ({
             ...h,
             usedTeams: new Set(h.usedTeams),
@@ -763,9 +769,9 @@ export default function NFLChain() {
   // Auto-save on every meaningful state change
   useEffect(() => {
     if (chain.length > 0 && currentTarget) {
-      saveGame({ step, currentTarget, chain, usedTeams, usedColleges, usedPlayers, hardMode, won, history });
+      saveGame({ step, currentTarget, chain, usedTeams, usedColleges, usedPlayers, hardMode, won, chainCount, history });
     }
-  }, [step, currentTarget, chain, usedTeams, usedColleges, usedPlayers, hardMode, won, history]);
+  }, [step, currentTarget, chain, usedTeams, usedColleges, usedPlayers, hardMode, won, chainCount, history]);
 
   // Scroll chain container horizontally to show latest link, without moving the page
   useEffect(() => {
@@ -942,12 +948,30 @@ export default function NFLChain() {
       setInput("");
 
       if (newUsedTeams.size === 32) {
-        setWon(true);
+        setChainCount(c => c + 1);
+        setShowMilestone(true);
       } else {
         setStep(STEP.TEAM);
       }
     }
   }, [step, currentTarget, input, usedTeams, usedColleges, usedPlayers, reject, pushHistory, playerList, normalizedMap]);
+
+  const handleContinueChain = useCallback(() => {
+    // Keep the last team as the starting point for the next lap
+    // Reset usedTeams to just that team, keep players/colleges used
+    const lastTeam = currentTarget;
+    setUsedTeams(new Set([lastTeam]));
+    setStep(STEP.TEAM);
+    setShowMilestone(false);
+    setInput("");
+    setRejectMsg("");
+    setTimeout(() => inputRef.current?.focus(), 50);
+  }, [currentTarget]);
+
+  const handleEndChain = useCallback(() => {
+    setWon(true);
+    setShowMilestone(false);
+  }, []);
 
   const handleKeyDown = (e) => {
     trackPlay();
@@ -968,12 +992,19 @@ export default function NFLChain() {
     setWon(false);
     setRejectMsg("");
     setHistory([]);
+    setChainCount(0);
+    setShowMilestone(false);
     setTimeout(() => inputRef.current?.focus(), 50);
   };
 
   const prompt = currentTarget ? STEP_LABELS[step]({ currentTarget, hardMode }) : "";
   const hint = STEP_HINT[step];
   const teamsLeft = 32 - usedTeams.size;
+
+  const CHAIN_NAMES = ["", "Double", "Triple", "Quadruple", "Quintuple", "Sextuple", "Septuple", "Octuple"];
+  const chainLabel = chainCount > 0
+    ? `${CHAIN_NAMES[chainCount] || `${chainCount + 1}x`} Chain${chainCount > 0 ? " 🔥" : ""}`
+    : null;
 
   return (
     <div style={{
@@ -1054,7 +1085,20 @@ export default function NFLChain() {
         display: "flex", alignItems: "center", gap: 20, marginBottom: 24,
         background: "#0b0b1e", border: "1px solid #161632",
         borderRadius: 12, padding: "12px 28px",
+        position: "relative",
       }}>
+        {chainCount > 0 && (
+          <div style={{
+            position: "absolute", top: -10, left: "50%", transform: "translateX(-50%)",
+            background: "linear-gradient(135deg, #e8c060, #c8a050)",
+            color: "#07070f", fontSize: 9, fontWeight: 900,
+            letterSpacing: 2, textTransform: "uppercase",
+            padding: "2px 12px", borderRadius: 10,
+            whiteSpace: "nowrap",
+          }}>
+            {chainLabel}
+          </div>
+        )}
         <div style={{ textAlign: "center" }}>
           <div style={{ fontSize: 28, fontWeight: 900, color: "#5bb8f5", lineHeight: 1 }}>{usedTeams.size}</div>
           <div style={{ fontSize: 8, color: "#ffffff28", letterSpacing: 3, textTransform: "uppercase", marginTop: 2 }}>Teams</div>
@@ -1091,6 +1135,51 @@ export default function NFLChain() {
         </div>
       )}
 
+   {/* Milestone celebration — completed a lap */}
+      {showMilestone && (
+        <div style={{
+          width: "100%", maxWidth: 520, marginBottom: 24,
+          background: "linear-gradient(135deg,#1a2a0d,#1e3310)",
+          border: "1px solid #c8a05066", borderRadius: 16,
+          padding: "28px 32px", textAlign: "center",
+          animation: "fadeUp .4s ease",
+        }}>
+          <div style={{ fontSize: 48, marginBottom: 8 }}>⛓️</div>
+          <div style={{ fontSize: 24, fontWeight: 900, letterSpacing: 1,
+            background: "linear-gradient(135deg,#e8c060,#c8a050)",
+            WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
+          }}>
+            {chainCount === 1 ? "CHAIN COMPLETE!" : `${(CHAIN_NAMES[chainCount] || `${chainCount + 1}x`).toUpperCase()} CHAIN!`}
+          </div>
+          <div style={{ fontSize: 13, color: "#a0a0c0", marginTop: 8 }}>
+            All 32 teams linked {chainCount} time{chainCount !== 1 ? "s" : ""} using {usedPlayers.size} players and {usedColleges.size} colleges
+          </div>
+          <div style={{ fontSize: 11, color: "#e8c060aa", marginTop: 6 }}>
+            Can you keep going? Teams reset but players and colleges stay used!
+          </div>
+          <div style={{ display: "flex", gap: 12, justifyContent: "center", marginTop: 20, flexWrap: "wrap" }}>
+            <button onClick={handleContinueChain} style={{
+              background: "linear-gradient(135deg,#c8a050,#e8c060)",
+              color: "#07070f", border: "none", borderRadius: 10,
+              padding: "11px 28px", fontSize: 13, fontWeight: 900,
+              cursor: "pointer", letterSpacing: 1.5, textTransform: "uppercase",
+              fontFamily: "'Oswald', sans-serif",
+            }}>
+              Keep Going →
+            </button>
+            <button onClick={handleEndChain} style={{
+              background: "transparent",
+              color: "#ffffff66", border: "1px solid #ffffff22", borderRadius: 10,
+              padding: "11px 28px", fontSize: 13, fontWeight: 900,
+              cursor: "pointer", letterSpacing: 1.5, textTransform: "uppercase",
+              fontFamily: "'Oswald', sans-serif",
+            }}>
+              I'm Done
+            </button>
+          </div>
+        </div>
+      )}
+
    {/* Win state */}
       {won && (
         <div style={{
@@ -1101,12 +1190,19 @@ export default function NFLChain() {
           animation: "fadeUp .4s ease",
         }}>
           <div style={{ fontSize: 48, marginBottom: 8 }}>🏆</div>
-          <div style={{ fontSize: 24, fontWeight: 900, color: "#22c55e", letterSpacing: 1 }}>YOU DID IT!</div>
+          <div style={{ fontSize: 24, fontWeight: 900, color: "#22c55e", letterSpacing: 1 }}>
+            {chainCount > 1 ? `${(CHAIN_NAMES[chainCount] || `${chainCount + 1}x`).toUpperCase()} CHAIN!` : "YOU DID IT!"}
+          </div>
           <div style={{ fontSize: 13, color: "#a0a0c0", marginTop: 8 }}>
-            All 32 NFL teams chained in {chain.length} links
+            All 32 NFL teams chained{chainCount > 1 ? ` ${chainCount} times` : ""} in {chain.length} links
+            {chainCount > 1 && <><br />{usedPlayers.size} players · {usedColleges.size} colleges</>}
           </div>
 
           {/* Share section */}
+          {(() => {
+            const chainTag = chainCount > 1 ? ` (${(CHAIN_NAMES[chainCount] || `${chainCount + 1}x`)} Chain)` : "";
+            const shareText = `💪 I completed the NFL Chain${chainTag}${hardMode ? " (SICKO MODE 🔥)" : ""} on TrivialSports!\n⛓️ Linked all 32 NFL teams${chainCount > 1 ? ` ${chainCount} times` : ""} using ${usedPlayers.size} players and ${usedColleges.size} colleges\n🏈 Can you do it? trivialsports.com/games/nfl-chain`;
+            return (
           <div style={{ marginTop: 24, borderTop: "1px solid #22c55e22", paddingTop: 20 }}>
             <div style={{ fontSize: 9, letterSpacing: 3, textTransform: "uppercase", color: "#ffffff30", marginBottom: 12, fontFamily: "'Oswald', sans-serif" }}>
               Share your result
@@ -1115,8 +1211,7 @@ export default function NFLChain() {
 
               {/* Copy to clipboard */}
               <button onClick={() => {
-                const text = `💪 I completed the NFL Chain${hardMode ? " (SICKO MODE 🔥)" : ""} on TrivialSports!\n⛓️ Linked all 32 NFL teams using ${hardMode ? "only active" : ""} players and colleges\n🏈 Can you do it? trivialsports.com/games/nfl-chain`;
-                navigator.clipboard.writeText(text).then(() => {
+                navigator.clipboard.writeText(shareText).then(() => {
                   const btn = document.getElementById('copy-btn');
                   btn.innerText = '✓ Copied!';
                   setTimeout(() => btn.innerText = 'Copy', 2000);
@@ -1131,8 +1226,7 @@ export default function NFLChain() {
 
               {/* Twitter/X */}
               <button onClick={() => {
-                const text = encodeURIComponent(`💪 I completed the NFL Chain${hardMode ? " (SICKO MODE 🔥)" : ""} on TrivialSports!\n⛓️ Linked all 32 NFL teams using ${hardMode ? "only active" : ""} players and colleges\n🏈 Can you do it? trivialsports.com/games/nfl-chain`);
-                window.open(`https://twitter.com/intent/tweet?text=${text}`, '_blank');
+                window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`, '_blank');
               }} style={{
                 background: "#000000", color: "#ffffff",
                 border: "1px solid #333333", borderRadius: 8,
@@ -1143,8 +1237,7 @@ export default function NFLChain() {
 
               {/* Bluesky */}
               <button onClick={() => {
-                const text = encodeURIComponent(`💪 I completed the NFL Chain${hardMode ? " (SICKO MODE 🔥)" : ""} on TrivialSports!\n⛓️ Linked all 32 NFL teams using ${hardMode ? "only active" : ""} players and colleges\n🏈 Can you do it? trivialsports.com/games/nfl-chain`);
-                window.open(`https://bsky.app/intent/compose?text=${text}`, '_blank');
+                window.open(`https://bsky.app/intent/compose?text=${encodeURIComponent(shareText)}`, '_blank');
               }} style={{
                 background: "#0085ff", color: "#ffffff",
                 border: "none", borderRadius: 8,
@@ -1155,22 +1248,22 @@ export default function NFLChain() {
 
               {/* Instagram */}
               <button onClick={() => {
-                const text = `💪 I completed the NFL Chain${hardMode ? " (SICKO MODE 🔥)" : ""} on TrivialSports!\n⛓️ Linked all 32 NFL teams using ${hardMode ? "only active" : ""} players and colleges\n🏈 Can you do it? trivialsports.com/games/nfl-chain`;
-                navigator.clipboard.writeText(text).then(() => {
+                navigator.clipboard.writeText(shareText).then(() => {
                   const btn = document.getElementById('ig-btn');
                   btn.innerText = '✓ Copied — paste in story!';
-                  setTimeout(() => btn.innerText = '📸 Instagram', 3000);
+                  setTimeout(() => btn.innerText = 'Instagram', 3000);
                 });
               }} id="ig-btn" style={{
-                background: "linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045)",
+                background: "linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)",
                 color: "#ffffff", border: "none", borderRadius: 8,
                 padding: "9px 16px", fontSize: 11, fontWeight: 700,
                 cursor: "pointer", letterSpacing: 1.5, textTransform: "uppercase",
                 fontFamily: "'Oswald', sans-serif", transition: "all .2s",
-              }}>📸 Instagram</button>
-
+              }}>Instagram</button>
             </div>
           </div>
+            );
+          })()}
 
           <button onClick={handleReset} style={{
             marginTop: 20, background: "#22c55e", color: "#07070f",
@@ -1182,7 +1275,7 @@ export default function NFLChain() {
       )}
 
       {/* Active prompt + input */}
-      {!won && (
+      {!won && !showMilestone && (
         <div style={{ width: "100%", maxWidth: 520, marginBottom: 24 }}>
           {/* Current prompt */}
           <div style={{
