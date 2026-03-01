@@ -150,23 +150,73 @@ function normalize(s) {
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
     .toLowerCase()
+    .replace(/['']/g, "")
+    .replace(/-/g, " ")
     .replace(/[^a-z0-9 ]/g, "")
+    .replace(/\s+/g, " ")
     .trim();
+}
+
+/* Levenshtein distance */
+function lev(a, b) {
+  const m = a.length, n = b.length;
+  const dp = Array.from({ length: m + 1 }, (_, i) => [i, ...Array(n).fill(0)]);
+  for (let j = 0; j <= n; j++) dp[0][j] = j;
+  for (let i = 1; i <= m; i++)
+    for (let j = 1; j <= n; j++)
+      dp[i][j] = a[i - 1] === b[j - 1] ? dp[i - 1][j - 1] : 1 + Math.min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]);
+  return dp[m][n];
+}
+
+/* Surname particles — when someone types "de jong" we want to match "Luuk de Jong" */
+const PARTICLES = new Set(["de", "van", "von", "di", "el", "al", "dos", "da", "du", "le", "la", "del", "bin"]);
+
+function getSurname(parts) {
+  // Find where the surname starts (first particle or last word)
+  for (let i = 1; i < parts.length; i++) {
+    if (PARTICLES.has(parts[i])) return parts.slice(i).join(" ");
+  }
+  return parts[parts.length - 1];
 }
 
 function checkGuess(guess, answer) {
   const g = normalize(guess);
   const a = normalize(answer);
   if (!g) return false;
+
+  // 1. Exact match
   if (g === a) return true;
-  // last name match
-  const parts = a.split(" ");
-  if (parts.length > 1 && g === parts[parts.length - 1]) return true;
-  // first + last without middle
-  if (parts.length > 2) {
-    const firstLast = parts[0] + " " + parts[parts.length - 1];
+
+  const aParts = a.split(" ");
+  const gParts = g.split(" ");
+
+  // 2. Surname match (handles "de jong", "van persie", "wright phillips")
+  const surname = getSurname(aParts);
+  if (g === surname) return true;
+  // Also accept just the very last word ("jong", "persie", "aubameyang")
+  if (gParts.length === 1 && g === aParts[aParts.length - 1]) return true;
+
+  // 3. Tail match — guess matches the last N words of the answer
+  //    e.g. "emerick aubameyang" matches "pierre emerick aubameyang"
+  if (gParts.length >= 2 && gParts.length < aParts.length) {
+    const tail = aParts.slice(aParts.length - gParts.length).join(" ");
+    if (g === tail) return true;
+  }
+
+  // 4. First + last (skip middle names / particles)
+  if (aParts.length > 2) {
+    const firstLast = aParts[0] + " " + aParts[aParts.length - 1];
     if (g === firstLast) return true;
   }
+
+  // 5. Fuzzy matching — allow small typos
+  const threshold = a.length <= 6 ? 1 : 2;
+  if (lev(g, a) <= threshold) return true;
+  // Fuzzy on surname
+  if (gParts.length <= 2 && lev(g, surname) <= threshold) return true;
+  // Fuzzy on last word
+  if (gParts.length === 1 && aParts[aParts.length - 1].length > 4 && lev(g, aParts[aParts.length - 1]) <= threshold) return true;
+
   return false;
 }
 
