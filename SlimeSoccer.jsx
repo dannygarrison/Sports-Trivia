@@ -297,9 +297,9 @@ export default function SlimeSoccer() {
     const keys = keysRef.current;
     const mc = mobileRef.current;
 
-    // P1 controls: WASD + mobile
-    const p1Left = keys["a"] || mc.left;
-    const p1Right = keys["d"] || mc.right;
+    // P1 controls: WASD + arrows (1P) or WASD only (2P) + mobile
+    const p1Left = keys["a"] || mc.left || (!twoPlayerRef.current && keys["arrowleft"]);
+    const p1Right = keys["d"] || mc.right || (!twoPlayerRef.current && keys["arrowright"]);
     if (p1Left && p1Right) {
       p1.vx = lastDirRef.current === "right" ? G.SLIME_SPEED : -G.SLIME_SPEED;
     } else if (p1Left) {
@@ -309,7 +309,7 @@ export default function SlimeSoccer() {
     } else {
       p1.vx = 0;
     }
-    if ((keys["w"] || mc.jump) && p1.grounded) {
+    if ((keys["w"] || mc.jump || (!twoPlayerRef.current && keys["arrowup"])) && p1.grounded) {
       p1.vy = G.JUMP_FORCE;
       p1.grounded = false;
     }
@@ -766,8 +766,8 @@ export default function SlimeSoccer() {
       keysRef.current[key] = true;
       if (key === "a") lastDirRef.current = "left";
       if (key === "d") lastDirRef.current = "right";
-      if (key === "arrowleft") lastDirRef2.current = "left";
-      if (key === "arrowright") lastDirRef2.current = "right";
+      if (key === "arrowleft") { lastDirRef2.current = "left"; if (!twoPlayerRef.current) lastDirRef.current = "left"; }
+      if (key === "arrowright") { lastDirRef2.current = "right"; if (!twoPlayerRef.current) lastDirRef.current = "right"; }
       if (["arrowup","arrowdown","arrowleft","arrowright","w","a","s","d"," "].includes(key)) e.preventDefault();
       // Pause toggle on space (during gameplay)
       if (key === " ") {
@@ -850,7 +850,7 @@ export default function SlimeSoccer() {
       ctx.fillStyle = COLORS.dimText;
       ctx.fillText(isMobile ? "Use on-screen controls to play" : twoPlayerRef.current
         ? "P1: A/D + W  •  P2: ←/→ + ↑  •  SPACE pause"
-        : "A / D  to move  •  W  to jump  •  SPACE  to pause", G.WIDTH / 2, 310);
+        : "A/D or ←/→  to move  •  W or ↑  to jump  •  SPACE  to pause", G.WIDTH / 2, 310);
       ctx.font = "14px Oswald, sans-serif";
       ctx.fillStyle = twoPlayerRef.current ? "#4dc47a" : "#5a9ee0";
       ctx.fillText(twoPlayerRef.current ? "👥 2 PLAYER MODE" : "🤖 VS CPU", G.WIDTH / 2, 340);
@@ -1121,7 +1121,7 @@ export default function SlimeSoccer() {
         {!isMobile && (<>{twoPlayer ? (
           <><span style={{ color: p1Country.primary }}>P1: A/D</span> + <span style={{ color: p1Country.primary }}>W</span> &nbsp;|&nbsp; <span style={{ color: p2Country.primary }}>P2: ←/→</span> + <span style={{ color: p2Country.primary }}>↑</span> &nbsp;|&nbsp; <span style={{ color: COLORS.dimText }}>SPACE</span> pause &nbsp;|&nbsp; First to {G.WINNING_SCORE}</>
         ) : (
-          <><span style={{ color: p1Country.primary }}>A/D</span> move &nbsp;|&nbsp; <span style={{ color: p1Country.primary }}>W</span> jump &nbsp;|&nbsp; <span style={{ color: p1Country.primary }}>SPACE</span> pause &nbsp;|&nbsp; First to {G.WINNING_SCORE} wins</>
+          <><span style={{ color: p1Country.primary }}>A/D or ←/→</span> move &nbsp;|&nbsp; <span style={{ color: p1Country.primary }}>W or ↑</span> jump &nbsp;|&nbsp; <span style={{ color: p1Country.primary }}>SPACE</span> pause &nbsp;|&nbsp; First to {G.WINNING_SCORE} wins</>
         )}</>)}
       </div>
     </div>
