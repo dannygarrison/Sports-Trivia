@@ -836,7 +836,7 @@ export default function SlimeSoccer() {
       ctx.fillText("SLIME ⚽ SOCCER", G.WIDTH / 2, 130);
       ctx.font = "18px Oswald, sans-serif";
       ctx.fillStyle = "#d4a84399";
-      ctx.fillText("WORLD CUP EDITION", G.WIDTH / 2, 158);
+      ctx.fillText("SLIME CUP EDITION", G.WIDTH / 2, 158);
       ctx.font = "18px Oswald, sans-serif";
       ctx.fillStyle = COLORS.text;
       ctx.fillText("First to 7 wins!", G.WIDTH / 2, 195);
@@ -976,10 +976,10 @@ export default function SlimeSoccer() {
   return (
     <div style={{ minHeight: "100vh", background: COLORS.bg, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", fontFamily: "Oswald, sans-serif", padding: isMobile && isLandscape ? "4px 8px" : "16px 8px" }}>
       <Helmet>
-        <title>Slime Soccer – World Cup Edition | Trivial Sports</title>
-        <meta name="description" content="Play classic slime soccer with 65 World Cup nations. Pick your country, score goals, and compete in this retro arcade game." />
-        <meta property="og:title" content="Slime Soccer – World Cup Edition | Trivial Sports" />
-        <meta property="og:description" content="Play classic slime soccer with 65 World Cup nations. Pick your country, score goals, and compete in this retro arcade game." />
+        <title>Slime Soccer – Slime Cup Edition | Trivial Sports</title>
+        <meta name="description" content="Play classic slime soccer with 65 nations. Pick your country, score goals, and compete in this retro arcade game." />
+        <meta property="og:title" content="Slime Soccer – Slime Cup Edition | Trivial Sports" />
+        <meta property="og:description" content="Play classic slime soccer with 65 nations. Pick your country, score goals, and compete in this retro arcade game." />
         <meta property="og:url" content="https://trivialsports.com/games/slime-soccer" />
         <meta property="og:type" content="website" />
         <link rel="canonical" href="https://trivialsports.com/games/slime-soccer" />
@@ -988,7 +988,7 @@ export default function SlimeSoccer() {
       <div style={{ textAlign: "center", marginBottom: 8 }}>
         <div style={{ fontSize: 11, letterSpacing: 4, color: COLORS.dimText, textTransform: "uppercase", marginBottom: 2 }}>TrivialSports.com</div>
         <h1 style={{ fontSize: 26, fontWeight: 700, color: COLORS.score, margin: 0, lineHeight: 1 }}>SLIME ⚽ SOCCER</h1>
-        <div style={{ fontSize: 12, color: "#d4a84377", letterSpacing: 3, marginTop: 2 }}>WORLD CUP EDITION</div>
+        <div style={{ fontSize: 12, color: "#d4a84377", letterSpacing: 3, marginTop: 2 }}>SLIME CUP EDITION</div>
       </div>
       )}
 
