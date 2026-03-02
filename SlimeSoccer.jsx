@@ -848,8 +848,8 @@ export default function SlimeSoccer() {
       initGame();
       setGameState("playing");
       // Track play in Supabase
-      import("./supabase.jsx").then(({ incrementPlayCount }) => {
-        incrementPlayCount("slime-soccer");
+      import("./supabase.jsx").then(({ recordPlay }) => {
+        recordPlay("slime-soccer");
       }).catch(() => {});
     }
   };
