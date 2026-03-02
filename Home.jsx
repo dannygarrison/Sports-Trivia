@@ -473,7 +473,7 @@ export default function Home() {
                 padding: "7px 16px", borderRadius: 8, cursor: "pointer",
                 border: "1px solid " + (isActive ? meta.accent + "55" : "#ffffff10"),
                 background: isActive ? meta.accent + "18" : "transparent",
-                color: isActive ? meta.accent : "#ffffff44",
+                color: isActive ? meta.accent : "#8a8aaa",
                 transition: "all 0.18s ease",
               }}>
                 {meta.label}
@@ -490,7 +490,7 @@ export default function Home() {
           style={{
             background: "#0a0a18", border: "1px solid #ffffff10",
             borderRadius: 10, padding: "8px 14px",
-            color: "#ffffff66", fontSize: 12,
+            color: "#9a9ab0", fontSize: 12,
             fontFamily: "'Oswald', sans-serif",
             fontWeight: 600, letterSpacing: 1,
             cursor: "pointer", outline: "none",
@@ -550,11 +550,11 @@ export default function Home() {
           <div style={{ flex: 1, height: 1, background: "#ffffff07" }} />
           <Link to="/blog" style={{
             fontSize: 10, fontWeight: 700, fontFamily: "'Oswald', sans-serif",
-            letterSpacing: 2.5, textTransform: "uppercase", color: "#ffffff33",
+            letterSpacing: 2.5, textTransform: "uppercase", color: "#8a8aaa",
             textDecoration: "none", transition: "color 0.2s",
           }}
-            onMouseEnter={e => e.target.style.color = "#ffffff66"}
-            onMouseLeave={e => e.target.style.color = "#ffffff33"}
+            onMouseEnter={e => e.target.style.color = "#b0b0c8"}
+            onMouseLeave={e => e.target.style.color = "#8a8aaa"}
           >View All &rarr;</Link>
         </div>
         <Link to="/blog/nfl-chain-cheat-codes" style={{ textDecoration: "none", display: "block" }}>
@@ -596,7 +596,7 @@ export default function Home() {
               }}>NFL</span>
               <span style={{
                 fontSize: 10, fontWeight: 700, fontFamily: "'Oswald', sans-serif",
-                letterSpacing: 2, textTransform: "uppercase", color: "#ffffff22",
+                letterSpacing: 2, textTransform: "uppercase", color: "#7a7a90",
                 marginLeft: "auto",
               }}>Feb 28, 2026</span>
             </div>
@@ -605,7 +605,7 @@ export default function Home() {
               letterSpacing: 0.5, color: "#e8e8f0", margin: "0 0 10px", lineHeight: 1.2,
             }}>Top 7 NFL Chain Game Cheat Codes: Obscure College Connections You Need to Know</h3>
             <p style={{
-              fontSize: 14, color: "#ffffff66", lineHeight: 1.6, margin: 0, fontFamily: "Georgia, serif",
+              fontSize: 14, color: "#9a9ab0", lineHeight: 1.6, margin: 0, fontFamily: "Georgia, serif",
             }}>The secret to NFL Chain isn't Alabama or Ohio State. It's the schools that don't show up in the College Football Playoff.</p>
           </div>
         </Link>
@@ -613,17 +613,17 @@ export default function Home() {
 
       {/* Footer */}
       <div style={{ borderTop: "1px solid #ffffff06", padding: "22px 28px", textAlign: "center", display: "flex", justifyContent: "center", alignItems: "center", gap: 16 }}>
-        <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: 3, textTransform: "uppercase", color: "#ffffff12", fontFamily: "'Oswald', sans-serif" }}>
+        <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: 3, textTransform: "uppercase", color: "#6a6a80", fontFamily: "'Oswald', sans-serif" }}>
           Trivial Sports
         </span>
-        <span style={{ color: "#ffffff0a" }}>|</span>
+        <span style={{ color: "#6a6a80" }}>|</span>
         <Link to="/privacy" style={{
           fontSize: 10, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase",
-          color: "#ffffff12", fontFamily: "'Oswald', sans-serif", textDecoration: "none",
+          color: "#6a6a80", fontFamily: "'Oswald', sans-serif", textDecoration: "none",
           transition: "color 0.2s",
         }}
-          onMouseEnter={e => e.target.style.color = "#ffffff44"}
-          onMouseLeave={e => e.target.style.color = "#ffffff12"}
+          onMouseEnter={e => e.target.style.color = "#8a8aaa"}
+          onMouseLeave={e => e.target.style.color = "#6a6a80"}
         >
           Privacy Policy
         </Link>
