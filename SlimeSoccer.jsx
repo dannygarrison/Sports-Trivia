@@ -1099,7 +1099,7 @@ export default function SlimeSoccer() {
   }, [recalcP1, recalcP2, gameState, gameMode]);
 
   return (
-    <div style={{ minHeight: "100vh", background: COLORS.bg, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", fontFamily: "Oswald, sans-serif", padding: isMobile && isLandscape ? "4px 8px" : "16px 8px" }}>
+    <div style={{ minHeight: "100vh", background: COLORS.bg, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", fontFamily: "Oswald, sans-serif", padding: isMobile && isLandscape ? "4px 8px" : "16px 8px", paddingTop: isMobile && isLandscape ? 4 : 60 }}>
       <Helmet>
         <title>Slime Soccer – Slime Cup Edition | Trivial Sports</title>
         <meta name="description" content="Play classic slime soccer with 65 nations. Pick your country, score goals, and compete in this retro arcade game." />
@@ -1249,7 +1249,7 @@ export default function SlimeSoccer() {
               padding: "7px 16px", cursor: "pointer",
               color: active ? m.color : COLORS.dimText,
               fontFamily: "Oswald, sans-serif", fontSize: 11, fontWeight: 700,
-              letterSpacing: 2, transition: "all 0.15s ease",
+              letterSpacing: 2, transition: "all 0.15s ease", outline: "none",
             }}>{m.label}</button>
           );
         })}
