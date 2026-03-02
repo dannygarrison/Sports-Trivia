@@ -25,6 +25,7 @@ const NBACareerPath = lazy(() => import("./NBACareerPath.jsx"))
 const SoccerChain = lazy(() => import("./SoccerChain.jsx"))
 const FinalFourTrivia = lazy(() => import("./FinalFourTrivia.jsx"))
 const GoalScorerQuiz = lazy(() => import("./GoalScorerQuiz.jsx"))
+const SlimeSoccer = lazy(() => import("./SlimeSoccer.jsx"))
 const Blog = lazy(() => import("./Blog.jsx"))
 const BlogChainCheatCodes = lazy(() => import("./BlogChainCheatCodes.jsx"))
 const PrivacyPolicy = lazy(() => import("./PrivacyPolicy.jsx"))
@@ -74,6 +75,7 @@ export default function App() {
           <Route path="/games/soccer-chain" element={<SoccerChain />} />
           <Route path="/games/final-four-trivia" element={<FinalFourTrivia />} />
           <Route path="/games/goal-scorer-quiz" element={<GoalScorerQuiz />} />
+          <Route path="/games/slime-soccer" element={<SlimeSoccer />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/nfl-chain-cheat-codes" element={<BlogChainCheatCodes />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
