@@ -2,6 +2,8 @@ import { lazy, Suspense } from "react"
 import { Routes, Route } from "react-router-dom"
 import Nav from "./Nav.jsx"
 import Home from "./Home.jsx"
+import BannerAd from "./BannerAd.jsx"
+import useAdSense from "./useAdSense"
 
 const NFLCollegeTrivia = lazy(() => import("./NFLCollegeTrivia.jsx"))
 const SoccerLeaguesTrivia = lazy(() => import("./SoccerLeaguesTrivia.jsx"))
@@ -28,6 +30,8 @@ const BlogChainCheatCodes = lazy(() => import("./BlogChainCheatCodes.jsx"))
 const PrivacyPolicy = lazy(() => import("./PrivacyPolicy.jsx"))
 
 export default function App() {
+  useAdSense()
+
   return (
     <div style={{ minHeight: "100vh", background: "#07070f", color: "#e8e8f0" }}>
       <Nav />
@@ -74,6 +78,7 @@ export default function App() {
           <Route path="/privacy" element={<PrivacyPolicy />} />
         </Routes>
       </Suspense>
+      <BannerAd />
     </div>
   )
 }
