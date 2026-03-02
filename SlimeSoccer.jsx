@@ -119,6 +119,20 @@ export default function SlimeSoccer() {
   const [paused, setPaused] = useState(false);
   const [twoPlayer, setTwoPlayer] = useState(false);
   const twoPlayerRef = useRef(false);
+
+  // Persistent stats
+  const STATS_KEY = "slime-soccer-stats";
+  const defaultStats = { wins: 0, losses: 0, cleanSheets: 0, currentStreak: 0, longestStreak: 0, goalsFor: 0, goalsAgainst: 0 };
+  const [stats, setStats] = useState(() => {
+    try {
+      const saved = JSON.parse(localStorage.getItem(STATS_KEY));
+      return saved ? { ...defaultStats, ...saved } : { ...defaultStats };
+    } catch { return { ...defaultStats }; }
+  });
+  const saveStats = (newStats) => {
+    setStats(newStats);
+    try { localStorage.setItem(STATS_KEY, JSON.stringify(newStats)); } catch {}
+  };
   const goalCelebRef = useRef(null); // { scorer, country, comment, timer }
   const [canvasScale, setCanvasScale] = useState(1);
   const [isLandscape, setIsLandscape] = useState(false);
@@ -260,6 +274,30 @@ export default function SlimeSoccer() {
     if (game.scores[scorer] >= G.WINNING_SCORE) {
       game.ball = makeBall();
       game.freeze = 90;
+
+      // Record stats (1P mode only)
+      if (!twoPlayerRef.current) {
+        const p1Score = game.scores.p1;
+        const p2Score = game.scores.p2;
+        const won = scorer === "p1";
+        setStats(prev => {
+          const s = { ...prev };
+          s.goalsFor += p1Score;
+          s.goalsAgainst += p2Score;
+          if (won) {
+            s.wins++;
+            s.currentStreak++;
+            if (s.currentStreak > s.longestStreak) s.longestStreak = s.currentStreak;
+            if (p2Score === 0) s.cleanSheets++;
+          } else {
+            s.losses++;
+            s.currentStreak = 0;
+          }
+          try { localStorage.setItem(STATS_KEY, JSON.stringify(s)); } catch {}
+          return s;
+        });
+      }
+
       setTimeout(() => {
         goalCelebRef.current = null;
         setGameState("gameover");
@@ -854,9 +892,18 @@ export default function SlimeSoccer() {
       ctx.font = "14px Oswald, sans-serif";
       ctx.fillStyle = twoPlayerRef.current ? "#4dc47a" : "#5a9ee0";
       ctx.fillText(twoPlayerRef.current ? "👥 2 PLAYER MODE" : "🤖 VS CPU", G.WIDTH / 2, 340);
+
+      // Show record on menu
+      if (!twoPlayerRef.current && (stats.wins > 0 || stats.losses > 0)) {
+        ctx.font = "12px Oswald, sans-serif";
+        ctx.fillStyle = COLORS.dimText;
+        const gd = stats.goalsFor - stats.goalsAgainst;
+        ctx.fillText(`Your record: ${stats.wins}W–${stats.losses}L  •  GD: ${gd >= 0 ? "+" : ""}${gd}  •  🔥 Streak: ${stats.currentStreak}`, G.WIDTH / 2, 360);
+      }
+
       ctx.font = "bold 20px Oswald, sans-serif";
       ctx.fillStyle = COLORS.score;
-      ctx.fillText("▶  PRESS SPACE TO START", G.WIDTH / 2, 370);
+      ctx.fillText("▶  PRESS SPACE TO START", G.WIDTH / 2, (stats.wins > 0 || stats.losses > 0) && !twoPlayerRef.current ? 395 : 370);
     }
     if (gameState === "gameover") {
       draw();
@@ -874,11 +921,21 @@ export default function SlimeSoccer() {
       ctx.font = "bold 34px Oswald, sans-serif";
       ctx.fillStyle = COLORS.text;
       ctx.fillText(`${gameRef.current.scores.p1} – ${gameRef.current.scores.p2}`, G.WIDTH / 2, 235);
+
+      // Show stats on gameover (1P only)
+      if (!twoPlayerRef.current) {
+        ctx.font = "13px Oswald, sans-serif";
+        ctx.fillStyle = COLORS.dimText;
+        const gd = stats.goalsFor - stats.goalsAgainst;
+        const gdStr = gd >= 0 ? `+${gd}` : `${gd}`;
+        ctx.fillText(`${stats.wins}W – ${stats.losses}L  •  GD: ${gdStr}  •  🧤 ${stats.cleanSheets}  •  🔥 Best streak: ${stats.longestStreak}`, G.WIDTH / 2, 275);
+      }
+
       ctx.font = "bold 18px Oswald, sans-serif";
       ctx.fillStyle = COLORS.score;
       ctx.fillText("PRESS SPACE TO PLAY AGAIN", G.WIDTH / 2, 310);
     }
-  }, [gameState, draw, initGame, winner, isMobile, p1Country, p2Country, twoPlayer]);
+  }, [gameState, draw, initGame, winner, isMobile, p1Country, p2Country, twoPlayer, stats]);
 
   const startGame = () => {
     if (gameState === "menu" || gameState === "gameover") {
@@ -1124,6 +1181,37 @@ export default function SlimeSoccer() {
           <><span style={{ color: p1Country.primary }}>A/D or ←/→</span> move &nbsp;|&nbsp; <span style={{ color: p1Country.primary }}>W or ↑</span> jump &nbsp;|&nbsp; <span style={{ color: p1Country.primary }}>SPACE</span> pause &nbsp;|&nbsp; First to {G.WINNING_SCORE} wins</>
         )}</>)}
       </div>
+
+      {/* Stats bar (1P only) */}
+      {!twoPlayer && (stats.wins > 0 || stats.losses > 0) && (
+        <div style={{
+          marginTop: 10, padding: "10px 20px", borderRadius: 10,
+          background: "#0a0a18", border: "1px solid #ffffff0a",
+          display: "flex", alignItems: "center", justifyContent: "center",
+          gap: 20, flexWrap: "wrap", maxWidth: G.WIDTH,
+        }}>
+          {[
+            { label: "RECORD", value: `${stats.wins}W – ${stats.losses}L` },
+            { label: "GOAL DIFF", value: `${stats.goalsFor - stats.goalsAgainst >= 0 ? "+" : ""}${stats.goalsFor - stats.goalsAgainst}` },
+            { label: "CLEAN SHEETS", value: `🧤 ${stats.cleanSheets}` },
+            { label: "WIN STREAK", value: `🔥 ${stats.currentStreak}` },
+            { label: "BEST STREAK", value: `${stats.longestStreak}` },
+          ].map(s => (
+            <div key={s.label} style={{ textAlign: "center" }}>
+              <div style={{ fontSize: 9, fontWeight: 700, fontFamily: "Oswald, sans-serif", letterSpacing: 2, color: "#ffffff28", marginBottom: 2 }}>{s.label}</div>
+              <div style={{ fontSize: 14, fontWeight: 700, fontFamily: "Oswald, sans-serif", color: COLORS.dimText }}>{s.value}</div>
+            </div>
+          ))}
+          <button
+            onClick={() => { if (window.confirm("Reset all stats?")) saveStats({ ...defaultStats }); }}
+            style={{
+              background: "none", border: "1px solid #ffffff10", borderRadius: 6,
+              color: "#ffffff20", fontSize: 9, fontFamily: "Oswald, sans-serif",
+              fontWeight: 700, letterSpacing: 1, padding: "4px 8px", cursor: "pointer",
+            }}
+          >RESET</button>
+        </div>
+      )}
     </div>
   );
 }
