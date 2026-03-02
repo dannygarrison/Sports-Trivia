@@ -484,6 +484,7 @@ export default function Home() {
 
         {/* Sort only */}
         <select
+          aria-label="Sort games"
           value={sortBy}
           onChange={e => setSortBy(e.target.value)}
           style={{
