@@ -156,10 +156,10 @@ export default function SlimeSoccer() {
   const goalTop = G.GROUND_Y - G.GOAL_HEIGHT;
 
   const makeBall = useCallback(() => ({
-    x: G.WIDTH / 2,
-    y: 150,
-    vx: 0,
-    vy: -1,
+    x: G.WIDTH / 2 + (Math.random() - 0.5) * 20,
+    y: 140 + Math.random() * 30,
+    vx: (Math.random() - 0.5) * 1.5,
+    vy: -1 - Math.random() * 0.5,
     r: G.BALL_RADIUS,
   }), []);
 
@@ -167,7 +167,18 @@ export default function SlimeSoccer() {
     x, y: G.GROUND_Y, vx: 0, vy: 0, r: G.SLIME_RADIUS, grounded: true, isP1,
   }), []);
 
+  const aiStyleRef = useRef({ p1: null, p2: null });
+
+  const randomAIStyle = () => ({
+    offsetX: (Math.random() - 0.5) * 40,      // positioning bias: -20 to +20
+    aggression: 0.7 + Math.random() * 0.3,     // how far forward they push: 0.7-1.0
+    speedMult: 0.78 + Math.random() * 0.14,    // speed variance: 0.78-0.92
+    jumpEagerness: 60 + Math.random() * 40,     // jump trigger distance: 60-100
+    guardDist: 25 + Math.random() * 30,         // how far from goal they guard: 25-55
+  });
+
   const initGame = useCallback(() => {
+    aiStyleRef.current = { p1: randomAIStyle(), p2: randomAIStyle() };
     gameRef.current = {
       p1: makeSlime(250, true),
       p2: makeSlime(550, false),
@@ -181,7 +192,9 @@ export default function SlimeSoccer() {
   }, [makeSlime, makeBall]);
 
   const runAI = useCallback((slime, ball, isP1) => {
-    // isP1=true: defends left goal (x=0..GOAL_WIDTH), isP1=false: defends right goal
+    const style = isP1 ? aiStyleRef.current.p1 : aiStyleRef.current.p2;
+    if (!style) return;
+
     const ownGoalX = isP1 ? G.GOAL_WIDTH : G.WIDTH - G.GOAL_WIDTH;
     const ballOnMySide = isP1 ? (ball.x < G.WIDTH / 2) : (ball.x > G.WIDTH / 2);
     const ballBehind = isP1 ? (ball.x < slime.x - 10) : (ball.x > slime.x + 10);
@@ -190,14 +203,15 @@ export default function SlimeSoccer() {
     const maxX = G.WIDTH - G.GOAL_WIDTH - slime.r;
 
     let targetX;
+    const off = style.offsetX;
 
     if (ballBehind && ballNearOwnGoal) {
       targetX = isP1 ? ownGoalX + slime.r + 5 : ownGoalX - slime.r - 5;
     } else if (ballBehind) {
       if (isP1) {
-        targetX = Math.min(ball.x - 30, ownGoalX + slime.r + 30);
+        targetX = Math.min(ball.x - 30 + off, ownGoalX + slime.r + style.guardDist);
       } else {
-        targetX = Math.max(ball.x + 30, ownGoalX - slime.r - 30);
+        targetX = Math.max(ball.x + 30 + off, ownGoalX - slime.r - style.guardDist);
       }
       targetX = clamp(targetX, minX, maxX);
     } else if (ballOnMySide && ball.y < 300) {
@@ -211,23 +225,26 @@ export default function SlimeSoccer() {
         if (simX < 0 || simX > G.WIDTH) simVx *= -1;
       }
       predX = clamp(predX, minX, maxX);
-      targetX = isP1 ? predX + 20 : predX - 20;
+      const approach = 20 * style.aggression;
+      targetX = isP1 ? predX + approach + off : predX - approach + off;
     } else if (!ballOnMySide && (isP1 ? ball.vx > 0 : ball.vx < 0)) {
-      targetX = isP1 ? ownGoalX + slime.r + 40 : ownGoalX - slime.r - 40;
+      targetX = isP1 ? ownGoalX + slime.r + style.guardDist : ownGoalX - slime.r - style.guardDist;
     } else {
-      targetX = clamp(isP1 ? ball.x + 10 : ball.x - 10, minX, maxX);
+      const chase = 10 * style.aggression;
+      targetX = clamp(isP1 ? ball.x + chase + off : ball.x - chase + off, minX, maxX);
     }
 
     targetX = clamp(targetX, minX, maxX);
 
     const deadzone = 12;
-    if (slime.x < targetX - deadzone) slime.vx = G.SLIME_SPEED * 0.85;
-    else if (slime.x > targetX + deadzone) slime.vx = -G.SLIME_SPEED * 0.85;
+    const speed = G.SLIME_SPEED * style.speedMult;
+    if (slime.x < targetX - deadzone) slime.vx = speed;
+    else if (slime.x > targetX + deadzone) slime.vx = -speed;
     else slime.vx = 0;
 
     const dx = ball.x - slime.x;
     const absDx = Math.abs(dx);
-    if (absDx < 80 && ball.y < slime.y - 30 && ball.y > 80 && slime.grounded && !ballBehind) {
+    if (absDx < style.jumpEagerness && ball.y < slime.y - 30 && ball.y > 80 && slime.grounded && !ballBehind) {
       slime.vy = G.JUMP_FORCE;
       slime.grounded = false;
     }
