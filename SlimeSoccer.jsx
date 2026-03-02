@@ -134,6 +134,7 @@ export default function SlimeSoccer() {
     try { localStorage.setItem(STATS_KEY, JSON.stringify(newStats)); } catch {}
   };
   const goalCelebRef = useRef(null); // { scorer, country, comment, timer }
+  const countdownRef = useRef(0);
   const [canvasScale, setCanvasScale] = useState(1);
   const [isLandscape, setIsLandscape] = useState(false);
   const containerRef = useRef(null);
@@ -791,8 +792,49 @@ export default function SlimeSoccer() {
 
   // Game loop
   useEffect(() => {
-    if (gameState !== "playing" && gameState !== "scored") return;
-    const loop = () => { update(); draw(); animRef.current = requestAnimationFrame(loop); };
+    if (gameState !== "playing" && gameState !== "scored" && gameState !== "countdown") return;
+    const loop = () => {
+      if (gameState === "countdown" || gameStateRef.current === "countdown") {
+        countdownRef.current--;
+        if (countdownRef.current <= 0) {
+          setGameState("playing");
+        }
+        draw();
+        // Draw countdown number overlay
+        const ctx = canvasRef.current?.getContext("2d");
+        if (ctx) {
+          const t = countdownRef.current;
+          let label, labelColor;
+          if (t > 150) { label = "3"; labelColor = COLORS.text; }
+          else if (t > 90) { label = "2"; labelColor = COLORS.text; }
+          else if (t > 30) { label = "1"; labelColor = COLORS.text; }
+          else { label = "GO!"; labelColor = COLORS.score; }
+
+          // Pop-in animation within each phase
+          const phase = t > 150 ? (t - 150) : t > 90 ? (t - 90) : t > 30 ? (t - 30) : t;
+          const phaseLen = t > 30 ? 60 : 30;
+          const prog = 1 - phase / phaseLen;
+          const scale = 1 + (1 - prog) * 0.3;
+
+          ctx.save();
+          ctx.translate(G.WIDTH / 2, G.HEIGHT / 2 - 20);
+          ctx.scale(scale, scale);
+          ctx.font = "bold 80px Oswald, sans-serif";
+          ctx.textAlign = "center";
+          ctx.textBaseline = "middle";
+          ctx.strokeStyle = "rgba(0,0,0,0.6)";
+          ctx.lineWidth = 5;
+          ctx.strokeText(label, 0, 0);
+          ctx.fillStyle = labelColor;
+          ctx.fillText(label, 0, 0);
+          ctx.restore();
+        }
+      } else {
+        update();
+        draw();
+      }
+      animRef.current = requestAnimationFrame(loop);
+    };
     animRef.current = requestAnimationFrame(loop);
     return () => cancelAnimationFrame(animRef.current);
   }, [gameState, update, draw]);
@@ -807,7 +849,7 @@ export default function SlimeSoccer() {
       if (key === "arrowleft") { lastDirRef2.current = "left"; if (!twoPlayerRef.current) lastDirRef.current = "left"; }
       if (key === "arrowright") { lastDirRef2.current = "right"; if (!twoPlayerRef.current) lastDirRef.current = "right"; }
       if (["arrowup","arrowdown","arrowleft","arrowright","w","a","s","d"," "].includes(key)) e.preventDefault();
-      // Pause toggle on space (during gameplay)
+      // Pause toggle on space (during gameplay, not countdown)
       if (key === " ") {
         if (gameStateRef.current === "playing" || gameStateRef.current === "scored") {
           pausedRef.current = !pausedRef.current;
@@ -830,7 +872,7 @@ export default function SlimeSoccer() {
     const down = (e) => {
       if ((gameStateRef.current === "menu" || gameStateRef.current === "gameover") && (e.key === " " || e.key === "Enter")) {
         pausedRef.current = false; setPaused(false); goalCelebRef.current = null;
-        initGame(); setGameState("playing");
+        initGame(); countdownRef.current = 210; setGameState("countdown");
       }
     };
     window.addEventListener("keydown", down);
@@ -943,7 +985,8 @@ export default function SlimeSoccer() {
       setPaused(false);
       goalCelebRef.current = null;
       initGame();
-      setGameState("playing");
+      countdownRef.current = 210; // 3.5 seconds: 3, 2, 1, GO!
+      setGameState("countdown");
       // Track play in Supabase
       import("./supabase.jsx").then(({ recordPlay }) => {
         recordPlay("slime-soccer");
@@ -1126,7 +1169,7 @@ export default function SlimeSoccer() {
         <div style={{ border: `2px solid ${COLORS.groundLine}33`, borderRadius: 8, overflow: "hidden", boxShadow: "0 0 40px rgba(212,168,67,0.1)", lineHeight: 0 }}>
           <canvas ref={canvasRef} width={G.WIDTH} height={G.HEIGHT} style={{ width: G.WIDTH * canvasScale, height: G.HEIGHT * canvasScale, display: "block" }} onClick={startGame} />
         </div>
-        {isMobile && (gameState === "playing" || gameState === "scored") && !twoPlayer && (
+        {isMobile && (gameState === "playing" || gameState === "scored" || gameState === "countdown") && !twoPlayer && (
           <div ref={controlsRef} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: isLandscape ? "4px 8px" : "12px 8px", maxWidth: G.WIDTH, width: "100%", userSelect: "none", WebkitUserSelect: "none", touchAction: "none" }}>
             <div style={{ display: "flex", gap: 12 }}>
               <button data-action="left" style={mbtn}>◀</button>
@@ -1140,7 +1183,7 @@ export default function SlimeSoccer() {
             <button data-action="jump" style={{...mbtn,width:80,fontSize:18}}>JUMP</button>
           </div>
         )}
-        {isMobile && (gameState === "playing" || gameState === "scored") && twoPlayer && (
+        {isMobile && (gameState === "playing" || gameState === "scored" || gameState === "countdown") && twoPlayer && (
           <div style={{ width: "100%", maxWidth: G.WIDTH, padding: isLandscape ? "4px 8px" : "8px 8px", userSelect: "none", WebkitUserSelect: "none" }}>
             {/* P1 controls */}
             <div ref={controlsRef} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6, touchAction: "none" }}>
