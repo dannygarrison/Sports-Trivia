@@ -237,6 +237,17 @@ const GAMES = [
     dateAdded: 19,
     plays: 0,
   },
+  {
+    id: "slime-soccer",
+    path: "/games/slime-soccer",
+    title: "Slime Soccer",
+    sport: "SOCCER",
+    description: "Pick your country and play classic slime soccer. World Cup Edition with 65 nations.",
+    tag: "ARCADE",
+    available: true,
+    dateAdded: 20,
+    plays: 0,
+  },
 ]
 
 function GameCard({ game, index, playCount }) {
@@ -346,7 +357,7 @@ export default function Home() {
     NBA: ["basketball", "nba", "hoops"],
     NCAAB: ["college basketball", "cbb", "ncaa basketball", "march madness", "ncaab", "final four"],
     MLB: ["baseball", "mlb"],
-    SOCCER: ["soccer", "football", "futbol", "mls", "premier league", "epl"],
+    SOCCER: ["soccer", "football", "futbol", "mls", "premier league", "epl", "world cup", "slime"],
     OLYMPICS: ["olympics", "olympic"],
   }
 
