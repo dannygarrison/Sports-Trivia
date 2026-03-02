@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from "react";
+import { Helmet } from "react-helmet-async";
 
 const G = {
   WIDTH: 800,
@@ -846,6 +847,10 @@ export default function SlimeSoccer() {
       goalCelebRef.current = null;
       initGame();
       setGameState("playing");
+      // Track play in Supabase
+      import("./supabase.jsx").then(({ incrementPlayCount }) => {
+        incrementPlayCount("slime-soccer");
+      }).catch(() => {});
     }
   };
 
@@ -873,7 +878,15 @@ export default function SlimeSoccer() {
 
   return (
     <div style={{ minHeight: "100vh", background: COLORS.bg, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", fontFamily: "Oswald, sans-serif", padding: "16px 8px" }}>
-      <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&display=swap" rel="stylesheet" />
+      <Helmet>
+        <title>Slime Soccer – World Cup Edition | Trivial Sports</title>
+        <meta name="description" content="Play classic slime soccer with 65 World Cup nations. Pick your country, score goals, and compete in this retro arcade game." />
+        <meta property="og:title" content="Slime Soccer – World Cup Edition | Trivial Sports" />
+        <meta property="og:description" content="Play classic slime soccer with 65 World Cup nations. Pick your country, score goals, and compete in this retro arcade game." />
+        <meta property="og:url" content="https://trivialsports.com/games/slime-soccer" />
+        <meta property="og:type" content="website" />
+        <link rel="canonical" href="https://trivialsports.com/games/slime-soccer" />
+      </Helmet>      <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&display=swap" rel="stylesheet" />
       <div style={{ textAlign: "center", marginBottom: 8 }}>
         <div style={{ fontSize: 11, letterSpacing: 4, color: COLORS.dimText, textTransform: "uppercase", marginBottom: 2 }}>TrivialSports.com</div>
         <h1 style={{ fontSize: 26, fontWeight: 700, color: COLORS.score, margin: 0, lineHeight: 1 }}>SLIME ⚽ SOCCER</h1>
