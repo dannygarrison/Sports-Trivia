@@ -112,9 +112,13 @@ export default function SlimeSoccer() {
   const [winner, setWinner] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
   const mobileRef = useRef({ left: false, right: false, jump: false });
+  const mobileRef2 = useRef({ left: false, right: false, jump: false });
   const lastDirRef = useRef(null);
+  const lastDirRef2 = useRef(null);
   const pausedRef = useRef(false);
   const [paused, setPaused] = useState(false);
+  const [twoPlayer, setTwoPlayer] = useState(false);
+  const twoPlayerRef = useRef(false);
   const goalCelebRef = useRef(null); // { scorer, country, comment, timer }
   const [canvasScale, setCanvasScale] = useState(1);
   const [isLandscape, setIsLandscape] = useState(false);
@@ -272,6 +276,7 @@ export default function SlimeSoccer() {
     game.lastKickX = G.WIDTH / 2;
     keysRef.current = {};
     lastDirRef.current = null;
+    lastDirRef2.current = null;
     setGameState("scored");
     setTimeout(() => setGameState("playing"), 1500);
   }, [makeBall, makeSlime, getGoalComment]);
@@ -292,23 +297,44 @@ export default function SlimeSoccer() {
     const keys = keysRef.current;
     const mc = mobileRef.current;
 
-    const leftHeld = keys["a"] || keys["arrowleft"] || mc.left;
-    const rightHeld = keys["d"] || keys["arrowright"] || mc.right;
-    if (leftHeld && rightHeld) {
+    // P1 controls: WASD + mobile
+    const p1Left = keys["a"] || mc.left;
+    const p1Right = keys["d"] || mc.right;
+    if (p1Left && p1Right) {
       p1.vx = lastDirRef.current === "right" ? G.SLIME_SPEED : -G.SLIME_SPEED;
-    } else if (leftHeld) {
+    } else if (p1Left) {
       p1.vx = -G.SLIME_SPEED;
-    } else if (rightHeld) {
+    } else if (p1Right) {
       p1.vx = G.SLIME_SPEED;
     } else {
       p1.vx = 0;
     }
-    if ((keys["w"] || keys["arrowup"] || mc.jump) && p1.grounded) {
+    if ((keys["w"] || mc.jump) && p1.grounded) {
       p1.vy = G.JUMP_FORCE;
       p1.grounded = false;
     }
 
-    runAI(p2, ball);
+    // P2: AI or human controls
+    if (twoPlayerRef.current) {
+      const mc2 = mobileRef2.current;
+      const p2Left = keys["arrowleft"] || mc2.left;
+      const p2Right = keys["arrowright"] || mc2.right;
+      if (p2Left && p2Right) {
+        p2.vx = lastDirRef2.current === "right" ? G.SLIME_SPEED : -G.SLIME_SPEED;
+      } else if (p2Left) {
+        p2.vx = -G.SLIME_SPEED;
+      } else if (p2Right) {
+        p2.vx = G.SLIME_SPEED;
+      } else {
+        p2.vx = 0;
+      }
+      if ((keys["arrowup"] || mc2.jump) && p2.grounded) {
+        p2.vy = G.JUMP_FORCE;
+        p2.grounded = false;
+      }
+    } else {
+      runAI(p2, ball);
+    }
 
     [p1, p2].forEach(s => {
       s.vy += G.GRAVITY;
@@ -738,8 +764,10 @@ export default function SlimeSoccer() {
     const down = (e) => {
       const key = e.key.toLowerCase();
       keysRef.current[key] = true;
-      if (key === "a" || key === "arrowleft") lastDirRef.current = "left";
-      if (key === "d" || key === "arrowright") lastDirRef.current = "right";
+      if (key === "a") lastDirRef.current = "left";
+      if (key === "d") lastDirRef.current = "right";
+      if (key === "arrowleft") lastDirRef2.current = "left";
+      if (key === "arrowright") lastDirRef2.current = "right";
       if (["arrowup","arrowdown","arrowleft","arrowright","w","a","s","d"," "].includes(key)) e.preventDefault();
       // Pause toggle on space (during gameplay)
       if (key === " ") {
@@ -750,7 +778,7 @@ export default function SlimeSoccer() {
       }
     };
     const up = (e) => { keysRef.current[e.key.toLowerCase()] = false; };
-    const blur = () => { keysRef.current = {}; lastDirRef.current = null; };
+    const blur = () => { keysRef.current = {}; lastDirRef.current = null; lastDirRef2.current = null; };
     window.addEventListener("keydown", down);
     window.addEventListener("keyup", up);
     window.addEventListener("blur", blur);
@@ -759,6 +787,7 @@ export default function SlimeSoccer() {
 
   // Game start key
   gameStateRef.current = gameState;
+  twoPlayerRef.current = twoPlayer;
   useEffect(() => {
     const down = (e) => {
       if ((gameStateRef.current === "menu" || gameStateRef.current === "gameover") && (e.key === " " || e.key === "Enter")) {
@@ -819,7 +848,12 @@ export default function SlimeSoccer() {
       ctx.fillText(`${c1.name}  vs  ${c2.name}`, G.WIDTH / 2, 272);
       ctx.font = "14px Oswald, sans-serif";
       ctx.fillStyle = COLORS.dimText;
-      ctx.fillText(isMobile ? "Use on-screen controls to play" : "A / D  to move  •  W  to jump  •  SPACE  to pause", G.WIDTH / 2, 310);
+      ctx.fillText(isMobile ? "Use on-screen controls to play" : twoPlayerRef.current
+        ? "P1: A/D + W  •  P2: ←/→ + ↑  •  SPACE pause"
+        : "A / D  to move  •  W  to jump  •  SPACE  to pause", G.WIDTH / 2, 310);
+      ctx.font = "14px Oswald, sans-serif";
+      ctx.fillStyle = twoPlayerRef.current ? "#4dc47a" : "#5a9ee0";
+      ctx.fillText(twoPlayerRef.current ? "👥 2 PLAYER MODE" : "🤖 VS CPU", G.WIDTH / 2, 340);
       ctx.font = "bold 20px Oswald, sans-serif";
       ctx.fillStyle = COLORS.score;
       ctx.fillText("▶  PRESS SPACE TO START", G.WIDTH / 2, 370);
@@ -844,7 +878,7 @@ export default function SlimeSoccer() {
       ctx.fillStyle = COLORS.score;
       ctx.fillText("PRESS SPACE TO PLAY AGAIN", G.WIDTH / 2, 310);
     }
-  }, [gameState, draw, initGame, winner, isMobile, p1Country, p2Country]);
+  }, [gameState, draw, initGame, winner, isMobile, p1Country, p2Country, twoPlayer]);
 
   const startGame = () => {
     if (gameState === "menu" || gameState === "gameover") {
@@ -881,54 +915,63 @@ export default function SlimeSoccer() {
     justifyContent: "center", touchAction: "none",
   };
 
-  // Touch-slide system: track which buttons fingers are over
   const controlsRef = useRef(null);
+  const controlsRef2 = useRef(null);
 
   const getActionFromPoint = useCallback((x, y) => {
     const el = document.elementFromPoint(x, y);
     return el?.dataset?.action || el?.parentElement?.dataset?.action || null;
   }, []);
 
-  const recalcTouches = useCallback((touches) => {
-    let left = false, right = false, jump = false;
-    for (const t of touches) {
-      const action = getActionFromPoint(t.clientX, t.clientY);
-      if (action === "left") left = true;
-      if (action === "right") right = true;
-      if (action === "jump") jump = true;
-    }
-    mobileRef.current.left = left;
-    mobileRef.current.right = right;
-    mobileRef.current.jump = jump;
+  const makeTouchHandler = useCallback((mRef, suffix) => {
+    const recalc = (touches) => {
+      let left = false, right = false, jump = false;
+      for (const t of touches) {
+        const action = getActionFromPoint(t.clientX, t.clientY);
+        if (action === "left" + suffix) left = true;
+        if (action === "right" + suffix) right = true;
+        if (action === "jump" + suffix) jump = true;
+      }
+      mRef.current.left = left;
+      mRef.current.right = right;
+      mRef.current.jump = jump;
+    };
+    return recalc;
   }, [getActionFromPoint]);
 
+  const recalcP1 = useCallback(makeTouchHandler(mobileRef, ""), [makeTouchHandler]);
+  const recalcP2 = useCallback(makeTouchHandler(mobileRef2, "2"), [makeTouchHandler]);
+
   useEffect(() => {
-    const container = controlsRef.current;
-    if (!container) return;
-    const onTouch = (e) => {
-      // Let pause button handle its own click
-      const target = e.target;
-      if (target?.dataset?.action === "pause" || target?.parentElement?.dataset?.action === "pause") return;
-      e.preventDefault();
-      recalcTouches(e.touches);
+    const setupTouch = (container, recalc) => {
+      if (!container) return () => {};
+      const onTouch = (e) => {
+        const target = e.target;
+        if (target?.dataset?.action === "pause" || target?.parentElement?.dataset?.action === "pause") return;
+        e.preventDefault();
+        recalc(e.touches);
+      };
+      const onTouchEnd = (e) => {
+        const target = e.target;
+        if (target?.dataset?.action === "pause" || target?.parentElement?.dataset?.action === "pause") return;
+        e.preventDefault();
+        recalc(e.touches);
+      };
+      container.addEventListener("touchstart", onTouch, { passive: false });
+      container.addEventListener("touchmove", onTouch, { passive: false });
+      container.addEventListener("touchend", onTouchEnd, { passive: false });
+      container.addEventListener("touchcancel", onTouchEnd, { passive: false });
+      return () => {
+        container.removeEventListener("touchstart", onTouch);
+        container.removeEventListener("touchmove", onTouch);
+        container.removeEventListener("touchend", onTouchEnd);
+        container.removeEventListener("touchcancel", onTouchEnd);
+      };
     };
-    const onTouchEnd = (e) => {
-      const target = e.target;
-      if (target?.dataset?.action === "pause" || target?.parentElement?.dataset?.action === "pause") return;
-      e.preventDefault();
-      recalcTouches(e.touches);
-    };
-    container.addEventListener("touchstart", onTouch, { passive: false });
-    container.addEventListener("touchmove", onTouch, { passive: false });
-    container.addEventListener("touchend", onTouchEnd, { passive: false });
-    container.addEventListener("touchcancel", onTouchEnd, { passive: false });
-    return () => {
-      container.removeEventListener("touchstart", onTouch);
-      container.removeEventListener("touchmove", onTouch);
-      container.removeEventListener("touchend", onTouchEnd);
-      container.removeEventListener("touchcancel", onTouchEnd);
-    };
-  }, [recalcTouches, gameState]);
+    const cleanup1 = setupTouch(controlsRef.current, recalcP1);
+    const cleanup2 = setupTouch(controlsRef2.current, recalcP2);
+    return () => { cleanup1(); cleanup2(); };
+  }, [recalcP1, recalcP2, gameState, twoPlayer]);
 
   return (
     <div style={{ minHeight: "100vh", background: COLORS.bg, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", fontFamily: "Oswald, sans-serif", padding: isMobile && isLandscape ? "4px 8px" : "16px 8px" }}>
@@ -1001,16 +1044,32 @@ export default function SlimeSoccer() {
               <option key={c.name} value={c.name}>{c.flag} {c.name}</option>
             ))}
           </select>
-          <span style={{ color: COLORS.dimText, fontSize: 12, letterSpacing: 1 }}>CPU</span>
+          <span style={{ color: COLORS.dimText, fontSize: 12, letterSpacing: 1 }}>{twoPlayer ? "P2" : "CPU"}</span>
         </div>
       </div>
       )}
+
+      {/* Mode toggle */}
+      <button
+        onClick={() => setTwoPlayer(tp => !tp)}
+        style={{
+          background: twoPlayer ? "#4dc47a18" : "#5a9ee018",
+          border: `1px solid ${twoPlayer ? "#4dc47a44" : "#5a9ee044"}`,
+          borderRadius: 8, padding: "6px 16px", cursor: "pointer",
+          color: twoPlayer ? "#4dc47a" : "#5a9ee0",
+          fontFamily: "Oswald, sans-serif", fontSize: 12, fontWeight: 700,
+          letterSpacing: 2, marginBottom: isMobile && isLandscape ? 2 : 8,
+          transition: "all 0.2s ease",
+        }}
+      >
+        {twoPlayer ? "👥 2 PLAYER" : "🤖 VS CPU"}
+      </button>
 
       <div ref={containerRef} style={{ width: "100%", maxWidth: G.WIDTH + 16, display: "flex", flexDirection: "column", alignItems: "center" }}>
         <div style={{ border: `2px solid ${COLORS.groundLine}33`, borderRadius: 8, overflow: "hidden", boxShadow: "0 0 40px rgba(212,168,67,0.1)", lineHeight: 0 }}>
           <canvas ref={canvasRef} width={G.WIDTH} height={G.HEIGHT} style={{ width: G.WIDTH * canvasScale, height: G.HEIGHT * canvasScale, display: "block" }} onClick={startGame} />
         </div>
-        {isMobile && (gameState === "playing" || gameState === "scored") && (
+        {isMobile && (gameState === "playing" || gameState === "scored") && !twoPlayer && (
           <div ref={controlsRef} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: isLandscape ? "4px 8px" : "12px 8px", maxWidth: G.WIDTH, width: "100%", userSelect: "none", WebkitUserSelect: "none", touchAction: "none" }}>
             <div style={{ display: "flex", gap: 12 }}>
               <button data-action="left" style={mbtn}>◀</button>
@@ -1024,6 +1083,34 @@ export default function SlimeSoccer() {
             <button data-action="jump" style={{...mbtn,width:80,fontSize:18}}>JUMP</button>
           </div>
         )}
+        {isMobile && (gameState === "playing" || gameState === "scored") && twoPlayer && (
+          <div style={{ width: "100%", maxWidth: G.WIDTH, padding: isLandscape ? "4px 8px" : "8px 8px", userSelect: "none", WebkitUserSelect: "none" }}>
+            {/* P1 controls */}
+            <div ref={controlsRef} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6, touchAction: "none" }}>
+              <span style={{ color: p1Country.primary, fontSize: 10, fontFamily: "Oswald, sans-serif", fontWeight: 700, letterSpacing: 2, width: 24 }}>P1</span>
+              <div style={{ display: "flex", gap: 8 }}>
+                <button data-action="left" style={{...mbtn, width: 50, height: 50, fontSize: 20}}>◀</button>
+                <button data-action="right" style={{...mbtn, width: 50, height: 50, fontSize: 20}}>▶</button>
+              </div>
+              <button
+                data-action="pause"
+                onClick={() => { pausedRef.current = !pausedRef.current; setPaused(pausedRef.current); }}
+                style={{ ...mbtn, width: 44, height: 44, fontSize: 12, border: `2px solid ${paused ? COLORS.score : COLORS.groundLine}` }}
+              >{paused ? "▶" : "⏸"}</button>
+              <button data-action="jump" style={{...mbtn, width: 70, height: 50, fontSize: 16}}>JUMP</button>
+            </div>
+            {/* P2 controls */}
+            <div ref={controlsRef2} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", touchAction: "none" }}>
+              <span style={{ color: p2Country.primary, fontSize: 10, fontFamily: "Oswald, sans-serif", fontWeight: 700, letterSpacing: 2, width: 24 }}>P2</span>
+              <div style={{ display: "flex", gap: 8 }}>
+                <button data-action="left2" style={{...mbtn, width: 50, height: 50, fontSize: 20}}>◀</button>
+                <button data-action="right2" style={{...mbtn, width: 50, height: 50, fontSize: 20}}>▶</button>
+              </div>
+              <div style={{ width: 44 }} />
+              <button data-action="jump2" style={{...mbtn, width: 70, height: 50, fontSize: 16}}>JUMP</button>
+            </div>
+          </div>
+        )}
         {isMobile && (gameState === "menu" || gameState === "gameover") && (
           <button onClick={startGame} style={{ marginTop: 16, padding: "14px 40px", fontSize: 20, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: COLORS.score, color: COLORS.bg, border: "none", borderRadius: 8, cursor: "pointer", letterSpacing: 2 }}>
             {gameState === "menu" ? "START GAME" : "PLAY AGAIN"}
@@ -1031,7 +1118,11 @@ export default function SlimeSoccer() {
         )}
       </div>
       <div style={{ marginTop: 14, color: COLORS.dimText, fontSize: 13, textAlign: "center", lineHeight: 1.6 }}>
-        {!isMobile && (<><span style={{ color: p1Country.primary }}>A/D</span> move &nbsp;|&nbsp; <span style={{ color: p1Country.primary }}>W</span> jump &nbsp;|&nbsp; <span style={{ color: p1Country.primary }}>SPACE</span> pause &nbsp;|&nbsp; First to {G.WINNING_SCORE} wins</>)}
+        {!isMobile && (<>{twoPlayer ? (
+          <><span style={{ color: p1Country.primary }}>P1: A/D</span> + <span style={{ color: p1Country.primary }}>W</span> &nbsp;|&nbsp; <span style={{ color: p2Country.primary }}>P2: ←/→</span> + <span style={{ color: p2Country.primary }}>↑</span> &nbsp;|&nbsp; <span style={{ color: COLORS.dimText }}>SPACE</span> pause &nbsp;|&nbsp; First to {G.WINNING_SCORE}</>
+        ) : (
+          <><span style={{ color: p1Country.primary }}>A/D</span> move &nbsp;|&nbsp; <span style={{ color: p1Country.primary }}>W</span> jump &nbsp;|&nbsp; <span style={{ color: p1Country.primary }}>SPACE</span> pause &nbsp;|&nbsp; First to {G.WINNING_SCORE} wins</>
+        )}</>)}
       </div>
     </div>
   );
