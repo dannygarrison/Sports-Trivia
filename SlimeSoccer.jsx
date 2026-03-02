@@ -1093,7 +1093,7 @@ export default function SlimeSoccer() {
       )}
 
       {/* Country selectors */}
-      {!(isMobile && isLandscape) && (
+      {!(isMobile && isLandscape) && !isMobile && (
       <div style={{
         display: "flex", justifyContent: "center", alignItems: "center", gap: 24,
         marginBottom: 10, flexWrap: "wrap",
@@ -1149,7 +1149,67 @@ export default function SlimeSoccer() {
       </div>
       )}
 
-      {/* Mode toggle */}
+      {/* Mobile country selectors - stacked */}
+      {isMobile && !isLandscape && (
+      <div style={{
+        display: "flex", alignItems: "center", gap: 12,
+        marginBottom: 10, width: "100%", maxWidth: 340, padding: "0 8px",
+      }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 8, flex: 1 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+            <span style={{ color: COLORS.dimText, fontSize: 11, letterSpacing: 1, width: 30, textAlign: "right" }}>YOU</span>
+            <select
+              value={p1Country.name}
+              onChange={(e) => {
+                const c = COUNTRIES.find(c => c.name === e.target.value);
+                if (c) setP1Country(c);
+              }}
+              style={{ ...selectStyle, borderColor: p1Country.primary + "88", flex: 1, minWidth: 0 }}
+            >
+              {COUNTRIES.map(c => (
+                <option key={c.name} value={c.name}>{c.flag} {c.name}</option>
+              ))}
+            </select>
+          </div>
+          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+            <span style={{ color: COLORS.dimText, fontSize: 11, letterSpacing: 1, width: 30, textAlign: "right" }}>CPU</span>
+            <select
+              value={p2Country.name}
+              onChange={(e) => {
+                const c = COUNTRIES.find(c => c.name === e.target.value);
+                if (c) setP2Country(c);
+              }}
+              style={{ ...selectStyle, borderColor: p2Country.primary + "88", flex: 1, minWidth: 0 }}
+            >
+              {COUNTRIES.map(c => (
+                <option key={c.name} value={c.name}>{c.flag} {c.name}</option>
+              ))}
+            </select>
+          </div>
+        </div>
+        <button
+          onClick={() => {
+            const i = Math.floor(Math.random() * COUNTRIES.length);
+            let j; do { j = Math.floor(Math.random() * COUNTRIES.length); } while (j === i);
+            setP1Country(COUNTRIES[i]);
+            setP2Country(COUNTRIES[j]);
+          }}
+          style={{
+            background: "none", border: `1px solid ${COLORS.groundLine}55`, borderRadius: 6,
+            color: COLORS.score, fontFamily: "Oswald, sans-serif", fontSize: 11,
+            padding: "10px 12px", cursor: "pointer", letterSpacing: 1, lineHeight: 1.2,
+            display: "flex", flexDirection: "column", alignItems: "center", gap: 2,
+          }}
+          title="Random Match"
+        >
+          <span style={{ fontSize: 16 }}>🔀</span>
+          <span>RANDOM</span>
+        </button>
+      </div>
+      )}
+
+      {/* Mode toggle - desktop only */}
+      {!isMobile && (
       <button
         onClick={() => setTwoPlayer(tp => !tp)}
         style={{
@@ -1164,6 +1224,7 @@ export default function SlimeSoccer() {
       >
         {twoPlayer ? "👥 2 PLAYER" : "🤖 VS CPU"}
       </button>
+      )}
 
       <div ref={containerRef} style={{ width: "100%", maxWidth: G.WIDTH + 16, display: "flex", flexDirection: "column", alignItems: "center" }}>
         <div style={{ border: `2px solid ${COLORS.groundLine}33`, borderRadius: 8, overflow: "hidden", boxShadow: "0 0 40px rgba(212,168,67,0.1)", lineHeight: 0 }}>
