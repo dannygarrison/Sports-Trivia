@@ -611,10 +611,21 @@ export default function Home() {
       </div>
 
       {/* Footer */}
-      <div style={{ borderTop: "1px solid #ffffff06", padding: "22px 28px", textAlign: "center" }}>
+      <div style={{ borderTop: "1px solid #ffffff06", padding: "22px 28px", textAlign: "center", display: "flex", justifyContent: "center", alignItems: "center", gap: 16 }}>
         <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: 3, textTransform: "uppercase", color: "#ffffff12", fontFamily: "'Oswald', sans-serif" }}>
           Trivial Sports
         </span>
+        <span style={{ color: "#ffffff0a" }}>|</span>
+        <Link to="/privacy" style={{
+          fontSize: 10, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase",
+          color: "#ffffff12", fontFamily: "'Oswald', sans-serif", textDecoration: "none",
+          transition: "color 0.2s",
+        }}
+          onMouseEnter={e => e.target.style.color = "#ffffff44"}
+          onMouseLeave={e => e.target.style.color = "#ffffff12"}
+        >
+          Privacy Policy
+        </Link>
       </div>
     </div>
   )
