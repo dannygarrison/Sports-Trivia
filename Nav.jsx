@@ -43,12 +43,12 @@ export default function Nav() {
             textDecoration: 'none',
             fontSize: 11, fontWeight: 700,
             letterSpacing: 2.5, textTransform: 'uppercase',
-            color: '#ffffff44',
+            color: '#8a8aaa',
             fontFamily: "'Oswald', sans-serif",
             transition: 'color 0.2s',
           }}
-          onMouseEnter={e => e.target.style.color = '#ffffff99'}
-          onMouseLeave={e => e.target.style.color = '#ffffff44'}
+          onMouseEnter={e => e.target.style.color = '#b0b0c8'}
+          onMouseLeave={e => e.target.style.color = '#8a8aaa'}
         >
           &larr; All Games
         </Link>
@@ -61,11 +61,11 @@ export default function Nav() {
             fontSize: 11, fontWeight: 700,
             letterSpacing: 2, textTransform: 'uppercase',
             fontFamily: "'Oswald', sans-serif",
-            color: isBlog ? '#c8a050' : '#ffffff44',
+            color: isBlog ? '#c8a050' : '#8a8aaa',
             transition: 'color 0.2s',
           }}
-          onMouseEnter={e => e.target.style.color = isBlog ? '#c8a050' : '#ffffff99'}
-          onMouseLeave={e => e.target.style.color = isBlog ? '#c8a050' : '#ffffff44'}
+          onMouseEnter={e => e.target.style.color = isBlog ? '#c8a050' : '#b0b0c8'}
+          onMouseLeave={e => e.target.style.color = isBlog ? '#c8a050' : '#8a8aaa'}
         >
           Blog
         </Link>
