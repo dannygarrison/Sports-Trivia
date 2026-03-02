@@ -35,6 +35,7 @@ export default function App() {
   return (
     <div style={{ minHeight: "100vh", background: "#07070f", color: "#e8e8f0" }}>
       <Nav />
+      <main>
       <Suspense fallback={
         <div style={{
           minHeight: "100vh",
@@ -78,6 +79,7 @@ export default function App() {
           <Route path="/privacy" element={<PrivacyPolicy />} />
         </Routes>
       </Suspense>
+      </main>
       <BannerAd />
     </div>
   )
