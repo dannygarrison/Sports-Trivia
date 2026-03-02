@@ -117,8 +117,8 @@ export default function SlimeSoccer() {
   const lastDirRef2 = useRef(null);
   const pausedRef = useRef(false);
   const [paused, setPaused] = useState(false);
-  const [twoPlayer, setTwoPlayer] = useState(false);
-  const twoPlayerRef = useRef(false);
+  const [gameMode, setGameMode] = useState("1p"); // "1p", "2p", "sim"
+  const gameModeRef = useRef("1p");
 
   // Persistent stats
   const STATS_KEY = "slime-soccer-stats";
@@ -180,25 +180,27 @@ export default function SlimeSoccer() {
     setWinner(null);
   }, [makeSlime, makeBall]);
 
-  const runAI = useCallback((p2, ball) => {
-    const ownGoalX = G.WIDTH - G.GOAL_WIDTH;
-    const ballOnRight = ball.x > G.WIDTH / 2;
-    const ballBehindCPU = ball.x > p2.x + 10;
-    const ballNearOwnGoal = ball.x > ownGoalX - 80;
+  const runAI = useCallback((slime, ball, isP1) => {
+    // isP1=true: defends left goal (x=0..GOAL_WIDTH), isP1=false: defends right goal
+    const ownGoalX = isP1 ? G.GOAL_WIDTH : G.WIDTH - G.GOAL_WIDTH;
+    const ballOnMySide = isP1 ? (ball.x < G.WIDTH / 2) : (ball.x > G.WIDTH / 2);
+    const ballBehind = isP1 ? (ball.x < slime.x - 10) : (ball.x > slime.x + 10);
+    const ballNearOwnGoal = isP1 ? (ball.x < G.GOAL_WIDTH + 80) : (ball.x > G.WIDTH - G.GOAL_WIDTH - 80);
+    const minX = G.GOAL_WIDTH + slime.r;
+    const maxX = G.WIDTH - G.GOAL_WIDTH - slime.r;
 
     let targetX;
 
-    if (ballBehindCPU && ballNearOwnGoal) {
-      // DANGER: ball is between CPU and its own goal
-      // Get to the goal line to block, don't chase the ball from behind
-      targetX = ownGoalX - p2.r - 5;
-    } else if (ballBehindCPU) {
-      // Ball is behind but not critically close to goal
-      // Move toward goal to get between ball and goal, but don't rush into it
-      targetX = Math.max(ball.x + 30, ownGoalX - p2.r - 30);
-      targetX = clamp(targetX, G.GOAL_WIDTH + p2.r, ownGoalX - p2.r);
-    } else if (ballOnRight && ball.y < 300) {
-      // Ball in front of CPU on its side - predict landing and approach
+    if (ballBehind && ballNearOwnGoal) {
+      targetX = isP1 ? ownGoalX + slime.r + 5 : ownGoalX - slime.r - 5;
+    } else if (ballBehind) {
+      if (isP1) {
+        targetX = Math.min(ball.x - 30, ownGoalX + slime.r + 30);
+      } else {
+        targetX = Math.max(ball.x + 30, ownGoalX - slime.r - 30);
+      }
+      targetX = clamp(targetX, minX, maxX);
+    } else if (ballOnMySide && ball.y < 300) {
       let predX = ball.x;
       let simX = ball.x, simY = ball.y, simVx = ball.vx, simVy = ball.vy;
       for (let i = 0; i < 60; i++) {
@@ -208,29 +210,26 @@ export default function SlimeSoccer() {
         if (simY >= G.GROUND_Y) { predX = simX; break; }
         if (simX < 0 || simX > G.WIDTH) simVx *= -1;
       }
-      predX = clamp(predX, G.GOAL_WIDTH + p2.r, ownGoalX - p2.r);
-      targetX = predX - 20;
-    } else if (!ballOnRight && ball.vx < 0) {
-      // Ball far away heading left - guard goal
-      targetX = ownGoalX - p2.r - 40;
+      predX = clamp(predX, minX, maxX);
+      targetX = isP1 ? predX + 20 : predX - 20;
+    } else if (!ballOnMySide && (isP1 ? ball.vx > 0 : ball.vx < 0)) {
+      targetX = isP1 ? ownGoalX + slime.r + 40 : ownGoalX - slime.r - 40;
     } else {
-      // Ball on left or coming right - position to intercept
-      targetX = clamp(ball.x - 10, G.GOAL_WIDTH + p2.r, ownGoalX - p2.r);
+      targetX = clamp(isP1 ? ball.x + 10 : ball.x - 10, minX, maxX);
     }
 
-    targetX = clamp(targetX, G.GOAL_WIDTH + p2.r, ownGoalX - p2.r);
+    targetX = clamp(targetX, minX, maxX);
 
     const deadzone = 12;
-    if (p2.x < targetX - deadzone) p2.vx = G.SLIME_SPEED * 0.85;
-    else if (p2.x > targetX + deadzone) p2.vx = -G.SLIME_SPEED * 0.85;
-    else p2.vx = 0;
+    if (slime.x < targetX - deadzone) slime.vx = G.SLIME_SPEED * 0.85;
+    else if (slime.x > targetX + deadzone) slime.vx = -G.SLIME_SPEED * 0.85;
+    else slime.vx = 0;
 
-    // Jump when ball is above and in front (not behind!)
-    const dx = ball.x - p2.x;
+    const dx = ball.x - slime.x;
     const absDx = Math.abs(dx);
-    if (absDx < 80 && ball.y < p2.y - 30 && ball.y > 80 && p2.grounded && !ballBehindCPU) {
-      p2.vy = G.JUMP_FORCE;
-      p2.grounded = false;
+    if (absDx < 80 && ball.y < slime.y - 30 && ball.y > 80 && slime.grounded && !ballBehind) {
+      slime.vy = G.JUMP_FORCE;
+      slime.grounded = false;
     }
   }, []);
 
@@ -277,7 +276,7 @@ export default function SlimeSoccer() {
       game.freeze = 90;
 
       // Record stats (1P mode only)
-      if (!twoPlayerRef.current) {
+      if (gameModeRef.current === "1p") {
         const p1Score = game.scores.p1;
         const p2Score = game.scores.p2;
         const won = scorer === "p1";
@@ -336,25 +335,29 @@ export default function SlimeSoccer() {
     const keys = keysRef.current;
     const mc = mobileRef.current;
 
-    // P1 controls: WASD + arrows (1P) or WASD only (2P) + mobile
-    const p1Left = keys["a"] || mc.left || (!twoPlayerRef.current && keys["arrowleft"]);
-    const p1Right = keys["d"] || mc.right || (!twoPlayerRef.current && keys["arrowright"]);
-    if (p1Left && p1Right) {
-      p1.vx = lastDirRef.current === "right" ? G.SLIME_SPEED : -G.SLIME_SPEED;
-    } else if (p1Left) {
-      p1.vx = -G.SLIME_SPEED;
-    } else if (p1Right) {
-      p1.vx = G.SLIME_SPEED;
+    // P1 controls: WASD + arrows (1P) or WASD only (2P) + mobile; AI in sim
+    if (gameModeRef.current === "sim") {
+      runAI(p1, ball, true);
     } else {
-      p1.vx = 0;
-    }
-    if ((keys["w"] || mc.jump || (!twoPlayerRef.current && keys["arrowup"])) && p1.grounded) {
-      p1.vy = G.JUMP_FORCE;
-      p1.grounded = false;
+      const p1Left = keys["a"] || mc.left || (gameModeRef.current === "1p" && keys["arrowleft"]);
+      const p1Right = keys["d"] || mc.right || (gameModeRef.current === "1p" && keys["arrowright"]);
+      if (p1Left && p1Right) {
+        p1.vx = lastDirRef.current === "right" ? G.SLIME_SPEED : -G.SLIME_SPEED;
+      } else if (p1Left) {
+        p1.vx = -G.SLIME_SPEED;
+      } else if (p1Right) {
+        p1.vx = G.SLIME_SPEED;
+      } else {
+        p1.vx = 0;
+      }
+      if ((keys["w"] || mc.jump || (gameModeRef.current === "1p" && keys["arrowup"])) && p1.grounded) {
+        p1.vy = G.JUMP_FORCE;
+        p1.grounded = false;
+      }
     }
 
     // P2: AI or human controls
-    if (twoPlayerRef.current) {
+    if (gameModeRef.current === "2p") {
       const mc2 = mobileRef2.current;
       const p2Left = keys["arrowleft"] || mc2.left;
       const p2Right = keys["arrowright"] || mc2.right;
@@ -372,7 +375,7 @@ export default function SlimeSoccer() {
         p2.grounded = false;
       }
     } else {
-      runAI(p2, ball);
+      runAI(p2, ball, false);
     }
 
     [p1, p2].forEach(s => {
@@ -846,8 +849,8 @@ export default function SlimeSoccer() {
       keysRef.current[key] = true;
       if (key === "a") lastDirRef.current = "left";
       if (key === "d") lastDirRef.current = "right";
-      if (key === "arrowleft") { lastDirRef2.current = "left"; if (!twoPlayerRef.current) lastDirRef.current = "left"; }
-      if (key === "arrowright") { lastDirRef2.current = "right"; if (!twoPlayerRef.current) lastDirRef.current = "right"; }
+      if (key === "arrowleft") { lastDirRef2.current = "left"; if (gameModeRef.current === "1p") lastDirRef.current = "left"; }
+      if (key === "arrowright") { lastDirRef2.current = "right"; if (gameModeRef.current === "1p") lastDirRef.current = "right"; }
       if (["arrowup","arrowdown","arrowleft","arrowright","w","a","s","d"," "].includes(key)) e.preventDefault();
       // Pause toggle on space (during gameplay, not countdown)
       if (key === " ") {
@@ -867,7 +870,7 @@ export default function SlimeSoccer() {
 
   // Game start key
   gameStateRef.current = gameState;
-  twoPlayerRef.current = twoPlayer;
+  gameModeRef.current = gameMode;
   useEffect(() => {
     const down = (e) => {
       if ((gameStateRef.current === "menu" || gameStateRef.current === "gameover") && (e.key === " " || e.key === "Enter")) {
@@ -928,15 +931,18 @@ export default function SlimeSoccer() {
       ctx.fillText(`${c1.name}  vs  ${c2.name}`, G.WIDTH / 2, 272);
       ctx.font = "14px Oswald, sans-serif";
       ctx.fillStyle = COLORS.dimText;
-      ctx.fillText(isMobile ? "Use on-screen controls to play" : twoPlayerRef.current
+      ctx.fillText(isMobile ? "Use on-screen controls to play" : gameModeRef.current === "2p"
         ? "P1: A/D + W  •  P2: ←/→ + ↑  •  SPACE pause"
+        : gameModeRef.current === "sim" ? "SPACE to start  •  Sit back and watch!"
         : "A/D or ←/→  to move  •  W or ↑  to jump  •  SPACE  to pause", G.WIDTH / 2, 310);
       ctx.font = "14px Oswald, sans-serif";
-      ctx.fillStyle = twoPlayerRef.current ? "#4dc47a" : "#5a9ee0";
-      ctx.fillText(twoPlayerRef.current ? "👥 2 PLAYER MODE" : "🤖 VS CPU", G.WIDTH / 2, 340);
+      const modeColors = { "1p": "#5a9ee0", "2p": "#4dc47a", "sim": "#e0a05a" };
+      const modeLabels = { "1p": "🤖 VS CPU", "2p": "👥 2 PLAYER", "sim": "📺 MATCH SIMULATOR" };
+      ctx.fillStyle = modeColors[gameModeRef.current] || "#5a9ee0";
+      ctx.fillText(modeLabels[gameModeRef.current] || "🤖 VS CPU", G.WIDTH / 2, 340);
 
       // Show record on menu
-      if (!twoPlayerRef.current && (stats.wins > 0 || stats.losses > 0)) {
+      if (gameModeRef.current === "1p" && (stats.wins > 0 || stats.losses > 0)) {
         ctx.font = "12px Oswald, sans-serif";
         ctx.fillStyle = COLORS.dimText;
         const gd = stats.goalsFor - stats.goalsAgainst;
@@ -945,7 +951,7 @@ export default function SlimeSoccer() {
 
       ctx.font = "bold 20px Oswald, sans-serif";
       ctx.fillStyle = COLORS.score;
-      ctx.fillText("▶  PRESS SPACE TO START", G.WIDTH / 2, (stats.wins > 0 || stats.losses > 0) && !twoPlayerRef.current ? 395 : 370);
+      ctx.fillText("▶  PRESS SPACE TO START", G.WIDTH / 2, (stats.wins > 0 || stats.losses > 0) && gameModeRef.current === "1p" ? 395 : 370);
     }
     if (gameState === "gameover") {
       draw();
@@ -965,7 +971,7 @@ export default function SlimeSoccer() {
       ctx.fillText(`${gameRef.current.scores.p1} – ${gameRef.current.scores.p2}`, G.WIDTH / 2, 235);
 
       // Show stats on gameover (1P only)
-      if (!twoPlayerRef.current) {
+      if (gameModeRef.current === "1p") {
         ctx.font = "13px Oswald, sans-serif";
         ctx.fillStyle = COLORS.dimText;
         const gd = stats.goalsFor - stats.goalsAgainst;
@@ -977,7 +983,7 @@ export default function SlimeSoccer() {
       ctx.fillStyle = COLORS.score;
       ctx.fillText("PRESS SPACE TO PLAY AGAIN", G.WIDTH / 2, 310);
     }
-  }, [gameState, draw, initGame, winner, isMobile, p1Country, p2Country, twoPlayer, stats]);
+  }, [gameState, draw, initGame, winner, isMobile, p1Country, p2Country, gameMode, stats]);
 
   const startGame = () => {
     if (gameState === "menu" || gameState === "gameover") {
@@ -987,10 +993,12 @@ export default function SlimeSoccer() {
       initGame();
       countdownRef.current = 210; // 3.5 seconds: 3, 2, 1, GO!
       setGameState("countdown");
-      // Track play in Supabase
-      import("./supabase.jsx").then(({ recordPlay }) => {
-        recordPlay("slime-soccer");
-      }).catch(() => {});
+      // Track play in Supabase (not for sim mode)
+      if (gameMode !== "sim") {
+        import("./supabase.jsx").then(({ recordPlay }) => {
+          recordPlay("slime-soccer");
+        }).catch(() => {});
+      }
     }
   };
 
@@ -1071,7 +1079,7 @@ export default function SlimeSoccer() {
     const cleanup1 = setupTouch(controlsRef.current, recalcP1);
     const cleanup2 = setupTouch(controlsRef2.current, recalcP2);
     return () => { cleanup1(); cleanup2(); };
-  }, [recalcP1, recalcP2, gameState, twoPlayer]);
+  }, [recalcP1, recalcP2, gameState, gameMode]);
 
   return (
     <div style={{ minHeight: "100vh", background: COLORS.bg, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", fontFamily: "Oswald, sans-serif", padding: isMobile && isLandscape ? "4px 8px" : "16px 8px" }}>
@@ -1144,7 +1152,7 @@ export default function SlimeSoccer() {
               <option key={c.name} value={c.name}>{c.flag} {c.name}</option>
             ))}
           </select>
-          <span style={{ color: COLORS.dimText, fontSize: 12, letterSpacing: 1 }}>{twoPlayer ? "P2" : "CPU"}</span>
+          <span style={{ color: COLORS.dimText, fontSize: 12, letterSpacing: 1 }}>{gameMode === "2p" ? "P2" : "CPU"}</span>
         </div>
       </div>
       )}
@@ -1208,29 +1216,34 @@ export default function SlimeSoccer() {
       </div>
       )}
 
-      {/* Mode toggle - desktop only */}
+      {/* Mode selector - desktop only */}
       {!isMobile && (
-      <button
-        onClick={() => setTwoPlayer(tp => !tp)}
-        style={{
-          background: twoPlayer ? "#4dc47a18" : "#5a9ee018",
-          border: `1px solid ${twoPlayer ? "#4dc47a44" : "#5a9ee044"}`,
-          borderRadius: 8, padding: "6px 16px", cursor: "pointer",
-          color: twoPlayer ? "#4dc47a" : "#5a9ee0",
-          fontFamily: "Oswald, sans-serif", fontSize: 12, fontWeight: 700,
-          letterSpacing: 2, marginBottom: isMobile && isLandscape ? 2 : 8,
-          transition: "all 0.2s ease",
-        }}
-      >
-        {twoPlayer ? "👥 2 PLAYER" : "🤖 VS CPU"}
-      </button>
+      <div style={{ display: "flex", gap: 0, marginBottom: 8, borderRadius: 8, overflow: "hidden", border: `1px solid ${COLORS.groundLine}44` }}>
+        {[
+          { key: "1p", label: "🤖 VS CPU", color: "#5a9ee0" },
+          { key: "2p", label: "👥 2 PLAYER", color: "#4dc47a" },
+          { key: "sim", label: "📺 SIMULATE", color: "#e0a05a" },
+        ].map(m => {
+          const active = gameMode === m.key;
+          return (
+            <button key={m.key} onClick={() => setGameMode(m.key)} style={{
+              background: active ? m.color + "22" : "transparent",
+              border: "none", borderRight: `1px solid ${COLORS.groundLine}33`,
+              padding: "7px 16px", cursor: "pointer",
+              color: active ? m.color : COLORS.dimText,
+              fontFamily: "Oswald, sans-serif", fontSize: 11, fontWeight: 700,
+              letterSpacing: 2, transition: "all 0.15s ease",
+            }}>{m.label}</button>
+          );
+        })}
+      </div>
       )}
 
       <div ref={containerRef} style={{ width: "100%", maxWidth: G.WIDTH + 16, display: "flex", flexDirection: "column", alignItems: "center" }}>
         <div style={{ border: `2px solid ${COLORS.groundLine}33`, borderRadius: 8, overflow: "hidden", boxShadow: "0 0 40px rgba(212,168,67,0.1)", lineHeight: 0 }}>
           <canvas ref={canvasRef} width={G.WIDTH} height={G.HEIGHT} style={{ width: G.WIDTH * canvasScale, height: G.HEIGHT * canvasScale, display: "block" }} onClick={startGame} />
         </div>
-        {isMobile && (gameState === "playing" || gameState === "scored" || gameState === "countdown") && !twoPlayer && (
+        {isMobile && (gameState === "playing" || gameState === "scored" || gameState === "countdown") && gameMode === "1p" && (
           <div ref={controlsRef} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: isLandscape ? "4px 8px" : "12px 8px", maxWidth: G.WIDTH, width: "100%", userSelect: "none", WebkitUserSelect: "none", touchAction: "none" }}>
             <div style={{ display: "flex", gap: 12 }}>
               <button data-action="left" style={mbtn}>◀</button>
@@ -1244,7 +1257,7 @@ export default function SlimeSoccer() {
             <button data-action="jump" style={{...mbtn,width:80,fontSize:18}}>JUMP</button>
           </div>
         )}
-        {isMobile && (gameState === "playing" || gameState === "scored" || gameState === "countdown") && twoPlayer && (
+        {isMobile && (gameState === "playing" || gameState === "scored" || gameState === "countdown") && gameMode === "2p" && (
           <div style={{ width: "100%", maxWidth: G.WIDTH, padding: isLandscape ? "4px 8px" : "8px 8px", userSelect: "none", WebkitUserSelect: "none" }}>
             {/* P1 controls */}
             <div ref={controlsRef} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6, touchAction: "none" }}>
@@ -1279,15 +1292,17 @@ export default function SlimeSoccer() {
         )}
       </div>
       <div style={{ marginTop: 14, color: COLORS.dimText, fontSize: 13, textAlign: "center", lineHeight: 1.6 }}>
-        {!isMobile && (<>{twoPlayer ? (
+        {!isMobile && (<>{gameMode === "2p" ? (
           <><span style={{ color: p1Country.primary }}>P1: A/D</span> + <span style={{ color: p1Country.primary }}>W</span> &nbsp;|&nbsp; <span style={{ color: p2Country.primary }}>P2: ←/→</span> + <span style={{ color: p2Country.primary }}>↑</span> &nbsp;|&nbsp; <span style={{ color: COLORS.dimText }}>SPACE</span> pause &nbsp;|&nbsp; First to {G.WINNING_SCORE}</>
+        ) : gameMode === "sim" ? (
+          <><span style={{ color: "#e0a05a" }}>📺 MATCH SIMULATOR</span> &nbsp;|&nbsp; <span style={{ color: COLORS.dimText }}>SPACE</span> pause &nbsp;|&nbsp; First to {G.WINNING_SCORE}</>
         ) : (
           <><span style={{ color: p1Country.primary }}>A/D or ←/→</span> move &nbsp;|&nbsp; <span style={{ color: p1Country.primary }}>W or ↑</span> jump &nbsp;|&nbsp; <span style={{ color: p1Country.primary }}>SPACE</span> pause &nbsp;|&nbsp; First to {G.WINNING_SCORE} wins</>
         )}</>)}
       </div>
 
       {/* Stats bar (1P only) */}
-      {!twoPlayer && (stats.wins > 0 || stats.losses > 0) && (
+      {gameMode === "1p" && (stats.wins > 0 || stats.losses > 0) && (
         <div style={{
           marginTop: 10, padding: "10px 20px", borderRadius: 10,
           background: "#0a0a18", border: "1px solid #ffffff0a",
