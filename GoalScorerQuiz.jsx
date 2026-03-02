@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { Helmet } from "react-helmet-async";
+import { usePlayCount } from "./usePlayCount.jsx";
 
 /* ───────────────────── DATA ───────────────────── */
 const ENTRIES = [
@@ -252,8 +253,10 @@ export default function GoalScorerQuiz() {
   const [shake, setShake] = useState(false);
   const [wrongGuesses, setWrongGuesses] = useState([]);
   const inputRef = useRef(null);
+  const trackPlay = usePlayCount("goal-scorer-quiz");
 
   const startGame = useCallback(() => {
+    trackPlay();
     const shuffled = shuffle(ENTRIES);
     setQueue(shuffled.slice(1));
     setCurrent(shuffled[0]);
@@ -265,7 +268,7 @@ export default function GoalScorerQuiz() {
     setMaxPossible(0);
     setHistory([]);
     setWrongGuesses([]);
-  }, []);
+  }, [trackPlay]);
 
   const nextEntry = useCallback(() => {
     setWrongGuesses([]);
