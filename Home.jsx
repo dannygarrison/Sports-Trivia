@@ -242,7 +242,7 @@ const GAMES = [
     path: "/games/slime-soccer",
     title: "Slime Soccer",
     sport: "SOCCER",
-    description: "Pick your country and play classic slime soccer. World Cup Edition with 65 nations.",
+    description: "Pick your country and play classic slime soccer. 1P vs CPU or 2P local. World Cup Edition with 65 nations.",
     tag: "ARCADE",
     available: true,
     dateAdded: 20,
