@@ -117,6 +117,7 @@ export default function SlimeSoccer() {
   const [paused, setPaused] = useState(false);
   const goalCelebRef = useRef(null); // { scorer, country, comment, timer }
   const [canvasScale, setCanvasScale] = useState(1);
+  const [isLandscape, setIsLandscape] = useState(false);
   const containerRef = useRef(null);
   const gameStateRef = useRef(gameState);
   const [initialCountries] = useState(() => {
@@ -776,10 +777,15 @@ export default function SlimeSoccer() {
     return () => window.removeEventListener("resize", check);
   }, []);
 
-  // Canvas scale
+  // Canvas scale - fit width AND height (important for landscape)
   useEffect(() => {
     const resize = () => {
-      if (containerRef.current) setCanvasScale(Math.min(1, (containerRef.current.offsetWidth - 16) / G.WIDTH));
+      setIsLandscape(window.innerWidth > window.innerHeight);
+      if (containerRef.current) {
+        const maxW = (containerRef.current.offsetWidth - 16) / G.WIDTH;
+        const maxH = (window.innerHeight - 180) / G.HEIGHT;
+        setCanvasScale(Math.min(1, maxW, maxH));
+      }
     };
     resize(); window.addEventListener("resize", resize);
     return () => window.removeEventListener("resize", resize);
@@ -872,12 +878,59 @@ export default function SlimeSoccer() {
     border: `2px solid ${COLORS.groundLine}`, background: COLORS.ground,
     color: COLORS.text, fontSize: 24, fontFamily: "Oswald, sans-serif",
     cursor: "pointer", display: "flex", alignItems: "center",
-    justifyContent: "center", touchAction: "manipulation",
+    justifyContent: "center", touchAction: "none",
   };
-  const touch = (f, v) => (e) => { e.preventDefault(); mobileRef.current[f] = v; };
+
+  // Touch-slide system: track which button finger is over
+  const controlsRef = useRef(null);
+  const updateTouchFromPoint = useCallback((x, y) => {
+    const el = document.elementFromPoint(x, y);
+    const action = el?.dataset?.action || el?.parentElement?.dataset?.action;
+    mobileRef.current.left = action === "left";
+    mobileRef.current.right = action === "right";
+    mobileRef.current.jump = action === "jump";
+  }, []);
+
+  useEffect(() => {
+    const container = controlsRef.current;
+    if (!container) return;
+    const onTouchStart = (e) => {
+      e.preventDefault();
+      for (const t of e.changedTouches) updateTouchFromPoint(t.clientX, t.clientY);
+    };
+    const onTouchMove = (e) => {
+      e.preventDefault();
+      for (const t of e.changedTouches) updateTouchFromPoint(t.clientX, t.clientY);
+    };
+    const onTouchEnd = (e) => {
+      e.preventDefault();
+      // Check if any touches remain on buttons
+      if (e.touches.length === 0) {
+        mobileRef.current.left = false;
+        mobileRef.current.right = false;
+        mobileRef.current.jump = false;
+      } else {
+        // Re-evaluate remaining touches
+        mobileRef.current.left = false;
+        mobileRef.current.right = false;
+        mobileRef.current.jump = false;
+        for (const t of e.touches) updateTouchFromPoint(t.clientX, t.clientY);
+      }
+    };
+    container.addEventListener("touchstart", onTouchStart, { passive: false });
+    container.addEventListener("touchmove", onTouchMove, { passive: false });
+    container.addEventListener("touchend", onTouchEnd, { passive: false });
+    container.addEventListener("touchcancel", onTouchEnd, { passive: false });
+    return () => {
+      container.removeEventListener("touchstart", onTouchStart);
+      container.removeEventListener("touchmove", onTouchMove);
+      container.removeEventListener("touchend", onTouchEnd);
+      container.removeEventListener("touchcancel", onTouchEnd);
+    };
+  }, [updateTouchFromPoint, gameState]);
 
   return (
-    <div style={{ minHeight: "100vh", background: COLORS.bg, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", fontFamily: "Oswald, sans-serif", padding: "16px 8px" }}>
+    <div style={{ minHeight: "100vh", background: COLORS.bg, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", fontFamily: "Oswald, sans-serif", padding: isMobile && isLandscape ? "4px 8px" : "16px 8px" }}>
       <Helmet>
         <title>Slime Soccer – World Cup Edition | Trivial Sports</title>
         <meta name="description" content="Play classic slime soccer with 65 World Cup nations. Pick your country, score goals, and compete in this retro arcade game." />
@@ -887,13 +940,16 @@ export default function SlimeSoccer() {
         <meta property="og:type" content="website" />
         <link rel="canonical" href="https://trivialsports.com/games/slime-soccer" />
       </Helmet>      <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&display=swap" rel="stylesheet" />
+      {!(isMobile && isLandscape) && (
       <div style={{ textAlign: "center", marginBottom: 8 }}>
         <div style={{ fontSize: 11, letterSpacing: 4, color: COLORS.dimText, textTransform: "uppercase", marginBottom: 2 }}>TrivialSports.com</div>
         <h1 style={{ fontSize: 26, fontWeight: 700, color: COLORS.score, margin: 0, lineHeight: 1 }}>SLIME ⚽ SOCCER</h1>
         <div style={{ fontSize: 12, color: "#d4a84377", letterSpacing: 3, marginTop: 2 }}>WORLD CUP EDITION</div>
       </div>
+      )}
 
       {/* Country selectors */}
+      {!(isMobile && isLandscape) && (
       <div style={{
         display: "flex", justifyContent: "center", alignItems: "center", gap: 24,
         marginBottom: 10, flexWrap: "wrap",
@@ -947,22 +1003,23 @@ export default function SlimeSoccer() {
           <span style={{ color: COLORS.dimText, fontSize: 12, letterSpacing: 1 }}>CPU</span>
         </div>
       </div>
+      )}
 
       <div ref={containerRef} style={{ width: "100%", maxWidth: G.WIDTH + 16, display: "flex", flexDirection: "column", alignItems: "center" }}>
         <div style={{ border: `2px solid ${COLORS.groundLine}33`, borderRadius: 8, overflow: "hidden", boxShadow: "0 0 40px rgba(212,168,67,0.1)", lineHeight: 0 }}>
           <canvas ref={canvasRef} width={G.WIDTH} height={G.HEIGHT} style={{ width: G.WIDTH * canvasScale, height: G.HEIGHT * canvasScale, display: "block" }} onClick={startGame} />
         </div>
         {isMobile && (gameState === "playing" || gameState === "scored") && (
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "12px 8px", maxWidth: G.WIDTH, width: "100%", userSelect: "none", WebkitUserSelect: "none" }}>
+          <div ref={controlsRef} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: isLandscape ? "4px 8px" : "12px 8px", maxWidth: G.WIDTH, width: "100%", userSelect: "none", WebkitUserSelect: "none", touchAction: "none" }}>
             <div style={{ display: "flex", gap: 12 }}>
-              <button style={mbtn} onTouchStart={touch("left",true)} onTouchEnd={touch("left",false)} onMouseDown={()=>mobileRef.current.left=true} onMouseUp={()=>mobileRef.current.left=false} onMouseLeave={()=>mobileRef.current.left=false}>◀</button>
-              <button style={mbtn} onTouchStart={touch("right",true)} onTouchEnd={touch("right",false)} onMouseDown={()=>mobileRef.current.right=true} onMouseUp={()=>mobileRef.current.right=false} onMouseLeave={()=>mobileRef.current.right=false}>▶</button>
+              <button data-action="left" style={mbtn}>◀</button>
+              <button data-action="right" style={mbtn}>▶</button>
             </div>
             <button
               onClick={() => { pausedRef.current = !pausedRef.current; setPaused(pausedRef.current); }}
               style={{ ...mbtn, width: 50, height: 50, fontSize: 14, border: `2px solid ${paused ? COLORS.score : COLORS.groundLine}` }}
             >{paused ? "▶" : "⏸"}</button>
-            <button style={{...mbtn,width:80,fontSize:18}} onTouchStart={touch("jump",true)} onTouchEnd={touch("jump",false)} onMouseDown={()=>mobileRef.current.jump=true} onMouseUp={()=>mobileRef.current.jump=false} onMouseLeave={()=>mobileRef.current.jump=false}>JUMP</button>
+            <button data-action="jump" style={{...mbtn,width:80,fontSize:18}}>JUMP</button>
           </div>
         )}
         {isMobile && (gameState === "menu" || gameState === "gameover") && (
