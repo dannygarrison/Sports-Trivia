@@ -25,6 +25,7 @@ const FinalFourTrivia = lazy(() => import("./FinalFourTrivia.jsx"))
 const GoalScorerQuiz = lazy(() => import("./GoalScorerQuiz.jsx"))
 const Blog = lazy(() => import("./Blog.jsx"))
 const BlogChainCheatCodes = lazy(() => import("./BlogChainCheatCodes.jsx"))
+const PrivacyPolicy = lazy(() => import("./PrivacyPolicy.jsx"))
 
 export default function App() {
   return (
@@ -70,6 +71,7 @@ export default function App() {
           <Route path="/games/goal-scorer-quiz" element={<GoalScorerQuiz />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/nfl-chain-cheat-codes" element={<BlogChainCheatCodes />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
         </Routes>
       </Suspense>
     </div>
