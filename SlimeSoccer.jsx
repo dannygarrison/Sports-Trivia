@@ -881,53 +881,54 @@ export default function SlimeSoccer() {
     justifyContent: "center", touchAction: "none",
   };
 
-  // Touch-slide system: track which button finger is over
+  // Touch-slide system: track which buttons fingers are over
   const controlsRef = useRef(null);
-  const updateTouchFromPoint = useCallback((x, y) => {
+
+  const getActionFromPoint = useCallback((x, y) => {
     const el = document.elementFromPoint(x, y);
-    const action = el?.dataset?.action || el?.parentElement?.dataset?.action;
-    mobileRef.current.left = action === "left";
-    mobileRef.current.right = action === "right";
-    mobileRef.current.jump = action === "jump";
+    return el?.dataset?.action || el?.parentElement?.dataset?.action || null;
   }, []);
+
+  const recalcTouches = useCallback((touches) => {
+    let left = false, right = false, jump = false;
+    for (const t of touches) {
+      const action = getActionFromPoint(t.clientX, t.clientY);
+      if (action === "left") left = true;
+      if (action === "right") right = true;
+      if (action === "jump") jump = true;
+    }
+    mobileRef.current.left = left;
+    mobileRef.current.right = right;
+    mobileRef.current.jump = jump;
+  }, [getActionFromPoint]);
 
   useEffect(() => {
     const container = controlsRef.current;
     if (!container) return;
-    const onTouchStart = (e) => {
+    const onTouch = (e) => {
+      // Let pause button handle its own click
+      const target = e.target;
+      if (target?.dataset?.action === "pause" || target?.parentElement?.dataset?.action === "pause") return;
       e.preventDefault();
-      for (const t of e.changedTouches) updateTouchFromPoint(t.clientX, t.clientY);
-    };
-    const onTouchMove = (e) => {
-      e.preventDefault();
-      for (const t of e.changedTouches) updateTouchFromPoint(t.clientX, t.clientY);
+      recalcTouches(e.touches);
     };
     const onTouchEnd = (e) => {
+      const target = e.target;
+      if (target?.dataset?.action === "pause" || target?.parentElement?.dataset?.action === "pause") return;
       e.preventDefault();
-      // Check if any touches remain on buttons
-      if (e.touches.length === 0) {
-        mobileRef.current.left = false;
-        mobileRef.current.right = false;
-        mobileRef.current.jump = false;
-      } else {
-        // Re-evaluate remaining touches
-        mobileRef.current.left = false;
-        mobileRef.current.right = false;
-        mobileRef.current.jump = false;
-        for (const t of e.touches) updateTouchFromPoint(t.clientX, t.clientY);
-      }
+      recalcTouches(e.touches);
     };
-    container.addEventListener("touchstart", onTouchStart, { passive: false });
-    container.addEventListener("touchmove", onTouchMove, { passive: false });
+    container.addEventListener("touchstart", onTouch, { passive: false });
+    container.addEventListener("touchmove", onTouch, { passive: false });
     container.addEventListener("touchend", onTouchEnd, { passive: false });
     container.addEventListener("touchcancel", onTouchEnd, { passive: false });
     return () => {
-      container.removeEventListener("touchstart", onTouchStart);
-      container.removeEventListener("touchmove", onTouchMove);
+      container.removeEventListener("touchstart", onTouch);
+      container.removeEventListener("touchmove", onTouch);
       container.removeEventListener("touchend", onTouchEnd);
       container.removeEventListener("touchcancel", onTouchEnd);
     };
-  }, [updateTouchFromPoint, gameState]);
+  }, [recalcTouches, gameState]);
 
   return (
     <div style={{ minHeight: "100vh", background: COLORS.bg, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", fontFamily: "Oswald, sans-serif", padding: isMobile && isLandscape ? "4px 8px" : "16px 8px" }}>
@@ -1016,6 +1017,7 @@ export default function SlimeSoccer() {
               <button data-action="right" style={mbtn}>▶</button>
             </div>
             <button
+              data-action="pause"
               onClick={() => { pausedRef.current = !pausedRef.current; setPaused(pausedRef.current); }}
               style={{ ...mbtn, width: 50, height: 50, fontSize: 14, border: `2px solid ${paused ? COLORS.score : COLORS.groundLine}` }}
             >{paused ? "▶" : "⏸"}</button>
