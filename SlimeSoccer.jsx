@@ -46,7 +46,7 @@ const COUNTRIES = [
   { name: "England", flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", primary: "#c8c0b8", highlight: "#f5f2ef" },
   { name: "France", flag: "🇫🇷", primary: "#002395", highlight: "#5a72c0" },
   { name: "Germany", flag: "🇩🇪", primary: "#ffffff", highlight: "#f0f0f0", pattern: "diagonal_stripes", patternColors: ["#1a1a1a", "#dd0000", "#ffcc00"] },
-  { name: "Ghana", flag: "🇬🇭", primary: "#006b3f", highlight: "#4db87a" },
+  { name: "Ghana", flag: "🇬🇭", primary: "#c8c0b8", highlight: "#f5f2ef" },
   { name: "Haiti", flag: "🇭🇹", primary: "#00209f", highlight: "#5a6fd0" },
   { name: "Iran", flag: "🇮🇷", primary: "#c8102e", highlight: "#e06a7a" },
   { name: "Iraq", flag: "🇮🇶", primary: "#007a3d", highlight: "#4dc47a" },
