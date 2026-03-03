@@ -91,24 +91,24 @@ const COUNTRIES = [
 const PL_TEAMS = [
   { name: "Arsenal", flag: "\u{1F6E1}\uFE0F", primary: "#EF0107", highlight: "#ff6060" },
   { name: "Aston Villa", flag: "\u{1F981}", primary: "#670E36", highlight: "#9a4a6a" },
-  { name: "Bournemouth", flag: "\u{1F352}", primary: "#DA291C", highlight: "#e86a6a", pattern: "vertical_stripes", patternColor2: "#000000" },
-  { name: "Brentford", flag: "\u{1F41D}", primary: "#e30613", highlight: "#f06060", pattern: "vertical_stripes", patternColor2: "#FFFFFF" },
-  { name: "Brighton", flag: "\u{1F54A}\uFE0F", primary: "#0057B8", highlight: "#5a9ee0", pattern: "vertical_stripes", patternColor2: "#FFFFFF" },
+  { name: "Bournemouth", flag: "\u{1F352}", primary: "#DA291C", highlight: "#e86a6a", pattern: "vertical_stripes", patternColor2: "#0a0a0a", patternAlpha: 0.92 },
+  { name: "Brentford", flag: "\u{1F41D}", primary: "#e30613", highlight: "#e86060", pattern: "vertical_stripes", patternColor2: "#FFFFFF", patternAlpha: 0.92 },
+  { name: "Brighton", flag: "\u{1F54A}\uFE0F", primary: "#0057B8", highlight: "#4090d0", pattern: "vertical_stripes", patternColor2: "#FFFFFF", patternAlpha: 0.92 },
   { name: "Burnley", flag: "\u270B", primary: "#6C1D45", highlight: "#9a4a6a" },
   { name: "Chelsea", flag: "\u{1F535}", primary: "#034694", highlight: "#5a7fc0" },
-  { name: "Crystal Palace", flag: "\u{1F985}", primary: "#1B458F", highlight: "#5a72c0", pattern: "vertical_stripes", patternColor2: "#C4122E" },
+  { name: "Crystal Palace", flag: "\u{1F985}", primary: "#0055A5", highlight: "#4090d0", pattern: "vertical_stripes", patternColor2: "#E8112D", patternAlpha: 0.92 },
   { name: "Everton", flag: "\u{1F36C}", primary: "#003399", highlight: "#5a72c0" },
   { name: "Fulham", flag: "\u{1F3E0}", primary: "#FFFFFF", highlight: "#f0f0f0" },
   { name: "Leeds United", flag: "\u{1F33C}", primary: "#FFFFFF", highlight: "#f0f0f0" },
   { name: "Liverpool", flag: "\u{1F426}\u200D\u{1F525}", primary: "#C8102E", highlight: "#e06a7a" },
   { name: "Man City", flag: "\u{1F30A}", primary: "#6CABDD", highlight: "#a0d0f0" },
   { name: "Man United", flag: "\u{1F479}", primary: "#DA291C", highlight: "#e86a6a" },
-  { name: "Newcastle", flag: "\u{1F426}\u200D\u2B1B", primary: "#241F20", highlight: "#555555", pattern: "vertical_stripes", patternColor2: "#FFFFFF" },
+  { name: "Newcastle", flag: "\u{1F426}\u200D\u2B1B", primary: "#1a1a1a", highlight: "#444444", pattern: "vertical_stripes", patternColor2: "#FFFFFF", patternAlpha: 0.92 },
   { name: "Nott'm Forest", flag: "\u{1F333}", primary: "#DD0000", highlight: "#e86060" },
-  { name: "Sunderland", flag: "\u{1F408}\u200D\u2B1B", primary: "#EB172B", highlight: "#f06a6a", pattern: "vertical_stripes", patternColor2: "#FFFFFF" },
+  { name: "Sunderland", flag: "\u{1F408}\u200D\u2B1B", primary: "#EB172B", highlight: "#e86060", pattern: "vertical_stripes", patternColor2: "#FFFFFF", patternAlpha: 0.92 },
   { name: "Tottenham", flag: "\u{1F413}", primary: "#FFFFFF", highlight: "#f0f0f0" },
   { name: "West Ham", flag: "\u2692\uFE0F", primary: "#7A263A", highlight: "#a05a6a" },
-  { name: "Wolves", flag: "\u{1F43A}", primary: "#FDB913", highlight: "#fde46a" },
+  { name: "Wolves", flag: "\u{1F43A}", primary: "#F5A623", highlight: "#f7c45a" },
 ];
 
 const COLORS = {
@@ -657,9 +657,8 @@ export default function SlimeSoccer() {
             ctx.globalAlpha = 1;
             ctx.fillRect(sx - 1, -s.r, 2, s.r * 2);
             ctx.fillRect(sx + stripeW - 1, -s.r, 2, s.r * 2);
-            // Blue stripe
             ctx.fillStyle = country.patternColor2;
-            ctx.globalAlpha = 0.75;
+            ctx.globalAlpha = country.patternAlpha || 0.75;
             ctx.fillRect(sx, -s.r, stripeW, s.r * 2);
           }
         }
@@ -961,7 +960,7 @@ export default function SlimeSoccer() {
       ctx.fillText("SLIME ⚽ SOCCER", G.WIDTH / 2, 130);
       ctx.font = "18px Oswald, sans-serif";
       ctx.fillStyle = "#d4a84399";
-      ctx.fillText(league === "pl" ? "SLIME PL EDITION" : "SLIME CUP EDITION", G.WIDTH / 2, 158);
+      ctx.fillText(league === "pl" ? "PREMIER LEAGUE EDITION" : "SLIME CUP EDITION", G.WIDTH / 2, 158);
       ctx.font = "18px Oswald, sans-serif";
       ctx.fillStyle = COLORS.text;
       ctx.fillText("First to 7 wins!", G.WIDTH / 2, 195);
@@ -1142,7 +1141,7 @@ export default function SlimeSoccer() {
       <div style={{ textAlign: "center", marginBottom: 8 }}>
         <div style={{ fontSize: 11, letterSpacing: 4, color: COLORS.dimText, textTransform: "uppercase", marginBottom: 2 }}>TrivialSports.com</div>
         <h1 style={{ fontSize: 26, fontWeight: 700, color: COLORS.score, margin: 0, lineHeight: 1 }}>SLIME ⚽ SOCCER</h1>
-        <div style={{ fontSize: 12, color: "#d4a84377", letterSpacing: 3, marginTop: 2 }}>{league === "pl" ? "SLIME PL EDITION" : "SLIME CUP EDITION"}</div>
+        <div style={{ fontSize: 12, color: "#d4a84377", letterSpacing: 3, marginTop: 2 }}>{league === "pl" ? "PREMIER LEAGUE EDITION" : "SLIME CUP EDITION"}</div>
       </div>
       )}
 
