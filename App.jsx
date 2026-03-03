@@ -2,8 +2,8 @@ import { lazy, Suspense } from "react"
 import { Routes, Route } from "react-router-dom"
 import Nav from "./Nav.jsx"
 import Home from "./Home.jsx"
-// import BannerAd from "./BannerAd.jsx"
-// import useAdSense from "./useAdSense"
+import BannerAd from "./BannerAd.jsx"
+import useAdSense from "./useAdSense"
 
 const NFLCollegeTrivia = lazy(() => import("./NFLCollegeTrivia.jsx"))
 const SoccerLeaguesTrivia = lazy(() => import("./SoccerLeaguesTrivia.jsx"))
