@@ -144,6 +144,14 @@ export default function SlimeSoccer() {
   const gameModeRef = useRef("1p");
   const [league, setLeague] = useState("worldcup"); // "worldcup" or "pl"
   const getTeams = (lg) => lg === "pl" ? PL_TEAMS : COUNTRIES;
+  const scoreColor = (country) => {
+    const hex = country.primary.replace("#", "");
+    const r = parseInt(hex.substring(0, 2), 16);
+    const g = parseInt(hex.substring(2, 4), 16);
+    const b = parseInt(hex.substring(4, 6), 16);
+    const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+    return luminance < 0.25 ? country.highlight : country.primary;
+  };
 
   // Persistent stats
   const STATS_KEY = "slime-soccer-stats";
@@ -757,14 +765,14 @@ export default function SlimeSoccer() {
     ctx.textAlign = "center";
 
     // P1 side
-    ctx.fillStyle = c1.primary;
+    ctx.fillStyle = scoreColor(c1);
     ctx.fillText(game.scores.p1, G.WIDTH / 2 - 55, 48);
     ctx.fillStyle = COLORS.dimText;
     ctx.font = "bold 30px Oswald, sans-serif";
     ctx.fillText("–", G.WIDTH / 2, 46);
     // P2 side
     ctx.font = "bold 44px Oswald, sans-serif";
-    ctx.fillStyle = c2.primary;
+    ctx.fillStyle = scoreColor(c2);
     ctx.fillText(game.scores.p2, G.WIDTH / 2 + 55, 48);
 
     // Flag + country labels
@@ -1205,6 +1213,8 @@ export default function SlimeSoccer() {
             let j; do { j = Math.floor(Math.random() * teams.length); } while (j === i);
             setP1Country(teams[i]);
             setP2Country(teams[j]);
+            initGame();
+            setGameState("menu");
           }}
           style={{
             background: "none", border: `1px solid ${COLORS.groundLine}55`, borderRadius: 6,
@@ -1279,6 +1289,8 @@ export default function SlimeSoccer() {
             let j; do { j = Math.floor(Math.random() * teams.length); } while (j === i);
             setP1Country(teams[i]);
             setP2Country(teams[j]);
+            initGame();
+            setGameState("menu");
           }}
           style={{
             background: "none", border: `1px solid ${COLORS.groundLine}55`, borderRadius: 6,
