@@ -3,6 +3,13 @@ import { Link } from 'react-router-dom'
 
 const POSTS = [
   {
+    slug: 'whatever-happened-to-slime-soccer',
+    title: 'Whatever Happened to Slime Soccer?',
+    date: 'March 2, 2026',
+    preview: 'If you had access to a computer in a school classroom between 2002 and 2012, there\'s a very good chance you played Slime Soccer. Then one day, it was gone.',
+    game: { name: 'Slime Soccer', path: '/games/slime-soccer' },
+  },
+  {
     slug: 'nfl-chain-cheat-codes',
     title: 'Top 7 NFL Chain Game Cheat Codes: Obscure College Connections You Need to Know',
     date: 'February 28, 2026',
