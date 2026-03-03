@@ -204,9 +204,9 @@ export default function SlimeSoccer() {
 
   const randomAIStyle = () => ({
     offsetX: (Math.random() - 0.5) * 40,      // positioning bias: -20 to +20
-    aggression: 0.8 + Math.random() * 0.2,     // how far forward they push: 0.8-1.0
-    speedMult: 0.83 + Math.random() * 0.07,    // speed variance: 0.83-0.90
-    jumpEagerness: 65 + Math.random() * 30,     // jump trigger distance: 65-95
+    aggression: 0.85 + Math.random() * 0.15,     // how far forward they push: 0.85-1.0
+    speedMult: 0.86 + Math.random() * 0.07,    // speed variance: 0.86-0.93
+    jumpEagerness: 60 + Math.random() * 35,     // jump trigger distance: 60-95
     guardDist: 30 + Math.random() * 25,         // how far from goal they guard: 30-55
   });
 
@@ -229,21 +229,18 @@ export default function SlimeSoccer() {
     if (!style) return;
 
     const ownGoalX = isP1 ? G.GOAL_WIDTH : G.WIDTH - G.GOAL_WIDTH;
-    const oppGoalX = isP1 ? G.WIDTH - G.GOAL_WIDTH : G.GOAL_WIDTH;
     const ballOnMySide = isP1 ? (ball.x < G.WIDTH / 2) : (ball.x > G.WIDTH / 2);
     const minX = G.GOAL_WIDTH + slime.r;
     const maxX = G.WIDTH - G.GOAL_WIDTH - slime.r;
-    const midX = G.WIDTH / 2;
 
-    // Core principle: P1 should hit ball from LEFT, P2 from RIGHT
-    // This ensures contact deflects toward opponent's goal
+    // Attack side: P1 should be LEFT of ball, P2 should be RIGHT
     const onCorrectSide = isP1 ? (slime.x < ball.x) : (slime.x > ball.x);
     const onWrongSide = !onCorrectSide;
 
-    // Danger zones
-    const nearOwnGoal = isP1 ? (ball.x < G.GOAL_WIDTH + 140) : (ball.x > G.WIDTH - G.GOAL_WIDTH - 140);
-    const slimeNearOwnGoal = isP1 ? (slime.x < G.GOAL_WIDTH + 100) : (slime.x > G.WIDTH - G.GOAL_WIDTH - 100);
-    const ballMovingToOwnGoal = isP1 ? (ball.vx < -0.5) : (ball.vx > 0.5);
+    // Defensive zone = own third of the pitch
+    const inDefensiveZone = isP1 ? (ball.x < G.WIDTH * 0.35) : (ball.x > G.WIDTH * 0.65);
+    const slimeInDefZone = isP1 ? (slime.x < G.WIDTH * 0.3) : (slime.x > G.WIDTH * 0.7);
+    const ballMovingToOwnGoal = isP1 ? (ball.vx < -1) : (ball.vx > 1);
 
     let targetX;
     let suppressJump = false;
@@ -263,58 +260,54 @@ export default function SlimeSoccer() {
     }
     predX = clamp(predX, minX, maxX);
 
-    // PRIORITY 1: If we're on the wrong side near our own goal, GET OUT
-    if (onWrongSide && (nearOwnGoal || slimeNearOwnGoal) && Math.abs(ball.x - slime.x) < 100) {
-      // Flee toward midfield - don't touch the ball from the wrong angle
-      targetX = isP1 ? Math.max(ball.x + 70, midX * 0.7) : Math.min(ball.x - 70, G.WIDTH - midX * 0.7);
+    // PRIORITY 1: Wrong side in defensive zone - go around, don't touch
+    if (onWrongSide && inDefensiveZone && Math.abs(ball.x - slime.x) < 90) {
+      targetX = isP1 ? ball.x + 65 : ball.x - 65;
       suppressJump = true;
     }
-    // PRIORITY 2: Ball heading toward own goal and we might deflect it in
-    else if (ballMovingToOwnGoal && nearOwnGoal && Math.abs(ball.x - slime.x) < 80) {
-      // Clear out - let the ball go rather than risk an own goal
-      targetX = isP1 ? ball.x + 80 : ball.x - 80;
+    // PRIORITY 2: Ball heading into own goal and we're in the path
+    else if (ballMovingToOwnGoal && slimeInDefZone && Math.abs(ball.x - slime.x) < 70) {
+      targetX = isP1 ? ball.x + 70 : ball.x - 70;
       suppressJump = true;
     }
-    // PRIORITY 3: Ball on our side, we're on the correct side - attack!
-    else if (ballOnMySide && onCorrectSide) {
-      const approach = 20 * style.aggression;
-      targetX = isP1 ? predX - approach + off : predX + approach + off;
-    }
-    // PRIORITY 4: Ball on our side but we're on the wrong side - go around
-    else if (ballOnMySide && onWrongSide) {
-      // Loop around to the correct side: P1 goes left of ball, P2 goes right
-      if (ball.y > 300) {
-        // Ball is low/on ground - go around behind it
-        targetX = isP1 ? ball.x - 50 : ball.x + 50;
+    // PRIORITY 3: Ball on my side - ATTACK (aggressively)
+    else if (ballOnMySide) {
+      const approach = 25 * style.aggression;
+      if (onCorrectSide || !inDefensiveZone) {
+        // On correct side, or not in danger zone: charge the ball
+        targetX = isP1 ? predX + approach + off : predX - approach + off;
       } else {
-        // Ball is in air - position where it will land, on correct side
-        targetX = isP1 ? predX - 20 + off : predX + 20 + off;
+        // Wrong side in defensive zone with some distance: loop around
+        targetX = isP1 ? ball.x - 45 : ball.x + 45;
       }
     }
-    // PRIORITY 5: Ball on opponent's side and moving away - hold position
+    // PRIORITY 4: Ball on opponent's side moving away - guard
     else if (!ballOnMySide && (isP1 ? ball.vx > 0 : ball.vx < 0)) {
       targetX = isP1 ? ownGoalX + slime.r + style.guardDist : ownGoalX - slime.r - style.guardDist;
     }
-    // PRIORITY 6: Ball on opponent's side but coming back - prepare
+    // PRIORITY 5: Ball on opponent's side but coming back - push up
     else {
-      const chase = 10 * style.aggression;
+      const chase = 15 * style.aggression;
       targetX = clamp(isP1 ? ball.x + chase + off : ball.x - chase + off, minX, maxX);
     }
 
     targetX = clamp(targetX, minX, maxX);
 
-    const deadzone = 10;
+    const deadzone = 8;
     const speed = G.SLIME_SPEED * style.speedMult;
     if (slime.x < targetX - deadzone) slime.vx = speed;
     else if (slime.x > targetX + deadzone) slime.vx = -speed;
     else slime.vx = 0;
 
-    // Jump logic - only when on correct side and ball is approachable
-    const dx = ball.x - slime.x;
-    const absDx = Math.abs(dx);
-    if (!suppressJump && onCorrectSide && absDx < style.jumpEagerness && ball.y < slime.y - 30 && ball.y > 80 && slime.grounded) {
-      // Extra safety: don't jump if we're near our own goal
-      if (!slimeNearOwnGoal) {
+    // Jump: eager when on correct side or in midfield+, cautious in own zone
+    const absDx = Math.abs(ball.x - slime.x);
+    const canJump = !suppressJump && slime.grounded && ball.y < slime.y - 30 && ball.y > 80;
+    if (canJump && absDx < style.jumpEagerness) {
+      if (onCorrectSide) {
+        slime.vy = G.JUMP_FORCE;
+        slime.grounded = false;
+      } else if (!inDefensiveZone && absDx < 40) {
+        // Even on wrong side, jump in midfield/attack if very close
         slime.vy = G.JUMP_FORCE;
         slime.grounded = false;
       }
