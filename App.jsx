@@ -2,8 +2,8 @@ import { lazy, Suspense } from "react"
 import { Routes, Route } from "react-router-dom"
 import Nav from "./Nav.jsx"
 import Home from "./Home.jsx"
-// import BannerAd from "./BannerAd.jsx"
-// import useAdSense from "./useAdSense"
+import BannerAd from "./BannerAd.jsx"
+import useAdSense from "./useAdSense"
 
 const NFLCollegeTrivia = lazy(() => import("./NFLCollegeTrivia.jsx"))
 const SoccerLeaguesTrivia = lazy(() => import("./SoccerLeaguesTrivia.jsx"))
@@ -32,7 +32,7 @@ const BlogSlimeSoccer = lazy(() => import("./BlogSlimeSoccer.jsx"))
 const PrivacyPolicy = lazy(() => import("./PrivacyPolicy.jsx"))
 
 export default function App() {
-  // useAdSense()
+  useAdSense()
 
   return (
     <div style={{ minHeight: "100vh", background: "#07070f", color: "#e8e8f0" }}>
@@ -84,7 +84,7 @@ export default function App() {
         </Routes>
       </Suspense>
       </main>
-      {/* <BannerAd /> */}
+      <BannerAd />
     </div>
   )
 }
