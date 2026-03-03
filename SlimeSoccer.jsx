@@ -274,9 +274,9 @@ export default function SlimeSoccer() {
     // Priority order
     if (isScreener) return "💥 SCREAMER!";
     if (isTopBins) return "🎯 TOP BINS!";
-    if (isPoacher && !isTapIn) return "🦊 POACHER!";
     if (isRocket) return "🚀 ROCKET!";
     if (isTapIn) return "👆 TAP IN!";
+    if (isPoacher) return "🦊 POACHER!";
 
     const generic = ["🗣️ GET IN!", "🔥 CLINICAL!", "👏 THAT'S CLASS!", "💫 BEAUTY!"];
     return generic[Math.floor(Math.random() * generic.length)];
