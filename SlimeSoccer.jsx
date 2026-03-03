@@ -1114,7 +1114,7 @@ export default function SlimeSoccer() {
   };
 
   const mbtn = {
-    width: 60, height: 60, borderRadius: 12,
+    width: 80, height: 80, borderRadius: 14,
     border: `2px solid ${COLORS.groundLine}`, background: COLORS.ground,
     color: COLORS.text, fontSize: 24, fontFamily: "Oswald, sans-serif",
     cursor: "pointer", display: "flex", alignItems: "center",
@@ -1387,9 +1387,9 @@ export default function SlimeSoccer() {
             <button
               data-action="pause"
               onClick={() => { pausedRef.current = !pausedRef.current; setPaused(pausedRef.current); }}
-              style={{ ...mbtn, width: 50, height: 50, fontSize: 14, border: `2px solid ${paused ? COLORS.score : COLORS.groundLine}` }}
+              style={{ ...mbtn, width: 60, height: 60, fontSize: 16, border: `2px solid ${paused ? COLORS.score : COLORS.groundLine}` }}
             >{paused ? "▶" : "⏸"}</button>
-            <button data-action="jump" style={{...mbtn,width:80,fontSize:18}}>JUMP</button>
+            <button data-action="jump" style={{...mbtn,width:100,fontSize:22}}>JUMP</button>
           </div>
         )}
         {isMobile && (gameState === "playing" || gameState === "scored" || gameState === "countdown") && gameMode === "2p" && (
@@ -1398,25 +1398,25 @@ export default function SlimeSoccer() {
             <div ref={controlsRef} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6, touchAction: "none" }}>
               <span style={{ color: p1Country.primary, fontSize: 10, fontFamily: "Oswald, sans-serif", fontWeight: 700, letterSpacing: 2, width: 24 }}>P1</span>
               <div style={{ display: "flex", gap: 8 }}>
-                <button data-action="left" style={{...mbtn, width: 50, height: 50, fontSize: 20}}>◀</button>
-                <button data-action="right" style={{...mbtn, width: 50, height: 50, fontSize: 20}}>▶</button>
+                <button data-action="left" style={{...mbtn, width: 70, height: 70, fontSize: 26}}>◀</button>
+                <button data-action="right" style={{...mbtn, width: 70, height: 70, fontSize: 26}}>▶</button>
               </div>
               <button
                 data-action="pause"
                 onClick={() => { pausedRef.current = !pausedRef.current; setPaused(pausedRef.current); }}
-                style={{ ...mbtn, width: 44, height: 44, fontSize: 12, border: `2px solid ${paused ? COLORS.score : COLORS.groundLine}` }}
+                style={{ ...mbtn, width: 54, height: 54, fontSize: 14, border: `2px solid ${paused ? COLORS.score : COLORS.groundLine}` }}
               >{paused ? "▶" : "⏸"}</button>
-              <button data-action="jump" style={{...mbtn, width: 70, height: 50, fontSize: 16}}>JUMP</button>
+              <button data-action="jump" style={{...mbtn, width: 90, height: 70, fontSize: 20}}>JUMP</button>
             </div>
             {/* P2 controls */}
             <div ref={controlsRef2} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", touchAction: "none" }}>
               <span style={{ color: p2Country.primary, fontSize: 10, fontFamily: "Oswald, sans-serif", fontWeight: 700, letterSpacing: 2, width: 24 }}>P2</span>
               <div style={{ display: "flex", gap: 8 }}>
-                <button data-action="left2" style={{...mbtn, width: 50, height: 50, fontSize: 20}}>◀</button>
-                <button data-action="right2" style={{...mbtn, width: 50, height: 50, fontSize: 20}}>▶</button>
+                <button data-action="left2" style={{...mbtn, width: 70, height: 70, fontSize: 26}}>◀</button>
+                <button data-action="right2" style={{...mbtn, width: 70, height: 70, fontSize: 26}}>▶</button>
               </div>
               <div style={{ width: 44 }} />
-              <button data-action="jump2" style={{...mbtn, width: 70, height: 50, fontSize: 16}}>JUMP</button>
+              <button data-action="jump2" style={{...mbtn, width: 90, height: 70, fontSize: 20}}>JUMP</button>
             </div>
           </div>
         )}
