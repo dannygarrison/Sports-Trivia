@@ -260,13 +260,29 @@ export default function SlimeSoccer() {
     }
     predX = clamp(predX, minX, maxX);
 
+    // Desperation save detection
+    const ballBehind = isP1 ? (ball.x < slime.x) : (ball.x > slime.x);
+    const ballAirborne = ball.y < G.GROUND_Y - 40;
+    const distToBall = Math.abs(ball.x - slime.x);
+    const ballInDanger = isP1 ? (ball.x < G.WIDTH * 0.3) : (ball.x > G.WIDTH * 0.7);
+    const desperationSave = ballBehind && ballAirborne && (ballInDanger || (ballMovingToOwnGoal && inDefensiveZone)) && distToBall < 150;
+
+    // PRIORITY 0: Desperation save - chase ball toward own goal and jump to clear
+    if (desperationSave) {
+      targetX = ball.x;
+      // Jump when close enough to make the save
+      if (distToBall < 60 && slime.grounded && ball.y < slime.y - 10) {
+        slime.vy = G.JUMP_FORCE;
+        slime.grounded = false;
+      }
+    }
     // PRIORITY 1: Wrong side in defensive zone - go around, don't touch
-    if (onWrongSide && inDefensiveZone && Math.abs(ball.x - slime.x) < 90) {
+    else if (onWrongSide && inDefensiveZone && Math.abs(ball.x - slime.x) < 90) {
       targetX = isP1 ? ball.x + 65 : ball.x - 65;
       suppressJump = true;
     }
-    // PRIORITY 2: Ball heading into own goal and we're in the path
-    else if (ballMovingToOwnGoal && slimeInDefZone && Math.abs(ball.x - slime.x) < 70) {
+    // PRIORITY 2: Ball heading into own goal and we're in the path (but not saveable)
+    else if (ballMovingToOwnGoal && slimeInDefZone && Math.abs(ball.x - slime.x) < 70 && !ballAirborne) {
       targetX = isP1 ? ball.x + 70 : ball.x - 70;
       suppressJump = true;
     }
