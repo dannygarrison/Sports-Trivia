@@ -810,14 +810,26 @@ export default function SlimeSoccer() {
     }
   }, [goalTop]);
 
-  // Game loop
+  // Game loop - fixed timestep so physics run at 60fps regardless of actual frame rate
+  // (prevents slow-motion on battery saver / low refresh rate)
   useEffect(() => {
     if (gameState !== "playing" && gameState !== "scored" && gameState !== "countdown") return;
-    const loop = () => {
+    let lastTime = performance.now();
+    let accumulator = 0;
+    const TICK = 1000 / 60; // 16.67ms per physics tick
+
+    const loop = (now) => {
+      const delta = Math.min(now - lastTime, 100); // cap to avoid spiral after tab switch
+      lastTime = now;
+      accumulator += delta;
+
       if (gameState === "countdown" || gameStateRef.current === "countdown") {
-        countdownRef.current--;
-        if (countdownRef.current <= 0) {
-          setGameState("playing");
+        while (accumulator >= TICK) {
+          countdownRef.current--;
+          if (countdownRef.current <= 0) {
+            setGameState("playing");
+          }
+          accumulator -= TICK;
         }
         draw();
         // Draw countdown number overlay
@@ -850,7 +862,10 @@ export default function SlimeSoccer() {
           ctx.restore();
         }
       } else {
-        update();
+        while (accumulator >= TICK) {
+          update();
+          accumulator -= TICK;
+        }
         draw();
       }
       animRef.current = requestAnimationFrame(loop);
