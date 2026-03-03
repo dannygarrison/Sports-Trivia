@@ -191,36 +191,31 @@ export default function SlimeSoccer() {
     setWinner(null);
   }, [makeSlime, makeBall]);
 
-  const runAI = useCallback((slime, ball, isP1) => {
+    const runAI = useCallback((slime, ball, isP1) => {
     const style = isP1 ? aiStyleRef.current.p1 : aiStyleRef.current.p2;
     if (!style) return;
 
     const ownGoalX = isP1 ? G.GOAL_WIDTH : G.WIDTH - G.GOAL_WIDTH;
     const ballOnMySide = isP1 ? (ball.x < G.WIDTH / 2) : (ball.x > G.WIDTH / 2);
     const ballBehind = isP1 ? (ball.x < slime.x - 10) : (ball.x > slime.x + 10);
-    const ballNearOwnGoal = isP1 ? (ball.x < G.GOAL_WIDTH + 80) : (ball.x > G.WIDTH - G.GOAL_WIDTH - 80);
     const minX = G.GOAL_WIDTH + slime.r;
     const maxX = G.WIDTH - G.GOAL_WIDTH - slime.r;
 
-    let targetX;
-    const off = style.offsetX;
+    // Defensive zones
+    const inDefThird = isP1 ? (ball.x < G.WIDTH * 0.33) : (ball.x > G.WIDTH * 0.67);
+    const ballNearOwnGoal = isP1 ? (ball.x < G.GOAL_WIDTH + 100) : (ball.x > G.WIDTH - G.GOAL_WIDTH - 100);
 
-    if (ballBehind && ballNearOwnGoal) {
-      targetX = isP1 ? ownGoalX + slime.r + 5 : ownGoalX - slime.r - 5;
-    } else if (ballBehind) {
-      if (isP1) {
-        targetX = Math.min(ball.x - 30 + off, ownGoalX + slime.r + style.guardDist);
-      } else {
-        targetX = Math.max(ball.x + 30 + off, ownGoalX - slime.r - style.guardDist);
-      }
-      targetX = clamp(targetX, minX, maxX);
-    } else if (ballNearOwnGoal && ballOnMySide && ball.y < 300) {
-      // Ball floating near own goal — get well to the clearing side so headers push it away
-      const clearOffset = 45;
-      targetX = isP1 ? ball.x + clearOffset : ball.x - clearOffset;
-      targetX = clamp(targetX, minX, maxX);
-    } else if (ballOnMySide && ball.y < 300) {
-      let predX = ball.x;
+    // Is the slime between the ball and its own goal? This causes own goals.
+    const slimeBetweenBallAndGoal = isP1
+      ? (slime.x < ball.x && slime.x < G.WIDTH * 0.3)
+      : (slime.x > ball.x && slime.x > G.WIDTH * 0.7);
+
+    let targetX;
+    const off = style.offsetX * 0.5;
+
+    // Predict where ball will land
+    let predX = ball.x;
+    if (ball.y < G.GROUND_Y - 20) {
       let simX = ball.x, simY = ball.y, simVx = ball.vx, simVy = ball.vy;
       for (let i = 0; i < 60; i++) {
         simVy += G.GRAVITY;
@@ -230,32 +225,72 @@ export default function SlimeSoccer() {
         if (simX < 0 || simX > G.WIDTH) simVx *= -1;
       }
       predX = clamp(predX, minX, maxX);
-      const approach = 20 * style.aggression;
+    }
+
+    // === DEFENSIVE PRIORITY: ball near own goal ===
+    if (ballNearOwnGoal && ballOnMySide) {
+      if (ballBehind) {
+        targetX = isP1 ? ownGoalX + slime.r + 5 : ownGoalX - slime.r - 5;
+      } else {
+        const clearOffset = 55;
+        targetX = isP1 ? ball.x + clearOffset : ball.x - clearOffset;
+      }
+      targetX = clamp(targetX, minX, maxX);
+
+    // === DEFENSIVE: ball in our third but not danger-close ===
+    } else if (inDefThird && ballOnMySide) {
+      if (ballBehind) {
+        if (isP1) {
+          targetX = Math.min(ball.x - 25, ownGoalX + slime.r + style.guardDist);
+        } else {
+          targetX = Math.max(ball.x + 25, ownGoalX - slime.r - style.guardDist);
+        }
+      } else if (slimeBetweenBallAndGoal) {
+        const escapeOffset = 50;
+        targetX = isP1 ? ball.x + escapeOffset : ball.x - escapeOffset;
+      } else {
+        const approach = 25 * style.aggression;
+        targetX = isP1 ? predX + approach : predX - approach;
+      }
+      targetX = clamp(targetX, minX, maxX);
+
+    // === OFFENSIVE: ball on our side, airborne ===
+    } else if (ballOnMySide && ball.y < 300) {
+      const approach = 22 * style.aggression;
       targetX = isP1 ? predX + approach + off : predX - approach + off;
+      targetX = clamp(targetX, minX, maxX);
+
+    // === HOLD POSITION: ball on opponent's side moving away ===
     } else if (!ballOnMySide && (isP1 ? ball.vx > 0 : ball.vx < 0)) {
       targetX = isP1 ? ownGoalX + slime.r + style.guardDist : ownGoalX - slime.r - style.guardDist;
+
+    // === CHASE ===
     } else {
-      const chase = 10 * style.aggression;
+      const chase = 12 * style.aggression;
       targetX = clamp(isP1 ? ball.x + chase + off : ball.x - chase + off, minX, maxX);
     }
 
     targetX = clamp(targetX, minX, maxX);
 
-    const deadzone = 12;
+    const deadzone = 10;
     const speed = G.SLIME_SPEED * style.speedMult;
     if (slime.x < targetX - deadzone) slime.vx = speed;
     else if (slime.x > targetX + deadzone) slime.vx = -speed;
     else slime.vx = 0;
 
+    // === JUMP LOGIC ===
     const dx = ball.x - slime.x;
     const absDx = Math.abs(dx);
-    // Don't jump if we're right in front of own goal — too risky, headers go backward
-    const dangerZone = isP1 ? (slime.x < G.GOAL_WIDTH + slime.r + 30) : (slime.x > G.WIDTH - G.GOAL_WIDTH - slime.r - 30);
-    if (absDx < style.jumpEagerness && ball.y < slime.y - 30 && ball.y > 80 && slime.grounded && !ballBehind && !dangerZone) {
+    const dangerZone = isP1
+      ? (slime.x < G.GOAL_WIDTH + slime.r + 50)
+      : (slime.x > G.WIDTH - G.GOAL_WIDTH - slime.r - 50);
+    const shouldNotJump = dangerZone || (slimeBetweenBallAndGoal && inDefThird);
+    if (absDx < style.jumpEagerness && ball.y < slime.y - 30 && ball.y > 80 && slime.grounded && !ballBehind && !shouldNotJump) {
       slime.vy = G.JUMP_FORCE;
       slime.grounded = false;
     }
   }, []);
+
 
   const getGoalComment = useCallback((scorer, ballY, ballSpeed, lastKickX) => {
     const goalTop_ = G.GROUND_Y - G.GOAL_HEIGHT;
