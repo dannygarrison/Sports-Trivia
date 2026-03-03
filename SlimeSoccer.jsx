@@ -231,15 +231,28 @@ export default function SlimeSoccer() {
     const ownGoalX = isP1 ? G.GOAL_WIDTH : G.WIDTH - G.GOAL_WIDTH;
     const ballOnMySide = isP1 ? (ball.x < G.WIDTH / 2) : (ball.x > G.WIDTH / 2);
     const ballBehind = isP1 ? (ball.x < slime.x - 10) : (ball.x > slime.x + 10);
-    const ballNearOwnGoal = isP1 ? (ball.x < G.GOAL_WIDTH + 80) : (ball.x > G.WIDTH - G.GOAL_WIDTH - 80);
+    const ballNearOwnGoal = isP1 ? (ball.x < G.GOAL_WIDTH + 130) : (ball.x > G.WIDTH - G.GOAL_WIDTH - 130);
+    const ballMovingToOwnGoal = isP1 ? (ball.vx < -1) : (ball.vx > 1);
+    const slimeBetweenBallAndGoal = isP1
+      ? (slime.x < ball.x && slime.x < G.WIDTH * 0.35)
+      : (slime.x > ball.x && slime.x > G.WIDTH * 0.65);
     const minX = G.GOAL_WIDTH + slime.r;
     const maxX = G.WIDTH - G.GOAL_WIDTH - slime.r;
+    const midX = G.WIDTH / 2;
 
     let targetX;
     const off = style.offsetX;
+    let suppressJump = false;
 
-    if (ballBehind && ballNearOwnGoal) {
-      targetX = isP1 ? ownGoalX + slime.r + 5 : ownGoalX - slime.r - 5;
+    // DANGER: ball near own goal - get out of the way
+    if (ballNearOwnGoal && (ballBehind || slimeBetweenBallAndGoal)) {
+      // Retreat toward midfield, don't guard the goal mouth
+      targetX = isP1 ? Math.max(ball.x + 50, midX * 0.6) : Math.min(ball.x - 50, G.WIDTH - midX * 0.6);
+      suppressJump = true;
+    } else if (ballMovingToOwnGoal && slimeBetweenBallAndGoal && ball.y > 180) {
+      // Ball heading toward our goal and we're in the way - dodge sideways
+      targetX = isP1 ? ball.x + 60 : ball.x - 60;
+      suppressJump = true;
     } else if (ballBehind) {
       if (isP1) {
         targetX = Math.min(ball.x - 30 + off, ownGoalX + slime.r + style.guardDist);
@@ -277,7 +290,7 @@ export default function SlimeSoccer() {
 
     const dx = ball.x - slime.x;
     const absDx = Math.abs(dx);
-    if (absDx < style.jumpEagerness && ball.y < slime.y - 30 && ball.y > 80 && slime.grounded && !ballBehind) {
+    if (!suppressJump && absDx < style.jumpEagerness && ball.y < slime.y - 30 && ball.y > 80 && slime.grounded && !ballBehind) {
       slime.vy = G.JUMP_FORCE;
       slime.grounded = false;
     }
