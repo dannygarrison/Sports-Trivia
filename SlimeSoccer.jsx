@@ -1157,8 +1157,8 @@ export default function SlimeSoccer() {
       {!(isMobile && isLandscape) && (
       <div style={{ display: "flex", gap: 0, marginBottom: 8, borderRadius: 8, overflow: "hidden", border: "1px solid rgba(212,168,67,0.27)" }}>
         {[
-          { key: "worldcup", label: "\u26BD WORLD CUP", color: "#d4a843" },
-          { key: "pl", label: "\u{1F3C6} PREMIER LEAGUE", color: "#9b59b6" },
+          { key: "worldcup", label: "WORLD CUP", color: "#d4a843" },
+          { key: "pl", label: "PREMIER LEAGUE", color: "#9b59b6" },
         ].map(lg => {
           const active = league === lg.key;
           return (
