@@ -1107,6 +1107,8 @@ export default function SlimeSoccer() {
         <meta property="og:description" content="Play classic slime soccer with 65 nations. Pick your country, score goals, and compete in this retro arcade game." />
         <meta property="og:url" content="https://trivialsports.com/games/slime-soccer" />
         <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://trivialsports.com/slime-soccer-og.png" />
+        <meta name="twitter:card" content="summary_large_image" />
         <link rel="canonical" href="https://trivialsports.com/games/slime-soccer" />
       </Helmet>      <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&display=swap" rel="stylesheet" />
       {!(isMobile && isLandscape) && (
