@@ -28,6 +28,7 @@ const GoalScorerQuiz = lazy(() => import("./GoalScorerQuiz.jsx"))
 const SlimeSoccer = lazy(() => import("./SlimeSoccer.jsx"))
 const Blog = lazy(() => import("./Blog.jsx"))
 const BlogChainCheatCodes = lazy(() => import("./BlogChainCheatCodes.jsx"))
+const BlogSlimeSoccer = lazy(() => import("./BlogSlimeSoccer.jsx"))
 const PrivacyPolicy = lazy(() => import("./PrivacyPolicy.jsx"))
 
 export default function App() {
@@ -78,6 +79,7 @@ export default function App() {
           <Route path="/games/slime-soccer" element={<SlimeSoccer />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/nfl-chain-cheat-codes" element={<BlogChainCheatCodes />} />
+          <Route path="/blog/whatever-happened-to-slime-soccer" element={<BlogSlimeSoccer />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
         </Routes>
       </Suspense>
