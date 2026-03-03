@@ -64,7 +64,7 @@ const COUNTRIES = [
   { name: "Northern Ireland", flag: "☘️", primary: "#006847", highlight: "#4db88a" },
   { name: "Norway", flag: "🇳🇴", primary: "#ba0c2f", highlight: "#e06070" },
   { name: "Panama", flag: "🇵🇦", primary: "#d21034", highlight: "#e86a7a" },
-  { name: "Paraguay", flag: "🇵🇾", primary: "#ffffff", highlight: "#f0f0f0", pattern: "vertical_stripes", patternColor2: "#d52b1e" },
+  { name: "Paraguay", flag: "🇵🇾", primary: "#ffffff", highlight: "#f0f0f0", pattern: "vertical_stripes", patternColor2: "#b80020" },
   { name: "Poland", flag: "🇵🇱", primary: "#dc143c", highlight: "#e86a7a" },
   { name: "Portugal", flag: "🇵🇹", primary: "#8b0000", highlight: "#c44040" },
   { name: "Qatar", flag: "🇶🇦", primary: "#8a1538", highlight: "#b85a6a" },
