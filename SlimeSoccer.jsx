@@ -214,6 +214,11 @@ export default function SlimeSoccer() {
         targetX = Math.max(ball.x + 30 + off, ownGoalX - slime.r - style.guardDist);
       }
       targetX = clamp(targetX, minX, maxX);
+    } else if (ballNearOwnGoal && ballOnMySide && ball.y < 300) {
+      // Ball floating near own goal — get well to the clearing side so headers push it away
+      const clearOffset = 45;
+      targetX = isP1 ? ball.x + clearOffset : ball.x - clearOffset;
+      targetX = clamp(targetX, minX, maxX);
     } else if (ballOnMySide && ball.y < 300) {
       let predX = ball.x;
       let simX = ball.x, simY = ball.y, simVx = ball.vx, simVy = ball.vy;
@@ -244,7 +249,9 @@ export default function SlimeSoccer() {
 
     const dx = ball.x - slime.x;
     const absDx = Math.abs(dx);
-    if (absDx < style.jumpEagerness && ball.y < slime.y - 30 && ball.y > 80 && slime.grounded && !ballBehind) {
+    // Don't jump if we're right in front of own goal — too risky, headers go backward
+    const dangerZone = isP1 ? (slime.x < G.GOAL_WIDTH + slime.r + 30) : (slime.x > G.WIDTH - G.GOAL_WIDTH - slime.r - 30);
+    if (absDx < style.jumpEagerness && ball.y < slime.y - 30 && ball.y > 80 && slime.grounded && !ballBehind && !dangerZone) {
       slime.vy = G.JUMP_FORCE;
       slime.grounded = false;
     }
