@@ -1089,8 +1089,8 @@ export default function SlimeSoccer() {
     minWidth: 140,
   };
 
-  const mbtn = {
-    width: 60, height: 60, borderRadius: 12,
+    const mbtn = {
+    width: 60, height: 80, borderRadius: 12,
     border: `2px solid ${COLORS.groundLine}`, background: COLORS.ground,
     color: COLORS.text, fontSize: 24, fontFamily: "Oswald, sans-serif",
     cursor: "pointer", display: "flex", alignItems: "center",
