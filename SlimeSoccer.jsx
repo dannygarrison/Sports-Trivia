@@ -1233,12 +1233,11 @@ export default function SlimeSoccer() {
       </div>
       )}
 
-      {/* Mode selector - desktop only */}
-      {!isMobile && (
+      {/* Mode selector */}
       <div style={{ display: "flex", gap: 0, marginBottom: 8, borderRadius: 8, overflow: "hidden", border: `1px solid ${COLORS.groundLine}44` }}>
         {[
           { key: "1p", label: "🤖 VS CPU", color: "#5a9ee0" },
-          { key: "2p", label: "👥 2 PLAYER", color: "#4dc47a" },
+          ...(!isMobile ? [{ key: "2p", label: "👥 2 PLAYER", color: "#4dc47a" }] : []),
           { key: "sim", label: "📺 SIMULATE", color: "#e0a05a" },
         ].map(m => {
           const active = gameMode === m.key;
@@ -1254,7 +1253,6 @@ export default function SlimeSoccer() {
           );
         })}
       </div>
-      )}
 
       <div ref={containerRef} style={{ width: "100%", maxWidth: G.WIDTH + 16, display: "flex", flexDirection: "column", alignItems: "center" }}>
         <div style={{ border: `2px solid ${COLORS.groundLine}33`, borderRadius: 8, overflow: "hidden", boxShadow: "0 0 40px rgba(212,168,67,0.1)", lineHeight: 0 }}>
