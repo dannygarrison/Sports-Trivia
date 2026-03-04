@@ -1602,14 +1602,14 @@ export default function SlimeSoccer() {
             <div style={{ maxWidth: 600, width: "100%", textAlign: "center" }}>
               <div style={{ fontSize: 28, fontWeight: 700, color: COLORS.score, marginBottom: 4 }}>WORLD CUP TOURNAMENT</div>
               <div style={{ fontSize: 13, color: COLORS.dimText, marginBottom: 20 }}>Choose your team</div>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 6, justifyContent: "center" }}>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 8, justifyContent: "center" }}>
                 {COUNTRIES.map(c => (
                   <button key={c.name} onClick={() => initTournament(c)} style={{
                     background: tournament.playerTeam?.name === c.name ? COLORS.score + "33" : COLORS.ground,
                     border: `1px solid ${tournament.playerTeam?.name === c.name ? COLORS.score : COLORS.groundLine}55`,
-                    borderRadius: 6, padding: "6px 10px", cursor: "pointer",
-                    color: COLORS.text, fontFamily: "Oswald, sans-serif", fontSize: 13,
-                    display: "flex", alignItems: "center", gap: 4, minWidth: 100,
+                    borderRadius: 6, padding: "8px 12px", cursor: "pointer",
+                    color: COLORS.text, fontFamily: "Oswald, sans-serif", fontSize: 14,
+                    display: "flex", alignItems: "center", gap: 6, minWidth: 110,
                   }}><span style={{ fontSize: 18 }}>{c.flag}</span> {c.name}</button>
                 ))}
               </div>
@@ -1618,17 +1618,17 @@ export default function SlimeSoccer() {
 
           {/* GROUP DRAW */}
           {tournament.screen === "draw" && (
-            <div style={{ maxWidth: 700, width: "100%", textAlign: "center" }}>
+            <div style={{ maxWidth: 800, width: "100%", textAlign: "center" }}>
               <div style={{ fontSize: 28, fontWeight: 700, color: COLORS.score, marginBottom: 4 }}>GROUP DRAW</div>
               <div style={{ fontSize: 13, color: COLORS.dimText, marginBottom: 16 }}>48 teams drawn into 12 groups</div>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))", gap: 10 }}>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))", gap: 12 }}>
                 {tournament.groups.map((g, gi) => {
                   const isPlayerGroup = gi === tournament.playerGroup;
                   return (
-                    <div key={gi} style={{ background: isPlayerGroup ? COLORS.score + "15" : COLORS.ground, border: `1px solid ${isPlayerGroup ? COLORS.score + "55" : COLORS.groundLine + "33"}`, borderRadius: 8, padding: "8px 6px" }}>
-                      <div style={{ fontWeight: 700, fontSize: 14, color: isPlayerGroup ? COLORS.score : COLORS.dimText, marginBottom: 6 }}>GROUP {g.name}</div>
+                    <div key={gi} style={{ background: isPlayerGroup ? COLORS.score + "15" : COLORS.ground, border: `1px solid ${isPlayerGroup ? COLORS.score + "55" : COLORS.groundLine + "33"}`, borderRadius: 8, padding: "10px 12px" }}>
+                      <div style={{ fontWeight: 700, fontSize: 14, color: isPlayerGroup ? COLORS.score : COLORS.dimText, marginBottom: 8 }}>GROUP {g.name}</div>
                       {g.teams.map(t => (
-                        <div key={t.name} style={{ fontSize: 13, color: t.name === tournament.playerTeam.name ? COLORS.score : COLORS.text, padding: "2px 0", fontWeight: t.name === tournament.playerTeam.name ? 700 : 400 }}>
+                        <div key={t.name} style={{ fontSize: 14, color: t.name === tournament.playerTeam.name ? COLORS.score : COLORS.text, padding: "3px 0", fontWeight: t.name === tournament.playerTeam.name ? 700 : 400, lineHeight: 1.4 }}>
                           {t.flag} {t.name}
                         </div>
                       ))}
@@ -1642,7 +1642,7 @@ export default function SlimeSoccer() {
 
           {/* GROUP STAGE */}
           {(tournament.screen === "groups" || tournament.screen === "groupResult") && (
-            <div style={{ maxWidth: 700, width: "100%", textAlign: "center" }}>
+            <div style={{ maxWidth: 800, width: "100%", textAlign: "center" }}>
               <div style={{ fontSize: 24, fontWeight: 700, color: COLORS.score, marginBottom: 4 }}>
                 {tournament.screen === "groupResult" ? `MATCHDAY ${tournament.matchday} RESULTS` : `MATCHDAY ${tournament.matchday} OF 3`}
               </div>
@@ -1717,14 +1717,14 @@ export default function SlimeSoccer() {
 
               {/* Other groups (collapsed) */}
               <div style={{ marginTop: 20, fontSize: 13, color: COLORS.dimText, marginBottom: 8 }}>OTHER GROUPS</div>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(150px, 1fr))", gap: 8 }}>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))", gap: 10 }}>
                 {tournament.groups.filter((_, i) => i !== tournament.playerGroup).map((g, gi) => {
                   const st = calcStandings(g);
                   return (
-                    <div key={gi} style={{ background: COLORS.ground, borderRadius: 6, padding: "6px", fontSize: 12 }}>
-                      <div style={{ fontWeight: 700, color: COLORS.dimText, marginBottom: 4 }}>GROUP {g.name}</div>
+                    <div key={gi} style={{ background: COLORS.ground, borderRadius: 6, padding: "8px 10px", fontSize: 13 }}>
+                      <div style={{ fontWeight: 700, color: COLORS.dimText, marginBottom: 6 }}>GROUP {g.name}</div>
                       {st.map(r => (
-                        <div key={r.team.name} style={{ display: "flex", justifyContent: "space-between", padding: "1px 4px", color: COLORS.text }}>
+                        <div key={r.team.name} style={{ display: "flex", justifyContent: "space-between", padding: "2px 4px", color: COLORS.text, lineHeight: 1.4 }}>
                           <span>{r.team.flag} {r.team.name}</span>
                           <span style={{ color: COLORS.score, fontWeight: 700 }}>{r.pts}</span>
                         </div>
@@ -1741,7 +1741,7 @@ export default function SlimeSoccer() {
             const qualified = getQualifiedTeams(tournament.groups);
             const playerIn = qualified.some(q => q.team.name === tournament.playerTeam.name);
             return (
-              <div style={{ maxWidth: 700, width: "100%", textAlign: "center" }}>
+              <div style={{ maxWidth: 800, width: "100%", textAlign: "center" }}>
                 <div style={{ fontSize: 28, fontWeight: 700, color: COLORS.score, marginBottom: 4 }}>GROUP STAGE COMPLETE</div>
                 <div style={{ fontSize: 16, color: playerIn ? "#6aff6a" : "#ff6a6a", fontWeight: 700, marginBottom: 16 }}>
                   {playerIn ? `${tournament.playerTeam.flag} ${tournament.playerTeam.name.toUpperCase()} QUALIFIED!` : `${tournament.playerTeam.flag} ${tournament.playerTeam.name.toUpperCase()} ELIMINATED`}
@@ -1771,7 +1771,7 @@ export default function SlimeSoccer() {
             const pm = b.playerIdx >= 0 ? curMatches[b.playerIdx] : null;
             const opp = pm ? (pm.team1.name === tournament.playerTeam.name ? pm.team2 : pm.team1) : null;
             return (
-              <div style={{ maxWidth: 700, width: "100%", textAlign: "center" }}>
+              <div style={{ maxWidth: 800, width: "100%", textAlign: "center" }}>
                 <div style={{ fontSize: 28, fontWeight: 700, color: COLORS.score, marginBottom: 4 }}>{roundLabels[b.round]}</div>
                 <div style={{ fontSize: 13, color: COLORS.dimText, marginBottom: 16 }}>
                   {curMatches.length} matches this round
