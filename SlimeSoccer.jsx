@@ -22,8 +22,8 @@ const G = {
 const COUNTRIES = [
   // Hosts first
   { name: "USA", flag: "🇺🇸", primary: "#ffffff", highlight: "#f0f0f0", pattern: "wavy_stripes", patternColor2: "#b80020", patternColor3: "transparent" },
-  { name: "Canada", flag: "🇨🇦", primary: "#d80621", highlight: "#f05a6a" },
-  { name: "Mexico", flag: "🇲🇽", primary: "#006847", highlight: "#4db88a" },
+  { name: "Canada", flag: "🇨🇦", primary: "#d80621", highlight: "#f05a6a", pattern: "diagonal_split", patternColor2: "#9e0418" },
+  { name: "Mexico", flag: "🇲🇽", primary: "#006847", highlight: "#4db88a", pattern: "concentric_circles", patternColor2: "#004a30" },
   // Alphabetical
   { name: "Albania", flag: "🇦🇱", primary: "#cc0000", highlight: "#e06060" },
   { name: "Algeria", flag: "🇩🇿", primary: "#d4c9a8", highlight: "#f5f0e0" },
@@ -51,7 +51,7 @@ const COUNTRIES = [
   { name: "Iran", flag: "🇮🇷", primary: "#c8c0b8", highlight: "#f5f2ef" },
   { name: "Iraq", flag: "🇮🇶", primary: "#007a3d", highlight: "#4dc47a" },
   { name: "Italy", flag: "🇮🇹", primary: "#0066cc", highlight: "#5a9ee0" },
-  { name: "Ivory Coast", flag: "🇨🇮", primary: "#f77f00", highlight: "#f7a84a" },
+  { name: "Ivory Coast", flag: "🇨🇮", primary: "#f77f00", highlight: "#f7a84a", pattern: "leopard_spots", patternColor2: "#b85e00" },
   { name: "Jamaica", flag: "🇯🇲", primary: "#f5c518", highlight: "#fde46a" },
   { name: "Japan", flag: "🇯🇵", primary: "#002776", highlight: "#5a6fbf" },
   { name: "Jordan", flag: "🇯🇴", primary: "#c8102e", highlight: "#e06a7a" },
@@ -62,12 +62,12 @@ const COUNTRIES = [
   { name: "New Zealand", flag: "🇳🇿", primary: "#1a1a1a", highlight: "#555555" },
   { name: "North Macedonia", flag: "🇲🇰", primary: "#ce2028", highlight: "#e07a7a" },
   { name: "Northern Ireland", flag: "☘️", primary: "#006847", highlight: "#4db88a" },
-  { name: "Norway", flag: "🇳🇴", primary: "#ba0c2f", highlight: "#e06070" },
+  { name: "Norway", flag: "🇳🇴", primary: "#ba0c2f", highlight: "#e06070", pattern: "cross", patternColor2: "#002868", patternColor3: "#ffffff" },
   { name: "Panama", flag: "🇵🇦", primary: "#d21034", highlight: "#e86a7a" },
   { name: "Paraguay", flag: "🇵🇾", primary: "#ffffff", highlight: "#f0f0f0", pattern: "vertical_stripes", patternColor2: "#b80020" },
   { name: "Poland", flag: "🇵🇱", primary: "#dc143c", highlight: "#e86a7a" },
   { name: "Portugal", flag: "🇵🇹", primary: "#8b0000", highlight: "#c44040" },
-  { name: "Qatar", flag: "🇶🇦", primary: "#8a1538", highlight: "#b85a6a" },
+  { name: "Qatar", flag: "🇶🇦", primary: "#8a1538", highlight: "#b85a6a", pattern: "zigzag", patternColor2: "#5e0d26" },
   { name: "Republic of Ireland", flag: "🇮🇪", primary: "#169b62", highlight: "#5ad090" },
   { name: "Romania", flag: "🇷🇴", primary: "#f5c518", highlight: "#fde46a" },
   { name: "Saudi Arabia", flag: "🇸🇦", primary: "#006c35", highlight: "#4db87a" },
@@ -75,8 +75,8 @@ const COUNTRIES = [
   { name: "Senegal", flag: "🇸🇳", primary: "#00853f", highlight: "#4dc47a" },
   { name: "Slovakia", flag: "🇸🇰", primary: "#0b4ea2", highlight: "#5a8ad0" },
   { name: "South Africa", flag: "🇿🇦", primary: "#f5c518", highlight: "#fde46a" },
-  { name: "South Korea", flag: "🇰🇷", primary: "#cd2e3a", highlight: "#e07a80" },
-  { name: "Spain", flag: "🇪🇸", primary: "#c60b1e", highlight: "#e85a6a" },
+  { name: "South Korea", flag: "🇰🇷", primary: "#cd2e3a", highlight: "#e07a80", pattern: "tiger_stripes", patternColor2: "#8a1020" },
+  { name: "Spain", flag: "🇪🇸", primary: "#c60b1e", highlight: "#e85a6a", pattern: "thin_stripes", patternColor2: "#f4c300" },
   { name: "Suriname", flag: "🇸🇷", primary: "#c8102e", highlight: "#e06a7a" },
   { name: "Sweden", flag: "🇸🇪", primary: "#f5c518", highlight: "#fde46a" },
   { name: "Switzerland", flag: "🇨🇭", primary: "#aa0000", highlight: "#d44a4a" },
@@ -280,6 +280,85 @@ export default function SlimeSoccer() {
       ctx.save(); ctx.translate(s.x, s.y - s.r / 2); ctx.rotate(ang);
       const totW = stW * pClrs.length;
       pClrs.forEach((cl, ci) => { ctx.fillStyle = cl; ctx.globalAlpha = 0.7; ctx.fillRect(-totW / 2 - 10 + ci * stW, -s.r, stW, s.r * 2); });
+      ctx.globalAlpha = 1.0; ctx.restore();
+    }
+
+    // Concentric circles (Mexico)
+    if (country.pattern === "concentric_circles") {
+      const cx2 = s.x + 5, cy2 = s.y - s.r * 0.35;
+      ctx.globalAlpha = 0.6; ctx.strokeStyle = country.patternColor2; ctx.lineWidth = 5;
+      [38, 26, 14].forEach(r => { ctx.beginPath(); ctx.arc(cx2, cy2, r, 0, Math.PI * 2); ctx.stroke(); });
+      ctx.globalAlpha = 1.0;
+    }
+
+    // Tiger stripes (South Korea)
+    if (country.pattern === "tiger_stripes") {
+      ctx.save(); ctx.translate(s.x, s.y - s.r / 2); ctx.rotate(-0.2);
+      ctx.fillStyle = country.patternColor2; ctx.globalAlpha = 0.7;
+      [-30, -14, 2, 18, 34].forEach(sx => {
+        ctx.beginPath(); ctx.moveTo(sx, -s.r); ctx.lineTo(sx + 6, -s.r);
+        ctx.lineTo(sx + 10, -s.r * 0.3); ctx.lineTo(sx + 4, -s.r * 0.1);
+        ctx.lineTo(sx + 9, s.r * 0.3); ctx.lineTo(sx + 5, s.r * 0.5);
+        ctx.lineTo(sx + 8, s.r); ctx.lineTo(sx + 2, s.r);
+        ctx.lineTo(sx - 1, s.r * 0.5); ctx.lineTo(sx + 3, s.r * 0.3);
+        ctx.lineTo(sx - 2, -s.r * 0.1); ctx.lineTo(sx + 2, -s.r * 0.3);
+        ctx.closePath(); ctx.fill();
+      });
+      ctx.globalAlpha = 1.0; ctx.restore();
+    }
+
+    // Diagonal split (Canada)
+    if (country.pattern === "diagonal_split") {
+      ctx.save(); ctx.translate(s.x, s.y - s.r / 2); ctx.rotate(-0.15);
+      ctx.fillStyle = country.patternColor2; ctx.globalAlpha = 0.8;
+      ctx.fillRect(0, -s.r * 1.5, s.r * 1.5, s.r * 3);
+      ctx.globalAlpha = 1.0; ctx.restore();
+    }
+
+    // Zigzag (Qatar)
+    if (country.pattern === "zigzag") {
+      ctx.save(); ctx.translate(s.x, s.y - s.r / 2); ctx.rotate(-0.15);
+      ctx.fillStyle = country.patternColor2; ctx.globalAlpha = 0.65;
+      const zigW = 12, zigH = 10;
+      ctx.beginPath(); ctx.moveTo(-zigW, -s.r * 1.5);
+      for (let y = -s.r * 1.5; y < s.r * 1.5; y += zigH) { ctx.lineTo(zigW, y + zigH / 2); ctx.lineTo(-zigW, y + zigH); }
+      ctx.lineTo(zigW + 8, s.r * 1.5);
+      for (let y = s.r * 1.5; y > -s.r * 1.5; y -= zigH) { ctx.lineTo(-zigW + 8, y - zigH / 2); ctx.lineTo(zigW + 8, y - zigH); }
+      ctx.closePath(); ctx.fill();
+      ctx.globalAlpha = 1.0; ctx.restore();
+    }
+
+    // Leopard spots (Ivory Coast)
+    if (country.pattern === "leopard_spots") {
+      ctx.globalAlpha = 0.55; ctx.fillStyle = country.patternColor2;
+      [{ x: -20, y: -30, r: 8 }, { x: 15, y: -25, r: 7 }, { x: -8, y: -12, r: 9 },
+       { x: 22, y: -8, r: 6 }, { x: -28, y: -10, r: 7 }, { x: 5, y: -35, r: 6 },
+       { x: 30, y: -22, r: 5 }, { x: -15, y: -42, r: 7 }, { x: 10, y: -45, r: 5 },
+       { x: -32, y: -28, r: 6 }, { x: 0, y: -22, r: 5 }, { x: -22, y: -45, r: 5 }
+      ].forEach(sp => {
+        ctx.fillStyle = country.patternColor2; ctx.globalAlpha = 0.55;
+        ctx.beginPath(); ctx.arc(s.x + sp.x, s.y + sp.y, sp.r, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = country.primary; ctx.globalAlpha = 0.3;
+        ctx.beginPath(); ctx.arc(s.x + sp.x, s.y + sp.y, sp.r * 0.5, 0, Math.PI * 2); ctx.fill();
+      });
+      ctx.globalAlpha = 1.0;
+    }
+
+    // Thin stripes (Spain)
+    if (country.pattern === "thin_stripes") {
+      ctx.save(); ctx.translate(s.x, s.y - s.r / 2); ctx.rotate(-0.12);
+      ctx.fillStyle = country.patternColor2; ctx.globalAlpha = 0.7;
+      [-24, -12, 0, 12, 24].forEach(sx => ctx.fillRect(sx - 1.5, -s.r, 3, s.r * 2));
+      ctx.globalAlpha = 1.0; ctx.restore();
+    }
+
+    // Cross (Norway)
+    if (country.pattern === "cross") {
+      ctx.save(); ctx.translate(s.x, s.y - s.r / 2); ctx.rotate(-0.2);
+      ctx.fillStyle = country.patternColor3 || "#fff"; ctx.globalAlpha = 0.85;
+      ctx.fillRect(-s.r * 1.5, -12, s.r * 3, 24); ctx.fillRect(-12, -s.r * 1.5, 24, s.r * 3);
+      ctx.fillStyle = country.patternColor2; ctx.globalAlpha = 0.85;
+      ctx.fillRect(-s.r * 1.5, -8, s.r * 3, 16); ctx.fillRect(-8, -s.r * 1.5, 16, s.r * 3);
       ctx.globalAlpha = 1.0; ctx.restore();
     }
 
@@ -1181,6 +1260,197 @@ export default function SlimeSoccer() {
         sheen4.addColorStop(0, country.highlight + "55");
         sheen4.addColorStop(1, "transparent");
         ctx.fillStyle = sheen4;
+        ctx.fillRect(s.x - s.r, s.y - s.r, s.r * 2, s.r);
+      }
+
+      // Concentric circles (Mexico)
+      if (country.pattern === "concentric_circles") {
+        const cx = s.x + 5, cy = s.y - s.r * 0.35;
+        const radii = [38, 26, 14];
+        ctx.globalAlpha = 0.6;
+        radii.forEach(r => {
+          ctx.beginPath();
+          ctx.arc(cx, cy, r, 0, Math.PI * 2);
+          ctx.strokeStyle = country.patternColor2;
+          ctx.lineWidth = 5;
+          ctx.stroke();
+        });
+        ctx.globalAlpha = 1.0;
+        const sheenC = ctx.createRadialGradient(s.x - 8, s.y - 18, 4, s.x, s.y, s.r);
+        sheenC.addColorStop(0, country.highlight + "55");
+        sheenC.addColorStop(1, "transparent");
+        ctx.fillStyle = sheenC;
+        ctx.fillRect(s.x - s.r, s.y - s.r, s.r * 2, s.r);
+      }
+
+      // Tiger stripes (South Korea)
+      if (country.pattern === "tiger_stripes") {
+        const angle = -0.2;
+        ctx.save();
+        ctx.translate(s.x, s.y - s.r / 2);
+        ctx.rotate(angle);
+        ctx.fillStyle = country.patternColor2;
+        ctx.globalAlpha = 0.7;
+        const stripes = [-30, -14, 2, 18, 34];
+        stripes.forEach(sx => {
+          ctx.beginPath();
+          ctx.moveTo(sx, -s.r);
+          ctx.lineTo(sx + 6, -s.r);
+          ctx.lineTo(sx + 10, -s.r * 0.3);
+          ctx.lineTo(sx + 4, -s.r * 0.1);
+          ctx.lineTo(sx + 9, s.r * 0.3);
+          ctx.lineTo(sx + 5, s.r * 0.5);
+          ctx.lineTo(sx + 8, s.r);
+          ctx.lineTo(sx + 2, s.r);
+          ctx.lineTo(sx - 1, s.r * 0.5);
+          ctx.lineTo(sx + 3, s.r * 0.3);
+          ctx.lineTo(sx - 2, -s.r * 0.1);
+          ctx.lineTo(sx + 2, -s.r * 0.3);
+          ctx.closePath();
+          ctx.fill();
+        });
+        ctx.globalAlpha = 1.0;
+        ctx.restore();
+        const sheenT = ctx.createRadialGradient(s.x - 8, s.y - 18, 4, s.x, s.y, s.r);
+        sheenT.addColorStop(0, country.highlight + "44");
+        sheenT.addColorStop(1, "transparent");
+        ctx.fillStyle = sheenT;
+        ctx.fillRect(s.x - s.r, s.y - s.r, s.r * 2, s.r);
+      }
+
+      // Diagonal split (Canada)
+      if (country.pattern === "diagonal_split") {
+        const angle = -0.15;
+        ctx.save();
+        ctx.translate(s.x, s.y - s.r / 2);
+        ctx.rotate(angle);
+        ctx.fillStyle = country.patternColor2;
+        ctx.globalAlpha = 0.8;
+        ctx.beginPath();
+        ctx.moveTo(0, -s.r * 1.5);
+        ctx.lineTo(s.r * 1.5, -s.r * 1.5);
+        ctx.lineTo(s.r * 1.5, s.r * 1.5);
+        ctx.lineTo(0, s.r * 1.5);
+        ctx.closePath();
+        ctx.fill();
+        ctx.globalAlpha = 1.0;
+        ctx.restore();
+        const sheenD = ctx.createRadialGradient(s.x - 8, s.y - 18, 4, s.x, s.y, s.r);
+        sheenD.addColorStop(0, country.highlight + "44");
+        sheenD.addColorStop(1, "transparent");
+        ctx.fillStyle = sheenD;
+        ctx.fillRect(s.x - s.r, s.y - s.r, s.r * 2, s.r);
+      }
+
+      // Zigzag (Qatar)
+      if (country.pattern === "zigzag") {
+        const angle = -0.15;
+        ctx.save();
+        ctx.translate(s.x, s.y - s.r / 2);
+        ctx.rotate(angle);
+        ctx.fillStyle = country.patternColor2;
+        ctx.globalAlpha = 0.65;
+        const zigW = 12, zigH = 10;
+        ctx.beginPath();
+        ctx.moveTo(-zigW, -s.r * 1.5);
+        for (let y = -s.r * 1.5; y < s.r * 1.5; y += zigH) {
+          ctx.lineTo(zigW, y + zigH / 2);
+          ctx.lineTo(-zigW, y + zigH);
+        }
+        ctx.lineTo(zigW + 8, s.r * 1.5);
+        for (let y = s.r * 1.5; y > -s.r * 1.5; y -= zigH) {
+          ctx.lineTo(-zigW + 8, y - zigH / 2);
+          ctx.lineTo(zigW + 8, y - zigH);
+        }
+        ctx.closePath();
+        ctx.fill();
+        ctx.globalAlpha = 1.0;
+        ctx.restore();
+        const sheenZ = ctx.createRadialGradient(s.x - 8, s.y - 18, 4, s.x, s.y, s.r);
+        sheenZ.addColorStop(0, country.highlight + "44");
+        sheenZ.addColorStop(1, "transparent");
+        ctx.fillStyle = sheenZ;
+        ctx.fillRect(s.x - s.r, s.y - s.r, s.r * 2, s.r);
+      }
+
+      // Leopard spots (Ivory Coast)
+      if (country.pattern === "leopard_spots") {
+        ctx.globalAlpha = 0.55;
+        ctx.fillStyle = country.patternColor2;
+        const spots = [
+          { x: -20, y: -30, r: 8 }, { x: 15, y: -25, r: 7 }, { x: -8, y: -12, r: 9 },
+          { x: 22, y: -8, r: 6 }, { x: -28, y: -10, r: 7 }, { x: 5, y: -35, r: 6 },
+          { x: 30, y: -22, r: 5 }, { x: -15, y: -42, r: 7 }, { x: 10, y: -45, r: 5 },
+          { x: -32, y: -28, r: 6 }, { x: 0, y: -22, r: 5 }, { x: -22, y: -45, r: 5 },
+        ];
+        spots.forEach(sp => {
+          // Outer ring
+          ctx.beginPath();
+          ctx.arc(s.x + sp.x, s.y + sp.y, sp.r, 0, Math.PI * 2);
+          ctx.fill();
+          // Inner lighter cutout
+          ctx.globalAlpha = 0.3;
+          ctx.fillStyle = country.primary;
+          ctx.beginPath();
+          ctx.arc(s.x + sp.x, s.y + sp.y, sp.r * 0.5, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.fillStyle = country.patternColor2;
+          ctx.globalAlpha = 0.55;
+        });
+        ctx.globalAlpha = 1.0;
+        const sheenL = ctx.createRadialGradient(s.x - 8, s.y - 18, 4, s.x, s.y, s.r);
+        sheenL.addColorStop(0, country.highlight + "55");
+        sheenL.addColorStop(1, "transparent");
+        ctx.fillStyle = sheenL;
+        ctx.fillRect(s.x - s.r, s.y - s.r, s.r * 2, s.r);
+      }
+
+      // Thin stripes (Spain - 5 slim yellow lines)
+      if (country.pattern === "thin_stripes") {
+        const stripeW = 3;
+        const angle = -0.12;
+        ctx.save();
+        ctx.translate(s.x, s.y - s.r / 2);
+        ctx.rotate(angle);
+        ctx.fillStyle = country.patternColor2;
+        ctx.globalAlpha = 0.7;
+        const positions = [-24, -12, 0, 12, 24];
+        positions.forEach(sx => {
+          ctx.fillRect(sx - stripeW / 2, -s.r, stripeW, s.r * 2);
+        });
+        ctx.globalAlpha = 1.0;
+        ctx.restore();
+        const sheenS = ctx.createRadialGradient(s.x - 8, s.y - 18, 4, s.x, s.y, s.r);
+        sheenS.addColorStop(0, country.highlight + "44");
+        sheenS.addColorStop(1, "transparent");
+        ctx.fillStyle = sheenS;
+        ctx.fillRect(s.x - s.r, s.y - s.r, s.r * 2, s.r);
+      }
+
+      // Cross pattern (Norway)
+      if (country.pattern === "cross") {
+        const angle = -0.2;
+        ctx.save();
+        ctx.translate(s.x, s.y - s.r / 2);
+        ctx.rotate(angle);
+        const hW = 16, vW = 16;
+        const outlineW = 4;
+        // White outline
+        ctx.fillStyle = country.patternColor3 || "#ffffff";
+        ctx.globalAlpha = 0.85;
+        ctx.fillRect(-s.r * 1.5, -(hW / 2 + outlineW), s.r * 3, hW + outlineW * 2);
+        ctx.fillRect(-(vW / 2 + outlineW) - 8, -s.r * 1.5, vW + outlineW * 2, s.r * 3);
+        // Blue cross
+        ctx.fillStyle = country.patternColor2;
+        ctx.globalAlpha = 0.85;
+        ctx.fillRect(-s.r * 1.5, -hW / 2, s.r * 3, hW);
+        ctx.fillRect(-vW / 2 - 8, -s.r * 1.5, vW, s.r * 3);
+        ctx.globalAlpha = 1.0;
+        ctx.restore();
+        const sheenN = ctx.createRadialGradient(s.x - 8, s.y - 18, 4, s.x, s.y, s.r);
+        sheenN.addColorStop(0, country.highlight + "44");
+        sheenN.addColorStop(1, "transparent");
+        ctx.fillStyle = sheenN;
         ctx.fillRect(s.x - s.r, s.y - s.r, s.r * 2, s.r);
       }
 
