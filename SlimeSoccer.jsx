@@ -144,6 +144,154 @@ export default function SlimeSoccer() {
   const gameModeRef = useRef("1p");
   const [league, setLeague] = useState("worldcup"); // "worldcup" or "pl"
   const getTeams = (lg) => lg === "pl" ? PL_TEAMS : COUNTRIES;
+
+  const [tournament, setTournament] = useState(null);
+  const tournamentRef = useRef(null);
+  const updateTournament = (t) => { tournamentRef.current = t; setTournament(t); };
+
+  // Sim a match: returns [winnerScore, loserScore]
+  const simScore = () => {
+    const loser = Math.random() < 0.15 ? 0 : Math.random() < 0.3 ? Math.floor(Math.random() * 3) + 1 : Math.floor(Math.random() * 4) + 3;
+    return [7, Math.min(loser, 6)];
+  };
+
+  const calcStandings = (group) => {
+    const s = group.teams.map(t => ({ team: t, p: 0, w: 0, l: 0, gf: 0, ga: 0, gd: 0, pts: 0 }));
+    const map = {};
+    group.teams.forEach((t, i) => { map[t.name] = i; });
+    group.matches.filter(m => m.played).forEach(m => {
+      const i1 = map[m.team1.name], i2 = map[m.team2.name];
+      s[i1].p++; s[i2].p++;
+      s[i1].gf += m.score1; s[i1].ga += m.score2;
+      s[i2].gf += m.score2; s[i2].ga += m.score1;
+      if (m.score1 > m.score2) { s[i1].w++; s[i1].pts += 3; s[i2].l++; }
+      else { s[i2].w++; s[i2].pts += 3; s[i1].l++; }
+    });
+    s.forEach(x => { x.gd = x.gf - x.ga; });
+    s.sort((a, b) => b.pts - a.pts || b.gd - a.gd || b.gf - a.gf);
+    return s;
+  };
+
+  const initTournament = (playerTeam) => {
+    const pool = COUNTRIES.filter(c => c.name !== playerTeam.name);
+    const shuffled = [...pool].sort(() => Math.random() - 0.5);
+    const selected = shuffled.slice(0, 47);
+    const all48 = [playerTeam, ...selected].sort(() => Math.random() - 0.5);
+
+    const groups = [];
+    const letters = "ABCDEFGHIJKL";
+    for (let g = 0; g < 12; g++) {
+      const teams = all48.slice(g * 4, g * 4 + 4);
+      const matches = [
+        { team1: teams[0], team2: teams[1], score1: null, score2: null, played: false, matchday: 1 },
+        { team1: teams[2], team2: teams[3], score1: null, score2: null, played: false, matchday: 1 },
+        { team1: teams[0], team2: teams[2], score1: null, score2: null, played: false, matchday: 2 },
+        { team1: teams[1], team2: teams[3], score1: null, score2: null, played: false, matchday: 2 },
+        { team1: teams[0], team2: teams[3], score1: null, score2: null, played: false, matchday: 3 },
+        { team1: teams[1], team2: teams[2], score1: null, score2: null, played: false, matchday: 3 },
+      ];
+      groups.push({ name: letters[g], teams, matches });
+    }
+
+    let playerGroup = -1;
+    groups.forEach((g, i) => { if (g.teams.some(t => t.name === playerTeam.name)) playerGroup = i; });
+
+    const t = {
+      screen: "draw",
+      playerTeam,
+      groups,
+      playerGroup,
+      matchday: 1,
+      bracket: null,
+      playerBracketRound: null,
+      playerBracketIndex: null,
+      eliminated: false,
+      champion: false,
+    };
+    updateTournament(t);
+    setGameMode("1p");
+    setGameState("menu");
+  };
+
+  const getPlayerMatch = (t) => {
+    if (!t) return null;
+    const g = t.groups[t.playerGroup];
+    return g.matches.find(m => m.matchday === t.matchday && !m.played &&
+      (m.team1.name === t.playerTeam.name || m.team2.name === t.playerTeam.name));
+  };
+
+  const simTournamentMatchday = (t) => {
+    const nt = JSON.parse(JSON.stringify(t));
+    // Sim all unplayed matches in current matchday across all groups
+    nt.groups.forEach(g => {
+      g.matches.filter(m => m.matchday === nt.matchday && !m.played).forEach(m => {
+        const [w, l] = simScore();
+        if (Math.random() < 0.5) { m.score1 = w; m.score2 = l; }
+        else { m.score1 = l; m.score2 = w; }
+        m.played = true;
+      });
+    });
+    return nt;
+  };
+
+  const getQualifiedTeams = (groups) => {
+    const standings = groups.map(g => calcStandings(g));
+    const winners = standings.map(s => ({ ...s[0], pos: 1 }));
+    const runnersUp = standings.map(s => ({ ...s[1], pos: 2 }));
+    const thirds = standings.map(s => ({ ...s[2], pos: 3 }));
+    thirds.sort((a, b) => b.pts - a.pts || b.gd - a.gd || b.gf - a.gf);
+    const bestThirds = thirds.slice(0, 8);
+    return [...winners, ...runnersUp, ...bestThirds];
+  };
+
+  const buildBracket = (qualified, playerTeam) => {
+    const shuffled = [...qualified].sort(() => Math.random() - 0.5);
+    const r32 = [];
+    let playerIdx = -1;
+    for (let i = 0; i < 16; i++) {
+      const m = { team1: shuffled[i * 2].team, team2: shuffled[i * 2 + 1].team, score1: null, score2: null, played: false };
+      if (m.team1.name === playerTeam.name || m.team2.name === playerTeam.name) playerIdx = i;
+      r32.push(m);
+    }
+    return { r32, r16: Array(8).fill(null), qf: Array(4).fill(null), sf: Array(2).fill(null), final: Array(1).fill(null), playerIdx, round: "r32" };
+  };
+
+  const advanceBracketRound = (bracket) => {
+    const rounds = ["r32", "r16", "qf", "sf", "final"];
+    const ri = rounds.indexOf(bracket.round);
+    const cur = bracket[bracket.round];
+    const nextRound = rounds[ri + 1];
+    if (!nextRound) return bracket;
+    const next = [];
+    for (let i = 0; i < cur.length; i += 2) {
+      const w1 = cur[i].score1 > cur[i].score2 ? cur[i].team1 : cur[i].team2;
+      const w2 = cur[i + 1].score1 > cur[i + 1].score2 ? cur[i + 1].team1 : cur[i + 1].team2;
+      next.push({ team1: w1, team2: w2, score1: null, score2: null, played: false });
+    }
+    bracket[nextRound] = next;
+    // Find player in next round
+    let pIdx = -1;
+    next.forEach((m, i) => {
+      if (m.team1.name === bracket._playerTeam || m.team2.name === bracket._playerTeam) pIdx = i;
+    });
+    bracket.playerIdx = pIdx;
+    bracket.round = nextRound;
+    return bracket;
+  };
+
+  const startTournamentMatch = (t, team1, team2) => {
+    // Ensure player is always P1
+    const isP1 = team1.name === t.playerTeam.name;
+    setP1Country(isP1 ? team1 : team2);
+    setP2Country(isP1 ? team2 : team1);
+    initGame();
+    countdownRef.current = 210;
+    setGameState("countdown");
+    pausedRef.current = false;
+    setPaused(false);
+    goalCelebRef.current = null;
+  };
+
   const scoreColor = (country) => {
     const hex = country.primary.replace("#", "");
     const r = parseInt(hex.substring(0, 2), 16);
@@ -397,8 +545,77 @@ export default function SlimeSoccer() {
 
       setTimeout(() => {
         goalCelebRef.current = null;
-        setGameState("gameover");
         setWinner(scorer);
+        const t = tournamentRef.current;
+        if (t && t.screen === "playing") {
+          const finalScores = { p1: game.scores.p1, p2: game.scores.p2 };
+          setGameState("gameover");
+          // After brief delay, process tournament result
+          setTimeout(() => {
+            const nt = JSON.parse(JSON.stringify(t));
+            if (!nt.bracket) {
+              // Group stage: record result
+              const g = nt.groups[nt.playerGroup];
+              const pm = g.matches.find(m => m.matchday === nt.matchday && !m.played &&
+                (m.team1.name === nt.playerTeam.name || m.team2.name === nt.playerTeam.name));
+              if (pm) {
+                const playerIsT1 = pm.team1.name === nt.playerTeam.name;
+                pm.score1 = playerIsT1 ? finalScores.p1 : finalScores.p2;
+                pm.score2 = playerIsT1 ? finalScores.p2 : finalScores.p1;
+                pm.played = true;
+              }
+              // Sim remaining matches this matchday
+              nt.groups.forEach(gr => {
+                gr.matches.filter(m => m.matchday === nt.matchday && !m.played).forEach(m => {
+                  const [w, l] = simScore();
+                  if (Math.random() < 0.5) { m.score1 = w; m.score2 = l; }
+                  else { m.score1 = l; m.score2 = w; }
+                  m.played = true;
+                });
+              });
+              nt.screen = "groupResult";
+              if (nt.matchday >= 3) {
+                // Check if all group matches done
+                const allDone = nt.groups.every(g => g.matches.every(m => m.played));
+                if (allDone) nt.screen = "qualify";
+              }
+              updateTournament(nt);
+            } else {
+              // Knockout: record result
+              const round = nt.bracket.round;
+              const m = nt.bracket[round][nt.bracket.playerIdx];
+              const playerIsT1 = m.team1.name === nt.playerTeam.name;
+              m.score1 = playerIsT1 ? finalScores.p1 : finalScores.p2;
+              m.score2 = playerIsT1 ? finalScores.p2 : finalScores.p1;
+              m.played = true;
+              const playerWon = (playerIsT1 && m.score1 > m.score2) || (!playerIsT1 && m.score2 > m.score1);
+              // Sim other knockout matches
+              nt.bracket[round].forEach((km, ki) => {
+                if (!km.played) {
+                  const [w, l] = simScore();
+                  if (Math.random() < 0.5) { km.score1 = w; km.score2 = l; }
+                  else { km.score1 = l; km.score2 = w; }
+                  km.played = true;
+                }
+              });
+              if (!playerWon) {
+                nt.screen = "eliminated";
+                nt.eliminated = true;
+              } else if (round === "final") {
+                nt.screen = "champion";
+                nt.champion = true;
+              } else {
+                nt.bracket._playerTeam = nt.playerTeam.name;
+                const newBracket = advanceBracketRound(nt.bracket);
+                nt.bracket = newBracket;
+                nt.screen = "bracket";
+              }
+              updateTournament(nt);
+            }
+          }, 2500);
+        } else {
+          setGameState("gameover");
+        }
       }, 1500);
       setGameState("scored");
       return;
@@ -1376,6 +1593,241 @@ export default function SlimeSoccer() {
 
       <div ref={containerRef} style={{ width: "100%", maxWidth: G.WIDTH + 16, display: "flex", flexDirection: "column", alignItems: "center" }}>
         <div style={{ border: `2px solid ${COLORS.groundLine}33`, borderRadius: 8, overflow: "hidden", boxShadow: "0 0 40px rgba(212,168,67,0.1)", lineHeight: 0 }}>
+
+      {/* Tournament UI overlay */}
+      {tournament && tournament.screen !== "playing" && gameState !== "countdown" && gameState !== "playing" && gameState !== "scored" && (
+        <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, zIndex: 20, background: COLORS.bg, display: "flex", flexDirection: "column", alignItems: "center", overflow: "auto", padding: "20px 10px", fontFamily: "Oswald, sans-serif" }}>
+          {/* TEAM SELECTION */}
+          {tournament.screen === "select" && (
+            <div style={{ maxWidth: 600, width: "100%", textAlign: "center" }}>
+              <div style={{ fontSize: 28, fontWeight: 700, color: COLORS.score, marginBottom: 4 }}>WORLD CUP TOURNAMENT</div>
+              <div style={{ fontSize: 13, color: COLORS.dimText, marginBottom: 20 }}>Choose your team</div>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 6, justifyContent: "center" }}>
+                {COUNTRIES.map(c => (
+                  <button key={c.name} onClick={() => initTournament(c)} style={{
+                    background: tournament.playerTeam?.name === c.name ? COLORS.score + "33" : COLORS.ground,
+                    border: `1px solid ${tournament.playerTeam?.name === c.name ? COLORS.score : COLORS.groundLine}55`,
+                    borderRadius: 6, padding: "6px 10px", cursor: "pointer",
+                    color: COLORS.text, fontFamily: "Oswald, sans-serif", fontSize: 13,
+                    display: "flex", alignItems: "center", gap: 4, minWidth: 100,
+                  }}><span style={{ fontSize: 18 }}>{c.flag}</span> {c.name}</button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* GROUP DRAW */}
+          {tournament.screen === "draw" && (
+            <div style={{ maxWidth: 700, width: "100%", textAlign: "center" }}>
+              <div style={{ fontSize: 28, fontWeight: 700, color: COLORS.score, marginBottom: 4 }}>GROUP DRAW</div>
+              <div style={{ fontSize: 13, color: COLORS.dimText, marginBottom: 16 }}>48 teams drawn into 12 groups</div>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))", gap: 10 }}>
+                {tournament.groups.map((g, gi) => {
+                  const isPlayerGroup = gi === tournament.playerGroup;
+                  return (
+                    <div key={gi} style={{ background: isPlayerGroup ? COLORS.score + "15" : COLORS.ground, border: `1px solid ${isPlayerGroup ? COLORS.score + "55" : COLORS.groundLine + "33"}`, borderRadius: 8, padding: "8px 6px" }}>
+                      <div style={{ fontWeight: 700, fontSize: 14, color: isPlayerGroup ? COLORS.score : COLORS.dimText, marginBottom: 6 }}>GROUP {g.name}</div>
+                      {g.teams.map(t => (
+                        <div key={t.name} style={{ fontSize: 13, color: t.name === tournament.playerTeam.name ? COLORS.score : COLORS.text, padding: "2px 0", fontWeight: t.name === tournament.playerTeam.name ? 700 : 400 }}>
+                          {t.flag} {t.name}
+                        </div>
+                      ))}
+                    </div>
+                  );
+                })}
+              </div>
+              <button onClick={() => updateTournament({ ...tournament, screen: "groups" })} style={{ marginTop: 20, padding: "12px 40px", fontSize: 18, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: COLORS.score + "22", border: `1px solid ${COLORS.score}55`, borderRadius: 8, color: COLORS.score, cursor: "pointer", letterSpacing: 2 }}>BEGIN GROUP STAGE</button>
+            </div>
+          )}
+
+          {/* GROUP STAGE */}
+          {(tournament.screen === "groups" || tournament.screen === "groupResult") && (
+            <div style={{ maxWidth: 700, width: "100%", textAlign: "center" }}>
+              <div style={{ fontSize: 24, fontWeight: 700, color: COLORS.score, marginBottom: 4 }}>
+                {tournament.screen === "groupResult" ? `MATCHDAY ${tournament.matchday} RESULTS` : `MATCHDAY ${tournament.matchday} OF 3`}
+              </div>
+
+              {/* Player's group table */}
+              {(() => {
+                const g = tournament.groups[tournament.playerGroup];
+                const st = calcStandings(g);
+                const playerMatch = g.matches.find(m => m.matchday === tournament.matchday &&
+                  (m.team1.name === tournament.playerTeam.name || m.team2.name === tournament.playerTeam.name));
+                return (
+                  <div style={{ marginBottom: 16 }}>
+                    <div style={{ fontSize: 16, fontWeight: 700, color: COLORS.dimText, marginBottom: 8 }}>YOUR GROUP - GROUP {g.name}</div>
+                    <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13, color: COLORS.text, marginBottom: 12 }}>
+                      <thead><tr style={{ borderBottom: `1px solid ${COLORS.groundLine}44` }}>
+                        <th style={{ textAlign: "left", padding: "4px 8px", color: COLORS.dimText }}>Team</th>
+                        <th style={{ padding: "4px 6px", color: COLORS.dimText }}>P</th>
+                        <th style={{ padding: "4px 6px", color: COLORS.dimText }}>W</th>
+                        <th style={{ padding: "4px 6px", color: COLORS.dimText }}>L</th>
+                        <th style={{ padding: "4px 6px", color: COLORS.dimText }}>GF</th>
+                        <th style={{ padding: "4px 6px", color: COLORS.dimText }}>GA</th>
+                        <th style={{ padding: "4px 6px", color: COLORS.dimText }}>GD</th>
+                        <th style={{ padding: "4px 6px", color: COLORS.score }}>PTS</th>
+                      </tr></thead>
+                      <tbody>{st.map((r, ri) => (
+                        <tr key={r.team.name} style={{ borderBottom: `1px solid ${COLORS.groundLine}22`, background: ri < 2 ? COLORS.score + "0a" : "transparent" }}>
+                          <td style={{ textAlign: "left", padding: "5px 8px", fontWeight: r.team.name === tournament.playerTeam.name ? 700 : 400, color: r.team.name === tournament.playerTeam.name ? COLORS.score : COLORS.text }}>{r.team.flag} {r.team.name}</td>
+                          <td style={{ padding: "5px 6px" }}>{r.p}</td>
+                          <td style={{ padding: "5px 6px" }}>{r.w}</td>
+                          <td style={{ padding: "5px 6px" }}>{r.l}</td>
+                          <td style={{ padding: "5px 6px" }}>{r.gf}</td>
+                          <td style={{ padding: "5px 6px" }}>{r.ga}</td>
+                          <td style={{ padding: "5px 6px", color: r.gd > 0 ? "#6aff6a" : r.gd < 0 ? "#ff6a6a" : COLORS.dimText }}>{r.gd > 0 ? "+" : ""}{r.gd}</td>
+                          <td style={{ padding: "5px 6px", fontWeight: 700, color: COLORS.score }}>{r.pts}</td>
+                        </tr>
+                      ))}</tbody>
+                    </table>
+
+                    {/* Matchday results */}
+                    <div style={{ fontSize: 13, color: COLORS.dimText, marginBottom: 8 }}>MATCHDAY {tournament.matchday} FIXTURES</div>
+                    {g.matches.filter(m => m.matchday === tournament.matchday).map((m, mi) => (
+                      <div key={mi} style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 8, padding: "4px 0", fontSize: 14, color: COLORS.text }}>
+                        <span style={{ minWidth: 90, textAlign: "right", fontWeight: m.team1.name === tournament.playerTeam.name ? 700 : 400, color: m.team1.name === tournament.playerTeam.name ? COLORS.score : COLORS.text }}>{m.team1.flag} {m.team1.name}</span>
+                        <span style={{ color: COLORS.dimText, minWidth: 40, textAlign: "center", fontWeight: 700 }}>{m.played ? `${m.score1} - ${m.score2}` : "vs"}</span>
+                        <span style={{ minWidth: 90, textAlign: "left", fontWeight: m.team2.name === tournament.playerTeam.name ? 700 : 400, color: m.team2.name === tournament.playerTeam.name ? COLORS.score : COLORS.text }}>{m.team2.flag} {m.team2.name}</span>
+                      </div>
+                    ))}
+                  </div>
+                );
+              })()}
+
+              {/* Action buttons */}
+              {tournament.screen === "groups" && (() => {
+                const pm = getPlayerMatch(tournament);
+                if (!pm) return null;
+                const opp = pm.team1.name === tournament.playerTeam.name ? pm.team2 : pm.team1;
+                return (
+                  <button onClick={() => {
+                    updateTournament({ ...tournament, screen: "playing" });
+                    startTournamentMatch(tournament, pm.team1, pm.team2);
+                  }} style={{ marginTop: 12, padding: "14px 40px", fontSize: 20, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: COLORS.score + "22", border: `1px solid ${COLORS.score}55`, borderRadius: 8, color: COLORS.score, cursor: "pointer", letterSpacing: 2 }}>
+                    PLAY vs {opp.flag} {opp.name.toUpperCase()}
+                  </button>
+                );
+              })()}
+
+              {tournament.screen === "groupResult" && tournament.matchday < 3 && (
+                <button onClick={() => updateTournament({ ...tournament, screen: "groups", matchday: tournament.matchday + 1 })} style={{ marginTop: 16, padding: "12px 36px", fontSize: 18, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: COLORS.score + "22", border: `1px solid ${COLORS.score}55`, borderRadius: 8, color: COLORS.score, cursor: "pointer", letterSpacing: 2 }}>
+                  NEXT MATCHDAY
+                </button>
+              )}
+
+              {/* Other groups (collapsed) */}
+              <div style={{ marginTop: 20, fontSize: 13, color: COLORS.dimText, marginBottom: 8 }}>OTHER GROUPS</div>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(150px, 1fr))", gap: 8 }}>
+                {tournament.groups.filter((_, i) => i !== tournament.playerGroup).map((g, gi) => {
+                  const st = calcStandings(g);
+                  return (
+                    <div key={gi} style={{ background: COLORS.ground, borderRadius: 6, padding: "6px", fontSize: 12 }}>
+                      <div style={{ fontWeight: 700, color: COLORS.dimText, marginBottom: 4 }}>GROUP {g.name}</div>
+                      {st.map(r => (
+                        <div key={r.team.name} style={{ display: "flex", justifyContent: "space-between", padding: "1px 4px", color: COLORS.text }}>
+                          <span>{r.team.flag} {r.team.name}</span>
+                          <span style={{ color: COLORS.score, fontWeight: 700 }}>{r.pts}</span>
+                        </div>
+                      ))}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
+          {/* QUALIFICATION RESULTS */}
+          {tournament.screen === "qualify" && (() => {
+            const qualified = getQualifiedTeams(tournament.groups);
+            const playerIn = qualified.some(q => q.team.name === tournament.playerTeam.name);
+            return (
+              <div style={{ maxWidth: 700, width: "100%", textAlign: "center" }}>
+                <div style={{ fontSize: 28, fontWeight: 700, color: COLORS.score, marginBottom: 4 }}>GROUP STAGE COMPLETE</div>
+                <div style={{ fontSize: 16, color: playerIn ? "#6aff6a" : "#ff6a6a", fontWeight: 700, marginBottom: 16 }}>
+                  {playerIn ? `${tournament.playerTeam.flag} ${tournament.playerTeam.name.toUpperCase()} QUALIFIED!` : `${tournament.playerTeam.flag} ${tournament.playerTeam.name.toUpperCase()} ELIMINATED`}
+                </div>
+                {playerIn ? (
+                  <button onClick={() => {
+                    const bracket = buildBracket(qualified, tournament.playerTeam);
+                    bracket._playerTeam = tournament.playerTeam.name;
+                    updateTournament({ ...tournament, bracket, screen: "bracket" });
+                  }} style={{ padding: "14px 40px", fontSize: 20, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: COLORS.score + "22", border: `1px solid ${COLORS.score}55`, borderRadius: 8, color: COLORS.score, cursor: "pointer", letterSpacing: 2 }}>
+                    VIEW KNOCKOUT BRACKET
+                  </button>
+                ) : (
+                  <button onClick={() => updateTournament(null)} style={{ padding: "12px 36px", fontSize: 16, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: COLORS.ground, border: `1px solid ${COLORS.groundLine}55`, borderRadius: 8, color: COLORS.text, cursor: "pointer" }}>
+                    BACK TO MENU
+                  </button>
+                )}
+              </div>
+            );
+          })()}
+
+          {/* KNOCKOUT BRACKET */}
+          {tournament.screen === "bracket" && tournament.bracket && (() => {
+            const b = tournament.bracket;
+            const roundLabels = { r32: "ROUND OF 32", r16: "ROUND OF 16", qf: "QUARTER-FINALS", sf: "SEMI-FINALS", final: "FINAL" };
+            const curMatches = b[b.round] || [];
+            const pm = b.playerIdx >= 0 ? curMatches[b.playerIdx] : null;
+            const opp = pm ? (pm.team1.name === tournament.playerTeam.name ? pm.team2 : pm.team1) : null;
+            return (
+              <div style={{ maxWidth: 700, width: "100%", textAlign: "center" }}>
+                <div style={{ fontSize: 28, fontWeight: 700, color: COLORS.score, marginBottom: 4 }}>{roundLabels[b.round]}</div>
+                <div style={{ fontSize: 13, color: COLORS.dimText, marginBottom: 16 }}>
+                  {curMatches.length} matches this round
+                </div>
+                <div style={{ display: "flex", flexDirection: "column", gap: 6, alignItems: "center", marginBottom: 16 }}>
+                  {curMatches.map((m, mi) => {
+                    if (!m) return null;
+                    const isPlayerMatch = mi === b.playerIdx;
+                    const w = m.played ? (m.score1 > m.score2 ? m.team1.name : m.team2.name) : null;
+                    return (
+                      <div key={mi} style={{ display: "flex", alignItems: "center", gap: 8, padding: "6px 12px", borderRadius: 6, fontSize: 14, background: isPlayerMatch ? COLORS.score + "15" : COLORS.ground, border: `1px solid ${isPlayerMatch ? COLORS.score + "44" : COLORS.groundLine + "22"}`, minWidth: 280 }}>
+                        <span style={{ flex: 1, textAlign: "right", fontWeight: w === m.team1.name ? 700 : 400, color: m.team1.name === tournament.playerTeam.name ? COLORS.score : w && w !== m.team1.name ? COLORS.dimText : COLORS.text }}>{m.team1.flag} {m.team1.name}</span>
+                        <span style={{ color: COLORS.dimText, fontWeight: 700, minWidth: 44, textAlign: "center" }}>{m.played ? `${m.score1}-${m.score2}` : "vs"}</span>
+                        <span style={{ flex: 1, textAlign: "left", fontWeight: w === m.team2.name ? 700 : 400, color: m.team2.name === tournament.playerTeam.name ? COLORS.score : w && w !== m.team2.name ? COLORS.dimText : COLORS.text }}>{m.team2.flag} {m.team2.name}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+                {pm && !pm.played && opp && (
+                  <button onClick={() => {
+                    updateTournament({ ...tournament, screen: "playing" });
+                    startTournamentMatch(tournament, pm.team1, pm.team2);
+                  }} style={{ padding: "14px 40px", fontSize: 20, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: COLORS.score + "22", border: `1px solid ${COLORS.score}55`, borderRadius: 8, color: COLORS.score, cursor: "pointer", letterSpacing: 2 }}>
+                    PLAY vs {opp.flag} {opp.name.toUpperCase()}
+                  </button>
+                )}
+              </div>
+            );
+          })()}
+
+          {/* ELIMINATED */}
+          {tournament.screen === "eliminated" && (
+            <div style={{ textAlign: "center", paddingTop: 40 }}>
+              <div style={{ fontSize: 48 }}>{tournament.playerTeam.flag}</div>
+              <div style={{ fontSize: 28, fontWeight: 700, color: "#ff6a6a", marginTop: 12 }}>ELIMINATED</div>
+              <div style={{ fontSize: 16, color: COLORS.dimText, marginTop: 8 }}>{tournament.playerTeam.name} knocked out in the {({ r32: "Round of 32", r16: "Round of 16", qf: "Quarter-Finals", sf: "Semi-Finals", final: "Final" })[tournament.bracket.round]}</div>
+              <button onClick={() => updateTournament(null)} style={{ marginTop: 24, padding: "12px 36px", fontSize: 16, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: COLORS.ground, border: `1px solid ${COLORS.groundLine}55`, borderRadius: 8, color: COLORS.text, cursor: "pointer" }}>
+                BACK TO MENU
+              </button>
+            </div>
+          )}
+
+          {/* CHAMPION */}
+          {tournament.screen === "champion" && (
+            <div style={{ textAlign: "center", paddingTop: 40 }}>
+              <div style={{ fontSize: 64 }}>{tournament.playerTeam.flag}</div>
+              <div style={{ fontSize: 36, fontWeight: 700, color: COLORS.score, marginTop: 12 }}>WORLD CHAMPIONS!</div>
+              <div style={{ fontSize: 18, color: COLORS.text, marginTop: 8 }}>{tournament.playerTeam.name} wins the Slime World Cup!</div>
+              <button onClick={() => updateTournament(null)} style={{ marginTop: 24, padding: "12px 36px", fontSize: 16, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: COLORS.score + "22", border: `1px solid ${COLORS.score}55`, borderRadius: 8, color: COLORS.score, cursor: "pointer" }}>
+                BACK TO MENU
+              </button>
+            </div>
+          )}
+        </div>
+      )}
+
           <canvas ref={canvasRef} width={G.WIDTH} height={G.HEIGHT} style={{ width: G.WIDTH * canvasScale, height: G.HEIGHT * canvasScale, display: "block" }} onClick={startGame} />
         </div>
         {isMobile && (gameState === "playing" || gameState === "scored" || gameState === "countdown") && gameMode === "1p" && (
@@ -1424,6 +1876,11 @@ export default function SlimeSoccer() {
           <button onClick={startGame} style={{ marginTop: 16, padding: "14px 40px", fontSize: 20, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: COLORS.score, color: COLORS.bg, border: "none", borderRadius: 8, cursor: "pointer", letterSpacing: 2 }}>
             {gameState === "menu" ? "START GAME" : "PLAY AGAIN"}
           </button>
+          {league === "worldcup" && gameMode === "1p" && !tournament && (
+            <button onClick={() => updateTournament({ screen: "select", playerTeam: null })} style={{ marginTop: 8, padding: "10px 32px", fontSize: 16, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: "#d4a84311", border: "1px solid #d4a84344", borderRadius: 8, color: COLORS.score, cursor: "pointer", letterSpacing: 2 }}>
+              WORLD CUP TOURNAMENT
+            </button>
+          )}
         )}
       </div>
       <div style={{ marginTop: 14, color: COLORS.dimText, fontSize: 13, textAlign: "center", lineHeight: 1.6 }}>
