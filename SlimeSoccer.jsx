@@ -2420,15 +2420,15 @@ export default function SlimeSoccer() {
               <div>
                 <div style={{ height: 20 }}></div>
                 <div style={{ fontSize: 64 }}>{tournament.playerTeam.flag}</div>
-                <div style={{ height: 30 }}></div>
+                <div style={{ height: 40 }}></div>
                 <div style={{ fontSize: isMobile ? 24 : 36, fontWeight: 700, color: COLORS.score }}>WORLD CHAMPIONS!</div>
-                <div style={{ height: 16 }}></div>
+                <div style={{ height: 30 }}></div>
                 <div style={{ fontSize: 18, color: COLORS.text }}>{tournament.playerTeam.name} wins the Slime Cup!</div>
               </div>
               <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-                <div style={{ fontSize: 50, animation: "trophy-rise 1.8s ease-out forwards", position: "relative", zIndex: 2 }}>{"🏆"}</div>
-                <style>{`@keyframes trophy-rise { 0% { bottom: -120px; opacity: 0; } 40% { bottom: 0px; opacity: 1; } 55% { bottom: 8px; } 65% { bottom: 0px; } 80% { bottom: 3px; } 100% { bottom: 0px; opacity: 1; } }`}</style>
-                <canvas ref={drawChampSlime} width={160} height={100} style={{ marginTop: -46, position: "relative", zIndex: 1 }}></canvas>
+                <div style={{ fontSize: 50, animation: "trophy-rise 3s ease-out forwards", position: "relative", zIndex: 2 }}>{"🏆"}</div>
+                <style>{`@keyframes trophy-rise { 0% { bottom: -120px; opacity: 0; } 50% { bottom: 0px; opacity: 1; } 65% { bottom: 8px; } 75% { bottom: 0px; } 88% { bottom: 3px; } 100% { bottom: 0px; opacity: 1; } }`}</style>
+                <canvas ref={drawChampSlime} width={160} height={100} style={{ marginTop: -54, position: "relative", zIndex: 1 }}></canvas>
               </div>
               <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12, paddingBottom: 30 }}>
                 <button onClick={() => { setShowCabinet(true); setShowTournamentUIWrapped(false); updateTournament(null); }} style={{ padding: "12px 36px", fontSize: 16, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: COLORS.score + "22", border: `1px solid ${COLORS.score}55`, borderRadius: 8, color: COLORS.score, cursor: "pointer" }}>
