@@ -1730,21 +1730,21 @@ export default function SlimeSoccer() {
 
           {/* TEAM SELECTION */}
           {tournament.screen === "select" && (
-            <div style={{ maxWidth: 600, width: "100%", textAlign: "center", margin: "0 auto" }}>
+            <div style={{ maxWidth: 700, width: "100%", textAlign: "center", margin: "0 auto" }}>
               <div style={{ padding: "30px 0 40px" }}>
                 <div style={{ fontSize: isMobile ? 20 : 26, fontWeight: 700, color: COLORS.score }}>{"🏆"} 2026 WORLD CUP {"🏆"}</div>
                 <div style={{ height: 30 }}></div>
                 <div style={{ fontSize: 14, color: COLORS.dimText }}>Choose your team for the tournament</div>
               </div>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 8, justifyContent: "center" }}>
+              <div style={{ display: "grid", gridTemplateColumns: `repeat(${isMobile ? 3 : 5}, 1fr)`, gap: 8 }}>
                 {getWCTeams().sort((a, b) => a.name.localeCompare(b.name)).map(c => (
                   <button key={c.name} onClick={() => initTournament(c)} style={{
                     background: tournament.playerTeam?.name === c.name ? COLORS.score + "33" : COLORS.ground,
                     border: `1px solid ${tournament.playerTeam?.name === c.name ? COLORS.score : COLORS.groundLine}55`,
-                    borderRadius: 6, padding: "8px 12px", cursor: "pointer",
-                    color: COLORS.text, fontFamily: "Oswald, sans-serif", fontSize: 14,
-                    display: "flex", alignItems: "center", gap: 6, minWidth: 110,
-                  }}><span style={{ fontSize: 18 }}>{c.flag}</span> {c.name}</button>
+                    borderRadius: 6, padding: isMobile ? "8px 6px" : "8px 10px", cursor: "pointer",
+                    color: tournament.playerTeam?.name === c.name ? COLORS.score : COLORS.text, fontFamily: "Oswald, sans-serif", fontSize: isMobile ? 12 : 14,
+                    display: "flex", alignItems: "center", gap: 4, overflow: "hidden", whiteSpace: "nowrap",
+                  }}><span style={{ fontSize: isMobile ? 14 : 18, flexShrink: 0 }}>{c.flag}</span><span style={{ overflow: "hidden", textOverflow: "ellipsis" }}>{c.name}</span></button>
                 ))}
               </div>
             </div>
