@@ -2146,13 +2146,13 @@ export default function SlimeSoccer() {
                 <style>{`@keyframes trophy-drop { 0% { top: -80px; opacity: 0; } 30% { top: 0px; opacity: 1; } 50% { top: -15px; } 65% { top: 0px; } 80% { top: -5px; } 100% { top: 0px; opacity: 1; } }`}</style>
                 <canvas ref={drawChampSlime} width={160} height={100} style={{ marginTop: -46, position: "relative", zIndex: 1 }}></canvas>
               </div>
-              <div style={{ height: 30 }}></div>
+              <div style={{ height: 50 }}></div>
               <div style={{ fontSize: 64 }}>{tournament.playerTeam.flag}</div>
-              <div style={{ height: 30 }}></div>
+              <div style={{ height: 50 }}></div>
               <div style={{ fontSize: isMobile ? 24 : 36, fontWeight: 700, color: COLORS.score }}>WORLD CHAMPIONS!</div>
-              <div style={{ height: 16 }}></div>
+              <div style={{ height: 30 }}></div>
               <div style={{ fontSize: 18, color: COLORS.text }}>{tournament.playerTeam.name} wins the Slime Cup!</div>
-              <div style={{ height: 40 }}></div>
+              <div style={{ height: 60 }}></div>
               <button onClick={() => { updateTournament(null); setShowTournamentUIWrapped(false); }} style={{ padding: "12px 36px", fontSize: 16, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: COLORS.score + "22", border: `1px solid ${COLORS.score}55`, borderRadius: 8, color: COLORS.score, cursor: "pointer" }}>
                 BACK TO MENU
               </button>
