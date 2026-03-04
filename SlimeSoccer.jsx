@@ -1872,7 +1872,7 @@ export default function SlimeSoccer() {
             </div>
           </div>
         )}
-        {isMobile && (gameState === "menu" || gameState === "gameover") && (
+        {isMobile && (gameState === "menu" || gameState === "gameover") && (<>
           <button onClick={startGame} style={{ marginTop: 16, padding: "14px 40px", fontSize: 20, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: COLORS.score, color: COLORS.bg, border: "none", borderRadius: 8, cursor: "pointer", letterSpacing: 2 }}>
             {gameState === "menu" ? "START GAME" : "PLAY AGAIN"}
           </button>
@@ -1881,7 +1881,7 @@ export default function SlimeSoccer() {
               WORLD CUP TOURNAMENT
             </button>
           )}
-        )}
+        </>)}
       </div>
       <div style={{ marginTop: 14, color: COLORS.dimText, fontSize: 13, textAlign: "center", lineHeight: 1.6 }}>
         {!isMobile && (<>{gameMode === "2p" ? (
@@ -1892,6 +1892,13 @@ export default function SlimeSoccer() {
           <><span style={{ color: p1Country.primary }}>A/D or ←/→</span> move &nbsp;|&nbsp; <span style={{ color: p1Country.primary }}>W or ↑</span> jump &nbsp;|&nbsp; <span style={{ color: p1Country.primary }}>SPACE</span> pause &nbsp;|&nbsp; First to {G.WINNING_SCORE} wins</>
         )}</>)}
       </div>
+
+      {/* Desktop tournament button */}
+      {!isMobile && league === "worldcup" && gameMode === "1p" && !tournament && (gameState === "menu" || gameState === "gameover") && (
+        <button onClick={() => updateTournament({ screen: "select", playerTeam: null })} style={{ marginTop: 10, padding: "10px 32px", fontSize: 16, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: "#d4a84311", border: "1px solid #d4a84344", borderRadius: 8, color: COLORS.score, cursor: "pointer", letterSpacing: 2 }}>
+          WORLD CUP TOURNAMENT
+        </button>
+      )}
 
       {/* Stats bar (1P only) */}
       {gameMode === "1p" && (stats.wins > 0 || stats.losses > 0) && (
