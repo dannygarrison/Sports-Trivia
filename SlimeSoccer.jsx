@@ -127,7 +127,116 @@ function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
 
 export default function SlimeSoccer() {
   const canvasRef = useRef(null);
-  const champCanvasRef = useRef(null);
+  const drawChampSlime = useCallback((canvas) => {
+    if (!canvas || !tournament || tournament.screen !== "champion") return;
+    const ctx = canvas.getContext("2d");
+    const W = 160, H = 100;
+    canvas.width = W; canvas.height = H;
+    ctx.clearRect(0, 0, W, H);
+
+    const country = tournament.playerTeam;
+    const s = { x: W / 2, y: H - 2, r: 48, isP1: true };
+
+    // Shadow
+    ctx.fillStyle = "rgba(0,0,0,0.2)";
+    ctx.beginPath();
+    ctx.ellipse(s.x, s.y, s.r + 4, 6, 0, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Clipped semicircle
+    ctx.save();
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, s.r, Math.PI, 0, false);
+    ctx.closePath();
+    ctx.clip();
+
+    // Base gradient
+    const grad = ctx.createRadialGradient(s.x - 8, s.y - 18, 4, s.x, s.y, s.r);
+    grad.addColorStop(0, country.highlight || country.primary);
+    grad.addColorStop(1, country.primary);
+    ctx.fillStyle = grad;
+    ctx.fillRect(s.x - s.r, s.y - s.r, s.r * 2, s.r);
+
+    // Checkerboard
+    if (country.pattern === "checkerboard") {
+      const sz = 18, ang = -0.15;
+      ctx.save(); ctx.translate(s.x, s.y - s.r / 2); ctx.rotate(ang);
+      ctx.fillStyle = country.patternColor2 || "#cc0000";
+      ctx.globalAlpha = 0.85;
+      const cols = Math.ceil((s.r * 2 + sz * 4) / sz);
+      const rws = Math.ceil((s.r * 2 + sz * 4) / sz);
+      for (let row = 0; row < rws; row++) for (let col = 0; col < cols; col++)
+        if ((row + col) % 2 === 0) ctx.fillRect(-s.r - sz * 2 + col * sz, -s.r - sz * 2 + row * sz, sz, sz);
+      ctx.globalAlpha = 1.0; ctx.restore();
+    }
+
+    // Wavy stripes
+    if (country.pattern === "wavy_stripes") {
+      const stripeH = 7, clrs = [country.patternColor2, country.patternColor3];
+      const sY = s.y - s.r;
+      for (let i = 0; i < Math.ceil(s.r / stripeH); i++) {
+        const y = sY + i * stripeH;
+        ctx.fillStyle = clrs[i % 2]; ctx.globalAlpha = 0.75;
+        ctx.beginPath(); ctx.moveTo(s.x - s.r, y);
+        for (let px = s.x - s.r; px <= s.x + s.r; px += 2) ctx.lineTo(px, y + Math.sin(-(px - s.x) * 0.08 + i * 0.6) * 3);
+        for (let px = s.x + s.r; px >= s.x - s.r; px -= 2) ctx.lineTo(px, y + stripeH + Math.sin(-(px - s.x) * 0.08 + i * 0.6) * 3);
+        ctx.closePath(); ctx.fill();
+      }
+      ctx.globalAlpha = 1.0;
+    }
+
+    // Vertical stripes
+    if (country.pattern === "vertical_stripes") {
+      const stW = 18, ang = -0.15;
+      ctx.save(); ctx.translate(s.x, s.y - s.r / 2); ctx.rotate(ang);
+      const nStripes = Math.ceil((s.r * 2 + 40) / stW);
+      for (let i = 0; i < nStripes; i++) {
+        if (i % 2 === 0) {
+          const sx = -s.r - 20 + i * stW;
+          ctx.fillStyle = "rgba(0,0,0,0.25)"; ctx.globalAlpha = 1;
+          ctx.fillRect(sx - 1, -s.r, 2, s.r * 2); ctx.fillRect(sx + stW - 1, -s.r, 2, s.r * 2);
+          ctx.fillStyle = country.patternColor2; ctx.globalAlpha = country.patternAlpha || 0.75;
+          ctx.fillRect(sx, -s.r, stW, s.r * 2);
+        }
+      }
+      ctx.globalAlpha = 1.0; ctx.restore();
+    }
+
+    // Diagonal stripes
+    if (country.pattern === "diagonal_stripes") {
+      const pClrs = country.patternColors || ["#000", "#f00", "#ff0"];
+      const stW = 8, ang = 0.35;
+      ctx.save(); ctx.translate(s.x, s.y - s.r / 2); ctx.rotate(ang);
+      const totW = stW * pClrs.length;
+      pClrs.forEach((cl, ci) => { ctx.fillStyle = cl; ctx.globalAlpha = 0.7; ctx.fillRect(-totW / 2 - 10 + ci * stW, -s.r, stW, s.r * 2); });
+      ctx.globalAlpha = 1.0; ctx.restore();
+    }
+
+    // Sheen
+    const sheen = ctx.createRadialGradient(s.x - 8, s.y - 18, 4, s.x, s.y, s.r);
+    sheen.addColorStop(0, (country.highlight || country.primary) + "55");
+    sheen.addColorStop(1, "transparent");
+    ctx.fillStyle = sheen;
+    ctx.fillRect(s.x - s.r, s.y - s.r, s.r * 2, s.r);
+    ctx.restore();
+
+    // Flag badge on back
+    ctx.save();
+    ctx.translate(s.x - 14, s.y - 14); ctx.rotate(0.3);
+    ctx.font = "18px sans-serif"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
+    ctx.shadowColor = "rgba(0,0,0,0.7)"; ctx.shadowBlur = 4; ctx.shadowOffsetX = 1; ctx.shadowOffsetY = 1;
+    ctx.fillText(country.flag, 0, 0);
+    ctx.shadowColor = "transparent"; ctx.restore();
+
+    // Eye looking UP at trophy
+    const ex = s.x + 14, ey = s.y - 22;
+    ctx.shadowColor = "rgba(0,0,0,0.7)"; ctx.shadowBlur = 4; ctx.shadowOffsetX = 1; ctx.shadowOffsetY = 1;
+    ctx.fillStyle = "#fff";
+    ctx.beginPath(); ctx.arc(ex, ey, 7, 0, Math.PI * 2); ctx.fill();
+    ctx.shadowColor = "transparent"; ctx.shadowBlur = 0; ctx.shadowOffsetX = 0; ctx.shadowOffsetY = 0;
+    ctx.fillStyle = "#111";
+    ctx.beginPath(); ctx.arc(ex, ey - 3, 3.5, 0, Math.PI * 2); ctx.fill();
+  }, [tournament]);
   const gameRef = useRef(null);
   const keysRef = useRef({});
   const animRef = useRef(null);
@@ -1524,119 +1633,6 @@ export default function SlimeSoccer() {
     return () => { cleanup1(); cleanup2(); };
   }, [recalcP1, recalcP2, gameState, gameMode]);
 
-  // Draw champion slime on celebration canvas
-  useEffect(() => {
-    if (!champCanvasRef.current || !tournament || tournament.screen !== "champion") return;
-    const canvas = champCanvasRef.current;
-    const ctx = canvas.getContext("2d");
-    const W = 160, H = 100;
-    canvas.width = W; canvas.height = H;
-    ctx.clearRect(0, 0, W, H);
-
-    const country = tournament.playerTeam;
-    const s = { x: W / 2, y: H - 2, r: 48, isP1: true };
-
-    // Shadow
-    ctx.fillStyle = "rgba(0,0,0,0.2)";
-    ctx.beginPath();
-    ctx.ellipse(s.x, s.y, s.r + 4, 6, 0, 0, Math.PI * 2);
-    ctx.fill();
-
-    // Clipped semicircle
-    ctx.save();
-    ctx.beginPath();
-    ctx.arc(s.x, s.y, s.r, Math.PI, 0, false);
-    ctx.closePath();
-    ctx.clip();
-
-    // Base gradient
-    const grad = ctx.createRadialGradient(s.x - 8, s.y - 18, 4, s.x, s.y, s.r);
-    grad.addColorStop(0, country.highlight || country.primary);
-    grad.addColorStop(1, country.primary);
-    ctx.fillStyle = grad;
-    ctx.fillRect(s.x - s.r, s.y - s.r, s.r * 2, s.r);
-
-    // Checkerboard
-    if (country.pattern === "checkerboard") {
-      const sz = 18, ang = -0.15;
-      ctx.save(); ctx.translate(s.x, s.y - s.r / 2); ctx.rotate(ang);
-      ctx.fillStyle = country.patternColor2 || "#cc0000";
-      ctx.globalAlpha = 0.85;
-      const cols = Math.ceil((s.r * 2 + sz * 4) / sz);
-      const rws = Math.ceil((s.r * 2 + sz * 4) / sz);
-      for (let row = 0; row < rws; row++) for (let col = 0; col < cols; col++)
-        if ((row + col) % 2 === 0) ctx.fillRect(-s.r - sz * 2 + col * sz, -s.r - sz * 2 + row * sz, sz, sz);
-      ctx.globalAlpha = 1.0; ctx.restore();
-    }
-
-    // Wavy stripes
-    if (country.pattern === "wavy_stripes") {
-      const stripeH = 7, clrs = [country.patternColor2, country.patternColor3];
-      const sY = s.y - s.r;
-      for (let i = 0; i < Math.ceil(s.r / stripeH); i++) {
-        const y = sY + i * stripeH;
-        ctx.fillStyle = clrs[i % 2]; ctx.globalAlpha = 0.75;
-        ctx.beginPath(); ctx.moveTo(s.x - s.r, y);
-        for (let px = s.x - s.r; px <= s.x + s.r; px += 2) ctx.lineTo(px, y + Math.sin(-(px - s.x) * 0.08 + i * 0.6) * 3);
-        for (let px = s.x + s.r; px >= s.x - s.r; px -= 2) ctx.lineTo(px, y + stripeH + Math.sin(-(px - s.x) * 0.08 + i * 0.6) * 3);
-        ctx.closePath(); ctx.fill();
-      }
-      ctx.globalAlpha = 1.0;
-    }
-
-    // Vertical stripes
-    if (country.pattern === "vertical_stripes") {
-      const stW = 18, ang = -0.15;
-      ctx.save(); ctx.translate(s.x, s.y - s.r / 2); ctx.rotate(ang);
-      const nStripes = Math.ceil((s.r * 2 + 40) / stW);
-      for (let i = 0; i < nStripes; i++) {
-        if (i % 2 === 0) {
-          const sx = -s.r - 20 + i * stW;
-          ctx.fillStyle = "rgba(0,0,0,0.25)"; ctx.globalAlpha = 1;
-          ctx.fillRect(sx - 1, -s.r, 2, s.r * 2); ctx.fillRect(sx + stW - 1, -s.r, 2, s.r * 2);
-          ctx.fillStyle = country.patternColor2; ctx.globalAlpha = country.patternAlpha || 0.75;
-          ctx.fillRect(sx, -s.r, stW, s.r * 2);
-        }
-      }
-      ctx.globalAlpha = 1.0; ctx.restore();
-    }
-
-    // Diagonal stripes
-    if (country.pattern === "diagonal_stripes") {
-      const pClrs = country.patternColors || ["#000", "#f00", "#ff0"];
-      const stW = 8, ang = 0.35;
-      ctx.save(); ctx.translate(s.x, s.y - s.r / 2); ctx.rotate(ang);
-      const totW = stW * pClrs.length;
-      pClrs.forEach((cl, ci) => { ctx.fillStyle = cl; ctx.globalAlpha = 0.7; ctx.fillRect(-totW / 2 - 10 + ci * stW, -s.r, stW, s.r * 2); });
-      ctx.globalAlpha = 1.0; ctx.restore();
-    }
-
-    // Sheen
-    const sheen = ctx.createRadialGradient(s.x - 8, s.y - 18, 4, s.x, s.y, s.r);
-    sheen.addColorStop(0, (country.highlight || country.primary) + "55");
-    sheen.addColorStop(1, "transparent");
-    ctx.fillStyle = sheen;
-    ctx.fillRect(s.x - s.r, s.y - s.r, s.r * 2, s.r);
-    ctx.restore();
-
-    // Flag badge on back
-    ctx.save();
-    ctx.translate(s.x - 14, s.y - 14); ctx.rotate(0.3);
-    ctx.font = "18px sans-serif"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
-    ctx.shadowColor = "rgba(0,0,0,0.7)"; ctx.shadowBlur = 4; ctx.shadowOffsetX = 1; ctx.shadowOffsetY = 1;
-    ctx.fillText(country.flag, 0, 0);
-    ctx.shadowColor = "transparent"; ctx.restore();
-
-    // Eye looking UP at trophy
-    const ex = s.x + 14, ey = s.y - 22;
-    ctx.shadowColor = "rgba(0,0,0,0.7)"; ctx.shadowBlur = 4; ctx.shadowOffsetX = 1; ctx.shadowOffsetY = 1;
-    ctx.fillStyle = "#fff";
-    ctx.beginPath(); ctx.arc(ex, ey, 7, 0, Math.PI * 2); ctx.fill();
-    ctx.shadowColor = "transparent"; ctx.shadowBlur = 0; ctx.shadowOffsetX = 0; ctx.shadowOffsetY = 0;
-    ctx.fillStyle = "#111";
-    ctx.beginPath(); ctx.arc(ex, ey - 3, 3.5, 0, Math.PI * 2); ctx.fill();
-  }, [tournament?.screen, tournament?.playerTeam]);
-
   return (
     <div style={{ minHeight: "100vh", background: COLORS.bg, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", fontFamily: "Oswald, sans-serif", padding: isMobile && isLandscape ? "4px 8px" : "16px 8px", paddingTop: isMobile && isLandscape ? 4 : 60 }}>
       <Helmet>
@@ -2156,15 +2152,15 @@ export default function SlimeSoccer() {
               <div style={{ padding: "30px 0 0", display: "flex", flexDirection: "column", alignItems: "center" }}>
                 <div style={{ fontSize: 50, animation: "trophy-drop 1.5s ease-out forwards", position: "relative" }}>{"🏆"}</div>
                 <style>{`@keyframes trophy-drop { 0% { top: -80px; opacity: 0; } 30% { top: 0px; opacity: 1; } 50% { top: -15px; } 65% { top: 0px; } 80% { top: -5px; } 100% { top: 0px; opacity: 1; } }`}</style>
-                <canvas ref={champCanvasRef} width={160} height={100} style={{ marginTop: -12 }}></canvas>
+                <canvas ref={drawChampSlime} width={160} height={100} style={{ marginTop: -12 }}></canvas>
               </div>
-              <div style={{ height: 30 }}></div>
-              <div style={{ fontSize: 64 }}>{tournament.playerTeam.flag}</div>
-              <div style={{ height: 30 }}></div>
-              <div style={{ fontSize: isMobile ? 24 : 36, fontWeight: 700, color: COLORS.score }}>WORLD CHAMPIONS!</div>
-              <div style={{ height: 24 }}></div>
-              <div style={{ fontSize: 18, color: COLORS.text }}>{tournament.playerTeam.name} wins the Slime Cup!</div>
               <div style={{ height: 40 }}></div>
+              <div style={{ fontSize: 64 }}>{tournament.playerTeam.flag}</div>
+              <div style={{ height: 40 }}></div>
+              <div style={{ fontSize: isMobile ? 24 : 36, fontWeight: 700, color: COLORS.score }}>WORLD CHAMPIONS!</div>
+              <div style={{ height: 30 }}></div>
+              <div style={{ fontSize: 18, color: COLORS.text }}>{tournament.playerTeam.name} wins the Slime Cup!</div>
+              <div style={{ height: 50 }}></div>
               <button onClick={() => { updateTournament(null); setShowTournamentUIWrapped(false); }} style={{ padding: "12px 36px", fontSize: 16, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: COLORS.score + "22", border: `1px solid ${COLORS.score}55`, borderRadius: 8, color: COLORS.score, cursor: "pointer" }}>
                 BACK TO MENU
               </button>
