@@ -127,6 +127,77 @@ function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
 
 export default function SlimeSoccer() {
   const canvasRef = useRef(null);
+  const gameRef = useRef(null);
+  const keysRef = useRef({});
+  const animRef = useRef(null);
+  const [scores, setScores] = useState({ p1: 0, p2: 0 });
+  const [gameState, setGameState] = useState("menu");
+  const [winner, setWinner] = useState(null);
+  const [isMobile, setIsMobile] = useState(false);
+  const mobileRef = useRef({ left: false, right: false, jump: false });
+  const mobileRef2 = useRef({ left: false, right: false, jump: false });
+  const lastDirRef = useRef(null);
+  const lastDirRef2 = useRef(null);
+  const pausedRef = useRef(false);
+  const [paused, setPaused] = useState(false);
+  const [gameMode, setGameMode] = useState("1p"); // "1p", "2p", "sim"
+  const gameModeRef = useRef("1p");
+  const [league, setLeague] = useState("worldcup"); // "worldcup" or "pl"
+  const getTeams = (lg) => lg === "pl" ? PL_TEAMS : COUNTRIES;
+
+  const WC_SAVE_KEY = "slime-soccer-wc-tournament";
+  const [tournament, setTournament] = useState(() => {
+    try {
+      const saved = localStorage.getItem(WC_SAVE_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        // Rehydrate team objects from COUNTRIES
+        const rehydrate = (name) => COUNTRIES.find(c => c.name === name);
+        if (parsed && parsed.groups) {
+          parsed.playerTeam = rehydrate(parsed.playerTeam?.name) || parsed.playerTeam;
+          parsed.groups.forEach(g => {
+            g.teams = g.teams.map(t => rehydrate(t?.name) || t);
+            g.matches.forEach(m => {
+              m.team1 = rehydrate(m.team1?.name) || m.team1;
+              m.team2 = rehydrate(m.team2?.name) || m.team2;
+            });
+          });
+          if (parsed.bracket) {
+            const rounds = ["r32", "r16", "qf", "sf", "final"];
+            rounds.forEach(r => {
+              if (parsed.bracket[r]) {
+                parsed.bracket[r] = parsed.bracket[r].map(m => {
+                  if (!m) return m;
+                  m.team1 = rehydrate(m.team1?.name) || m.team1;
+                  m.team2 = rehydrate(m.team2?.name) || m.team2;
+                  return m;
+                });
+              }
+            });
+          }
+          if (parsed.screen === "playing") parsed.screen = parsed.bracket ? "bracket" : "groups";
+          return parsed;
+        }
+      }
+    } catch {}
+    return null;
+  });
+  const [showTrophyMenu, setShowTrophyMenu] = useState(false);
+  const [showCabinet, setShowCabinet] = useState(false);
+  const CABINET_KEY = "slime-soccer-trophy-cabinet";
+  const [trophyCabinet, setTrophyCabinet] = useState(() => {
+    try { return JSON.parse(localStorage.getItem(CABINET_KEY)) || []; } catch { return []; }
+  });
+  const saveTrophy = (team) => {
+    const entry = { name: team.name, flag: team.flag, date: new Date().toISOString().split("T")[0] };
+    const updated = [...trophyCabinet, entry];
+    setTrophyCabinet(updated);
+    try { localStorage.setItem(CABINET_KEY, JSON.stringify(updated)); } catch {}
+  };
+  const [showTournamentUI, setShowTournamentUI] = useState(false);
+  const showTournamentUIRef = useRef(false);
+  const setShowTournamentUIWrapped = (v) => { showTournamentUIRef.current = v; setShowTournamentUI(v); };
+  const [resetConfirm, setResetConfirm] = useState(false);
   const drawChampSlime = useCallback((canvas) => {
     if (!canvas || !tournament || tournament.screen !== "champion") return;
     const ctx = canvas.getContext("2d");
@@ -237,77 +308,6 @@ export default function SlimeSoccer() {
     ctx.fillStyle = "#111";
     ctx.beginPath(); ctx.arc(ex, ey - 3, 3.5, 0, Math.PI * 2); ctx.fill();
   }, [tournament]);
-  const gameRef = useRef(null);
-  const keysRef = useRef({});
-  const animRef = useRef(null);
-  const [scores, setScores] = useState({ p1: 0, p2: 0 });
-  const [gameState, setGameState] = useState("menu");
-  const [winner, setWinner] = useState(null);
-  const [isMobile, setIsMobile] = useState(false);
-  const mobileRef = useRef({ left: false, right: false, jump: false });
-  const mobileRef2 = useRef({ left: false, right: false, jump: false });
-  const lastDirRef = useRef(null);
-  const lastDirRef2 = useRef(null);
-  const pausedRef = useRef(false);
-  const [paused, setPaused] = useState(false);
-  const [gameMode, setGameMode] = useState("1p"); // "1p", "2p", "sim"
-  const gameModeRef = useRef("1p");
-  const [league, setLeague] = useState("worldcup"); // "worldcup" or "pl"
-  const getTeams = (lg) => lg === "pl" ? PL_TEAMS : COUNTRIES;
-
-  const WC_SAVE_KEY = "slime-soccer-wc-tournament";
-  const [tournament, setTournament] = useState(() => {
-    try {
-      const saved = localStorage.getItem(WC_SAVE_KEY);
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        // Rehydrate team objects from COUNTRIES
-        const rehydrate = (name) => COUNTRIES.find(c => c.name === name);
-        if (parsed && parsed.groups) {
-          parsed.playerTeam = rehydrate(parsed.playerTeam?.name) || parsed.playerTeam;
-          parsed.groups.forEach(g => {
-            g.teams = g.teams.map(t => rehydrate(t?.name) || t);
-            g.matches.forEach(m => {
-              m.team1 = rehydrate(m.team1?.name) || m.team1;
-              m.team2 = rehydrate(m.team2?.name) || m.team2;
-            });
-          });
-          if (parsed.bracket) {
-            const rounds = ["r32", "r16", "qf", "sf", "final"];
-            rounds.forEach(r => {
-              if (parsed.bracket[r]) {
-                parsed.bracket[r] = parsed.bracket[r].map(m => {
-                  if (!m) return m;
-                  m.team1 = rehydrate(m.team1?.name) || m.team1;
-                  m.team2 = rehydrate(m.team2?.name) || m.team2;
-                  return m;
-                });
-              }
-            });
-          }
-          if (parsed.screen === "playing") parsed.screen = parsed.bracket ? "bracket" : "groups";
-          return parsed;
-        }
-      }
-    } catch {}
-    return null;
-  });
-  const [showTrophyMenu, setShowTrophyMenu] = useState(false);
-  const [showCabinet, setShowCabinet] = useState(false);
-  const CABINET_KEY = "slime-soccer-trophy-cabinet";
-  const [trophyCabinet, setTrophyCabinet] = useState(() => {
-    try { return JSON.parse(localStorage.getItem(CABINET_KEY)) || []; } catch { return []; }
-  });
-  const saveTrophy = (team) => {
-    const entry = { name: team.name, flag: team.flag, date: new Date().toISOString().split("T")[0] };
-    const updated = [...trophyCabinet, entry];
-    setTrophyCabinet(updated);
-    try { localStorage.setItem(CABINET_KEY, JSON.stringify(updated)); } catch {}
-  };
-  const [showTournamentUI, setShowTournamentUI] = useState(false);
-  const showTournamentUIRef = useRef(false);
-  const setShowTournamentUIWrapped = (v) => { showTournamentUIRef.current = v; setShowTournamentUI(v); };
-  const [resetConfirm, setResetConfirm] = useState(false);
   const tournamentRef = useRef(tournament);
   const updateTournament = (t) => {
     tournamentRef.current = t;
