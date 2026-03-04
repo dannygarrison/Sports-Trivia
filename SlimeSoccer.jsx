@@ -51,7 +51,7 @@ const COUNTRIES = [
   { name: "Iran", flag: "🇮🇷", primary: "#c8c0b8", highlight: "#f5f2ef" },
   { name: "Iraq", flag: "🇮🇶", primary: "#007a3d", highlight: "#4dc47a" },
   { name: "Italy", flag: "🇮🇹", primary: "#0066cc", highlight: "#5a9ee0" },
-  { name: "Ivory Coast", flag: "🇨🇮", primary: "#f77f00", highlight: "#f7a84a", pattern: "leopard_spots", patternColor2: "#b85e00" },
+  { name: "Ivory Coast", flag: "🇨🇮", primary: "#f77f00", highlight: "#f7a84a" },
   { name: "Jamaica", flag: "🇯🇲", primary: "#f5c518", highlight: "#fde46a" },
   { name: "Japan", flag: "🇯🇵", primary: "#002776", highlight: "#5a6fbf" },
   { name: "Jordan", flag: "🇯🇴", primary: "#c8102e", highlight: "#e06a7a" },
@@ -67,15 +67,15 @@ const COUNTRIES = [
   { name: "Paraguay", flag: "🇵🇾", primary: "#ffffff", highlight: "#f0f0f0", pattern: "vertical_stripes", patternColor2: "#b80020" },
   { name: "Poland", flag: "🇵🇱", primary: "#dc143c", highlight: "#e86a7a" },
   { name: "Portugal", flag: "🇵🇹", primary: "#8b0000", highlight: "#c44040" },
-  { name: "Qatar", flag: "🇶🇦", primary: "#8a1538", highlight: "#b85a6a", pattern: "zigzag", patternColor2: "#5e0d26" },
+  { name: "Qatar", flag: "🇶🇦", primary: "#8a1538", highlight: "#b85a6a" },
   { name: "Republic of Ireland", flag: "🇮🇪", primary: "#169b62", highlight: "#5ad090" },
   { name: "Romania", flag: "🇷🇴", primary: "#f5c518", highlight: "#fde46a" },
-  { name: "Saudi Arabia", flag: "🇸🇦", primary: "#006c35", highlight: "#4db87a" },
+  { name: "Saudi Arabia", flag: "🇸🇦", primary: "#004d25", highlight: "#2a7a4a" },
   { name: "Scotland", flag: "🏴󠁧󠁢󠁳󠁣󠁴󠁿", primary: "#1a2253", highlight: "#3a4a8a" },
   { name: "Senegal", flag: "🇸🇳", primary: "#00853f", highlight: "#4dc47a" },
   { name: "Slovakia", flag: "🇸🇰", primary: "#0b4ea2", highlight: "#5a8ad0" },
   { name: "South Africa", flag: "🇿🇦", primary: "#f5c518", highlight: "#fde46a" },
-  { name: "South Korea", flag: "🇰🇷", primary: "#cd2e3a", highlight: "#e07a80", pattern: "tiger_stripes", patternColor2: "#8a1020" },
+  { name: "South Korea", flag: "🇰🇷", primary: "#cd2e3a", highlight: "#e07a80" },
   { name: "Spain", flag: "🇪🇸", primary: "#c60b1e", highlight: "#e85a6a", pattern: "thin_stripes", patternColor2: "#f4c300" },
   { name: "Suriname", flag: "🇸🇷", primary: "#c8102e", highlight: "#e06a7a" },
   { name: "Sweden", flag: "🇸🇪", primary: "#f5c518", highlight: "#fde46a" },
@@ -285,7 +285,7 @@ export default function SlimeSoccer() {
 
     // Concentric circles (Mexico)
     if (country.pattern === "concentric_circles") {
-      const cx2 = s.x + 5, cy2 = s.y - s.r * 0.35;
+      const cx2 = s.x - 10, cy2 = s.y - s.r * 0.35;
       ctx.globalAlpha = 0.6; ctx.strokeStyle = country.patternColor2; ctx.lineWidth = 5;
       [38, 26, 14].forEach(r => { ctx.beginPath(); ctx.arc(cx2, cy2, r, 0, Math.PI * 2); ctx.stroke(); });
       ctx.globalAlpha = 1.0;
@@ -311,7 +311,7 @@ export default function SlimeSoccer() {
     if (country.pattern === "diagonal_split") {
       ctx.save(); ctx.translate(s.x, s.y - s.r / 2); ctx.rotate(-0.15);
       ctx.fillStyle = country.patternColor2; ctx.globalAlpha = 0.8;
-      ctx.fillRect(0, -s.r * 1.5, s.r * 1.5, s.r * 3);
+      ctx.fillRect(-s.r * 1.5, -s.r * 1.5, s.r * 1.5, s.r * 3);
       ctx.globalAlpha = 1.0; ctx.restore();
     }
 
@@ -348,7 +348,7 @@ export default function SlimeSoccer() {
     if (country.pattern === "thin_stripes") {
       ctx.save(); ctx.translate(s.x, s.y - s.r / 2); ctx.rotate(-0.12);
       ctx.fillStyle = country.patternColor2; ctx.globalAlpha = 0.7;
-      [-24, -12, 0, 12, 24].forEach(sx => ctx.fillRect(sx - 1.5, -s.r, 3, s.r * 2));
+      [-30, -18, -6, 6, 18].forEach(sx => ctx.fillRect(sx - 1, -s.r, 2, s.r * 2));
       ctx.globalAlpha = 1.0; ctx.restore();
     }
 
@@ -356,9 +356,9 @@ export default function SlimeSoccer() {
     if (country.pattern === "cross") {
       ctx.save(); ctx.translate(s.x, s.y - s.r / 2); ctx.rotate(-0.2);
       ctx.fillStyle = country.patternColor3 || "#fff"; ctx.globalAlpha = 0.85;
-      ctx.fillRect(-s.r * 1.5, -12, s.r * 3, 24); ctx.fillRect(-12, -s.r * 1.5, 24, s.r * 3);
+      ctx.fillRect(-s.r * 1.5, -7, s.r * 3, 14); ctx.fillRect(-9, -s.r * 1.5, 14, s.r * 3);
       ctx.fillStyle = country.patternColor2; ctx.globalAlpha = 0.85;
-      ctx.fillRect(-s.r * 1.5, -8, s.r * 3, 16); ctx.fillRect(-8, -s.r * 1.5, 16, s.r * 3);
+      ctx.fillRect(-s.r * 1.5, -5, s.r * 3, 10); ctx.fillRect(-7, -s.r * 1.5, 10, s.r * 3);
       ctx.globalAlpha = 1.0; ctx.restore();
     }
 
@@ -1265,7 +1265,7 @@ export default function SlimeSoccer() {
 
       // Concentric circles (Mexico)
       if (country.pattern === "concentric_circles") {
-        const cx = s.x + 5, cy = s.y - s.r * 0.35;
+        const cx = s.x - 10, cy = s.y - s.r * 0.35;
         const radii = [38, 26, 14];
         ctx.globalAlpha = 0.6;
         radii.forEach(r => {
@@ -1414,9 +1414,9 @@ export default function SlimeSoccer() {
         ctx.rotate(angle);
         ctx.fillStyle = country.patternColor2;
         ctx.globalAlpha = 0.7;
-        const positions = [-24, -12, 0, 12, 24];
+        const positions = [-30, -18, -6, 6, 18];
         positions.forEach(sx => {
-          ctx.fillRect(sx - stripeW / 2, -s.r, stripeW, s.r * 2);
+          ctx.fillRect(sx - 1, -s.r, 2, s.r * 2);
         });
         ctx.globalAlpha = 1.0;
         ctx.restore();
@@ -1433,8 +1433,8 @@ export default function SlimeSoccer() {
         ctx.save();
         ctx.translate(s.x, s.y - s.r / 2);
         ctx.rotate(angle);
-        const hW = 16, vW = 16;
-        const outlineW = 4;
+        const hW = 10, vW = 10;
+        const outlineW = 2;
         // White outline
         ctx.fillStyle = country.patternColor3 || "#ffffff";
         ctx.globalAlpha = 0.85;
