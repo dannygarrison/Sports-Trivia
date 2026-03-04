@@ -1659,7 +1659,12 @@ export default function SlimeSoccer() {
 
       {/* Tournament UI overlay */}
       {tournament && tournament.screen !== "playing" && gameState !== "countdown" && gameState !== "playing" && gameState !== "scored" && (
-        <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, zIndex: 20, background: COLORS.bg, display: "flex", flexDirection: "column", alignItems: "center", overflow: "auto", padding: "90px 10px 20px", fontFamily: "Oswald, sans-serif" }}>
+        <div style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, zIndex: 50, background: COLORS.bg, display: "flex", flexDirection: "column", alignItems: "center", overflow: "auto", padding: "20px 10px 20px", paddingTop: isMobile ? 70 : 80, fontFamily: "Oswald, sans-serif" }}>
+          {/* Exit tournament button */}
+          <button onClick={() => { updateTournament(null); setShowWCPrompt(false); }} style={{ alignSelf: "flex-start", background: "none", border: "none", color: COLORS.dimText, fontFamily: "Oswald, sans-serif", fontSize: 14, cursor: "pointer", letterSpacing: 2, padding: "4px 8px", marginBottom: 8 }}>
+            {"← EXIT TOURNAMENT"}
+          </button>
+
           {/* TEAM SELECTION */}
           {tournament.screen === "select" && (
             <div style={{ maxWidth: 600, width: "100%", textAlign: "center" }}>
