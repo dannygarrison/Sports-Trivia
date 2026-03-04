@@ -1540,16 +1540,16 @@ export default function SlimeSoccer() {
               <div onClick={() => setShowTrophyMenu(false)} style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, zIndex: 8 }}></div>
               <div style={{ position: "absolute", top: 40, left: 0, background: COLORS.ground, border: `1px solid ${COLORS.score}44`, borderRadius: 8, padding: 6, display: "flex", flexDirection: "column", gap: 4, minWidth: 200, boxShadow: "0 4px 16px rgba(0,0,0,0.5)", zIndex: 9 }}>
                 {tournament && tournament.screen !== "select" && tournament.screen !== "draw" ? (
-                  <button onClick={() => { setShowTrophyMenu(false); setShowTournamentUIWrapped(true); }} style={{ padding: "10px 14px", fontSize: 14, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: "none", border: "none", borderRadius: 6, color: COLORS.score, cursor: "pointer", textAlign: "left", letterSpacing: 1 }}>
+                  <button onClick={() => { setShowTrophyMenu(false); setShowTournamentUIWrapped(true); }} style={{ padding: "10px 14px", fontSize: 14, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: "none", border: "none", borderRadius: 6, color: COLORS.score, cursor: "pointer", textAlign: "left", letterSpacing: 1, whiteSpace: "nowrap" }}>
                     {"▶"} RESUME WORLD CUP
                   </button>
                 ) : (
-                  <button onClick={() => { setShowTrophyMenu(false); setShowTournamentUIWrapped(true); updateTournament({ screen: "select", playerTeam: null }); }} style={{ padding: "10px 14px", fontSize: 14, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: "none", border: "none", borderRadius: 6, color: COLORS.score, cursor: "pointer", textAlign: "left", letterSpacing: 1 }}>
-                    {"⚽"} PLAY 2026 WORLD CUP
+                  <button onClick={() => { setShowTrophyMenu(false); setShowTournamentUIWrapped(true); updateTournament({ screen: "select", playerTeam: null }); }} style={{ padding: "10px 14px", fontSize: 14, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: "none", border: "none", borderRadius: 6, color: COLORS.score, cursor: "pointer", textAlign: "left", letterSpacing: 1, whiteSpace: "nowrap" }}>
+                    PLAY 2026 WORLD CUP
                   </button>
                 )}
                 <div style={{ height: 1, background: `${COLORS.groundLine}33`, margin: "2px 8px" }}></div>
-                <button onClick={() => { setShowTrophyMenu(false); setShowCabinet(true); }} style={{ padding: "10px 14px", fontSize: 14, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: "none", border: "none", borderRadius: 6, color: COLORS.text, cursor: "pointer", textAlign: "left", letterSpacing: 1 }}>
+                <button onClick={() => { setShowTrophyMenu(false); setShowCabinet(true); }} style={{ padding: "10px 14px", fontSize: 14, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: "none", border: "none", borderRadius: 6, color: COLORS.text, cursor: "pointer", textAlign: "left", letterSpacing: 1, whiteSpace: "nowrap" }}>
                   TROPHY CABINET {trophyCabinet.length > 0 ? `(${trophyCabinet.length})` : ""}
                 </button>
               </div>
