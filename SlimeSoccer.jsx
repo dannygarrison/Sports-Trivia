@@ -146,6 +146,7 @@ export default function SlimeSoccer() {
   const getTeams = (lg) => lg === "pl" ? PL_TEAMS : COUNTRIES;
 
   const [tournament, setTournament] = useState(null);
+  const [showWCPrompt, setShowWCPrompt] = useState(false);
   const tournamentRef = useRef(null);
   const updateTournament = (t) => { tournamentRef.current = t; setTournament(t); };
 
@@ -1453,13 +1454,30 @@ export default function SlimeSoccer() {
         <meta property="og:image" content="https://trivialsports.com/slime-soccer-og.png" />
         <meta name="twitter:card" content="summary_large_image" />
         <link rel="canonical" href="https://trivialsports.com/games/slime-soccer" />
-      </Helmet>      <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&display=swap" rel="stylesheet" />
+      </Helmet>
+      <style>{`@keyframes trophy-pulse { 0%, 100% { transform: scale(1); opacity: 0.7; } 50% { transform: scale(1.25); opacity: 1; } }`}</style>
+      <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&display=swap" rel="stylesheet" />
       {!(isMobile && isLandscape) && (
-      <div style={{ textAlign: "center", marginBottom: 8 }}>
+      <div style={{ textAlign: "center", marginBottom: 8, position: "relative", width: "100%", maxWidth: G.WIDTH + 16 }}>
+        {league === "worldcup" && gameMode === "1p" && !tournament && (gameState === "menu" || gameState === "gameover") && (
+          <button onClick={() => setShowWCPrompt(p => !p)} style={{ position: "absolute", left: 0, top: 0, background: "none", border: "none", cursor: "pointer", fontSize: 28, animation: "trophy-pulse 2s ease-in-out infinite", padding: 4, zIndex: 5 }} title="2026 World Cup">
+            {"🏆"}
+          </button>
+        )}
         <div style={{ fontSize: 11, letterSpacing: 4, color: COLORS.dimText, textTransform: "uppercase", marginBottom: 2 }}>TrivialSports.com</div>
         <h1 style={{ fontSize: 26, fontWeight: 700, color: COLORS.score, margin: 0, lineHeight: 1 }}>SLIME ⚽ SOCCER</h1>
         <div style={{ fontSize: 12, color: "#d4a84377", letterSpacing: 3, marginTop: 2 }}>{league === "pl" ? "PREMIER LEAGUE EDITION" : "SLIME CUP EDITION"}</div>
       </div>
+      )}
+
+      {/* WC Tournament prompt */}
+      {showWCPrompt && !tournament && (
+        <div style={{ marginBottom: 8, display: "flex", flexDirection: "column", alignItems: "center", gap: 8, padding: "12px 20px", background: COLORS.ground, borderRadius: 10, border: `1px solid ${COLORS.score}44` }}>
+          <button onClick={() => { setShowWCPrompt(false); updateTournament({ screen: "select", playerTeam: null }); }} style={{ padding: "12px 32px", fontSize: 18, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: COLORS.score + "22", border: `1px solid ${COLORS.score}55`, borderRadius: 8, color: COLORS.score, cursor: "pointer", letterSpacing: 2 }}>
+            PLAY THE 2026 WORLD CUP
+          </button>
+          <div style={{ fontSize: 11, color: COLORS.dimText }}>48 teams, 12 groups, knockout rounds</div>
+        </div>
       )}
 
       {/* League selector */}
@@ -1641,7 +1659,7 @@ export default function SlimeSoccer() {
 
       {/* Tournament UI overlay */}
       {tournament && tournament.screen !== "playing" && gameState !== "countdown" && gameState !== "playing" && gameState !== "scored" && (
-        <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, zIndex: 20, background: COLORS.bg, display: "flex", flexDirection: "column", alignItems: "center", overflow: "auto", padding: "60px 10px 20px", fontFamily: "Oswald, sans-serif" }}>
+        <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, zIndex: 20, background: COLORS.bg, display: "flex", flexDirection: "column", alignItems: "center", overflow: "auto", padding: "90px 10px 20px", fontFamily: "Oswald, sans-serif" }}>
           {/* TEAM SELECTION */}
           {tournament.screen === "select" && (
             <div style={{ maxWidth: 600, width: "100%", textAlign: "center" }}>
@@ -1921,11 +1939,7 @@ export default function SlimeSoccer() {
           <button onClick={startGame} style={{ marginTop: 16, padding: "14px 40px", fontSize: 20, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: COLORS.score, color: COLORS.bg, border: "none", borderRadius: 8, cursor: "pointer", letterSpacing: 2 }}>
             {gameState === "menu" ? "START GAME" : "PLAY AGAIN"}
           </button>
-          {league === "worldcup" && gameMode === "1p" && !tournament && (
-            <button onClick={() => updateTournament({ screen: "select", playerTeam: null })} style={{ marginTop: 8, padding: "10px 32px", fontSize: 16, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: "#d4a84311", border: "1px solid #d4a84344", borderRadius: 8, color: COLORS.score, cursor: "pointer", letterSpacing: 2 }}>
-              2026 WORLD CUP
-            </button>
-          )}
+
         </>)}
       </div>
       <div style={{ marginTop: 14, color: COLORS.dimText, fontSize: 13, textAlign: "center", lineHeight: 1.6 }}>
@@ -1938,12 +1952,7 @@ export default function SlimeSoccer() {
         )}</>)}
       </div>
 
-      {/* Desktop tournament button */}
-      {!isMobile && league === "worldcup" && gameMode === "1p" && !tournament && (gameState === "menu" || gameState === "gameover") && (
-        <button onClick={() => updateTournament({ screen: "select", playerTeam: null })} style={{ marginTop: 10, padding: "10px 32px", fontSize: 16, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: "#d4a84311", border: "1px solid #d4a84344", borderRadius: 8, color: COLORS.score, cursor: "pointer", letterSpacing: 2 }}>
-          2026 WORLD CUP
-        </button>
-      )}
+
 
       {/* Stats bar (1P only) */}
       {gameMode === "1p" && (stats.wins > 0 || stats.losses > 0) && (
