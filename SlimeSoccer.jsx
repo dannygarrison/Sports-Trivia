@@ -595,10 +595,8 @@ export default function SlimeSoccer() {
         const t = tournamentRef.current;
         if (t && t.screen === "playing") {
           const finalScores = { p1: game.scores.p1, p2: game.scores.p2 };
-          setGameState("gameover");
-          // After brief delay, process tournament result
-          setTimeout(() => {
-            const nt = JSON.parse(JSON.stringify(t));
+          // Skip gameover screen - process tournament result directly
+          const nt = JSON.parse(JSON.stringify(t));
             if (!nt.bracket) {
               // Group stage: record result
               const g = nt.groups[nt.playerGroup];
@@ -658,7 +656,7 @@ export default function SlimeSoccer() {
               }
               updateTournament(nt);
             }
-          }, 2500);
+            setGameState("menu");
         } else {
           setGameState("gameover");
         }
@@ -1233,6 +1231,7 @@ export default function SlimeSoccer() {
   useEffect(() => {
     const down = (e) => {
       if ((gameStateRef.current === "menu" || gameStateRef.current === "gameover") && (e.key === " " || e.key === "Enter")) {
+        if (tournamentRef.current && tournamentRef.current.screen !== "playing") return;
         pausedRef.current = false; setPaused(false); goalCelebRef.current = null;
         initGame(); countdownRef.current = 210; setGameState("countdown");
       }
@@ -1345,6 +1344,7 @@ export default function SlimeSoccer() {
   }, [gameState, draw, initGame, winner, isMobile, p1Country, p2Country, gameMode, stats, league]);
 
   const startGame = () => {
+    if (tournament && tournament.screen !== "playing") return;
     if (gameState === "menu" || gameState === "gameover") {
       pausedRef.current = false;
       setPaused(false);
@@ -1711,7 +1711,7 @@ export default function SlimeSoccer() {
           {/* GROUP STAGE */}
           {(tournament.screen === "groups" || tournament.screen === "groupResult") && (
             <div style={{ maxWidth: 800, width: "100%", textAlign: "center" }}>
-              <div style={{ fontSize: 24, fontWeight: 700, color: COLORS.score, marginBottom: 16 }}>
+              <div style={{ fontSize: 24, fontWeight: 700, color: COLORS.score, marginBottom: 24 }}>
                 {tournament.screen === "groupResult" ? `MATCHDAY ${tournament.matchday} RESULTS` : `MATCHDAY ${tournament.matchday} OF 3`}
               </div>
 
@@ -1722,40 +1722,40 @@ export default function SlimeSoccer() {
                 const playerMatch = g.matches.find(m => m.matchday === tournament.matchday &&
                   (m.team1.name === tournament.playerTeam.name || m.team2.name === tournament.playerTeam.name));
                 return (
-                  <div style={{ marginBottom: 16 }}>
-                    <div style={{ fontSize: 16, fontWeight: 700, color: COLORS.dimText, marginBottom: 12 }}>YOUR GROUP - GROUP {g.name}</div>
-                    <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 14, color: COLORS.text, marginBottom: 16 }}>
-                      <thead><tr style={{ borderBottom: `1px solid ${COLORS.groundLine}44` }}>
-                        <th style={{ textAlign: "left", padding: "6px 10px", color: COLORS.dimText }}>Team</th>
-                        <th style={{ padding: "6px 10px", color: COLORS.dimText }}>P</th>
-                        <th style={{ padding: "6px 10px", color: COLORS.dimText }}>W</th>
-                        <th style={{ padding: "6px 10px", color: COLORS.dimText }}>L</th>
-                        <th style={{ padding: "6px 10px", color: COLORS.dimText }}>GF</th>
-                        <th style={{ padding: "6px 10px", color: COLORS.dimText }}>GA</th>
-                        <th style={{ padding: "6px 10px", color: COLORS.dimText }}>GD</th>
-                        <th style={{ padding: "6px 10px", color: COLORS.score }}>PTS</th>
+                  <div style={{ marginBottom: 24 }}>
+                    <div style={{ fontSize: 18, fontWeight: 700, color: COLORS.dimText, marginBottom: 16 }}>YOUR GROUP - GROUP {g.name}</div>
+                    <table style={{ width: "100%", borderCollapse: "separate", borderSpacing: "0 4px", fontSize: 15, color: COLORS.text, marginBottom: 20 }}>
+                      <thead><tr>
+                        <th style={{ textAlign: "left", padding: "10px 14px", color: COLORS.dimText, borderBottom: `1px solid ${COLORS.groundLine}44` }}>Team</th>
+                        <th style={{ padding: "10px 14px", color: COLORS.dimText, borderBottom: `1px solid ${COLORS.groundLine}44` }}>P</th>
+                        <th style={{ padding: "10px 14px", color: COLORS.dimText, borderBottom: `1px solid ${COLORS.groundLine}44` }}>W</th>
+                        <th style={{ padding: "10px 14px", color: COLORS.dimText, borderBottom: `1px solid ${COLORS.groundLine}44` }}>L</th>
+                        <th style={{ padding: "10px 14px", color: COLORS.dimText, borderBottom: `1px solid ${COLORS.groundLine}44` }}>GF</th>
+                        <th style={{ padding: "10px 14px", color: COLORS.dimText, borderBottom: `1px solid ${COLORS.groundLine}44` }}>GA</th>
+                        <th style={{ padding: "10px 14px", color: COLORS.dimText, borderBottom: `1px solid ${COLORS.groundLine}44` }}>GD</th>
+                        <th style={{ padding: "10px 14px", color: COLORS.score, borderBottom: `1px solid ${COLORS.groundLine}44` }}>PTS</th>
                       </tr></thead>
                       <tbody>{st.map((r, ri) => (
-                        <tr key={r.team.name} style={{ borderBottom: `1px solid ${COLORS.groundLine}22`, background: ri < 2 ? COLORS.score + "0a" : "transparent" }}>
-                          <td style={{ textAlign: "left", padding: "8px 10px", fontWeight: r.team.name === tournament.playerTeam.name ? 700 : 400, color: r.team.name === tournament.playerTeam.name ? COLORS.score : COLORS.text }}>{r.team.flag} {r.team.name}</td>
-                          <td style={{ padding: "8px 10px", textAlign: "center" }}>{r.p}</td>
-                          <td style={{ padding: "8px 10px", textAlign: "center" }}>{r.w}</td>
-                          <td style={{ padding: "8px 10px", textAlign: "center" }}>{r.l}</td>
-                          <td style={{ padding: "8px 10px", textAlign: "center" }}>{r.gf}</td>
-                          <td style={{ padding: "8px 10px", textAlign: "center" }}>{r.ga}</td>
-                          <td style={{ padding: "8px 10px", textAlign: "center", color: r.gd > 0 ? "#6aff6a" : r.gd < 0 ? "#ff6a6a" : COLORS.dimText }}>{r.gd > 0 ? "+" : ""}{r.gd}</td>
-                          <td style={{ padding: "8px 10px", textAlign: "center", fontWeight: 700, color: COLORS.score }}>{r.pts}</td>
+                        <tr key={r.team.name} style={{ background: ri < 2 ? COLORS.score + "0a" : "transparent" }}>
+                          <td style={{ textAlign: "left", padding: "12px 14px", fontWeight: r.team.name === tournament.playerTeam.name ? 700 : 400, color: r.team.name === tournament.playerTeam.name ? COLORS.score : COLORS.text }}>{r.team.flag} {r.team.name}</td>
+                          <td style={{ padding: "12px 14px", textAlign: "center" }}>{r.p}</td>
+                          <td style={{ padding: "12px 14px", textAlign: "center" }}>{r.w}</td>
+                          <td style={{ padding: "12px 14px", textAlign: "center" }}>{r.l}</td>
+                          <td style={{ padding: "12px 14px", textAlign: "center" }}>{r.gf}</td>
+                          <td style={{ padding: "12px 14px", textAlign: "center" }}>{r.ga}</td>
+                          <td style={{ padding: "12px 14px", textAlign: "center", color: r.gd > 0 ? "#6aff6a" : r.gd < 0 ? "#ff6a6a" : COLORS.dimText }}>{r.gd > 0 ? "+" : ""}{r.gd}</td>
+                          <td style={{ padding: "12px 14px", textAlign: "center", fontWeight: 700, color: COLORS.score }}>{r.pts}</td>
                         </tr>
                       ))}</tbody>
                     </table>
 
                     {/* Matchday results */}
-                    <div style={{ fontSize: 14, color: COLORS.dimText, marginBottom: 10 }}>MATCHDAY {tournament.matchday} FIXTURES</div>
+                    <div style={{ fontSize: 16, color: COLORS.dimText, marginBottom: 14, marginTop: 24 }}>MATCHDAY {tournament.matchday} FIXTURES</div>
                     {g.matches.filter(m => m.matchday === tournament.matchday).map((m, mi) => (
-                      <div key={mi} style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 10, padding: "6px 0", fontSize: 15, color: COLORS.text }}>
-                        <span style={{ minWidth: 110, textAlign: "right", fontWeight: m.team1.name === tournament.playerTeam.name ? 700 : 400, color: m.team1.name === tournament.playerTeam.name ? COLORS.score : COLORS.text }}>{m.team1.flag} {m.team1.name}</span>
-                        <span style={{ color: COLORS.dimText, minWidth: 50, textAlign: "center", fontWeight: 700 }}>{m.played ? `${m.score1} - ${m.score2}` : "vs"}</span>
-                        <span style={{ minWidth: 110, textAlign: "left", fontWeight: m.team2.name === tournament.playerTeam.name ? 700 : 400, color: m.team2.name === tournament.playerTeam.name ? COLORS.score : COLORS.text }}>{m.team2.flag} {m.team2.name}</span>
+                      <div key={mi} style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 12, padding: "10px 0", fontSize: 16, color: COLORS.text }}>
+                        <span style={{ minWidth: 120, textAlign: "right", fontWeight: m.team1.name === tournament.playerTeam.name ? 700 : 400, color: m.team1.name === tournament.playerTeam.name ? COLORS.score : COLORS.text }}>{m.team1.flag} {m.team1.name}</span>
+                        <span style={{ color: COLORS.dimText, minWidth: 56, textAlign: "center", fontWeight: 700, fontSize: 18 }}>{m.played ? `${m.score1} - ${m.score2}` : "vs"}</span>
+                        <span style={{ minWidth: 120, textAlign: "left", fontWeight: m.team2.name === tournament.playerTeam.name ? 700 : 400, color: m.team2.name === tournament.playerTeam.name ? COLORS.score : COLORS.text }}>{m.team2.flag} {m.team2.name}</span>
                       </div>
                     ))}
                   </div>
