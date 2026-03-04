@@ -145,10 +145,54 @@ export default function SlimeSoccer() {
   const [league, setLeague] = useState("worldcup"); // "worldcup" or "pl"
   const getTeams = (lg) => lg === "pl" ? PL_TEAMS : COUNTRIES;
 
-  const [tournament, setTournament] = useState(null);
+  const WC_SAVE_KEY = "slime-soccer-wc-tournament";
+  const [tournament, setTournament] = useState(() => {
+    try {
+      const saved = localStorage.getItem(WC_SAVE_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        // Rehydrate team objects from COUNTRIES
+        const rehydrate = (name) => COUNTRIES.find(c => c.name === name);
+        if (parsed && parsed.groups) {
+          parsed.playerTeam = rehydrate(parsed.playerTeam?.name) || parsed.playerTeam;
+          parsed.groups.forEach(g => {
+            g.teams = g.teams.map(t => rehydrate(t?.name) || t);
+            g.matches.forEach(m => {
+              m.team1 = rehydrate(m.team1?.name) || m.team1;
+              m.team2 = rehydrate(m.team2?.name) || m.team2;
+            });
+          });
+          if (parsed.bracket) {
+            const rounds = ["r32", "r16", "qf", "sf", "final"];
+            rounds.forEach(r => {
+              if (parsed.bracket[r]) {
+                parsed.bracket[r] = parsed.bracket[r].map(m => {
+                  if (!m) return m;
+                  m.team1 = rehydrate(m.team1?.name) || m.team1;
+                  m.team2 = rehydrate(m.team2?.name) || m.team2;
+                  return m;
+                });
+              }
+            });
+          }
+          if (parsed.screen === "playing") parsed.screen = parsed.bracket ? "bracket" : "groups";
+          return parsed;
+        }
+      }
+    } catch {}
+    return null;
+  });
   const [showWCPrompt, setShowWCPrompt] = useState(false);
-  const tournamentRef = useRef(null);
-  const updateTournament = (t) => { tournamentRef.current = t; setTournament(t); };
+  const [showTournamentUI, setShowTournamentUI] = useState(false);
+  const tournamentRef = useRef(tournament);
+  const updateTournament = (t) => {
+    tournamentRef.current = t;
+    setTournament(t);
+    try {
+      if (t) localStorage.setItem(WC_SAVE_KEY, JSON.stringify(t));
+      else localStorage.removeItem(WC_SAVE_KEY);
+    } catch {}
+  };
 
   // Sim a match: returns [winnerScore, loserScore]
   const simScore = () => {
@@ -239,6 +283,7 @@ export default function SlimeSoccer() {
     updateTournament(t);
     setGameMode("1p");
     setGameState("menu");
+    setShowTournamentUI(true);
   };
 
   // Get the 48 WC teams for team selection
@@ -657,6 +702,7 @@ export default function SlimeSoccer() {
               updateTournament(nt);
             }
             setGameState("menu");
+            setShowTournamentUI(true);
         } else {
           setGameState("gameover");
         }
@@ -1459,7 +1505,7 @@ export default function SlimeSoccer() {
       <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&display=swap" rel="stylesheet" />
       {!(isMobile && isLandscape) && (
       <div style={{ textAlign: "center", marginBottom: 8, position: "relative", width: "100%", maxWidth: G.WIDTH + 16 }}>
-        {league === "worldcup" && gameMode === "1p" && !tournament && (gameState === "menu" || gameState === "gameover") && (
+        {league === "worldcup" && gameMode === "1p" && (gameState === "menu" || gameState === "gameover") && !showTournamentUI && (
           <button onClick={() => setShowWCPrompt(p => !p)} style={{ position: "absolute", left: 0, top: 0, background: "none", border: "none", cursor: "pointer", fontSize: 28, animation: "trophy-pulse 2s ease-in-out infinite", padding: 4, zIndex: 5 }} title="2026 World Cup">
             {"🏆"}
           </button>
@@ -1471,12 +1517,21 @@ export default function SlimeSoccer() {
       )}
 
       {/* WC Tournament prompt */}
-      {showWCPrompt && !tournament && (
+      {showWCPrompt && !showTournamentUI && (
         <div style={{ marginBottom: 8, display: "flex", flexDirection: "column", alignItems: "center", gap: 8, padding: "12px 20px", background: COLORS.ground, borderRadius: 10, border: `1px solid ${COLORS.score}44` }}>
-          <button onClick={() => { setShowWCPrompt(false); updateTournament({ screen: "select", playerTeam: null }); }} style={{ padding: "12px 32px", fontSize: 18, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: COLORS.score + "22", border: `1px solid ${COLORS.score}55`, borderRadius: 8, color: COLORS.score, cursor: "pointer", letterSpacing: 2 }}>
-            PLAY THE 2026 WORLD CUP
-          </button>
-          <div style={{ fontSize: 11, color: COLORS.dimText }}>48 teams, 12 groups, knockout rounds</div>
+          {tournament && tournament.screen !== "select" && tournament.screen !== "draw" ? (<>
+            <button onClick={() => { setShowWCPrompt(false); setShowTournamentUI(true); }} style={{ padding: "12px 32px", fontSize: 18, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: COLORS.score + "22", border: `1px solid ${COLORS.score}55`, borderRadius: 8, color: COLORS.score, cursor: "pointer", letterSpacing: 2 }}>
+              RESUME WORLD CUP
+            </button>
+            <div style={{ fontSize: 11, color: COLORS.dimText }}>
+              {tournament.playerTeam?.flag} {tournament.playerTeam?.name} - {tournament.bracket ? tournament.bracket.round.toUpperCase().replace("R", "Round of ") : `Matchday ${tournament.matchday} of 3`}
+            </div>
+          </>) : (
+            <><button onClick={() => { setShowWCPrompt(false); setShowTournamentUI(true); updateTournament({ screen: "select", playerTeam: null }); }} style={{ padding: "12px 32px", fontSize: 18, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: COLORS.score + "22", border: `1px solid ${COLORS.score}55`, borderRadius: 8, color: COLORS.score, cursor: "pointer", letterSpacing: 2 }}>
+              PLAY THE 2026 WORLD CUP
+            </button>
+            <div style={{ fontSize: 11, color: COLORS.dimText }}>48 teams, 12 groups, knockout rounds</div></>
+          )}
         </div>
       )}
 
@@ -1658,11 +1713,17 @@ export default function SlimeSoccer() {
         <div style={{ border: `2px solid ${COLORS.groundLine}33`, borderRadius: 8, overflow: "hidden", boxShadow: "0 0 40px rgba(212,168,67,0.1)", lineHeight: 0 }}>
 
       {/* Tournament UI overlay */}
-      {tournament && tournament.screen !== "playing" && gameState !== "countdown" && gameState !== "playing" && gameState !== "scored" && (
+      {tournament && showTournamentUI && tournament.screen !== "playing" && gameState !== "countdown" && gameState !== "playing" && gameState !== "scored" && (
         <div style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, zIndex: 50, background: COLORS.bg, display: "flex", flexDirection: "column", alignItems: "center", overflow: "auto", padding: "20px 10px 20px", paddingTop: isMobile ? 70 : 80, fontFamily: "Oswald, sans-serif" }}>
-          {/* Exit tournament button */}
-          <button onClick={() => { updateTournament(null); setShowWCPrompt(false); }} style={{ alignSelf: "flex-start", background: "none", border: "none", color: COLORS.dimText, fontFamily: "Oswald, sans-serif", fontSize: 14, cursor: "pointer", letterSpacing: 2, padding: "4px 8px", marginBottom: 8 }}>
-            {"← EXIT TOURNAMENT"}
+          {/* Exit/back button */}
+          <button onClick={() => {
+            if (tournament.screen === "select" || tournament.screen === "draw") {
+              updateTournament(null);
+            }
+            setShowTournamentUI(false);
+            setShowWCPrompt(false);
+          }} style={{ alignSelf: "flex-start", background: "none", border: "none", color: COLORS.dimText, fontFamily: "Oswald, sans-serif", fontSize: 14, cursor: "pointer", letterSpacing: 2, padding: "4px 8px", marginBottom: 8 }}>
+            {"← BACK TO MENU"}
           </button>
 
           {/* TEAM SELECTION */}
@@ -1823,7 +1884,7 @@ export default function SlimeSoccer() {
                     VIEW KNOCKOUT BRACKET
                   </button>
                 ) : (
-                  <button onClick={() => updateTournament(null)} style={{ padding: "12px 36px", fontSize: 16, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: COLORS.ground, border: `1px solid ${COLORS.groundLine}55`, borderRadius: 8, color: COLORS.text, cursor: "pointer" }}>
+                  <button onClick={() => { updateTournament(null); setShowTournamentUI(false); }} style={{ padding: "12px 36px", fontSize: 16, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: COLORS.ground, border: `1px solid ${COLORS.groundLine}55`, borderRadius: 8, color: COLORS.text, cursor: "pointer" }}>
                     BACK TO MENU
                   </button>
                 )}
@@ -1876,7 +1937,7 @@ export default function SlimeSoccer() {
               <div style={{ fontSize: 48 }}>{tournament.playerTeam.flag}</div>
               <div style={{ fontSize: 28, fontWeight: 700, color: "#ff6a6a", marginTop: 12 }}>ELIMINATED</div>
               <div style={{ fontSize: 16, color: COLORS.dimText, marginTop: 8 }}>{tournament.playerTeam.name} knocked out in the {({ r32: "Round of 32", r16: "Round of 16", qf: "Quarter-Finals", sf: "Semi-Finals", final: "Final" })[tournament.bracket.round]}</div>
-              <button onClick={() => updateTournament(null)} style={{ marginTop: 24, padding: "12px 36px", fontSize: 16, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: COLORS.ground, border: `1px solid ${COLORS.groundLine}55`, borderRadius: 8, color: COLORS.text, cursor: "pointer" }}>
+              <button onClick={() => { updateTournament(null); setShowTournamentUI(false); }} style={{ marginTop: 24, padding: "12px 36px", fontSize: 16, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: COLORS.ground, border: `1px solid ${COLORS.groundLine}55`, borderRadius: 8, color: COLORS.text, cursor: "pointer" }}>
                 BACK TO MENU
               </button>
             </div>
@@ -1888,10 +1949,17 @@ export default function SlimeSoccer() {
               <div style={{ fontSize: 64 }}>{tournament.playerTeam.flag}</div>
               <div style={{ fontSize: 36, fontWeight: 700, color: COLORS.score, marginTop: 12 }}>2026 WORLD CHAMPIONS!</div>
               <div style={{ fontSize: 18, color: COLORS.text, marginTop: 8 }}>{tournament.playerTeam.name} wins the 2026 Slime World Cup!</div>
-              <button onClick={() => updateTournament(null)} style={{ marginTop: 24, padding: "12px 36px", fontSize: 16, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: COLORS.score + "22", border: `1px solid ${COLORS.score}55`, borderRadius: 8, color: COLORS.score, cursor: "pointer" }}>
+              <button onClick={() => { updateTournament(null); setShowTournamentUI(false); }} style={{ marginTop: 24, padding: "12px 36px", fontSize: 16, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: COLORS.score + "22", border: `1px solid ${COLORS.score}55`, borderRadius: 8, color: COLORS.score, cursor: "pointer" }}>
                 BACK TO MENU
               </button>
             </div>
+          )}
+
+          {/* Reset tournament */}
+          {tournament.screen !== "select" && tournament.screen !== "draw" && tournament.screen !== "eliminated" && tournament.screen !== "champion" && (
+            <button onClick={() => { if (window.confirm("Reset your World Cup tournament? All progress will be lost.")) { updateTournament(null); setShowTournamentUI(false); } }} style={{ marginTop: 40, padding: "8px 24px", fontSize: 12, fontFamily: "Oswald, sans-serif", background: "none", border: `1px solid ${COLORS.groundLine}33`, borderRadius: 6, color: COLORS.dimText, cursor: "pointer", letterSpacing: 1, opacity: 0.6 }}>
+              RESET TOURNAMENT
+            </button>
           )}
         </div>
       )}
