@@ -2416,22 +2416,28 @@ export default function SlimeSoccer() {
 
           {/* CHAMPION */}
           {tournament.screen === "champion" && (
-            <div style={{ textAlign: "center" }}>
-              <div style={{ padding: "30px 0 0", display: "flex", flexDirection: "column", alignItems: "center" }}>
-                <div style={{ fontSize: 50, animation: "trophy-drop 1.5s ease-out forwards", position: "relative", zIndex: 2 }}>{"🏆"}</div>
-                <style>{`@keyframes trophy-drop { 0% { top: -80px; opacity: 0; } 30% { top: 0px; opacity: 1; } 50% { top: -15px; } 65% { top: 0px; } 80% { top: -5px; } 100% { top: 0px; opacity: 1; } }`}</style>
+            <div style={{ textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center", minHeight: "80vh", justifyContent: "space-between" }}>
+              <div>
+                <div style={{ height: 20 }}></div>
+                <div style={{ fontSize: 64 }}>{tournament.playerTeam.flag}</div>
+                <div style={{ height: 30 }}></div>
+                <div style={{ fontSize: isMobile ? 24 : 36, fontWeight: 700, color: COLORS.score }}>WORLD CHAMPIONS!</div>
+                <div style={{ height: 16 }}></div>
+                <div style={{ fontSize: 18, color: COLORS.text }}>{tournament.playerTeam.name} wins the Slime Cup!</div>
+              </div>
+              <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                <div style={{ fontSize: 50, animation: "trophy-rise 1.8s ease-out forwards", position: "relative", zIndex: 2 }}>{"🏆"}</div>
+                <style>{`@keyframes trophy-rise { 0% { bottom: -120px; opacity: 0; } 40% { bottom: 0px; opacity: 1; } 55% { bottom: 8px; } 65% { bottom: 0px; } 80% { bottom: 3px; } 100% { bottom: 0px; opacity: 1; } }`}</style>
                 <canvas ref={drawChampSlime} width={160} height={100} style={{ marginTop: -46, position: "relative", zIndex: 1 }}></canvas>
               </div>
-              <div style={{ height: 50 }}></div>
-              <div style={{ fontSize: 64 }}>{tournament.playerTeam.flag}</div>
-              <div style={{ height: 50 }}></div>
-              <div style={{ fontSize: isMobile ? 24 : 36, fontWeight: 700, color: COLORS.score }}>WORLD CHAMPIONS!</div>
-              <div style={{ height: 30 }}></div>
-              <div style={{ fontSize: 18, color: COLORS.text }}>{tournament.playerTeam.name} wins the Slime Cup!</div>
-              <div style={{ height: 60 }}></div>
-              <button onClick={() => { updateTournament(null); setShowTournamentUIWrapped(false); }} style={{ padding: "12px 36px", fontSize: 16, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: COLORS.score + "22", border: `1px solid ${COLORS.score}55`, borderRadius: 8, color: COLORS.score, cursor: "pointer" }}>
-                BACK TO MENU
-              </button>
+              <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12, paddingBottom: 30 }}>
+                <button onClick={() => { setShowCabinet(true); setShowTournamentUIWrapped(false); updateTournament(null); }} style={{ padding: "12px 36px", fontSize: 16, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: COLORS.score + "22", border: `1px solid ${COLORS.score}55`, borderRadius: 8, color: COLORS.score, cursor: "pointer" }}>
+                  TROPHY CABINET
+                </button>
+                <button onClick={() => { updateTournament(null); setShowTournamentUIWrapped(false); }} style={{ padding: "10px 30px", fontSize: 14, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: "none", border: `1px solid ${COLORS.groundLine}55`, borderRadius: 8, color: COLORS.dimText, cursor: "pointer" }}>
+                  BACK TO MENU
+                </button>
+              </div>
             </div>
           )}
 
