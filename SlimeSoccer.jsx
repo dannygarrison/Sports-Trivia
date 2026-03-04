@@ -1748,8 +1748,8 @@ export default function SlimeSoccer() {
           {/* GROUP DRAW */}
           {tournament.screen === "draw" && (
             <div style={{ maxWidth: 800, width: "100%", textAlign: "center" }}>
-              <div style={{ fontSize: 28, fontWeight: 700, color: COLORS.score, marginBottom: 10 }}>2026 WORLD CUP GROUPS</div>
-              <div style={{ fontSize: 14, color: COLORS.dimText, marginBottom: 16 }}>48 teams in 12 groups</div>
+              <div style={{ fontSize: 28, fontWeight: 700, color: COLORS.score, marginBottom: 16, lineHeight: 1.3 }}>2026 WORLD CUP GROUPS</div>
+              <div style={{ fontSize: 15, color: COLORS.dimText, marginBottom: 24, lineHeight: 1.3 }}>48 teams in 12 groups</div>
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))", gap: 12 }}>
                 {tournament.groups.map((g, gi) => {
                   const isPlayerGroup = gi === tournament.playerGroup;
@@ -1871,7 +1871,7 @@ export default function SlimeSoccer() {
             const playerIn = qualified.some(q => q.team.name === tournament.playerTeam.name);
             return (
               <div style={{ maxWidth: 800, width: "100%", textAlign: "center" }}>
-                <div style={{ fontSize: 28, fontWeight: 700, color: COLORS.score, marginBottom: 10 }}>GROUP STAGE COMPLETE</div>
+                <div style={{ fontSize: 28, fontWeight: 700, color: COLORS.score, marginBottom: 16, lineHeight: 1.3 }}>GROUP STAGE COMPLETE</div>
                 <div style={{ fontSize: 16, color: playerIn ? "#6aff6a" : "#ff6a6a", fontWeight: 700, marginBottom: 16 }}>
                   {playerIn ? `${tournament.playerTeam.flag} ${tournament.playerTeam.name.toUpperCase()} QUALIFIED!` : `${tournament.playerTeam.flag} ${tournament.playerTeam.name.toUpperCase()} ELIMINATED`}
                 </div>
@@ -1901,7 +1901,7 @@ export default function SlimeSoccer() {
             const opp = pm ? (pm.team1.name === tournament.playerTeam.name ? pm.team2 : pm.team1) : null;
             return (
               <div style={{ maxWidth: 800, width: "100%", textAlign: "center" }}>
-                <div style={{ fontSize: 28, fontWeight: 700, color: COLORS.score, marginBottom: 10 }}>{roundLabels[b.round]}</div>
+                <div style={{ fontSize: 28, fontWeight: 700, color: COLORS.score, marginBottom: 16, lineHeight: 1.3 }}>{roundLabels[b.round]}</div>
                 <div style={{ fontSize: 13, color: COLORS.dimText, marginBottom: 16 }}>
                   {curMatches.length} matches this round
                 </div>
