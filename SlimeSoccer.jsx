@@ -747,11 +747,17 @@ export default function SlimeSoccer() {
 
     targetX = clamp(targetX, minX, maxX);
 
-    const deadzone = 8;
+    const deadzone = 14;
     const speed = G.SLIME_SPEED * style.speedMult;
-    if (slime.x < targetX - deadzone) slime.vx = speed;
-    else if (slime.x > targetX + deadzone) slime.vx = -speed;
-    else slime.vx = 0;
+    const dist = targetX - slime.x;
+    if (Math.abs(dist) > deadzone) {
+      // Ease into target: full speed when far, reduced when close
+      const rampDist = 40;
+      const factor = Math.min(1, Math.abs(dist) / rampDist);
+      slime.vx = Math.sign(dist) * speed * (0.4 + 0.6 * factor);
+    } else {
+      slime.vx = 0;
+    }
 
     // Jump: ONLY when on correct side and well positioned to hit forward
     const absDx = Math.abs(ball.x - slime.x);
@@ -1328,8 +1334,8 @@ export default function SlimeSoccer() {
         ctx.globalAlpha = 0.8;
         ctx.beginPath();
         ctx.moveTo(0, -s.r * 1.5);
-        ctx.lineTo(s.r * 1.5, -s.r * 1.5);
-        ctx.lineTo(s.r * 1.5, s.r * 1.5);
+        ctx.lineTo(-s.r * 1.5, -s.r * 1.5);
+        ctx.lineTo(-s.r * 1.5, s.r * 1.5);
         ctx.lineTo(0, s.r * 1.5);
         ctx.closePath();
         ctx.fill();
