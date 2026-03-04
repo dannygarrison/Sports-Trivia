@@ -1714,7 +1714,7 @@ export default function SlimeSoccer() {
 
       {/* Tournament UI overlay */}
       {tournament && showTournamentUI && tournament.screen !== "playing" && gameState !== "countdown" && gameState !== "playing" && gameState !== "scored" && (
-        <div style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, zIndex: 50, background: COLORS.bg, display: "flex", flexDirection: "column", alignItems: "center", overflow: "auto", padding: "20px 10px 20px", paddingTop: isMobile ? 70 : 80, fontFamily: "Oswald, sans-serif" }}>
+        <div style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, zIndex: 50, background: COLORS.bg, display: "flex", flexDirection: "column", alignItems: "center", overflow: "auto", paddingTop: isMobile ? 20 : 30, paddingLeft: 10, paddingRight: 10, paddingBottom: 20, fontFamily: "Oswald, sans-serif" }}>
           {/* Exit/back button */}
           <button onClick={() => {
             if (tournament.screen === "select" || tournament.screen === "draw") {
@@ -1729,8 +1729,8 @@ export default function SlimeSoccer() {
           {/* TEAM SELECTION */}
           {tournament.screen === "select" && (
             <div style={{ maxWidth: 600, width: "100%", textAlign: "center" }}>
-              <div style={{ fontSize: 28, fontWeight: 700, color: COLORS.score, marginBottom: 10 }}>2026 WORLD CUP</div>
-              <div style={{ fontSize: 14, color: COLORS.dimText, marginBottom: 20 }}>Choose your team for the tournament</div>
+              <div style={{ fontSize: 28, fontWeight: 700, color: COLORS.score, marginBottom: 16, lineHeight: 1.3 }}>2026 WORLD CUP</div>
+              <div style={{ fontSize: 15, color: COLORS.dimText, marginBottom: 28, lineHeight: 1.3 }}>Choose your team for the tournament</div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: 8, justifyContent: "center" }}>
                 {getWCTeams().map(c => (
                   <button key={c.name} onClick={() => initTournament(c)} style={{
