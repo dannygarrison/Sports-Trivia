@@ -184,6 +184,7 @@ export default function SlimeSoccer() {
   });
   const [showWCPrompt, setShowWCPrompt] = useState(false);
   const [showTournamentUI, setShowTournamentUI] = useState(false);
+  const [resetConfirm, setResetConfirm] = useState(false);
   const tournamentRef = useRef(tournament);
   const updateTournament = (t) => {
     tournamentRef.current = t;
@@ -1972,9 +1973,25 @@ export default function SlimeSoccer() {
 
           {/* Reset tournament */}
           {tournament.screen !== "select" && tournament.screen !== "draw" && tournament.screen !== "eliminated" && tournament.screen !== "champion" && (
-            <button onClick={() => { if (window.confirm("Reset your World Cup tournament? All progress will be lost.")) { updateTournament(null); setShowTournamentUI(false); } }} style={{ marginTop: 40, padding: "8px 24px", fontSize: 12, fontFamily: "Oswald, sans-serif", background: "none", border: `1px solid ${COLORS.groundLine}33`, borderRadius: 6, color: COLORS.dimText, cursor: "pointer", letterSpacing: 1, opacity: 0.6 }}>
-              RESET TOURNAMENT
-            </button>
+            <div style={{ marginTop: 40, textAlign: "center" }}>
+              {!resetConfirm ? (
+                <button onClick={() => setResetConfirm(true)} style={{ padding: "8px 24px", fontSize: 12, fontFamily: "Oswald, sans-serif", background: "none", border: `1px solid ${COLORS.groundLine}33`, borderRadius: 6, color: COLORS.dimText, cursor: "pointer", letterSpacing: 1, opacity: 0.6 }}>
+                  RESET TOURNAMENT
+                </button>
+              ) : (
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10 }}>
+                  <div style={{ fontSize: 13, color: "#ff6a6a", fontWeight: 700 }}>Reset all tournament progress?</div>
+                  <div style={{ display: "flex", gap: 12 }}>
+                    <button onClick={() => { updateTournament(null); setShowTournamentUI(false); setResetConfirm(false); }} style={{ padding: "8px 20px", fontSize: 13, fontFamily: "Oswald, sans-serif", background: "#ff6a6a22", border: "1px solid #ff6a6a55", borderRadius: 6, color: "#ff6a6a", cursor: "pointer", fontWeight: 700 }}>
+                      YES, RESET
+                    </button>
+                    <button onClick={() => setResetConfirm(false)} style={{ padding: "8px 20px", fontSize: 13, fontFamily: "Oswald, sans-serif", background: "none", border: `1px solid ${COLORS.groundLine}55`, borderRadius: 6, color: COLORS.dimText, cursor: "pointer" }}>
+                      CANCEL
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
           )}
           </div>
         </div>
