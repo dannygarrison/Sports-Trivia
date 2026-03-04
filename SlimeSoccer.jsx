@@ -2428,7 +2428,7 @@ export default function SlimeSoccer() {
               <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
                 <div style={{ fontSize: 50, animation: "trophy-rise 3s ease-out forwards", position: "relative", zIndex: 2 }}>{"🏆"}</div>
                 <style>{`@keyframes trophy-rise { 0% { bottom: -120px; opacity: 0; } 50% { bottom: 0px; opacity: 1; } 65% { bottom: 8px; } 75% { bottom: 0px; } 88% { bottom: 3px; } 100% { bottom: 0px; opacity: 1; } }`}</style>
-                <canvas ref={drawChampSlime} width={160} height={100} style={{ marginTop: -54, position: "relative", zIndex: 1 }}></canvas>
+                <canvas ref={drawChampSlime} width={160} height={100} style={{ marginTop: -66, position: "relative", zIndex: 1 }}></canvas>
               </div>
               <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12, paddingBottom: 30 }}>
                 <button onClick={() => { setShowCabinet(true); setShowTournamentUIWrapped(false); updateTournament(null); }} style={{ padding: "12px 36px", fontSize: 16, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: COLORS.score + "22", border: `1px solid ${COLORS.score}55`, borderRadius: 8, color: COLORS.score, cursor: "pointer" }}>
