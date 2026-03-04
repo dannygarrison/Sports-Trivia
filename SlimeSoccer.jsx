@@ -1550,7 +1550,7 @@ export default function SlimeSoccer() {
                 )}
                 <div style={{ height: 1, background: `${COLORS.groundLine}33`, margin: "2px 8px" }}></div>
                 <button onClick={() => { setShowTrophyMenu(false); setShowCabinet(true); }} style={{ padding: "10px 14px", fontSize: 14, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: "none", border: "none", borderRadius: 6, color: COLORS.text, cursor: "pointer", textAlign: "left", letterSpacing: 1 }}>
-                  {"🏆"} TROPHY CABINET {trophyCabinet.length > 0 ? `(${trophyCabinet.length})` : ""}
+                  TROPHY CABINET {trophyCabinet.length > 0 ? `(${trophyCabinet.length})` : ""}
                 </button>
               </div>
             </>)}
@@ -1570,7 +1570,7 @@ export default function SlimeSoccer() {
               {"← BACK TO MENU"}
             </button>
             <div style={{ padding: "30px 0 40px" }}>
-              <div style={{ fontSize: isMobile ? 20 : 26, fontWeight: 700, color: COLORS.score }}>{"🏆"} TROPHY CABINET {"🏆"}</div>
+              <div style={{ fontSize: isMobile ? 20 : 26, fontWeight: 700, color: COLORS.score }}>TROPHY CABINET</div>
               <div style={{ height: 30 }}></div>
               <div style={{ fontSize: 14, color: COLORS.dimText }}>Your World Cup victories</div>
             </div>
