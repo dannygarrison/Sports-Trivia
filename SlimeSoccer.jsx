@@ -182,7 +182,18 @@ export default function SlimeSoccer() {
     } catch {}
     return null;
   });
-  const [showWCPrompt, setShowWCPrompt] = useState(false);
+  const [showTrophyMenu, setShowTrophyMenu] = useState(false);
+  const [showCabinet, setShowCabinet] = useState(false);
+  const CABINET_KEY = "slime-soccer-trophy-cabinet";
+  const [trophyCabinet, setTrophyCabinet] = useState(() => {
+    try { return JSON.parse(localStorage.getItem(CABINET_KEY)) || []; } catch { return []; }
+  });
+  const saveTrophy = (team) => {
+    const entry = { name: team.name, flag: team.flag, date: new Date().toISOString().split("T")[0] };
+    const updated = [...trophyCabinet, entry];
+    setTrophyCabinet(updated);
+    try { localStorage.setItem(CABINET_KEY, JSON.stringify(updated)); } catch {}
+  };
   const [showTournamentUI, setShowTournamentUI] = useState(false);
   const showTournamentUIRef = useRef(false);
   const setShowTournamentUIWrapped = (v) => { showTournamentUIRef.current = v; setShowTournamentUI(v); };
@@ -696,6 +707,7 @@ export default function SlimeSoccer() {
               } else if (round === "final") {
                 nt.screen = "champion";
                 nt.champion = true;
+                saveTrophy(nt.playerTeam);
               } else {
                 nt.bracket._playerTeam = nt.playerTeam.name;
                 const newBracket = advanceBracketRound(nt.bracket);
@@ -1519,10 +1531,30 @@ export default function SlimeSoccer() {
       <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&display=swap" rel="stylesheet" />
       {!(isMobile && isLandscape) && (
       <div style={{ textAlign: "center", marginBottom: 8, position: "relative", width: "100%", maxWidth: G.WIDTH + 16 }}>
-        {league === "worldcup" && gameMode === "1p" && (gameState === "menu" || gameState === "gameover") && !showTournamentUI && (
-          <button onClick={() => setShowWCPrompt(p => !p)} style={{ position: "absolute", left: 0, top: 0, background: "none", border: "none", cursor: "pointer", fontSize: 28, animation: "trophy-pulse 2s ease-in-out infinite", padding: 4, zIndex: 5 }} title="2026 World Cup">
-            {"🏆"}
-          </button>
+        {league === "worldcup" && gameMode === "1p" && (gameState === "menu" || gameState === "gameover") && !showTournamentUI && !showCabinet && (
+          <div style={{ position: "absolute", left: 0, top: 0, zIndex: 10 }}>
+            <button onClick={() => setShowTrophyMenu(p => !p)} style={{ background: "none", border: "none", cursor: "pointer", fontSize: 28, animation: "trophy-pulse 2s ease-in-out infinite", padding: 4 }} title="World Cup Menu">
+              {"🏆"}
+            </button>
+            {showTrophyMenu && (<>
+              <div onClick={() => setShowTrophyMenu(false)} style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, zIndex: 8 }}></div>
+              <div style={{ position: "absolute", top: 40, left: 0, background: COLORS.ground, border: `1px solid ${COLORS.score}44`, borderRadius: 8, padding: 6, display: "flex", flexDirection: "column", gap: 4, minWidth: 200, boxShadow: "0 4px 16px rgba(0,0,0,0.5)", zIndex: 9 }}>
+                {tournament && tournament.screen !== "select" && tournament.screen !== "draw" ? (
+                  <button onClick={() => { setShowTrophyMenu(false); setShowTournamentUIWrapped(true); }} style={{ padding: "10px 14px", fontSize: 14, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: "none", border: "none", borderRadius: 6, color: COLORS.score, cursor: "pointer", textAlign: "left", letterSpacing: 1 }}>
+                    {"▶"} RESUME WORLD CUP
+                  </button>
+                ) : (
+                  <button onClick={() => { setShowTrophyMenu(false); setShowTournamentUIWrapped(true); updateTournament({ screen: "select", playerTeam: null }); }} style={{ padding: "10px 14px", fontSize: 14, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: "none", border: "none", borderRadius: 6, color: COLORS.score, cursor: "pointer", textAlign: "left", letterSpacing: 1 }}>
+                    {"⚽"} PLAY 2026 WORLD CUP
+                  </button>
+                )}
+                <div style={{ height: 1, background: `${COLORS.groundLine}33`, margin: "2px 8px" }}></div>
+                <button onClick={() => { setShowTrophyMenu(false); setShowCabinet(true); }} style={{ padding: "10px 14px", fontSize: 14, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: "none", border: "none", borderRadius: 6, color: COLORS.text, cursor: "pointer", textAlign: "left", letterSpacing: 1 }}>
+                  {"🏆"} TROPHY CABINET {trophyCabinet.length > 0 ? `(${trophyCabinet.length})` : ""}
+                </button>
+              </div>
+            </>)}
+          </div>
         )}
         <div style={{ fontSize: 11, letterSpacing: 4, color: COLORS.dimText, textTransform: "uppercase", marginBottom: 2 }}>TrivialSports.com</div>
         <h1 style={{ fontSize: 26, fontWeight: 700, color: COLORS.score, margin: 0, lineHeight: 1 }}>SLIME ⚽ SOCCER</h1>
@@ -1530,22 +1562,35 @@ export default function SlimeSoccer() {
       </div>
       )}
 
-      {/* WC Tournament prompt */}
-      {showWCPrompt && !showTournamentUI && (
-        <div style={{ marginBottom: 8, display: "flex", flexDirection: "column", alignItems: "center", gap: 8, padding: "12px 20px", background: COLORS.ground, borderRadius: 10, border: `1px solid ${COLORS.score}44` }}>
-          {tournament && tournament.screen !== "select" && tournament.screen !== "draw" ? (<>
-            <button onClick={() => { setShowWCPrompt(false); setShowTournamentUIWrapped(true); }} style={{ padding: "12px 32px", fontSize: 18, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: COLORS.score + "22", border: `1px solid ${COLORS.score}55`, borderRadius: 8, color: COLORS.score, cursor: "pointer", letterSpacing: 2 }}>
-              RESUME WORLD CUP
+      {/* Trophy Cabinet */}
+      {showCabinet && (
+        <div style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, zIndex: 999, background: COLORS.bg, overflow: "auto", paddingTop: 20, paddingLeft: 10, paddingRight: 10, paddingBottom: 40, fontFamily: "Oswald, sans-serif" }}>
+          <div style={{ maxWidth: 600, margin: "0 auto", textAlign: "center" }}>
+            <button onClick={() => setShowCabinet(false)} style={{ background: "none", border: "none", color: COLORS.dimText, fontFamily: "Oswald, sans-serif", fontSize: 14, cursor: "pointer", letterSpacing: 2, padding: "4px 8px", marginBottom: 8, display: "block", textAlign: "left" }}>
+              {"← BACK TO MENU"}
             </button>
-            <div style={{ fontSize: 11, color: COLORS.dimText }}>
-              {tournament.playerTeam?.flag} {tournament.playerTeam?.name} - {tournament.bracket ? tournament.bracket.round.toUpperCase().replace("R", "Round of ") : `Matchday ${tournament.matchday} of 3`}
+            <div style={{ padding: "30px 0 40px" }}>
+              <div style={{ fontSize: isMobile ? 20 : 26, fontWeight: 700, color: COLORS.score }}>{"🏆"} TROPHY CABINET {"🏆"}</div>
+              <div style={{ height: 30 }}></div>
+              <div style={{ fontSize: 14, color: COLORS.dimText }}>Your World Cup victories</div>
             </div>
-          </>) : (
-            <><button onClick={() => { setShowWCPrompt(false); setShowTournamentUIWrapped(true); updateTournament({ screen: "select", playerTeam: null }); }} style={{ padding: "12px 32px", fontSize: 18, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: COLORS.score + "22", border: `1px solid ${COLORS.score}55`, borderRadius: 8, color: COLORS.score, cursor: "pointer", letterSpacing: 2 }}>
-              PLAY THE 2026 WORLD CUP
-            </button>
-            <div style={{ fontSize: 11, color: COLORS.dimText }}>48 teams, 12 groups, knockout rounds</div></>
-          )}
+            {trophyCabinet.length === 0 ? (
+              <div style={{ padding: "40px 20px", color: COLORS.dimText, fontSize: 16 }}>
+                No trophies yet. Win the 2026 World Cup to add your first!
+              </div>
+            ) : (
+              <div style={{ display: "grid", gridTemplateColumns: `repeat(${isMobile ? 3 : 4}, 1fr)`, gap: 12 }}>
+                {trophyCabinet.map((t, i) => (
+                  <div key={i} style={{ background: COLORS.ground, border: `1px solid ${COLORS.score}33`, borderRadius: 10, padding: "16px 8px", display: "flex", flexDirection: "column", alignItems: "center", gap: 6 }}>
+                    <div style={{ fontSize: 32 }}>{"🏆"}</div>
+                    <div style={{ fontSize: 28 }}>{t.flag}</div>
+                    <div style={{ fontSize: 11, color: COLORS.text, fontWeight: 700, lineHeight: 1.2 }}>{t.name}</div>
+                    <div style={{ fontSize: 10, color: COLORS.dimText }}>{t.date}</div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       )}
 
@@ -1736,7 +1781,7 @@ export default function SlimeSoccer() {
               updateTournament(null);
             }
             setShowTournamentUIWrapped(false);
-            setShowWCPrompt(false);
+            setShowTrophyMenu(false);
           }} style={{ background: "none", border: "none", color: COLORS.dimText, fontFamily: "Oswald, sans-serif", fontSize: 14, cursor: "pointer", letterSpacing: 2, padding: "4px 8px", marginBottom: 8, display: "block", textAlign: "left" }}>
             {"← BACK TO MENU"}
           </button>
