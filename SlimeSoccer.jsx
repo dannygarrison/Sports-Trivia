@@ -964,21 +964,28 @@ export default function SlimeSoccer() {
       ctx.fillStyle = grad;
       ctx.fillRect(s.x - s.r, s.y - s.r, s.r * 2, s.r);
 
-      // Checkerboard pattern overlay
+      // Checkerboard pattern overlay (angled)
       if (country.pattern === "checkerboard") {
-        const size = 12;
-        const startX = s.x - s.r;
-        const startY = s.y - s.r;
-        for (let row = 0; row < Math.ceil(s.r / size); row++) {
-          for (let col = 0; col < Math.ceil(s.r * 2 / size); col++) {
+        const size = 18;
+        const angle = -0.15;
+        ctx.save();
+        ctx.translate(s.x, s.y - s.r / 2);
+        ctx.rotate(angle);
+        const startX = -s.r - size * 2;
+        const startY = -s.r - size * 2;
+        const cols = Math.ceil((s.r * 2 + size * 4) / size);
+        const rows = Math.ceil((s.r * 2 + size * 4) / size);
+        ctx.fillStyle = country.patternColor2 || "#cc0000";
+        ctx.globalAlpha = 0.85;
+        for (let row = 0; row < rows; row++) {
+          for (let col = 0; col < cols; col++) {
             if ((row + col) % 2 === 0) {
-              ctx.fillStyle = country.patternColor2 || "#ffffff";
-              ctx.globalAlpha = 0.8;
               ctx.fillRect(startX + col * size, startY + row * size, size, size);
             }
           }
         }
         ctx.globalAlpha = 1.0;
+        ctx.restore();
         const sheen = ctx.createRadialGradient(s.x - 8, s.y - 18, 4, s.x, s.y, s.r);
         sheen.addColorStop(0, country.highlight + "55");
         sheen.addColorStop(1, "transparent");
