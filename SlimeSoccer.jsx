@@ -1142,6 +1142,17 @@ export default function SlimeSoccer() {
     ctx.fillText(c1.name.toUpperCase(), G.WIDTH / 2 - 55, 64);
     ctx.fillText(c2.name.toUpperCase(), G.WIDTH / 2 + 55, 64);
 
+    // Tournament round label
+    const t = tournamentRef.current;
+    if (t && t.screen === "playing") {
+      ctx.font = "bold 10px Oswald, sans-serif";
+      ctx.fillStyle = COLORS.score + "88";
+      const roundText = t.bracket
+        ? ({ r32: "ROUND OF 32", r16: "ROUND OF 16", qf: "QUARTERFINAL", sf: "SEMIFINAL", final: "FINAL" })[t.bracket.round] || ""
+        : `GROUP ${t.groups[t.playerGroup].name} - MATCHDAY ${t.matchday}`;
+      ctx.fillText(roundText, G.WIDTH / 2, 78);
+    }
+
     // Goal celebration overlay
     const celeb = goalCelebRef.current;
     if (celeb && celeb.timer > 0) {
@@ -1889,9 +1900,12 @@ export default function SlimeSoccer() {
             const playerIn = qualified.some(q => q.team.name === tournament.playerTeam.name);
             return (
               <div style={{ maxWidth: 800, width: "100%", textAlign: "center" }}>
-                <div style={{ fontSize: isMobile ? 22 : 28, fontWeight: 700, color: COLORS.score, marginBottom: 16 }}>GROUP STAGE COMPLETE</div>
-                <div style={{ fontSize: 16, color: playerIn ? "#6aff6a" : "#ff6a6a", fontWeight: 700, marginBottom: 16 }}>
-                  {playerIn ? `${tournament.playerTeam.flag} ${tournament.playerTeam.name.toUpperCase()} QUALIFIED!` : `${tournament.playerTeam.flag} ${tournament.playerTeam.name.toUpperCase()} ELIMINATED`}
+                <div style={{ padding: "30px 0 40px" }}>
+                  <div style={{ fontSize: isMobile ? 22 : 28, fontWeight: 700, color: COLORS.score }}>GROUP STAGE COMPLETE</div>
+                  <div style={{ height: 30 }}></div>
+                  <div style={{ fontSize: 18, color: playerIn ? "#6aff6a" : "#ff6a6a", fontWeight: 700 }}>
+                    {playerIn ? `${tournament.playerTeam.flag} ${tournament.playerTeam.name.toUpperCase()} QUALIFIED!` : `${tournament.playerTeam.flag} ${tournament.playerTeam.name.toUpperCase()} ELIMINATED`}
+                  </div>
                 </div>
                 {playerIn ? (
                   <button onClick={() => {
@@ -1919,9 +1933,12 @@ export default function SlimeSoccer() {
             const opp = pm ? (pm.team1.name === tournament.playerTeam.name ? pm.team2 : pm.team1) : null;
             return (
               <div style={{ maxWidth: 800, width: "100%", textAlign: "center" }}>
-                <div style={{ fontSize: isMobile ? 22 : 28, fontWeight: 700, color: COLORS.score, marginBottom: 16 }}>{roundLabels[b.round]}</div>
-                <div style={{ fontSize: 13, color: COLORS.dimText, marginBottom: 16 }}>
-                  {curMatches.length} matches this round
+                <div style={{ padding: "30px 0 40px" }}>
+                  <div style={{ fontSize: isMobile ? 22 : 28, fontWeight: 700, color: COLORS.score }}>{roundLabels[b.round]}</div>
+                  <div style={{ height: 30 }}></div>
+                  <div style={{ fontSize: 13, color: COLORS.dimText }}>
+                    {curMatches.length} matches this round
+                  </div>
                 </div>
                 <div style={{ display: "flex", flexDirection: "column", gap: 6, alignItems: "center", marginBottom: 16 }}>
                   {curMatches.map((m, mi) => {
