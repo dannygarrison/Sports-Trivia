@@ -1714,7 +1714,8 @@ export default function SlimeSoccer() {
 
       {/* Tournament UI overlay */}
       {tournament && showTournamentUI && tournament.screen !== "playing" && gameState !== "countdown" && gameState !== "playing" && gameState !== "scored" && (
-        <div style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, zIndex: 999, background: COLORS.bg, display: "flex", flexDirection: "column", alignItems: "center", overflow: "auto", paddingTop: 80, paddingLeft: 10, paddingRight: 10, paddingBottom: 20, fontFamily: "Oswald, sans-serif" }}>
+        <div style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, zIndex: 999, background: COLORS.bg, overflow: "auto", paddingTop: 20, paddingLeft: 10, paddingRight: 10, paddingBottom: 40, fontFamily: "Oswald, sans-serif" }}>
+          <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center" }}>
           {/* Exit/back button */}
           <button onClick={() => {
             if (tournament.screen === "select" || tournament.screen === "draw") {
@@ -1722,15 +1723,18 @@ export default function SlimeSoccer() {
             }
             setShowTournamentUI(false);
             setShowWCPrompt(false);
-          }} style={{ alignSelf: "flex-start", background: "none", border: "none", color: COLORS.dimText, fontFamily: "Oswald, sans-serif", fontSize: 14, cursor: "pointer", letterSpacing: 2, padding: "4px 8px", marginBottom: 8 }}>
+          }} style={{ background: "none", border: "none", color: COLORS.dimText, fontFamily: "Oswald, sans-serif", fontSize: 14, cursor: "pointer", letterSpacing: 2, padding: "4px 8px", marginBottom: 8, display: "block", textAlign: "left" }}>
             {"← BACK TO MENU"}
           </button>
 
           {/* TEAM SELECTION */}
           {tournament.screen === "select" && (
-            <div style={{ maxWidth: 600, width: "100%", textAlign: "center" }}>
-              <div style={{ fontSize: isMobile ? 20 : 26, fontWeight: 700, color: COLORS.score, marginTop: 10, marginBottom: 14 }}>{"🏆"} 2026 WORLD CUP {"🏆"}</div>
-              <div style={{ fontSize: 14, color: COLORS.dimText, marginBottom: 24 }}>Choose your team for the tournament</div>
+            <div style={{ maxWidth: 600, width: "100%", textAlign: "center", margin: "0 auto" }}>
+              <div style={{ padding: "20px 0 30px" }}>
+                <div style={{ fontSize: isMobile ? 20 : 26, fontWeight: 700, color: COLORS.score }}>{"🏆"} 2026 WORLD CUP {"🏆"}</div>
+                <div style={{ height: 16 }}></div>
+                <div style={{ fontSize: 14, color: COLORS.dimText }}>Choose your team for the tournament</div>
+              </div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: 8, justifyContent: "center" }}>
                 {getWCTeams().sort((a, b) => a.name.localeCompare(b.name)).map(c => (
                   <button key={c.name} onClick={() => initTournament(c)} style={{
@@ -1748,8 +1752,11 @@ export default function SlimeSoccer() {
           {/* GROUP DRAW */}
           {tournament.screen === "draw" && (
             <div style={{ maxWidth: 800, width: "100%", textAlign: "center" }}>
-              <div style={{ fontSize: isMobile ? 20 : 26, fontWeight: 700, color: COLORS.score, marginTop: 10, marginBottom: 14 }}>{"🏆"} 2026 WORLD CUP GROUPS {"🏆"}</div>
-              <div style={{ fontSize: 14, color: COLORS.dimText, marginBottom: 24 }}>48 teams in 12 groups</div>
+              <div style={{ padding: "20px 0 30px" }}>
+                <div style={{ fontSize: isMobile ? 20 : 26, fontWeight: 700, color: COLORS.score }}>{"🏆"} 2026 WORLD CUP GROUPS {"🏆"}</div>
+                <div style={{ height: 16 }}></div>
+                <div style={{ fontSize: 14, color: COLORS.dimText }}>48 teams in 12 groups</div>
+              </div>
               <div style={{ display: "grid", gridTemplateColumns: `repeat(auto-fill, minmax(${isMobile ? 140 : 180}px, 1fr))`, gap: isMobile ? 8 : 12 }}>
                 {tournament.groups.map((g, gi) => {
                   const isPlayerGroup = gi === tournament.playerGroup;
@@ -1772,11 +1779,14 @@ export default function SlimeSoccer() {
           {/* GROUP STAGE */}
           {(tournament.screen === "groups" || tournament.screen === "groupResult") && (
             <div style={{ maxWidth: 800, width: "100%", textAlign: "center" }}>
-              <div style={{ fontSize: isMobile ? 20 : 24, fontWeight: 700, color: COLORS.score, marginTop: 10, marginBottom: 14 }}>
-                {tournament.screen === "groupResult" ? `MATCHDAY ${tournament.matchday} RESULTS` : `MATCHDAY ${tournament.matchday} OF 3`}
-              </div>
-              <div style={{ fontSize: isMobile ? 12 : 14, color: COLORS.dimText, marginBottom: isMobile ? 20 : 24 }}>
-                {tournament.playerTeam.flag} {tournament.playerTeam.name} - Group {tournament.groups[tournament.playerGroup].name}
+              <div style={{ padding: "20px 0 30px" }}>
+                <div style={{ fontSize: isMobile ? 20 : 24, fontWeight: 700, color: COLORS.score }}>
+                  {tournament.screen === "groupResult" ? `MATCHDAY ${tournament.matchday} RESULTS` : `MATCHDAY ${tournament.matchday} OF 3`}
+                </div>
+                <div style={{ height: 16 }}></div>
+                <div style={{ fontSize: isMobile ? 12 : 14, color: COLORS.dimText }}>
+                  {tournament.playerTeam.flag} {tournament.playerTeam.name} - Group {tournament.groups[tournament.playerGroup].name}
+                </div>
               </div>
 
               {/* Player's group table */}
@@ -1966,6 +1976,7 @@ export default function SlimeSoccer() {
               RESET TOURNAMENT
             </button>
           )}
+          </div>
         </div>
       )}
 
