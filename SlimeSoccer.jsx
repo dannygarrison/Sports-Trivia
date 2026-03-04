@@ -291,14 +291,6 @@ export default function SlimeSoccer() {
     ctx.fillRect(s.x - s.r, s.y - s.r, s.r * 2, s.r);
     ctx.restore();
 
-    // Flag badge on back
-    ctx.save();
-    ctx.translate(s.x - 14, s.y - 14); ctx.rotate(0.3);
-    ctx.font = "18px sans-serif"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
-    ctx.shadowColor = "rgba(0,0,0,0.7)"; ctx.shadowBlur = 4; ctx.shadowOffsetX = 1; ctx.shadowOffsetY = 1;
-    ctx.fillText(country.flag, 0, 0);
-    ctx.shadowColor = "transparent"; ctx.restore();
-
     // Eye looking UP at trophy
     const ex = s.x + 14, ey = s.y - 22;
     ctx.shadowColor = "rgba(0,0,0,0.7)"; ctx.shadowBlur = 4; ctx.shadowOffsetX = 1; ctx.shadowOffsetY = 1;
@@ -2150,17 +2142,17 @@ export default function SlimeSoccer() {
           {tournament.screen === "champion" && (
             <div style={{ textAlign: "center" }}>
               <div style={{ padding: "30px 0 0", display: "flex", flexDirection: "column", alignItems: "center" }}>
-                <div style={{ fontSize: 50, animation: "trophy-drop 1.5s ease-out forwards", position: "relative" }}>{"🏆"}</div>
+                <div style={{ fontSize: 50, animation: "trophy-drop 1.5s ease-out forwards", position: "relative", zIndex: 2 }}>{"🏆"}</div>
                 <style>{`@keyframes trophy-drop { 0% { top: -80px; opacity: 0; } 30% { top: 0px; opacity: 1; } 50% { top: -15px; } 65% { top: 0px; } 80% { top: -5px; } 100% { top: 0px; opacity: 1; } }`}</style>
-                <canvas ref={drawChampSlime} width={160} height={100} style={{ marginTop: -12 }}></canvas>
+                <canvas ref={drawChampSlime} width={160} height={100} style={{ marginTop: -46, position: "relative", zIndex: 1 }}></canvas>
               </div>
-              <div style={{ height: 40 }}></div>
-              <div style={{ fontSize: 64 }}>{tournament.playerTeam.flag}</div>
-              <div style={{ height: 40 }}></div>
-              <div style={{ fontSize: isMobile ? 24 : 36, fontWeight: 700, color: COLORS.score }}>WORLD CHAMPIONS!</div>
               <div style={{ height: 30 }}></div>
+              <div style={{ fontSize: 64 }}>{tournament.playerTeam.flag}</div>
+              <div style={{ height: 30 }}></div>
+              <div style={{ fontSize: isMobile ? 24 : 36, fontWeight: 700, color: COLORS.score }}>WORLD CHAMPIONS!</div>
+              <div style={{ height: 16 }}></div>
               <div style={{ fontSize: 18, color: COLORS.text }}>{tournament.playerTeam.name} wins the Slime Cup!</div>
-              <div style={{ height: 50 }}></div>
+              <div style={{ height: 40 }}></div>
               <button onClick={() => { updateTournament(null); setShowTournamentUIWrapped(false); }} style={{ padding: "12px 36px", fontSize: 16, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: COLORS.score + "22", border: `1px solid ${COLORS.score}55`, borderRadius: 8, color: COLORS.score, cursor: "pointer" }}>
                 BACK TO MENU
               </button>
