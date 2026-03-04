@@ -1731,9 +1731,9 @@ export default function SlimeSoccer() {
           {/* TEAM SELECTION */}
           {tournament.screen === "select" && (
             <div style={{ maxWidth: 600, width: "100%", textAlign: "center", margin: "0 auto" }}>
-              <div style={{ padding: "20px 0 30px" }}>
+              <div style={{ padding: "30px 0 40px" }}>
                 <div style={{ fontSize: isMobile ? 20 : 26, fontWeight: 700, color: COLORS.score }}>{"🏆"} 2026 WORLD CUP {"🏆"}</div>
-                <div style={{ height: 16 }}></div>
+                <div style={{ height: 30 }}></div>
                 <div style={{ fontSize: 14, color: COLORS.dimText }}>Choose your team for the tournament</div>
               </div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: 8, justifyContent: "center" }}>
@@ -1753,9 +1753,9 @@ export default function SlimeSoccer() {
           {/* GROUP DRAW */}
           {tournament.screen === "draw" && (
             <div style={{ maxWidth: 800, width: "100%", textAlign: "center" }}>
-              <div style={{ padding: "20px 0 30px" }}>
+              <div style={{ padding: "30px 0 40px" }}>
                 <div style={{ fontSize: isMobile ? 20 : 26, fontWeight: 700, color: COLORS.score }}>{"🏆"} 2026 WORLD CUP GROUPS {"🏆"}</div>
-                <div style={{ height: 16 }}></div>
+                <div style={{ height: 30 }}></div>
                 <div style={{ fontSize: 14, color: COLORS.dimText }}>48 teams in 12 groups</div>
               </div>
               <div style={{ display: "grid", gridTemplateColumns: `repeat(auto-fill, minmax(${isMobile ? 140 : 180}px, 1fr))`, gap: isMobile ? 8 : 12 }}>
@@ -1780,11 +1780,11 @@ export default function SlimeSoccer() {
           {/* GROUP STAGE */}
           {(tournament.screen === "groups" || tournament.screen === "groupResult") && (
             <div style={{ maxWidth: 800, width: "100%", textAlign: "center" }}>
-              <div style={{ padding: "20px 0 30px" }}>
+              <div style={{ padding: "30px 0 40px" }}>
                 <div style={{ fontSize: isMobile ? 20 : 24, fontWeight: 700, color: COLORS.score }}>
                   {tournament.screen === "groupResult" ? `MATCHDAY ${tournament.matchday} RESULTS` : `MATCHDAY ${tournament.matchday} OF 3`}
                 </div>
-                <div style={{ height: 16 }}></div>
+                <div style={{ height: 30 }}></div>
                 <div style={{ fontSize: isMobile ? 12 : 14, color: COLORS.dimText }}>
                   {tournament.playerTeam.flag} {tournament.playerTeam.name} - Group {tournament.groups[tournament.playerGroup].name}
                 </div>
