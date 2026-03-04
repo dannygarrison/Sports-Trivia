@@ -1968,11 +1968,15 @@ export default function SlimeSoccer() {
 
           {/* ELIMINATED */}
           {tournament.screen === "eliminated" && (
-            <div style={{ textAlign: "center", paddingTop: 40 }}>
-              <div style={{ fontSize: 48 }}>{tournament.playerTeam.flag}</div>
-              <div style={{ fontSize: 28, fontWeight: 700, color: "#ff6a6a", marginTop: 12 }}>ELIMINATED</div>
-              <div style={{ fontSize: 16, color: COLORS.dimText, marginTop: 8 }}>{tournament.playerTeam.name} knocked out in the {({ r32: "Round of 32", r16: "Round of 16", qf: "Quarter-Finals", sf: "Semi-Finals", final: "Final" })[tournament.bracket.round]}</div>
-              <button onClick={() => { updateTournament(null); setShowTournamentUIWrapped(false); }} style={{ marginTop: 24, padding: "12px 36px", fontSize: 16, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: COLORS.ground, border: `1px solid ${COLORS.groundLine}55`, borderRadius: 8, color: COLORS.text, cursor: "pointer" }}>
+            <div style={{ textAlign: "center" }}>
+              <div style={{ padding: "30px 0 20px" }}>
+                <div style={{ fontSize: 48 }}>{tournament.playerTeam.flag}</div>
+              </div>
+              <div style={{ fontSize: isMobile ? 22 : 28, fontWeight: 700, color: "#ff6a6a" }}>ELIMINATED</div>
+              <div style={{ height: 20 }}></div>
+              <div style={{ fontSize: 16, color: COLORS.dimText }}>{tournament.playerTeam.name} knocked out in the {({ r32: "Round of 32", r16: "Round of 16", qf: "Quarter-Finals", sf: "Semi-Finals", final: "Final" })[tournament.bracket?.round] || "Group Stage"}</div>
+              <div style={{ height: 30 }}></div>
+              <button onClick={() => { updateTournament(null); setShowTournamentUIWrapped(false); }} style={{ padding: "12px 36px", fontSize: 16, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: COLORS.ground, border: `1px solid ${COLORS.groundLine}55`, borderRadius: 8, color: COLORS.text, cursor: "pointer" }}>
                 BACK TO MENU
               </button>
             </div>
@@ -1980,11 +1984,33 @@ export default function SlimeSoccer() {
 
           {/* CHAMPION */}
           {tournament.screen === "champion" && (
-            <div style={{ textAlign: "center", paddingTop: 40 }}>
+            <div style={{ textAlign: "center" }}>
+              <div style={{ padding: "20px 0 10px", display: "flex", flexDirection: "column", alignItems: "center" }}>
+                <div style={{ fontSize: 40, animation: "trophy-drop 1.5s ease-out forwards", position: "relative" }}>{"🏆"}</div>
+                <style>{`@keyframes trophy-drop { 0% { top: -80px; opacity: 0; } 30% { top: 0px; opacity: 1; } 50% { top: -15px; } 65% { top: 0px; } 80% { top: -5px; } 100% { top: 0px; opacity: 1; } }`}</style>
+                <svg width="120" height="70" viewBox="0 0 120 70" style={{ marginTop: -8 }}>
+                  <defs>
+                    <radialGradient id="slimeGrad">
+                      <stop offset="0%" stopColor={tournament.playerTeam.highlight || tournament.playerTeam.primary} />
+                      <stop offset="100%" stopColor={tournament.playerTeam.primary} />
+                    </radialGradient>
+                  </defs>
+                  <ellipse cx="60" cy="62" rx="45" ry="8" fill="rgba(0,0,0,0.25)" />
+                  <path d="M 15 70 A 45 45 0 0 1 105 70" fill="url(#slimeGrad)" />
+                  <ellipse cx="45" cy="48" rx="5" ry="7" fill="white" />
+                  <ellipse cx="45" cy="49" rx="2.5" ry="3.5" fill="#222" />
+                  <ellipse cx="70" cy="48" rx="5" ry="7" fill="white" />
+                  <ellipse cx="70" cy="49" rx="2.5" ry="3.5" fill="#222" />
+                </svg>
+              </div>
+              <div style={{ height: 20 }}></div>
               <div style={{ fontSize: 64 }}>{tournament.playerTeam.flag}</div>
-              <div style={{ fontSize: 36, fontWeight: 700, color: COLORS.score, marginTop: 12 }}>2026 WORLD CHAMPIONS!</div>
-              <div style={{ fontSize: 18, color: COLORS.text, marginTop: 8 }}>{tournament.playerTeam.name} wins the 2026 Slime World Cup!</div>
-              <button onClick={() => { updateTournament(null); setShowTournamentUIWrapped(false); }} style={{ marginTop: 24, padding: "12px 36px", fontSize: 16, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: COLORS.score + "22", border: `1px solid ${COLORS.score}55`, borderRadius: 8, color: COLORS.score, cursor: "pointer" }}>
+              <div style={{ height: 20 }}></div>
+              <div style={{ fontSize: isMobile ? 24 : 36, fontWeight: 700, color: COLORS.score }}>2026 WORLD CHAMPIONS!</div>
+              <div style={{ height: 20 }}></div>
+              <div style={{ fontSize: 18, color: COLORS.text }}>{tournament.playerTeam.name} wins the 2026 Slime World Cup!</div>
+              <div style={{ height: 30 }}></div>
+              <button onClick={() => { updateTournament(null); setShowTournamentUIWrapped(false); }} style={{ padding: "12px 36px", fontSize: 16, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: COLORS.score + "22", border: `1px solid ${COLORS.score}55`, borderRadius: 8, color: COLORS.score, cursor: "pointer" }}>
                 BACK TO MENU
               </button>
             </div>
