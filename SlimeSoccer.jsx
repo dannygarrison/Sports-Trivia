@@ -173,15 +173,42 @@ export default function SlimeSoccer() {
   };
 
   const initTournament = (playerTeam) => {
-    const pool = COUNTRIES.filter(c => c.name !== playerTeam.name);
-    const shuffled = [...pool].sort(() => Math.random() - 0.5);
-    const selected = shuffled.slice(0, 47);
-    const all48 = [playerTeam, ...selected].sort(() => Math.random() - 0.5);
+    const find = (name) => COUNTRIES.find(c => c.name === name);
+    const pickFrom = (names, forced) => {
+      // If the player's team is in this playoff pool, force them in
+      const match = names.find(n => find(n)?.name === forced?.name);
+      if (match) return find(match);
+      const opts = names.map(find).filter(Boolean);
+      return opts[Math.floor(Math.random() * opts.length)];
+    };
 
-    const groups = [];
-    const letters = "ABCDEFGHIJKL";
-    for (let g = 0; g < 12; g++) {
-      const teams = all48.slice(g * 4, g * 4 + 4);
+    const playoffPools = {
+      A4: ["Czechia", "Republic of Ireland", "Denmark", "North Macedonia"],
+      B2: ["Wales", "Bosnia and Herzegovina", "Italy", "Northern Ireland"],
+      D4: ["Slovakia", "Kosovo", "Turkey", "Romania"],
+      F3: ["Ukraine", "Sweden", "Poland", "Albania"],
+      I3: ["Bolivia", "Suriname", "Iraq"],
+      K2: ["New Caledonia", "Jamaica", "DR Congo"],
+    };
+
+    // Real 2026 World Cup groups with playoff spots resolved
+    const groupDefs = [
+      { name: "A", teams: [find("Mexico"), find("South Africa"), find("South Korea"), pickFrom(playoffPools.A4, playerTeam)] },
+      { name: "B", teams: [find("Canada"), pickFrom(playoffPools.B2, playerTeam), find("Qatar"), find("Switzerland")] },
+      { name: "C", teams: [find("Brazil"), find("Morocco"), find("Haiti"), find("Scotland")] },
+      { name: "D", teams: [find("USA"), find("Paraguay"), find("Australia"), pickFrom(playoffPools.D4, playerTeam)] },
+      { name: "E", teams: [find("Germany"), find("Curaçao"), find("Ivory Coast"), find("Ecuador")] },
+      { name: "F", teams: [find("Netherlands"), find("Japan"), pickFrom(playoffPools.F3, playerTeam), find("Tunisia")] },
+      { name: "G", teams: [find("Belgium"), find("Egypt"), find("Iran"), find("New Zealand")] },
+      { name: "H", teams: [find("Spain"), find("Cape Verde"), find("Saudi Arabia"), find("Uruguay")] },
+      { name: "I", teams: [find("France"), find("Senegal"), pickFrom(playoffPools.I3, playerTeam), find("Norway")] },
+      { name: "J", teams: [find("Argentina"), find("Algeria"), find("Austria"), find("Jordan")] },
+      { name: "K", teams: [find("Portugal"), pickFrom(playoffPools.K2, playerTeam), find("Uzbekistan"), find("Colombia")] },
+      { name: "L", teams: [find("England"), find("Croatia"), find("Ghana"), find("Panama")] },
+    ];
+
+    const groups = groupDefs.map(gd => {
+      const teams = gd.teams;
       const matches = [
         { team1: teams[0], team2: teams[1], score1: null, score2: null, played: false, matchday: 1 },
         { team1: teams[2], team2: teams[3], score1: null, score2: null, played: false, matchday: 1 },
@@ -190,8 +217,8 @@ export default function SlimeSoccer() {
         { team1: teams[0], team2: teams[3], score1: null, score2: null, played: false, matchday: 3 },
         { team1: teams[1], team2: teams[2], score1: null, score2: null, played: false, matchday: 3 },
       ];
-      groups.push({ name: letters[g], teams, matches });
-    }
+      return { name: gd.name, teams, matches };
+    });
 
     let playerGroup = -1;
     groups.forEach((g, i) => { if (g.teams.some(t => t.name === playerTeam.name)) playerGroup = i; });
@@ -211,6 +238,24 @@ export default function SlimeSoccer() {
     updateTournament(t);
     setGameMode("1p");
     setGameState("menu");
+  };
+
+  // Get the 48 WC teams for team selection
+  const getWCTeams = () => {
+    const find = (name) => COUNTRIES.find(c => c.name === name);
+    const fixed = ["Mexico", "South Africa", "South Korea", "Canada", "Qatar", "Switzerland",
+      "Brazil", "Morocco", "Haiti", "Scotland", "USA", "Paraguay", "Australia",
+      "Germany", "Curaçao", "Ivory Coast", "Ecuador", "Netherlands", "Japan", "Tunisia",
+      "Belgium", "Egypt", "Iran", "New Zealand", "Spain", "Cape Verde", "Saudi Arabia", "Uruguay",
+      "France", "Senegal", "Norway", "Argentina", "Algeria", "Austria", "Jordan",
+      "Portugal", "Uzbekistan", "Colombia", "England", "Croatia", "Ghana", "Panama",
+      "Czechia", "Republic of Ireland", "Denmark", "North Macedonia",
+      "Wales", "Bosnia and Herzegovina", "Italy", "Northern Ireland",
+      "Slovakia", "Kosovo", "Turkey", "Romania",
+      "Ukraine", "Sweden", "Poland", "Albania",
+      "Bolivia", "Suriname", "Iraq",
+      "New Caledonia", "Jamaica", "DR Congo"];
+    return fixed.map(find).filter(Boolean);
   };
 
   const getPlayerMatch = (t) => {
@@ -1596,14 +1641,14 @@ export default function SlimeSoccer() {
 
       {/* Tournament UI overlay */}
       {tournament && tournament.screen !== "playing" && gameState !== "countdown" && gameState !== "playing" && gameState !== "scored" && (
-        <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, zIndex: 20, background: COLORS.bg, display: "flex", flexDirection: "column", alignItems: "center", overflow: "auto", padding: "20px 10px", fontFamily: "Oswald, sans-serif" }}>
+        <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, zIndex: 20, background: COLORS.bg, display: "flex", flexDirection: "column", alignItems: "center", overflow: "auto", padding: "60px 10px 20px", fontFamily: "Oswald, sans-serif" }}>
           {/* TEAM SELECTION */}
           {tournament.screen === "select" && (
             <div style={{ maxWidth: 600, width: "100%", textAlign: "center" }}>
-              <div style={{ fontSize: 28, fontWeight: 700, color: COLORS.score, marginBottom: 4 }}>WORLD CUP TOURNAMENT</div>
-              <div style={{ fontSize: 13, color: COLORS.dimText, marginBottom: 20 }}>Choose your team</div>
+              <div style={{ fontSize: 28, fontWeight: 700, color: COLORS.score, marginBottom: 4 }}>2026 WORLD CUP</div>
+              <div style={{ fontSize: 13, color: COLORS.dimText, marginBottom: 20 }}>Choose your team for the tournament</div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: 8, justifyContent: "center" }}>
-                {COUNTRIES.map(c => (
+                {getWCTeams().map(c => (
                   <button key={c.name} onClick={() => initTournament(c)} style={{
                     background: tournament.playerTeam?.name === c.name ? COLORS.score + "33" : COLORS.ground,
                     border: `1px solid ${tournament.playerTeam?.name === c.name ? COLORS.score : COLORS.groundLine}55`,
@@ -1619,8 +1664,8 @@ export default function SlimeSoccer() {
           {/* GROUP DRAW */}
           {tournament.screen === "draw" && (
             <div style={{ maxWidth: 800, width: "100%", textAlign: "center" }}>
-              <div style={{ fontSize: 28, fontWeight: 700, color: COLORS.score, marginBottom: 4 }}>GROUP DRAW</div>
-              <div style={{ fontSize: 13, color: COLORS.dimText, marginBottom: 16 }}>48 teams drawn into 12 groups</div>
+              <div style={{ fontSize: 28, fontWeight: 700, color: COLORS.score, marginBottom: 4 }}>2026 WORLD CUP GROUPS</div>
+              <div style={{ fontSize: 13, color: COLORS.dimText, marginBottom: 16 }}>48 teams in 12 groups</div>
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))", gap: 12 }}>
                 {tournament.groups.map((g, gi) => {
                   const isPlayerGroup = gi === tournament.playerGroup;
@@ -1818,8 +1863,8 @@ export default function SlimeSoccer() {
           {tournament.screen === "champion" && (
             <div style={{ textAlign: "center", paddingTop: 40 }}>
               <div style={{ fontSize: 64 }}>{tournament.playerTeam.flag}</div>
-              <div style={{ fontSize: 36, fontWeight: 700, color: COLORS.score, marginTop: 12 }}>WORLD CHAMPIONS!</div>
-              <div style={{ fontSize: 18, color: COLORS.text, marginTop: 8 }}>{tournament.playerTeam.name} wins the Slime World Cup!</div>
+              <div style={{ fontSize: 36, fontWeight: 700, color: COLORS.score, marginTop: 12 }}>2026 WORLD CHAMPIONS!</div>
+              <div style={{ fontSize: 18, color: COLORS.text, marginTop: 8 }}>{tournament.playerTeam.name} wins the 2026 Slime World Cup!</div>
               <button onClick={() => updateTournament(null)} style={{ marginTop: 24, padding: "12px 36px", fontSize: 16, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: COLORS.score + "22", border: `1px solid ${COLORS.score}55`, borderRadius: 8, color: COLORS.score, cursor: "pointer" }}>
                 BACK TO MENU
               </button>
@@ -1878,7 +1923,7 @@ export default function SlimeSoccer() {
           </button>
           {league === "worldcup" && gameMode === "1p" && !tournament && (
             <button onClick={() => updateTournament({ screen: "select", playerTeam: null })} style={{ marginTop: 8, padding: "10px 32px", fontSize: 16, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: "#d4a84311", border: "1px solid #d4a84344", borderRadius: 8, color: COLORS.score, cursor: "pointer", letterSpacing: 2 }}>
-              WORLD CUP TOURNAMENT
+              2026 WORLD CUP
             </button>
           )}
         </>)}
@@ -1896,7 +1941,7 @@ export default function SlimeSoccer() {
       {/* Desktop tournament button */}
       {!isMobile && league === "worldcup" && gameMode === "1p" && !tournament && (gameState === "menu" || gameState === "gameover") && (
         <button onClick={() => updateTournament({ screen: "select", playerTeam: null })} style={{ marginTop: 10, padding: "10px 32px", fontSize: 16, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: "#d4a84311", border: "1px solid #d4a84344", borderRadius: 8, color: COLORS.score, cursor: "pointer", letterSpacing: 2 }}>
-          WORLD CUP TOURNAMENT
+          2026 WORLD CUP
         </button>
       )}
 
