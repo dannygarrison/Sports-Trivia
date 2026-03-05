@@ -457,11 +457,11 @@ export default function SlimeSoccer() {
   const aiStyleRef = useRef({ p1: null, p2: null });
 
   const randomAIStyle = () => ({
-    offsetX: (Math.random() - 0.5) * 40,      // positioning bias: -20 to +20
-    aggression: 0.85 + Math.random() * 0.15,     // how far forward they push: 0.85-1.0
-    speedMult: 0.86 + Math.random() * 0.07,    // speed variance: 0.86-0.93
-    jumpEagerness: 60 + Math.random() * 35,     // jump trigger distance: 60-95
-    guardDist: 30 + Math.random() * 25,         // how far from goal they guard: 30-55
+    offsetX: (Math.random() - 0.5) * 20,
+    aggression: 0.9 + Math.random() * 0.1,
+    speedMult: 0.93 + Math.random() * 0.07,
+    jumpEagerness: 70 + Math.random() * 30,
+    guardDist: 35 + Math.random() * 20,
   });
 
   const initGame = useCallback(() => {
@@ -481,113 +481,140 @@ export default function SlimeSoccer() {
     const style = isP1 ? aiStyleRef.current.p1 : aiStyleRef.current.p2;
     if (!style) return;
 
+    const dir = isP1 ? 1 : -1; // 1 = attacks right, -1 = attacks left
     const ownGoalX = isP1 ? G.GOAL_WIDTH : G.WIDTH - G.GOAL_WIDTH;
-    const ballOnMySide = isP1 ? (ball.x < G.WIDTH / 2) : (ball.x > G.WIDTH / 2);
+    const oppGoalX = isP1 ? G.WIDTH - G.GOAL_WIDTH : G.GOAL_WIDTH;
     const minX = G.GOAL_WIDTH + slime.r;
     const maxX = G.WIDTH - G.GOAL_WIDTH - slime.r;
+    const midX = G.WIDTH / 2;
 
-    // Attack side: P1 should be LEFT of ball to hit it RIGHT, P2 opposite
-    const onCorrectSide = isP1 ? (slime.x < ball.x - 10) : (slime.x > ball.x + 10);
-    const onWrongSide = isP1 ? (slime.x > ball.x - 5) : (slime.x < ball.x + 5);
-
-    // Zones
-    const inDefensiveZone = isP1 ? (ball.x < G.WIDTH * 0.35) : (ball.x > G.WIDTH * 0.65);
-    const ballMovingToOwnGoal = isP1 ? (ball.vx < -1.5) : (ball.vx > 1.5);
-    const ballAirborne = ball.y < G.GROUND_Y - 40;
+    const ballOnMySide = isP1 ? (ball.x < midX + 30) : (ball.x > midX - 30);
+    const onCorrectSide = isP1 ? (slime.x < ball.x - 8) : (slime.x > ball.x + 8);
+    const onWrongSide = isP1 ? (slime.x > ball.x + 5) : (slime.x < ball.x - 5);
     const distToBall = Math.abs(ball.x - slime.x);
-    const distToBallY = slime.y - ball.y;
+    const ballAirborne = ball.y < G.GROUND_Y - 30;
 
     let targetX;
-    let suppressJump = false;
-    const off = style.offsetX;
+    let shouldJump = false;
+    const speed = G.SLIME_SPEED * style.speedMult;
 
-    // Predict where ball will land
-    let predX = ball.x;
-    let predTime = 999;
-    if (ball.y < G.GROUND_Y - 10) {
-      let simX = ball.x, simY = ball.y, simVx = ball.vx, simVy = ball.vy;
-      for (let i = 0; i < 80; i++) {
-        simVy += G.GRAVITY;
-        simX += simVx;
-        simY += simVy;
-        if (simX < 0 || simX > G.WIDTH) simVx *= -1;
-        if (simY >= G.GROUND_Y) { predX = simX; predTime = i; break; }
-      }
+    // === BALL TRAJECTORY PREDICTION ===
+    // Simulate ball for up to 90 frames, recording its full path
+    const trajectory = [];
+    let simX = ball.x, simY = ball.y, simVx = ball.vx, simVy = ball.vy;
+    for (let i = 0; i < 90; i++) {
+      simVy += G.GRAVITY;
+      simX += simVx;
+      simY += simVy;
+      if (simX < ball.r) { simX = ball.r; simVx = Math.abs(simVx) * 0.8; }
+      if (simX > G.WIDTH - ball.r) { simX = G.WIDTH - ball.r; simVx = -Math.abs(simVx) * 0.8; }
+      if (simY >= G.GROUND_Y - ball.r) { simY = G.GROUND_Y - ball.r; simVy = -Math.abs(simVy) * 0.7; if (Math.abs(simVy) < 1) simVy = 0; }
+      trajectory.push({ x: simX, y: simY, t: i + 1 });
+      if (simY >= G.GROUND_Y - ball.r - 2 && Math.abs(simVy) < 1) break;
     }
-    predX = clamp(predX, minX, maxX);
 
-    // Desperation save: ball is BEHIND us heading toward goal
-    const ballBehind = isP1 ? (ball.x < slime.x - 15) : (ball.x > slime.x + 15);
-    const ballInDanger = isP1 ? (ball.x < G.WIDTH * 0.25) : (ball.x > G.WIDTH * 0.75);
-    const desperationSave = ballBehind && ballAirborne && ballInDanger && distToBall < 140;
+    // Find where ball will be at ground level (or close to it)
+    const landingFrame = trajectory.find(f => f.y >= G.GROUND_Y - ball.r - 5) || trajectory[trajectory.length - 1] || { x: ball.x, y: ball.y, t: 0 };
+    const predX = clamp(landingFrame.x, minX, maxX);
 
-    if (desperationSave) {
-      // Chase ball - jump to deflect it ANY direction (better than letting it in)
+    // Find where ball will be at jump-interceptable height
+    // Jump takes ~24 frames to peak, slime top reaches ~113px above ground
+    const jumpPeakTime = 24;
+    const jumpReach = G.GROUND_Y - 100; // approximate y that slime top can reach
+    const interceptFrame = trajectory.find(f => f.y > jumpReach - 20 && f.y < jumpReach + 40 && f.t >= 8 && f.t <= 35);
+
+    // === DANGER DETECTION ===
+    const ballInMyGoalZone = isP1 ? (ball.x < G.WIDTH * 0.2) : (ball.x > G.WIDTH * 0.8);
+    const ballHeadingToGoal = isP1 ? (ball.vx < -2) : (ball.vx > 2);
+    const ballBehind = isP1 ? (ball.x < slime.x - 10) : (ball.x > slime.x + 10);
+
+    // === SHOT AIMING ===
+    // Calculate ideal position to hit ball toward opponent's goal
+    // Contact normal = (ball - slime).normalized; ball launches along this vector
+    // To aim at oppGoalX, we offset from ball position
+    const aimOffset = () => {
+      const ballH = G.GROUND_Y - ball.y;
+      // Higher ball = less offset needed (hitting from underneath angles it forward)
+      const baseOff = 20 + ballH * 0.08;
+      return isP1 ? -baseOff : baseOff;
+    };
+
+    // === DESPERATION SAVE ===
+    if (ballBehind && ballInMyGoalZone && distToBall < 160) {
       targetX = ball.x;
       if (distToBall < 55 && slime.grounded && ball.y < slime.y - 10) {
-        slime.vy = G.JUMP_FORCE;
-        slime.grounded = false;
+        shouldJump = true;
       }
     }
-    // WRONG SIDE: Always go around, never engage
-    else if (onWrongSide && distToBall < 120) {
-      // Go AROUND the ball to the correct side
-      const clearance = 60 + (ballAirborne ? 20 : 0);
+    // === WRONG SIDE & CLOSE: go around ===
+    else if (onWrongSide && distToBall < 100) {
+      const clearance = 55 + (ballAirborne ? 25 : 0);
       targetX = isP1 ? ball.x - clearance : ball.x + clearance;
-      targetX = clamp(targetX, minX, maxX);
-      suppressJump = true;
     }
-    // Ball on my side, I'm on correct side - ATTACK
+    // === BALL ON MY SIDE, CORRECT SIDE: ATTACK ===
     else if (ballOnMySide && onCorrectSide) {
-      const approach = 25 * style.aggression;
-      targetX = isP1 ? predX + approach + off : predX - approach + off;
+      if (ballAirborne && interceptFrame) {
+        // Position to intercept the ball in the air
+        targetX = interceptFrame.x + aimOffset() * 0.7;
+        // Jump to intercept
+        const framesUntil = interceptFrame.t;
+        const distToIntercept = Math.abs(slime.x - targetX);
+        const timeToArrive = distToIntercept / speed;
+        if (slime.grounded && framesUntil - timeToArrive < 28 && framesUntil - timeToArrive > 5) {
+          shouldJump = true;
+        }
+      } else {
+        // Ground ball: position to hit it aimed at opponent's goal
+        targetX = predX + aimOffset();
+        // Jump when close to ball and ball is hittable
+        if (slime.grounded && distToBall < style.jumpEagerness && ball.y < slime.y - 15) {
+          shouldJump = true;
+        }
+      }
     }
-    // Ball on my side, wrong side but far enough - go around
+    // === BALL ON MY SIDE, WRONG SIDE FAR: go around ===
     else if (ballOnMySide && onWrongSide) {
-      const clearance = 55;
-      targetX = isP1 ? ball.x - clearance : ball.x + clearance;
-      targetX = clamp(targetX, minX, maxX);
-      suppressJump = true;
+      targetX = isP1 ? ball.x - 55 : ball.x + 55;
     }
-    // Ball on my side, roughly under it
+    // === BALL ON MY SIDE, roughly under it ===
     else if (ballOnMySide) {
-      // Position to attack side
-      targetX = isP1 ? predX + 20 + off : predX - 20 + off;
+      targetX = predX + aimOffset() * 0.5;
     }
-    // Ball on opponent's side moving away - guard
-    else if (!ballOnMySide && (isP1 ? ball.vx > 0 : ball.vx < 0)) {
-      targetX = isP1 ? ownGoalX + slime.r + style.guardDist : ownGoalX - slime.r - style.guardDist;
-    }
-    // Ball on opponent's side but coming back - push up to midfield
+    // === BALL ON OPPONENT'S SIDE ===
     else {
-      const chase = 15 * style.aggression;
-      targetX = clamp(isP1 ? ball.x + chase + off : ball.x - chase + off, minX, maxX);
+      // Push up to midfield aggressively instead of hiding by goal
+      const ballDist = Math.abs(ball.x - midX);
+      const urgency = Math.max(0, 1 - ballDist / (midX * 0.8));
+      const pressX = isP1 ? midX - 40 + urgency * 50 : midX + 40 - urgency * 50;
+      const guardX = isP1 ? ownGoalX + slime.r + style.guardDist : ownGoalX - slime.r - style.guardDist;
+
+      if (ballHeadingToGoal) {
+        // Ball coming back, position to receive
+        targetX = clamp(predX + aimOffset(), minX, maxX);
+      } else {
+        // Mix between pressing and guarding based on ball distance
+        const pressWeight = Math.min(0.8, style.aggression * 0.7);
+        targetX = guardX + (pressX - guardX) * pressWeight;
+      }
     }
 
     targetX = clamp(targetX, minX, maxX);
 
-    const deadzone = 14;
-    const speed = G.SLIME_SPEED * style.speedMult;
+    // === MOVEMENT ===
+    const deadzone = 10;
     const dist = targetX - slime.x;
     if (Math.abs(dist) > deadzone) {
-      // Ease into target: full speed when far, reduced when close
-      const rampDist = 40;
+      const rampDist = 30;
       const factor = Math.min(1, Math.abs(dist) / rampDist);
-      slime.vx = Math.sign(dist) * speed * (0.4 + 0.6 * factor);
+      slime.vx = Math.sign(dist) * speed * (0.55 + 0.45 * factor);
     } else {
       slime.vx = 0;
     }
 
-    // Jump: ONLY when on correct side and well positioned to hit forward
-    const absDx = Math.abs(ball.x - slime.x);
-    const canJump = !suppressJump && slime.grounded && ball.y < slime.y - 30 && ball.y > 80;
-    if (canJump && absDx < style.jumpEagerness && onCorrectSide) {
-      // Make sure we're actually going to hit the ball forward
-      const wouldHitForward = isP1 ? (slime.x < ball.x) : (slime.x > ball.x);
-      if (wouldHitForward) {
-        slime.vy = G.JUMP_FORCE;
-        slime.grounded = false;
-      }
+    // === JUMPING ===
+    if (shouldJump && slime.grounded && !onWrongSide) {
+      slime.vy = G.JUMP_FORCE;
+      slime.grounded = false;
     }
   }, []);
 
