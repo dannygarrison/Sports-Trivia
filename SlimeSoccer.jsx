@@ -539,8 +539,19 @@ export default function SlimeSoccer() {
       return isP1 ? -baseOff : baseOff;
     };
 
+    // === KICKOFF CONTEST ===
+    // Ball near center, high up, slow - rush to contest it
+    const isKickoff = Math.abs(ball.x - midX) < 60 && ball.y < 220 && Math.abs(ball.vx) < 3 && ball.vy < 3;
+    if (isKickoff && slime.grounded) {
+      // Rush toward ball position and jump to header it
+      const contestX = ball.x + (isP1 ? -15 : 15);
+      targetX = contestX;
+      if (distToBall < 80 && onCorrectSide) {
+        shouldJump = true;
+      }
+    }
     // === DESPERATION SAVE ===
-    if (ballBehind && ballInMyGoalZone && distToBall < 160) {
+    else if (ballBehind && ballInMyGoalZone && distToBall < 160) {
       targetX = ball.x;
       if (distToBall < 55 && slime.grounded && ball.y < slime.y - 10) {
         shouldJump = true;
