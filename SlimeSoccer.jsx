@@ -1055,7 +1055,7 @@ export default function SlimeSoccer() {
         const startX = -totalW / 2 + backOffset;
         for (let c = 0; c < colors.length; c++) {
           ctx.fillStyle = colors[c];
-          ctx.globalAlpha = 0.7;
+          ctx.globalAlpha = 0.9;
           ctx.fillRect(startX + c * stripeW, -s.r, stripeW, s.r * 2);
         }
         ctx.globalAlpha = 1.0;
@@ -1409,7 +1409,7 @@ export default function SlimeSoccer() {
 
       // Country name + flag
       ctx.font = "bold 22px Oswald, sans-serif";
-      ctx.fillStyle = celeb.country.primary;
+      ctx.fillStyle = scoreColor(celeb.country);
       ctx.fillText(`${celeb.country.flag}  ${celeb.country.name.toUpperCase()}`, 0, 18);
 
       ctx.restore();
@@ -2288,7 +2288,7 @@ export default function SlimeSoccer() {
                 {tournament.playerTeam.flag}
               </div>
 
-              <div style={{ height: 50 }}></div>
+              <div style={{ height: 80 }}></div>
 
               {/* Trophy */}
               <div style={{ fontSize: isMobile ? 80 : 110, animation: "trophy-entrance 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.8s both, glow-pulse 3s ease-in-out 2.3s infinite", zIndex: 1, position: "relative" }}>
