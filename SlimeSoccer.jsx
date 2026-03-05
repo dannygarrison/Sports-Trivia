@@ -2451,16 +2451,16 @@ export default function SlimeSoccer() {
                 }}>{"✦"}</div>
               ))}
 
-              {/* Trophy */}
-              <div style={{ fontSize: isMobile ? 80 : 110, animation: "trophy-entrance 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards, glow-pulse 3s ease-in-out 1.5s infinite", zIndex: 1, position: "relative" }}>
-                {"🏆"}
+              {/* Flag */}
+              <div style={{ fontSize: isMobile ? 56 : 80, animation: "flag-pop 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s both", zIndex: 1 }}>
+                {tournament.playerTeam.flag}
               </div>
 
               <div style={{ height: 50 }}></div>
 
-              {/* Flag */}
-              <div style={{ fontSize: isMobile ? 56 : 80, animation: "flag-pop 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.8s both", zIndex: 1 }}>
-                {tournament.playerTeam.flag}
+              {/* Trophy */}
+              <div style={{ fontSize: isMobile ? 80 : 110, animation: "trophy-entrance 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.8s both, glow-pulse 3s ease-in-out 2.3s infinite", zIndex: 1, position: "relative" }}>
+                {"🏆"}
               </div>
 
               <div style={{ height: 50 }}></div>
