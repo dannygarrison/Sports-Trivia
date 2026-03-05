@@ -198,187 +198,6 @@ export default function SlimeSoccer() {
   const showTournamentUIRef = useRef(false);
   const setShowTournamentUIWrapped = (v) => { showTournamentUIRef.current = v; setShowTournamentUI(v); };
   const [resetConfirm, setResetConfirm] = useState(false);
-  const drawChampSlime = useCallback((canvas) => {
-    if (!canvas || !tournament || tournament.screen !== "champion") return;
-    const ctx = canvas.getContext("2d");
-    const W = 160, H = 100;
-    canvas.width = W; canvas.height = H;
-    ctx.clearRect(0, 0, W, H);
-
-    const country = tournament.playerTeam;
-    const s = { x: W / 2, y: H - 2, r: 48, isP1: true };
-
-    // Shadow
-    ctx.fillStyle = "rgba(0,0,0,0.2)";
-    ctx.beginPath();
-    ctx.ellipse(s.x, s.y, s.r + 4, 6, 0, 0, Math.PI * 2);
-    ctx.fill();
-
-    // Clipped semicircle
-    ctx.save();
-    ctx.beginPath();
-    ctx.arc(s.x, s.y, s.r, Math.PI, 0, false);
-    ctx.closePath();
-    ctx.clip();
-
-    // Base gradient
-    const grad = ctx.createRadialGradient(s.x - 8, s.y - 18, 4, s.x, s.y, s.r);
-    grad.addColorStop(0, country.highlight || country.primary);
-    grad.addColorStop(1, country.primary);
-    ctx.fillStyle = grad;
-    ctx.fillRect(s.x - s.r, s.y - s.r, s.r * 2, s.r);
-
-    // Checkerboard
-    if (country.pattern === "checkerboard") {
-      const sz = 18, ang = -0.15;
-      ctx.save(); ctx.translate(s.x, s.y - s.r / 2); ctx.rotate(ang);
-      ctx.fillStyle = country.patternColor2 || "#cc0000";
-      ctx.globalAlpha = 0.85;
-      const cols = Math.ceil((s.r * 2 + sz * 4) / sz);
-      const rws = Math.ceil((s.r * 2 + sz * 4) / sz);
-      for (let row = 0; row < rws; row++) for (let col = 0; col < cols; col++)
-        if ((row + col) % 2 === 0) ctx.fillRect(-s.r - sz * 2 + col * sz, -s.r - sz * 2 + row * sz, sz, sz);
-      ctx.globalAlpha = 1.0; ctx.restore();
-    }
-
-    // Wavy stripes
-    if (country.pattern === "wavy_stripes") {
-      const stripeH = 7, clrs = [country.patternColor2, country.patternColor3];
-      const sY = s.y - s.r;
-      for (let i = 0; i < Math.ceil(s.r / stripeH); i++) {
-        const y = sY + i * stripeH;
-        ctx.fillStyle = clrs[i % 2]; ctx.globalAlpha = 0.75;
-        ctx.beginPath(); ctx.moveTo(s.x - s.r, y);
-        for (let px = s.x - s.r; px <= s.x + s.r; px += 2) ctx.lineTo(px, y + Math.sin(-(px - s.x) * 0.08 + i * 0.6) * 3);
-        for (let px = s.x + s.r; px >= s.x - s.r; px -= 2) ctx.lineTo(px, y + stripeH + Math.sin(-(px - s.x) * 0.08 + i * 0.6) * 3);
-        ctx.closePath(); ctx.fill();
-      }
-      ctx.globalAlpha = 1.0;
-    }
-
-    // Vertical stripes
-    if (country.pattern === "vertical_stripes") {
-      const stW = 18, ang = -0.15;
-      ctx.save(); ctx.translate(s.x, s.y - s.r / 2); ctx.rotate(ang);
-      const nStripes = Math.ceil((s.r * 2 + 40) / stW);
-      for (let i = 0; i < nStripes; i++) {
-        if (i % 2 === 0) {
-          const sx = -s.r - 20 + i * stW;
-          ctx.fillStyle = "rgba(0,0,0,0.25)"; ctx.globalAlpha = 1;
-          ctx.fillRect(sx - 1, -s.r, 2, s.r * 2); ctx.fillRect(sx + stW - 1, -s.r, 2, s.r * 2);
-          ctx.fillStyle = country.patternColor2; ctx.globalAlpha = country.patternAlpha || 0.75;
-          ctx.fillRect(sx, -s.r, stW, s.r * 2);
-        }
-      }
-      ctx.globalAlpha = 1.0; ctx.restore();
-    }
-
-    // Diagonal stripes
-    if (country.pattern === "diagonal_stripes") {
-      const pClrs = country.patternColors || ["#000", "#f00", "#ff0"];
-      const stW = 8, ang = 0.35;
-      ctx.save(); ctx.translate(s.x, s.y - s.r / 2); ctx.rotate(ang);
-      const totW = stW * pClrs.length;
-      pClrs.forEach((cl, ci) => { ctx.fillStyle = cl; ctx.globalAlpha = 0.7; ctx.fillRect(-totW / 2 - 10 + ci * stW, -s.r, stW, s.r * 2); });
-      ctx.globalAlpha = 1.0; ctx.restore();
-    }
-
-    // Concentric circles (Mexico)
-    if (country.pattern === "concentric_circles") {
-      const cx2 = s.x - 10, cy2 = s.y - s.r * 0.35;
-      ctx.globalAlpha = 0.6; ctx.strokeStyle = country.patternColor2; ctx.lineWidth = 5;
-      [38, 26, 14].forEach(r => { ctx.beginPath(); ctx.arc(cx2, cy2, r, 0, Math.PI * 2); ctx.stroke(); });
-      ctx.globalAlpha = 1.0;
-    }
-
-    // Tiger stripes (South Korea)
-    if (country.pattern === "tiger_stripes") {
-      ctx.save(); ctx.translate(s.x, s.y - s.r / 2); ctx.rotate(-0.2);
-      ctx.fillStyle = country.patternColor2; ctx.globalAlpha = 0.7;
-      [-30, -14, 2, 18, 34].forEach(sx => {
-        ctx.beginPath(); ctx.moveTo(sx, -s.r); ctx.lineTo(sx + 6, -s.r);
-        ctx.lineTo(sx + 10, -s.r * 0.3); ctx.lineTo(sx + 4, -s.r * 0.1);
-        ctx.lineTo(sx + 9, s.r * 0.3); ctx.lineTo(sx + 5, s.r * 0.5);
-        ctx.lineTo(sx + 8, s.r); ctx.lineTo(sx + 2, s.r);
-        ctx.lineTo(sx - 1, s.r * 0.5); ctx.lineTo(sx + 3, s.r * 0.3);
-        ctx.lineTo(sx - 2, -s.r * 0.1); ctx.lineTo(sx + 2, -s.r * 0.3);
-        ctx.closePath(); ctx.fill();
-      });
-      ctx.globalAlpha = 1.0; ctx.restore();
-    }
-
-    // Diagonal split (Canada)
-    if (country.pattern === "diagonal_split") {
-      ctx.save(); ctx.translate(s.x, s.y - s.r / 2); ctx.rotate(-0.15);
-      ctx.fillStyle = country.patternColor2; ctx.globalAlpha = 0.8;
-      ctx.fillRect(-s.r * 1.5, -s.r * 1.5, s.r * 1.5, s.r * 3);
-      ctx.globalAlpha = 1.0; ctx.restore();
-    }
-
-    // Zigzag (Qatar)
-    if (country.pattern === "zigzag") {
-      ctx.save(); ctx.translate(s.x, s.y - s.r / 2); ctx.rotate(-0.15);
-      ctx.fillStyle = country.patternColor2; ctx.globalAlpha = 0.65;
-      const zigW = 12, zigH = 10;
-      ctx.beginPath(); ctx.moveTo(-zigW, -s.r * 1.5);
-      for (let y = -s.r * 1.5; y < s.r * 1.5; y += zigH) { ctx.lineTo(zigW, y + zigH / 2); ctx.lineTo(-zigW, y + zigH); }
-      ctx.lineTo(zigW + 8, s.r * 1.5);
-      for (let y = s.r * 1.5; y > -s.r * 1.5; y -= zigH) { ctx.lineTo(-zigW + 8, y - zigH / 2); ctx.lineTo(zigW + 8, y - zigH); }
-      ctx.closePath(); ctx.fill();
-      ctx.globalAlpha = 1.0; ctx.restore();
-    }
-
-    // Leopard spots (Ivory Coast)
-    if (country.pattern === "leopard_spots") {
-      ctx.globalAlpha = 0.55; ctx.fillStyle = country.patternColor2;
-      [{ x: -20, y: -30, r: 8 }, { x: 15, y: -25, r: 7 }, { x: -8, y: -12, r: 9 },
-       { x: 22, y: -8, r: 6 }, { x: -28, y: -10, r: 7 }, { x: 5, y: -35, r: 6 },
-       { x: 30, y: -22, r: 5 }, { x: -15, y: -42, r: 7 }, { x: 10, y: -45, r: 5 },
-       { x: -32, y: -28, r: 6 }, { x: 0, y: -22, r: 5 }, { x: -22, y: -45, r: 5 }
-      ].forEach(sp => {
-        ctx.fillStyle = country.patternColor2; ctx.globalAlpha = 0.55;
-        ctx.beginPath(); ctx.arc(s.x + sp.x, s.y + sp.y, sp.r, 0, Math.PI * 2); ctx.fill();
-        ctx.fillStyle = country.primary; ctx.globalAlpha = 0.3;
-        ctx.beginPath(); ctx.arc(s.x + sp.x, s.y + sp.y, sp.r * 0.5, 0, Math.PI * 2); ctx.fill();
-      });
-      ctx.globalAlpha = 1.0;
-    }
-
-    // Thin stripes (Spain)
-    if (country.pattern === "thin_stripes") {
-      ctx.save(); ctx.translate(s.x, s.y - s.r / 2); ctx.rotate(-0.12);
-      ctx.fillStyle = country.patternColor2; ctx.globalAlpha = 0.7;
-      [-30, -18, -6, 6, 18].forEach(sx => ctx.fillRect(sx - 1, -s.r, 2, s.r * 2));
-      ctx.globalAlpha = 1.0; ctx.restore();
-    }
-
-    // Cross (Norway)
-    if (country.pattern === "cross") {
-      ctx.save(); ctx.translate(s.x, s.y - s.r / 2); ctx.rotate(-0.2);
-      ctx.fillStyle = country.patternColor3 || "#fff"; ctx.globalAlpha = 0.85;
-      ctx.fillRect(-s.r * 1.5, -7, s.r * 3, 14); ctx.fillRect(-9, -s.r * 1.5, 14, s.r * 3);
-      ctx.fillStyle = country.patternColor2; ctx.globalAlpha = 0.85;
-      ctx.fillRect(-s.r * 1.5, -5, s.r * 3, 10); ctx.fillRect(-7, -s.r * 1.5, 10, s.r * 3);
-      ctx.globalAlpha = 1.0; ctx.restore();
-    }
-
-    // Sheen
-    const sheen = ctx.createRadialGradient(s.x - 8, s.y - 18, 4, s.x, s.y, s.r);
-    sheen.addColorStop(0, (country.highlight || country.primary) + "55");
-    sheen.addColorStop(1, "transparent");
-    ctx.fillStyle = sheen;
-    ctx.fillRect(s.x - s.r, s.y - s.r, s.r * 2, s.r);
-    ctx.restore();
-
-    // Eye looking UP at trophy
-    const ex = s.x + 14, ey = s.y - 22;
-    ctx.shadowColor = "rgba(0,0,0,0.7)"; ctx.shadowBlur = 4; ctx.shadowOffsetX = 1; ctx.shadowOffsetY = 1;
-    ctx.fillStyle = "#fff";
-    ctx.beginPath(); ctx.arc(ex, ey, 7, 0, Math.PI * 2); ctx.fill();
-    ctx.shadowColor = "transparent"; ctx.shadowBlur = 0; ctx.shadowOffsetX = 0; ctx.shadowOffsetY = 0;
-    ctx.fillStyle = "#111";
-    ctx.beginPath(); ctx.arc(ex, ey - 3, 3.5, 0, Math.PI * 2); ctx.fill();
-  }, [tournament]);
   const tournamentRef = useRef(tournament);
   const updateTournament = (t) => {
     tournamentRef.current = t;
@@ -600,7 +419,8 @@ export default function SlimeSoccer() {
     setStats(newStats);
     try { localStorage.setItem(STATS_KEY, JSON.stringify(newStats)); } catch {}
   };
-  const goalCelebRef = useRef(null); // { scorer, country, comment, timer }
+  const goalCelebRef = useRef(null); // { scorer, country, timer }
+  const screenShakeRef = useRef(0);
   const countdownRef = useRef(0);
   const [canvasScale, setCanvasScale] = useState(1);
   const [isLandscape, setIsLandscape] = useState(false);
@@ -652,7 +472,6 @@ export default function SlimeSoccer() {
       ball: makeBall(),
       scores: { p1: 0, p2: 0 },
       freeze: 0,
-      lastKickX: G.WIDTH / 2,
     };
     setScores({ p1: 0, p2: 0 });
     setWinner(null);
@@ -772,43 +591,16 @@ export default function SlimeSoccer() {
     }
   }, []);
 
-  const getGoalComment = useCallback((scorer, ballY, ballSpeed, lastKickX) => {
-    const goalTop_ = G.GROUND_Y - G.GOAL_HEIGHT;
-    const topZone = goalTop_ + G.GOAL_HEIGHT * 0.25;
-    const isTopBins = ballY < topZone;
-
-    // Distance from goal the shot was taken
-    const goalX = scorer === "p1" ? G.WIDTH - G.GOAL_WIDTH : G.GOAL_WIDTH;
-    const shotDist = Math.abs(lastKickX - goalX);
-    const isScreener = shotDist > G.WIDTH * 0.5;
-    const isPoacher = shotDist < 120;
-
-    const isRocket = ballSpeed > 11;
-    const isTapIn = ballSpeed < 4;
-
-    // Priority order
-    if (isScreener) return "💥 SCREAMER!";
-    if (isTopBins) return "🎯 TOP BINS!";
-    if (isPoacher && !isTapIn) return "🦊 POACHER!";
-    if (isRocket) return "🚀 ROCKET!";
-    if (isTapIn) return "👆 TAP IN!";
-
-    const generic = ["🗣️ GET IN!", "🔥 CLINICAL!", "👏 THAT'S CLASS!", "💫 BEAUTY!"];
-    return generic[Math.floor(Math.random() * generic.length)];
-  }, []);
-
   const handleGoal = useCallback((scorer) => {
     const game = gameRef.current;
     const ballY = game.ball.y;
-    const ballSpeed = Math.sqrt(game.ball.vx ** 2 + game.ball.vy ** 2);
-    const lastKickX = game.lastKickX;
 
     game.scores[scorer]++;
     setScores({ ...game.scores });
 
     const country = scorer === "p1" ? p1CountryRef.current : p2CountryRef.current;
-    const comment = getGoalComment(scorer, ballY, ballSpeed, lastKickX);
-    goalCelebRef.current = { scorer, country, comment, timer: 90 };
+    goalCelebRef.current = { scorer, country, timer: 90 };
+    screenShakeRef.current = 12;
 
     if (game.scores[scorer] >= G.WINNING_SCORE) {
       game.ball = makeBall();
@@ -919,13 +711,12 @@ export default function SlimeSoccer() {
     game.p1 = makeSlime(250, true);
     game.p2 = makeSlime(550, false);
     game.freeze = 90;
-    game.lastKickX = G.WIDTH / 2;
     keysRef.current = {};
     lastDirRef.current = null;
     lastDirRef2.current = null;
     setGameState("scored");
     setTimeout(() => setGameState("playing"), 1500);
-  }, [makeBall, makeSlime, getGoalComment]);
+  }, [makeBall, makeSlime]);
 
   const update = useCallback(() => {
     const game = gameRef.current;
@@ -1058,7 +849,6 @@ export default function SlimeSoccer() {
       const minDist = s.r + ball.r;
 
       if (dist < minDist && dy <= 10) {
-        game.lastKickX = s.x;
         const nx = dx / dist, ny = dy / dist;
         const overlap = minDist - dist;
         ball.x += nx * overlap;
@@ -1085,6 +875,14 @@ export default function SlimeSoccer() {
 
     ctx.fillStyle = COLORS.bg;
     ctx.fillRect(0, 0, G.WIDTH, G.HEIGHT);
+
+    // Screen shake
+    ctx.save();
+    if (screenShakeRef.current > 0) {
+      const intensity = screenShakeRef.current;
+      ctx.translate((Math.random() - 0.5) * intensity, (Math.random() - 0.5) * intensity);
+      screenShakeRef.current = Math.max(0, intensity - 0.8);
+    }
 
     ctx.fillStyle = COLORS.ground;
     ctx.fillRect(0, G.GROUND_Y, G.WIDTH, G.HEIGHT - G.GROUND_Y);
@@ -1506,11 +1304,44 @@ export default function SlimeSoccer() {
     // Ball
     const b = game.ball;
     ctx.save();
+    // Track ball rotation based on horizontal velocity
+    if (!b._rot) b._rot = 0;
+    b._rot += (b.vx || 0) * 0.06;
     const bg = ctx.createRadialGradient(b.x - 3, b.y - 3, 1, b.x, b.y, b.r);
-    bg.addColorStop(0, "#fff"); bg.addColorStop(1, "#bbb");
+    bg.addColorStop(0, "#fff"); bg.addColorStop(1, "#ccc");
     ctx.fillStyle = bg;
     ctx.beginPath(); ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2); ctx.fill();
-    ctx.strokeStyle = "#888"; ctx.lineWidth = 1; ctx.stroke();
+    // Pentagon pattern
+    ctx.save();
+    ctx.beginPath(); ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2); ctx.clip();
+    ctx.translate(b.x, b.y);
+    ctx.rotate(b._rot);
+    ctx.fillStyle = "rgba(60,60,60,0.2)";
+    const pentR = b.r * 0.42;
+    for (let p = 0; p < 5; p++) {
+      const pa = (p / 5) * Math.PI * 2 - Math.PI / 2;
+      const pcx = Math.cos(pa) * b.r * 0.62;
+      const pcy = Math.sin(pa) * b.r * 0.62;
+      ctx.beginPath();
+      for (let v = 0; v < 5; v++) {
+        const va = (v / 5) * Math.PI * 2 - Math.PI / 2;
+        const vx = pcx + Math.cos(va) * pentR;
+        const vy = pcy + Math.sin(va) * pentR;
+        v === 0 ? ctx.moveTo(vx, vy) : ctx.lineTo(vx, vy);
+      }
+      ctx.closePath(); ctx.fill();
+    }
+    // Center pentagon
+    ctx.beginPath();
+    for (let v = 0; v < 5; v++) {
+      const va = (v / 5) * Math.PI * 2 - Math.PI / 2;
+      const vx = Math.cos(va) * pentR;
+      const vy = Math.sin(va) * pentR;
+      v === 0 ? ctx.moveTo(vx, vy) : ctx.lineTo(vx, vy);
+    }
+    ctx.closePath(); ctx.fill();
+    ctx.restore();
+    ctx.strokeStyle = "#999"; ctx.lineWidth = 0.8; ctx.beginPath(); ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2); ctx.stroke();
     const sf = 1 - (G.GROUND_Y - b.y) / G.GROUND_Y;
     ctx.fillStyle = "rgba(0,0,0,0.18)";
     ctx.beginPath(); ctx.ellipse(b.x, G.GROUND_Y + 2, b.r * (0.4 + sf * 0.5), 3, 0, 0, Math.PI * 2); ctx.fill();
@@ -1581,11 +1412,6 @@ export default function SlimeSoccer() {
       ctx.fillStyle = celeb.country.primary;
       ctx.fillText(`${celeb.country.flag}  ${celeb.country.name.toUpperCase()}`, 0, 18);
 
-      // Comment
-      ctx.font = "bold 18px Oswald, sans-serif";
-      ctx.fillStyle = COLORS.score;
-      ctx.fillText(celeb.comment, 0, 50);
-
       ctx.restore();
     }
 
@@ -1607,6 +1433,9 @@ export default function SlimeSoccer() {
       ctx.fillText("Press SPACE to resume", G.WIDTH / 2, G.HEIGHT / 2 + 25);
       ctx.restore();
     }
+
+    // End screen shake
+    ctx.restore();
   }, [goalTop]);
 
   // Game loop
@@ -1926,11 +1755,14 @@ export default function SlimeSoccer() {
             {showTrophyMenu && (<>
               <div onClick={() => setShowTrophyMenu(false)} style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, zIndex: 8 }}></div>
               <div style={{ position: "absolute", top: 40, left: 0, background: COLORS.ground, border: `1px solid ${COLORS.score}44`, borderRadius: 8, padding: 6, display: "flex", flexDirection: "column", gap: 4, minWidth: 200, boxShadow: "0 4px 16px rgba(0,0,0,0.5)", zIndex: 9 }}>
-                {tournament && tournament.screen !== "select" && tournament.screen !== "draw" ? (
+                {tournament && tournament.screen !== "select" && tournament.screen !== "draw" ? (<>
                   <button onClick={() => { setShowTrophyMenu(false); setShowTournamentUIWrapped(true); }} style={{ padding: "10px 14px", fontSize: 14, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: "none", border: "none", borderRadius: 6, color: COLORS.score, cursor: "pointer", textAlign: "left", letterSpacing: 1, whiteSpace: "nowrap" }}>
                     {"▶"} RESUME WORLD CUP
                   </button>
-                ) : (
+                  <div style={{ padding: "0 14px 6px", fontSize: 11, color: COLORS.dimText, textAlign: "left" }}>
+                    {tournament.playerTeam?.flag} {tournament.playerTeam?.name} - {tournament.bracket ? ({ r32: "Round of 32", r16: "Round of 16", qf: "Quarterfinals", sf: "Semifinals", final: "Final" })[tournament.bracket.round] : `Group Stage, MD${tournament.matchday}`}
+                  </div>
+                </>) : (
                   <button onClick={() => { setShowTrophyMenu(false); setShowTournamentUIWrapped(true); updateTournament({ screen: "select", playerTeam: null }); }} style={{ padding: "10px 14px", fontSize: 14, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: "none", border: "none", borderRadius: 6, color: COLORS.score, cursor: "pointer", textAlign: "left", letterSpacing: 1, whiteSpace: "nowrap" }}>
                     PLAY 2026 WORLD CUP
                   </button>
@@ -1967,7 +1799,7 @@ export default function SlimeSoccer() {
               </div>
             ) : (
               <div style={{ display: "grid", gridTemplateColumns: `repeat(${isMobile ? 3 : 4}, 1fr)`, gap: 12 }}>
-                {trophyCabinet.map((t, i) => (
+                {[...trophyCabinet].reverse().map((t, i) => (
                   <div key={i} style={{ background: COLORS.ground, border: `1px solid ${COLORS.score}33`, borderRadius: 10, padding: "16px 8px", display: "flex", flexDirection: "column", alignItems: "center", gap: 6 }}>
                     <div style={{ fontSize: 32 }}>{"🏆"}</div>
                     <div style={{ fontSize: 28 }}>{t.flag}</div>
