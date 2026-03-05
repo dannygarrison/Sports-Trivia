@@ -2456,14 +2456,14 @@ export default function SlimeSoccer() {
                 {"🏆"}
               </div>
 
-              <div style={{ height: 20 }}></div>
+              <div style={{ height: 50 }}></div>
 
               {/* Flag */}
               <div style={{ fontSize: isMobile ? 56 : 80, animation: "flag-pop 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.8s both", zIndex: 1 }}>
                 {tournament.playerTeam.flag}
               </div>
 
-              <div style={{ height: 30 }}></div>
+              <div style={{ height: 50 }}></div>
 
               {/* Title with shimmer */}
               <div style={{
@@ -2475,7 +2475,7 @@ export default function SlimeSoccer() {
                 animation: "text-rise 0.8s ease-out 1.2s both, shimmer 3s linear 2s infinite",
               }}>WORLD CHAMPIONS!</div>
 
-              <div style={{ height: 16 }}></div>
+              <div style={{ height: 30 }}></div>
 
               {/* Subtitle */}
               <div style={{ fontSize: isMobile ? 16 : 20, color: COLORS.text, zIndex: 1, animation: "text-rise 0.8s ease-out 1.6s both" }}>
