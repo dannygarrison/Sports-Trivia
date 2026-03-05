@@ -2415,22 +2415,77 @@ export default function SlimeSoccer() {
           )}
 
           {/* CHAMPION */}
-          {tournament.screen === "champion" && (
-            <div style={{ textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center", minHeight: "80vh", justifyContent: "space-between" }}>
-              <div>
-                <div style={{ height: 20 }}></div>
-                <div style={{ fontSize: 64 }}>{tournament.playerTeam.flag}</div>
-                <div style={{ height: 40 }}></div>
-                <div style={{ fontSize: isMobile ? 24 : 36, fontWeight: 700, color: COLORS.score }}>WORLD CHAMPIONS!</div>
-                <div style={{ height: 30 }}></div>
-                <div style={{ fontSize: 18, color: COLORS.text }}>{tournament.playerTeam.name} wins the Slime Cup!</div>
+          {tournament.screen === "champion" && (() => {
+            const confettiColors = ["#d4a843", "#f5d77a", "#ffffff", "#e8c252", "#ffd700", tournament.playerTeam.primary, tournament.playerTeam.highlight || tournament.playerTeam.primary];
+            return (
+            <div style={{ textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center", minHeight: "85vh", justifyContent: "center", position: "relative", overflow: "hidden" }}>
+              <style>{`
+                @keyframes confetti-fall { 0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; } 100% { transform: translateY(95vh) rotate(720deg); opacity: 0.6; } }
+                @keyframes trophy-entrance { 0% { transform: scale(0) rotate(-30deg); opacity: 0; } 50% { transform: scale(1.3) rotate(5deg); opacity: 1; } 70% { transform: scale(0.95) rotate(-2deg); } 100% { transform: scale(1) rotate(0deg); opacity: 1; } }
+                @keyframes glow-pulse { 0%, 100% { text-shadow: 0 0 20px #d4a84366, 0 0 40px #d4a84322; } 50% { text-shadow: 0 0 40px #d4a843aa, 0 0 80px #d4a84355, 0 0 120px #d4a84322; } }
+                @keyframes flag-pop { 0% { transform: scale(0); opacity: 0; } 60% { transform: scale(1.2); opacity: 1; } 100% { transform: scale(1); } }
+                @keyframes text-rise { 0% { transform: translateY(30px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
+                @keyframes star-burst { 0% { transform: scale(0) rotate(0deg); opacity: 0; } 50% { transform: scale(1.2) rotate(180deg); opacity: 1; } 100% { transform: scale(1) rotate(360deg); opacity: 0.7; } }
+                @keyframes shimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
+              `}</style>
+
+              {/* Confetti */}
+              {Array.from({ length: 40 }).map((_, i) => (
+                <div key={i} style={{
+                  position: "absolute", top: -10, left: `${Math.random() * 100}%`,
+                  width: Math.random() * 8 + 4, height: Math.random() * 12 + 6,
+                  background: confettiColors[i % confettiColors.length],
+                  borderRadius: Math.random() > 0.5 ? "50%" : "2px",
+                  animation: `confetti-fall ${3 + Math.random() * 4}s linear ${Math.random() * 2}s infinite`,
+                  opacity: 0.8, zIndex: 0,
+                }}></div>
+              ))}
+
+              {/* Sparkle stars */}
+              {Array.from({ length: 8 }).map((_, i) => (
+                <div key={`star-${i}`} style={{
+                  position: "absolute",
+                  top: `${15 + Math.random() * 60}%`, left: `${10 + Math.random() * 80}%`,
+                  fontSize: Math.random() * 16 + 12, zIndex: 0,
+                  animation: `star-burst 2s ease-out ${0.5 + i * 0.3}s both`,
+                }}>{"✦"}</div>
+              ))}
+
+              {/* Trophy */}
+              <div style={{ fontSize: isMobile ? 80 : 110, animation: "trophy-entrance 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards, glow-pulse 3s ease-in-out 1.5s infinite", zIndex: 1, position: "relative" }}>
+                {"🏆"}
               </div>
-              <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-                <div style={{ fontSize: 50, animation: "trophy-rise 3s ease-out forwards", position: "relative", zIndex: 2 }}>{"🏆"}</div>
-                <style>{`@keyframes trophy-rise { 0% { bottom: -120px; opacity: 0; } 50% { bottom: 0px; opacity: 1; } 65% { bottom: 8px; } 75% { bottom: 0px; } 88% { bottom: 3px; } 100% { bottom: 0px; opacity: 1; } }`}</style>
-                <canvas ref={drawChampSlime} width={160} height={100} style={{ marginTop: -66, position: "relative", zIndex: 1 }}></canvas>
+
+              <div style={{ height: 20 }}></div>
+
+              {/* Flag */}
+              <div style={{ fontSize: isMobile ? 56 : 80, animation: "flag-pop 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.8s both", zIndex: 1 }}>
+                {tournament.playerTeam.flag}
               </div>
-              <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12, paddingBottom: 30 }}>
+
+              <div style={{ height: 30 }}></div>
+
+              {/* Title with shimmer */}
+              <div style={{
+                fontSize: isMobile ? 28 : 42, fontWeight: 700, zIndex: 1,
+                background: "linear-gradient(90deg, #d4a843 0%, #f5d77a 25%, #ffffff 50%, #f5d77a 75%, #d4a843 100%)",
+                backgroundSize: "200% auto",
+                WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+                animation: "text-rise 0.8s ease-out 1.2s both, shimmer 3s linear 2s infinite",
+              }}>WORLD CHAMPIONS!</div>
+
+              <div style={{ height: 16 }}></div>
+
+              {/* Subtitle */}
+              <div style={{ fontSize: isMobile ? 16 : 20, color: COLORS.text, zIndex: 1, animation: "text-rise 0.8s ease-out 1.6s both" }}>
+                {tournament.playerTeam.name} wins the Slime Cup!
+              </div>
+
+              <div style={{ height: 50 }}></div>
+
+              {/* Buttons */}
+              <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12, zIndex: 1, animation: "text-rise 0.8s ease-out 2s both" }}>
                 <button onClick={() => { setShowCabinet(true); setShowTournamentUIWrapped(false); updateTournament(null); }} style={{ padding: "12px 36px", fontSize: 16, fontWeight: 700, fontFamily: "Oswald, sans-serif", background: COLORS.score + "22", border: `1px solid ${COLORS.score}55`, borderRadius: 8, color: COLORS.score, cursor: "pointer" }}>
                   TROPHY CABINET
                 </button>
@@ -2439,7 +2494,8 @@ export default function SlimeSoccer() {
                 </button>
               </div>
             </div>
-          )}
+            );
+          })()}
 
           {/* Reset tournament */}
           {tournament.screen !== "select" && tournament.screen !== "draw" && tournament.screen !== "eliminated" && tournament.screen !== "champion" && (
