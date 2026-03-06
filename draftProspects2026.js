@@ -1,19 +1,19 @@
 // ── 2026 NFL Draft Prospects ──────────────────────────────────────────────────
 // Updated: March 2026 (post-combine)
-// Source: Drafttek, ESPN (Kiper/Miller/Reid/Yates), Walter Football
-// Positions: QB RB WR TE OT IOL EDGE DT LB CB S
+// Sources: Drafttek (Mar 2), ESPN Kiper/Miller/Reid/Yates, WalterFootball
+// All players confirmed 2026 draft class (not 2025)
 
 export const ALL_PROSPECTS = [
   // ── QBs ──────────────────────────────────────────────────────────────────
   { name: "Fernando Mendoza",      position: "QB",   school: "Indiana" },
   { name: "Ty Simpson",            position: "QB",   school: "Alabama" },
-  { name: "Jaxson Dart",           position: "QB",   school: "Ole Miss" },
+  { name: "Garrett Nussmeier",     position: "QB",   school: "LSU" },
+  { name: "Cade Klubnik",          position: "QB",   school: "Clemson" },
 
   // ── RBs ──────────────────────────────────────────────────────────────────
   { name: "Jeremiyah Love",        position: "RB",   school: "Notre Dame" },
-  { name: "Kaleb Johnson",         position: "RB",   school: "Iowa" },
-  { name: "Damien Martinez",       position: "RB",   school: "Oregon" },
-  { name: "Brashard Smith",        position: "RB",   school: "SMU" },
+  { name: "Nicholas Singleton",    position: "RB",   school: "Penn State" },
+  { name: "Demond Claiborne",      position: "RB",   school: "Wake Forest" },
 
   // ── WRs ──────────────────────────────────────────────────────────────────
   { name: "Carnell Tate",          position: "WR",   school: "Ohio State" },
@@ -21,14 +21,13 @@ export const ALL_PROSPECTS = [
   { name: "Jordyn Tyson",          position: "WR",   school: "Arizona State" },
   { name: "Denzel Boston",         position: "WR",   school: "Washington" },
   { name: "Kevin Concepcion",      position: "WR",   school: "Texas A&M" },
-  { name: "Luther Burden III",     position: "WR",   school: "Missouri" },
-  { name: "Elic Ayomanor",         position: "WR",   school: "Stanford" },
-  { name: "Jack Bech",             position: "WR",   school: "TCU" },
+  { name: "Germie Bernard",        position: "WR",   school: "Alabama" },
+  { name: "Antonio Williams",      position: "WR",   school: "Clemson" },
+  { name: "Aaron Anderson",        position: "WR",   school: "LSU" },
 
   // ── TEs ──────────────────────────────────────────────────────────────────
   { name: "Kenyon Sadiq",          position: "TE",   school: "Oregon" },
   { name: "Eli Stowers",           position: "TE",   school: "Vanderbilt" },
-  { name: "Harold Fannin Jr.",     position: "TE",   school: "Bowling Green" },
 
   // ── OTs ──────────────────────────────────────────────────────────────────
   { name: "Francis Mauigoa",       position: "OT",   school: "Miami" },
@@ -48,12 +47,10 @@ export const ALL_PROSPECTS = [
   { name: "T.J. Parker",           position: "EDGE", school: "Clemson" },
   { name: "Keldric Faulk",         position: "EDGE", school: "Auburn" },
   { name: "Cashius Howell",        position: "EDGE", school: "Texas A&M" },
-  { name: "Kyle Kennard",          position: "EDGE", school: "South Carolina" },
 
   // ── DTs ──────────────────────────────────────────────────────────────────
   { name: "Peter Woods",           position: "DT",   school: "Clemson" },
   { name: "Caleb Banks",           position: "DT",   school: "Florida" },
-  { name: "Shemar Turner",         position: "DT",   school: "Texas A&M" },
 
   // ── LBs ──────────────────────────────────────────────────────────────────
   { name: "Sonny Styles",          position: "LB",   school: "Ohio State" },
@@ -65,15 +62,12 @@ export const ALL_PROSPECTS = [
   { name: "Colton Hood",           position: "CB",   school: "Tennessee" },
   { name: "Avieon Terrell",        position: "CB",   school: "Clemson" },
   { name: "Chris Johnson",         position: "CB",   school: "San Diego State" },
-  { name: "Jabbar Muhammad",       position: "CB",   school: "Oregon" },
-  { name: "Benjamin Morrison",     position: "CB",   school: "Notre Dame" },
+  { name: "Domani Jackson",        position: "CB",   school: "Alabama" },
 
   // ── Ss ───────────────────────────────────────────────────────────────────
   { name: "Caleb Downs",           position: "S",    school: "Ohio State" },
   { name: "Dillon Thieneman",      position: "S",    school: "Oregon" },
   { name: "Emmanuel McNeil-Warren",position: "S",    school: "Toledo" },
-  { name: "Xavier Watts",          position: "S",    school: "Notre Dame" },
-  { name: "Andrew Mukuba",         position: "S",    school: "Clemson" },
 ];
 
 // ── Per-pick suggestions (3-4 players per pick) ───────────────────────────────
@@ -82,7 +76,7 @@ export const PICK_SUGGESTIONS = {
   1:  [
     { name: "Fernando Mendoza",  position: "QB",   school: "Indiana" },
     { name: "Ty Simpson",        position: "QB",   school: "Alabama" },
-    { name: "Jaxson Dart",       position: "QB",   school: "Ole Miss" },
+    { name: "Garrett Nussmeier", position: "QB",   school: "LSU" },
   ],
   2:  [
     { name: "Arvell Reese",      position: "EDGE", school: "Ohio State" },
@@ -188,15 +182,15 @@ export const PICK_SUGGESTIONS = {
   ],
   19: [
     { name: "Ty Simpson",        position: "QB",   school: "Alabama" },
-    { name: "Jaxson Dart",       position: "QB",   school: "Ole Miss" },
+    { name: "Garrett Nussmeier", position: "QB",   school: "LSU" },
     { name: "Rueben Bain Jr.",   position: "EDGE", school: "Miami" },
     { name: "Keldric Faulk",     position: "EDGE", school: "Auburn" },
   ],
   20: [
     { name: "Keldric Faulk",     position: "EDGE", school: "Auburn" },
     { name: "Cashius Howell",    position: "EDGE", school: "Texas A&M" },
-    { name: "Kyle Kennard",      position: "EDGE", school: "South Carolina" },
     { name: "Colton Hood",       position: "CB",   school: "Tennessee" },
+    { name: "Anthony Hill Jr.",  position: "LB",   school: "Texas" },
   ],
   21: [
     { name: "Monroe Freeling",   position: "OT",   school: "Georgia" },
@@ -225,49 +219,49 @@ export const PICK_SUGGESTIONS = {
   25: [
     { name: "Kenyon Sadiq",      position: "TE",   school: "Oregon" },
     { name: "Eli Stowers",       position: "TE",   school: "Vanderbilt" },
-    { name: "Luther Burden III", position: "WR",   school: "Missouri" },
-    { name: "Elic Ayomanor",     position: "WR",   school: "Stanford" },
+    { name: "Kevin Concepcion",  position: "WR",   school: "Texas A&M" },
+    { name: "Germie Bernard",    position: "WR",   school: "Alabama" },
   ],
   26: [
     { name: "Dillon Thieneman",  position: "S",    school: "Oregon" },
     { name: "Emmanuel McNeil-Warren", position: "S", school: "Toledo" },
-    { name: "Xavier Watts",      position: "S",    school: "Notre Dame" },
     { name: "Anthony Hill Jr.",  position: "LB",   school: "Texas" },
+    { name: "Domani Jackson",    position: "CB",   school: "Alabama" },
   ],
   27: [
     { name: "Caleb Banks",       position: "DT",   school: "Florida" },
-    { name: "Kyle Kennard",      position: "EDGE", school: "South Carolina" },
     { name: "Cashius Howell",    position: "EDGE", school: "Texas A&M" },
-    { name: "Shemar Turner",     position: "DT",   school: "Texas A&M" },
+    { name: "Peter Woods",       position: "DT",   school: "Clemson" },
+    { name: "Anthony Hill Jr.",  position: "LB",   school: "Texas" },
   ],
   28: [
-    { name: "Jabbar Muhammad",   position: "CB",   school: "Oregon" },
+    { name: "Domani Jackson",    position: "CB",   school: "Alabama" },
     { name: "Chris Johnson",     position: "CB",   school: "San Diego State" },
     { name: "Avieon Terrell",    position: "CB",   school: "Clemson" },
     { name: "Dillon Thieneman",  position: "S",    school: "Oregon" },
   ],
   29: [
     { name: "Kevin Concepcion",  position: "WR",   school: "Texas A&M" },
-    { name: "Kyle Kennard",      position: "EDGE", school: "South Carolina" },
     { name: "Caleb Banks",       position: "DT",   school: "Florida" },
     { name: "Anthony Hill Jr.",  position: "LB",   school: "Texas" },
+    { name: "Germie Bernard",    position: "WR",   school: "Alabama" },
   ],
   30: [
-    { name: "Luther Burden III", position: "WR",   school: "Missouri" },
-    { name: "Elic Ayomanor",     position: "WR",   school: "Stanford" },
-    { name: "Jack Bech",         position: "WR",   school: "TCU" },
+    { name: "Germie Bernard",    position: "WR",   school: "Alabama" },
+    { name: "Antonio Williams",  position: "WR",   school: "Clemson" },
+    { name: "Aaron Anderson",    position: "WR",   school: "LSU" },
     { name: "Kevin Concepcion",  position: "WR",   school: "Texas A&M" },
   ],
   31: [
     { name: "Max Iheanachor",    position: "OT",   school: "Arizona State" },
     { name: "Monroe Freeling",   position: "OT",   school: "Georgia" },
-    { name: "Kyle Kennard",      position: "EDGE", school: "South Carolina" },
+    { name: "Cashius Howell",    position: "EDGE", school: "Texas A&M" },
     { name: "Anthony Hill Jr.",  position: "LB",   school: "Texas" },
   ],
   32: [
     { name: "Caleb Banks",       position: "DT",   school: "Florida" },
-    { name: "Kyle Kennard",      position: "EDGE", school: "South Carolina" },
     { name: "Monroe Freeling",   position: "OT",   school: "Georgia" },
     { name: "Dillon Thieneman",  position: "S",    school: "Oregon" },
+    { name: "Chris Johnson",     position: "CB",   school: "San Diego State" },
   ],
 };
