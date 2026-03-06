@@ -20,7 +20,7 @@ export const ALL_PROSPECTS = [
   { name: "Makai Lemon",           position: "WR",   school: "USC" },
   { name: "Jordyn Tyson",          position: "WR",   school: "Arizona State" },
   { name: "Denzel Boston",         position: "WR",   school: "Washington" },
-  { name: "Kevin Concepcion",      position: "WR",   school: "Texas A&M" },
+  { name: "KC Concepcion",      position: "WR",   school: "Texas A&M" },
   { name: "Germie Bernard",        position: "WR",   school: "Alabama" },
   { name: "Antonio Williams",      position: "WR",   school: "Clemson" },
   { name: "Aaron Anderson",        position: "WR",   school: "LSU" },
@@ -142,7 +142,7 @@ export const PICK_SUGGESTIONS = {
     { name: "David Bailey",      position: "EDGE", school: "Texas Tech" },
     { name: "Sonny Styles",      position: "LB",   school: "Ohio State" },
     { name: "Peter Woods",       position: "DT",   school: "Clemson" },
-    { name: "Kevin Concepcion",  position: "WR",   school: "Texas A&M" },
+    { name: "KC Concepcion",  position: "WR",   school: "Texas A&M" },
   ],
   13: [
     { name: "Kenyon Sadiq",      position: "TE",   school: "Oregon" },
@@ -202,7 +202,7 @@ export const PICK_SUGGESTIONS = {
     { name: "Rueben Bain Jr.",   position: "EDGE", school: "Miami" },
     { name: "Keldric Faulk",     position: "EDGE", school: "Auburn" },
     { name: "Denzel Boston",     position: "WR",   school: "Washington" },
-    { name: "Kevin Concepcion",  position: "WR",   school: "Texas A&M" },
+    { name: "KC Concepcion",  position: "WR",   school: "Texas A&M" },
   ],
   23: [
     { name: "Colton Hood",       position: "CB",   school: "Tennessee" },
@@ -219,7 +219,7 @@ export const PICK_SUGGESTIONS = {
   25: [
     { name: "Kenyon Sadiq",      position: "TE",   school: "Oregon" },
     { name: "Eli Stowers",       position: "TE",   school: "Vanderbilt" },
-    { name: "Kevin Concepcion",  position: "WR",   school: "Texas A&M" },
+    { name: "KC Concepcion",  position: "WR",   school: "Texas A&M" },
     { name: "Germie Bernard",    position: "WR",   school: "Alabama" },
   ],
   26: [
@@ -241,7 +241,7 @@ export const PICK_SUGGESTIONS = {
     { name: "Dillon Thieneman",  position: "S",    school: "Oregon" },
   ],
   29: [
-    { name: "Kevin Concepcion",  position: "WR",   school: "Texas A&M" },
+    { name: "KC Concepcion",  position: "WR",   school: "Texas A&M" },
     { name: "Caleb Banks",       position: "DT",   school: "Florida" },
     { name: "Anthony Hill Jr.",  position: "LB",   school: "Texas" },
     { name: "Germie Bernard",    position: "WR",   school: "Alabama" },
@@ -250,7 +250,7 @@ export const PICK_SUGGESTIONS = {
     { name: "Germie Bernard",    position: "WR",   school: "Alabama" },
     { name: "Antonio Williams",  position: "WR",   school: "Clemson" },
     { name: "Aaron Anderson",    position: "WR",   school: "LSU" },
-    { name: "Kevin Concepcion",  position: "WR",   school: "Texas A&M" },
+    { name: "KC Concepcion",  position: "WR",   school: "Texas A&M" },
   ],
   31: [
     { name: "Max Iheanachor",    position: "OT",   school: "Arizona State" },
